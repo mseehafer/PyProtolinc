@@ -19,7 +19,6 @@ Protolinc's Documentation
    examples/example_nbs/01_annuity_in_payment_simple/example1_annuity_simple1
    examples/example_nbs/02_annuities_in_payment/example2_annuity_dav
    examples/example_nbs/03_mortality/example3_MortalityModel
-   examples/ModelBuilding
    concepts
    usage/profiling
    api/programmingapi
