@@ -20,11 +20,11 @@ run_type_specs:
   GenericMultiState:
     # for the generic model a state model is required, either "MultiStateDisabilityStates" or "AnnuityRunoffStates"
     state_model: "MultiStateDisabilityStates"
-    assumptions_spec:  "di_assumptions.yaml"
+    assumptions_spec:  "di_assumptions.yml"
     outfile: "results/ncf_out_generic.csv"
     # portfolio_path: "portfolio/portfolio_small.xlsx"
     # portfolio_path: "portfolio/portfolio_med.xlsx"
-    portfolio_path: "portfolio/portfolio_med.xlsx"
+    portfolio_path: "portfolio/portfolio_big.xlsx"
     portfolio_chunk_size: 2048  # 1024
 
   # MultiStateDisability:

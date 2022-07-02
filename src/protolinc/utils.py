@@ -8,7 +8,7 @@ import requests
 
 
 def download_dav_tables(target_dir="."):
-    """ Download DAV2004R and DAV2008T from R. Kainhofer's R-PAckage Mortality tables.
+    """ Download DAV2004R and DAV2008T from R. Kainhofer's R-Package MortalityTables.
     
     :target_dir  The directory where to store the downloaded datafiles.
     """

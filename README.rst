@@ -9,10 +9,16 @@ policies. It comes with a number of built-in standard products but can also be u
 to project custom products by the user. 
 
 
+Documentation
+^^^^^^^^^^^^^^^^
+
+For extended documentation cf. https://protolinc.readthedocs.io/en/latest/index.html.
+
+
 Project Objectives
 ----------------------
 
-The key objective for *PyProtolinc* is to model cash flows for a variety of simple life and health insurance
+The key objective for *Protolinc* is to model cash flows for a variety of simple life and health insurance
 products, also beyond stylized textbook examples.
 
 The tool should provide a command line interface which can be used with configuration as well as an extensible
@@ -28,6 +34,11 @@ Basic Usage
 
 Installation
 ^^^^^^^^^^^^^^^^
+
+
+To install from PyPI run::
+
+  pip install protolinc
 
 Clone (or download) the repository run::
 
@@ -49,7 +60,3 @@ csv file in the subfolder *results*. To view these copy the Excel file *results_
 rename it to *results_viewer_generic.xlsx* and import the data from the CSV file. Now one can start playing around by changing the configuration.
 
 
-Documentation
-^^^^^^^^^^^^^^^^
-
-For extended documentation cf. https://protolinc.readthedocs.io/en/latest/index.html.
