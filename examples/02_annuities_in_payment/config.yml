@@ -1,0 +1,36 @@
+
+io:
+  portfolio_cache: "portfolio/portfolio_cache"
+  profile_out_dir: "."
+
+
+model:
+  # Type of Model to be run, supported types are "MultiStateDisability", "AnnuityRunoff" and "GenericMultiState"
+  
+  type: "GenericMultiState"
+  
+  # generic settings
+  years_to_simulate: 119
+  steps_per_month: 1
+  use_multicore: true   # true    # false
+
+
+run_type_specs:
+
+  GenericMultiState:
+    # for the generic model a state model is required, either "MultiStateDisabilityStates" or "AnnuityRunoffStates"
+    state_model: "AnnuityRunoffStates"
+    assumptions_spec: "longevity_assumptions.yml"
+    outfile: "results/ncf_out_generic.csv"
+    portfolio_path: "portfolio/portfolio_annuity_small.xlsx"
+    portfolio_chunk_size: 1024
+
+  # MultiStateDisability:
+  #   assumptions_spec: "run/di_assumptions.yaml"
+  #   outfile: "run/_results/ncf_out_di.csv"
+  #   portfolio_path: "protolinc/data/portfolio/portfolio_med.xlsx"
+  
+  # AnnuityRunoff:
+  #   assumptions_spec: "run/longevity_assumptions.yaml"
+  #   outfile: "run/_results/ncf_out_longevity.csv"
+  #   portfolio_path: "protolinc/data/portfolio/portfolio_annuity_small.xlsx"

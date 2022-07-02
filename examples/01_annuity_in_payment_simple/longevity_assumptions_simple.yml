@@ -1,0 +1,11 @@
+# for the annuity model
+assumptions_spec:
+
+  be:
+    # annuitant's deaths
+    - [0, 1, ["Scalar", 0.0015]]
+
+  res:
+    # annuitant's deaths
+    - [0, 1,  ["Scalar", 0.0025]]
+

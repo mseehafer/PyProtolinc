@@ -1,0 +1,32 @@
+
+Add:
+- tests
+- documentation
+- license
+- readme
+
+
+Examples:
+- with injected state model
+- example with premiums from the portfolio file
+- product with simple premium tables (injected)
+- add third risk factor (smoker) to the assumptions input
+- add selection factors to DAV2004R
+
+- inflation of benefits
+- term with linearly chaning sum_ins (via a second sum_insured field in the portfolio)
+
+Product
+- Add premium tables and calculate premiums accordingly (or take premiums from a column in the portfolio)
+
+
+Issues: 
+Early closing breaks the volume projections: end volumes must be extended for the full timeperiod
+Check if different chunk size lead to identical results. (DONE)
+
+Features & Ideas:
+Portfolio forecast,
+Policy Level result Exports, e.g. reserves at t=0
+
+Use case Trend Changes in m-Table: Do a comparision of the effect of different trend levels on reserves.
+Use case ZZR calculation.

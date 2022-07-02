@@ -1,0 +1,4 @@
+# exclude results and some data files
+*.csv
+
+**/results_viewer_generic.xlsx
