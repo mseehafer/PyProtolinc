@@ -49,4 +49,7 @@ csv file in the subfolder *results*. To view these copy the Excel file *results_
 rename it to *results_viewer_generic.xlsx* and import the data from the CSV file. Now one can start playing around by changing the configuration.
 
 
+Documentation
+^^^^^^^^^^^^^^^^
 
+For extended documentation cf. https://protolinc.readthedocs.io/en/latest/index.html.
