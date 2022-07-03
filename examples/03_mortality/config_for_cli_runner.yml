@@ -1,0 +1,23 @@
+
+io:
+  portfolio_cache: "portfolio/portfolio_cache"
+  profile_out_dir: "."
+
+
+model:
+  type: "GenericMultiState"
+  
+  # generic settings
+  years_to_simulate: 121
+  steps_per_month: 1
+  use_multicore: false
+
+
+run_type_specs:
+
+  GenericMultiState:
+    state_model: "MortalityStates"
+    assumptions_spec: "mortality_assumptions_simple.yml"
+    outfile: "results/ncf_out_generic.csv"
+    portfolio_path: "portfolio/portfolio_small_cli.xlsx"
+    portfolio_chunk_size: 1024

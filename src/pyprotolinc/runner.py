@@ -203,7 +203,9 @@ class Projector:
         """ Reserve loop: Calculated the reserves using reserving assumptions weighted by BE assumptions. """
 
         # obtain the discount factor and force into column shape
-        reserving_interest = self.reserving_rate.reshape((self.proj_state.num_records, 1))  # 0.0  # 0.04   # Placeholder for now!
+        # reserving_interest = self.reserving_rate.reshape((self.proj_state.num_records, 1))  # 0.0  # 0.04   # Placeholder for now!
+        # reserving_interest = 0.04  # Placeholder for now!
+        reserving_interest = self.reserving_rate.reshape((1, self.proj_state.num_records))
         monthly_discount_factor = (1.0 + reserving_interest)**(-1.0 / 12.0)
 
         reserves_bom_by_insured = np.zeros((len(self.time_axis),
