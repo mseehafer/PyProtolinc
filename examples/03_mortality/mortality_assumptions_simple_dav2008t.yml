@@ -1,0 +1,18 @@
+
+assumptions_spec:
+
+  be:
+    # active -> death
+    - [0, 1, ["DAV2008T", "estimate_type:BE",
+              "base_directory:tables/Germany_Endowments_DAV2008T"]]
+
+    # active -> lapse
+    - [0, 2, ["Scalar", 0.05]]
+
+  res:
+    # active -> death
+    - [0, 1, ["DAV2008T", "estimate_type:LOADED",
+              "base_directory:tables/Germany_Endowments_DAV2008T"]]
+
+    # active -> lapse
+    - [0, 2, ["Scalar", 0.0]]

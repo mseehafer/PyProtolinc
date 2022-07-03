@@ -9,7 +9,7 @@ from pyprotolinc.results import ProbabilityVolumeResults
 @unique
 class AnnuityRunoffStates(IntEnum):
     """ A state model consisting of two states:
-        - DIS (=0) representing the annuity phase
+        - DIS1 (=0) representing the annuity phase
         - DEATH (=1)
     """
     DIS1 = 0    # the "annuitant state"

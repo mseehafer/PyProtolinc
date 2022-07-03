@@ -8,7 +8,7 @@ import numpy as np
 import pandas as pd
 
 # from pyprotolinc.models.model_disability_multistate import MultiStateDisabilityStates
-from pyprotolinc.models.risk_factors import Gender
+from pyprotolinc.models.risk_factors import Gender, SmokerStatus
 
 
 logger = logging.getLogger(__name__)
@@ -57,6 +57,9 @@ class Portfolio:
         # extract age vector at the portfolio date
         self.initial_ages = completed_months_to_date(df_portfolio["DATE_OF_BIRTH"], self.portfolio_date)
 
+        self.policy_inception_yr = df_portfolio["DATE_START_OF_COVER"].dt.year.values.astype(np.int16)
+        self.policy_inception_month = df_portfolio["DATE_START_OF_COVER"].dt.month.values.astype(np.int16)
+
         # extract and map the MultiStateDisabilityStates
         _unknown_status = set(df_portfolio["CURRENT_STATUS"]) - {s.name for s in states_model}
         assert len(_unknown_status) == 0, "Unknow status " + str(_unknown_status)
@@ -64,6 +67,16 @@ class Portfolio:
 
         # extract the sums insured
         self.sum_insured = df_portfolio["SUM_INSURED"].values.astype(np.float64)
+
+        # extract the reserving rate
+        self.reserving_rate = df_portfolio["RESERVING_RATE"].values.astype(np.float64)
+
+        # extract the smoker status
+        self.smokerstatus = df_portfolio["SMOKERSTATUS"].str.upper()
+        _unknown_smoker_status = set(self.smokerstatus) - {s.name for s in SmokerStatus}
+        assert len(_unknown_smoker_status) == 0,\
+            "Unknow smoker status: " + str(_unknown_smoker_status) + ", use one of " + str({s.name for s in SmokerStatus})
+        self.smokerstatus = self.smokerstatus.map(SmokerStatus.index_mapper())
 
         # check if the ages are homogenous w.r.t. a months
         month_groups = np.unique(self.initial_ages % 12)

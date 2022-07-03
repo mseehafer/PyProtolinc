@@ -44,7 +44,7 @@ class ProbabilityVolumeResults(IntEnum):
     MV_DIS2_ACT = 16
 
 
-def export_results(result_data, outfile, run_config):
+def export_results(result_data, outfile):
 
     logger.info("Exporting NCF to %s", outfile)
 

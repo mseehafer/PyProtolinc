@@ -1,6 +1,4 @@
 
-
-# for the annuity model
 assumptions_spec:
 
   be:
@@ -12,9 +10,7 @@ assumptions_spec:
 
   res:
     # active -> death
-    #- [0, 1, ["DAV2008T", "estimate_type:BE",
-    #          "base_directory:tables/Germany_Endowments_DAV2008T"]]
     - [0, 1, ["Scalar", 0.0015]]
 
     # active -> lapse
-    - [0, 2, ["Scalar", 0.05]]
+    - [0, 2, ["Scalar", 0.0]]

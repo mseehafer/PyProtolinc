@@ -126,6 +126,7 @@ class SmokerStatus(IntEnum):
         map_dict = {}
         for g in cls:
             map_dict[g.name] = int(g)
+        return map_dict
 
 
 # validate the content of this module

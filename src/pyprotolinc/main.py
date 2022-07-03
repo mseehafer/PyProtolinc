@@ -16,8 +16,7 @@ import pandas as pd
 import fire
 
 from pyprotolinc import get_config_from_file
-# from pyprotolinc.product import Product
-from pyprotolinc.portfolio import PortfolioLoader
+from pyprotolinc.portfolio import PortfolioLoader, Portfolio
 from pyprotolinc.results import export_results
 from pyprotolinc.runner import Projector
 from pyprotolinc.models import ModelBuilder, _STATE_MODELS
@@ -28,7 +27,6 @@ from pyprotolinc.product import product_class_lookup
 from pyprotolinc.utils import download_dav_tables
 
 
-# logging configuration
 # logging.basicConfig(filename='runlog.txt', format='%(levelname)s - %(asctime)s - %(name)s - %(message)s', level=logging.DEBUG)
 logging.basicConfig(format='%(levelname)s - %(asctime)s - %(name)s - %(message)s', level=logging.DEBUG)
 
@@ -54,19 +52,33 @@ def create_model(model_class, state_model_name, assumptions_file):
     return model
 
 
-def project_cashflows(run_config):
-    """ The main calculation rountine, can also be called as library function. """
+def project_cashflows(run_config, df_portfolio_overwrite=None, export_to_file=True):
+    """ The main calculation rountine, can also be called as library function. If
+        a dataframe is passed it will be used to build the portfolio object,
+        otherwise the portfolio will be obtained from th run-config.
+
+        :run_conig                 The run configuration object.
+        :df_portfolio_overwrite    An optional dataframe that will be used instead
+                                   of the configured portfolio if provided
+        :export_to_file            Boolean flag to indicate if the results should be written
+                                   to a file (as specified in the config object)
+        
+        Returns: Dictionary containing the result vectors.
+    """
     t = time.time()
 
-    logger.info("Mulistate run with config: %s", str(run_config))
+    logger.info("Multistate run with config: %s", str(run_config))
 
     rows_for_state_recorder = ()  # (0, 1, 2)
     num_timesteps = run_config.years_to_simulate * 12 * run_config.steps_per_month
 
     model = create_model(get_model_by_name(run_config.model_name), run_config.state_model_name, run_config.assumptions_path)
 
-    portfolio_loader = PortfolioLoader(run_config)
-    portfolio = portfolio_loader.load(model.states_model)
+    if df_portfolio_overwrite is None:
+        portfolio_loader = PortfolioLoader(run_config)
+        portfolio = portfolio_loader.load(model.states_model)
+    else:
+        portfolio = Portfolio(None, model.states_model, df_portfolio_overwrite)
 
     # split into subportfolios
     subportfolios = portfolio.split_by_product_and_month_in_year(chunk_size=run_config.portfolio_chunk_size)
@@ -107,12 +119,13 @@ def project_cashflows(run_config):
                 res_combined[key] = res_combined[key] + res_set[key]
 
     # export result
-    export_results(res_combined, run_config.outfile, run_config)
+    if export_to_file:
+        export_results(res_combined, run_config.outfile)
 
     elapsed = time.time() - t
     logger.info("Elapsed time %s seconds.", round(elapsed, 1))
 
-    # return projector if not free_mem else None
+    return res_combined
 
 
 def _project_subportfolio(run_config, model, num_timesteps, portfolio, rows_for_state_recorder,
@@ -121,25 +134,9 @@ def _project_subportfolio(run_config, model, num_timesteps, portfolio, rows_for_
 
     assert portfolio.homogenous_wrt_product, "Subportfolio should have identical portfolios in all rows"
     product_name = portfolio.products.iloc[0]
-    # print("PRODUCT_NAME", product_name)
-
-    # PRODUCT selection
-    # just a quick fix, the product should be a field in the portfolio
-    # from pyprotolinc.product import Product_AnnuityInPayment, Product_TwoStateDisability
-
     product_class = product_class_lookup(product_name)
     assert model.states_model == product_class.STATES_MODEL, "State-Models must be consistent for the product and the run"
-
-    # instantiate the product
     product = product_class(portfolio)
-
-    # if model.states_model == Product_AnnuityInPayment.STATES_MODEL:
-    #     product = Product_AnnuityInPayment(portfolio)
-    #     logger.info("Selected product %s", type(product))
-    # elif model.states_model == Product_TwoStateDisability.STATES_MODEL:
-    #     product = Product_TwoStateDisability(portfolio)
-    # else:
-    #     raise Exception("Product selection failed.")
 
     projector = Projector(run_config,
                           portfolio,
@@ -150,7 +147,6 @@ def _project_subportfolio(run_config, model, num_timesteps, portfolio, rows_for_
                           chunk_index=chunk_index,
                           num_chunks=num_chunks)
 
-    # return projector
     projector.run()
     return projector.get_results_dict()
 

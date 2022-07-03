@@ -84,7 +84,7 @@ class ProjectionState(ModelState):
     def get_assumption_cofactors(self):
         """ Return the current values of the risk factors on which
             the assumptions depend. """
-        return (self.current_ages, self._portfolio.gender)
+        return (self.current_ages, self._portfolio.gender, self._portfolio.smokerstatus)
 
     def update_state_matrix(self, transition_ass_timestep):
 

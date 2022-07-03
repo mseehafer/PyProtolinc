@@ -39,7 +39,7 @@ def calc_terminal_months(df_portfolio):
     return year_last_month, last_month
 
 
-def calc_term_indicator(time_axis, year_last_month, last_month):
+def calc_term_end_indicator(time_axis, year_last_month, last_month):
     """ Calculate a binary matrix with
         - rows corresponing to insureds
         - columns corresponding to time
@@ -48,9 +48,24 @@ def calc_term_indicator(time_axis, year_last_month, last_month):
         which are indexed by insured and together represent the last month/year
         at which the policy ist still in-force. """
     ta_abs = time_axis.years * 12 + time_axis.months - 1
+    ta_abs = ta_abs.reshape((ta_abs.shape[0], 1))
     end_mont_abs = (year_last_month * 12 + last_month - 1).reshape((1, len(year_last_month)))
-    multiplier_term = (ta_abs.reshape((ta_abs.shape[0], 1)) <= end_mont_abs).astype(np.int32)
-    return multiplier_term.transpose()
+    return (ta_abs <= end_mont_abs).astype(np.int16).transpose()
+
+
+def calc_term_start_indicator(time_axis, inception_yr, inception_month):
+    """ Calculate a binary matrix with
+        - rows corresponing to insureds
+        - columns corresponding to time
+        such that the entry is "1" for all times after the policy term begins.
+        The input is given by a time-axis object and two numpy arrays
+        which are indexed by insured and together represent the last month/year
+        at which the policy ist still in-force. """
+    ta_abs = time_axis.years * 12 + time_axis.months - 1
+    ta_abs = ta_abs.reshape((ta_abs.shape[0], 1))
+    
+    start_month_abs = (inception_yr * 12 + inception_month - 1).reshape((1, len(inception_yr)))
+    return (ta_abs >= start_month_abs).astype(np.int16).transpose()
 
 
 def calc_maturity_transition_indicator(time_axis, year_last_month, last_month):
@@ -63,28 +78,6 @@ def calc_maturity_transition_indicator(time_axis, year_last_month, last_month):
     end_mont_abs = (year_last_month * 12 + last_month - 1).reshape((1, len(year_last_month)))
     multiplier_term = (ta_abs.reshape((ta_abs.shape[0], 1)) == end_mont_abs).astype(np.int32)
     return multiplier_term.transpose()
-
-# class Product:
-#     # the multiplier entries correspond with the states
-#     PAYMENT_MULITIPLIERS = np.array([0.1, -1, -2, 0, 0])  # 0.1=10% is the premium rate
-
-#     def __init__(self):
-
-#         self.sum_ins_premium_mulitiplier = self.PAYMENT_MULITIPLIERS[0]
-#         self.sum_ins_dis1_pay_mulitiplier = self.PAYMENT_MULITIPLIERS[1]
-#         self.sum_ins_dis2_pay_mulitiplier = self.PAYMENT_MULITIPLIERS[2]
-
-#     def get_bom_payments(self, payment_matrix, sum_insured, prob_state_active, prob_state_dis1, prob_state_dis2,
-#                          age=None, gender=None):
-#         """ Calculate the payments due based on the state as at the begin of the month. THe results are written to the
-#             payment_matrix passed in."""
-
-#         # premiums
-#         payment_matrix[:, 0] = 0 if prob_state_active is None else self.sum_ins_premium_mulitiplier * prob_state_active[1, :] * sum_insured / 12.0
-#         # dis1 payments
-#         payment_matrix[:, 1] = 0 if prob_state_dis1 is None else self.sum_ins_dis1_pay_mulitiplier * prob_state_dis1[1, :] * sum_insured / 12.0
-#         # dis2 payments
-#         payment_matrix[:, 2] = 0 if prob_state_dis2 is None else self.sum_ins_dis2_pay_mulitiplier * prob_state_dis2[1, :] * sum_insured / 12.0
 
 
 class Product_AnnuityInPayment:
@@ -181,14 +174,17 @@ class Product_MortalityTerm:
         """ Return the 'conditional payments', i.e. those payments that are due if an
             insured is in the corresponding state at the given time. """
 
-        multiplier_term = calc_term_indicator(time_axis,
-                                              self.year_last_month,
-                                              self.last_month)
-
+        multiplier_term_end = calc_term_end_indicator(time_axis,
+                                                      self.year_last_month,
+                                                      self.last_month)
+        multiplier_term_start = calc_term_start_indicator(time_axis,
+                                                          self.portfolio.policy_inception_yr,
+                                                          self.portfolio.policy_inception_month)
+        multiplier_term = multiplier_term_end * multiplier_term_start
         return {
             self.STATES_MODEL.ACTIVE: [
                 (CfNames.PREMIUM,
-                 0.005 * multiplier_term * self.sum_insured_per_month * 12
+                 0.0005 * multiplier_term * self.sum_insured_per_month * 12
                  )
             ]
         }
@@ -196,9 +192,14 @@ class Product_MortalityTerm:
     def get_state_transition_payments(self, time_axis):
         # a flat mortality benefit in this product
 
-        multiplier_term = calc_term_indicator(time_axis,
-                                              self.year_last_month,
-                                              self.last_month)
+        multiplier_term_end = calc_term_end_indicator(time_axis,
+                                                      self.year_last_month,
+                                                      self.last_month)
+        multiplier_term_start = calc_term_start_indicator(time_axis,
+                                                          self.portfolio.policy_inception_yr,
+                                                          self.portfolio.policy_inception_month)
+        multiplier_term = multiplier_term_end * multiplier_term_start
+
         return {
             (self.STATES_MODEL.ACTIVE, self.STATES_MODEL.DEATH): [
                 (CfNames.DEATH_PAYMENT,

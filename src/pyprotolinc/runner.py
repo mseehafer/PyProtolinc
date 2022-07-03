@@ -46,6 +46,7 @@ class Projector:
         assert self.model.states_model == product.STATES_MODEL
 
         self.sum_insured = portfolio.sum_insured
+        self.reserving_rate = portfolio.reserving_rate
 
         self.total_num_months = 12 * self.run_config.years_to_simulate
         self.month_count = 0
@@ -129,7 +130,7 @@ class Projector:
     def update_state(self, transition_ass_timestep):
         self.proj_state.update_state_matrix(transition_ass_timestep)
 
-    def select_applicable_base_assumptions(self, ages, genders, calendaryear):
+    def select_applicable_base_assumptions(self, ages, genders, calendaryear, smokerstatus):
         """ Construct a three dimensional tensor that contains the base assumptions.
             Indexes:
               * row in the portfolio
@@ -143,7 +144,8 @@ class Projector:
             sel_ass = provider.get_rates(length=len(ages),
                                          age=ages,
                                          gender=genders,
-                                         calendaryear=calendaryear)
+                                         calendaryear=calendaryear,
+                                         smokerstatus=smokerstatus)
             self.applicable_yearly_assumptions_be[:, from_state, to_state] = sel_ass
 
         # get RES assumptions
@@ -152,7 +154,8 @@ class Projector:
             sel_ass = provider.get_rates(length=len(ages),
                                          age=ages,
                                          gender=genders,
-                                         calendaryear=calendaryear)
+                                         calendaryear=calendaryear,
+                                         smokerstatus=smokerstatus)
             self.applicable_yearly_assumptions_res[:, from_state, to_state] = sel_ass
 
     def calc_payments_bom(self):
@@ -169,8 +172,6 @@ class Projector:
 
         if self.rows_for_payments_recorder:
             self.payments_recorder[self.month_count, :, :] = self.monthly_payment_matrix[self.payments_recorder_indexes, :]
-
-        # self.ncf_portfolio[self.month_count, :] = self.monthly_payment_matrix.sum(axis=0)
 
     def calc_payments_eom(self):
         """ Calculate the payments based on the state information which should be
@@ -201,8 +202,8 @@ class Projector:
     def calculate_reserves(self):
         """ Reserve loop: Calculated the reserves using reserving assumptions weighted by BE assumptions. """
 
-        # obtain the discount factor
-        reserving_interest = 0.0  # 0.04   # Placeholder for now!
+        # obtain the discount factor and force into column shape
+        reserving_interest = self.reserving_rate.reshape((self.proj_state.num_records, 1))  # 0.0  # 0.04   # Placeholder for now!
         monthly_discount_factor = (1.0 + reserving_interest)**(-1.0 / 12.0)
 
         reserves_bom_by_insured = np.zeros((len(self.time_axis),
@@ -340,7 +341,7 @@ class Projector:
                 # update the yearly assumptions
 
                 # get risk factors
-                ages_months, genders = self.proj_state.get_assumption_cofactors()
+                ages_months, genders, smokerstatus = self.proj_state.get_assumption_cofactors()
                 ages = np.minimum(ages_months // 12, MAX_AGE)  # age selection depends on completed years
                 calendaryear = np.ones(len(ages), dtype=np.int32) * self.time_axis.years[self.month_count]
 
@@ -348,7 +349,7 @@ class Projector:
                 assumption_update_required = not (np.array_equal(ages, _ages_last_month) and np.array_equal(calendaryear, _calendaryear_last_month))
 
                 if assumption_update_required:
-                    self.select_applicable_base_assumptions(ages, genders, calendaryear)
+                    self.select_applicable_base_assumptions(ages, genders, calendaryear, smokerstatus)
 
                     # TODO: apply assumption modifiers on policy level as found in the portfolio data
 
