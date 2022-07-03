@@ -2,10 +2,10 @@
 import logging
 import numpy as np
 
-from protolinc.models.model_annuity_runoff import AnnuityRunoffStates
-from protolinc.models.model_disability_multistate import MultiStateDisabilityStates
-from protolinc.models.model_mortality import MortalityStates
-from protolinc.results import CfNames
+from pyprotolinc.models.model_annuity_runoff import AnnuityRunoffStates
+from pyprotolinc.models.model_disability_multistate import MultiStateDisabilityStates
+from pyprotolinc.models.model_mortality import MortalityStates
+from pyprotolinc.results import CfNames
 
 
 logger = logging.getLogger(__name__)

@@ -5,10 +5,10 @@ import yaml
 import numpy as np
 import pandas as pd
 
-from protolinc.models.risk_factors import get_risk_factor_by_name
-from protolinc.assumptions.tables import ScalarAssumptionsTable, AssumptionsTable1D, AssumptionsTable2D
-from protolinc.assumptions.dav2004r import DAV2004R
-from protolinc.assumptions.dav2008t import DAV2008T
+from pyprotolinc.models.risk_factors import get_risk_factor_by_name
+from pyprotolinc.assumptions.tables import ScalarAssumptionsTable, AssumptionsTable1D, AssumptionsTable2D
+from pyprotolinc.assumptions.dav2004r import DAV2004R
+from pyprotolinc.assumptions.dav2008t import DAV2008T
 
 
 logger = logging.getLogger(__name__)

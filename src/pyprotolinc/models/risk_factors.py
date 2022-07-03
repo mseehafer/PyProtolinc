@@ -1,6 +1,6 @@
 from enum import IntEnum, unique
-from protolinc.models import check_states
-from protolinc import MAX_AGE
+from pyprotolinc.models import check_states
+from pyprotolinc import MAX_AGE
 
 
 @unique

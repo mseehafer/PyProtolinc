@@ -6,7 +6,7 @@ Profiling
 
 Basic profiling output can be obatined by running
 
-  protolinc profile
+  pyprotolinc profile
 
 from a working directory (or by handing over a configuration file as a command line argument
 in the same way as for the *run* subcommand).

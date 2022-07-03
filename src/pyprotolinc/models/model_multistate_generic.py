@@ -1,11 +1,11 @@
 
 from enum import IntEnum
 import numpy as np
-from protolinc.models import Model, ModelState
-from protolinc.results import ProbabilityVolumeResults
+from pyprotolinc.models import Model, ModelState
+from pyprotolinc.results import ProbabilityVolumeResults
 
-# from protolinc.models.model_disability_multistate import MultiStateDisabilityStates
-from protolinc.models import _STATE_MODELS
+# from pyprotolinc.models.model_disability_multistate import MultiStateDisabilityStates
+from pyprotolinc.models import _STATE_MODELS
 
 
 class GenericMultiStateModel(Model):

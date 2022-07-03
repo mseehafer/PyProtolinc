@@ -1,9 +1,9 @@
 import logging
 import numpy as np
-from protolinc.assumptions.providers import AssumptionTimestepAdjustment
-from protolinc import MAX_AGE
-from protolinc.results import ProbabilityVolumeResults, CfNames
-from protolinc.assumptions.providers import AssumptionType
+from pyprotolinc.assumptions.providers import AssumptionTimestepAdjustment
+from pyprotolinc import MAX_AGE
+from pyprotolinc.results import ProbabilityVolumeResults, CfNames
+from pyprotolinc.assumptions.providers import AssumptionType
 
 logger = logging.getLogger(__name__)
 

@@ -3,9 +3,9 @@ import os
 import numpy as np
 import pandas as pd
 
-import protolinc
-import protolinc.models.risk_factors as risk_factors
-from protolinc.assumptions.providers import StandardRatesProvider
+import pyprotolinc
+import pyprotolinc.models.risk_factors as risk_factors
+from pyprotolinc.assumptions.providers import StandardRatesProvider
 
 
 class DAV2004R:
@@ -21,7 +21,7 @@ class DAV2004R:
     def __init__(self, base_directory=None, trend_t1=10, trend_t2=25):
 
         if base_directory is None:
-            base_directory = os.path.join(protolinc._DEFAULT_TABLES_PATH, "Germany_Annuities_DAV2004R")
+            base_directory = os.path.join(pyprotolinc._DEFAULT_TABLES_PATH, "Germany_Annuities_DAV2004R")
 
         self.base_rates_path = os.path.abspath(os.path.join(base_directory, "Germany_Annuities_DAV2004R.csv"))
         self.select_rates_path = os.path.abspath(os.path.join(base_directory, "Germany_Annuities_DAV2004R_Select.csv"))

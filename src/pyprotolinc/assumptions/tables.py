@@ -1,8 +1,8 @@
 import numpy as np
 
-from protolinc.assumptions.providers import ZeroRateProvider
-from protolinc.assumptions.providers import ConstantRateProvider
-from protolinc.assumptions.providers import StandardRatesProvider
+from pyprotolinc.assumptions.providers import ZeroRateProvider
+from pyprotolinc.assumptions.providers import ConstantRateProvider
+from pyprotolinc.assumptions.providers import StandardRatesProvider
 
 
 class ScalarAssumptionsTable:

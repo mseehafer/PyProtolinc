@@ -1,12 +1,12 @@
-.. Protolinc documentation master file, created by
+.. PyProtolinc documentation master file, created by
    sphinx-quickstart on Thu Jun 30 20:54:43 2022.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Protolinc's Documentation
+PyProtolinc's Documentation
 =====================================
 
-*Protolinc* is an extensible actuarial projection tool for life insurance cash flows.
+*PyProtolinc* is an extensible actuarial projection tool for life insurance cash flows.
 
 
 .. toctree::

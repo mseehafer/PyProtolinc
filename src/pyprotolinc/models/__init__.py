@@ -1,7 +1,7 @@
 
 import logging
 
-from protolinc.assumptions.providers import AssumptionType
+from pyprotolinc.assumptions.providers import AssumptionType
 
 
 logger = logging.getLogger(__name__)

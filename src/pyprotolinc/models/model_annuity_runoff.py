@@ -2,8 +2,8 @@
 from enum import IntEnum, unique
 import numpy as np
 
-from protolinc.models import Model, ModelState
-from protolinc.results import ProbabilityVolumeResults
+from pyprotolinc.models import Model, ModelState
+from pyprotolinc.results import ProbabilityVolumeResults
 
 
 @unique

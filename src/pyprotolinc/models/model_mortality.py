@@ -1,7 +1,7 @@
 
 from enum import IntEnum, unique
 
-from protolinc.results import ProbabilityVolumeResults
+from pyprotolinc.results import ProbabilityVolumeResults
 
 
 @unique

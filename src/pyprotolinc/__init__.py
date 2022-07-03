@@ -2,11 +2,11 @@
 import os
 import yaml
 
-import protolinc.assumptions
-import protolinc.models
+import pyprotolinc.assumptions
+import pyprotolinc.models
 
 
-# _DEFAULT_TABLES_PATH = os.path.abspath(os.path.join(protolinc.assumptions.__path__[0],
+# _DEFAULT_TABLES_PATH = os.path.abspath(os.path.join(pyprotolinc.assumptions.__path__[0],
 #                                                     "tables"))
 
 

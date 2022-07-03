@@ -7,8 +7,8 @@ import pickle
 import numpy as np
 import pandas as pd
 
-# from protolinc.models.model_disability_multistate import MultiStateDisabilityStates
-from protolinc.models.risk_factors import Gender
+# from pyprotolinc.models.model_disability_multistate import MultiStateDisabilityStates
+from pyprotolinc.models.risk_factors import Gender
 
 
 logger = logging.getLogger(__name__)

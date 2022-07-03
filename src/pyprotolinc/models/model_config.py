@@ -1,14 +1,14 @@
 
 import logging
 
-from protolinc.models.model_disability_multistate import MultiStateDisabilityModel
-from protolinc.models.model_disability_multistate import MultiStateDisabilityStates
-from protolinc.models import register_state_model
-from protolinc.models.model_annuity_runoff import AnnuityRunoffModel
-from protolinc.models.model_annuity_runoff import AnnuityRunoffStates
-from protolinc.models.model_mortality import MortalityStates
+from pyprotolinc.models.model_disability_multistate import MultiStateDisabilityModel
+from pyprotolinc.models.model_disability_multistate import MultiStateDisabilityStates
+from pyprotolinc.models import register_state_model
+from pyprotolinc.models.model_annuity_runoff import AnnuityRunoffModel
+from pyprotolinc.models.model_annuity_runoff import AnnuityRunoffStates
+from pyprotolinc.models.model_mortality import MortalityStates
 
-from protolinc.models.model_multistate_generic import GenericMultiStateModel
+from pyprotolinc.models.model_multistate_generic import GenericMultiStateModel
 
 
 logger = logging.getLogger(__name__)

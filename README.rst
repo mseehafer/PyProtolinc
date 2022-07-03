@@ -1,5 +1,5 @@
 
-About Protolinc
+About PyProtolinc
 =======================================================================
 
 An Extensible Projection Tool for Life Insurance Cash Flows.
@@ -12,13 +12,13 @@ to project custom products by the user.
 Documentation
 ^^^^^^^^^^^^^^^^
 
-For extended documentation cf. https://protolinc.readthedocs.io/en/latest/index.html.
+For extended documentation cf. https://pyprotolinc.readthedocs.io/en/latest/index.html.
 
 
 Project Objectives
 ----------------------
 
-The key objective for *Protolinc* is to model cash flows for a variety of simple life and health insurance
+The key objective for *PyProtolinc* is to model cash flows for a variety of simple life and health insurance
 products, going forward also beyond stylized textbook examples.
 
 The tool should provide a command line interface which can be used with configuration files as well as an extensible
@@ -38,9 +38,9 @@ Installation
 
 To install from PyPI run::
 
-  pip install protolinc
+  pip install pyprotolinc
 
-Alternatively, or for delevoplement clone (or download) the repository from https://github.com/mseehafer/Protolinc.git and
+Alternatively, or for delevoplement clone (or download) the repository from https://github.com/mseehafer/PyProtolinc.git and
 run::
 
   pip install -e .
@@ -53,13 +53,13 @@ Quickstart
 Usage is illustrated in detail by the prepared use cases in the *examples* folder. To try those out *cd* into the respective
 subfolder and run the tool from the command line::
 
-  protolinc run
+  pyprotolinc run
 
 This will pick up the configuration file (*config.yml*) in the working directory (which points to the portfolio file
 in the subdirectory *portfolio*) and initiate a projection run. Once completed the (aggregate) results of the computation
 are written into a CSV file in the subfolder *results*. To view these copy the Excel file *results_viewer_generic_template.xlsx*
 from the examples folder into the working folder, rename it to *results_viewer_generic.xlsx*
 and import the data from the CSV file. Now one can start playing around by changing the configuration. Note that the examples
-are commented in the documentation, cf. https://protolinc.readthedocs.io/en/latest/examples/intro.html .
+are commented in the documentation, cf. https://pyprotolinc.readthedocs.io/en/latest/examples/intro.html .
 
 

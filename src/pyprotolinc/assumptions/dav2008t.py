@@ -3,10 +3,10 @@ import os
 import numpy as np
 import pandas as pd
 
-import protolinc
-from protolinc.assumptions.providers import StandardRatesProvider
-from protolinc.models.risk_factors import Gender, SmokerStatus, Age
-from protolinc.assumptions.providers import AssumptionType
+import pyprotolinc
+from pyprotolinc.assumptions.providers import StandardRatesProvider
+from pyprotolinc.models.risk_factors import Gender, SmokerStatus, Age
+from pyprotolinc.assumptions.providers import AssumptionType
 
 
 class DAV2008T:
@@ -22,7 +22,7 @@ class DAV2008T:
     def __init__(self, base_directory=None):
 
         if base_directory is None:
-            base_directory = os.path.join(protolinc._DEFAULT_TABLES_PATH, "Germany_Endowments_DAV2008T")
+            base_directory = os.path.join(pyprotolinc._DEFAULT_TABLES_PATH, "Germany_Endowments_DAV2008T")
 
         # path to CSV with definitions
         self.base_rates_path = os.path.abspath(os.path.join(base_directory, "Germany_Endowments_DAV2008T.csv"))

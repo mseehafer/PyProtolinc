@@ -15,17 +15,17 @@ import numpy as np
 import pandas as pd
 import fire
 
-from protolinc import get_config_from_file
-# from protolinc.product import Product
-from protolinc.portfolio import PortfolioLoader
-from protolinc.results import export_results
-from protolinc.runner import Projector
-from protolinc.models import ModelBuilder, _STATE_MODELS
-from protolinc.models.model_config import get_model_by_name
-from protolinc.assumptions.iohelpers import AssumptionsLoaderFromConfig
-from protolinc.models.model_multistate_generic import adjust_state_for_generic_model
-from protolinc.product import product_class_lookup
-from protolinc.utils import download_dav_tables
+from pyprotolinc import get_config_from_file
+# from pyprotolinc.product import Product
+from pyprotolinc.portfolio import PortfolioLoader
+from pyprotolinc.results import export_results
+from pyprotolinc.runner import Projector
+from pyprotolinc.models import ModelBuilder, _STATE_MODELS
+from pyprotolinc.models.model_config import get_model_by_name
+from pyprotolinc.assumptions.iohelpers import AssumptionsLoaderFromConfig
+from pyprotolinc.models.model_multistate_generic import adjust_state_for_generic_model
+from pyprotolinc.product import product_class_lookup
+from pyprotolinc.utils import download_dav_tables
 
 
 # logging configuration
@@ -125,7 +125,7 @@ def _project_subportfolio(run_config, model, num_timesteps, portfolio, rows_for_
 
     # PRODUCT selection
     # just a quick fix, the product should be a field in the portfolio
-    # from protolinc.product import Product_AnnuityInPayment, Product_TwoStateDisability
+    # from pyprotolinc.product import Product_AnnuityInPayment, Product_TwoStateDisability
 
     product_class = product_class_lookup(product_name)
     assert model.states_model == product_class.STATES_MODEL, "State-Models must be consistent for the product and the run"
@@ -187,11 +187,11 @@ def profile(config_file='config.yml', multi_processing_overwrite=None):
     df = pd.read_csv(io.StringIO(result))
 
     # filter for package  methods with positive runtime
-    df_filtered = df[(df["filename:lineno(function)"].str.contains("protolinc")) &
+    df_filtered = df[(df["filename:lineno(function)"].str.contains("pyprotolinc")) &
                      (df.cumtime > 0)].copy()
 
     # shorten the location by the common prefix
-    start_pos = df_filtered["filename:lineno(function)"].str.find("protolinc").unique()[0]
+    start_pos = df_filtered["filename:lineno(function)"].str.find("pyprotolinc").unique()[0]
     df_filtered["filename:lineno(function)"] = df_filtered["filename:lineno(function)"].str.slice(start_pos)
 
     ct = datetime.now().strftime('%d-%m-%Y_%H_%M_%S')

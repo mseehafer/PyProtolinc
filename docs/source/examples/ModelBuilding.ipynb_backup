@@ -15,9 +15,9 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "from protolinc.models.model_config import ModelBuilder\n",
-    "from protolinc.assumptions.iohelpers import WorkbookTableReader\n",
-    "from protolinc.models import MultiStateDisabilityStates, AnnuityRunoffStates"
+    "from pyprotolinc.models.model_config import ModelBuilder\n",
+    "from pyprotolinc.assumptions.iohelpers import WorkbookTableReader\n",
+    "from pyprotolinc.models import MultiStateDisabilityStates, AnnuityRunoffStates"
    ]
   },
   {
@@ -43,7 +43,7 @@
     }
    ],
    "source": [
-    "path = r\"D:\\programming\\py\\PyMultiState\\protolinc\\data\\assumptions\\base_assumption.xlsx\"\n",
+    "path = r\"D:\\programming\\py\\PyMultiState\\pyprotolinc\\data\\assumptions\\base_assumption.xlsx\"\n",
     "\n",
     "with WorkbookTableReader(path) as file:\n",
     "    print(file.sheet_names)"
@@ -80,16 +80,16 @@
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "<protolinc.assumptions.tables.AssumptionsTable2D object at 0x000001C8E3B899A0>\n",
-      "<protolinc.assumptions.tables.AssumptionsTable1D object at 0x000001C8E34D8490>\n",
-      "<protolinc.assumptions.tables.AssumptionsTable1D object at 0x000001C8E3B8CBB0>\n",
-      "<protolinc.assumptions.tables.AssumptionsTable1D object at 0x000001C8E3CC4E80>\n",
-      "<protolinc.assumptions.tables.AssumptionsTable1D object at 0x000001C8E3CC4790>\n",
-      "<protolinc.assumptions.tables.ScalarAssumptionsTable object at 0x000001C8E3CC4A30>\n",
-      "<protolinc.assumptions.tables.AssumptionsTable1D object at 0x000001C8E3545F10>\n",
-      "<protolinc.assumptions.tables.ScalarAssumptionsTable object at 0x000001C8E34D8940>\n",
-      "<protolinc.assumptions.tables.ScalarAssumptionsTable object at 0x000001C8E3CC49A0>\n",
-      "<protolinc.assumptions.tables.ScalarAssumptionsTable object at 0x000001C8E3CC4280>\n"
+      "<pyprotolinc.assumptions.tables.AssumptionsTable2D object at 0x000001C8E3B899A0>\n",
+      "<pyprotolinc.assumptions.tables.AssumptionsTable1D object at 0x000001C8E34D8490>\n",
+      "<pyprotolinc.assumptions.tables.AssumptionsTable1D object at 0x000001C8E3B8CBB0>\n",
+      "<pyprotolinc.assumptions.tables.AssumptionsTable1D object at 0x000001C8E3CC4E80>\n",
+      "<pyprotolinc.assumptions.tables.AssumptionsTable1D object at 0x000001C8E3CC4790>\n",
+      "<pyprotolinc.assumptions.tables.ScalarAssumptionsTable object at 0x000001C8E3CC4A30>\n",
+      "<pyprotolinc.assumptions.tables.AssumptionsTable1D object at 0x000001C8E3545F10>\n",
+      "<pyprotolinc.assumptions.tables.ScalarAssumptionsTable object at 0x000001C8E34D8940>\n",
+      "<pyprotolinc.assumptions.tables.ScalarAssumptionsTable object at 0x000001C8E3CC49A0>\n",
+      "<pyprotolinc.assumptions.tables.ScalarAssumptionsTable object at 0x000001C8E3CC4280>\n"
      ]
     }
    ],
@@ -187,7 +187,7 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "from protolinc.assumptions.dav2004r import DAV2004R"
+    "from pyprotolinc.assumptions.dav2004r import DAV2004R"
    ]
   },
   {
