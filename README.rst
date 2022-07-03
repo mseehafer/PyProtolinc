@@ -2,9 +2,9 @@
 About PyProtolinc
 =======================================================================
 
-An Extensible Projection Tool for Life Insurance Cash Flows.
+An Actuarial Projection Tool for Life Insurance Cash Flows.
 -------------------------------------------------------------
-This package allows to project future cash flows for portfolios of life insurance 
+This package allows to project future cash flows for portfolios of life & health insurance 
 policies. It comes with a number of built-in standard products but can also be used
 to project custom products by the user. 
 
@@ -16,7 +16,7 @@ For extended documentation cf. https://pyprotolinc.readthedocs.io/en/latest/inde
 
 
 Project Objectives
-----------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The key objective for *PyProtolinc* is to model cash flows for a variety of simple life and health insurance
 products, going forward also beyond stylized textbook examples.
@@ -57,9 +57,7 @@ subfolder and run the tool from the command line::
 
 This will pick up the configuration file (*config.yml*) in the working directory (which points to the portfolio file
 in the subdirectory *portfolio*) and initiate a projection run. Once completed the (aggregate) results of the computation
-are written into a CSV file in the subfolder *results*. To view these copy the Excel file *results_viewer_generic_template.xlsx*
-from the examples folder into the working folder, rename it to *results_viewer_generic.xlsx*
-and import the data from the CSV file. Now one can start playing around by changing the configuration. Note that the examples
-are commented in the documentation, cf. https://pyprotolinc.readthedocs.io/en/latest/examples/intro.html .
+are written into a CSV file in the subfolder *results*. Now one can start playing around by changing the configuration.
+Note that the examples are commented in the documentation, cf. https://pyprotolinc.readthedocs.io/en/latest/examples/intro.html .
 
 
