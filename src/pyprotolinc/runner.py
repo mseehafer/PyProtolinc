@@ -132,7 +132,7 @@ class Projector:
     def update_state(self, transition_ass_timestep):
         self.proj_state.update_state_matrix(transition_ass_timestep)
 
-    def select_applicable_base_assumptions(self, ages, genders, calendaryear, smokerstatus):
+    def select_applicable_base_assumptions(self, ages, genders, calendaryear, smokerstatus, yearsdisabledifdisabledatstart):
         """ Construct a three dimensional tensor that contains the base assumptions.
             Indexes:
               * row in the portfolio
@@ -147,7 +147,8 @@ class Projector:
                                          age=ages,
                                          gender=genders,
                                          calendaryear=calendaryear,
-                                         smokerstatus=smokerstatus)
+                                         smokerstatus=smokerstatus,
+                                         yearsdisabledifdisabledatstart=yearsdisabledifdisabledatstart)
             self.applicable_yearly_assumptions_be[:, from_state, to_state] = sel_ass
 
         # get RES assumptions
@@ -328,6 +329,7 @@ class Projector:
         _terminate = False
         _ages_last_month = -np.ones(self.proj_state.num_records)  # iniate with negative values
         _calendaryear_last_month = -np.ones(self.proj_state.num_records)
+        _years_disabled_if_at_start_last_month = np.ones(self.proj_state.num_records) * np.NaN
 
         # initialize the assumption providers
         self.initialize_assumption_providers()
@@ -350,6 +352,7 @@ class Projector:
                 self.month_count += 1
 
                 # logger.debug("Calculating timestep {}/{}".format(yr, month))
+                # print("Timestep {}/{}".format(yr, month))
 
                 # save the accumulated state probabilities at BOM according to the BE assumptions
                 self.probability_states_with_time[self.month_count, :] = self.proj_state.probability_states[:, 1, :]
@@ -360,15 +363,18 @@ class Projector:
                 # update the yearly assumptions
 
                 # get risk factors
-                ages_months, genders, smokerstatus = self.proj_state.get_assumption_cofactors()
+                ages_months, genders, smokerstatus, months_disabled_if_at_start = self.proj_state.get_assumption_cofactors()
                 ages = np.minimum(ages_months // 12, MAX_AGE)  # age selection depends on completed years
+                years_disabled_if_at_start = months_disabled_if_at_start // 12
+
                 calendaryear = np.ones(len(ages), dtype=np.int32) * self.time_axis.years[self.month_count]
 
                 # check if the risk factors have changed and refresh the assumptions in this case
-                assumption_update_required = not (np.array_equal(ages, _ages_last_month) and np.array_equal(calendaryear, _calendaryear_last_month))
+                assumption_update_required = not (np.array_equal(ages, _ages_last_month) and np.array_equal(calendaryear, _calendaryear_last_month)
+                                                  and np.array_equal(years_disabled_if_at_start, _years_disabled_if_at_start_last_month))
 
                 if assumption_update_required:
-                    self.select_applicable_base_assumptions(ages, genders, calendaryear, smokerstatus)
+                    self.select_applicable_base_assumptions(ages, genders, calendaryear, smokerstatus, years_disabled_if_at_start)
 
                     # TODO: apply assumption modifiers on policy level as found in the portfolio data
 
@@ -387,6 +393,7 @@ class Projector:
                 # could maybe be moved to "if"-branch above
                 _ages_last_month[:] = ages
                 _calendaryear_last_month[:] = calendaryear
+                _years_disabled_if_at_start_last_month[:] = years_disabled_if_at_start
 
                 # perform the state update for the month
                 for step in range(1, 1 + self.run_config.steps_per_month):

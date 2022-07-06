@@ -79,6 +79,15 @@ class Portfolio:
             "Unknow smoker status: " + str(_unknown_smoker_status) + ", use one of " + str({s.name for s in SmokerStatus})
         self.smokerstatus = self.smokerstatus.map(SmokerStatus.index_mapper())
 
+        # the number of month since the disablement date, is NaN if no disablement date is given
+        self.months_disabled_at_start = completed_months_to_date(df_portfolio["DATE_OF_DISABLEMENT"], self.portfolio_date)
+
+        # check that when in disabled state at start then the disablement date must be at or before the portfolio_date
+        disabled_according_to_date = df_portfolio.CURRENT_STATUS.str[:3] == "DIS"
+        sel1 = df_portfolio.DATE_OF_DISABLEMENT[disabled_according_to_date] > df_portfolio["DATE_PORTFOLIO"][disabled_according_to_date]
+        assert len(df_portfolio[disabled_according_to_date][sel1]) == 0,\
+            "WHEN in state DISABLED the DATE_OF_DISABLEMENT must be less or equal to the DATE_PORTFOLIO"
+
         # check if the ages are homogenous w.r.t. a months
         month_groups = np.unique(self.initial_ages % 12)
         self.common_month = month_groups[0] if len(month_groups) == 1 else None
