@@ -24,13 +24,3 @@ run_type_specs:
     outfile: "results/ncf_out_generic.csv"
     portfolio_path: "portfolio/portfolio_annuity_small.xlsx"
     portfolio_chunk_size: 1024
-
-  # MultiStateDisability:
-  #   assumptions_spec: "run/di_assumptions.yaml"
-  #   outfile: "run/_results/ncf_out_di.csv"
-  #   portfolio_path: "pyprotolinc/data/portfolio/portfolio_med.xlsx"
-  
-  # AnnuityRunoff:
-  #   assumptions_spec: "run/longevity_assumptions.yaml"
-  #   outfile: "run/_results/ncf_out_longevity.csv"
-  #   portfolio_path: "pyprotolinc/data/portfolio/portfolio_annuity_small.xlsx"

@@ -7,7 +7,7 @@ import pandas as pd
 
 from pyprotolinc.models.risk_factors import get_risk_factor_by_name
 from pyprotolinc.assumptions.tables import ScalarAssumptionsTable, AssumptionsTable1D, AssumptionsTable2D
-from pyprotolinc.assumptions.dav2004r import DAV2004R
+from pyprotolinc.assumptions.dav2004r import DAV2004R, DAV2004R_B20
 from pyprotolinc.assumptions.dav2008t import DAV2008T
 
 
@@ -169,6 +169,25 @@ class AssumptionsLoaderFromConfig:
 
                 model_builder.add_transition(be_or_res, spec[0], spec[1], dav2004R.rates_provider(**kwargs))
 
+
+            elif spec[2][0] == "DAV2004R_B20":
+
+                # read the remaining arguments
+                kwargs = {}
+                for arg in spec[2][1:]:
+                    arg_split = arg.split(":")
+                    kwargs[arg_split[0]] = arg_split[1]
+
+                if "base_directory" not in kwargs:
+                    raise Exception("DAV2004R requires a `base_directory` in the assumptions configuration")
+                
+                b20 = DAV2004R_B20(kwargs["base_directory"])
+                del kwargs["base_directory"]
+
+                model_builder.add_transition(be_or_res, spec[0], spec[1], b20.rates_provider(**kwargs))
+
+
+
             elif spec[2][0] == "DAV2008T":
 
                 # read the remaining arguments
@@ -198,68 +217,3 @@ class AssumptionsLoaderFromConfig:
                 for assspec in sheet_info:
                     table = file.read_sheet(assspec[2])
                     model_builder.add_transition(be_or_res, assspec[0], assspec[1], table.rates_provider())
-
-
-# def analyze_sheetnames(sheet_names):
-#     """ Identify which data to read from which sheet. """
-
-#     sheet_data = []
-#     for sheetname in sheet_names:
-#         sheetname = sheetname.strip().upper()
-#         # check that there are brackes
-#         pos1 = sheetname.find("(")
-#         pos2 = sheetname.find(")")
-#         if pos1 <= 0 or pos2 <= 0:
-#             logger.info("Skipping sheet {}: (no brackets found)".format(sheetname))
-#             continue
-
-#         transition_name = sheetname[:pos1].strip()
-#         transition = sheetname[pos1+1:pos2]
-#         pos_arrow = transition.find("->")
-#         if pos_arrow <= 0:
-#             logger.info("Skipping sheet {}: (no arrow found)".format(sheetname))
-#             continue
-
-#         from_state = int(transition[:pos_arrow].strip())
-#         to_state = int(transition[pos_arrow+2:].strip())
-
-#         logger.debug("Sheet {} describes the transition {} => {}".format(sheetname, from_state, to_state))
-#         sheet_data.append((sheetname, transition_name, from_state, to_state))
-
-#     return sheet_data
-
-# def read_assumptions(assumptions_path):
-#     logger.info("Reading assumptions from file %s", assumptions_path)
-#     base_assumptions = []
-#     with pd.ExcelFile(assumptions_path) as inp:
-#         sheet_data = analyze_sheetnames(inp.sheet_names)
-
-#         for sd in sheet_data:
-#             try:
-#                 base_assumpt = _read_sheet(inp, sd)
-#                 base_assumptions.append(base_assumpt)
-#             except Exception as e:
-#                 logger.info("Skipping sheet {}, {}".format(sd[0], str(e)))
-
-#     # order the transition assumptions
-#     base_assumptions_map_tmp = {(ba.from_state_num, ba.to_state_num): ba for ba in base_assumptions}
-#     print("base_assumptions_map_tmp", base_assumptions_map_tmp)
-
-#     # enumerate all state transitions
-#     _, max_val = check_states(MultiStateDisabilityStates)
-#     transition_assumptions = []
-#     for i in range(max_val + 1):
-#         this_list = []
-#         transition_assumptions.append(this_list)
-#         for j in range(max_val + 1):
-#             ts = None
-#             if i != j:
-#                 ts = base_assumptions_map_tmp.get((i, j))
-#                 if ts is None:
-#                     ts = generate_zero_transition(i, j)
-#             else:
-#                 # use None on the diagonal - done through the initialization
-#                 ts = None
-#             this_list.append((ts, i, j))
-
-#     return transition_assumptions

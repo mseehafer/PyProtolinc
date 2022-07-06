@@ -56,6 +56,7 @@ class Portfolio:
 
         # extract age vector at the portfolio date
         self.initial_ages = completed_months_to_date(df_portfolio["DATE_OF_BIRTH"], self.portfolio_date)
+        self.years_of_birth = self.df_portfolio["DATE_OF_BIRTH"].dt.year.values.astype(np.int16)
 
         self.policy_inception_yr = df_portfolio["DATE_START_OF_COVER"].dt.year.values.astype(np.int16)
         self.policy_inception_month = df_portfolio["DATE_START_OF_COVER"].dt.month.values.astype(np.int16)

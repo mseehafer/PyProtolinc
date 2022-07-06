@@ -47,6 +47,8 @@ class Projector:
 
         self.sum_insured = portfolio.sum_insured
         self.reserving_rate = portfolio.reserving_rate
+        self.years_of_birth = portfolio.years_of_birth
+        self.gender = portfolio.gender
 
         self.total_num_months = 12 * self.run_config.years_to_simulate
         self.month_count = 0
@@ -309,11 +311,26 @@ class Projector:
             for st in range(num_states):
                 self.contractual_transition_ts_period[insured_selector, from_state, st] = st == to_state
 
+    def initialize_assumption_providers(self):
+        """ Call into the init hook of the aasumption providers. """
+         # get BE assumptions
+        for (from_state, to_state) in self.non_trivial_state_transitions_be:
+            provider = self.model.rates_provider_matrix_be[from_state][to_state]
+            provider.initialize(years_of_birth=self.years_of_birth, gender=self.gender)
+
+        # get RES assumptions
+        for (from_state, to_state) in self.non_trivial_state_transitions_res:
+            provider = self.model.rates_provider_matrix_res[from_state][to_state]
+            provider.initialize(years_of_birth=self.years_of_birth, gender=self.gender)
+
     def run(self):
         # projection loop over time
         _terminate = False
         _ages_last_month = -np.ones(self.proj_state.num_records)  # iniate with negative values
         _calendaryear_last_month = -np.ones(self.proj_state.num_records)
+
+        # initialize the assumption providers
+        self.initialize_assumption_providers()
 
         # get initial volumes
         self.probability_movements[0, :] = self.proj_state.get_monthly_probability_vol_info()
