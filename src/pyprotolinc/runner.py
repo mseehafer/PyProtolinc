@@ -158,7 +158,8 @@ class Projector:
                                          age=ages,
                                          gender=genders,
                                          calendaryear=calendaryear,
-                                         smokerstatus=smokerstatus)
+                                         smokerstatus=smokerstatus,
+                                         yearsdisabledifdisabledatstart=yearsdisabledifdisabledatstart)
             self.applicable_yearly_assumptions_res[:, from_state, to_state] = sel_ass
 
     def calc_payments_bom(self):
@@ -314,7 +315,7 @@ class Projector:
 
     def initialize_assumption_providers(self):
         """ Call into the init hook of the aasumption providers. """
-         # get BE assumptions
+        # get BE assumptions
         for (from_state, to_state) in self.non_trivial_state_transitions_be:
             provider = self.model.rates_provider_matrix_be[from_state][to_state]
             provider.initialize(years_of_birth=self.years_of_birth, gender=self.gender)
@@ -367,7 +368,7 @@ class Projector:
                 ages = np.minimum(ages_months // 12, MAX_AGE)  # age selection depends on completed years
                 years_disabled_if_at_start = months_disabled_if_at_start // 12
 
-                calendaryear = np.ones(len(ages), dtype=np.int32) * self.time_axis.years[self.month_count]
+                calendaryear = np.ones(len(ages), dtype=np.int16) * self.time_axis.years[self.month_count]
 
                 # check if the risk factors have changed and refresh the assumptions in this case
                 assumption_update_required = not (np.array_equal(ages, _ages_last_month) and np.array_equal(calendaryear, _calendaryear_last_month)
@@ -376,9 +377,10 @@ class Projector:
                 if assumption_update_required:
                     self.select_applicable_base_assumptions(ages, genders, calendaryear, smokerstatus, years_disabled_if_at_start)
 
-                    # TODO: apply assumption modifiers on policy level as found in the portfolio data
+                    # TODO: apply assumption modifiers on policy level as found in the portfolio data if any
 
                     # adjust assumptions for the length of the timestep
+                    # TODO: The adjuster could be injected here or into the model (via a Mixin?)
                     transition_ass_timestep_be = self.timestep_adjuster.adjust_simple(self.applicable_yearly_assumptions_be)
                     transition_ass_timestep_res_ts = self.timestep_adjuster_monthly.adjust_simple(self.applicable_yearly_assumptions_res)
                     # Note: for this optimization to work these variables must not be changed elsewhere
@@ -418,7 +420,9 @@ class Projector:
                     self.update_state(self.contractual_transition_ts_period)
 
                     # for reserves we build an updated transition matrix which we store
-                    self.transition_ass_monthly_res_with_time[self.month_count, :] = np.einsum('rij,rjk->rik', transition_ass_timestep_res_ts, self.contractual_transition_ts_period)
+                    self.transition_ass_monthly_res_with_time[self.month_count, :] = np.einsum('rij,rjk->rik',
+                                                                                               transition_ass_timestep_res_ts,
+                                                                                               self.contractual_transition_ts_period)
                 else:
 
                     # save unadjusted reserving assumptions in any case
@@ -430,7 +434,7 @@ class Projector:
 
                 self.proj_state.advance_month()
 
-                # check early termination
+                # check for early termination
                 if self.number_all_zero_results >= self.TERMINATE_AFTER_X_ZERO_MONTHS:
                     # TODO: termination flag should only be set if no future new business is still expected
                     _terminate = True

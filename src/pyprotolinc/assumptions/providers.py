@@ -22,7 +22,7 @@ class BaseRatesProvider:
 
     def get_rates(self, length):
         raise Exception("Method <get_rate> must be overwritten in subclass")
-    
+
     def initialize(self, **kwargs):
         """ The ìnitialize hook can be used for setup actions. """
         print(self.__class__.__name__, "Init-Hook")
