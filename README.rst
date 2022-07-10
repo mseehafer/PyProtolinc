@@ -35,7 +35,6 @@ Basic Usage
 Installation
 ^^^^^^^^^^^^^^^^
 
-
 To install from PyPI run::
 
   pip install -U pyprotolinc
