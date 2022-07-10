@@ -28,4 +28,4 @@ Building a distribution locally works via::
   python -m build
   twine upload dist/*
 
-if build and twine are also installed.
+if *build* and *twine* are also installed.
