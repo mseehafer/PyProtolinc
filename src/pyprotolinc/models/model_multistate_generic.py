@@ -47,6 +47,9 @@ class ProjectionState(ModelState):
         # ages in months
         self.current_ages = self._portfolio.initial_ages.copy()
 
+        # note that this field is only filled when disabled at start, otherwise it's NaN
+        self.months_disabled_current_if_at_start = self._portfolio.months_disabled_at_start.copy()
+
         # the current time or timestep
         self.step = 0
 
@@ -84,7 +87,7 @@ class ProjectionState(ModelState):
     def get_assumption_cofactors(self):
         """ Return the current values of the risk factors on which
             the assumptions depend. """
-        return (self.current_ages, self._portfolio.gender, self._portfolio.smokerstatus)
+        return (self.current_ages, self._portfolio.gender, self._portfolio.smokerstatus, self.months_disabled_current_if_at_start)
 
     def update_state_matrix(self, transition_ass_timestep):
 
@@ -142,3 +145,4 @@ class ProjectionState(ModelState):
         self.probability_movements[:, :, :] = 0
 
         self.current_ages += 1
+        self.months_disabled_current_if_at_start += 1

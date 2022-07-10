@@ -129,6 +129,33 @@ class SmokerStatus(IntEnum):
         return map_dict
 
 
+@unique
+class YearsDisabledIfDisabledAtStart(IntEnum):
+    """ For certain select assumptions the time since the disablement date plays a role. 
+        To apply this to an active needs more tracking than we can currently provide
+        but for those being disabled since the start of the projection
+        this can work. """
+
+    @classmethod
+    def validate_axis(cls, attribute_axis):
+        raise Exception("Method must be implemented in subclass")
+
+    @classmethod
+    def required_length(self):
+        raise Exception("Method must be implemented in subclass")
+
+    def __repr__(self):
+        return "RiskFactor:{}".format(self.__class__.__name__.upper())
+
+    @classmethod
+    def index_mapper(cls):
+        map_dict = {}
+        for g in cls:
+            map_dict[g.name] = int(g)
+        return map_dict
+
+
+
 # validate the content of this module
 check_states(Gender)
 
