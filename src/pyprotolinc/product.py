@@ -81,7 +81,7 @@ def calc_maturity_transition_indicator(time_axis, year_last_month, last_month):
 
 
 class Product_AnnuityInPayment:
-    """ Simple product that pay out the sum_insured"""
+    """ Simple product that pays out the sum_insured / 12 each month. """
 
     STATES_MODEL = AnnuityRunoffStates
 
@@ -109,6 +109,44 @@ class Product_AnnuityInPayment:
     
     def contractual_state_transitions(self, time_axis):
         return ()
+
+
+class Product_AnnuityInPaymentYearlyAtBirthMonth:
+    """ Simple product that pays out the sum_insured / 12 each month. """
+
+    STATES_MODEL = AnnuityRunoffStates
+
+    def __init__(self, portfolio):
+        self.portfolio = portfolio
+        self.length = len(self.portfolio)
+
+        # monthly sum insured (=annuity per year) as an (n, 1)-array
+        self.sum_insured_per_month = self.portfolio.sum_insured[:, None] / 12.0
+        self.months_of_birth = self.portfolio.months_of_birth
+
+    def get_bom_payments(self, time_axis):
+        """ Return the 'conditional payments', i.e. those payments that are due if an
+            insured is in the corresponding state at the given time. """
+
+        # comparison with broadcasting
+        birth_month_indicator = np.dot(np.ones((len(self.portfolio), 1)), time_axis.months.reshape((1, len(time_axis))))\
+            == self.portfolio.months_of_birth.reshape((len(self.portfolio), 1))
+
+        birth_month_indicator = birth_month_indicator.astype(int)
+
+        return {
+            self.STATES_MODEL.DIS1: [
+                (CfNames.ANNUITY_PAYMENT1, -birth_month_indicator * self.sum_insured_per_month * 12)
+            ]
+        }
+
+    def get_state_transition_payments(self, time_axis):
+        # no lump sum payments in this product
+        return dict()
+    
+    def contractual_state_transitions(self, time_axis):
+        return ()
+
 
 
 class Product_TwoStateDisability:
@@ -253,3 +291,4 @@ def product_class_lookup(product_name: str):
 register_product("AnnuityInPayment", Product_AnnuityInPayment)
 register_product("TwoStateDisability", Product_TwoStateDisability)
 register_product("TERM", Product_MortalityTerm)
+register_product("AnnuityInPaymentYearlyAtBirthMonth", Product_AnnuityInPaymentYearlyAtBirthMonth)

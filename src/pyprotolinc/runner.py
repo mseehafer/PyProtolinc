@@ -249,11 +249,11 @@ class Projector:
             # Explanation of IDEA first: recursive calculation equation along the line of
             # reserves_bom[self.month_count, :] = CF@BOM|state=j + D * ( \sum_{states k}) p^{res, insured=i}_{j->k} (CF@EOM|state=j) + Res_bom(t+1)|state=k)
 
-            # first we determine the amounts needed bases on the transitions
+            # first we determine the amounts needed based on the transitions
             # the structure of transition_amounts is (from_state, to_state, insured), the broadcasting adds the reserve needed in the "to_state" to the payments
             transition_amounts = (cf_eom_per_state_change) + reserves_last_month_conditional   # here we reflect that reserves are not in P/L sign logic
 
-            # the transition amounts ar emultiplied with the transition probabilities
+            # the transition amounts are multiplied with the transition probabilities
             # the probabilities with time fixed have the strcuture(insured(r), from_state(f), to_state(t))
             cond_res_eom = np.einsum('rft,ftr->fr', self.transition_ass_monthly_res_with_time[self.month_count, :], transition_amounts)
 

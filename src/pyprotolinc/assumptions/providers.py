@@ -65,6 +65,8 @@ class StandardRatesProvider(BaseRatesProvider):
         assert self.num_dimensions == len(risk_factors), "Number of risk factors and dimension of values must agree!"
         assert self.num_dimensions >= 0 and self.num_dimensions < 4, "Number of dimensions must be between 0 and 3"
         self.values = np.copy(values)
+        # store the mximum index possible to address "plus 1"
+        self.max_indexes  = [i - 1 for i in self.values.shape]
         self.risk_factors = [rf.__name__.lower() for rf in risk_factors]
 
     def get_rates(self, length=None, **kwargs):
@@ -82,6 +84,7 @@ class StandardRatesProvider(BaseRatesProvider):
 
         # order the selectors
         selectors = []
+        
         for rf_name in self.risk_factors:
             selectors.append(attr[rf_name])
 
@@ -90,23 +93,24 @@ class StandardRatesProvider(BaseRatesProvider):
         elif self.num_dimensions == 1:
             if selectors[0].min() - self.offsets[0] < 0:
                 raise Exception("Negative assumption index")
-            return self.values[selectors[0] - self.offsets[0]]
+            
+            return self.values[np.minimum(selectors[0] - self.offsets[0], self.max_indexes[0]),]
         elif self.num_dimensions == 2:
             if (selectors[0].min() - self.offsets[0] < 0 or
                selectors[1].min() - self.offsets[1] < 0):
                 raise Exception("Negative assumption index")
 
-            return self.values[selectors[0] - self.offsets[0],
-                               selectors[1] - self.offsets[1]]
+            return self.values[np.minimum(selectors[0] - self.offsets[0], self.max_indexes[0]),
+                               np.minimum(selectors[1] - self.offsets[1], self.max_indexes[1])]
         elif self.num_dimensions == 3:
             if (selectors[0].min() - self.offsets[0] < 0 or
                selectors[1].min() - self.offsets[1] < 0 or
                selectors[2].min() - self.offsets[2] < 0):
                 raise Exception("Negative assumption index")
 
-            return self.values[selectors[0] - self.offsets[0],
-                               selectors[1] - self.offsets[1],
-                               selectors[2] - self.offsets[2]]
+            return self.values[np.minimum(selectors[0] - self.offsets[0], self.max_indexes[0]),
+                               np.minimum(selectors[1] - self.offsets[1], self.max_indexes[1]),
+                               np.minimum(selectors[2] - self.offsets[2], self.max_indexes[2])]
 
         print(self.num_dimensions)
         raise Exception("Method must be implemented in subclass.")

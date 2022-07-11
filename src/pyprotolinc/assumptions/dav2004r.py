@@ -208,7 +208,6 @@ class B20RatesProvider(StandardRatesProvider):
     def initialize(self, **kwargs):
         self.years_of_birth = kwargs["years_of_birth"]
         self.gender = kwargs["gender"]
-
         self.applicable_shifts = self.shifts_table[self.years_of_birth - 1900, self.gender].astype(np.int16)
 
         self.is_initialized = True
@@ -261,9 +260,9 @@ class DAV2004R_B20:
         self.df_shifts = pd.read_csv(av_shifts_path)
         self.df_select_factors = pd.read_csv(selects_path, index_col=0, skiprows=1)
 
-    def rates_provider(self, estimate_type="BE"):
+    def rates_provider(self, estimate_type="B20"):
 
-        if estimate_type == "BE" or estimate_type == "B20":
+        if estimate_type == "B20":
             av_type = "B20"
         elif estimate_type == "IF" or estimate_type == "Bestand":
             av_type = "Bestand"
@@ -285,6 +284,6 @@ class DAV2004R_B20:
         select_matrix[:, risk_factors.Gender.F] = self.df_select_factors["Frauen"]
 
         provider = B20RatesProvider(base_rates,
-                                    (risk_factors.Age, risk_factors.Gender),   # NOte: This one is applicable but not in the list risk_factors.YearsDisabledIfDisabledAtStart),
+                                    (risk_factors.Age, risk_factors.Gender),   # Note: This one is applicable but not in the list: risk_factors.YearsDisabledIfDisabledAtStart),
                                     shifts_table=shifts, select_matrix=select_matrix)
         return provider
