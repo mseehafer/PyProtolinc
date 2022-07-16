@@ -28,6 +28,10 @@ class BaseRatesProvider:
         print(self.__class__.__name__, "Init-Hook")
         pass
 
+    def get_risk_factors(self):
+        """ This method returns an iterable of the relevant risk factors. """
+        return ()
+
 
 class ZeroRateProvider(BaseRatesProvider):
 
@@ -65,9 +69,16 @@ class StandardRatesProvider(BaseRatesProvider):
         assert self.num_dimensions == len(risk_factors), "Number of risk factors and dimension of values must agree!"
         assert self.num_dimensions >= 0 and self.num_dimensions < 4, "Number of dimensions must be between 0 and 3"
         self.values = np.copy(values)
-        # store the mximum index possible to address "plus 1"
-        self.max_indexes  = [i - 1 for i in self.values.shape]
-        self.risk_factors = [rf.__name__.lower() for rf in risk_factors]
+        
+        self.max_indexes = [i - 1 for i in self.values.shape]
+
+        # store the risk factor classes and names
+        self.risk_factor_classes = list(risk_factors)
+        self.risk_factor_names = [rf.__name__.lower() for rf in risk_factors]
+
+    def get_risk_factors(self):
+        """ This method returns an iterable of the relevant risk factors. """
+        return self.risk_factor_classes
 
     def get_rates(self, length=None, **kwargs):
         """ Rates are returned, the arguments must agree with the risk factors and
@@ -84,8 +95,7 @@ class StandardRatesProvider(BaseRatesProvider):
 
         # order the selectors
         selectors = []
-        
-        for rf_name in self.risk_factors:
+        for rf_name in self.risk_factor_names:
             selectors.append(attr[rf_name])
 
         if self.num_dimensions == 0:

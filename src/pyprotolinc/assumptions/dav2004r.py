@@ -205,6 +205,10 @@ class B20RatesProvider(StandardRatesProvider):
         self.select_matrix = select_matrix
         self.is_initialized = False
 
+    def get_risk_factors(self):
+        """ This method returns an iterable of the relevant risk factors. """
+        return [risk_factors.YearsDisabledIfDisabledAtStart] + super().get_risk_factors()
+
     def initialize(self, **kwargs):
         self.years_of_birth = kwargs["years_of_birth"]
         self.gender = kwargs["gender"]
@@ -284,6 +288,7 @@ class DAV2004R_B20:
         select_matrix[:, risk_factors.Gender.F] = self.df_select_factors["Frauen"]
 
         provider = B20RatesProvider(base_rates,
-                                    (risk_factors.Age, risk_factors.Gender),   # Note: This one is applicable but not in the list: risk_factors.YearsDisabledIfDisabledAtStart),
-                                    shifts_table=shifts, select_matrix=select_matrix)
+                                    (risk_factors.Age, risk_factors.Gender),   # NOte: This one is applicable but not in the list risk_factors.YearsDisabledIfDisabledAtStart),
+                                    shifts_table=shifts,
+                                    select_matrix=select_matrix)
         return provider

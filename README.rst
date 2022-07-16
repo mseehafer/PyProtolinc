@@ -35,10 +35,9 @@ Basic Usage
 Installation
 ^^^^^^^^^^^^^^^^
 
-
 To install from PyPI run::
 
-  pip install pyprotolinc
+  pip install -U pyprotolinc
 
 Alternatively, or for delevoplement clone (or download) the repository from https://github.com/mseehafer/PyProtolinc.git and
 run::
