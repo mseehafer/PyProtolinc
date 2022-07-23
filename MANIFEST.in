@@ -1,0 +1,2 @@
+include src/pyprotolinc/actuarial/valuation.pyx
+include src/pyprotolinc/actuarial/c_src/*

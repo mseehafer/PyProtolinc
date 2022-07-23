@@ -25,7 +25,7 @@ class BaseRatesProvider:
 
     def initialize(self, **kwargs):
         """ The ìnitialize hook can be used for setup actions. """
-        print(self.__class__.__name__, "Init-Hook")
+        # print(self.__class__.__name__, "Init-Hook")
         pass
 
     def get_risk_factors(self):

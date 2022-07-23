@@ -1,0 +1,120 @@
+"""
+multiply.pyx
+
+simple cython test of accessing a numpy array's data
+
+the C function: c_multiply multiplies all the values in a 2-d array by a scalar, in place.
+
+"""
+
+import cython
+from libc.stdlib cimport malloc, free
+from libc.string cimport strcpy, strlen
+
+
+# import both numpy and the Cython declarations for numpy
+#import numpy as np
+cimport numpy as np
+
+########################################
+# External Declarations
+########################################
+
+# declare the interface to the C code
+cdef extern void whole_of_life_c(double* val_assumptions, double* output, double sum_insured, int n)
+
+ctypedef struct RunParametersTerm:
+    int steps_per_year
+    int shifted_age
+
+ctypedef struct CSeriatimRecord:
+    unsigned int age
+    char *product
+
+
+cdef extern int run_it(RunParametersTerm, int)
+
+cdef extern int process_record(CSeriatimRecord, int)
+
+
+########################################
+# HELPER METHODS
+########################################
+
+cdef char* get_a_c_string(char* inp_c_string_ptr, Py_ssize_t length):
+    """ Creates a copy of a C-Str and returns a pointer to it. """
+    cdef c_string_ptr = <char *> malloc((length + 1) * sizeof(char))
+    if not c_string_ptr:
+        raise MemoryError()
+
+    strcpy(c_string_ptr, inp_c_string_ptr)
+    return c_string_ptr
+
+cdef char* get_as_c_string(bytes inp):
+    """ Creates a C-Str as a copy of a Python Bytesarray
+        and returns a pointer to it. """
+    cdef char* prod_c_string = inp
+    cdef int length = len(inp)
+        
+    # make a copy of the input as a C-String
+    return get_a_c_string(prod_c_string, length)
+
+
+cdef class SeriatimRecord:
+    
+    #cdef int age
+    #cdef char* product
+    cdef CSeriatimRecord rec
+    
+    def __cinit__(self, int age, bytes product):
+        self.rec.age = age
+        #self.age = age
+        
+        # make a copy of the product name as a C-String
+        self.rec.product = get_as_c_string(product)
+        #self.product = get_as_c_string(product)
+    
+    cdef CSeriatimRecord get_c_struct(self):
+        return self.rec
+    
+    def __dealloc__(self):
+        # if self.product != NULL:
+        #     free(self.product)
+        if self.rec.product != NULL:
+            free(self.rec.product)
+
+
+def process_records(records):
+    cdef CSeriatimRecord rec
+    
+    for rec_iter in records:
+        rec = <CSeriatimRecord> rec_iter
+        process_record(rec.get_c_struct(), 1)
+
+
+
+# wrapper for the run_it
+def run_wol(steps_per_year, shifted_age, n):
+    cdef RunParametersTerm rp
+    rp.steps_per_year = steps_per_year
+    rp.shifted_age = shifted_age
+
+    return run_it(rp, n)
+    
+
+@cython.boundscheck(False)
+@cython.wraparound(False)
+def cf_whole_of_life(double sum_insured,
+                     np.ndarray[double, ndim=2, mode="c"] val_assumptions not None,
+                     np.ndarray[double, ndim=2, mode="c"] output not None):
+    cdef int rows
+
+    rows = val_assumptions.shape[0]
+
+    # dimension checks
+    assert output.shape[0] >= val_assumptions.shape[0]
+    assert output.shape[1] >= 2
+
+    whole_of_life_c(<double*> val_assumptions.data, <double*> output.data, sum_insured, rows)
+
+    return None
