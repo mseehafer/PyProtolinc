@@ -11,6 +11,48 @@ from libcpp.memory cimport shared_ptr, make_shared
 cimport numpy as np
 import pandas as pd
 
+
+
+# should go into .pxd file?
+cdef extern from "providers.h":
+
+    cdef cppclass CBaseRatesProvider:
+
+        void get_rates(double *out_array, int length) const
+        #void get_risk_factors() const
+        string to_string() const
+
+    cdef cppclass CZeroRateProvider:
+
+        void get_rates(double *out_array, int length) const
+        #void get_risk_factors() const
+        string to_string() const
+
+    cdef cppclass CConstantRateProvider:
+
+        CConstantRateProvider(double)
+        CConstantRateProvider()
+        void set_rate(double rate)
+        void get_rates(double *out_array, int length) const
+        #void get_risk_factors() const
+        string to_string() const
+
+
+def provider_wrapper(int _len, double val):
+
+    cdef np.ndarray[double, ndim=1, mode="c"] output = np.zeros(_len)
+    cdef double[::1] output_memview = output
+
+    cdef CConstantRateProvider const_prov
+    const_prov.set_rate(val)
+
+    const_prov.get_rates(&output_memview[0], output_memview.shape[0])
+    # const_prov.get_rates(<double*> output.data, _len)
+    return output
+
+
+
+
 # should go into .pxd file?
 cdef extern from "c_valuation.h":
 

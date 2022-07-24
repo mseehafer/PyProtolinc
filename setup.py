@@ -20,6 +20,7 @@ else:
 extensions = [
     Extension("pyprotolinc._actuarial",
               ["src/pyprotolinc/actuarial/valuation.pyx",
+               #"src/pyprotolinc/actuarial/providers.pyx",
                "src/pyprotolinc/actuarial/c_src/c_valuation.cpp"],
               include_dirs=["src/pyprotolinc/actuarial/c_src",
                             numpy.get_include()],
@@ -38,11 +39,11 @@ setup(
     url = 'https://github.com/mseehafer/PyProtolinc',
     zip_safe=False,
     include_package_data=True,
-    package_data={"pyprotolinc.actuarial": ["src/pyprotolinc/actuarial/valuation.pyx"]},
+    package_data={"pyprotolinc.actuarial": ["src/pyprotolinc/actuarial/valuation.pyx", "src/pyprotolinc/actuarial/providers.pyx"]},
     packages= find_packages(where = 'src'),
     package_dir = {'':'src'},
     python_requires = ">=3.6",
-    ext_modules=cythonize(extensions),
+    ext_modules=cythonize(extensions, language_level=3),
     install_requires=[
         'numpy',
         'pandas',
