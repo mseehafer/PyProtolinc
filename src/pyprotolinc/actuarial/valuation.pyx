@@ -38,147 +38,142 @@ cdef extern from "providers.h":
     #     _CGender  'CRiskFactors::CGender'
     
 
-    cdef cppclass CBaseRatesProvider:
-        void add_risk_factor(CRiskFactors rf)
-        void get_rates(double *out_array, int length) const
-        vector[CRiskFactors] get_risk_factors() const
+    cdef cppclass CBaseRateProvider:
+        void add_risk_factor(CRiskFactors rf) except +
+        vector[CRiskFactors] &get_risk_factors() const
+        
+        double get_rate(vector[int] &indices)  except +
+        void get_rates(double *out_array, int length, vector[int *] &indices) except +
+        
         string to_string() const
 
-    cdef cppclass CZeroRateProvider:
-
-        void add_risk_factor(CRiskFactors rf)
-        void get_rates(double *out_array, int length) const
-        vector[CRiskFactors] get_risk_factors() const
-        string to_string() const
-
-    cdef cppclass CConstantRateProvider:
+    cdef cppclass CConstantRateProvider(CBaseRateProvider):
 
         CConstantRateProvider(double)
         CConstantRateProvider()
-        void add_risk_factor(CRiskFactors rf)
-        # void set_rate(double rate)
-        void get_rates(double *out_array, int length) const
-        vector[CRiskFactors] get_risk_factors() const
-        string to_string() const
 
-
-    cdef cppclass CStandardRateProvider:
-        CStandardRateProvider()
-        void add_risk_factor(CRiskFactors rf)
-        vector[CRiskFactors] get_risk_factors() const
+        # void add_risk_factor(CRiskFactors rf)
+        # vector[CRiskFactors] &get_risk_factors() const
+        
+        # double get_rate(vector[int] &indices) const
         # void get_rates(double *out_array, int length) const
-        void get_rates(double *out_array, size_t length, vector[int *] &indices) const
-        void set_values(vector[int] &shape_vec_in, vector[int] &offsets_in, double *ext_vals)
-        string to_string() const   
+        
+        # string to_string() const
 
 
-# cpdef enum CRiskFactors:
-#     CAge = _CAge
-#     CGender = _CGender   
+    cdef cppclass CStandardRateProvider(CBaseRateProvider):
+        
+        CStandardRateProvider()
+
+        void set_values(vector[int] &shape_vec_in, vector[int] &offsets_in, double *ext_vals) except +
+
+        #void add_risk_factor(CRiskFactors rf)
+        #vector[CRiskFactors] &get_risk_factors() const
+
+        # double get_rate(vector[int] &indices) except +
+        # void get_rates(double *out_array, size_t length, vector[int *] &indices) except +
+
+        #string to_string() const   
 
 
-# Create a Cython wrapper class for the providers that can be used in Python
-cdef class AssumptionsProvider:
-    # cdef CBaseRatesProvider *c_provider  # hold a pointer to the C++ instance which we're wrapping
+cdef class ConstantRateProvider:
+    cdef shared_ptr[CConstantRateProvider] c_provider
+    cdef vector[int] indexes_dummy
+    cdef vector[int *] indexes_dummy2
 
-    cdef shared_ptr[CBaseRatesProvider] c_provider
-    cdef string cprovider_type
-
-    def __cinit__(self, provider_type, double val=0):
-        self.cprovider_type = provider_type.encode()
-
-        cdef shared_ptr[CZeroRateProvider] c_provider_tmp_zero
-        cdef shared_ptr[CConstantRateProvider] c_provider_tmp_const
-        cdef shared_ptr[CStandardRateProvider] c_provider_tmp_std
-
-        if provider_type == "ZERO":
-            c_provider_tmp_zero = make_shared[CZeroRateProvider]()
-            self.c_provider = static_pointer_cast[CBaseRatesProvider, CZeroRateProvider] (c_provider_tmp_zero)
-        elif provider_type == "CONST":
-            c_provider_tmp_const = make_shared[CConstantRateProvider](val)
-            self.c_provider = static_pointer_cast[CBaseRatesProvider, CConstantRateProvider] (c_provider_tmp_const)
-        elif provider_type == "STANDARD":
-            c_provider_tmp_std = make_shared[CStandardRateProvider]()
-            self.c_provider = static_pointer_cast[CBaseRatesProvider, CStandardRateProvider] (c_provider_tmp_std)
-
+    def __cinit__(self, double val=0):
+        self.c_provider = make_shared[CConstantRateProvider](val)
+    
+    def __repr__(self):
+        return self.c_provider.get()[0].to_string().decode()
 
     def get_risk_factors(self):
         cdef vector[CRiskFactors] rfs = self.c_provider.get()[0].get_risk_factors()
-        # return rfs
-        #      return self.c_provider.get()[0].get_risk_factors()
         return [CRiskFactors(rf) for rf in rfs]
 
     def add_risk_factor(self, rf):
         self.c_provider.get()[0].add_risk_factor(rf)
-        #     for k in _CRiskFactors:
-        #         if k == rf:
-        #             return self.c_provider.get()[0].add_risk_factor(k)
-        #     # cdef int rf_int = rf
-        #     # cdef _CRiskFactors rf_rf = _CRiskFactors(rf_int)
-        #     # self.c_provider.get()[0].add_risk_factor(rf_rf)
 
-    def _set_values1D(self, np.ndarray[double, ndim=1, mode="c"] values):
-
-        print(values)
-        if self.cprovider_type != b"STANDARD":
-            raise Exception("Wrong provider type: " + self.cprovider_type.decode() + " This method only works for STANDARD.")
-        cdef vector[int] shapevec
-        cdef vector[int] offsets
-        # cdef np.ndarray[double, ndim=1, mode="c"] values_flattened = values.flatten()
-        cdef double[::1] values_memview = values
-        cdef shared_ptr[CStandardRateProvider] c_provider_tmp_std
-
-        #cdef int num_dims = len(values.shape)
-        for k in range(values.ndim):
-            d = values.shape[k]
-            shapevec.push_back(d)
-            offsets.push_back(0)        # just for now
-        
-        print(shapevec, offsets)
-        
-        c_provider_tmp_std = static_pointer_cast[CStandardRateProvider, CBaseRatesProvider] (self.c_provider)
-        c_provider_tmp_std.get()[0].set_values(shapevec, offsets, &values_memview[0])
-
-    def _set_values2D(self, np.ndarray[double, ndim=2, mode="c"] values):
-        # for now identical to the above but declaring 2d input
-        if self.cprovider_type != b"STANDARD":
-            raise Exception("Wrong provider type: " + self.cprovider_type.decode() + " This method only works for STANDARD.")
-        cdef vector[int] shapevec
-        cdef vector[int] offsets
-        # cdef np.ndarray[double, ndim=1, mode="c"] values_flattened = values.flatten()
-        cdef double[:, ::1] values_memview = values
-        cdef shared_ptr[CStandardRateProvider] c_provider_tmp_std
-
-        #cdef int num_dims = len(values.shape)
-        for k in range(values.ndim):
-            d = values.shape[k]
-            shapevec.push_back(d)
-            offsets.push_back(0)        # just for now
-        
-        print(shapevec, offsets)
-        
-        c_provider_tmp_std = static_pointer_cast[CStandardRateProvider, CBaseRatesProvider] (self.c_provider)
-        c_provider_tmp_std.get()[0].set_values(shapevec, offsets, &values_memview[0, 0])        
-
-
-    def to_string(self):
-        return self.c_provider.get()[0].to_string().decode()
-    
-    def __repr__(self):
-        return self.to_string()
+    def get_rate(self, indices=None):
+        return self.c_provider.get()[0].get_rate(self.indexes_dummy)
 
     def get_rates(self, int _len, **kwargs):
+        assert _len >= 1, "Required lengh must be >= 1"
         cdef np.ndarray[double, ndim=1, mode="c"] output = np.zeros(_len)
         cdef double[::1] output_memview = output
-        cdef vector[int*] indices
-        cdef shared_ptr[CStandardRateProvider] c_provider_tmp_std
-
-        if self.cprovider_type != b"STANDARD":
-            self.c_provider.get()[0].get_rates(&output_memview[0], output_memview.shape[0])
-        else:
-            c_provider_tmp_std = static_pointer_cast[CStandardRateProvider, CBaseRatesProvider] (self.c_provider)
-            c_provider_tmp_std .get()[0].get_rates(&output_memview[0], output_memview.shape[0], indices)
+        self.c_provider.get()[0].get_rates(&output_memview[0], output_memview.shape[0], self.indexes_dummy2)
         return output
+
+
+cdef class StandardRateProvider:
+
+    cdef shared_ptr[CStandardRateProvider] c_provider
+    cdef int dim
+
+    def __cinit__(self, values, np.ndarray[int, ndim=1, mode="c"] offsets):
+        cdef vector[int] shapevec
+        cdef int k
+        cdef int d
+
+        # assert `values` is np.ndarray of type double
+
+        if not (values.ndim == 1 or values.ndim == 2 or values.ndim == 3):
+            raise ValueError("Dimension of data should be 1, 2, or 3")
+
+        # check that offsets length matches dim!!
+        assert offsets.shape[0] == values.ndim, "Number of `offsets` must match dimension of lookup array."
+
+        self.dim = values.ndim
+        self.c_provider = make_shared[CStandardRateProvider]()
+
+        # construct the shape vec
+        for k in range(values.ndim):
+            d = values.shape[k]
+            shapevec.push_back(d)        
+
+        cdef double[::1] values_memview = values.flatten()
+        self.c_provider.get()[0].set_values(shapevec, offsets, &values_memview[0])
+
+    def get_risk_factors(self):
+        cdef vector[CRiskFactors] rfs = self.c_provider.get()[0].get_risk_factors()
+        return [CRiskFactors(rf) for rf in rfs]
+
+    def add_risk_factor(self, rf):
+        self.c_provider.get()[0].add_risk_factor(rf)
+
+    def __repr__(self):
+        return self.c_provider.get()[0].to_string().decode()
+
+    def get_rates(self, int _len, **kwargs):
+        assert _len >= 1, "Required lengh must be >= 1"
+
+        cdef np.ndarray[double, ndim=1, mode="c"] output = np.zeros(_len)
+        cdef double[::1] output_memview = output
+        
+        cdef vector[int*] indices
+        cdef int[:] an_index_vector
+        cdef CRiskFactors rf
+        
+        cdef vector[CRiskFactors] applicable_rfs = self.c_provider.get()[0].get_risk_factors()
+        
+        # extract the required risk factors from the named arguments and bring them 
+        # in the expected order
+        kwargs_lv = {k.lower(): v for k, v in kwargs.items()}
+        for rf in applicable_rfs:
+            pyrf = CRiskFactors(rf)
+            an_index_vector = kwargs_lv[pyrf.name.lower()]      # TODO: add test that checks what happens when this lookup fails
+            assert len(an_index_vector) == _len, "Lookup indices for {} has unexpected length!".format(pyrf.name)
+            indices.push_back(&an_index_vector[0])
+
+        self.c_provider.get()[0].get_rates(&output_memview[0], _len, indices)
+        return output
+
+    def get_rate(self, indices):
+        cdef vector[int] indexes
+        cdef int k
+        for k in indices:
+            indexes.push_back(k)
+        return self.c_provider.get()[0].get_rate(indexes)
 
 
 # def provider_wrapper(int _len, double val):
@@ -199,7 +194,7 @@ cdef class AssumptionsProvider:
 # should go into .pxd file?
 cdef extern from "c_valuation.h":
 
-    cdef int VECTOR_LENGTH_YEARS;
+    cdef int VECTOR_LENGTH_YEARS
 
     cdef cppclass CSeriatimRecord:
         CSeriatimRecord() except +
