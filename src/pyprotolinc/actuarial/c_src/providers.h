@@ -164,7 +164,6 @@ public:
         // }    
         // cout << "\n";    
 
-
         // allocate a new array on the heap
         values = new double[number_values];
         has_values = true;
@@ -205,7 +204,7 @@ public:
         //cout << "CStandardRatesProvider::get_rate \n";
 
         if (!has_values) {
-            throw logic_error("Not values have been set before querying.");                   // TODO: testcase
+            throw logic_error("No values have been set before querying.");                   // TODO: testcase
         }
 
         if (indices.size() != dimensions) {
@@ -216,7 +215,8 @@ public:
         for (int k = 0; k < dimensions; k++) {
             int ind_temp = indices[k] - offsets[k];
             if (ind_temp < 0 || ind_temp >= shape_vec[k]) {
-                throw out_of_range("Indices out of Range for dimension #" + std::to_string(k) + ", max length is " + std::to_string(shape_vec[k]) + ".");
+                throw out_of_range("Indices out of Range for dimension #" + std::to_string(k) 
+                   + ", max index allowed is " + std::to_string(shape_vec[k] - 1) + ".");
             }
             index += strides[k] * ind_temp;
         }

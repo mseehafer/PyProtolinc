@@ -44,3 +44,10 @@ print(providerS.get_rates(len(gender), age=age, gender=gender))
 assert np.array_equal(np.array([1., 4., 2., 5., 3., 6.]), providerS.get_rates(len(gender), age=age, gender=gender))
 
 print(providerS)
+
+# check for out of range exception
+gender2 = np.array([0, 1, 0, 1, 0, 1], dtype=int)
+age2 = np.array([0, 0, 1, 3, 2, 2], dtype=int)
+
+providerS.get_rates(len(gender2), age=age2, gender=gender2)
+

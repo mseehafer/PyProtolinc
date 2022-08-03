@@ -69,7 +69,7 @@ class StandardRatesProvider(BaseRatesProvider):
         assert self.num_dimensions == len(risk_factors), "Number of risk factors and dimension of values must agree!"
         assert self.num_dimensions >= 0 and self.num_dimensions < 4, "Number of dimensions must be between 0 and 3"
         self.values = np.copy(values)
-        
+
         self.max_indexes = [i - 1 for i in self.values.shape]
 
         # store the risk factor classes and names
@@ -103,7 +103,7 @@ class StandardRatesProvider(BaseRatesProvider):
         elif self.num_dimensions == 1:
             if selectors[0].min() - self.offsets[0] < 0:
                 raise Exception("Negative assumption index")
-            
+
             return self.values[np.minimum(selectors[0] - self.offsets[0], self.max_indexes[0]),]
         elif self.num_dimensions == 2:
             if (selectors[0].min() - self.offsets[0] < 0 or
