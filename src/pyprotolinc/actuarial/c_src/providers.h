@@ -6,24 +6,10 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include "risk_factors.h"
 
 using namespace std;
 
-
-enum class CRiskFactors: int {
-    Age,      // 0
-    Gender,   // 1
-};
-
-
-const char* CRiskFactors_names(CRiskFactors rf){
-    switch (rf){
-        case CRiskFactors::Age:
-            return "Age";
-        case CRiskFactors::Gender:
-            return "Gender";
-    }
-}
 
 
 class CBaseRateProvider {
@@ -138,8 +124,13 @@ public:
 
         // checks:
         if (offsets.size() != dimensions) {
-            throw domain_error("Offset size miust match dimension of values!");
+            throw domain_error("Offset size must match dimension of values!");
         }
+
+        // checks:
+        if (risk_factors.size() != dimensions) {
+            throw domain_error("risk_factor size must match dimension of values!");
+        }        
 
         // number of elements in values
         int num_elems = 0;

@@ -19,7 +19,7 @@ vals2D = np.array([
 offsets = np.zeros(2, dtype=int)
 # dimension mismatch should produce an exception
 
-providerS = actuarial.StandardRateProvider(vals2D, offsets)
+providerS = actuarial.StandardRateProvider([actuarial.CRiskFactors.Gender, actuarial.CRiskFactors.Age], vals2D, offsets)
 
 
 # test get rates
@@ -33,9 +33,6 @@ assert providerS.get_rate([1, 2]) == 6
 
 print("Output:", providerS.get_rate([0, 1]))
 
-providerS.add_risk_factor(actuarial.CRiskFactors.Gender)
-providerS.add_risk_factor(actuarial.CRiskFactors.Age)
-# should produce an exception: providerS.add_risk_factor(actuarial.CRiskFactors.Age)
 
 gender = np.array([0, 1, 0, 1, 0, 1], dtype=int)
 age = np.array([0, 0, 1, 1, 2, 2], dtype=int)

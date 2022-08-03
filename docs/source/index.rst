@@ -20,6 +20,7 @@ PyProtolinc's Documentation
    examples/example_nbs/02_annuities_in_payment/example2_annuity_dav
    examples/example_nbs/03_mortality/example3_MortalityModel
    concepts/concepts
+   concepts/docs_assumption_providers
    concepts/assumptions_for_fractional_years
    usage/profiling
    api/programmingapi

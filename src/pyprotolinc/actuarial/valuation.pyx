@@ -12,25 +12,15 @@ cimport numpy as np
 import pandas as pd
 
 
-# CHECKEN: https://stackoverflow.com/questions/31001918/wrap-enum-class-with-cython
-cdef extern from "test.h":
-
-    cpdef enum class State(int):
-        Good,
-        Bad,
-        Unknown,
-
-    const char* foo(State s)
-    
-def py_foo(State s):
-    return foo(s)
+# include all required pdx files
+include "crisk_factors.pxd"
 
 # should go into .pxd file?
 cdef extern from "providers.h":
 
-    cpdef enum class CRiskFactors(int):
-        Age,
-        Gender,
+    # cpdef enum class CRiskFactors(int):
+    #     Age,
+    #     Gender,
     
 
     # cdef enum _CRiskFactors 'CRiskFactors':
@@ -110,21 +100,24 @@ cdef class StandardRateProvider:
     cdef shared_ptr[CStandardRateProvider] c_provider
     cdef int dim
 
-    def __cinit__(self, values, np.ndarray[int, ndim=1, mode="c"] offsets):
+    def __cinit__(self, rfs, values, np.ndarray[int, ndim=1, mode="c"] offsets):
         cdef vector[int] shapevec
         cdef int k
         cdef int d
 
         # assert `values` is np.ndarray of type double
 
-        if not (values.ndim == 1 or values.ndim == 2 or values.ndim == 3):
-            raise ValueError("Dimension of data should be 1, 2, or 3")
+        if not (values.ndim == 1 or values.ndim == 2 or values.ndim == 3 or values.ndim == 4):
+            raise ValueError("Dimension of data should be 1, 2, 3 or 4.")
 
         # check that offsets length matches dim!!
         assert offsets.shape[0] == values.ndim, "Number of `offsets` must match dimension of lookup array."
 
         self.dim = values.ndim
         self.c_provider = make_shared[CStandardRateProvider]()
+
+        for rf in rfs:
+            self.c_provider.get()[0].add_risk_factor(CRiskFactors(rf))
 
         # construct the shape vec
         for k in range(values.ndim):
@@ -138,8 +131,8 @@ cdef class StandardRateProvider:
         cdef vector[CRiskFactors] rfs = self.c_provider.get()[0].get_risk_factors()
         return [CRiskFactors(rf) for rf in rfs]
 
-    def add_risk_factor(self, rf):
-        self.c_provider.get()[0].add_risk_factor(rf)
+    # def add_risk_factor(self, rf):
+    #     self.c_provider.get()[0].add_risk_factor(rf)
 
     def __repr__(self):
         return self.c_provider.get()[0].to_string().decode()
