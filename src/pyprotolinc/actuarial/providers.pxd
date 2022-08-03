@@ -23,8 +23,13 @@ cdef extern from "providers.h":
     cdef cppclass CStandardRateProvider(CBaseRateProvider):
         
         CStandardRateProvider()
+        int get_dimension()
+        int size()
+        void get_values(double *ext_vals)        
 
         void set_values(vector[int] &shape_vec_in, vector[int] &offsets_in, double *ext_vals) except +
+        
+        shared_ptr[CStandardRateProvider] slice(vector[int] &indices) except +
 
 
 cdef class ConstantRateProvider:
@@ -131,3 +136,41 @@ cdef class StandardRateProvider:
 
     def initialize(self, **kwargs):
         pass
+
+    def slice(self, **kwargs):
+
+        cdef vector[int] indices
+        # cdef int an_index
+        
+        # extract the required risk factors from the named arguments and bring them 
+        # in the expected order
+        cdef vector[CRiskFactors] applicable_rfs = self.c_provider.get()[0].get_risk_factors()
+        print([q for q in applicable_rfs])
+
+        kwargs_lv = {k.lower(): v for k, v in kwargs.items()}
+        for rf in applicable_rfs:
+            pyrf = CRiskFactors(rf)
+            an_index = kwargs_lv.get(pyrf.name.lower())
+
+            if an_index is not None:
+                indices.push_back(int(an_index))
+            else:
+                indices.push_back(-1)
+        
+        print("indices before", [i for i in indices])
+        
+        cdef shared_ptr[CStandardRateProvider] slicedCSRP = self.c_provider.get()[0].slice(indices) 
+
+        sliced_srp = StandardRateProvider([], np.zeros(1), np.array([0], dtype=int))
+        sliced_srp.c_provider = slicedCSRP
+        sliced_srp.dim = slicedCSRP.get()[0].get_dimension()
+        return sliced_srp
+    
+    def get_values(self):
+        print(self.c_provider.get()[0].size())
+        cdef np.ndarray[double, ndim=1, mode="c"] values_placeholder = np.zeros(self.c_provider.get()[0].size())
+        print(values_placeholder)
+        cdef double[::1] values_memview = values_placeholder
+        self.c_provider.get()[0].get_values(&values_memview[0])
+        return values_placeholder
+        

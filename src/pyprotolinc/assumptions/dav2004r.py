@@ -1,4 +1,5 @@
 import os
+import logging
 
 import numpy as np
 import pandas as pd
@@ -6,6 +7,9 @@ import pandas as pd
 import pyprotolinc
 import pyprotolinc.models.risk_factors as risk_factors
 from pyprotolinc.assumptions.providers import StandardRateProvider
+
+# module level logger
+logger = logging.getLogger(__name__)
 
 
 class DAV2004R:
@@ -109,8 +113,8 @@ class DAV2004R:
         if table_type == 'AGGREGATE':
             # base rates and trend for 'AGGREGATE'
             provider = StandardRateProvider(table,
-                                             (risk_factors.CalendarYear, risk_factors.Gender, risk_factors.Age),
-                                             offsets=(t_begin, 0, 0))
+                                            (risk_factors.CalendarYear, risk_factors.Gender, risk_factors.Age),
+                                            offsets=(t_begin, 0, 0))
         elif table_type == 'SELECT':
             raise Exception("Not yet implemented.")
 
@@ -210,6 +214,10 @@ class B20RatesProvider(StandardRateProvider):
         return [risk_factors.YearsDisabledIfDisabledAtStart] + super().get_risk_factors()
 
     def initialize(self, **kwargs):
+
+        if self.is_initialized:
+            logger.warn("Reinitialization of B20-Provider. This must not happen in a multithreaded scenario.")
+
         self.years_of_birth = kwargs["years_of_birth"]
         self.gender = kwargs["gender"]
         self.applicable_shifts = self.shifts_table[self.years_of_birth - 1900, self.gender].astype(np.int16)
