@@ -21,6 +21,7 @@ PyProtolinc's Documentation
    examples/example_nbs/03_mortality/example3_MortalityModel
    concepts/concepts
    concepts/docs_assumption_providers
+   concepts/docs_assumption_read
    concepts/assumptions_for_fractional_years
    usage/profiling
    api/programmingapi

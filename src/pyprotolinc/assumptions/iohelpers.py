@@ -146,7 +146,7 @@ class AssumptionsLoaderFromConfig:
         for spec in assumptions_spec:
 
             if spec[2][0] == "FileTable":
-                # creation pf file table assumption providers iis deferred
+                # creation of file table assumption providers is deferred
                 from_this_file = file_table_assumptions.get(spec[2][1])
                 if from_this_file is None:
                     from_this_file = []

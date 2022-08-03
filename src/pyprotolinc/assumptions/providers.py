@@ -126,7 +126,7 @@ class StandardRatesProvider(BaseRatesProvider):
         raise Exception("Method must be implemented in subclass.")
 
     def __repr__(self):
-        return "<StandardRatesProvider with factors ({})>".format(str(self.risk_factors))
+        return "<StandardRatesProvider with factors ({})>".format(str(self.risk_factor_names))
 
 
 class AssumptionTimestepAdjustment:
