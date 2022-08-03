@@ -14,6 +14,9 @@ import pandas as pd
 
 # include all required pdx files
 include "crisk_factors.pxd"
+# cimport crisk_factors     # these imports seems to miss the Python wrapper
+# from crisk_factors cimport CRiskFactors
+# from crisk_factors import CRiskFactors
 
 # should go into .pxd file?
 cdef extern from "providers.h":

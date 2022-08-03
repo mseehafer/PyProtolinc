@@ -64,7 +64,7 @@ public:
     }
 
     double get_rate(vector<int> &indices) {
-        cout << "CConstantRateProvider::get_rate \n";
+        // cout << "CConstantRateProvider::get_rate \n";
         return val;
     }
 
