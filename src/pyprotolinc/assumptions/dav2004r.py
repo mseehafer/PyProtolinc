@@ -5,7 +5,7 @@ import pandas as pd
 
 import pyprotolinc
 import pyprotolinc.models.risk_factors as risk_factors
-from pyprotolinc.assumptions.providers import StandardRatesProvider
+from pyprotolinc.assumptions.providers import StandardRateProvider
 
 
 class DAV2004R:
@@ -108,7 +108,7 @@ class DAV2004R:
 
         if table_type == 'AGGREGATE':
             # base rates and trend for 'AGGREGATE'
-            provider = StandardRatesProvider(table,
+            provider = StandardRateProvider(table,
                                              (risk_factors.CalendarYear, risk_factors.Gender, risk_factors.Age),
                                              offsets=(t_begin, 0, 0))
         elif table_type == 'SELECT':
@@ -194,7 +194,7 @@ def _calculate_loaded_tables_with_trend(t_begin, t_end, T1, T2, df_base, df_tren
     return res_table
 
 
-class B20RatesProvider(StandardRatesProvider):
+class B20RatesProvider(StandardRateProvider):
 
     def __init__(self, values, other_risk_factors, offsets=None, shifts_table=None, select_matrix=None):
         assert shifts_table is not None, "No shifts table provided for the B20RatesProvider."

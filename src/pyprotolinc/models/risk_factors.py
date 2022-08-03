@@ -2,6 +2,11 @@ from enum import IntEnum, unique
 from pyprotolinc.models import check_states
 from pyprotolinc import MAX_AGE
 
+from pyprotolinc._actuarial import CRiskFactors
+
+
+_C_RISK_FACTORS = {rf.name: rf for rf in CRiskFactors}
+
 
 @unique
 class RiskFactor(IntEnum):
@@ -29,6 +34,10 @@ class RiskFactor(IntEnum):
     def index_mapper(cls):
         # return identity by default
         return lambda x: x
+    
+    @classmethod
+    def get_CRiskFactor(cls):
+        return _C_RISK_FACTORS[cls.__name__]
 
 
 @unique
@@ -161,7 +170,7 @@ check_states(Gender)
 
 # a list of all risk factors;
 # must be maintained manually for now
-RISK_FACTORS = [Gender, Age, CalendarYear]
+RISK_FACTORS = [Gender, Age, CalendarYear, SmokerStatus, YearsDisabledIfDisabledAtStart]
 _rf_names = [cls.__name__.upper() for cls in RISK_FACTORS]
 
 

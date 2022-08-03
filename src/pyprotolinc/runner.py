@@ -140,10 +140,13 @@ class Projector:
               * 'to' state
         """
 
+        #print("ages, genders, calendaryear, smokerstatus, yearsdisabledifdisabledatstart")
+        #print(ages.dtype, genders.dtype, calendaryear.dtype, smokerstatus.dtype, yearsdisabledifdisabledatstart.dtype)
+
         # get BE assumptions
         for (from_state, to_state) in self.non_trivial_state_transitions_be:
             provider = self.model.rates_provider_matrix_be[from_state][to_state]
-            sel_ass = provider.get_rates(length=len(ages),
+            sel_ass = provider.get_rates(len(ages),
                                          age=ages,
                                          gender=genders,
                                          calendaryear=calendaryear,
@@ -154,7 +157,7 @@ class Projector:
         # get RES assumptions
         for (from_state, to_state) in self.non_trivial_state_transitions_res:
             provider = self.model.rates_provider_matrix_res[from_state][to_state]
-            sel_ass = provider.get_rates(length=len(ages),
+            sel_ass = provider.get_rates(len(ages),
                                          age=ages,
                                          gender=genders,
                                          calendaryear=calendaryear,
@@ -314,7 +317,7 @@ class Projector:
                 self.contractual_transition_ts_period[insured_selector, from_state, st] = st == to_state
 
     def initialize_assumption_providers(self):
-        """ Call into the init hook of the aasumption providers. """
+        """ Call into the init hook of the assumption providers. """
         # get BE assumptions
         for (from_state, to_state) in self.non_trivial_state_transitions_be:
             provider = self.model.rates_provider_matrix_be[from_state][to_state]
@@ -368,7 +371,7 @@ class Projector:
                 ages = np.minimum(ages_months // 12, MAX_AGE)  # age selection depends on completed years
                 years_disabled_if_at_start = months_disabled_if_at_start // 12
 
-                calendaryear = np.ones(len(ages), dtype=np.int16) * self.time_axis.years[self.month_count]
+                calendaryear = np.ones(len(ages), dtype=np.int) * self.time_axis.years[self.month_count]
 
                 # check if the risk factors have changed and refresh the assumptions in this case
                 assumption_update_required = not (np.array_equal(ages, _ages_last_month) and np.array_equal(calendaryear, _calendaryear_last_month)

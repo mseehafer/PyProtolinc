@@ -1,8 +1,9 @@
 import numpy as np
 
-from pyprotolinc.assumptions.providers import ZeroRateProvider
-from pyprotolinc.assumptions.providers import ConstantRateProvider
-from pyprotolinc.assumptions.providers import StandardRatesProvider
+# from pyprotolinc.assumptions.providers import ZeroRateProvider
+# from pyprotolinc.assumptions.providers import ConstantRateProvider
+# from pyprotolinc.assumptions.providers import StandardRateProvider
+import pyprotolinc._actuarial as act
 
 
 class ScalarAssumptionsTable:
@@ -12,10 +13,11 @@ class ScalarAssumptionsTable:
         self.const_value = const_value
 
     def rates_provider(self):
-        if self.const_value == 0:
-            return ZeroRateProvider()
-        else:
-            return ConstantRateProvider(self.const_value)
+        return act.ConstantRateProvider(self.const_value)
+        # if self.const_value == 0:
+        #     return ZeroRateProvider()
+        # else:
+        #     return ConstantRateProvider(self.const_value)
 
 
 class AssumptionsTable1D:
@@ -45,7 +47,11 @@ class AssumptionsTable1D:
         self.risk_factor_class = risk_factor_class
 
     def rates_provider(self):
-        return StandardRatesProvider(self.values, (self.risk_factor_class,), offsets=(self.offset,))
+        # return StandardRateProvider(self.values, (self.risk_factor_class,), offsets=(self.offset,))
+        return act.StandardRateProvider(rfs=[self.risk_factor_class.get_CRiskFactor()],
+                                        values=self.values,
+                                        offsets=np.array([self.offset, ], dtype=int))        
+        
 
 
 class AssumptionsTable2D:
@@ -76,5 +82,11 @@ class AssumptionsTable2D:
         self.risk_factor_class_h = risk_factor_class_h
 
     def rates_provider(self):
-        return StandardRatesProvider(self.values, (self.risk_factor_class_v, self.risk_factor_class_h),
-                                     offsets=(self.v_offset, self.h_offset))
+        # return StandardRateProvider(self.values, (self.risk_factor_class_v, self.risk_factor_class_h),
+        #                            offsets=(self.v_offset, self.h_offset))
+
+        return act.StandardRateProvider(rfs=[self.risk_factor_class_v.get_CRiskFactor(),
+                                              self.risk_factor_class_h.get_CRiskFactor()],
+                                         values=self.values,
+                                         offsets=np.array((self.v_offset, self.h_offset), dtype=int))
+        

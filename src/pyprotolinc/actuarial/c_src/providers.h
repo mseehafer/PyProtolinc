@@ -201,7 +201,7 @@ public:
 
     double get_rate(vector<int> &indices) const {
         // Return the rate for the specified index
-        //cout << "CStandardRatesProvider::get_rate \n";
+        //cout << "CStandardRateProvider::get_rate \n";
 
         if (!has_values) {
             throw logic_error("No values have been set before querying.");                   // TODO: testcase

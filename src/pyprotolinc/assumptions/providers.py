@@ -54,7 +54,7 @@ class ConstantRateProvider(BaseRatesProvider):
         return "<ConstantRateProvider with constant {}>".format(self.const_rate)
 
 
-class StandardRatesProvider(BaseRatesProvider):
+class StandardRateProvider(BaseRatesProvider):
     """ Rates provider class is used to return the rates
         given a selector array for each risk factor. """
 
@@ -126,7 +126,7 @@ class StandardRatesProvider(BaseRatesProvider):
         raise Exception("Method must be implemented in subclass.")
 
     def __repr__(self):
-        return "<StandardRatesProvider with factors ({})>".format(str(self.risk_factor_names))
+        return "<StandardRateProvider with factors ({})>".format(str(self.risk_factor_names))
 
 
 class AssumptionTimestepAdjustment:

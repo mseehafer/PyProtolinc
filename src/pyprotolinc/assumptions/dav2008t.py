@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 
 import pyprotolinc
-from pyprotolinc.assumptions.providers import StandardRatesProvider
+from pyprotolinc.assumptions.providers import StandardRateProvider
 from pyprotolinc.models.risk_factors import Gender, SmokerStatus, Age
 from pyprotolinc.assumptions.providers import AssumptionType
 
@@ -89,8 +89,8 @@ class DAV2008T:
         estimate_type = estimate_type.upper()
 
         if estimate_type == "BE":
-            return StandardRatesProvider(self.be_rates, (Age, Gender, SmokerStatus), offsets=(0, 0, 0))
+            return StandardRateProvider(self.be_rates, (Age, Gender, SmokerStatus), offsets=(0, 0, 0))
         elif estimate_type == "LOADED":
-            return StandardRatesProvider(self.res_rates, (Age, Gender, SmokerStatus), offsets=(0, 0, 0))
+            return StandardRateProvider(self.res_rates, (Age, Gender, SmokerStatus), offsets=(0, 0, 0))
         else:
             raise Exception("Unknow estimate type: {}".format(estimate_type))

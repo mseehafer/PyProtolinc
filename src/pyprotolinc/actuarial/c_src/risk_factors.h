@@ -18,6 +18,12 @@ const char* CRiskFactors_names(CRiskFactors rf){
             return "Age";
         case CRiskFactors::Gender:
             return "Gender";
+        case CRiskFactors::CalendarYear:
+            return "CalendarYear";
+        case CRiskFactors::SmokerStatus:
+            return "SmokerStatus";
+        case CRiskFactors::YearsDisabledIfDisabledAtStart:
+            return "YearsDisabledIfDisabledAtStart";
     }
 }
 
