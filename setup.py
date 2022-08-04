@@ -45,10 +45,10 @@ setup(
     python_requires = ">=3.6",
     ext_modules=cythonize(extensions, language_level=3),
     install_requires=[
-        'numpy',
+        'numpy==1.23.1',
         'pandas',
         'xlrd',
-        'cython',
+        'cython==3.0.0a11',
         'pyyaml',
         'fire',
         'requests',
