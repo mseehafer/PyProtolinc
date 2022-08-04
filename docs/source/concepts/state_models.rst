@@ -12,48 +12,50 @@ Concept
 
 In principle a *state model* is given by a (finite) number of *ordered states*, which represent different status a policyholder
 can be in at a given point in time, as well as the possible transitions between them. We can imagine this as a graph
-as follows:
+as in the following example:
 
 .. image:: state_annuity.png
 
 There are two states and the (one-sided) arrow indicates that a transition from state *Annuitant* to state *Dead* is
-possible. This could represent a state model that can be used for a portfolio of annuities in the payment phase. In this
+possible. This could represent a state model that can be used for a portfolio of annuities in the payment phase 
+(which could be the results of a single initial premium payment made by the policyholder to the insurer). In this
 scenario the insurer would make annual or monthly payments to the insured person as long as the person is alive.
 
 Let's have a look at another example which could be used for a *mortality term insurance*. In this case the policy
-has a certain duration (e.g. 10 years) and the insurer 
+has a certain duration (e.g. 10 years) and the insurer is obliged to pay the *insured amount* upon death of the insured.
 
 .. image:: state_term.png
 
-At the beginning of the lifetime of the policy the insured is in the state *Active* (and would pay annual or monthly
+At the beginning of the lifetime of the policy the insured is in the state *Active* (and would pay recurring
 insurance premiums). The arrows
 represent the following state changes:
 
   * to *Dead* if the insured dies before the end of the term, in this case the insurer would pay the insured amount. 
   * to *Lapsed* if the policy holder surrenders. This means no death benefit will be paid and no premiums are due anymore but there
-    might be surrenders benefits.
+    might be surrenders benefits (depending on product terms and general regulation)
   * to *Matured* if the term ends before the insured has died.
 
-It is *important to note* that the statements about payments made from either side are only given for illustration, they
-are not linked to the state model but rather a part of the *product definition* discussed later (which is, of course,
-linked to a state model again)
+It is *important to note* that the **statements about payments* made from either side **are only given for illustration**, they
+are not linked to the state model but rather a part of the *product definition* discussed later (which itself is, of course,
+linked to a state model again).
 
-The final example discussed here is the the following
+The final example discussed here is the the following:
 
 .. image:: state_di_annuity.png
 
 There are seven states and various transitions between them. The insurance product one should think of 
-is an income protection product with a given term (or end age) which pays an annuity as long as the insured is *disabled*
+is an income protection cover with a given term (or end age) which pays an annuity as long as the insured is *disabled*
 (the exact meaning of this
 needs to be defined in the policy terms) and has not reached the end of the term. While *actives* can become disabled
 it is also possible that *disbaled* become *actives* again, something often referred to as *recovery*. In the graph
 above there are therefore two arrows
-between the states *Active* and *Disabled* indicating the possible transitions in both ways. Note furthermore, that 
-there are two *Dead* states. In most cases it is probably a modelling decision if these states should be separated or not,
+between the states *Active* and *Disabled* indicating the possible transitions in both ways. Note furthermore that 
+there are two *Dead* states in the example. In most cases it is probably a modelling decision if these states should be separated or not,
 the same applies to the *Matured* states.
 
 
-**Remark**: Sometimes modelling purposes may imply the need to break a logical *states* (motivated by the product) 
+**Remark**: Sometimes modelling purposes may imply the need to break a *logical state* (e.g., one that is naturally 
+motivated by the product) 
 up into more granular model states. An example could be that the modeller want to use different *recovery probabilities*
 depending on how long the policy holder is in the disabled state and for this purpose the disabled state could be broken
 up into the states as follows:
@@ -91,5 +93,7 @@ which looks as follows::
 
 Note that there are two member ``DIS1`` and ``DEATH`` representing the two states (albeit with different names). Besides that there is a classmethod
 which provides a mapping of the standard output model to this model (but this discussion will need to take place elsewhere).
+
+
 While the ``IntEnum`` above declares the states the transitions between them will be modelled by a corresponding
 *matrix of transition providers*, a topic which will be discussed further in the Section about assumptions. 
