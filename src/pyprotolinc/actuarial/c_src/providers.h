@@ -302,7 +302,7 @@ public:
         double *new_vals = new double[required_size];
 
         // determine the bounds
-        for (int d = 0; d < dimensions; d++) {
+        for (unsigned d = 0; d < dimensions; d++) {
             if (dims_fixed[d]) {
                 bounds_lower[d] = indices[d] - offsets[d];
                 bounds_upper[d] = indices[d] - offsets[d] + 1;  // exclusive
@@ -346,8 +346,6 @@ public:
                 } 
             }
         } while (incremented);
-
-      
 
         // special case: reduction to constant provider
         if (required_size == 1) {
