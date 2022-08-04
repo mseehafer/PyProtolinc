@@ -58,6 +58,7 @@ extensions = [
     'sphinx.ext.autodoc',
     'nbsphinx',
     'sphinx_rtd_theme',
+    'sphinx_gallery.load_style',
 ]
 
 # suppress_warnings = [

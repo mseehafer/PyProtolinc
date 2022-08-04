@@ -10,19 +10,13 @@ PyProtolinc's Documentation
 
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
    readme
    usage/installation
    usage/quickstart
    examples/intro
-   examples/example_nbs/01_annuity_in_payment_simple/example1_annuity_simple1
-   examples/example_nbs/02_annuities_in_payment/example2_annuity_dav
-   examples/example_nbs/03_mortality/example3_MortalityModel
    concepts/concepts
-   concepts/docs_assumption_providers
-   concepts/docs_assumption_read
-   concepts/assumptions_for_fractional_years
    usage/profiling
    api/programmingapi
  

@@ -10,8 +10,8 @@ import numpy
 IS_WINDOWS = platform.system() == "Windows"
 
 if IS_WINDOWS:
-    extra_compile_args = ['/openmp']
-    extra_link_args = ['/openmp']
+    extra_compile_args = ['/openmp', '/Ox'] 
+    extra_link_args = []
 else:
     extra_compile_args = ['-fopenmp', '-std=c++11', '-O3']
     extra_link_args = ['-fopenmp', '-std=c++11']

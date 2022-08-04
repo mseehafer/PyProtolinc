@@ -5,3 +5,4 @@ sphinx_rtd_theme==1.0.0
 readthedocs-sphinx-search==0.1.1
 matplotlib==3.5.2
 ipykernel==6.15.1
+sphinx_gallery.load_style==0.11.0

@@ -12,24 +12,10 @@ and a *portfolio of insureds*.
 Model runs can be specified in code or using *yaml* configuration files.
 
 
-State Models
--------------
+.. include:: state_models.rst
 
-todo
+.. include:: portfolios.rst
 
+.. include:: assumptions.rst
 
-Products
------------
-
-todo
-
-
-Assumptions and Providers
----------------------------
-todo
-
-
-Portfolios
---------------
-
-todo
+.. include:: products.rst
