@@ -10,7 +10,7 @@ import numpy
 IS_WINDOWS = platform.system() == "Windows"
 
 if IS_WINDOWS:
-    extra_compile_args = ['/openmp', '/Ox'] 
+    extra_compile_args = ['/openmp', '/Ox']
     extra_link_args = []
 else:
     extra_compile_args = ['-fopenmp', '-std=c++11', '-O3']
@@ -20,7 +20,7 @@ else:
 extensions = [
     Extension("pyprotolinc._actuarial",
               ["src/pyprotolinc/actuarial/valuation.pyx",
-               #"src/pyprotolinc/actuarial/providers.pyx",
+               # "src/pyprotolinc/actuarial/providers.pyx",
                "src/pyprotolinc/actuarial/c_src/c_valuation.cpp"],
               include_dirs=["src/pyprotolinc/actuarial/c_src",
                             numpy.get_include()],
@@ -34,15 +34,15 @@ setup(
     version='0.1.6',
     description='Projection Tool for Life Insurance Cash Flows',
     author='Martin Seehafer',
-    keywords = 'actuarial, projection, life, insurance',
-    license = 'MIT',
-    url = 'https://github.com/mseehafer/PyProtolinc',
+    keywords='actuarial, projection, life, insurance',
+    license='MIT',
+    url='https://github.com/mseehafer/PyProtolinc',
     zip_safe=False,
     include_package_data=True,
     package_data={"pyprotolinc.actuarial": ["src/pyprotolinc/actuarial/valuation.pyx", "src/pyprotolinc/actuarial/providers.pyx"]},
-    packages= find_packages(where = 'src'),
-    package_dir = {'':'src'},
-    python_requires = ">=3.6",
+    packages=find_packages(where='src'),
+    package_dir={'': 'src'},
+    python_requires=">=3.6",
     ext_modules=cythonize(extensions, language_level=3),
     install_requires=[
         'numpy==1.23.1',
@@ -53,6 +53,7 @@ setup(
         'fire',
         'requests',
         'openpyxl',
+        'pytest',
     ],
     entry_points={
         'console_scripts': [
