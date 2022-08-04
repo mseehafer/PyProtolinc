@@ -6,7 +6,8 @@
 PyProtolinc's Documentation
 =====================================
 
-*PyProtolinc* is an extensible actuarial projection tool for life insurance cash flows.
+*PyProtolinc* is an extensible actuarial projection tool used
+to generate expected future cash flows for life & health insurance products.
 
 
 .. toctree::

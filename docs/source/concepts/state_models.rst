@@ -35,7 +35,7 @@ represent the following state changes:
     might be surrenders benefits (depending on product terms and general regulation)
   * to *Matured* if the term ends before the insured has died.
 
-It is *important to note* that the **statements about payments* made from either side **are only given for illustration**, they
+It is *important to note* that the **statements about payments** made from either side **are only given for illustration**, they
 are not linked to the state model but rather a part of the *product definition* discussed later (which itself is, of course,
 linked to a state model again).
 
