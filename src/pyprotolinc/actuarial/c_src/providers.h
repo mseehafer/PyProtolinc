@@ -11,7 +11,14 @@
 using namespace std;
 
 // fwd. declaration
-void print_vec(vector<int> v, string name);
+template <typename T>
+void print_vec(vector<T> v, string name) {
+        cout << name << ": " ;
+        for (auto i = 0; i < v.size(); i++) {
+            std::cout << v.at(i) << ' ';
+        }    
+        cout << "\n";     
+}
 
 class CBaseRateProvider {
     // Abstract base class for `rates providers`.
@@ -79,7 +86,8 @@ public:
 class CStandardRateProvider: public CBaseRateProvider {
 
 protected:
-    double *values = nullptr;   // the data array
+    //double *values = nullptr;   // the data array
+    shared_ptr<double> values;
     bool has_values = false;    // flag if the data array is set
 
     int number_values = 0;      // number of values in the data
@@ -87,7 +95,7 @@ protected:
     vector<int> shape_vec;      // the dimensions/shape
     vector<int> strides;        // steps width in the respective dimension
     vector<int> offsets;        // offset to be applied when queried for rates
-    int dimensions = 0;         // number of dimensions of the data array
+    unsigned int dimensions = 0;         // number of dimensions of the data array
 
 public:
 
@@ -99,11 +107,11 @@ public:
     void get_values(double *ext_vals) {
         // copy the data (manually for now), the caller must allocate memory before
         for (int j = 0; j < number_values; j++) {
-             ext_vals[j] = values[j];
+             ext_vals[j] = values.get()[j];
         }
     }
 
-    virtual ~CStandardRateProvider() {
+    /* virtual ~CStandardRateProvider() {
         if (has_values) {
              // cout << "DESTCRUCTOR w/ DELETE, number_values="  << number_values << " \n";
              delete[] values;
@@ -111,6 +119,7 @@ public:
             //cout << "DESTCRUCTOR NO DELETE, number_values="  << number_values << " \n";
         }
     }
+    */
 
     void set_values(vector<int> &shape_vec_in, vector<int> &offsets_in, double *ext_vals) {
         // this method allocates memory for the values, copies them and
@@ -123,82 +132,64 @@ public:
             // has_values = false;
             throw domain_error("Values already set.");
         }
+
+        // dimension is determined by the number of risk factors
+        dimensions = risk_factors.size();
         
-        // copy vectors
+        // validate and copy vectors
+        if (dimensions == 0) {
+             if (offsets_in.size() != 1) {
+                throw domain_error("Dimension 0 requires exactly one value.");
+             }
+             if (shape_vec_in.size() != 1) {
+                throw domain_error("Dimension 0 requires exactly one value.");
+             }
+             if (shape_vec_in[0] != 1) {
+                throw domain_error("Dimension 0 requires exactly one value in shape_vec.");
+             }
+             if (offsets_in[0] != 0) {
+                throw domain_error("Dimension 0 requires an offset vector [0]");
+             }
+        } else {
+            if (offsets_in.size() != dimensions) {
+                throw domain_error("Offsets length must match number of risk_factors.");
+             }
+             if (shape_vec_in.size() != dimensions) {
+                throw domain_error("Shape_vec length must match number of risk_factors.");
+             }
+        }
         shape_vec = shape_vec_in;
         offsets = offsets_in;
-        dimensions = shape_vec_in.size();
-        // a constant gets the dimension 0
-        if (dimensions == 1 && shape_vec_in[0] == 1) {
-            dimensions = 0;
-        }
-        
+
         // calculate the strides
-        strides = shape_vec_in; // some arbitrary initialization
+        strides = vector<int>(shape_vec_in.size(), 1); // initialize with 1s
         int acc_dims = 1;
         for (int i = shape_vec_in.size() - 1; i >= 0; i--) {
             strides[i] = acc_dims;
             acc_dims *= shape_vec_in[i];
         }
 
-        // checks:
-        if (offsets.size() != dimensions && dimensions != 0 && offsets.size() != 1) {
-            throw domain_error("Offset size must match dimension of values!");
-        }
-
- 
-        // number of elements in values
-        number_values = 1;
+        // determine number of elements in values
+        number_values = 1;  // applies if dimension == 0
         if (dimensions > 0) {
-            for (int i = 0; i < shape_vec_in.size(); i++) {
+            for (unsigned i = 0; i < shape_vec_in.size(); i++) {
                 number_values *= shape_vec_in[i];
             }
         }
 
-        // checks:
-        if (risk_factors.size() != dimensions) {
-            cout << "risk_factors: " ;
-            for (auto i = 0; i < risk_factors.size(); i++) {
-                std::cout << CRiskFactors_names(risk_factors.at(i)) << ' ';
-            }
-            cout << "\n";            
-            throw domain_error("risk_factor size must match dimension of values! " + std::to_string(risk_factors.size()) + " " + std::to_string(dimensions));
-        }      
-
-        // // some ouputs
-        // cout << "dimensions: "  << dimensions << "\n";
-        // cout << "number_values: "  << number_values << "\n";
-        // // shapevec
-        // cout << "shape_vec: " ;
-        // for (auto i = 0; i < shape_vec.size(); i++) {
-        //     std::cout << shape_vec.at(i) << ' ';
-        // }
-        // cout << "\n";
-        // // strides
-        // cout << "strides: " ;
-        // for (auto i = 0; i < strides.size(); i++) {
-        //     std::cout << strides.at(i) << ' ';
-        // }
-        // cout << "\n";
-        // // offsets
-        // cout << "offsets: " ;
-        // for (auto i = 0; i < offsets.size(); i++) {
-        //     std::cout << offsets.at(i) << ' ';
-        // }    
-        // cout << "\n";    
-
         // allocate a new array on the heap
-        values = new double[number_values];
+        // values = new double[number_values];
+        values = std::shared_ptr<double> ( new double[number_values], std::default_delete<double[]>() );
         has_values = true;
 
-        // copy the data (manually for now)
+        // copy the data over by hand
         for (int j = 0; j < number_values; j++) {
-             values[j] = ext_vals[j];
+             values.get()[j] = ext_vals[j];
         }
     }
 
     void add_risk_factor(CRiskFactors rf) {
-        // check if rf is already in the list, then do nothing
+        // check if rf is already in the list and throw an exception in this case
         for (auto i_rf : risk_factors) {
             if (rf == i_rf) {
                 throw logic_error("Adding a risk factor for the second time.");
@@ -240,15 +231,8 @@ public:
             }
             index += strides[k] * ind_temp;
         }
-        // cout << "index=" << index << "\n";
 
-        // output values
-        // for (int i = 0; i < number_values; i++) {
-        //     cout << " " << i << "=" << values[i];
-        // }
-        // cout << "\n";
-
-        return values[index];
+        return values.get()[index];
     }    
 
     virtual void get_rates(double *out_array, size_t length, vector<int *> &indices) const {
@@ -272,7 +256,7 @@ public:
                 index += strides[k] * ind_temp;
             }
 
-            out_array[j] = values[index];
+            out_array[j] = values.get()[index];
         }
     }    
 
@@ -297,22 +281,22 @@ public:
                 dims_fixed[d] = true;
             } else {
                 required_size *= shape_vec[d]; 
-                cout << "Adding rf: " << CRiskFactors_names(risk_factors[d]);
+                //cout << "Adding rf: " << CRiskFactors_names(risk_factors[d]);
                 slicedProviderPtr -> add_risk_factor(risk_factors[d]);
                 shape_vec_sliced.push_back(shape_vec[d]);
                 offsets_sliced.push_back(offsets[d]);
             }
         }
 
-        print_vec(indices, "indices");
-        print_vec(offsets_sliced, "offsets_sliced");
-        print_vec(shape_vec_sliced, "shape_vec_sliced");  
+        // print_vec<int>(indices, "indices");
+        // print_vec<int>(offsets_sliced, "offsets_sliced");
+        // print_vec<int>(shape_vec_sliced, "shape_vec_sliced");  
 
         vector<int> bounds_lower(shape_vec.size(), 0);
         vector<int> bounds_upper(shape_vec.size(), 0);
 
 
-        cout << "Required sized: " << required_size << "\n";
+        // cout << "Required sized: " << required_size << "\n";
 
         // temporary storage space
         double *new_vals = new double[required_size];
@@ -331,8 +315,8 @@ public:
             }
         }
 
-        // print_vec(bounds_lower, "bounds_lower");
-        // print_vec(bounds_upper, "bounds_upper");
+        // print_vec<int>(bounds_lower, "bounds_lower");
+        // print_vec<int>(bounds_upper, "bounds_upper");
 
         vector<int> counters = bounds_lower;
         int new_val_counter = 0;
@@ -347,7 +331,7 @@ public:
             // cout << "Adding ";
             // print_vec(counters, "counters");
 
-            new_vals[new_val_counter++] = values[index];
+            new_vals[new_val_counter++] = values.get()[index];
                 
             // increment
             incremented = false;
@@ -363,11 +347,7 @@ public:
             }
         } while (incremented);
 
-        cout << "new_vals: " ;
-        for (auto i = 0; i < required_size; i++) {
-           std::cout << new_vals[i] << ' ';
-        }    
-        cout << "\n";        
+      
 
         // special case: reduction to constant provider
         if (required_size == 1) {
@@ -379,6 +359,15 @@ public:
             }            
         }
 
+        // print_vec<int>(shape_vec_sliced, "shape_vec_sliced");
+        // print_vec<int>(offsets_sliced, "offsets_sliced");
+        // cout << "Dimension slice" << slicedProviderPtr->risk_factors.size() << "\n";
+        // cout << "new_vals: " ;
+        // for (auto i = 0; i < required_size; i++) {
+        //    std::cout << new_vals[i] << ' ';
+        // }    
+        // cout << "\n";  
+
         slicedProviderPtr -> set_values(shape_vec_sliced, offsets_sliced, new_vals);
 
         delete[] new_vals;
@@ -389,12 +378,5 @@ public:
 };
 
 
-void print_vec(vector<int> v, string name) {
-        cout << name << ": " ;
-        for (auto i = 0; i < v.size(); i++) {
-            std::cout << v.at(i) << ' ';
-        }    
-        cout << "\n";     
-}
 
 #endif

@@ -86,13 +86,15 @@ int project_record(CSeriatimRecord &rec,
     // assumption selection, value "-1" ensure they will be 
     // updated when going the first time through the loop
     int index_for_assumptions = -1;
-    double q_be, q_lg, q_pr_be, q_pr_lg, l1;
+    double q_be, q_lg, q_pr_lg, q_pr_be, l1;
     double q_be_yrly, q_lg_yrly, q_pr_be_yrly, q_pr_lg_yrly, l1_yrly;
 
     // the cash flows conditioned on survival
     // this should generate "0"-initialized arrays 
     // cf.https://stackoverflow.com/questions/5591492/array-initialization-with-0-0
     double cond_claims_lg[12*VECTOR_LENGTH_YEARS] = {};
+    
+    // not used:
     double cond_premium_lg[12*VECTOR_LENGTH_YEARS] = {};
     double cond_res_lg[12*VECTOR_LENGTH_YEARS] = {};
 
@@ -106,7 +108,8 @@ int project_record(CSeriatimRecord &rec,
             _year++;
         }
  
-        double benefit_if_survived = prod->get_benefit_if_survived(_year, _month);
+        // not used so far:
+        // double benefit_if_survived = prod->get_benefit_if_survived(_year, _month);
         double benefit_if_lapsed = prod->get_benefit_if_lapsed(_year, _month);
         double benefit_if_died = prod->get_benefit_if_died(_year, _month);
         
@@ -399,8 +402,8 @@ void valuation(double* output,
 // returns -1 if not born yet at the given date
 int get_age_at_date(int dob_year, int dob_month, int dob_day, int dt_year, int dt_month, int dt_day) {
     // check that person is born at dt already
-    if (dt_year < dob_year || dt_year == dob_year && dt_month < dob_month ||
-        dt_year == dob_year && dt_month == dob_month && dt_day < dob_day) {
+    if (dt_year < dob_year || (dt_year == dob_year && dt_month < dob_month) ||
+        (dt_year == dob_year && dt_month == dob_month && dt_day < dob_day)) {
           return -1; // use as a error signal
     }
 
@@ -413,7 +416,7 @@ int get_age_at_date(int dob_year, int dob_month, int dob_day, int dt_year, int d
                     dt_year - dob_year : dt_year - dob_year - 1;
     
     // so the last birthday before dt was at dob_year + full_years/dob_month/dob_day
-    int full_months = (dt_month < dob_month || dt_month == dob_month && dt_day < dob_day) ?
+    int full_months = (dt_month < dob_month || (dt_month == dob_month && dt_day < dob_day)) ?
                      12 + dt_month - dob_month - (dt_day < dob_day ? 1 :0)
                      : dt_month - dob_month - (dt_day < dob_day ? 1 :0);
 

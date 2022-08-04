@@ -67,7 +67,7 @@ cdef class ConstantRateProvider:
 cdef class StandardRateProvider:
 
     cdef shared_ptr[CStandardRateProvider] c_provider
-    cdef int dim
+    cdef unsigned int dim
 
     def __cinit__(self, rfs, values, np.ndarray[int, ndim=1, mode="c"] offsets):
         cdef vector[int] shapevec
@@ -145,7 +145,7 @@ cdef class StandardRateProvider:
         # extract the required risk factors from the named arguments and bring them 
         # in the expected order
         cdef vector[CRiskFactors] applicable_rfs = self.c_provider.get()[0].get_risk_factors()
-        print([q for q in applicable_rfs])
+        # print([q for q in applicable_rfs])
 
         kwargs_lv = {k.lower(): v for k, v in kwargs.items()}
         for rf in applicable_rfs:
@@ -157,7 +157,7 @@ cdef class StandardRateProvider:
             else:
                 indices.push_back(-1)
         
-        print("indices before", [i for i in indices])
+        # print("indices before", [i for i in indices])
         
         cdef shared_ptr[CStandardRateProvider] slicedCSRP = self.c_provider.get()[0].slice(indices) 
 

@@ -1,0 +1,3 @@
+Obtaining file:///home/martin/git/PyProtolinc
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'canceled'
