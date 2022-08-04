@@ -371,7 +371,7 @@ class Projector:
                 ages = np.minimum(ages_months // 12, MAX_AGE)  # age selection depends on completed years
                 years_disabled_if_at_start = months_disabled_if_at_start // 12
 
-                calendaryear = np.ones(len(ages), dtype=np.int) * self.time_axis.years[self.month_count]
+                calendaryear = np.ones(len(ages), dtype=np.int32) * self.time_axis.years[self.month_count]
 
                 # check if the risk factors have changed and refresh the assumptions in this case
                 assumption_update_required = not (np.array_equal(ages, _ages_last_month) and np.array_equal(calendaryear, _calendaryear_last_month)

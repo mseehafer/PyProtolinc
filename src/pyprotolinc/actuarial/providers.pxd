@@ -161,7 +161,7 @@ cdef class StandardRateProvider:
         
         cdef shared_ptr[CStandardRateProvider] slicedCSRP = self.c_provider.get()[0].slice(indices) 
 
-        sliced_srp = StandardRateProvider([], np.zeros(1), np.array([0], dtype=int))
+        sliced_srp = StandardRateProvider([], np.zeros(1), np.array([0], dtype=np.int32))
         sliced_srp.c_provider = slicedCSRP
         sliced_srp.dim = slicedCSRP.get()[0].get_dimension()
         return sliced_srp

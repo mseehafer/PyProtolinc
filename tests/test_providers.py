@@ -30,7 +30,7 @@ def test_dav2004r_b20(tmp_path):
     select_male = [0.670538, 0.876209, 0.876209, 0.876209, 0.876209, 1, 1]
     select_female = [0.712823, 0.79823, 0.79823, 0.79823, 0.79823, 1, 1]
     for k in range(7):
-        yearsdisabledifdisabledatstart = np.array([k, k], dtype=np.int16)
+        yearsdisabledifdisabledatstart = np.array([k, k], dtype=np.int32)
 
         rates = provider.get_rates(length=len(ages),
                                    age=ages,

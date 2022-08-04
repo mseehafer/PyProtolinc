@@ -7,7 +7,7 @@ def test_slicing2d():
     std_prvdr_2d = act.StandardRateProvider(rfs=[act.CRiskFactors.Gender, act.CRiskFactors.Age],
                                             values=np.array([[0.1, 0.2, 0.3],
                                                             [1.1, 1.2, 1.3]]),
-                                            offsets=np.zeros(2, dtype=int))
+                                            offsets=np.zeros(2, dtype=np.int32))
     # x1 = std_prvdr_2d.slice(gender=1)
     # print("OUT:", x1.get_values())
     # print("OUT:", std_prvdr_2d.slice(gender=0).get_values())

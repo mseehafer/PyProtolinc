@@ -50,7 +50,7 @@ class AssumptionsTable1D:
         # return StandardRateProvider(self.values, (self.risk_factor_class,), offsets=(self.offset,))
         return act.StandardRateProvider(rfs=[self.risk_factor_class.get_CRiskFactor()],
                                         values=self.values,
-                                        offsets=np.array([self.offset, ], dtype=int))        
+                                        offsets=np.array([self.offset, ], dtype=np.int32))        
         
 
 
@@ -88,5 +88,5 @@ class AssumptionsTable2D:
         return act.StandardRateProvider(rfs=[self.risk_factor_class_v.get_CRiskFactor(),
                                               self.risk_factor_class_h.get_CRiskFactor()],
                                          values=self.values,
-                                         offsets=np.array((self.v_offset, self.h_offset), dtype=int))
+                                         offsets=np.array((self.v_offset, self.h_offset), dtype=np.int32))
         

@@ -23,7 +23,7 @@ def test_std_2d():
         [1, 2, 3],
         [4, 5, 6]], dtype=np.float64)
 
-    offsets = np.zeros(2, dtype=int)
+    offsets = np.zeros(2, dtype=np.int32)
     # dimension mismatch should produce an exception
 
     providerS = actuarial.StandardRateProvider([actuarial.CRiskFactors.Gender, actuarial.CRiskFactors.Age], vals2D, offsets)
@@ -36,8 +36,8 @@ def test_std_2d():
     assert providerS.get_rate([1, 1]) == 5
     assert providerS.get_rate([1, 2]) == 6
 
-    gender = np.array([0, 1, 0, 1, 0, 1], dtype=int)
-    age = np.array([0, 0, 1, 1, 2, 2], dtype=int)
+    gender = np.array([0, 1, 0, 1, 0, 1], dtype=np.int32)
+    age = np.array([0, 0, 1, 1, 2, 2], dtype=np.int32)
 
     assert np.array_equal(np.array([1., 4., 2., 5., 3., 6.]), providerS.get_rates(len(gender), age=age, gender=gender))
 
@@ -45,8 +45,8 @@ def test_std_2d():
 
     # check for out of range exception
     with pytest.raises(IndexError):
-        gender2 = np.array([0, 1, 0, 1, 0, 1], dtype=int)
-        age2 = np.array([0, 0, 1, 3, 2, 2], dtype=int)
+        gender2 = np.array([0, 1, 0, 1, 0, 1], dtype=np.int32)
+        age2 = np.array([0, 0, 1, 3, 2, 2], dtype=np.int32)
 
         providerS.get_rates(len(gender2), age=age2, gender=gender2)
 
