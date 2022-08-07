@@ -3,6 +3,10 @@
 #ifndef C_RISK_FACTORS_H
 #define C_RISK_FACTORS_H
 
+
+// keep in sync with enum below
+const unsigned NUMBER_OF_RISK_FACTORS = 5;
+
 enum class CRiskFactors: int {
     Age,                                // 0
     Gender,                             // 1
@@ -10,6 +14,7 @@ enum class CRiskFactors: int {
     SmokerStatus,                       // 3
     YearsDisabledIfDisabledAtStart,     // 4
 };
+
 
 
 const char* CRiskFactors_names(CRiskFactors rf){

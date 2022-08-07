@@ -10,7 +10,7 @@
 
 using namespace std;
 
-// fwd. declaration
+// fwd. declaration - function for convenient test outputs
 template <typename T>
 void print_vec(vector<T> v, string name) {
         cout << name << ": " ;
@@ -32,16 +32,11 @@ public:
     virtual void get_rates(double *out_array, size_t length, vector<int *> &indices) const {
         throw domain_error("Method not implemented in abstract class.");
     }
-
-    // def initialize(self, **kwargs):
-    //     """ The ìnitialize hook can be used for setup actions. """
-    //     # print(self.__class__.__name__, "Init-Hook")
-    //     pass
     
     // do nothing
     virtual void add_risk_factor(CRiskFactors rf) {} 
 
-    virtual double get_rate(vector<int> &indices) {
+    virtual double get_rate(vector<int> &indices) const {
         throw domain_error("Method not implemented in abstract class.");
     }
 
@@ -71,8 +66,7 @@ public:
         }
     }
 
-    double get_rate(vector<int> &indices) {
-        // cout << "CConstantRateProvider::get_rate \n";
+    double get_rate(vector<int> &indices) const {
         return val;
     }
 
@@ -86,7 +80,6 @@ public:
 class CStandardRateProvider: public CBaseRateProvider {
 
 protected:
-    //double *values = nullptr;   // the data array
     shared_ptr<double> values;
     bool has_values = false;    // flag if the data array is set
 
@@ -101,25 +94,15 @@ public:
 
     CStandardRateProvider() {}
 
-    int get_dimension() {return dimensions;}
-    int size() {return number_values;}
+    int get_dimension() const {return dimensions;}
+    int size() const {return number_values;}
     
-    void get_values(double *ext_vals) {
+    void get_values(double *ext_vals) const {
         // copy the data (manually for now), the caller must allocate memory before
         for (int j = 0; j < number_values; j++) {
              ext_vals[j] = values.get()[j];
         }
     }
-
-    /* virtual ~CStandardRateProvider() {
-        if (has_values) {
-             // cout << "DESTCRUCTOR w/ DELETE, number_values="  << number_values << " \n";
-             delete[] values;
-        } else {
-            //cout << "DESTCRUCTOR NO DELETE, number_values="  << number_values << " \n";
-        }
-    }
-    */
 
     void set_values(vector<int> &shape_vec_in, vector<int> &offsets_in, double *ext_vals) {
         // this method allocates memory for the values, copies them and

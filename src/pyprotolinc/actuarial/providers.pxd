@@ -1,3 +1,4 @@
+from libcpp.memory cimport shared_ptr, make_shared, static_pointer_cast
 
 include "crisk_factors.pxd"
 
@@ -37,11 +38,18 @@ cdef class ConstantRateProvider:
     cdef vector[int] indexes_dummy
     cdef vector[int *] indexes_dummy2
 
+
+    # try declaring a C level method
+    cdef shared_ptr[CConstantRateProvider] get_provider(self):
+        return self.c_provider
+
     def __cinit__(self, double val=0):
         self.c_provider = make_shared[CConstantRateProvider](val)
     
     def __repr__(self):
         return self.c_provider.get()[0].to_string().decode()
+
+
 
     def get_risk_factors(self):
         cdef vector[CRiskFactors] rfs = self.c_provider.get()[0].get_risk_factors()
@@ -68,6 +76,10 @@ cdef class StandardRateProvider:
 
     cdef shared_ptr[CStandardRateProvider] c_provider
     cdef unsigned int dim
+
+    # try declaring a C level method
+    cdef shared_ptr[CStandardRateProvider] get_provider(self):
+        return self.c_provider
 
     def __cinit__(self, rfs, values, np.ndarray[int, ndim=1, mode="c"] offsets):
         cdef vector[int] shapevec
@@ -174,3 +186,52 @@ cdef class StandardRateProvider:
         self.c_provider.get()[0].get_values(&values_memview[0])
         return values_placeholder
         
+
+
+cdef extern from "assumption_sets.h":
+
+    cdef cppclass CAssumptionSet:
+        CAssumptionSet(unsigned dim)
+        void set_provider(int row, int col, const shared_ptr[CBaseRateProvider] &prvdr)
+        void get_single_rateset(const vector[int] &rf_indexes, double *rates_ext) except +
+
+
+cdef class AssumptionSet:
+
+    cdef shared_ptr[CAssumptionSet] c_assumption_set
+    cdef unsigned int dim
+
+    def __cinit__(self, int _dim):
+
+        self.c_assumption_set = make_shared[CAssumptionSet](_dim)
+        self.dim = _dim
+
+    def add_provider_std(self, int r, int c, StandardRateProvider rp):
+        cdef shared_ptr[CStandardRateProvider] srp = rp.get_provider()
+        cdef shared_ptr[CBaseRateProvider] brp
+        # srp = rp.get_provider().get()
+        brp = static_pointer_cast[CBaseRateProvider, CStandardRateProvider] (srp)
+        # brp = make_shared[CBaseRateProvider](static_cast[CBaseRateProvider, CStandardRateProvider] ())
+        # brp = static_cast[CBaseRateProvider, CStandardRateProvider] (srp)
+        self.c_assumption_set.get()[0].set_provider(r, c, brp)
+
+    def add_provider_const(self, int r, int c, ConstantRateProvider rp):
+        cdef shared_ptr[CConstantRateProvider] srp = rp.get_provider()
+        cdef shared_ptr[CBaseRateProvider] brp
+        brp = static_pointer_cast[CBaseRateProvider, CConstantRateProvider] (srp)
+        self.c_assumption_set.get()[0].set_provider(r, c, brp)
+    
+
+    def get_single_rateset(self, risk_factor_values):
+
+        assert len(risk_factor_values) == NUMBER_OF_RISK_FACTORS
+        cdef vector[int] rf_indexes
+
+        for rf in risk_factor_values:
+            rf_indexes.push_back(rf)
+
+        cdef np.ndarray[double, ndim=1, mode="c"] output = np.zeros(self.dim * self.dim)
+        cdef double[::1] output_memview = output
+        self.c_assumption_set.get()[0].get_single_rateset(rf_indexes, &output_memview[0])
+        return output
+
