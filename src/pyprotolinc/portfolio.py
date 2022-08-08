@@ -192,10 +192,8 @@ class PortfolioLoader:
             it was used with. """
         md5 = hashlib.md5()
         md5.update(portfolio_abs_path.encode('utf-8'))
-
         modification_time = os.path.getmtime(portfolio_abs_path)
         md5.update(str(modification_time).encode('utf-8'))
-
         md5.update(pickle.dumps(states_model))
         return "portfolio_dump_{}".format(md5.hexdigest())
 

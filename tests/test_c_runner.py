@@ -1,7 +1,7 @@
 
 
-import pytest
-import numpy as np
+# import pytest
+# import numpy as np
 import pyprotolinc._actuarial as actuarial
 
 
@@ -16,3 +16,4 @@ def test_c_run():
 
     # not really a test but at least a check if it fails
     actuarial.py_run_c_valuation(acs)
+    # print("ok")
