@@ -6,10 +6,13 @@
 #include <vector>
 #include <array>
 #include <iostream>
+#include <string>
+
 #include "risk_factors.h"
 #include "providers.h"
 
 using namespace std;
+
 
 typedef shared_ptr<CBaseRateProvider> PtrCBaseRateProvider;
 typedef vector<vector<PtrCBaseRateProvider>> MatPtrCBaseRateProvider;
@@ -28,7 +31,7 @@ public:
     CAssumptionSet(unsigned dim)    {
         n = dim;
         // make sure we initialize to the right size and put null in
-        for (int r = 0; r < n; r++)
+        for (unsigned r = 0; r < n; r++)
         {
             // create row vector and add to matrix
             vector<PtrCBaseRateProvider> row_vec = vector<PtrCBaseRateProvider>(n, nullptr);
@@ -36,6 +39,18 @@ public:
         }
     }
 
+    unsigned get_dimension() const {
+        return n;
+    }
+
+    string get_provider_info(int r, int c) const {
+        PtrCBaseRateProvider prvdr = providers.at(r).at(c);
+        if (!prvdr)
+          return "";
+        else
+          return prvdr -> to_string(); 
+    }
+    
     void set_provider(int row, int col, const PtrCBaseRateProvider &prvdr)
     {
         providers[row][col] = prvdr;
@@ -55,9 +70,9 @@ public:
 
         // loop over the risk factors, get the indexes relevant for them,
         // get the rates and store them in the external array
-        for (int r = 0; r < n; r++)
+        for (unsigned r = 0; r < n; r++)
         {
-            for (int c = 0; c < n; c++)
+            for (unsigned c = 0; c < n; c++)
             {
                 //PtrCBaseRateProvider &prvdr = providers[r][c];
 
@@ -73,7 +88,7 @@ public:
 
                 const vector<CRiskFactors> &rf_for_this_prvdr = providers[r][c]->get_risk_factors();
 
-                int req_size = rf_for_this_prvdr.size();
+                int req_size = (int) rf_for_this_prvdr.size();
                 this_provider_indexes.resize(req_size);
                 for (int l = 0; l < req_size; l++)
                 {

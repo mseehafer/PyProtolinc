@@ -117,7 +117,7 @@ public:
         }
 
         // dimension is determined by the number of risk factors
-        dimensions = risk_factors.size();
+        dimensions = (unsigned) risk_factors.size();
         
         // validate and copy vectors
         if (dimensions == 0) {
@@ -147,7 +147,7 @@ public:
         // calculate the strides
         strides = vector<int>(shape_vec_in.size(), 1); // initialize with 1s
         int acc_dims = 1;
-        for (int i = shape_vec_in.size() - 1; i >= 0; i--) {
+        for (int i = (int) shape_vec_in.size() - 1; i >= 0; i--) {
             strides[i] = acc_dims;
             acc_dims *= shape_vec_in[i];
         }
@@ -155,7 +155,7 @@ public:
         // determine number of elements in values
         number_values = 1;  // applies if dimension == 0
         if (dimensions > 0) {
-            for (unsigned i = 0; i < shape_vec_in.size(); i++) {
+            for (unsigned i = 0; i < (unsigned) shape_vec_in.size(); i++) {
                 number_values *= shape_vec_in[i];
             }
         }
@@ -206,7 +206,7 @@ public:
         }
 
         int index = 0;
-        for (int k = 0; k < dimensions; k++) {
+        for (unsigned k = 0; k < dimensions; k++) {
             int ind_temp = indices[k] - offsets[k];
             if (ind_temp < 0 || ind_temp >= shape_vec[k]) {
                 throw out_of_range("Indices out of Range for dimension #" + std::to_string(k) 
@@ -231,7 +231,7 @@ public:
         for (int j=0; j<length;j ++) {
 
             int index = 0;
-            for (int k = 0; k < dimensions; k++) {
+            for (unsigned k = 0; k < dimensions; k++) {
                 int ind_temp = indices[k][j] - offsets[k];
                 if (ind_temp < 0 || ind_temp >= shape_vec[k]) {
                     throw out_of_range("Indices out of Range for dimension #" + std::to_string(k) + ", max length is " + std::to_string(shape_vec[k]) + ".");
@@ -259,7 +259,7 @@ public:
         // find all fixed dimensions
         vector<bool> dims_fixed(shape_vec.size(), false);
         int required_size = 1;
-        for (int d = 0; d < dimensions; d++) {
+        for (unsigned d = 0; d < dimensions; d++) {
             if (indices[d] != -1) {
                 dims_fixed[d] = true;
             } else {
@@ -307,7 +307,7 @@ public:
         do {
             // calculate the index belonging to our current counter
             int index = 0;
-            for (int k = 0; k < dimensions; k++) {
+            for (unsigned k = 0; k < dimensions; k++) {
                 index += strides[k] * counters[k];
             }
 

@@ -235,3 +235,21 @@ cdef class AssumptionSet:
         self.c_assumption_set.get()[0].get_single_rateset(rf_indexes, &output_memview[0])
         return output
 
+cdef extern from "runner.h":
+
+    cdef cppclass CRunConfig:
+         CRunConfig(unsigned _dim, shared_ptr[CAssumptionSet] _be_assumptions) except +
+         void add_assumption_set(shared_ptr[CAssumptionSet])
+    
+    void run_c_valuation(const CRunConfig& run_config) nogil
+
+
+def py_run_c_valuation(AssumptionSet be_ass):
+
+    cdef unsigned dim = be_ass.dim
+    cdef shared_ptr[CAssumptionSet] c_assumption_set = be_ass.c_assumption_set
+    cdef shared_ptr[CRunConfig] crun_config = make_shared[CRunConfig](dim, c_assumption_set)
+
+    run_c_valuation(crun_config.get()[0])
+
+
