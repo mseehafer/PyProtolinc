@@ -1,5 +1,5 @@
 
-from libc.stdint cimport int64_t
+from libc.stdint cimport int64_t, int32_t
 from cython.operator cimport dereference
 from libcpp.memory cimport shared_ptr, make_shared, static_pointer_cast
 
@@ -23,6 +23,10 @@ cdef extern from "portfolio.h":
         CPortfolioBuilder &set_date_of_birth(int64_t *ptr_dob)
         CPortfolioBuilder &set_issue_date(int64_t *ptr_issue_date)
         CPortfolioBuilder &set_date_disablement(int64_t *ptr_disablement_date)
+        CPortfolioBuilder &set_gender(int32_t *)
+        CPortfolioBuilder &set_smoker_status(int32_t *)
+        CPortfolioBuilder &set_sum_insured(double *)
+        CPortfolioBuilder &set_reserving_rate(double *)
         shared_ptr[CPolicyPortfolio] build() except +
 
 
@@ -78,6 +82,23 @@ def build_c_portfolio(py_portfolio):
         + py_portfolio.disablement_day
     cdef int64_t[::1] dod_mv = dod
     dereference(cp_builder_ptr).set_date_disablement(&dod_mv[0])
+
+    # gender
+    cdef int32_t[::1] gender_mv = py_portfolio.gender
+    dereference(cp_builder_ptr).set_gender(&gender_mv[0])
+
+    # smoker status
+    cdef int32_t[::1] smoker_mv = py_portfolio.smokerstatus
+    dereference(cp_builder_ptr).set_smoker_status(&smoker_mv[0])
+
+    # sum_insured
+    cdef double[::1] sum_insured_mv = py_portfolio.sum_insured
+    dereference(cp_builder_ptr).set_sum_insured(&sum_insured_mv[0])
+
+    # reserving rate
+    cdef double[::1] res_rate_mv = py_portfolio.reserving_rate
+    dereference(cp_builder_ptr).set_reserving_rate(&res_rate_mv[0])
+
 
     # cp_builder
     cdef shared_ptr[CPolicyPortfolio] ptf = dereference(cp_builder_ptr).build()

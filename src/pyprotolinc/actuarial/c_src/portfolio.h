@@ -32,6 +32,11 @@ protected:
     int date_dis_month = 0;
     int date_dis_day = 0;
 
+    int gender;
+    int smoker_status;
+
+    double sum_insured;
+    double reserving_rate;
 
 public:
     int64_t get_cession_id() const { return cession_id; }
@@ -49,11 +54,20 @@ public:
     int get_date_dis_month() const { return date_dis_month; }
     int get_date_dis_day() const { return date_dis_day; }
 
+    int get_gender() const { return gender; }
+    int get_smoker_status() const { return smoker_status; }
+
+    double get_sum_insured() const { return sum_insured; }
+    double get_reserving_rate() const { return reserving_rate; }
+
     CPolicy(int64_t cession_id,
             int64_t dob_long,
             int64_t issue_date_long,
-            int64_t disablement_date_long
-    )
+            int64_t disablement_date_long,
+            int32_t gender,
+            int32_t smoker_status,
+            double sum_insured,
+            double reserving_rate)
     {
         this->cession_id = cession_id;
 
@@ -69,11 +83,17 @@ public:
 
         // disablement_date
         this->_has_disablement_date = disablement_date_long >= 0;
-        if (this->_has_disablement_date) {
+        if (this->_has_disablement_date)
+        {
             this->date_dis_year = (int)(disablement_date_long / 10000);
             this->date_dis_month = (int)((disablement_date_long % 10000) / 100);
             this->date_dis_day = (int)(disablement_date_long % 100);
         }
+
+        this->gender = gender;
+        this->smoker_status = smoker_status;
+        this->sum_insured = sum_insured;
+        this->reserving_rate = reserving_rate;
 
         //   string prodUpper = product;
         //   transform(prodUpper.begin(), prodUpper.end(), prodUpper.begin(), ::toupper);
@@ -104,10 +124,14 @@ public:
     string to_string() const
     {
         string s = "<CPolicy [";
-        //return s;
-        return  s + // to_string(issue_age) +
-               //std::to_string(", ") +        // get_product() + ", " + get_gender() +
-               "BIRTH=" + std::to_string(get_dob_year()) + "-" + std::to_string(get_dob_month()) + "-" + std::to_string(get_dob_day()) +
+        // return s;
+        return s + // to_string(issue_age) +
+                   // std::to_string(", ") +        // get_product() + ", " + get_gender() +
+               "GENDER=" + std::to_string(get_gender()) +
+               ", SMOKER_STATUS=" + std::to_string(get_smoker_status()) +
+               ", SUM_INSURED=" + std::to_string(get_sum_insured()) +
+               ", RESERVING_RATE=" + std::to_string(get_reserving_rate()) +
+               ", BIRTH=" + std::to_string(get_dob_year()) + "-" + std::to_string(get_dob_month()) + "-" + std::to_string(get_dob_day()) +
                ", ISSUE=" + std::to_string(get_issue_year()) + "-" + std::to_string(get_issue_month()) + "-" + std::to_string(get_issue_day()) +
                ", DISABLED=" + std::to_string(get_date_dis_year()) + "-" + std::to_string(get_date_dis_month()) + "-" + std::to_string(get_date_dis_day()) +
                "]>";
@@ -131,7 +155,8 @@ public:
     {
     }
 
-    size_t size() const {
+    size_t size() const
+    {
         return _num_policies;
     }
 
@@ -173,6 +198,19 @@ private:
     bool has_dis_dates = false;
     int64_t *ptr_disablement_date;
 
+    bool has_gender = false;
+    int32_t *ptr_gender;
+
+    bool has_smoker_status = false;
+    int32_t *ptr_smoker_status;
+
+    bool has_sum_insured = false;
+    double *ptr_sum_insured;
+
+    bool has_reserving_rate = false;
+    double *ptr_reserving_rate;
+
+
 public:
     CPortfolioBuilder(size_t s) : num_policies(s) {}
 
@@ -213,29 +251,80 @@ public:
         return *this;
     }
 
+    CPortfolioBuilder &set_gender(int32_t *ptr_gender)
+    {
+        this->ptr_gender = ptr_gender;
+        has_gender = true;
+        return *this;
+    }
+
+    CPortfolioBuilder &set_smoker_status(int32_t *ptr_smoker_status)
+    {
+        this->ptr_smoker_status = ptr_smoker_status;
+        has_smoker_status = true;
+        return *this;
+    }
+
+    CPortfolioBuilder &set_sum_insured(double *ptr_sum_insured)
+    {
+        this->ptr_sum_insured = ptr_sum_insured;
+        has_sum_insured = true;
+        return *this;
+    }
+
+    CPortfolioBuilder &set_reserving_rate(double *ptr_reserving_rate)
+    {
+        this->ptr_reserving_rate = ptr_reserving_rate;
+        has_reserving_rate = true;
+        return *this;
+    }
+
+
+
     /// function that creates a CPolicyPortfolio
     shared_ptr<CPolicyPortfolio> build()
     {
 
-        if (!has_portfolio_date) {
+        if (!has_portfolio_date)
+        {
             throw domain_error("Portfolio date not set.");
         }
 
-        if (!has_dis_dates) {
+        if (!has_dis_dates)
+        {
             throw domain_error("Disablement dates not set.");
         }
-        
-        if (!has_issue_dates) {
+
+        if (!has_issue_dates)
+        {
             throw domain_error("Issue dates dates not set.");
         }
 
-        if (!has_dob) {
+        if (!has_dob)
+        {
             throw domain_error("Dates of birth not set.");
         }
 
-        if (!has_cession_ids) {
-            throw domain_error("Cession IDs not set.t");
+        if (!has_cession_ids)
+        {
+            throw domain_error("Cession IDs not set.");
         }
+
+        if (!has_gender) {
+            throw domain_error("Gender is not set.");
+        }
+
+        if (!has_smoker_status) {
+            throw domain_error("SmokerStatus is not set.");
+        }
+
+        if (!has_sum_insured) {
+            throw domain_error("SumInsured is not set.");
+        } 
+
+        if (!has_reserving_rate) {
+            throw domain_error("ReservingRate is not set.");
+        } 
 
         // two name for the same object
         shared_ptr<CPolicyPortfolio> ptr_portfolio = make_shared<CPolicyPortfolio>(ptf_year, ptf_month, ptf_day);
@@ -248,7 +337,11 @@ public:
             shared_ptr<CPolicy> record = make_shared<CPolicy>(ptr_cession_id[k],
                                                               ptr_dob[k],
                                                               ptr_issue_date[k],
-                                                              ptr_disablement_date[k]);
+                                                              ptr_disablement_date[k],
+                                                              ptr_gender[k],
+                                                              ptr_smoker_status[k],
+                                                              ptr_sum_insured[k],
+                                                              ptr_reserving_rate[k]);
 
             portfolio.add(record);
         }

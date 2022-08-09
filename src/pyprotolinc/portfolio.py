@@ -81,7 +81,7 @@ class Portfolio:
         _unknown_smoker_status = set(self.smokerstatus) - {s.name for s in SmokerStatus}
         assert len(_unknown_smoker_status) == 0,\
             "Unknow smoker status: " + str(_unknown_smoker_status) + ", use one of " + str({s.name for s in SmokerStatus})
-        self.smokerstatus = self.smokerstatus.map(SmokerStatus.index_mapper()).astype(np.int32)
+        self.smokerstatus = self.smokerstatus.map(SmokerStatus.index_mapper()).values.astype(np.int32)
 
         # the number of month since the disablement date, is NaN if no disablement date is given
         self.disablement_year = df_portfolio["DATE_OF_DISABLEMENT"].dt.year.values.astype(np.int16)
