@@ -39,7 +39,11 @@ setup(
     url='https://github.com/mseehafer/PyProtolinc',
     zip_safe=False,
     include_package_data=True,
-    package_data={"pyprotolinc.actuarial": ["src/pyprotolinc/actuarial/valuation.pyx", "src/pyprotolinc/actuarial/providers.pxd"]},
+    package_data={"pyprotolinc.actuarial": [
+        "src/pyprotolinc/actuarial/valuation.pyx",
+        "src/pyprotolinc/actuarial/providers.pxd",
+        "src/pyprotolinc/actuarial/portfolio.pxd"]
+        },
     packages=find_packages(where='src'),
     package_dir={'': 'src'},
     python_requires=">=3.6",

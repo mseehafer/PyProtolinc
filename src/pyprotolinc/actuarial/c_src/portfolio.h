@@ -4,6 +4,7 @@
 #include <vector>
 #include <iostream>
 #include <string>
+#include <cstdint>
 
 // #include "risk_factors.h"
 // #include "providers.h"
@@ -31,24 +32,10 @@ protected:
     int date_dis_month = 0;
     int date_dis_day = 0;
 
-    // Product prod;
-    // Gender gender;
-
-    // int issue_age;
-
-    // int coverage_years;
-    // long long sum_insured;
-
-    // int portfolio_year;
-    // int portfolio_month;
-    // int portfolio_day;
-
-    // int age_projection_start;
 
 public:
     int64_t get_cession_id() const { return cession_id; }
 
-    int get_issue_age() const { return issue_age; }
     int get_issue_year() const { return issue_year; }
     int get_issue_month() const { return issue_month; }
     int get_issue_day() const { return issue_day; }
@@ -62,34 +49,12 @@ public:
     int get_date_dis_month() const { return date_dis_month; }
     int get_date_dis_day() const { return date_dis_day; }
 
-    //    string get_product() const {return ProductNames[prod];}
-    //     string get_gender() const {return GenderNames[gender];}
-
-    // int get_coverage_years() const {return coverage_years;}
-    // //long long get_sum_insured() const {return sum_insured;}
-    // double get_sum_insured() const {return sum_insured;}
-
-    // int get_portfolio_year() const {return portfolio_year;}
-    // int get_portfolio_month() const {return portfolio_month;}
-    // int get_portfolio_day() const {return portfolio_day;}
-
-    // int get_age_projection_start() const {return age_projection_start;}
-
-    // CPolicy() {
-    //   // leave other members uninitialized
-    //   this-> prod = ProdOther;
-    //   this -> gender = GenderUnknown;
-    // };
-
-    CPolicy(int64_t cession_id, // const string &product, int gender,
+    CPolicy(int64_t cession_id,
             int64_t dob_long,
             int64_t issue_date_long,
             int64_t disablement_date_long
-            //    int coverage_years, long long sum_insured,
-            //    long portfolio_date_long
     )
     {
-
         this->cession_id = cession_id;
 
         // issue date
@@ -134,15 +99,17 @@ public:
 
         //   age_projection_start =  get_age_at_date(dob_year, dob_month, dob_day,
         //                                           portfolio_year, portfolio_month, portfolio_day);
-    };
+    }
 
     string to_string() const
     {
-        return "<CPolicy [" + // to_string(issue_age) +
-               ", " +        // get_product() + ", " + get_gender() +
-               ", BIRTH=" + to_string(get_dob_year()) + "-" + to_string(get_dob_month()) + "-" + to_string(get_dob_day()) +
-               ", ISSUE=" + to_string(get_issue_year()) + "-" + to_string(get_issue_month()) + "-" + to_string(get_issue_day()) +
-               ", DISABLED=" + to_string(get_date_dis_year()) + "-" + to_string(get_date_dis_month()) + "-" + to_string(get_date_dis_day()) +
+        string s = "<CPolicy [";
+        //return s;
+        return  s + // to_string(issue_age) +
+               //std::to_string(", ") +        // get_product() + ", " + get_gender() +
+               "BIRTH=" + std::to_string(get_dob_year()) + "-" + std::to_string(get_dob_month()) + "-" + std::to_string(get_dob_day()) +
+               ", ISSUE=" + std::to_string(get_issue_year()) + "-" + std::to_string(get_issue_month()) + "-" + std::to_string(get_issue_day()) +
+               ", DISABLED=" + std::to_string(get_date_dis_year()) + "-" + std::to_string(get_date_dis_month()) + "-" + std::to_string(get_date_dis_day()) +
                "]>";
     }
 };
@@ -152,7 +119,7 @@ class CPolicyPortfolio
 protected:
     vector<shared_ptr<CPolicy>> _policies;
 
-    int _num_policies = 0;
+    size_t _num_policies = 0;
 
     // portfolio date
     short _ptf_year, _ptf_month, _ptf_day;
@@ -162,6 +129,10 @@ public:
                                                                        _ptf_month(ptf_month),
                                                                        _ptf_day(ptf_day)
     {
+    }
+
+    size_t size() const {
+        return _num_policies;
     }
 
     void add(shared_ptr<CPolicy> record_ptr)
@@ -187,12 +158,19 @@ class CPortfolioBuilder
 private:
     size_t num_policies = 0;
 
+    bool has_portfolio_date = false;
     short ptf_year, ptf_month, ptf_day;
 
+    bool has_cession_ids = false;
     int64_t *ptr_cession_id;
 
+    bool has_dob = false;
     int64_t *ptr_dob;
+
+    bool has_issue_dates = false;
     int64_t *ptr_issue_date;
+
+    bool has_dis_dates = false;
     int64_t *ptr_disablement_date;
 
 public:
@@ -203,55 +181,80 @@ public:
         this->ptf_year = ptf_year;
         this->ptf_month = ptf_month;
         this->ptf_day = ptf_day;
+        has_portfolio_date = true;
         return *this;
     }
 
     CPortfolioBuilder &set_cession_id(int64_t *ptr_cession_id)
     {
         this->ptr_cession_id = ptr_cession_id;
+        has_cession_ids = true;
         return *this;
     }
 
     CPortfolioBuilder &set_date_of_birth(int64_t *ptr_dob)
     {
         this->ptr_dob = ptr_dob;
+        has_dob = true;
         return *this;
     }
 
     CPortfolioBuilder &set_issue_date(int64_t *ptr_issue_date)
     {
         this->ptr_issue_date = ptr_issue_date;
+        has_issue_dates = true;
         return *this;
     }
 
     CPortfolioBuilder &set_date_disablement(int64_t *ptr_disablement_date)
     {
         this->ptr_disablement_date = ptr_disablement_date;
+        has_dis_dates = true;
         return *this;
     }
 
     /// function that creates a CPolicyPortfolio
-    shared_ptr[CPolicyPortfolio] build()
+    shared_ptr<CPolicyPortfolio> build()
     {
 
+        if (!has_portfolio_date) {
+            throw domain_error("Portfolio date not set.");
+        }
+
+        if (!has_dis_dates) {
+            throw domain_error("Disablement dates not set.");
+        }
+        
+        if (!has_issue_dates) {
+            throw domain_error("Issue dates dates not set.");
+        }
+
+        if (!has_dob) {
+            throw domain_error("Dates of birth not set.");
+        }
+
+        if (!has_cession_ids) {
+            throw domain_error("Cession IDs not set.t");
+        }
+
         // two name for the same object
-        shared_ptr[CPolicyPortfolio] ptr_portfolio = make_shared<CPolicyPortfolio>(ptf_year, ptf_month, ptf_day);
+        shared_ptr<CPolicyPortfolio> ptr_portfolio = make_shared<CPolicyPortfolio>(ptf_year, ptf_month, ptf_day);
         CPolicyPortfolio &portfolio = *ptr_portfolio;
 
         portfolio.reserve(num_policies);
 
         for (size_t k = 0; k < num_policies; k++)
         {
-            shared_ptr<CPolicy> record = make_shared<Policy>(ptr_cession_id[k],
-                                                             ptr_dob[k],
-                                                             ptr_issue_date[k],
-                                                             ptr_disablement_date[k]);
+            shared_ptr<CPolicy> record = make_shared<CPolicy>(ptr_cession_id[k],
+                                                              ptr_dob[k],
+                                                              ptr_issue_date[k],
+                                                              ptr_disablement_date[k]);
 
             portfolio.add(record);
         }
 
         return ptr_portfolio;
     }
-}
+};
 
 #endif

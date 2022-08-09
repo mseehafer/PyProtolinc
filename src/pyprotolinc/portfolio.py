@@ -36,6 +36,7 @@ class Portfolio:
         self.states_model = states_model
 
         self.num_of_records = len(df_portfolio)
+        self.cession_ids = self.df_portfolio["ID"].values.astype(np.int64)
 
         # product features, currently kept as pd.Series
         self.products = self.df_portfolio["PRODUCT"].str.upper()
@@ -58,9 +59,11 @@ class Portfolio:
         self.initial_ages = completed_months_to_date(df_portfolio["DATE_OF_BIRTH"], self.portfolio_date).astype(np.int32)
         self.years_of_birth = self.df_portfolio["DATE_OF_BIRTH"].dt.year.values.astype(np.int16)
         self.months_of_birth = self.df_portfolio["DATE_OF_BIRTH"].dt.month.values.astype(np.int16)
+        self.days_of_birth = self.df_portfolio["DATE_OF_BIRTH"].dt.day.values.astype(np.int16)
 
         self.policy_inception_yr = df_portfolio["DATE_START_OF_COVER"].dt.year.values.astype(np.int16)
         self.policy_inception_month = df_portfolio["DATE_START_OF_COVER"].dt.month.values.astype(np.int16)
+        self.policy_inception_day = df_portfolio["DATE_START_OF_COVER"].dt.day.values.astype(np.int16)
 
         # extract and map the MultiStateDisabilityStates
         _unknown_status = set(df_portfolio["CURRENT_STATUS"]) - {s.name for s in states_model}
@@ -81,6 +84,10 @@ class Portfolio:
         self.smokerstatus = self.smokerstatus.map(SmokerStatus.index_mapper()).astype(np.int32)
 
         # the number of month since the disablement date, is NaN if no disablement date is given
+        self.disablement_year = df_portfolio["DATE_OF_DISABLEMENT"].dt.year.values.astype(np.int16)
+        self.disablement_month = df_portfolio["DATE_OF_DISABLEMENT"].dt.month.values.astype(np.int16)
+        self.disablement_day = df_portfolio["DATE_OF_DISABLEMENT"].dt.day.values.astype(np.int16)
+
         self.months_disabled_at_start = completed_months_to_date(df_portfolio["DATE_OF_DISABLEMENT"], self.portfolio_date).astype(np.int)
 
         # check that when in disabled state at start then the disablement date must be at or before the portfolio_date

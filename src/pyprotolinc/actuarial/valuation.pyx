@@ -25,6 +25,8 @@ import pandas as pd
 
 include "providers.pxd"   # transitively: include "crisk_factors.pxd"
 
+include "portfolio.pxd"   # transitively: include "crisk_factors.pxd"
+
 # def provider_wrapper(int _len, double val):
 
 #     cdef np.ndarray[double, ndim=1, mode="c"] output = np.zeros(_len)
