@@ -1,3 +1,4 @@
+from multiprocessing import cpu_count
 from libcpp.memory cimport shared_ptr, make_shared, static_pointer_cast
 
 include "crisk_factors.pxd"
@@ -240,7 +241,7 @@ cdef class AssumptionSet:
 cdef extern from "runner.h":
 
     cdef cppclass CRunConfig:
-         CRunConfig(unsigned _dim, shared_ptr[CAssumptionSet] _be_assumptions) except +
+         CRunConfig(unsigned _dim, int _num_cpus, bool _use_multicore, shared_ptr[CAssumptionSet] _be_assumptions) except +
          void add_assumption_set(shared_ptr[CAssumptionSet])
     
     void run_c_valuation(const CRunConfig& run_config, shared_ptr[CPolicyPortfolio] ptr_portfolio) nogil except + 
@@ -249,9 +250,11 @@ cdef extern from "runner.h":
 def py_run_c_valuation(AssumptionSet be_ass, CPortfolioWrapper cportfolio_wapper):
 
     cdef unsigned dim = be_ass.dim
+    cdef int num_cpus = cpu_count()
+    cdef bool use_multicore = True
     cdef shared_ptr[CAssumptionSet] c_assumption_set = be_ass.c_assumption_set
-    cdef shared_ptr[CRunConfig] crun_config = make_shared[CRunConfig](dim, c_assumption_set)
-
+    cdef shared_ptr[CRunConfig] crun_config = make_shared[CRunConfig](dim, num_cpus, use_multicore, c_assumption_set)
+    
     run_c_valuation(crun_config.get()[0], cportfolio_wapper.ptf)
 
 

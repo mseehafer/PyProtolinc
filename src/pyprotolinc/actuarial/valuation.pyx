@@ -4,6 +4,7 @@ import cython
 from cython.operator cimport dereference
 import numpy as np
 
+from libcpp cimport bool
 from libcpp.string cimport string
 from libcpp.vector cimport vector
 from libcpp.memory cimport shared_ptr, make_shared, static_pointer_cast

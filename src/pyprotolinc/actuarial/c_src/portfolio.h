@@ -151,14 +151,19 @@ protected:
 
     size_t _num_policies = 0;
 
+
+public:
     // portfolio date
     short _ptf_year, _ptf_month, _ptf_day;
 
-public:
     CPolicyPortfolio(short ptf_year, short ptf_month, short ptf_day) : _ptf_year(ptf_year),
                                                                        _ptf_month(ptf_month),
                                                                        _ptf_day(ptf_day)
     {
+    }
+
+    const vector<shared_ptr<CPolicy>>& get_policies() {
+        return _policies;
     }
 
     size_t size() const
