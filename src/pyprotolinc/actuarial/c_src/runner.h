@@ -67,6 +67,76 @@ public:
 };
 
 
+
+class TimeAxis {
+
+};
+
+
+class RecordProjector {
+
+private:
+    const CRunConfig &_run_config;
+public:
+
+    RecordProjector(const CRunConfig &run_config): _run_config(run_config)
+    {}
+
+    void clear() {
+    }
+
+    void run(int runner_no, int record_count, CPolicy &policy) {
+        if (record_count % 1000 == 0)
+            cout << "Projector for runner #" << runner_no << ", record_count=" << record_count << ", ID=" << policy.get_cession_id() << endl;
+    }
+};
+
+class RunResult {
+
+public:
+    void save_record_result(const RecordProjector& projector) {
+    }
+};
+
+
+class Runner {
+private:
+
+    int _runner_no;
+
+    const shared_ptr<CPolicyPortfolio> _ptr_portfolio;
+    
+    const CRunConfig &_run_config;
+    
+    TimeAxis _ta;
+
+    RecordProjector record_projector;
+
+public:
+
+    Runner(int runner_no, shared_ptr<CPolicyPortfolio> ptr_portfolio, const CRunConfig &run_config):
+        _runner_no(runner_no), _ptr_portfolio(ptr_portfolio), _run_config (run_config), record_projector(RecordProjector(run_config))
+    {
+        //record_projector = RecordProjector(_run_config);
+    }
+    
+    void run(RunResult &result) {
+        // TODO: create time axis object from configuration
+        _ta = TimeAxis();
+        cout << "RUNNER " << _runner_no << " run()" <<  "Portfolio size is " << _ptr_portfolio->size() << ". "<<endl;
+
+        int record_count = 0;
+        for(auto record_ptr: _ptr_portfolio->get_policies()) {
+            record_count++;
+            record_projector.clear();
+            record_projector.run(_runner_no, record_count, *record_ptr);
+            result.save_record_result(record_projector);
+        }
+    }
+};
+
+
+
 /// The runner object.
 class MetaRunner
 {
@@ -118,13 +188,18 @@ public:
             }
         }
 
+
         // split portfolio in N groups
         const int NUM_GROUPS = get_num_groups();
         cout << "NUM_GROUPS=" << NUM_GROUPS << endl;
         vector<shared_ptr<CPolicyPortfolio>> subportfolios(NUM_GROUPS);
+        vector<Runner> runners = vector<Runner>();
+        vector<RunResult> results = vector<RunResult>();
         for (int j = 0; j < NUM_GROUPS; j++)
         {
             subportfolios[j] = make_shared<CPolicyPortfolio>(ptr_portfolio->_ptf_year, ptr_portfolio->_ptf_month, ptr_portfolio->_ptf_day);
+            runners.emplace_back(Runner(j+1, subportfolios[j], run_config));
+            results.emplace_back(RunResult());
         }
         int subportfolio_index = 0;
         const vector<shared_ptr<CPolicy>> &policies = ptr_portfolio->get_policies();
@@ -155,6 +230,7 @@ public:
 #pragma omp parallel for
         for (int j = 0; j < NUM_GROUPS; j++)
         {
+            runners[j].run(results[j]);
             //     // container for the local result
             //     //_valuation(output_loc[j], vecs[j], be_ass, locgaap_ass);
             //     _valuation(output_loc[j], no_cols, vecs[j], be_ass, locgaap_ass);
@@ -186,6 +262,9 @@ public:
         cout << "CRunner::run(): DONE" << endl;
     }
 };
+
+
+
 
 void run_c_valuation(const CRunConfig &run_config, shared_ptr<CPolicyPortfolio> ptr_portfolio)
 {
