@@ -9,6 +9,7 @@
 #include <iostream>
 #include "assumption_sets.h"
 #include "providers.h"
+#include "portfolio.h"
 
 using namespace std;
 
@@ -19,6 +20,8 @@ protected:
 
     // dimension of the state model
     unsigned int dimension;
+
+    
     
     // valuation assumptions
     shared_ptr<CAssumptionSet> be_assumptions;
@@ -64,8 +67,15 @@ class CRunner
 protected:
     const CRunConfig &run_config;
 
+    const shared_ptr<CPolicyPortfolio> ptr_portfolio;
+
 public:
-    CRunner (const CRunConfig &_run_config): run_config(_run_config) {}
+    CRunner (const CRunConfig &_run_config,
+             const shared_ptr<CPolicyPortfolio> _ptr_portfolio): run_config(_run_config), ptr_portfolio(_ptr_portfolio) {
+        if (!_ptr_portfolio) {
+            throw domain_error("Portfolio must not be null!");
+        }
+    }
 
     void run() {
         cout << "CRunner::run(): STARTING RUN" << endl;
@@ -73,6 +83,7 @@ public:
         unsigned dimension = be_ass.get_dimension();
         
         cout << "CRunner::run(): dimension=" << be_ass.get_dimension() << endl;
+        cout << "CRunner::run(): portfolio.size()=" << ptr_portfolio->size() << endl;
 
         for (unsigned r = 0; r < dimension; r++) {
             for (unsigned c = 0; c < dimension; c++) {
@@ -86,9 +97,9 @@ public:
 };       
 
 
-void run_c_valuation(const CRunConfig &run_config) {
+void run_c_valuation(const CRunConfig &run_config, shared_ptr<CPolicyPortfolio> ptr_portfolio) {
     cout << "run_c_valuation()" << endl;
-    CRunner runner(run_config);
+    CRunner runner(run_config, ptr_portfolio);
     runner.run();
 };
 

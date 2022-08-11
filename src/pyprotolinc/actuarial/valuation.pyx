@@ -25,7 +25,7 @@ import pandas as pd
 
 include "providers.pxd"   # transitively: include "crisk_factors.pxd"
 
-include "portfolio.pxd"   # transitively: include "crisk_factors.pxd"
+# include "portfolio.pxd"   # transitively: include "crisk_factors.pxd"
 
 # def provider_wrapper(int _len, double val):
 

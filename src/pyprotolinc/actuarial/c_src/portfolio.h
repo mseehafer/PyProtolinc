@@ -38,6 +38,8 @@ protected:
     double sum_insured;
     double reserving_rate;
 
+    string product;
+
 public:
     int64_t get_cession_id() const { return cession_id; }
 
@@ -60,6 +62,8 @@ public:
     double get_sum_insured() const { return sum_insured; }
     double get_reserving_rate() const { return reserving_rate; }
 
+    const string& get_product() const { return product;}
+
     CPolicy(int64_t cession_id,
             int64_t dob_long,
             int64_t issue_date_long,
@@ -67,7 +71,8 @@ public:
             int32_t gender,
             int32_t smoker_status,
             double sum_insured,
-            double reserving_rate)
+            double reserving_rate,
+            string product)
     {
         this->cession_id = cession_id;
 
@@ -119,15 +124,16 @@ public:
 
         //   age_projection_start =  get_age_at_date(dob_year, dob_month, dob_day,
         //                                           portfolio_year, portfolio_month, portfolio_day);
+        this->product = product;
     }
 
     string to_string() const
     {
         string s = "<CPolicy [";
-        // return s;
         return s + // to_string(issue_age) +
                    // std::to_string(", ") +        // get_product() + ", " + get_gender() +
-               "GENDER=" + std::to_string(get_gender()) +
+               "PRODUCT=" + get_product() +
+               ", GENDER=" + std::to_string(get_gender()) +
                ", SMOKER_STATUS=" + std::to_string(get_smoker_status()) +
                ", SUM_INSURED=" + std::to_string(get_sum_insured()) +
                ", RESERVING_RATE=" + std::to_string(get_reserving_rate()) +
@@ -186,6 +192,9 @@ private:
     bool has_portfolio_date = false;
     short ptf_year, ptf_month, ptf_day;
 
+    // one product for all policies
+    string product;
+
     bool has_cession_ids = false;
     int64_t *ptr_cession_id;
 
@@ -212,7 +221,7 @@ private:
 
 
 public:
-    CPortfolioBuilder(size_t s) : num_policies(s) {}
+    CPortfolioBuilder(size_t s, string _product) : num_policies(s), product(_product) {}
 
     CPortfolioBuilder &set_portfolio_date(short ptf_year, short ptf_month, short ptf_day)
     {
@@ -341,7 +350,8 @@ public:
                                                               ptr_gender[k],
                                                               ptr_smoker_status[k],
                                                               ptr_sum_insured[k],
-                                                              ptr_reserving_rate[k]);
+                                                              ptr_reserving_rate[k],
+                                                              product);
 
             portfolio.add(record);
         }

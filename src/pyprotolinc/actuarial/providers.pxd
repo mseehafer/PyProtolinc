@@ -1,6 +1,8 @@
 from libcpp.memory cimport shared_ptr, make_shared, static_pointer_cast
 
 include "crisk_factors.pxd"
+include "portfolio.pxd"
+
 
 # should go into .pxd file?
 cdef extern from "providers.h":
@@ -241,15 +243,15 @@ cdef extern from "runner.h":
          CRunConfig(unsigned _dim, shared_ptr[CAssumptionSet] _be_assumptions) except +
          void add_assumption_set(shared_ptr[CAssumptionSet])
     
-    void run_c_valuation(const CRunConfig& run_config) nogil
+    void run_c_valuation(const CRunConfig& run_config, shared_ptr[CPolicyPortfolio] ptr_portfolio) nogil except + 
 
 
-def py_run_c_valuation(AssumptionSet be_ass):
+def py_run_c_valuation(AssumptionSet be_ass, CPortfolioWrapper cportfolio_wapper):
 
     cdef unsigned dim = be_ass.dim
     cdef shared_ptr[CAssumptionSet] c_assumption_set = be_ass.c_assumption_set
     cdef shared_ptr[CRunConfig] crun_config = make_shared[CRunConfig](dim, c_assumption_set)
 
-    run_c_valuation(crun_config.get()[0])
+    run_c_valuation(crun_config.get()[0], cportfolio_wapper.ptf)
 
 

@@ -41,5 +41,5 @@ def test_portfolio_load_big():
     return c_portfolio
 
 
-# test_portfolio_load()
+test_portfolio_load()
 # test_portfolio_load_big()

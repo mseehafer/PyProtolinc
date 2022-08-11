@@ -20,7 +20,6 @@ else:
 extensions = [
     Extension("pyprotolinc._actuarial",
               ["src/pyprotolinc/actuarial/valuation.pyx",
-               # "src/pyprotolinc/actuarial/providers.pyx",
                "src/pyprotolinc/actuarial/c_src/c_valuation.cpp"],
               include_dirs=["src/pyprotolinc/actuarial/c_src",
                             numpy.get_include()],
@@ -41,6 +40,7 @@ setup(
     include_package_data=True,
     package_data={"pyprotolinc.actuarial": [
         "src/pyprotolinc/actuarial/valuation.pyx",
+        "src/pyprotolinc/actuarial/crisk_factors.pxd",
         "src/pyprotolinc/actuarial/providers.pxd",
         "src/pyprotolinc/actuarial/portfolio.pxd"]
         },
