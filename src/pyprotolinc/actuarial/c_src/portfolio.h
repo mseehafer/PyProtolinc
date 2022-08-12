@@ -144,6 +144,7 @@ public:
     }
 };
 
+
 class CPolicyPortfolio
 {
 protected:

@@ -52,8 +52,6 @@ cdef class ConstantRateProvider:
     def __repr__(self):
         return self.c_provider.get()[0].to_string().decode()
 
-
-
     def get_risk_factors(self):
         cdef vector[CRiskFactors] rfs = self.c_provider.get()[0].get_risk_factors()
         return [CRiskFactors(rf) for rf in rfs]
@@ -238,23 +236,50 @@ cdef class AssumptionSet:
         self.c_assumption_set.get()[0].get_single_rateset(rf_indexes, &output_memview[0])
         return output
 
-cdef extern from "runner.h":
+
+
+
+# should go into .pxd file?
+cdef extern from "time_axis.h":
+
+    cpdef enum class TimeStep(int):
+        MONTHLY,
+        QUARTERLY,
+        YEARLY,
+
+
+cdef extern from "run_config.h":
 
     cdef cppclass CRunConfig:
-         CRunConfig(unsigned _dim, int _num_cpus, bool _use_multicore, shared_ptr[CAssumptionSet] _be_assumptions) except +
+         CRunConfig(unsigned dim, TimeStep time_step, int years_to_simulate, int num_cpus, bool use_multicore, shared_ptr[CAssumptionSet] _be_assumptions) except +
          void add_assumption_set(shared_ptr[CAssumptionSet])
-    
-    void run_c_valuation(const CRunConfig& run_config, shared_ptr[CPolicyPortfolio] ptr_portfolio) nogil except + 
+         int get_total_timesteps() 
 
 
-def py_run_c_valuation(AssumptionSet be_ass, CPortfolioWrapper cportfolio_wapper):
+cdef extern from "runner.h":
+
+    void run_c_valuation(const CRunConfig& run_config, shared_ptr[CPolicyPortfolio] ptr_portfolio, double*) nogil except + 
+
+
+def py_run_c_valuation(AssumptionSet be_ass, CPortfolioWrapper cportfolio_wapper, TimeStep time_step):
 
     cdef unsigned dim = be_ass.dim
     cdef int num_cpus = cpu_count()
     cdef bool use_multicore = True
     cdef shared_ptr[CAssumptionSet] c_assumption_set = be_ass.c_assumption_set
-    cdef shared_ptr[CRunConfig] crun_config = make_shared[CRunConfig](dim, num_cpus, use_multicore, c_assumption_set)
-    
-    run_c_valuation(crun_config.get()[0], cportfolio_wapper.ptf)
+    cdef int years_to_simulate = 120
+    cdef shared_ptr[CRunConfig] crun_config = make_shared[CRunConfig](dim, time_step, years_to_simulate, num_cpus, use_multicore, c_assumption_set)
+
+    # reserve memory for aggregate the result
+    output_columns = ["YEAR", "QUARTER", "MONTH"]
+    # reserve output space for 120 years and 12 months each
+    cdef int no_cols = len(output_columns)
+    cdef int total_timesteps = dereference(crun_config).get_total_timesteps()
+    cdef np.ndarray[double, ndim=2, mode="c"] output = np.zeros((total_timesteps, no_cols))
+    cdef double[:, ::1] ext_res_view = output
+
+
+    run_c_valuation(crun_config.get()[0], cportfolio_wapper.ptf, &ext_res_view[0, 0])
+    return output
 
 

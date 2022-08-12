@@ -4,17 +4,19 @@
 {
     "distutils": {
         "depends": [
-            "C:\\Users\\marti\\AppData\\Local\\Temp\\pip-build-env-4dd9lg1n\\overlay\\Lib\\site-packages\\numpy\\core\\include\\numpy\\arrayobject.h",
-            "C:\\Users\\marti\\AppData\\Local\\Temp\\pip-build-env-4dd9lg1n\\overlay\\Lib\\site-packages\\numpy\\core\\include\\numpy\\arrayscalars.h",
-            "C:\\Users\\marti\\AppData\\Local\\Temp\\pip-build-env-4dd9lg1n\\overlay\\Lib\\site-packages\\numpy\\core\\include\\numpy\\ndarrayobject.h",
-            "C:\\Users\\marti\\AppData\\Local\\Temp\\pip-build-env-4dd9lg1n\\overlay\\Lib\\site-packages\\numpy\\core\\include\\numpy\\ndarraytypes.h",
-            "C:\\Users\\marti\\AppData\\Local\\Temp\\pip-build-env-4dd9lg1n\\overlay\\Lib\\site-packages\\numpy\\core\\include\\numpy\\ufuncobject.h",
+            "C:\\Users\\marti\\AppData\\Local\\Temp\\pip-build-env-duaqwqfi\\overlay\\Lib\\site-packages\\numpy\\core\\include\\numpy\\arrayobject.h",
+            "C:\\Users\\marti\\AppData\\Local\\Temp\\pip-build-env-duaqwqfi\\overlay\\Lib\\site-packages\\numpy\\core\\include\\numpy\\arrayscalars.h",
+            "C:\\Users\\marti\\AppData\\Local\\Temp\\pip-build-env-duaqwqfi\\overlay\\Lib\\site-packages\\numpy\\core\\include\\numpy\\ndarrayobject.h",
+            "C:\\Users\\marti\\AppData\\Local\\Temp\\pip-build-env-duaqwqfi\\overlay\\Lib\\site-packages\\numpy\\core\\include\\numpy\\ndarraytypes.h",
+            "C:\\Users\\marti\\AppData\\Local\\Temp\\pip-build-env-duaqwqfi\\overlay\\Lib\\site-packages\\numpy\\core\\include\\numpy\\ufuncobject.h",
             "src\\pyprotolinc\\actuarial\\c_src\\assumption_sets.h",
             "src\\pyprotolinc\\actuarial\\c_src\\c_valuation.h",
             "src\\pyprotolinc\\actuarial\\c_src\\portfolio.h",
             "src\\pyprotolinc\\actuarial\\c_src\\providers.h",
             "src\\pyprotolinc\\actuarial\\c_src\\risk_factors.h",
-            "src\\pyprotolinc\\actuarial\\c_src\\runner.h"
+            "src\\pyprotolinc\\actuarial\\c_src\\run_config.h",
+            "src\\pyprotolinc\\actuarial\\c_src\\runner.h",
+            "src\\pyprotolinc\\actuarial\\c_src\\time_axis.h"
         ],
         "extra_compile_args": [
             "/openmp",
@@ -22,7 +24,7 @@
         ],
         "include_dirs": [
             "src/pyprotolinc/actuarial/c_src",
-            "C:\\Users\\marti\\AppData\\Local\\Temp\\pip-build-env-4dd9lg1n\\overlay\\Lib\\site-packages\\numpy\\core\\include"
+            "C:\\Users\\marti\\AppData\\Local\\Temp\\pip-build-env-duaqwqfi\\overlay\\Lib\\site-packages\\numpy\\core\\include"
         ],
         "language": "c++",
         "name": "pyprotolinc._actuarial",
@@ -1098,6 +1100,8 @@ static CYTHON_INLINE float __PYX_NAN() {
 #include "portfolio.h"
 #include "providers.h"
 #include "assumption_sets.h"
+#include "time_axis.h"
+#include "run_config.h"
 #include "runner.h"
 #include "c_valuation.h"
 #include "pythread.h"
@@ -1459,7 +1463,7 @@ typedef struct {
 
 /* #### Code section: numeric_typedefs ### */
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":731
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":731
  * # in Cython to enable them only on the right systems.
  * 
  * ctypedef npy_int8       int8_t             # <<<<<<<<<<<<<<
@@ -1468,7 +1472,7 @@ typedef struct {
  */
 typedef npy_int8 __pyx_t_5numpy_int8_t;
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":732
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":732
  * 
  * ctypedef npy_int8       int8_t
  * ctypedef npy_int16      int16_t             # <<<<<<<<<<<<<<
@@ -1477,7 +1481,7 @@ typedef npy_int8 __pyx_t_5numpy_int8_t;
  */
 typedef npy_int16 __pyx_t_5numpy_int16_t;
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":733
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":733
  * ctypedef npy_int8       int8_t
  * ctypedef npy_int16      int16_t
  * ctypedef npy_int32      int32_t             # <<<<<<<<<<<<<<
@@ -1486,7 +1490,7 @@ typedef npy_int16 __pyx_t_5numpy_int16_t;
  */
 typedef npy_int32 __pyx_t_5numpy_int32_t;
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":734
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":734
  * ctypedef npy_int16      int16_t
  * ctypedef npy_int32      int32_t
  * ctypedef npy_int64      int64_t             # <<<<<<<<<<<<<<
@@ -1495,7 +1499,7 @@ typedef npy_int32 __pyx_t_5numpy_int32_t;
  */
 typedef npy_int64 __pyx_t_5numpy_int64_t;
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":738
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":738
  * #ctypedef npy_int128     int128_t
  * 
  * ctypedef npy_uint8      uint8_t             # <<<<<<<<<<<<<<
@@ -1504,7 +1508,7 @@ typedef npy_int64 __pyx_t_5numpy_int64_t;
  */
 typedef npy_uint8 __pyx_t_5numpy_uint8_t;
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":739
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":739
  * 
  * ctypedef npy_uint8      uint8_t
  * ctypedef npy_uint16     uint16_t             # <<<<<<<<<<<<<<
@@ -1513,7 +1517,7 @@ typedef npy_uint8 __pyx_t_5numpy_uint8_t;
  */
 typedef npy_uint16 __pyx_t_5numpy_uint16_t;
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":740
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":740
  * ctypedef npy_uint8      uint8_t
  * ctypedef npy_uint16     uint16_t
  * ctypedef npy_uint32     uint32_t             # <<<<<<<<<<<<<<
@@ -1522,7 +1526,7 @@ typedef npy_uint16 __pyx_t_5numpy_uint16_t;
  */
 typedef npy_uint32 __pyx_t_5numpy_uint32_t;
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":741
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":741
  * ctypedef npy_uint16     uint16_t
  * ctypedef npy_uint32     uint32_t
  * ctypedef npy_uint64     uint64_t             # <<<<<<<<<<<<<<
@@ -1531,7 +1535,7 @@ typedef npy_uint32 __pyx_t_5numpy_uint32_t;
  */
 typedef npy_uint64 __pyx_t_5numpy_uint64_t;
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":745
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":745
  * #ctypedef npy_uint128    uint128_t
  * 
  * ctypedef npy_float32    float32_t             # <<<<<<<<<<<<<<
@@ -1540,7 +1544,7 @@ typedef npy_uint64 __pyx_t_5numpy_uint64_t;
  */
 typedef npy_float32 __pyx_t_5numpy_float32_t;
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":746
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":746
  * 
  * ctypedef npy_float32    float32_t
  * ctypedef npy_float64    float64_t             # <<<<<<<<<<<<<<
@@ -1549,7 +1553,7 @@ typedef npy_float32 __pyx_t_5numpy_float32_t;
  */
 typedef npy_float64 __pyx_t_5numpy_float64_t;
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":755
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":755
  * # The int types are mapped a bit surprising --
  * # numpy.int corresponds to 'l' and numpy.long to 'q'
  * ctypedef npy_long       int_t             # <<<<<<<<<<<<<<
@@ -1558,7 +1562,7 @@ typedef npy_float64 __pyx_t_5numpy_float64_t;
  */
 typedef npy_long __pyx_t_5numpy_int_t;
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":756
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":756
  * # numpy.int corresponds to 'l' and numpy.long to 'q'
  * ctypedef npy_long       int_t
  * ctypedef npy_longlong   long_t             # <<<<<<<<<<<<<<
@@ -1567,7 +1571,7 @@ typedef npy_long __pyx_t_5numpy_int_t;
  */
 typedef npy_longlong __pyx_t_5numpy_long_t;
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":757
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":757
  * ctypedef npy_long       int_t
  * ctypedef npy_longlong   long_t
  * ctypedef npy_longlong   longlong_t             # <<<<<<<<<<<<<<
@@ -1576,7 +1580,7 @@ typedef npy_longlong __pyx_t_5numpy_long_t;
  */
 typedef npy_longlong __pyx_t_5numpy_longlong_t;
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":759
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":759
  * ctypedef npy_longlong   longlong_t
  * 
  * ctypedef npy_ulong      uint_t             # <<<<<<<<<<<<<<
@@ -1585,7 +1589,7 @@ typedef npy_longlong __pyx_t_5numpy_longlong_t;
  */
 typedef npy_ulong __pyx_t_5numpy_uint_t;
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":760
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":760
  * 
  * ctypedef npy_ulong      uint_t
  * ctypedef npy_ulonglong  ulong_t             # <<<<<<<<<<<<<<
@@ -1594,7 +1598,7 @@ typedef npy_ulong __pyx_t_5numpy_uint_t;
  */
 typedef npy_ulonglong __pyx_t_5numpy_ulong_t;
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":761
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":761
  * ctypedef npy_ulong      uint_t
  * ctypedef npy_ulonglong  ulong_t
  * ctypedef npy_ulonglong  ulonglong_t             # <<<<<<<<<<<<<<
@@ -1603,7 +1607,7 @@ typedef npy_ulonglong __pyx_t_5numpy_ulong_t;
  */
 typedef npy_ulonglong __pyx_t_5numpy_ulonglong_t;
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":763
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":763
  * ctypedef npy_ulonglong  ulonglong_t
  * 
  * ctypedef npy_intp       intp_t             # <<<<<<<<<<<<<<
@@ -1612,7 +1616,7 @@ typedef npy_ulonglong __pyx_t_5numpy_ulonglong_t;
  */
 typedef npy_intp __pyx_t_5numpy_intp_t;
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":764
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":764
  * 
  * ctypedef npy_intp       intp_t
  * ctypedef npy_uintp      uintp_t             # <<<<<<<<<<<<<<
@@ -1621,7 +1625,7 @@ typedef npy_intp __pyx_t_5numpy_intp_t;
  */
 typedef npy_uintp __pyx_t_5numpy_uintp_t;
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":766
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":766
  * ctypedef npy_uintp      uintp_t
  * 
  * ctypedef npy_double     float_t             # <<<<<<<<<<<<<<
@@ -1630,7 +1634,7 @@ typedef npy_uintp __pyx_t_5numpy_uintp_t;
  */
 typedef npy_double __pyx_t_5numpy_float_t;
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":767
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":767
  * 
  * ctypedef npy_double     float_t
  * ctypedef npy_double     double_t             # <<<<<<<<<<<<<<
@@ -1639,7 +1643,7 @@ typedef npy_double __pyx_t_5numpy_float_t;
  */
 typedef npy_double __pyx_t_5numpy_double_t;
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":768
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":768
  * ctypedef npy_double     float_t
  * ctypedef npy_double     double_t
  * ctypedef npy_longdouble longdouble_t             # <<<<<<<<<<<<<<
@@ -1688,7 +1692,7 @@ struct __pyx_MemviewEnum_obj;
 struct __pyx_memoryview_obj;
 struct __pyx_memoryviewslice_obj;
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":770
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":770
  * ctypedef npy_longdouble longdouble_t
  * 
  * ctypedef npy_cfloat      cfloat_t             # <<<<<<<<<<<<<<
@@ -1697,7 +1701,7 @@ struct __pyx_memoryviewslice_obj;
  */
 typedef npy_cfloat __pyx_t_5numpy_cfloat_t;
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":771
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":771
  * 
  * ctypedef npy_cfloat      cfloat_t
  * ctypedef npy_cdouble     cdouble_t             # <<<<<<<<<<<<<<
@@ -1706,7 +1710,7 @@ typedef npy_cfloat __pyx_t_5numpy_cfloat_t;
  */
 typedef npy_cdouble __pyx_t_5numpy_cdouble_t;
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":772
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":772
  * ctypedef npy_cfloat      cfloat_t
  * ctypedef npy_cdouble     cdouble_t
  * ctypedef npy_clongdouble clongdouble_t             # <<<<<<<<<<<<<<
@@ -1715,7 +1719,7 @@ typedef npy_cdouble __pyx_t_5numpy_cdouble_t;
  */
 typedef npy_clongdouble __pyx_t_5numpy_clongdouble_t;
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":774
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":774
  * ctypedef npy_clongdouble clongdouble_t
  * 
  * ctypedef npy_cdouble     complex_t             # <<<<<<<<<<<<<<
@@ -1754,7 +1758,7 @@ struct __pyx_obj_11pyprotolinc_10_actuarial_ConstantRateProvider {
 };
 
 
-/* "src/pyprotolinc/actuarial/providers.pxd":78
+/* "src/pyprotolinc/actuarial/providers.pxd":76
  * 
  * 
  * cdef class StandardRateProvider:             # <<<<<<<<<<<<<<
@@ -1769,7 +1773,7 @@ struct __pyx_obj_11pyprotolinc_10_actuarial_StandardRateProvider {
 };
 
 
-/* "src/pyprotolinc/actuarial/providers.pxd":202
+/* "src/pyprotolinc/actuarial/providers.pxd":200
  * 
  * 
  * cdef class AssumptionSet:             # <<<<<<<<<<<<<<
@@ -1947,7 +1951,7 @@ struct __pyx_vtabstruct_11pyprotolinc_10_actuarial_ConstantRateProvider {
 static struct __pyx_vtabstruct_11pyprotolinc_10_actuarial_ConstantRateProvider *__pyx_vtabptr_11pyprotolinc_10_actuarial_ConstantRateProvider;
 
 
-/* "src/pyprotolinc/actuarial/providers.pxd":78
+/* "src/pyprotolinc/actuarial/providers.pxd":76
  * 
  * 
  * cdef class StandardRateProvider:             # <<<<<<<<<<<<<<
@@ -3073,6 +3077,9 @@ static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_ds_int
 static CYTHON_INLINE PyObject *__pyx_memview_get_int(const char *itemp);
 static CYTHON_INLINE int __pyx_memview_set_int(const char *itemp, PyObject *obj);
 
+/* ObjectToMemviewSlice.proto */
+static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_d_dc_double(PyObject *, int writable_flag);
+
 /* RealImag.proto */
 #if CYTHON_CCOMPLEX
   #ifdef __cplusplus
@@ -3571,6 +3578,7 @@ static const char __pyx_k_zeros[] = "zeros";
 static const char __pyx_k_GENDER[] = "GENDER";
 static const char __pyx_k_Gender[] = "Gender";
 static const char __pyx_k_VOLUME[] = "VOLUME";
+static const char __pyx_k_YEARLY[] = "YEARLY";
 static const char __pyx_k_arange[] = "arange";
 static const char __pyx_k_astype[] = "astype";
 static const char __pyx_k_be_ass[] = "be_ass";
@@ -3597,7 +3605,9 @@ static const char __pyx_k_unpack[] = "unpack";
 static const char __pyx_k_update[] = "update";
 static const char __pyx_k_values[] = "values";
 static const char __pyx_k_IntEnum[] = "IntEnum";
+static const char __pyx_k_MONTHLY[] = "MONTHLY";
 static const char __pyx_k_Premium[] = "Premium";
+static const char __pyx_k_QUARTER[] = "QUARTER";
 static const char __pyx_k_columns[] = "columns";
 static const char __pyx_k_disable[] = "disable";
 static const char __pyx_k_dobs_mv[] = "dobs_mv";
@@ -3615,6 +3625,7 @@ static const char __pyx_k_product[] = "product";
 static const char __pyx_k_Ellipsis[] = "Ellipsis";
 static const char __pyx_k_EnumBase[] = "EnumBase";
 static const char __pyx_k_Sequence[] = "Sequence";
+static const char __pyx_k_TimeStep[] = "TimeStep";
 static const char __pyx_k_an_index[] = "an_index";
 static const char __pyx_k_encoding[] = "encoding";
 static const char __pyx_k_get_info[] = "get_info";
@@ -3635,6 +3646,7 @@ static const char __pyx_k_CESSIONID[] = "CESSIONID";
 static const char __pyx_k_DataFrame[] = "DataFrame";
 static const char __pyx_k_ISSUE_AGE[] = "ISSUE_AGE";
 static const char __pyx_k_Portfolio[] = "Portfolio: ()";
+static const char __pyx_k_QUARTERLY[] = "QUARTERLY";
 static const char __pyx_k_TypeError[] = "TypeError";
 static const char __pyx_k_cpu_count[] = "cpu_count";
 static const char __pyx_k_enumerate[] = "enumerate";
@@ -3647,6 +3659,7 @@ static const char __pyx_k_p_vec_lap[] = "p_vec_lap";
 static const char __pyx_k_pyx_state[] = "__pyx_state";
 static const char __pyx_k_reduce_ex[] = "__reduce_ex__";
 static const char __pyx_k_smoker_mv[] = "smoker_mv";
+static const char __pyx_k_time_step[] = "time_step";
 static const char __pyx_k_tmp_lapse[] = "tmp_lapse";
 static const char __pyx_k_IndexError[] = "IndexError";
 static const char __pyx_k_LG_Reserve[] = "LG_Reserve";
@@ -3687,6 +3700,7 @@ static const char __pyx_k_CalendarYear[] = "CalendarYear";
 static const char __pyx_k_Pyx_EnumBase[] = "__Pyx_EnumBase";
 static const char __pyx_k_SmokerStatus[] = "SmokerStatus";
 static const char __pyx_k_df_portfolio[] = "df_portfolio";
+static const char __pyx_k_ext_res_view[] = "ext_res_view";
 static const char __pyx_k_initializing[] = "_initializing";
 static const char __pyx_k_is_coroutine[] = "_is_coroutine";
 static const char __pyx_k_l_local_gaap[] = "l_local_gaap";
@@ -3744,6 +3758,7 @@ static const char __pyx_k_months_of_birth[] = "months_of_birth";
 static const char __pyx_k_multiprocessing[] = "multiprocessing";
 static const char __pyx_k_pyx_PickleError[] = "__pyx_PickleError";
 static const char __pyx_k_setstate_cython[] = "__setstate_cython__";
+static const char __pyx_k_total_timesteps[] = "total_timesteps";
 static const char __pyx_k_AGE_INFORCE_DATE[] = "AGE_INFORCE_DATE";
 static const char __pyx_k_add_provider_std[] = "add_provider_std";
 static const char __pyx_k_c_assumption_set[] = "c_assumption_set";
@@ -3758,6 +3773,7 @@ static const char __pyx_k_cportfolio_wapper[] = "cportfolio_wapper";
 static const char __pyx_k_disablement_month[] = "disablement_month";
 static const char __pyx_k_lapse_assumptions[] = "lapse_assumptions";
 static const char __pyx_k_pyx_unpickle_Enum[] = "__pyx_unpickle_Enum";
+static const char __pyx_k_years_to_simulate[] = "years_to_simulate";
 static const char __pyx_k_DATE_OF_BIRTH_LONG[] = "DATE_OF_BIRTH_LONG";
 static const char __pyx_k_Pyx_EnumBase___new[] = "__Pyx_EnumBase.__new__";
 static const char __pyx_k_Pyx_EnumBase___str[] = "__Pyx_EnumBase.__str__";
@@ -3923,6 +3939,7 @@ static PyObject *__pyx_kp_u_Invalid_shape_in_axis;
 static PyObject *__pyx_n_u_LG_Reserve;
 static PyObject *__pyx_kp_u_Lookup_indices_for_has_unexpecte;
 static PyObject *__pyx_n_u_MONTH;
+static PyObject *__pyx_n_s_MONTHLY;
 static PyObject *__pyx_n_s_MemoryError;
 static PyObject *__pyx_kp_s_MemoryView_of_r_at_0x_x;
 static PyObject *__pyx_kp_s_MemoryView_of_r_object;
@@ -3947,6 +3964,8 @@ static PyObject *__pyx_n_s_Pyx_EnumBase___repr;
 static PyObject *__pyx_n_s_Pyx_EnumBase___str;
 static PyObject *__pyx_n_s_Pyx_EnumMeta___reduce_cython;
 static PyObject *__pyx_n_s_Pyx_EnumMeta___setstate_cython;
+static PyObject *__pyx_n_u_QUARTER;
+static PyObject *__pyx_n_s_QUARTERLY;
 static PyObject *__pyx_kp_u_Required_lengh_must_be_1;
 static PyObject *__pyx_n_u_SUM_INSURED;
 static PyObject *__pyx_n_s_Sequence;
@@ -3965,6 +3984,7 @@ static PyObject *__pyx_n_s_StandardRateProvider_initialize;
 static PyObject *__pyx_n_s_StandardRateProvider_slice;
 static PyObject *__pyx_kp_s_Step_may_not_be_zero_axis_d;
 static PyObject *__pyx_n_u_SumInsured;
+static PyObject *__pyx_n_s_TimeStep;
 static PyObject *__pyx_n_s_TypeError;
 static PyObject *__pyx_n_u_UTF8;
 static PyObject *__pyx_kp_s_Unable_to_convert_item_to_object;
@@ -3974,6 +3994,7 @@ static PyObject *__pyx_n_s_ValueError;
 static PyObject *__pyx_n_s_View_MemoryView;
 static PyObject *__pyx_kp_u_Wrapper_for;
 static PyObject *__pyx_n_u_YEAR;
+static PyObject *__pyx_n_s_YEARLY;
 static PyObject *__pyx_n_s_YearsDisabledIfDisabledAtStart;
 static PyObject *__pyx_kp_u__10;
 static PyObject *__pyx_kp_u__11;
@@ -4054,6 +4075,7 @@ static PyObject *__pyx_n_s_encoding;
 static PyObject *__pyx_n_s_enum;
 static PyObject *__pyx_n_s_enumerate;
 static PyObject *__pyx_n_s_error;
+static PyObject *__pyx_n_s_ext_res_view;
 static PyObject *__pyx_n_s_flags;
 static PyObject *__pyx_n_s_flatten;
 static PyObject *__pyx_n_s_foo;
@@ -4231,9 +4253,11 @@ static PyObject *__pyx_n_s_sums_insured;
 static PyObject *__pyx_n_s_super;
 static PyObject *__pyx_n_s_sys;
 static PyObject *__pyx_n_s_test;
+static PyObject *__pyx_n_s_time_step;
 static PyObject *__pyx_n_s_tmp_lapse;
 static PyObject *__pyx_n_s_tmp_mort;
 static PyObject *__pyx_n_s_tmp_prem;
+static PyObject *__pyx_n_s_total_timesteps;
 static PyObject *__pyx_kp_s_unable_to_allocate_array_data;
 static PyObject *__pyx_kp_s_unable_to_allocate_shape_and_str;
 static PyObject *__pyx_n_s_unpack;
@@ -4250,6 +4274,7 @@ static PyObject *__pyx_n_s_values_placeholder;
 static PyObject *__pyx_n_s_version_info;
 static PyObject *__pyx_n_s_year;
 static PyObject *__pyx_n_s_years_of_birth;
+static PyObject *__pyx_n_s_years_to_simulate;
 static PyObject *__pyx_n_s_zeros;
 #endif
 /* #### Code section: decls ### */
@@ -4283,7 +4308,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_13AssumptionSet_4add_provid
 static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_13AssumptionSet_6get_single_rateset(struct __pyx_obj_11pyprotolinc_10_actuarial_AssumptionSet *__pyx_v_self, PyObject *__pyx_v_risk_factor_values); /* proto */
 static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_13AssumptionSet_8__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_11pyprotolinc_10_actuarial_AssumptionSet *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_13AssumptionSet_10__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_11pyprotolinc_10_actuarial_AssumptionSet *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
-static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_2py_run_c_valuation(CYTHON_UNUSED PyObject *__pyx_self, struct __pyx_obj_11pyprotolinc_10_actuarial_AssumptionSet *__pyx_v_be_ass, struct __pyx_obj_11pyprotolinc_10_actuarial_CPortfolioWrapper *__pyx_v_cportfolio_wapper); /* proto */
+static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_2py_run_c_valuation(CYTHON_UNUSED PyObject *__pyx_self, struct __pyx_obj_11pyprotolinc_10_actuarial_AssumptionSet *__pyx_v_be_ass, struct __pyx_obj_11pyprotolinc_10_actuarial_CPortfolioWrapper *__pyx_v_cportfolio_wapper, __PYX_ENUM_CLASS_DECL TimeStep __pyx_v_time_step); /* proto */
 static int __pyx_pf_11pyprotolinc_10_actuarial_14SeriatimRecord___cinit__(struct __pyx_obj_11pyprotolinc_10_actuarial_SeriatimRecord *__pyx_v_self, int __pyx_v_cession_id, PyObject *__pyx_v_product, PyObject *__pyx_v_gender, size_t __pyx_v_dob_date_long, size_t __pyx_v_issue_date_long, int __pyx_v_coverage_years, PY_LONG_LONG __pyx_v_sum_insured, size_t __pyx_v_portfolio_date_long); /* proto */
 static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_14SeriatimRecord_2__repr__(struct __pyx_obj_11pyprotolinc_10_actuarial_SeriatimRecord *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_14SeriatimRecord_4__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_11pyprotolinc_10_actuarial_SeriatimRecord *__pyx_v_self); /* proto */
@@ -4592,6 +4617,7 @@ typedef struct {
   PyObject *__pyx_n_u_LG_Reserve;
   PyObject *__pyx_kp_u_Lookup_indices_for_has_unexpecte;
   PyObject *__pyx_n_u_MONTH;
+  PyObject *__pyx_n_s_MONTHLY;
   PyObject *__pyx_n_s_MemoryError;
   PyObject *__pyx_kp_s_MemoryView_of_r_at_0x_x;
   PyObject *__pyx_kp_s_MemoryView_of_r_object;
@@ -4616,6 +4642,8 @@ typedef struct {
   PyObject *__pyx_n_s_Pyx_EnumBase___str;
   PyObject *__pyx_n_s_Pyx_EnumMeta___reduce_cython;
   PyObject *__pyx_n_s_Pyx_EnumMeta___setstate_cython;
+  PyObject *__pyx_n_u_QUARTER;
+  PyObject *__pyx_n_s_QUARTERLY;
   PyObject *__pyx_kp_u_Required_lengh_must_be_1;
   PyObject *__pyx_n_u_SUM_INSURED;
   PyObject *__pyx_n_s_Sequence;
@@ -4634,6 +4662,7 @@ typedef struct {
   PyObject *__pyx_n_s_StandardRateProvider_slice;
   PyObject *__pyx_kp_s_Step_may_not_be_zero_axis_d;
   PyObject *__pyx_n_u_SumInsured;
+  PyObject *__pyx_n_s_TimeStep;
   PyObject *__pyx_n_s_TypeError;
   PyObject *__pyx_n_u_UTF8;
   PyObject *__pyx_kp_s_Unable_to_convert_item_to_object;
@@ -4643,6 +4672,7 @@ typedef struct {
   PyObject *__pyx_n_s_View_MemoryView;
   PyObject *__pyx_kp_u_Wrapper_for;
   PyObject *__pyx_n_u_YEAR;
+  PyObject *__pyx_n_s_YEARLY;
   PyObject *__pyx_n_s_YearsDisabledIfDisabledAtStart;
   PyObject *__pyx_kp_u__10;
   PyObject *__pyx_kp_u__11;
@@ -4723,6 +4753,7 @@ typedef struct {
   PyObject *__pyx_n_s_enum;
   PyObject *__pyx_n_s_enumerate;
   PyObject *__pyx_n_s_error;
+  PyObject *__pyx_n_s_ext_res_view;
   PyObject *__pyx_n_s_flags;
   PyObject *__pyx_n_s_flatten;
   PyObject *__pyx_n_s_foo;
@@ -4900,9 +4931,11 @@ typedef struct {
   PyObject *__pyx_n_s_super;
   PyObject *__pyx_n_s_sys;
   PyObject *__pyx_n_s_test;
+  PyObject *__pyx_n_s_time_step;
   PyObject *__pyx_n_s_tmp_lapse;
   PyObject *__pyx_n_s_tmp_mort;
   PyObject *__pyx_n_s_tmp_prem;
+  PyObject *__pyx_n_s_total_timesteps;
   PyObject *__pyx_kp_s_unable_to_allocate_array_data;
   PyObject *__pyx_kp_s_unable_to_allocate_shape_and_str;
   PyObject *__pyx_n_s_unpack;
@@ -4919,6 +4952,7 @@ typedef struct {
   PyObject *__pyx_n_s_version_info;
   PyObject *__pyx_n_s_year;
   PyObject *__pyx_n_s_years_of_birth;
+  PyObject *__pyx_n_s_years_to_simulate;
   PyObject *__pyx_n_s_zeros;
   PyObject *__pyx_float_1_0;
   PyObject *__pyx_int_0;
@@ -5162,6 +5196,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_u_LG_Reserve);
   Py_CLEAR(clear_module_state->__pyx_kp_u_Lookup_indices_for_has_unexpecte);
   Py_CLEAR(clear_module_state->__pyx_n_u_MONTH);
+  Py_CLEAR(clear_module_state->__pyx_n_s_MONTHLY);
   Py_CLEAR(clear_module_state->__pyx_n_s_MemoryError);
   Py_CLEAR(clear_module_state->__pyx_kp_s_MemoryView_of_r_at_0x_x);
   Py_CLEAR(clear_module_state->__pyx_kp_s_MemoryView_of_r_object);
@@ -5186,6 +5221,8 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_Pyx_EnumBase___str);
   Py_CLEAR(clear_module_state->__pyx_n_s_Pyx_EnumMeta___reduce_cython);
   Py_CLEAR(clear_module_state->__pyx_n_s_Pyx_EnumMeta___setstate_cython);
+  Py_CLEAR(clear_module_state->__pyx_n_u_QUARTER);
+  Py_CLEAR(clear_module_state->__pyx_n_s_QUARTERLY);
   Py_CLEAR(clear_module_state->__pyx_kp_u_Required_lengh_must_be_1);
   Py_CLEAR(clear_module_state->__pyx_n_u_SUM_INSURED);
   Py_CLEAR(clear_module_state->__pyx_n_s_Sequence);
@@ -5204,6 +5241,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_StandardRateProvider_slice);
   Py_CLEAR(clear_module_state->__pyx_kp_s_Step_may_not_be_zero_axis_d);
   Py_CLEAR(clear_module_state->__pyx_n_u_SumInsured);
+  Py_CLEAR(clear_module_state->__pyx_n_s_TimeStep);
   Py_CLEAR(clear_module_state->__pyx_n_s_TypeError);
   Py_CLEAR(clear_module_state->__pyx_n_u_UTF8);
   Py_CLEAR(clear_module_state->__pyx_kp_s_Unable_to_convert_item_to_object);
@@ -5213,6 +5251,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_View_MemoryView);
   Py_CLEAR(clear_module_state->__pyx_kp_u_Wrapper_for);
   Py_CLEAR(clear_module_state->__pyx_n_u_YEAR);
+  Py_CLEAR(clear_module_state->__pyx_n_s_YEARLY);
   Py_CLEAR(clear_module_state->__pyx_n_s_YearsDisabledIfDisabledAtStart);
   Py_CLEAR(clear_module_state->__pyx_kp_u__10);
   Py_CLEAR(clear_module_state->__pyx_kp_u__11);
@@ -5293,6 +5332,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_enum);
   Py_CLEAR(clear_module_state->__pyx_n_s_enumerate);
   Py_CLEAR(clear_module_state->__pyx_n_s_error);
+  Py_CLEAR(clear_module_state->__pyx_n_s_ext_res_view);
   Py_CLEAR(clear_module_state->__pyx_n_s_flags);
   Py_CLEAR(clear_module_state->__pyx_n_s_flatten);
   Py_CLEAR(clear_module_state->__pyx_n_s_foo);
@@ -5470,9 +5510,11 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_super);
   Py_CLEAR(clear_module_state->__pyx_n_s_sys);
   Py_CLEAR(clear_module_state->__pyx_n_s_test);
+  Py_CLEAR(clear_module_state->__pyx_n_s_time_step);
   Py_CLEAR(clear_module_state->__pyx_n_s_tmp_lapse);
   Py_CLEAR(clear_module_state->__pyx_n_s_tmp_mort);
   Py_CLEAR(clear_module_state->__pyx_n_s_tmp_prem);
+  Py_CLEAR(clear_module_state->__pyx_n_s_total_timesteps);
   Py_CLEAR(clear_module_state->__pyx_kp_s_unable_to_allocate_array_data);
   Py_CLEAR(clear_module_state->__pyx_kp_s_unable_to_allocate_shape_and_str);
   Py_CLEAR(clear_module_state->__pyx_n_s_unpack);
@@ -5489,6 +5531,7 @@ static int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_n_s_version_info);
   Py_CLEAR(clear_module_state->__pyx_n_s_year);
   Py_CLEAR(clear_module_state->__pyx_n_s_years_of_birth);
+  Py_CLEAR(clear_module_state->__pyx_n_s_years_to_simulate);
   Py_CLEAR(clear_module_state->__pyx_n_s_zeros);
   Py_CLEAR(clear_module_state->__pyx_float_1_0);
   Py_CLEAR(clear_module_state->__pyx_int_0);
@@ -5719,6 +5762,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_u_LG_Reserve);
   Py_VISIT(traverse_module_state->__pyx_kp_u_Lookup_indices_for_has_unexpecte);
   Py_VISIT(traverse_module_state->__pyx_n_u_MONTH);
+  Py_VISIT(traverse_module_state->__pyx_n_s_MONTHLY);
   Py_VISIT(traverse_module_state->__pyx_n_s_MemoryError);
   Py_VISIT(traverse_module_state->__pyx_kp_s_MemoryView_of_r_at_0x_x);
   Py_VISIT(traverse_module_state->__pyx_kp_s_MemoryView_of_r_object);
@@ -5743,6 +5787,8 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_Pyx_EnumBase___str);
   Py_VISIT(traverse_module_state->__pyx_n_s_Pyx_EnumMeta___reduce_cython);
   Py_VISIT(traverse_module_state->__pyx_n_s_Pyx_EnumMeta___setstate_cython);
+  Py_VISIT(traverse_module_state->__pyx_n_u_QUARTER);
+  Py_VISIT(traverse_module_state->__pyx_n_s_QUARTERLY);
   Py_VISIT(traverse_module_state->__pyx_kp_u_Required_lengh_must_be_1);
   Py_VISIT(traverse_module_state->__pyx_n_u_SUM_INSURED);
   Py_VISIT(traverse_module_state->__pyx_n_s_Sequence);
@@ -5761,6 +5807,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_StandardRateProvider_slice);
   Py_VISIT(traverse_module_state->__pyx_kp_s_Step_may_not_be_zero_axis_d);
   Py_VISIT(traverse_module_state->__pyx_n_u_SumInsured);
+  Py_VISIT(traverse_module_state->__pyx_n_s_TimeStep);
   Py_VISIT(traverse_module_state->__pyx_n_s_TypeError);
   Py_VISIT(traverse_module_state->__pyx_n_u_UTF8);
   Py_VISIT(traverse_module_state->__pyx_kp_s_Unable_to_convert_item_to_object);
@@ -5770,6 +5817,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_View_MemoryView);
   Py_VISIT(traverse_module_state->__pyx_kp_u_Wrapper_for);
   Py_VISIT(traverse_module_state->__pyx_n_u_YEAR);
+  Py_VISIT(traverse_module_state->__pyx_n_s_YEARLY);
   Py_VISIT(traverse_module_state->__pyx_n_s_YearsDisabledIfDisabledAtStart);
   Py_VISIT(traverse_module_state->__pyx_kp_u__10);
   Py_VISIT(traverse_module_state->__pyx_kp_u__11);
@@ -5850,6 +5898,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_enum);
   Py_VISIT(traverse_module_state->__pyx_n_s_enumerate);
   Py_VISIT(traverse_module_state->__pyx_n_s_error);
+  Py_VISIT(traverse_module_state->__pyx_n_s_ext_res_view);
   Py_VISIT(traverse_module_state->__pyx_n_s_flags);
   Py_VISIT(traverse_module_state->__pyx_n_s_flatten);
   Py_VISIT(traverse_module_state->__pyx_n_s_foo);
@@ -6027,9 +6076,11 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_super);
   Py_VISIT(traverse_module_state->__pyx_n_s_sys);
   Py_VISIT(traverse_module_state->__pyx_n_s_test);
+  Py_VISIT(traverse_module_state->__pyx_n_s_time_step);
   Py_VISIT(traverse_module_state->__pyx_n_s_tmp_lapse);
   Py_VISIT(traverse_module_state->__pyx_n_s_tmp_mort);
   Py_VISIT(traverse_module_state->__pyx_n_s_tmp_prem);
+  Py_VISIT(traverse_module_state->__pyx_n_s_total_timesteps);
   Py_VISIT(traverse_module_state->__pyx_kp_s_unable_to_allocate_array_data);
   Py_VISIT(traverse_module_state->__pyx_kp_s_unable_to_allocate_shape_and_str);
   Py_VISIT(traverse_module_state->__pyx_n_s_unpack);
@@ -6046,6 +6097,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
   Py_VISIT(traverse_module_state->__pyx_n_s_version_info);
   Py_VISIT(traverse_module_state->__pyx_n_s_year);
   Py_VISIT(traverse_module_state->__pyx_n_s_years_of_birth);
+  Py_VISIT(traverse_module_state->__pyx_n_s_years_to_simulate);
   Py_VISIT(traverse_module_state->__pyx_n_s_zeros);
   Py_VISIT(traverse_module_state->__pyx_float_1_0);
   Py_VISIT(traverse_module_state->__pyx_int_0);
@@ -6273,6 +6325,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_u_LG_Reserve __pyx_mstate_global->__pyx_n_u_LG_Reserve
 #define __pyx_kp_u_Lookup_indices_for_has_unexpecte __pyx_mstate_global->__pyx_kp_u_Lookup_indices_for_has_unexpecte
 #define __pyx_n_u_MONTH __pyx_mstate_global->__pyx_n_u_MONTH
+#define __pyx_n_s_MONTHLY __pyx_mstate_global->__pyx_n_s_MONTHLY
 #define __pyx_n_s_MemoryError __pyx_mstate_global->__pyx_n_s_MemoryError
 #define __pyx_kp_s_MemoryView_of_r_at_0x_x __pyx_mstate_global->__pyx_kp_s_MemoryView_of_r_at_0x_x
 #define __pyx_kp_s_MemoryView_of_r_object __pyx_mstate_global->__pyx_kp_s_MemoryView_of_r_object
@@ -6297,6 +6350,8 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_Pyx_EnumBase___str __pyx_mstate_global->__pyx_n_s_Pyx_EnumBase___str
 #define __pyx_n_s_Pyx_EnumMeta___reduce_cython __pyx_mstate_global->__pyx_n_s_Pyx_EnumMeta___reduce_cython
 #define __pyx_n_s_Pyx_EnumMeta___setstate_cython __pyx_mstate_global->__pyx_n_s_Pyx_EnumMeta___setstate_cython
+#define __pyx_n_u_QUARTER __pyx_mstate_global->__pyx_n_u_QUARTER
+#define __pyx_n_s_QUARTERLY __pyx_mstate_global->__pyx_n_s_QUARTERLY
 #define __pyx_kp_u_Required_lengh_must_be_1 __pyx_mstate_global->__pyx_kp_u_Required_lengh_must_be_1
 #define __pyx_n_u_SUM_INSURED __pyx_mstate_global->__pyx_n_u_SUM_INSURED
 #define __pyx_n_s_Sequence __pyx_mstate_global->__pyx_n_s_Sequence
@@ -6315,6 +6370,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_StandardRateProvider_slice __pyx_mstate_global->__pyx_n_s_StandardRateProvider_slice
 #define __pyx_kp_s_Step_may_not_be_zero_axis_d __pyx_mstate_global->__pyx_kp_s_Step_may_not_be_zero_axis_d
 #define __pyx_n_u_SumInsured __pyx_mstate_global->__pyx_n_u_SumInsured
+#define __pyx_n_s_TimeStep __pyx_mstate_global->__pyx_n_s_TimeStep
 #define __pyx_n_s_TypeError __pyx_mstate_global->__pyx_n_s_TypeError
 #define __pyx_n_u_UTF8 __pyx_mstate_global->__pyx_n_u_UTF8
 #define __pyx_kp_s_Unable_to_convert_item_to_object __pyx_mstate_global->__pyx_kp_s_Unable_to_convert_item_to_object
@@ -6324,6 +6380,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_View_MemoryView __pyx_mstate_global->__pyx_n_s_View_MemoryView
 #define __pyx_kp_u_Wrapper_for __pyx_mstate_global->__pyx_kp_u_Wrapper_for
 #define __pyx_n_u_YEAR __pyx_mstate_global->__pyx_n_u_YEAR
+#define __pyx_n_s_YEARLY __pyx_mstate_global->__pyx_n_s_YEARLY
 #define __pyx_n_s_YearsDisabledIfDisabledAtStart __pyx_mstate_global->__pyx_n_s_YearsDisabledIfDisabledAtStart
 #define __pyx_kp_u__10 __pyx_mstate_global->__pyx_kp_u__10
 #define __pyx_kp_u__11 __pyx_mstate_global->__pyx_kp_u__11
@@ -6404,6 +6461,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_enum __pyx_mstate_global->__pyx_n_s_enum
 #define __pyx_n_s_enumerate __pyx_mstate_global->__pyx_n_s_enumerate
 #define __pyx_n_s_error __pyx_mstate_global->__pyx_n_s_error
+#define __pyx_n_s_ext_res_view __pyx_mstate_global->__pyx_n_s_ext_res_view
 #define __pyx_n_s_flags __pyx_mstate_global->__pyx_n_s_flags
 #define __pyx_n_s_flatten __pyx_mstate_global->__pyx_n_s_flatten
 #define __pyx_n_s_foo __pyx_mstate_global->__pyx_n_s_foo
@@ -6581,9 +6639,11 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_super __pyx_mstate_global->__pyx_n_s_super
 #define __pyx_n_s_sys __pyx_mstate_global->__pyx_n_s_sys
 #define __pyx_n_s_test __pyx_mstate_global->__pyx_n_s_test
+#define __pyx_n_s_time_step __pyx_mstate_global->__pyx_n_s_time_step
 #define __pyx_n_s_tmp_lapse __pyx_mstate_global->__pyx_n_s_tmp_lapse
 #define __pyx_n_s_tmp_mort __pyx_mstate_global->__pyx_n_s_tmp_mort
 #define __pyx_n_s_tmp_prem __pyx_mstate_global->__pyx_n_s_tmp_prem
+#define __pyx_n_s_total_timesteps __pyx_mstate_global->__pyx_n_s_total_timesteps
 #define __pyx_kp_s_unable_to_allocate_array_data __pyx_mstate_global->__pyx_kp_s_unable_to_allocate_array_data
 #define __pyx_kp_s_unable_to_allocate_shape_and_str __pyx_mstate_global->__pyx_kp_s_unable_to_allocate_shape_and_str
 #define __pyx_n_s_unpack __pyx_mstate_global->__pyx_n_s_unpack
@@ -6600,6 +6660,7 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #define __pyx_n_s_version_info __pyx_mstate_global->__pyx_n_s_version_info
 #define __pyx_n_s_year __pyx_mstate_global->__pyx_n_s_year
 #define __pyx_n_s_years_of_birth __pyx_mstate_global->__pyx_n_s_years_of_birth
+#define __pyx_n_s_years_to_simulate __pyx_mstate_global->__pyx_n_s_years_to_simulate
 #define __pyx_n_s_zeros __pyx_mstate_global->__pyx_n_s_zeros
 #define __pyx_float_1_0 __pyx_mstate_global->__pyx_float_1_0
 #define __pyx_int_0 __pyx_mstate_global->__pyx_int_0
@@ -8530,7 +8591,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20ConstantRateProvider_2__r
  *     def __repr__(self):
  *         return self.c_provider.get()[0].to_string().decode()             # <<<<<<<<<<<<<<
  * 
- * 
+ *     def get_risk_factors(self):
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1 = __Pyx_decode_cpp_string((__pyx_v_self->c_provider.get()[0]).to_string(), 0, PY_SSIZE_T_MAX, NULL, NULL, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 53, __pyx_L1_error)
@@ -8558,8 +8619,8 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20ConstantRateProvider_2__r
   return __pyx_r;
 }
 
-/* "src/pyprotolinc/actuarial/providers.pxd":57
- * 
+/* "src/pyprotolinc/actuarial/providers.pxd":55
+ *         return self.c_provider.get()[0].to_string().decode()
  * 
  *     def get_risk_factors(self):             # <<<<<<<<<<<<<<
  *         cdef vector[CRiskFactors] rfs = self.c_provider.get()[0].get_risk_factors()
@@ -8616,7 +8677,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20ConstantRateProvider_4get
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_risk_factors", 0);
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":58
+  /* "src/pyprotolinc/actuarial/providers.pxd":56
  * 
  *     def get_risk_factors(self):
  *         cdef vector[CRiskFactors] rfs = self.c_provider.get()[0].get_risk_factors()             # <<<<<<<<<<<<<<
@@ -8625,7 +8686,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20ConstantRateProvider_4get
  */
   __pyx_v_rfs = (__pyx_v_self->c_provider.get()[0]).get_risk_factors();
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":59
+  /* "src/pyprotolinc/actuarial/providers.pxd":57
  *     def get_risk_factors(self):
  *         cdef vector[CRiskFactors] rfs = self.c_provider.get()[0].get_risk_factors()
  *         return [CRiskFactors(rf) for rf in rfs]             # <<<<<<<<<<<<<<
@@ -8634,18 +8695,18 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20ConstantRateProvider_4get
  */
   __Pyx_XDECREF(__pyx_r);
   { /* enter inner scope */
-    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 59, __pyx_L5_error)
+    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 57, __pyx_L5_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_2 = __pyx_v_rfs.begin();
     for (;;) {
       if (!(__pyx_t_2 != __pyx_v_rfs.end())) break;
       __pyx_t_3 = *__pyx_t_2;
       ++__pyx_t_2;
-      __pyx_t_4 = [](const CRiskFactors& x){return __Pyx_PyInt_From_int((int)x);}(__pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 59, __pyx_L5_error)
+      __pyx_t_4 = [](const CRiskFactors& x){return __Pyx_PyInt_From_int((int)x);}(__pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 57, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_XDECREF_SET(__pyx_7genexpr__pyx_v_rf, __pyx_t_4);
       __pyx_t_4 = 0;
-      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_CRiskFactors); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 59, __pyx_L5_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_CRiskFactors); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 57, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_5);
       __pyx_t_6 = NULL;
       __pyx_t_7 = 0;
@@ -8663,11 +8724,11 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20ConstantRateProvider_4get
         PyObject *__pyx_callargs[2] = {__pyx_t_6, __pyx_7genexpr__pyx_v_rf};
         __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-        if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 59, __pyx_L5_error)
+        if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 57, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       }
-      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_4))) __PYX_ERR(1, 59, __pyx_L5_error)
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_4))) __PYX_ERR(1, 57, __pyx_L5_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
     __Pyx_XDECREF(__pyx_7genexpr__pyx_v_rf); __pyx_7genexpr__pyx_v_rf = 0;
@@ -8681,8 +8742,8 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20ConstantRateProvider_4get
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":57
- * 
+  /* "src/pyprotolinc/actuarial/providers.pxd":55
+ *         return self.c_provider.get()[0].to_string().decode()
  * 
  *     def get_risk_factors(self):             # <<<<<<<<<<<<<<
  *         cdef vector[CRiskFactors] rfs = self.c_provider.get()[0].get_risk_factors()
@@ -8704,7 +8765,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20ConstantRateProvider_4get
   return __pyx_r;
 }
 
-/* "src/pyprotolinc/actuarial/providers.pxd":61
+/* "src/pyprotolinc/actuarial/providers.pxd":59
  *         return [CRiskFactors(rf) for rf in rfs]
  * 
  *     def add_risk_factor(self, rf):             # <<<<<<<<<<<<<<
@@ -8758,12 +8819,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_rf)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 61, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 59, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "add_risk_factor") < 0)) __PYX_ERR(1, 61, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "add_risk_factor") < 0)) __PYX_ERR(1, 59, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -8774,7 +8835,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("add_risk_factor", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 61, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("add_risk_factor", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 59, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pyprotolinc._actuarial.ConstantRateProvider.add_risk_factor", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -8796,22 +8857,22 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20ConstantRateProvider_6add
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("add_risk_factor", 0);
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":62
+  /* "src/pyprotolinc/actuarial/providers.pxd":60
  * 
  *     def add_risk_factor(self, rf):
  *         self.c_provider.get()[0].add_risk_factor(rf)             # <<<<<<<<<<<<<<
  * 
  *     def get_rate(self, indices=None):
  */
-  __pyx_t_1 = (CRiskFactors)__Pyx_PyInt_As_int(__pyx_v_rf); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 62, __pyx_L1_error)
+  __pyx_t_1 = (CRiskFactors)__Pyx_PyInt_As_int(__pyx_v_rf); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 60, __pyx_L1_error)
   try {
     (__pyx_v_self->c_provider.get()[0]).add_risk_factor(__pyx_t_1);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 62, __pyx_L1_error)
+    __PYX_ERR(1, 60, __pyx_L1_error)
   }
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":61
+  /* "src/pyprotolinc/actuarial/providers.pxd":59
  *         return [CRiskFactors(rf) for rf in rfs]
  * 
  *     def add_risk_factor(self, rf):             # <<<<<<<<<<<<<<
@@ -8831,7 +8892,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20ConstantRateProvider_6add
   return __pyx_r;
 }
 
-/* "src/pyprotolinc/actuarial/providers.pxd":64
+/* "src/pyprotolinc/actuarial/providers.pxd":62
  *         self.c_provider.get()[0].add_risk_factor(rf)
  * 
  *     def get_rate(self, indices=None):             # <<<<<<<<<<<<<<
@@ -8888,12 +8949,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
         if (kw_args > 0) {
           PyObject* value = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_indices);
           if (value) { values[0] = value; kw_args--; }
-          else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 64, __pyx_L3_error)
+          else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 62, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_rate") < 0)) __PYX_ERR(1, 64, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_rate") < 0)) __PYX_ERR(1, 62, __pyx_L3_error)
       }
     } else {
       switch (__pyx_nargs) {
@@ -8907,7 +8968,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_rate", 0, 0, 1, __pyx_nargs); __PYX_ERR(1, 64, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_rate", 0, 0, 1, __pyx_nargs); __PYX_ERR(1, 62, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pyprotolinc._actuarial.ConstantRateProvider.get_rate", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -8930,7 +8991,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20ConstantRateProvider_8get
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_rate", 0);
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":65
+  /* "src/pyprotolinc/actuarial/providers.pxd":63
  * 
  *     def get_rate(self, indices=None):
  *         return self.c_provider.get()[0].get_rate(self.indexes_dummy)             # <<<<<<<<<<<<<<
@@ -8942,15 +9003,15 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20ConstantRateProvider_8get
     __pyx_t_1 = (__pyx_v_self->c_provider.get()[0]).get_rate(__pyx_v_self->indexes_dummy);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 65, __pyx_L1_error)
+    __PYX_ERR(1, 63, __pyx_L1_error)
   }
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 65, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 63, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":64
+  /* "src/pyprotolinc/actuarial/providers.pxd":62
  *         self.c_provider.get()[0].add_risk_factor(rf)
  * 
  *     def get_rate(self, indices=None):             # <<<<<<<<<<<<<<
@@ -8969,7 +9030,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20ConstantRateProvider_8get
   return __pyx_r;
 }
 
-/* "src/pyprotolinc/actuarial/providers.pxd":67
+/* "src/pyprotolinc/actuarial/providers.pxd":65
  *         return self.c_provider.get()[0].get_rate(self.indexes_dummy)
  * 
  *     def get_rates(self, int _len, **kwargs):             # <<<<<<<<<<<<<<
@@ -9026,23 +9087,23 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_len)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 67, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 65, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, __pyx_v_kwargs, values + 0, kwd_pos_args, "get_rates") < 0)) __PYX_ERR(1, 67, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, __pyx_v_kwargs, values + 0, kwd_pos_args, "get_rates") < 0)) __PYX_ERR(1, 65, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
     }
-    __pyx_v__len = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v__len == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 67, __pyx_L3_error)
+    __pyx_v__len = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v__len == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 65, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_rates", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 67, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_rates", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 65, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_DECREF(__pyx_v_kwargs); __pyx_v_kwargs = 0;
   __Pyx_AddTraceback("pyprotolinc._actuarial.ConstantRateProvider.get_rates", __pyx_clineno, __pyx_lineno, __pyx_filename);
@@ -9082,7 +9143,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20ConstantRateProvider_10ge
   __pyx_pybuffernd_output.data = NULL;
   __pyx_pybuffernd_output.rcbuffer = &__pyx_pybuffer_output;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":68
+  /* "src/pyprotolinc/actuarial/providers.pxd":66
  * 
  *     def get_rates(self, int _len, **kwargs):
  *         assert _len >= 1, "Required lengh must be >= 1"             # <<<<<<<<<<<<<<
@@ -9094,26 +9155,26 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20ConstantRateProvider_10ge
     __pyx_t_1 = (__pyx_v__len >= 1);
     if (unlikely(!__pyx_t_1)) {
       __Pyx_Raise(__pyx_builtin_AssertionError, __pyx_kp_u_Required_lengh_must_be_1, 0, 0);
-      __PYX_ERR(1, 68, __pyx_L1_error)
+      __PYX_ERR(1, 66, __pyx_L1_error)
     }
   }
   #else
-  if ((1)); else __PYX_ERR(1, 68, __pyx_L1_error)
+  if ((1)); else __PYX_ERR(1, 66, __pyx_L1_error)
   #endif
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":69
+  /* "src/pyprotolinc/actuarial/providers.pxd":67
  *     def get_rates(self, int _len, **kwargs):
  *         assert _len >= 1, "Required lengh must be >= 1"
  *         cdef np.ndarray[double, ndim=1, mode="c"] output = np.zeros(_len)             # <<<<<<<<<<<<<<
  *         cdef double[::1] output_memview = output
  *         self.c_provider.get()[0].get_rates(&output_memview[0], output_memview.shape[0], self.indexes_dummy2)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 69, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 67, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 69, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 67, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v__len); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 69, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v__len); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 67, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_5 = NULL;
   __pyx_t_6 = 0;
@@ -9132,17 +9193,17 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20ConstantRateProvider_10ge
     __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 69, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 67, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
-  if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 69, __pyx_L1_error)
+  if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 67, __pyx_L1_error)
   __pyx_t_7 = ((PyArrayObject *)__pyx_t_2);
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_output.rcbuffer->pybuffer, (PyObject*)__pyx_t_7, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_C_CONTIGUOUS, 1, 0, __pyx_stack) == -1)) {
       __pyx_v_output = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_output.rcbuffer->pybuffer.buf = NULL;
-      __PYX_ERR(1, 69, __pyx_L1_error)
+      __PYX_ERR(1, 67, __pyx_L1_error)
     } else {__pyx_pybuffernd_output.diminfo[0].strides = __pyx_pybuffernd_output.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_output.diminfo[0].shape = __pyx_pybuffernd_output.rcbuffer->pybuffer.shape[0];
     }
   }
@@ -9150,19 +9211,19 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20ConstantRateProvider_10ge
   __pyx_v_output = ((PyArrayObject *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":70
+  /* "src/pyprotolinc/actuarial/providers.pxd":68
  *         assert _len >= 1, "Required lengh must be >= 1"
  *         cdef np.ndarray[double, ndim=1, mode="c"] output = np.zeros(_len)
  *         cdef double[::1] output_memview = output             # <<<<<<<<<<<<<<
  *         self.c_provider.get()[0].get_rates(&output_memview[0], output_memview.shape[0], self.indexes_dummy2)
  *         return output
  */
-  __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(((PyObject *)__pyx_v_output), PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(1, 70, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(((PyObject *)__pyx_v_output), PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(1, 68, __pyx_L1_error)
   __pyx_v_output_memview = __pyx_t_8;
   __pyx_t_8.memview = NULL;
   __pyx_t_8.data = NULL;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":71
+  /* "src/pyprotolinc/actuarial/providers.pxd":69
  *         cdef np.ndarray[double, ndim=1, mode="c"] output = np.zeros(_len)
  *         cdef double[::1] output_memview = output
  *         self.c_provider.get()[0].get_rates(&output_memview[0], output_memview.shape[0], self.indexes_dummy2)             # <<<<<<<<<<<<<<
@@ -9177,16 +9238,16 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20ConstantRateProvider_10ge
   } else if (unlikely(__pyx_t_9 >= __pyx_v_output_memview.shape[0])) __pyx_t_6 = 0;
   if (unlikely(__pyx_t_6 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_6);
-    __PYX_ERR(1, 71, __pyx_L1_error)
+    __PYX_ERR(1, 69, __pyx_L1_error)
   }
   try {
     (__pyx_v_self->c_provider.get()[0]).get_rates((&(*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_output_memview.data) + __pyx_t_9)) )))), (__pyx_v_output_memview.shape[0]), __pyx_v_self->indexes_dummy2);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 71, __pyx_L1_error)
+    __PYX_ERR(1, 69, __pyx_L1_error)
   }
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":72
+  /* "src/pyprotolinc/actuarial/providers.pxd":70
  *         cdef double[::1] output_memview = output
  *         self.c_provider.get()[0].get_rates(&output_memview[0], output_memview.shape[0], self.indexes_dummy2)
  *         return output             # <<<<<<<<<<<<<<
@@ -9198,7 +9259,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20ConstantRateProvider_10ge
   __pyx_r = ((PyObject *)__pyx_v_output);
   goto __pyx_L0;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":67
+  /* "src/pyprotolinc/actuarial/providers.pxd":65
  *         return self.c_provider.get()[0].get_rate(self.indexes_dummy)
  * 
  *     def get_rates(self, int _len, **kwargs):             # <<<<<<<<<<<<<<
@@ -9232,7 +9293,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20ConstantRateProvider_10ge
   return __pyx_r;
 }
 
-/* "src/pyprotolinc/actuarial/providers.pxd":74
+/* "src/pyprotolinc/actuarial/providers.pxd":72
  *         return output
  * 
  *     def initialize(self, **kwargs):             # <<<<<<<<<<<<<<
@@ -9472,7 +9533,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20ConstantRateProvider_16__
   return __pyx_r;
 }
 
-/* "src/pyprotolinc/actuarial/providers.pxd":84
+/* "src/pyprotolinc/actuarial/providers.pxd":82
  * 
  *     # try declaring a C level method
  *     cdef shared_ptr[CStandardRateProvider] get_provider(self):             # <<<<<<<<<<<<<<
@@ -9485,7 +9546,7 @@ static std::shared_ptr<CStandardRateProvider>  __pyx_f_11pyprotolinc_10_actuaria
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("get_provider", 0);
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":85
+  /* "src/pyprotolinc/actuarial/providers.pxd":83
  *     # try declaring a C level method
  *     cdef shared_ptr[CStandardRateProvider] get_provider(self):
  *         return self.c_provider             # <<<<<<<<<<<<<<
@@ -9495,7 +9556,7 @@ static std::shared_ptr<CStandardRateProvider>  __pyx_f_11pyprotolinc_10_actuaria
   __pyx_r = __pyx_v_self->c_provider;
   goto __pyx_L0;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":84
+  /* "src/pyprotolinc/actuarial/providers.pxd":82
  * 
  *     # try declaring a C level method
  *     cdef shared_ptr[CStandardRateProvider] get_provider(self):             # <<<<<<<<<<<<<<
@@ -9509,7 +9570,7 @@ static std::shared_ptr<CStandardRateProvider>  __pyx_f_11pyprotolinc_10_actuaria
   return __pyx_r;
 }
 
-/* "src/pyprotolinc/actuarial/providers.pxd":87
+/* "src/pyprotolinc/actuarial/providers.pxd":85
  *         return self.c_provider
  * 
  *     def __cinit__(self, rfs, values, np.ndarray[int, ndim=1, mode="c"] offsets):             # <<<<<<<<<<<<<<
@@ -9554,26 +9615,26 @@ static int __pyx_pw_11pyprotolinc_10_actuarial_20StandardRateProvider_1__cinit__
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_VARARGS(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_rfs)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 87, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 85, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
         if (likely((values[1] = __Pyx_GetKwValue_VARARGS(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_values)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 87, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 85, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 3, 3, 1); __PYX_ERR(1, 87, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 3, 3, 1); __PYX_ERR(1, 85, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_GetKwValue_VARARGS(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_offsets)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 87, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 85, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 3, 3, 2); __PYX_ERR(1, 87, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 3, 3, 2); __PYX_ERR(1, 85, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "__cinit__") < 0)) __PYX_ERR(1, 87, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "__cinit__") < 0)) __PYX_ERR(1, 85, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 3)) {
       goto __pyx_L5_argtuple_error;
@@ -9588,13 +9649,13 @@ static int __pyx_pw_11pyprotolinc_10_actuarial_20StandardRateProvider_1__cinit__
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 3, 3, __pyx_nargs); __PYX_ERR(1, 87, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 3, 3, __pyx_nargs); __PYX_ERR(1, 85, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pyprotolinc._actuarial.StandardRateProvider.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_offsets), __pyx_ptype_5numpy_ndarray, 1, "offsets", 0))) __PYX_ERR(1, 87, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_offsets), __pyx_ptype_5numpy_ndarray, 1, "offsets", 0))) __PYX_ERR(1, 85, __pyx_L1_error)
   __pyx_r = __pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider___cinit__(((struct __pyx_obj_11pyprotolinc_10_actuarial_StandardRateProvider *)__pyx_v_self), __pyx_v_rfs, __pyx_v_values, __pyx_v_offsets);
 
   /* function exit code */
@@ -9644,79 +9705,79 @@ static int __pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider___cinit__(
   __pyx_pybuffernd_offsets.rcbuffer = &__pyx_pybuffer_offsets;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_offsets.rcbuffer->pybuffer, (PyObject*)__pyx_v_offsets, &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_C_CONTIGUOUS, 1, 0, __pyx_stack) == -1)) __PYX_ERR(1, 87, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_offsets.rcbuffer->pybuffer, (PyObject*)__pyx_v_offsets, &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_C_CONTIGUOUS, 1, 0, __pyx_stack) == -1)) __PYX_ERR(1, 85, __pyx_L1_error)
   }
   __pyx_pybuffernd_offsets.diminfo[0].strides = __pyx_pybuffernd_offsets.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_offsets.diminfo[0].shape = __pyx_pybuffernd_offsets.rcbuffer->pybuffer.shape[0];
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":94
+  /* "src/pyprotolinc/actuarial/providers.pxd":92
  *         # assert `values` is np.ndarray of type double
  * 
  *         if not (values.ndim == 1 or values.ndim == 2 or values.ndim == 3 or values.ndim == 4):             # <<<<<<<<<<<<<<
  *             raise ValueError("Dimension of data should be 1, 2, 3 or 4.")
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_values, __pyx_n_s_ndim); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 94, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_values, __pyx_n_s_ndim); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 92, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyInt_EqObjC(__pyx_t_2, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 94, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_EqObjC(__pyx_t_2, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 92, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely((__pyx_t_4 < 0))) __PYX_ERR(1, 94, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely((__pyx_t_4 < 0))) __PYX_ERR(1, 92, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (!__pyx_t_4) {
   } else {
     __pyx_t_1 = __pyx_t_4;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_values, __pyx_n_s_ndim); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 94, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_values, __pyx_n_s_ndim); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 92, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyInt_EqObjC(__pyx_t_3, __pyx_int_2, 2, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 94, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_EqObjC(__pyx_t_3, __pyx_int_2, 2, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 92, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_4 < 0))) __PYX_ERR(1, 94, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_4 < 0))) __PYX_ERR(1, 92, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   if (!__pyx_t_4) {
   } else {
     __pyx_t_1 = __pyx_t_4;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_values, __pyx_n_s_ndim); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 94, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_values, __pyx_n_s_ndim); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 92, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyInt_EqObjC(__pyx_t_2, __pyx_int_3, 3, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 94, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_EqObjC(__pyx_t_2, __pyx_int_3, 3, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 92, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely((__pyx_t_4 < 0))) __PYX_ERR(1, 94, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely((__pyx_t_4 < 0))) __PYX_ERR(1, 92, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (!__pyx_t_4) {
   } else {
     __pyx_t_1 = __pyx_t_4;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_values, __pyx_n_s_ndim); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 94, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_values, __pyx_n_s_ndim); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 92, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyInt_EqObjC(__pyx_t_3, __pyx_int_4, 4, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 94, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_EqObjC(__pyx_t_3, __pyx_int_4, 4, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 92, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_4 < 0))) __PYX_ERR(1, 94, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_4 < 0))) __PYX_ERR(1, 92, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_1 = __pyx_t_4;
   __pyx_L4_bool_binop_done:;
   __pyx_t_4 = (!__pyx_t_1);
   if (unlikely(__pyx_t_4)) {
 
-    /* "src/pyprotolinc/actuarial/providers.pxd":95
+    /* "src/pyprotolinc/actuarial/providers.pxd":93
  * 
  *         if not (values.ndim == 1 or values.ndim == 2 or values.ndim == 3 or values.ndim == 4):
  *             raise ValueError("Dimension of data should be 1, 2, 3 or 4.")             # <<<<<<<<<<<<<<
  * 
  *         # check that offsets length matches dim!!
  */
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 95, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 93, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(1, 95, __pyx_L1_error)
+    __PYX_ERR(1, 93, __pyx_L1_error)
 
-    /* "src/pyprotolinc/actuarial/providers.pxd":94
+    /* "src/pyprotolinc/actuarial/providers.pxd":92
  *         # assert `values` is np.ndarray of type double
  * 
  *         if not (values.ndim == 1 or values.ndim == 2 or values.ndim == 3 or values.ndim == 4):             # <<<<<<<<<<<<<<
@@ -9725,7 +9786,7 @@ static int __pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider___cinit__(
  */
   }
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":98
+  /* "src/pyprotolinc/actuarial/providers.pxd":96
  * 
  *         # check that offsets length matches dim!!
  *         assert offsets.shape[0] == values.ndim, "Number of `offsets` must match dimension of lookup array."             # <<<<<<<<<<<<<<
@@ -9734,38 +9795,38 @@ static int __pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider___cinit__(
  */
   #ifndef CYTHON_WITHOUT_ASSERTIONS
   if (unlikely(!Py_OptimizeFlag)) {
-    __pyx_t_2 = PyInt_FromSsize_t((__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_offsets))[0])); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 98, __pyx_L1_error)
+    __pyx_t_2 = PyInt_FromSsize_t((__pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_offsets))[0])); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 96, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_values, __pyx_n_s_ndim); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 98, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_values, __pyx_n_s_ndim); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 96, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_5 = PyObject_RichCompare(__pyx_t_2, __pyx_t_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 98, __pyx_L1_error)
+    __pyx_t_5 = PyObject_RichCompare(__pyx_t_2, __pyx_t_3, Py_EQ); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 96, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely((__pyx_t_4 < 0))) __PYX_ERR(1, 98, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely((__pyx_t_4 < 0))) __PYX_ERR(1, 96, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     if (unlikely(!__pyx_t_4)) {
       __Pyx_Raise(__pyx_builtin_AssertionError, __pyx_kp_u_Number_of_offsets_must_match_dim, 0, 0);
-      __PYX_ERR(1, 98, __pyx_L1_error)
+      __PYX_ERR(1, 96, __pyx_L1_error)
     }
   }
   #else
-  if ((1)); else __PYX_ERR(1, 98, __pyx_L1_error)
+  if ((1)); else __PYX_ERR(1, 96, __pyx_L1_error)
   #endif
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":100
+  /* "src/pyprotolinc/actuarial/providers.pxd":98
  *         assert offsets.shape[0] == values.ndim, "Number of `offsets` must match dimension of lookup array."
  * 
  *         self.dim = values.ndim             # <<<<<<<<<<<<<<
  *         self.c_provider = make_shared[CStandardRateProvider]()
  * 
  */
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_values, __pyx_n_s_ndim); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 100, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_values, __pyx_n_s_ndim); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 98, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyInt_As_unsigned_int(__pyx_t_5); if (unlikely((__pyx_t_6 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(1, 100, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_As_unsigned_int(__pyx_t_5); if (unlikely((__pyx_t_6 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(1, 98, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_self->dim = __pyx_t_6;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":101
+  /* "src/pyprotolinc/actuarial/providers.pxd":99
  * 
  *         self.dim = values.ndim
  *         self.c_provider = make_shared[CStandardRateProvider]()             # <<<<<<<<<<<<<<
@@ -9776,11 +9837,11 @@ static int __pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider___cinit__(
     __pyx_t_7 = std::make_shared<CStandardRateProvider>();
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 101, __pyx_L1_error)
+    __PYX_ERR(1, 99, __pyx_L1_error)
   }
   __pyx_v_self->c_provider = __PYX_STD_MOVE_IF_SUPPORTED(__pyx_t_7);
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":103
+  /* "src/pyprotolinc/actuarial/providers.pxd":101
  *         self.c_provider = make_shared[CStandardRateProvider]()
  * 
  *         for rf in rfs:             # <<<<<<<<<<<<<<
@@ -9791,26 +9852,26 @@ static int __pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider___cinit__(
     __pyx_t_5 = __pyx_v_rfs; __Pyx_INCREF(__pyx_t_5); __pyx_t_8 = 0;
     __pyx_t_9 = NULL;
   } else {
-    __pyx_t_8 = -1; __pyx_t_5 = PyObject_GetIter(__pyx_v_rfs); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 103, __pyx_L1_error)
+    __pyx_t_8 = -1; __pyx_t_5 = PyObject_GetIter(__pyx_v_rfs); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 101, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_9 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_5); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 103, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_5); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 101, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_9)) {
       if (likely(PyList_CheckExact(__pyx_t_5))) {
         if (__pyx_t_8 >= PyList_GET_SIZE(__pyx_t_5)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_8); __Pyx_INCREF(__pyx_t_3); __pyx_t_8++; if (unlikely((0 < 0))) __PYX_ERR(1, 103, __pyx_L1_error)
+        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_8); __Pyx_INCREF(__pyx_t_3); __pyx_t_8++; if (unlikely((0 < 0))) __PYX_ERR(1, 101, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_5, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 103, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_5, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 101, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       } else {
         if (__pyx_t_8 >= PyTuple_GET_SIZE(__pyx_t_5)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_5, __pyx_t_8); __Pyx_INCREF(__pyx_t_3); __pyx_t_8++; if (unlikely((0 < 0))) __PYX_ERR(1, 103, __pyx_L1_error)
+        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_5, __pyx_t_8); __Pyx_INCREF(__pyx_t_3); __pyx_t_8++; if (unlikely((0 < 0))) __PYX_ERR(1, 101, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_5, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 103, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_5, __pyx_t_8); __pyx_t_8++; if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 101, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       }
@@ -9820,7 +9881,7 @@ static int __pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider___cinit__(
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(1, 103, __pyx_L1_error)
+          else __PYX_ERR(1, 101, __pyx_L1_error)
         }
         break;
       }
@@ -9829,14 +9890,14 @@ static int __pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider___cinit__(
     __Pyx_XDECREF_SET(__pyx_v_rf, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "src/pyprotolinc/actuarial/providers.pxd":104
+    /* "src/pyprotolinc/actuarial/providers.pxd":102
  * 
  *         for rf in rfs:
  *             self.c_provider.get()[0].add_risk_factor(CRiskFactors(rf))             # <<<<<<<<<<<<<<
  * 
  *         # construct the shape vec
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_CRiskFactors); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 104, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_CRiskFactors); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 102, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_t_10 = NULL;
     __pyx_t_11 = 0;
@@ -9854,20 +9915,20 @@ static int __pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider___cinit__(
       PyObject *__pyx_callargs[2] = {__pyx_t_10, __pyx_v_rf};
       __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_11, 1+__pyx_t_11);
       __Pyx_XDECREF(__pyx_t_10); __pyx_t_10 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 104, __pyx_L1_error)
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 102, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     }
-    __pyx_t_12 = (CRiskFactors)__Pyx_PyInt_As_int(__pyx_t_3); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 104, __pyx_L1_error)
+    __pyx_t_12 = (CRiskFactors)__Pyx_PyInt_As_int(__pyx_t_3); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 102, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     try {
       (__pyx_v_self->c_provider.get()[0]).add_risk_factor(__pyx_t_12);
     } catch(...) {
       __Pyx_CppExn2PyErr();
-      __PYX_ERR(1, 104, __pyx_L1_error)
+      __PYX_ERR(1, 102, __pyx_L1_error)
     }
 
-    /* "src/pyprotolinc/actuarial/providers.pxd":103
+    /* "src/pyprotolinc/actuarial/providers.pxd":101
  *         self.c_provider = make_shared[CStandardRateProvider]()
  * 
  *         for rf in rfs:             # <<<<<<<<<<<<<<
@@ -9877,38 +9938,38 @@ static int __pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider___cinit__(
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":107
+  /* "src/pyprotolinc/actuarial/providers.pxd":105
  * 
  *         # construct the shape vec
  *         for k in range(values.ndim):             # <<<<<<<<<<<<<<
  *             d = values.shape[k]
  *             shapevec.push_back(d)
  */
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_values, __pyx_n_s_ndim); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 107, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_values, __pyx_n_s_ndim); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 105, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_13 = __Pyx_PyInt_As_long(__pyx_t_5); if (unlikely((__pyx_t_13 == (long)-1) && PyErr_Occurred())) __PYX_ERR(1, 107, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyInt_As_long(__pyx_t_5); if (unlikely((__pyx_t_13 == (long)-1) && PyErr_Occurred())) __PYX_ERR(1, 105, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_14 = __pyx_t_13;
   for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_14; __pyx_t_11+=1) {
     __pyx_v_k = __pyx_t_11;
 
-    /* "src/pyprotolinc/actuarial/providers.pxd":108
+    /* "src/pyprotolinc/actuarial/providers.pxd":106
  *         # construct the shape vec
  *         for k in range(values.ndim):
  *             d = values.shape[k]             # <<<<<<<<<<<<<<
  *             shapevec.push_back(d)
  * 
  */
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_values, __pyx_n_s_shape); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 108, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_values, __pyx_n_s_shape); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 106, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_5, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 108, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_5, __pyx_v_k, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 106, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_15 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_15 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 108, __pyx_L1_error)
+    __pyx_t_15 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_15 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 106, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_v_d = __pyx_t_15;
 
-    /* "src/pyprotolinc/actuarial/providers.pxd":109
+    /* "src/pyprotolinc/actuarial/providers.pxd":107
  *         for k in range(values.ndim):
  *             d = values.shape[k]
  *             shapevec.push_back(d)             # <<<<<<<<<<<<<<
@@ -9919,18 +9980,18 @@ static int __pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider___cinit__(
       __pyx_v_shapevec.push_back(__pyx_v_d);
     } catch(...) {
       __Pyx_CppExn2PyErr();
-      __PYX_ERR(1, 109, __pyx_L1_error)
+      __PYX_ERR(1, 107, __pyx_L1_error)
     }
   }
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":111
+  /* "src/pyprotolinc/actuarial/providers.pxd":109
  *             shapevec.push_back(d)
  * 
  *         cdef double[::1] values_memview = values.flatten()             # <<<<<<<<<<<<<<
  *         self.c_provider.get()[0].set_values(shapevec, offsets, &values_memview[0])
  * 
  */
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_values, __pyx_n_s_flatten); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 111, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_values, __pyx_n_s_flatten); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 109, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_2 = NULL;
   __pyx_t_11 = 0;
@@ -9948,24 +10009,24 @@ static int __pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider___cinit__(
     PyObject *__pyx_callargs[1] = {__pyx_t_2, };
     __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_11, 0+__pyx_t_11);
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 111, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 109, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
-  __pyx_t_16 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(__pyx_t_3, PyBUF_WRITABLE); if (unlikely(!__pyx_t_16.memview)) __PYX_ERR(1, 111, __pyx_L1_error)
+  __pyx_t_16 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(__pyx_t_3, PyBUF_WRITABLE); if (unlikely(!__pyx_t_16.memview)) __PYX_ERR(1, 109, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_values_memview = __pyx_t_16;
   __pyx_t_16.memview = NULL;
   __pyx_t_16.data = NULL;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":112
+  /* "src/pyprotolinc/actuarial/providers.pxd":110
  * 
  *         cdef double[::1] values_memview = values.flatten()
  *         self.c_provider.get()[0].set_values(shapevec, offsets, &values_memview[0])             # <<<<<<<<<<<<<<
  * 
  *     def get_risk_factors(self):
  */
-  __pyx_t_17 = __pyx_convert_vector_from_py_int(((PyObject *)__pyx_v_offsets)); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 112, __pyx_L1_error)
+  __pyx_t_17 = __pyx_convert_vector_from_py_int(((PyObject *)__pyx_v_offsets)); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 110, __pyx_L1_error)
   __pyx_t_18 = 0;
   __pyx_t_11 = -1;
   if (__pyx_t_18 < 0) {
@@ -9974,16 +10035,16 @@ static int __pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider___cinit__(
   } else if (unlikely(__pyx_t_18 >= __pyx_v_values_memview.shape[0])) __pyx_t_11 = 0;
   if (unlikely(__pyx_t_11 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_11);
-    __PYX_ERR(1, 112, __pyx_L1_error)
+    __PYX_ERR(1, 110, __pyx_L1_error)
   }
   try {
     (__pyx_v_self->c_provider.get()[0]).set_values(__pyx_v_shapevec, __pyx_t_17, (&(*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_values_memview.data) + __pyx_t_18)) )))));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 112, __pyx_L1_error)
+    __PYX_ERR(1, 110, __pyx_L1_error)
   }
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":87
+  /* "src/pyprotolinc/actuarial/providers.pxd":85
  *         return self.c_provider
  * 
  *     def __cinit__(self, rfs, values, np.ndarray[int, ndim=1, mode="c"] offsets):             # <<<<<<<<<<<<<<
@@ -10018,7 +10079,7 @@ static int __pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider___cinit__(
   return __pyx_r;
 }
 
-/* "src/pyprotolinc/actuarial/providers.pxd":114
+/* "src/pyprotolinc/actuarial/providers.pxd":112
  *         self.c_provider.get()[0].set_values(shapevec, offsets, &values_memview[0])
  * 
  *     def get_risk_factors(self):             # <<<<<<<<<<<<<<
@@ -10076,7 +10137,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_2get
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_risk_factors", 0);
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":115
+  /* "src/pyprotolinc/actuarial/providers.pxd":113
  * 
  *     def get_risk_factors(self):
  *         cdef vector[CRiskFactors] rfs = self.c_provider.get()[0].get_risk_factors()             # <<<<<<<<<<<<<<
@@ -10085,7 +10146,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_2get
  */
   __pyx_v_rfs = (__pyx_v_self->c_provider.get()[0]).get_risk_factors();
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":116
+  /* "src/pyprotolinc/actuarial/providers.pxd":114
  *     def get_risk_factors(self):
  *         cdef vector[CRiskFactors] rfs = self.c_provider.get()[0].get_risk_factors()
  *         return [CRiskFactors(rf) for rf in rfs]             # <<<<<<<<<<<<<<
@@ -10094,18 +10155,18 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_2get
  */
   __Pyx_XDECREF(__pyx_r);
   { /* enter inner scope */
-    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 116, __pyx_L5_error)
+    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 114, __pyx_L5_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_2 = __pyx_v_rfs.begin();
     for (;;) {
       if (!(__pyx_t_2 != __pyx_v_rfs.end())) break;
       __pyx_t_3 = *__pyx_t_2;
       ++__pyx_t_2;
-      __pyx_t_4 = [](const CRiskFactors& x){return __Pyx_PyInt_From_int((int)x);}(__pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 116, __pyx_L5_error)
+      __pyx_t_4 = [](const CRiskFactors& x){return __Pyx_PyInt_From_int((int)x);}(__pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 114, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_XDECREF_SET(__pyx_8genexpr1__pyx_v_rf, __pyx_t_4);
       __pyx_t_4 = 0;
-      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_CRiskFactors); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 116, __pyx_L5_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_CRiskFactors); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 114, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_5);
       __pyx_t_6 = NULL;
       __pyx_t_7 = 0;
@@ -10123,11 +10184,11 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_2get
         PyObject *__pyx_callargs[2] = {__pyx_t_6, __pyx_8genexpr1__pyx_v_rf};
         __pyx_t_4 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_7, 1+__pyx_t_7);
         __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-        if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 116, __pyx_L5_error)
+        if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 114, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       }
-      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_4))) __PYX_ERR(1, 116, __pyx_L5_error)
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_4))) __PYX_ERR(1, 114, __pyx_L5_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
     __Pyx_XDECREF(__pyx_8genexpr1__pyx_v_rf); __pyx_8genexpr1__pyx_v_rf = 0;
@@ -10141,7 +10202,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_2get
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":114
+  /* "src/pyprotolinc/actuarial/providers.pxd":112
  *         self.c_provider.get()[0].set_values(shapevec, offsets, &values_memview[0])
  * 
  *     def get_risk_factors(self):             # <<<<<<<<<<<<<<
@@ -10164,7 +10225,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_2get
   return __pyx_r;
 }
 
-/* "src/pyprotolinc/actuarial/providers.pxd":118
+/* "src/pyprotolinc/actuarial/providers.pxd":116
  *         return [CRiskFactors(rf) for rf in rfs]
  * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
@@ -10197,7 +10258,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_4__r
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__repr__", 0);
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":119
+  /* "src/pyprotolinc/actuarial/providers.pxd":117
  * 
  *     def __repr__(self):
  *         return self.c_provider.get()[0].to_string().decode(encoding='ASCII')             # <<<<<<<<<<<<<<
@@ -10205,15 +10266,15 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_4__r
  *     def get_rates(self, int _len, **kwargs):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_convert_PyBytes_string_to_py_std__in_string((__pyx_v_self->c_provider.get()[0]).to_string()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 119, __pyx_L1_error)
+  __pyx_t_1 = __pyx_convert_PyBytes_string_to_py_std__in_string((__pyx_v_self->c_provider.get()[0]).to_string()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 117, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_decode); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 119, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_decode); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 117, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 119, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 117, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_encoding, __pyx_n_u_ASCII) < 0) __PYX_ERR(1, 119, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 119, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_encoding, __pyx_n_u_ASCII) < 0) __PYX_ERR(1, 117, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_empty_tuple, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 117, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -10221,7 +10282,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_4__r
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":118
+  /* "src/pyprotolinc/actuarial/providers.pxd":116
  *         return [CRiskFactors(rf) for rf in rfs]
  * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
@@ -10242,7 +10303,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_4__r
   return __pyx_r;
 }
 
-/* "src/pyprotolinc/actuarial/providers.pxd":121
+/* "src/pyprotolinc/actuarial/providers.pxd":119
  *         return self.c_provider.get()[0].to_string().decode(encoding='ASCII')
  * 
  *     def get_rates(self, int _len, **kwargs):             # <<<<<<<<<<<<<<
@@ -10299,23 +10360,23 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_len)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 121, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 119, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, __pyx_v_kwargs, values + 0, kwd_pos_args, "get_rates") < 0)) __PYX_ERR(1, 121, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, __pyx_v_kwargs, values + 0, kwd_pos_args, "get_rates") < 0)) __PYX_ERR(1, 119, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
     }
-    __pyx_v__len = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v__len == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 121, __pyx_L3_error)
+    __pyx_v__len = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v__len == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 119, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_rates", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 121, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_rates", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 119, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_DECREF(__pyx_v_kwargs); __pyx_v_kwargs = 0;
   __Pyx_AddTraceback("pyprotolinc._actuarial.StandardRateProvider.get_rates", __pyx_clineno, __pyx_lineno, __pyx_filename);
@@ -10370,7 +10431,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_6get
   __pyx_pybuffernd_output.data = NULL;
   __pyx_pybuffernd_output.rcbuffer = &__pyx_pybuffer_output;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":122
+  /* "src/pyprotolinc/actuarial/providers.pxd":120
  * 
  *     def get_rates(self, int _len, **kwargs):
  *         assert _len >= 1, "Required lengh must be >= 1"             # <<<<<<<<<<<<<<
@@ -10382,26 +10443,26 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_6get
     __pyx_t_1 = (__pyx_v__len >= 1);
     if (unlikely(!__pyx_t_1)) {
       __Pyx_Raise(__pyx_builtin_AssertionError, __pyx_kp_u_Required_lengh_must_be_1, 0, 0);
-      __PYX_ERR(1, 122, __pyx_L1_error)
+      __PYX_ERR(1, 120, __pyx_L1_error)
     }
   }
   #else
-  if ((1)); else __PYX_ERR(1, 122, __pyx_L1_error)
+  if ((1)); else __PYX_ERR(1, 120, __pyx_L1_error)
   #endif
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":124
+  /* "src/pyprotolinc/actuarial/providers.pxd":122
  *         assert _len >= 1, "Required lengh must be >= 1"
  * 
  *         cdef np.ndarray[double, ndim=1, mode="c"] output = np.zeros(_len)             # <<<<<<<<<<<<<<
  *         cdef double[::1] output_memview = output
  * 
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 124, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 122, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 124, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 122, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v__len); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 124, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v__len); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 122, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_5 = NULL;
   __pyx_t_6 = 0;
@@ -10420,17 +10481,17 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_6get
     __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 124, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 122, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
-  if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 124, __pyx_L1_error)
+  if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 122, __pyx_L1_error)
   __pyx_t_7 = ((PyArrayObject *)__pyx_t_2);
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_output.rcbuffer->pybuffer, (PyObject*)__pyx_t_7, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_C_CONTIGUOUS, 1, 0, __pyx_stack) == -1)) {
       __pyx_v_output = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_output.rcbuffer->pybuffer.buf = NULL;
-      __PYX_ERR(1, 124, __pyx_L1_error)
+      __PYX_ERR(1, 122, __pyx_L1_error)
     } else {__pyx_pybuffernd_output.diminfo[0].strides = __pyx_pybuffernd_output.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_output.diminfo[0].shape = __pyx_pybuffernd_output.rcbuffer->pybuffer.shape[0];
     }
   }
@@ -10438,19 +10499,19 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_6get
   __pyx_v_output = ((PyArrayObject *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":125
+  /* "src/pyprotolinc/actuarial/providers.pxd":123
  * 
  *         cdef np.ndarray[double, ndim=1, mode="c"] output = np.zeros(_len)
  *         cdef double[::1] output_memview = output             # <<<<<<<<<<<<<<
  * 
  *         cdef vector[int*] indices
  */
-  __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(((PyObject *)__pyx_v_output), PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(1, 125, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(((PyObject *)__pyx_v_output), PyBUF_WRITABLE); if (unlikely(!__pyx_t_8.memview)) __PYX_ERR(1, 123, __pyx_L1_error)
   __pyx_v_output_memview = __pyx_t_8;
   __pyx_t_8.memview = NULL;
   __pyx_t_8.data = NULL;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":131
+  /* "src/pyprotolinc/actuarial/providers.pxd":129
  *         cdef CRiskFactors rf
  * 
  *         cdef vector[CRiskFactors] applicable_rfs = self.c_provider.get()[0].get_risk_factors()             # <<<<<<<<<<<<<<
@@ -10459,7 +10520,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_6get
  */
   __pyx_v_applicable_rfs = (__pyx_v_self->c_provider.get()[0]).get_risk_factors();
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":135
+  /* "src/pyprotolinc/actuarial/providers.pxd":133
  *         # extract the required risk factors from the named arguments and bring them
  *         # in the expected order
  *         kwargs_lv = {k.lower(): v for k, v in kwargs.items()}             # <<<<<<<<<<<<<<
@@ -10467,10 +10528,10 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_6get
  *             pyrf = CRiskFactors(rf)
  */
   { /* enter inner scope */
-    __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 135, __pyx_L5_error)
+    __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 133, __pyx_L5_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_t_9 = 0;
-    __pyx_t_3 = __Pyx_dict_iterator(__pyx_v_kwargs, 1, __pyx_n_s_items, (&__pyx_t_10), (&__pyx_t_6)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 135, __pyx_L5_error)
+    __pyx_t_3 = __Pyx_dict_iterator(__pyx_v_kwargs, 1, __pyx_n_s_items, (&__pyx_t_10), (&__pyx_t_6)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 133, __pyx_L5_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_XDECREF(__pyx_t_4);
     __pyx_t_4 = __pyx_t_3;
@@ -10478,14 +10539,14 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_6get
     while (1) {
       __pyx_t_11 = __Pyx_dict_iter_next(__pyx_t_4, __pyx_t_10, &__pyx_t_9, &__pyx_t_3, &__pyx_t_5, NULL, __pyx_t_6);
       if (unlikely(__pyx_t_11 == 0)) break;
-      if (unlikely(__pyx_t_11 == -1)) __PYX_ERR(1, 135, __pyx_L5_error)
+      if (unlikely(__pyx_t_11 == -1)) __PYX_ERR(1, 133, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_XDECREF_SET(__pyx_8genexpr2__pyx_v_k, __pyx_t_3);
       __pyx_t_3 = 0;
       __Pyx_XDECREF_SET(__pyx_8genexpr2__pyx_v_v, __pyx_t_5);
       __pyx_t_5 = 0;
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_8genexpr2__pyx_v_k, __pyx_n_s_lower); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 135, __pyx_L5_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_8genexpr2__pyx_v_k, __pyx_n_s_lower); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 133, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_12 = NULL;
       __pyx_t_11 = 0;
@@ -10503,11 +10564,11 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_6get
         PyObject *__pyx_callargs[1] = {__pyx_t_12, };
         __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_11, 0+__pyx_t_11);
         __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
-        if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 135, __pyx_L5_error)
+        if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 133, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       }
-      if (unlikely(PyDict_SetItem(__pyx_t_2, (PyObject*)__pyx_t_5, (PyObject*)__pyx_8genexpr2__pyx_v_v))) __PYX_ERR(1, 135, __pyx_L5_error)
+      if (unlikely(PyDict_SetItem(__pyx_t_2, (PyObject*)__pyx_t_5, (PyObject*)__pyx_8genexpr2__pyx_v_v))) __PYX_ERR(1, 133, __pyx_L5_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -10523,7 +10584,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_6get
   __pyx_v_kwargs_lv = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":136
+  /* "src/pyprotolinc/actuarial/providers.pxd":134
  *         # in the expected order
  *         kwargs_lv = {k.lower(): v for k, v in kwargs.items()}
  *         for rf in applicable_rfs:             # <<<<<<<<<<<<<<
@@ -10537,16 +10598,16 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_6get
     ++__pyx_t_13;
     __pyx_v_rf = __pyx_t_14;
 
-    /* "src/pyprotolinc/actuarial/providers.pxd":137
+    /* "src/pyprotolinc/actuarial/providers.pxd":135
  *         kwargs_lv = {k.lower(): v for k, v in kwargs.items()}
  *         for rf in applicable_rfs:
  *             pyrf = CRiskFactors(rf)             # <<<<<<<<<<<<<<
  *             an_index_vector = kwargs_lv[pyrf.name.lower()]      # TODO: add test that checks what happens when this lookup fails
  *             assert len(an_index_vector) == _len, "Lookup indices for {} has unexpected length!".format(pyrf.name)
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_CRiskFactors); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 137, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_CRiskFactors); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 135, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = [](const CRiskFactors& x){return __Pyx_PyInt_From_int((int)x);}(__pyx_v_rf); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 137, __pyx_L1_error)
+    __pyx_t_5 = [](const CRiskFactors& x){return __Pyx_PyInt_From_int((int)x);}(__pyx_v_rf); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 135, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_3 = NULL;
     __pyx_t_6 = 0;
@@ -10565,23 +10626,23 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_6get
       __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 137, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 135, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
     __Pyx_XDECREF_SET(__pyx_v_pyrf, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "src/pyprotolinc/actuarial/providers.pxd":138
+    /* "src/pyprotolinc/actuarial/providers.pxd":136
  *         for rf in applicable_rfs:
  *             pyrf = CRiskFactors(rf)
  *             an_index_vector = kwargs_lv[pyrf.name.lower()]      # TODO: add test that checks what happens when this lookup fails             # <<<<<<<<<<<<<<
  *             assert len(an_index_vector) == _len, "Lookup indices for {} has unexpected length!".format(pyrf.name)
  *             indices.push_back(&an_index_vector[0])
  */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_pyrf, __pyx_n_s_name); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 138, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_pyrf, __pyx_n_s_name); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 136, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_lower); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 138, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_lower); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 136, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_4 = NULL;
@@ -10600,21 +10661,21 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_6get
       PyObject *__pyx_callargs[1] = {__pyx_t_4, };
       __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+1-__pyx_t_6, 0+__pyx_t_6);
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 138, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 136, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
-    __pyx_t_5 = __Pyx_PyDict_GetItem(__pyx_v_kwargs_lv, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 138, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyDict_GetItem(__pyx_v_kwargs_lv, __pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 136, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_15 = __Pyx_PyObject_to_MemoryviewSlice_ds_int(__pyx_t_5, PyBUF_WRITABLE); if (unlikely(!__pyx_t_15.memview)) __PYX_ERR(1, 138, __pyx_L1_error)
+    __pyx_t_15 = __Pyx_PyObject_to_MemoryviewSlice_ds_int(__pyx_t_5, PyBUF_WRITABLE); if (unlikely(!__pyx_t_15.memview)) __PYX_ERR(1, 136, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __PYX_XCLEAR_MEMVIEW(&__pyx_v_an_index_vector, 1);
     __pyx_v_an_index_vector = __pyx_t_15;
     __pyx_t_15.memview = NULL;
     __pyx_t_15.data = NULL;
 
-    /* "src/pyprotolinc/actuarial/providers.pxd":139
+    /* "src/pyprotolinc/actuarial/providers.pxd":137
  *             pyrf = CRiskFactors(rf)
  *             an_index_vector = kwargs_lv[pyrf.name.lower()]      # TODO: add test that checks what happens when this lookup fails
  *             assert len(an_index_vector) == _len, "Lookup indices for {} has unexpected length!".format(pyrf.name)             # <<<<<<<<<<<<<<
@@ -10626,9 +10687,9 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_6get
       __pyx_t_10 = __Pyx_MemoryView_Len(__pyx_v_an_index_vector); 
       __pyx_t_1 = (__pyx_t_10 == __pyx_v__len);
       if (unlikely(!__pyx_t_1)) {
-        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Lookup_indices_for_has_unexpecte, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 139, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_u_Lookup_indices_for_has_unexpecte, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 137, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_pyrf, __pyx_n_s_name); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 139, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_pyrf, __pyx_n_s_name); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 137, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __pyx_t_3 = NULL;
         __pyx_t_6 = 0;
@@ -10647,23 +10708,23 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_6get
           __pyx_t_5 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 139, __pyx_L1_error)
+          if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 137, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         }
-        __pyx_t_2 = PyTuple_Pack(1, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 139, __pyx_L1_error)
+        __pyx_t_2 = PyTuple_Pack(1, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 137, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         __Pyx_Raise(__pyx_builtin_AssertionError, __pyx_t_2, 0, 0);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __PYX_ERR(1, 139, __pyx_L1_error)
+        __PYX_ERR(1, 137, __pyx_L1_error)
       }
     }
     #else
-    if ((1)); else __PYX_ERR(1, 139, __pyx_L1_error)
+    if ((1)); else __PYX_ERR(1, 137, __pyx_L1_error)
     #endif
 
-    /* "src/pyprotolinc/actuarial/providers.pxd":140
+    /* "src/pyprotolinc/actuarial/providers.pxd":138
  *             an_index_vector = kwargs_lv[pyrf.name.lower()]      # TODO: add test that checks what happens when this lookup fails
  *             assert len(an_index_vector) == _len, "Lookup indices for {} has unexpected length!".format(pyrf.name)
  *             indices.push_back(&an_index_vector[0])             # <<<<<<<<<<<<<<
@@ -10678,16 +10739,16 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_6get
     } else if (unlikely(__pyx_t_16 >= __pyx_v_an_index_vector.shape[0])) __pyx_t_6 = 0;
     if (unlikely(__pyx_t_6 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_6);
-      __PYX_ERR(1, 140, __pyx_L1_error)
+      __PYX_ERR(1, 138, __pyx_L1_error)
     }
     try {
       __pyx_v_indices.push_back((&(*((int *) ( /* dim=0 */ (__pyx_v_an_index_vector.data + __pyx_t_16 * __pyx_v_an_index_vector.strides[0]) )))));
     } catch(...) {
       __Pyx_CppExn2PyErr();
-      __PYX_ERR(1, 140, __pyx_L1_error)
+      __PYX_ERR(1, 138, __pyx_L1_error)
     }
 
-    /* "src/pyprotolinc/actuarial/providers.pxd":136
+    /* "src/pyprotolinc/actuarial/providers.pxd":134
  *         # in the expected order
  *         kwargs_lv = {k.lower(): v for k, v in kwargs.items()}
  *         for rf in applicable_rfs:             # <<<<<<<<<<<<<<
@@ -10696,7 +10757,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_6get
  */
   }
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":142
+  /* "src/pyprotolinc/actuarial/providers.pxd":140
  *             indices.push_back(&an_index_vector[0])
  * 
  *         self.c_provider.get()[0].get_rates(&output_memview[0], _len, indices)             # <<<<<<<<<<<<<<
@@ -10711,16 +10772,16 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_6get
   } else if (unlikely(__pyx_t_16 >= __pyx_v_output_memview.shape[0])) __pyx_t_6 = 0;
   if (unlikely(__pyx_t_6 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_6);
-    __PYX_ERR(1, 142, __pyx_L1_error)
+    __PYX_ERR(1, 140, __pyx_L1_error)
   }
   try {
     (__pyx_v_self->c_provider.get()[0]).get_rates((&(*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_output_memview.data) + __pyx_t_16)) )))), __pyx_v__len, __pyx_v_indices);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 142, __pyx_L1_error)
+    __PYX_ERR(1, 140, __pyx_L1_error)
   }
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":143
+  /* "src/pyprotolinc/actuarial/providers.pxd":141
  * 
  *         self.c_provider.get()[0].get_rates(&output_memview[0], _len, indices)
  *         return output             # <<<<<<<<<<<<<<
@@ -10732,7 +10793,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_6get
   __pyx_r = ((PyObject *)__pyx_v_output);
   goto __pyx_L0;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":121
+  /* "src/pyprotolinc/actuarial/providers.pxd":119
  *         return self.c_provider.get()[0].to_string().decode(encoding='ASCII')
  * 
  *     def get_rates(self, int _len, **kwargs):             # <<<<<<<<<<<<<<
@@ -10773,7 +10834,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_6get
   return __pyx_r;
 }
 
-/* "src/pyprotolinc/actuarial/providers.pxd":145
+/* "src/pyprotolinc/actuarial/providers.pxd":143
  *         return output
  * 
  *     def get_rate(self, indices):             # <<<<<<<<<<<<<<
@@ -10827,12 +10888,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_indices)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 145, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 143, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_rate") < 0)) __PYX_ERR(1, 145, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_rate") < 0)) __PYX_ERR(1, 143, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -10843,7 +10904,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_rate", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 145, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_rate", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 143, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pyprotolinc._actuarial.StandardRateProvider.get_rate", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -10872,7 +10933,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_8get
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_rate", 0);
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":148
+  /* "src/pyprotolinc/actuarial/providers.pxd":146
  *         cdef vector[int] indexes
  *         cdef int k
  *         for k in indices:             # <<<<<<<<<<<<<<
@@ -10883,26 +10944,26 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_8get
     __pyx_t_1 = __pyx_v_indices; __Pyx_INCREF(__pyx_t_1); __pyx_t_2 = 0;
     __pyx_t_3 = NULL;
   } else {
-    __pyx_t_2 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_indices); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 148, __pyx_L1_error)
+    __pyx_t_2 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_indices); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 146, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 148, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 146, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_3)) {
       if (likely(PyList_CheckExact(__pyx_t_1))) {
         if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_4 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely((0 < 0))) __PYX_ERR(1, 148, __pyx_L1_error)
+        __pyx_t_4 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely((0 < 0))) __PYX_ERR(1, 146, __pyx_L1_error)
         #else
-        __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 148, __pyx_L1_error)
+        __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 146, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         #endif
       } else {
         if (__pyx_t_2 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely((0 < 0))) __PYX_ERR(1, 148, __pyx_L1_error)
+        __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_2); __Pyx_INCREF(__pyx_t_4); __pyx_t_2++; if (unlikely((0 < 0))) __PYX_ERR(1, 146, __pyx_L1_error)
         #else
-        __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 148, __pyx_L1_error)
+        __pyx_t_4 = PySequence_ITEM(__pyx_t_1, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 146, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         #endif
       }
@@ -10912,17 +10973,17 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_8get
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(1, 148, __pyx_L1_error)
+          else __PYX_ERR(1, 146, __pyx_L1_error)
         }
         break;
       }
       __Pyx_GOTREF(__pyx_t_4);
     }
-    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 148, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_4); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 146, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_v_k = __pyx_t_5;
 
-    /* "src/pyprotolinc/actuarial/providers.pxd":149
+    /* "src/pyprotolinc/actuarial/providers.pxd":147
  *         cdef int k
  *         for k in indices:
  *             indexes.push_back(k)             # <<<<<<<<<<<<<<
@@ -10933,10 +10994,10 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_8get
       __pyx_v_indexes.push_back(__pyx_v_k);
     } catch(...) {
       __Pyx_CppExn2PyErr();
-      __PYX_ERR(1, 149, __pyx_L1_error)
+      __PYX_ERR(1, 147, __pyx_L1_error)
     }
 
-    /* "src/pyprotolinc/actuarial/providers.pxd":148
+    /* "src/pyprotolinc/actuarial/providers.pxd":146
  *         cdef vector[int] indexes
  *         cdef int k
  *         for k in indices:             # <<<<<<<<<<<<<<
@@ -10946,7 +11007,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_8get
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":150
+  /* "src/pyprotolinc/actuarial/providers.pxd":148
  *         for k in indices:
  *             indexes.push_back(k)
  *         return self.c_provider.get()[0].get_rate(indexes)             # <<<<<<<<<<<<<<
@@ -10958,15 +11019,15 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_8get
     __pyx_t_6 = (__pyx_v_self->c_provider.get()[0]).get_rate(__pyx_v_indexes);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 150, __pyx_L1_error)
+    __PYX_ERR(1, 148, __pyx_L1_error)
   }
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 150, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 148, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":145
+  /* "src/pyprotolinc/actuarial/providers.pxd":143
  *         return output
  * 
  *     def get_rate(self, indices):             # <<<<<<<<<<<<<<
@@ -10986,7 +11047,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_8get
   return __pyx_r;
 }
 
-/* "src/pyprotolinc/actuarial/providers.pxd":152
+/* "src/pyprotolinc/actuarial/providers.pxd":150
  *         return self.c_provider.get()[0].get_rate(indexes)
  * 
  *     def initialize(self, **kwargs):             # <<<<<<<<<<<<<<
@@ -11041,7 +11102,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_10in
   return __pyx_r;
 }
 
-/* "src/pyprotolinc/actuarial/providers.pxd":155
+/* "src/pyprotolinc/actuarial/providers.pxd":153
  *         pass
  * 
  *     def slice(self, **kwargs):             # <<<<<<<<<<<<<<
@@ -11126,7 +11187,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_12sl
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("slice", 0);
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":162
+  /* "src/pyprotolinc/actuarial/providers.pxd":160
  *         # extract the required risk factors from the named arguments and bring them
  *         # in the expected order
  *         cdef vector[CRiskFactors] applicable_rfs = self.c_provider.get()[0].get_risk_factors()             # <<<<<<<<<<<<<<
@@ -11135,7 +11196,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_12sl
  */
   __pyx_v_applicable_rfs = (__pyx_v_self->c_provider.get()[0]).get_risk_factors();
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":165
+  /* "src/pyprotolinc/actuarial/providers.pxd":163
  *         # print([q for q in applicable_rfs])
  * 
  *         kwargs_lv = {k.lower(): v for k, v in kwargs.items()}             # <<<<<<<<<<<<<<
@@ -11143,10 +11204,10 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_12sl
  *             pyrf = CRiskFactors(rf)
  */
   { /* enter inner scope */
-    __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 165, __pyx_L5_error)
+    __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 163, __pyx_L5_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_3 = 0;
-    __pyx_t_6 = __Pyx_dict_iterator(__pyx_v_kwargs, 1, __pyx_n_s_items, (&__pyx_t_4), (&__pyx_t_5)); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 165, __pyx_L5_error)
+    __pyx_t_6 = __Pyx_dict_iterator(__pyx_v_kwargs, 1, __pyx_n_s_items, (&__pyx_t_4), (&__pyx_t_5)); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 163, __pyx_L5_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_XDECREF(__pyx_t_2);
     __pyx_t_2 = __pyx_t_6;
@@ -11154,14 +11215,14 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_12sl
     while (1) {
       __pyx_t_8 = __Pyx_dict_iter_next(__pyx_t_2, __pyx_t_4, &__pyx_t_3, &__pyx_t_6, &__pyx_t_7, NULL, __pyx_t_5);
       if (unlikely(__pyx_t_8 == 0)) break;
-      if (unlikely(__pyx_t_8 == -1)) __PYX_ERR(1, 165, __pyx_L5_error)
+      if (unlikely(__pyx_t_8 == -1)) __PYX_ERR(1, 163, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_XDECREF_SET(__pyx_8genexpr3__pyx_v_k, __pyx_t_6);
       __pyx_t_6 = 0;
       __Pyx_XDECREF_SET(__pyx_8genexpr3__pyx_v_v, __pyx_t_7);
       __pyx_t_7 = 0;
-      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_8genexpr3__pyx_v_k, __pyx_n_s_lower); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 165, __pyx_L5_error)
+      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_8genexpr3__pyx_v_k, __pyx_n_s_lower); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 163, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_6);
       __pyx_t_9 = NULL;
       __pyx_t_8 = 0;
@@ -11179,11 +11240,11 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_12sl
         PyObject *__pyx_callargs[1] = {__pyx_t_9, };
         __pyx_t_7 = __Pyx_PyObject_FastCall(__pyx_t_6, __pyx_callargs+1-__pyx_t_8, 0+__pyx_t_8);
         __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
-        if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 165, __pyx_L5_error)
+        if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 163, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
       }
-      if (unlikely(PyDict_SetItem(__pyx_t_1, (PyObject*)__pyx_t_7, (PyObject*)__pyx_8genexpr3__pyx_v_v))) __PYX_ERR(1, 165, __pyx_L5_error)
+      if (unlikely(PyDict_SetItem(__pyx_t_1, (PyObject*)__pyx_t_7, (PyObject*)__pyx_8genexpr3__pyx_v_v))) __PYX_ERR(1, 163, __pyx_L5_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -11199,7 +11260,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_12sl
   __pyx_v_kwargs_lv = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":166
+  /* "src/pyprotolinc/actuarial/providers.pxd":164
  * 
  *         kwargs_lv = {k.lower(): v for k, v in kwargs.items()}
  *         for rf in applicable_rfs:             # <<<<<<<<<<<<<<
@@ -11211,19 +11272,19 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_12sl
     if (!(__pyx_t_10 != __pyx_v_applicable_rfs.end())) break;
     __pyx_t_11 = *__pyx_t_10;
     ++__pyx_t_10;
-    __pyx_t_1 = [](const CRiskFactors& x){return __Pyx_PyInt_From_int((int)x);}(__pyx_t_11); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 166, __pyx_L1_error)
+    __pyx_t_1 = [](const CRiskFactors& x){return __Pyx_PyInt_From_int((int)x);}(__pyx_t_11); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 164, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_XDECREF_SET(__pyx_v_rf, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "src/pyprotolinc/actuarial/providers.pxd":167
+    /* "src/pyprotolinc/actuarial/providers.pxd":165
  *         kwargs_lv = {k.lower(): v for k, v in kwargs.items()}
  *         for rf in applicable_rfs:
  *             pyrf = CRiskFactors(rf)             # <<<<<<<<<<<<<<
  *             an_index = kwargs_lv.get(pyrf.name.lower())
  * 
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_CRiskFactors); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 167, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_CRiskFactors); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 165, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_t_7 = NULL;
     __pyx_t_5 = 0;
@@ -11241,23 +11302,23 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_12sl
       PyObject *__pyx_callargs[2] = {__pyx_t_7, __pyx_v_rf};
       __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_2, __pyx_callargs+1-__pyx_t_5, 1+__pyx_t_5);
       __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 167, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 165, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     }
     __Pyx_XDECREF_SET(__pyx_v_pyrf, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "src/pyprotolinc/actuarial/providers.pxd":168
+    /* "src/pyprotolinc/actuarial/providers.pxd":166
  *         for rf in applicable_rfs:
  *             pyrf = CRiskFactors(rf)
  *             an_index = kwargs_lv.get(pyrf.name.lower())             # <<<<<<<<<<<<<<
  * 
  *             if an_index is not None:
  */
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_pyrf, __pyx_n_s_name); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 168, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_pyrf, __pyx_n_s_name); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 166, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_lower); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 168, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_lower); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 166, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_2 = NULL;
@@ -11276,17 +11337,17 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_12sl
       PyObject *__pyx_callargs[1] = {__pyx_t_2, };
       __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_7, __pyx_callargs+1-__pyx_t_5, 0+__pyx_t_5);
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 168, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 166, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
-    __pyx_t_7 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs_lv, __pyx_t_1, Py_None); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 168, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyDict_GetItemDefault(__pyx_v_kwargs_lv, __pyx_t_1, Py_None); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 166, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_XDECREF_SET(__pyx_v_an_index, __pyx_t_7);
     __pyx_t_7 = 0;
 
-    /* "src/pyprotolinc/actuarial/providers.pxd":170
+    /* "src/pyprotolinc/actuarial/providers.pxd":168
  *             an_index = kwargs_lv.get(pyrf.name.lower())
  * 
  *             if an_index is not None:             # <<<<<<<<<<<<<<
@@ -11296,25 +11357,25 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_12sl
     __pyx_t_12 = (__pyx_v_an_index != Py_None);
     if (__pyx_t_12) {
 
-      /* "src/pyprotolinc/actuarial/providers.pxd":171
+      /* "src/pyprotolinc/actuarial/providers.pxd":169
  * 
  *             if an_index is not None:
  *                 indices.push_back(int(an_index))             # <<<<<<<<<<<<<<
  *             else:
  *                 indices.push_back(-1)
  */
-      __pyx_t_7 = __Pyx_PyNumber_Int(__pyx_v_an_index); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 171, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_PyNumber_Int(__pyx_v_an_index); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 169, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_7); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 171, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_7); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 169, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       try {
         __pyx_v_indices.push_back(__pyx_t_5);
       } catch(...) {
         __Pyx_CppExn2PyErr();
-        __PYX_ERR(1, 171, __pyx_L1_error)
+        __PYX_ERR(1, 169, __pyx_L1_error)
       }
 
-      /* "src/pyprotolinc/actuarial/providers.pxd":170
+      /* "src/pyprotolinc/actuarial/providers.pxd":168
  *             an_index = kwargs_lv.get(pyrf.name.lower())
  * 
  *             if an_index is not None:             # <<<<<<<<<<<<<<
@@ -11324,7 +11385,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_12sl
       goto __pyx_L11;
     }
 
-    /* "src/pyprotolinc/actuarial/providers.pxd":173
+    /* "src/pyprotolinc/actuarial/providers.pxd":171
  *                 indices.push_back(int(an_index))
  *             else:
  *                 indices.push_back(-1)             # <<<<<<<<<<<<<<
@@ -11336,12 +11397,12 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_12sl
         __pyx_v_indices.push_back(-1);
       } catch(...) {
         __Pyx_CppExn2PyErr();
-        __PYX_ERR(1, 173, __pyx_L1_error)
+        __PYX_ERR(1, 171, __pyx_L1_error)
       }
     }
     __pyx_L11:;
 
-    /* "src/pyprotolinc/actuarial/providers.pxd":166
+    /* "src/pyprotolinc/actuarial/providers.pxd":164
  * 
  *         kwargs_lv = {k.lower(): v for k, v in kwargs.items()}
  *         for rf in applicable_rfs:             # <<<<<<<<<<<<<<
@@ -11350,7 +11411,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_12sl
  */
   }
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":177
+  /* "src/pyprotolinc/actuarial/providers.pxd":175
  *         # print("indices before", [i for i in indices])
  * 
  *         cdef shared_ptr[CStandardRateProvider] slicedCSRP = self.c_provider.get()[0].slice(indices)             # <<<<<<<<<<<<<<
@@ -11361,22 +11422,22 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_12sl
     __pyx_t_13 = (__pyx_v_self->c_provider.get()[0]).slice(__pyx_v_indices);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 177, __pyx_L1_error)
+    __PYX_ERR(1, 175, __pyx_L1_error)
   }
   __pyx_v_slicedCSRP = __PYX_STD_MOVE_IF_SUPPORTED(__pyx_t_13);
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":179
+  /* "src/pyprotolinc/actuarial/providers.pxd":177
  *         cdef shared_ptr[CStandardRateProvider] slicedCSRP = self.c_provider.get()[0].slice(indices)
  * 
  *         sliced_srp = StandardRateProvider([], np.zeros(1), np.array([0], dtype=np.int32))             # <<<<<<<<<<<<<<
  *         sliced_srp.c_provider = slicedCSRP
  *         sliced_srp.dim = slicedCSRP.get()[0].get_dimension()
  */
-  __pyx_t_7 = PyList_New(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 179, __pyx_L1_error)
+  __pyx_t_7 = PyList_New(0); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 179, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 179, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -11395,40 +11456,40 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_12sl
     PyObject *__pyx_callargs[2] = {__pyx_t_2, __pyx_int_1};
     __pyx_t_1 = __Pyx_PyObject_FastCall(__pyx_t_6, __pyx_callargs+1-__pyx_t_5, 1+__pyx_t_5);
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 179, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 177, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 179, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_array); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 179, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_array); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = PyList_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 179, __pyx_L1_error)
+  __pyx_t_6 = PyList_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_INCREF(__pyx_int_0);
   __Pyx_GIVEREF(__pyx_int_0);
   PyList_SET_ITEM(__pyx_t_6, 0, __pyx_int_0);
-  __pyx_t_9 = PyTuple_New(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 179, __pyx_L1_error)
+  __pyx_t_9 = PyTuple_New(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_GIVEREF(__pyx_t_6);
   PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_6);
   __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 179, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_np); if (unlikely(!__pyx_t_14)) __PYX_ERR(1, 179, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_np); if (unlikely(!__pyx_t_14)) __PYX_ERR(1, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
-  __pyx_t_15 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_int32); if (unlikely(!__pyx_t_15)) __PYX_ERR(1, 179, __pyx_L1_error)
+  __pyx_t_15 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_int32); if (unlikely(!__pyx_t_15)) __PYX_ERR(1, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_15);
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-  if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_dtype, __pyx_t_15) < 0) __PYX_ERR(1, 179, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_dtype, __pyx_t_15) < 0) __PYX_ERR(1, 177, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-  __pyx_t_15 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_9, __pyx_t_6); if (unlikely(!__pyx_t_15)) __PYX_ERR(1, 179, __pyx_L1_error)
+  __pyx_t_15 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_9, __pyx_t_6); if (unlikely(!__pyx_t_15)) __PYX_ERR(1, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_15);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = PyTuple_New(3); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 179, __pyx_L1_error)
+  __pyx_t_6 = PyTuple_New(3); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_GIVEREF(__pyx_t_7);
   PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_7);
@@ -11439,13 +11500,13 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_12sl
   __pyx_t_7 = 0;
   __pyx_t_1 = 0;
   __pyx_t_15 = 0;
-  __pyx_t_15 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider), __pyx_t_6, NULL); if (unlikely(!__pyx_t_15)) __PYX_ERR(1, 179, __pyx_L1_error)
+  __pyx_t_15 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider), __pyx_t_6, NULL); if (unlikely(!__pyx_t_15)) __PYX_ERR(1, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_15);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_v_sliced_srp = ((struct __pyx_obj_11pyprotolinc_10_actuarial_StandardRateProvider *)__pyx_t_15);
   __pyx_t_15 = 0;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":180
+  /* "src/pyprotolinc/actuarial/providers.pxd":178
  * 
  *         sliced_srp = StandardRateProvider([], np.zeros(1), np.array([0], dtype=np.int32))
  *         sliced_srp.c_provider = slicedCSRP             # <<<<<<<<<<<<<<
@@ -11454,7 +11515,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_12sl
  */
   __pyx_v_sliced_srp->c_provider = __pyx_v_slicedCSRP;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":181
+  /* "src/pyprotolinc/actuarial/providers.pxd":179
  *         sliced_srp = StandardRateProvider([], np.zeros(1), np.array([0], dtype=np.int32))
  *         sliced_srp.c_provider = slicedCSRP
  *         sliced_srp.dim = slicedCSRP.get()[0].get_dimension()             # <<<<<<<<<<<<<<
@@ -11463,7 +11524,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_12sl
  */
   __pyx_v_sliced_srp->dim = (__pyx_v_slicedCSRP.get()[0]).get_dimension();
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":182
+  /* "src/pyprotolinc/actuarial/providers.pxd":180
  *         sliced_srp.c_provider = slicedCSRP
  *         sliced_srp.dim = slicedCSRP.get()[0].get_dimension()
  *         return sliced_srp             # <<<<<<<<<<<<<<
@@ -11475,7 +11536,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_12sl
   __pyx_r = ((PyObject *)__pyx_v_sliced_srp);
   goto __pyx_L0;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":155
+  /* "src/pyprotolinc/actuarial/providers.pxd":153
  *         pass
  * 
  *     def slice(self, **kwargs):             # <<<<<<<<<<<<<<
@@ -11507,7 +11568,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_12sl
   return __pyx_r;
 }
 
-/* "src/pyprotolinc/actuarial/providers.pxd":184
+/* "src/pyprotolinc/actuarial/providers.pxd":182
  *         return sliced_srp
  * 
  *     def get_values(self):             # <<<<<<<<<<<<<<
@@ -11572,33 +11633,33 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_14ge
   __pyx_pybuffernd_values_placeholder.data = NULL;
   __pyx_pybuffernd_values_placeholder.rcbuffer = &__pyx_pybuffer_values_placeholder;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":185
+  /* "src/pyprotolinc/actuarial/providers.pxd":183
  * 
  *     def get_values(self):
  *         print(self.c_provider.get()[0].size())             # <<<<<<<<<<<<<<
  *         cdef np.ndarray[double, ndim=1, mode="c"] values_placeholder = np.zeros(self.c_provider.get()[0].size())
  *         print(values_placeholder)
  */
-  __pyx_t_1 = __Pyx_PyInt_From_int((__pyx_v_self->c_provider.get()[0]).size()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 185, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int((__pyx_v_self->c_provider.get()[0]).size()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 183, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 185, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 183, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":186
+  /* "src/pyprotolinc/actuarial/providers.pxd":184
  *     def get_values(self):
  *         print(self.c_provider.get()[0].size())
  *         cdef np.ndarray[double, ndim=1, mode="c"] values_placeholder = np.zeros(self.c_provider.get()[0].size())             # <<<<<<<<<<<<<<
  *         print(values_placeholder)
  *         cdef double[::1] values_memview = values_placeholder
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 186, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 184, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 186, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 184, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyInt_From_int((__pyx_v_self->c_provider.get()[0]).size()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 186, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int((__pyx_v_self->c_provider.get()[0]).size()); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 184, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_4 = NULL;
   __pyx_t_5 = 0;
@@ -11617,17 +11678,17 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_14ge
     __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_5, 1+__pyx_t_5);
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 186, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 184, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
-  if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 186, __pyx_L1_error)
+  if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 184, __pyx_L1_error)
   __pyx_t_6 = ((PyArrayObject *)__pyx_t_2);
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_values_placeholder.rcbuffer->pybuffer, (PyObject*)__pyx_t_6, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_C_CONTIGUOUS, 1, 0, __pyx_stack) == -1)) {
       __pyx_v_values_placeholder = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_values_placeholder.rcbuffer->pybuffer.buf = NULL;
-      __PYX_ERR(1, 186, __pyx_L1_error)
+      __PYX_ERR(1, 184, __pyx_L1_error)
     } else {__pyx_pybuffernd_values_placeholder.diminfo[0].strides = __pyx_pybuffernd_values_placeholder.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_values_placeholder.diminfo[0].shape = __pyx_pybuffernd_values_placeholder.rcbuffer->pybuffer.shape[0];
     }
   }
@@ -11635,30 +11696,30 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_14ge
   __pyx_v_values_placeholder = ((PyArrayObject *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":187
+  /* "src/pyprotolinc/actuarial/providers.pxd":185
  *         print(self.c_provider.get()[0].size())
  *         cdef np.ndarray[double, ndim=1, mode="c"] values_placeholder = np.zeros(self.c_provider.get()[0].size())
  *         print(values_placeholder)             # <<<<<<<<<<<<<<
  *         cdef double[::1] values_memview = values_placeholder
  *         self.c_provider.get()[0].get_values(&values_memview[0])
  */
-  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, ((PyObject *)__pyx_v_values_placeholder)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 187, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, ((PyObject *)__pyx_v_values_placeholder)); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 185, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":188
+  /* "src/pyprotolinc/actuarial/providers.pxd":186
  *         cdef np.ndarray[double, ndim=1, mode="c"] values_placeholder = np.zeros(self.c_provider.get()[0].size())
  *         print(values_placeholder)
  *         cdef double[::1] values_memview = values_placeholder             # <<<<<<<<<<<<<<
  *         self.c_provider.get()[0].get_values(&values_memview[0])
  *         return values_placeholder
  */
-  __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(((PyObject *)__pyx_v_values_placeholder), PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(1, 188, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(((PyObject *)__pyx_v_values_placeholder), PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(1, 186, __pyx_L1_error)
   __pyx_v_values_memview = __pyx_t_7;
   __pyx_t_7.memview = NULL;
   __pyx_t_7.data = NULL;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":189
+  /* "src/pyprotolinc/actuarial/providers.pxd":187
  *         print(values_placeholder)
  *         cdef double[::1] values_memview = values_placeholder
  *         self.c_provider.get()[0].get_values(&values_memview[0])             # <<<<<<<<<<<<<<
@@ -11673,11 +11734,11 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_14ge
   } else if (unlikely(__pyx_t_8 >= __pyx_v_values_memview.shape[0])) __pyx_t_5 = 0;
   if (unlikely(__pyx_t_5 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_5);
-    __PYX_ERR(1, 189, __pyx_L1_error)
+    __PYX_ERR(1, 187, __pyx_L1_error)
   }
   (__pyx_v_self->c_provider.get()[0]).get_values((&(*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_values_memview.data) + __pyx_t_8)) )))));
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":190
+  /* "src/pyprotolinc/actuarial/providers.pxd":188
  *         cdef double[::1] values_memview = values_placeholder
  *         self.c_provider.get()[0].get_values(&values_memview[0])
  *         return values_placeholder             # <<<<<<<<<<<<<<
@@ -11689,7 +11750,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_14ge
   __pyx_r = ((PyObject *)__pyx_v_values_placeholder);
   goto __pyx_L0;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":184
+  /* "src/pyprotolinc/actuarial/providers.pxd":182
  *         return sliced_srp
  * 
  *     def get_values(self):             # <<<<<<<<<<<<<<
@@ -11908,7 +11969,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_20StandardRateProvider_18__
   return __pyx_r;
 }
 
-/* "src/pyprotolinc/actuarial/providers.pxd":207
+/* "src/pyprotolinc/actuarial/providers.pxd":205
  *     cdef unsigned int dim
  * 
  *     def __cinit__(self, int _dim):             # <<<<<<<<<<<<<<
@@ -11947,23 +12008,23 @@ static int __pyx_pw_11pyprotolinc_10_actuarial_13AssumptionSet_1__cinit__(PyObje
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_VARARGS(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_dim)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 207, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 205, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "__cinit__") < 0)) __PYX_ERR(1, 207, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "__cinit__") < 0)) __PYX_ERR(1, 205, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_Arg_VARARGS(__pyx_args, 0);
     }
-    __pyx_v__dim = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v__dim == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 207, __pyx_L3_error)
+    __pyx_v__dim = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v__dim == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 205, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 207, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 205, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pyprotolinc._actuarial.AssumptionSet.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -11985,7 +12046,7 @@ static int __pyx_pf_11pyprotolinc_10_actuarial_13AssumptionSet___cinit__(struct 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":209
+  /* "src/pyprotolinc/actuarial/providers.pxd":207
  *     def __cinit__(self, int _dim):
  * 
  *         self.c_assumption_set = make_shared[CAssumptionSet](_dim)             # <<<<<<<<<<<<<<
@@ -11996,11 +12057,11 @@ static int __pyx_pf_11pyprotolinc_10_actuarial_13AssumptionSet___cinit__(struct 
     __pyx_t_1 = std::make_shared<CAssumptionSet>(__pyx_v__dim);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 209, __pyx_L1_error)
+    __PYX_ERR(1, 207, __pyx_L1_error)
   }
   __pyx_v_self->c_assumption_set = __PYX_STD_MOVE_IF_SUPPORTED(__pyx_t_1);
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":210
+  /* "src/pyprotolinc/actuarial/providers.pxd":208
  * 
  *         self.c_assumption_set = make_shared[CAssumptionSet](_dim)
  *         self.dim = _dim             # <<<<<<<<<<<<<<
@@ -12009,7 +12070,7 @@ static int __pyx_pf_11pyprotolinc_10_actuarial_13AssumptionSet___cinit__(struct 
  */
   __pyx_v_self->dim = __pyx_v__dim;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":207
+  /* "src/pyprotolinc/actuarial/providers.pxd":205
  *     cdef unsigned int dim
  * 
  *     def __cinit__(self, int _dim):             # <<<<<<<<<<<<<<
@@ -12028,7 +12089,7 @@ static int __pyx_pf_11pyprotolinc_10_actuarial_13AssumptionSet___cinit__(struct 
   return __pyx_r;
 }
 
-/* "src/pyprotolinc/actuarial/providers.pxd":212
+/* "src/pyprotolinc/actuarial/providers.pxd":210
  *         self.dim = _dim
  * 
  *     def add_provider_std(self, int r, int c, StandardRateProvider rp):             # <<<<<<<<<<<<<<
@@ -12088,26 +12149,26 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_r)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 212, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 210, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
         if (likely((values[1] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_c)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 212, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 210, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("add_provider_std", 1, 3, 3, 1); __PYX_ERR(1, 212, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("add_provider_std", 1, 3, 3, 1); __PYX_ERR(1, 210, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_rp)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 212, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 210, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("add_provider_std", 1, 3, 3, 2); __PYX_ERR(1, 212, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("add_provider_std", 1, 3, 3, 2); __PYX_ERR(1, 210, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "add_provider_std") < 0)) __PYX_ERR(1, 212, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "add_provider_std") < 0)) __PYX_ERR(1, 210, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 3)) {
       goto __pyx_L5_argtuple_error;
@@ -12116,19 +12177,19 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       values[1] = __Pyx_Arg_FASTCALL(__pyx_args, 1);
       values[2] = __Pyx_Arg_FASTCALL(__pyx_args, 2);
     }
-    __pyx_v_r = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_r == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 212, __pyx_L3_error)
-    __pyx_v_c = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_c == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 212, __pyx_L3_error)
+    __pyx_v_r = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_r == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 210, __pyx_L3_error)
+    __pyx_v_c = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_c == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 210, __pyx_L3_error)
     __pyx_v_rp = ((struct __pyx_obj_11pyprotolinc_10_actuarial_StandardRateProvider *)values[2]);
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("add_provider_std", 1, 3, 3, __pyx_nargs); __PYX_ERR(1, 212, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("add_provider_std", 1, 3, 3, __pyx_nargs); __PYX_ERR(1, 210, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pyprotolinc._actuarial.AssumptionSet.add_provider_std", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_rp), __pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider, 1, "rp", 0))) __PYX_ERR(1, 212, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_rp), __pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider, 1, "rp", 0))) __PYX_ERR(1, 210, __pyx_L1_error)
   __pyx_r = __pyx_pf_11pyprotolinc_10_actuarial_13AssumptionSet_2add_provider_std(((struct __pyx_obj_11pyprotolinc_10_actuarial_AssumptionSet *)__pyx_v_self), __pyx_v_r, __pyx_v_c, __pyx_v_rp);
 
   /* function exit code */
@@ -12147,7 +12208,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_13AssumptionSet_2add_provid
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("add_provider_std", 0);
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":213
+  /* "src/pyprotolinc/actuarial/providers.pxd":211
  * 
  *     def add_provider_std(self, int r, int c, StandardRateProvider rp):
  *         cdef shared_ptr[CStandardRateProvider] srp = rp.get_provider()             # <<<<<<<<<<<<<<
@@ -12156,7 +12217,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_13AssumptionSet_2add_provid
  */
   __pyx_v_srp = ((struct __pyx_vtabstruct_11pyprotolinc_10_actuarial_StandardRateProvider *)__pyx_v_rp->__pyx_vtab)->get_provider(__pyx_v_rp);
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":216
+  /* "src/pyprotolinc/actuarial/providers.pxd":214
  *         cdef shared_ptr[CBaseRateProvider] brp
  *         # srp = rp.get_provider().get()
  *         brp = static_pointer_cast[CBaseRateProvider, CStandardRateProvider] (srp)             # <<<<<<<<<<<<<<
@@ -12165,7 +12226,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_13AssumptionSet_2add_provid
  */
   __pyx_v_brp = std::static_pointer_cast<CBaseRateProvider,CStandardRateProvider>(__pyx_v_srp);
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":219
+  /* "src/pyprotolinc/actuarial/providers.pxd":217
  *         # brp = make_shared[CBaseRateProvider](static_cast[CBaseRateProvider, CStandardRateProvider] ())
  *         # brp = static_cast[CBaseRateProvider, CStandardRateProvider] (srp)
  *         self.c_assumption_set.get()[0].set_provider(r, c, brp)             # <<<<<<<<<<<<<<
@@ -12174,7 +12235,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_13AssumptionSet_2add_provid
  */
   (__pyx_v_self->c_assumption_set.get()[0]).set_provider(__pyx_v_r, __pyx_v_c, __pyx_v_brp);
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":212
+  /* "src/pyprotolinc/actuarial/providers.pxd":210
  *         self.dim = _dim
  * 
  *     def add_provider_std(self, int r, int c, StandardRateProvider rp):             # <<<<<<<<<<<<<<
@@ -12189,7 +12250,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_13AssumptionSet_2add_provid
   return __pyx_r;
 }
 
-/* "src/pyprotolinc/actuarial/providers.pxd":221
+/* "src/pyprotolinc/actuarial/providers.pxd":219
  *         self.c_assumption_set.get()[0].set_provider(r, c, brp)
  * 
  *     def add_provider_const(self, int r, int c, ConstantRateProvider rp):             # <<<<<<<<<<<<<<
@@ -12249,26 +12310,26 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_r)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 221, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 219, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
         if (likely((values[1] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_c)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 221, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 219, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("add_provider_const", 1, 3, 3, 1); __PYX_ERR(1, 221, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("add_provider_const", 1, 3, 3, 1); __PYX_ERR(1, 219, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_rp)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 221, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 219, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("add_provider_const", 1, 3, 3, 2); __PYX_ERR(1, 221, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("add_provider_const", 1, 3, 3, 2); __PYX_ERR(1, 219, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "add_provider_const") < 0)) __PYX_ERR(1, 221, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "add_provider_const") < 0)) __PYX_ERR(1, 219, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 3)) {
       goto __pyx_L5_argtuple_error;
@@ -12277,19 +12338,19 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       values[1] = __Pyx_Arg_FASTCALL(__pyx_args, 1);
       values[2] = __Pyx_Arg_FASTCALL(__pyx_args, 2);
     }
-    __pyx_v_r = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_r == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 221, __pyx_L3_error)
-    __pyx_v_c = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_c == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 221, __pyx_L3_error)
+    __pyx_v_r = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_r == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 219, __pyx_L3_error)
+    __pyx_v_c = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_c == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 219, __pyx_L3_error)
     __pyx_v_rp = ((struct __pyx_obj_11pyprotolinc_10_actuarial_ConstantRateProvider *)values[2]);
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("add_provider_const", 1, 3, 3, __pyx_nargs); __PYX_ERR(1, 221, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("add_provider_const", 1, 3, 3, __pyx_nargs); __PYX_ERR(1, 219, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pyprotolinc._actuarial.AssumptionSet.add_provider_const", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_rp), __pyx_ptype_11pyprotolinc_10_actuarial_ConstantRateProvider, 1, "rp", 0))) __PYX_ERR(1, 221, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_rp), __pyx_ptype_11pyprotolinc_10_actuarial_ConstantRateProvider, 1, "rp", 0))) __PYX_ERR(1, 219, __pyx_L1_error)
   __pyx_r = __pyx_pf_11pyprotolinc_10_actuarial_13AssumptionSet_4add_provider_const(((struct __pyx_obj_11pyprotolinc_10_actuarial_AssumptionSet *)__pyx_v_self), __pyx_v_r, __pyx_v_c, __pyx_v_rp);
 
   /* function exit code */
@@ -12308,7 +12369,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_13AssumptionSet_4add_provid
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("add_provider_const", 0);
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":222
+  /* "src/pyprotolinc/actuarial/providers.pxd":220
  * 
  *     def add_provider_const(self, int r, int c, ConstantRateProvider rp):
  *         cdef shared_ptr[CConstantRateProvider] srp = rp.get_provider()             # <<<<<<<<<<<<<<
@@ -12317,7 +12378,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_13AssumptionSet_4add_provid
  */
   __pyx_v_srp = ((struct __pyx_vtabstruct_11pyprotolinc_10_actuarial_ConstantRateProvider *)__pyx_v_rp->__pyx_vtab)->get_provider(__pyx_v_rp);
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":224
+  /* "src/pyprotolinc/actuarial/providers.pxd":222
  *         cdef shared_ptr[CConstantRateProvider] srp = rp.get_provider()
  *         cdef shared_ptr[CBaseRateProvider] brp
  *         brp = static_pointer_cast[CBaseRateProvider, CConstantRateProvider] (srp)             # <<<<<<<<<<<<<<
@@ -12326,7 +12387,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_13AssumptionSet_4add_provid
  */
   __pyx_v_brp = std::static_pointer_cast<CBaseRateProvider,CConstantRateProvider>(__pyx_v_srp);
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":225
+  /* "src/pyprotolinc/actuarial/providers.pxd":223
  *         cdef shared_ptr[CBaseRateProvider] brp
  *         brp = static_pointer_cast[CBaseRateProvider, CConstantRateProvider] (srp)
  *         self.c_assumption_set.get()[0].set_provider(r, c, brp)             # <<<<<<<<<<<<<<
@@ -12335,7 +12396,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_13AssumptionSet_4add_provid
  */
   (__pyx_v_self->c_assumption_set.get()[0]).set_provider(__pyx_v_r, __pyx_v_c, __pyx_v_brp);
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":221
+  /* "src/pyprotolinc/actuarial/providers.pxd":219
  *         self.c_assumption_set.get()[0].set_provider(r, c, brp)
  * 
  *     def add_provider_const(self, int r, int c, ConstantRateProvider rp):             # <<<<<<<<<<<<<<
@@ -12350,7 +12411,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_13AssumptionSet_4add_provid
   return __pyx_r;
 }
 
-/* "src/pyprotolinc/actuarial/providers.pxd":228
+/* "src/pyprotolinc/actuarial/providers.pxd":226
  * 
  * 
  *     def get_single_rateset(self, risk_factor_values):             # <<<<<<<<<<<<<<
@@ -12404,12 +12465,12 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_risk_factor_values)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 228, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 226, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_single_rateset") < 0)) __PYX_ERR(1, 228, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "get_single_rateset") < 0)) __PYX_ERR(1, 226, __pyx_L3_error)
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
@@ -12420,7 +12481,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_single_rateset", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 228, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("get_single_rateset", 1, 1, 1, __pyx_nargs); __PYX_ERR(1, 226, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pyprotolinc._actuarial.AssumptionSet.get_single_rateset", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -12462,7 +12523,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_13AssumptionSet_6get_single
   __pyx_pybuffernd_output.data = NULL;
   __pyx_pybuffernd_output.rcbuffer = &__pyx_pybuffer_output;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":230
+  /* "src/pyprotolinc/actuarial/providers.pxd":228
  *     def get_single_rateset(self, risk_factor_values):
  * 
  *         assert len(risk_factor_values) == NUMBER_OF_RISK_FACTORS             # <<<<<<<<<<<<<<
@@ -12471,18 +12532,18 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_13AssumptionSet_6get_single
  */
   #ifndef CYTHON_WITHOUT_ASSERTIONS
   if (unlikely(!Py_OptimizeFlag)) {
-    __pyx_t_1 = PyObject_Length(__pyx_v_risk_factor_values); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 230, __pyx_L1_error)
+    __pyx_t_1 = PyObject_Length(__pyx_v_risk_factor_values); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(1, 228, __pyx_L1_error)
     __pyx_t_2 = (__pyx_t_1 == NUMBER_OF_RISK_FACTORS);
     if (unlikely(!__pyx_t_2)) {
       __Pyx_Raise(__pyx_builtin_AssertionError, 0, 0, 0);
-      __PYX_ERR(1, 230, __pyx_L1_error)
+      __PYX_ERR(1, 228, __pyx_L1_error)
     }
   }
   #else
-  if ((1)); else __PYX_ERR(1, 230, __pyx_L1_error)
+  if ((1)); else __PYX_ERR(1, 228, __pyx_L1_error)
   #endif
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":233
+  /* "src/pyprotolinc/actuarial/providers.pxd":231
  *         cdef vector[int] rf_indexes
  * 
  *         for rf in risk_factor_values:             # <<<<<<<<<<<<<<
@@ -12493,26 +12554,26 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_13AssumptionSet_6get_single
     __pyx_t_3 = __pyx_v_risk_factor_values; __Pyx_INCREF(__pyx_t_3); __pyx_t_1 = 0;
     __pyx_t_4 = NULL;
   } else {
-    __pyx_t_1 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_v_risk_factor_values); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 233, __pyx_L1_error)
+    __pyx_t_1 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_v_risk_factor_values); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 231, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 233, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetIterNextFunc(__pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 231, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_4)) {
       if (likely(PyList_CheckExact(__pyx_t_3))) {
         if (__pyx_t_1 >= PyList_GET_SIZE(__pyx_t_3)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_5 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_1); __Pyx_INCREF(__pyx_t_5); __pyx_t_1++; if (unlikely((0 < 0))) __PYX_ERR(1, 233, __pyx_L1_error)
+        __pyx_t_5 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_1); __Pyx_INCREF(__pyx_t_5); __pyx_t_1++; if (unlikely((0 < 0))) __PYX_ERR(1, 231, __pyx_L1_error)
         #else
-        __pyx_t_5 = PySequence_ITEM(__pyx_t_3, __pyx_t_1); __pyx_t_1++; if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 233, __pyx_L1_error)
+        __pyx_t_5 = PySequence_ITEM(__pyx_t_3, __pyx_t_1); __pyx_t_1++; if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 231, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         #endif
       } else {
         if (__pyx_t_1 >= PyTuple_GET_SIZE(__pyx_t_3)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_5 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_1); __Pyx_INCREF(__pyx_t_5); __pyx_t_1++; if (unlikely((0 < 0))) __PYX_ERR(1, 233, __pyx_L1_error)
+        __pyx_t_5 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_1); __Pyx_INCREF(__pyx_t_5); __pyx_t_1++; if (unlikely((0 < 0))) __PYX_ERR(1, 231, __pyx_L1_error)
         #else
-        __pyx_t_5 = PySequence_ITEM(__pyx_t_3, __pyx_t_1); __pyx_t_1++; if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 233, __pyx_L1_error)
+        __pyx_t_5 = PySequence_ITEM(__pyx_t_3, __pyx_t_1); __pyx_t_1++; if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 231, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         #endif
       }
@@ -12522,7 +12583,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_13AssumptionSet_6get_single
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(1, 233, __pyx_L1_error)
+          else __PYX_ERR(1, 231, __pyx_L1_error)
         }
         break;
       }
@@ -12531,22 +12592,22 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_13AssumptionSet_6get_single
     __Pyx_XDECREF_SET(__pyx_v_rf, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "src/pyprotolinc/actuarial/providers.pxd":234
+    /* "src/pyprotolinc/actuarial/providers.pxd":232
  * 
  *         for rf in risk_factor_values:
  *             rf_indexes.push_back(rf)             # <<<<<<<<<<<<<<
  * 
  *         cdef np.ndarray[double, ndim=1, mode="c"] output = np.zeros(self.dim * self.dim)
  */
-    __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_v_rf); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 234, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_v_rf); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 232, __pyx_L1_error)
     try {
       __pyx_v_rf_indexes.push_back(__pyx_t_6);
     } catch(...) {
       __Pyx_CppExn2PyErr();
-      __PYX_ERR(1, 234, __pyx_L1_error)
+      __PYX_ERR(1, 232, __pyx_L1_error)
     }
 
-    /* "src/pyprotolinc/actuarial/providers.pxd":233
+    /* "src/pyprotolinc/actuarial/providers.pxd":231
  *         cdef vector[int] rf_indexes
  * 
  *         for rf in risk_factor_values:             # <<<<<<<<<<<<<<
@@ -12556,19 +12617,19 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_13AssumptionSet_6get_single
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":236
+  /* "src/pyprotolinc/actuarial/providers.pxd":234
  *             rf_indexes.push_back(rf)
  * 
  *         cdef np.ndarray[double, ndim=1, mode="c"] output = np.zeros(self.dim * self.dim)             # <<<<<<<<<<<<<<
  *         cdef double[::1] output_memview = output
  *         self.c_assumption_set.get()[0].get_single_rateset(rf_indexes, &output_memview[0])
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 236, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 234, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_zeros); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 236, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_zeros); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 234, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyInt_From_unsigned_int((__pyx_v_self->dim * __pyx_v_self->dim)); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 236, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_From_unsigned_int((__pyx_v_self->dim * __pyx_v_self->dim)); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 234, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_8 = NULL;
   __pyx_t_6 = 0;
@@ -12587,17 +12648,17 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_13AssumptionSet_6get_single
     __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_7, __pyx_callargs+1-__pyx_t_6, 1+__pyx_t_6);
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 236, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 234, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   }
-  if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 236, __pyx_L1_error)
+  if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 234, __pyx_L1_error)
   __pyx_t_9 = ((PyArrayObject *)__pyx_t_3);
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_output.rcbuffer->pybuffer, (PyObject*)__pyx_t_9, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_C_CONTIGUOUS, 1, 0, __pyx_stack) == -1)) {
       __pyx_v_output = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_output.rcbuffer->pybuffer.buf = NULL;
-      __PYX_ERR(1, 236, __pyx_L1_error)
+      __PYX_ERR(1, 234, __pyx_L1_error)
     } else {__pyx_pybuffernd_output.diminfo[0].strides = __pyx_pybuffernd_output.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_output.diminfo[0].shape = __pyx_pybuffernd_output.rcbuffer->pybuffer.shape[0];
     }
   }
@@ -12605,19 +12666,19 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_13AssumptionSet_6get_single
   __pyx_v_output = ((PyArrayObject *)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":237
+  /* "src/pyprotolinc/actuarial/providers.pxd":235
  * 
  *         cdef np.ndarray[double, ndim=1, mode="c"] output = np.zeros(self.dim * self.dim)
  *         cdef double[::1] output_memview = output             # <<<<<<<<<<<<<<
  *         self.c_assumption_set.get()[0].get_single_rateset(rf_indexes, &output_memview[0])
  *         return output
  */
-  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(((PyObject *)__pyx_v_output), PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(1, 237, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(((PyObject *)__pyx_v_output), PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(1, 235, __pyx_L1_error)
   __pyx_v_output_memview = __pyx_t_10;
   __pyx_t_10.memview = NULL;
   __pyx_t_10.data = NULL;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":238
+  /* "src/pyprotolinc/actuarial/providers.pxd":236
  *         cdef np.ndarray[double, ndim=1, mode="c"] output = np.zeros(self.dim * self.dim)
  *         cdef double[::1] output_memview = output
  *         self.c_assumption_set.get()[0].get_single_rateset(rf_indexes, &output_memview[0])             # <<<<<<<<<<<<<<
@@ -12632,28 +12693,28 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_13AssumptionSet_6get_single
   } else if (unlikely(__pyx_t_11 >= __pyx_v_output_memview.shape[0])) __pyx_t_6 = 0;
   if (unlikely(__pyx_t_6 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_6);
-    __PYX_ERR(1, 238, __pyx_L1_error)
+    __PYX_ERR(1, 236, __pyx_L1_error)
   }
   try {
     (__pyx_v_self->c_assumption_set.get()[0]).get_single_rateset(__pyx_v_rf_indexes, (&(*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_output_memview.data) + __pyx_t_11)) )))));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 238, __pyx_L1_error)
+    __PYX_ERR(1, 236, __pyx_L1_error)
   }
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":239
+  /* "src/pyprotolinc/actuarial/providers.pxd":237
  *         cdef double[::1] output_memview = output
  *         self.c_assumption_set.get()[0].get_single_rateset(rf_indexes, &output_memview[0])
  *         return output             # <<<<<<<<<<<<<<
  * 
- * cdef extern from "runner.h":
+ * 
  */
   __Pyx_XDECREF(__pyx_r);
   __Pyx_INCREF((PyObject *)__pyx_v_output);
   __pyx_r = ((PyObject *)__pyx_v_output);
   goto __pyx_L0;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":228
+  /* "src/pyprotolinc/actuarial/providers.pxd":226
  * 
  * 
  *     def get_single_rateset(self, risk_factor_values):             # <<<<<<<<<<<<<<
@@ -12873,10 +12934,10 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_13AssumptionSet_10__setstat
   return __pyx_r;
 }
 
-/* "src/pyprotolinc/actuarial/providers.pxd":250
+/* "src/pyprotolinc/actuarial/providers.pxd":264
  * 
  * 
- * def py_run_c_valuation(AssumptionSet be_ass, CPortfolioWrapper cportfolio_wapper):             # <<<<<<<<<<<<<<
+ * def py_run_c_valuation(AssumptionSet be_ass, CPortfolioWrapper cportfolio_wapper, TimeStep time_step):             # <<<<<<<<<<<<<<
  * 
  *     cdef unsigned dim = be_ass.dim
  */
@@ -12899,6 +12960,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 ) {
   struct __pyx_obj_11pyprotolinc_10_actuarial_AssumptionSet *__pyx_v_be_ass = 0;
   struct __pyx_obj_11pyprotolinc_10_actuarial_CPortfolioWrapper *__pyx_v_cportfolio_wapper = 0;
+  __PYX_ENUM_CLASS_DECL TimeStep __pyx_v_time_step;
   #if !CYTHON_METH_FASTCALL
   CYTHON_UNUSED const Py_ssize_t __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
   #endif
@@ -12911,14 +12973,16 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannySetupContext("py_run_c_valuation (wrapper)", 0);
   {
     #if CYTHON_USE_MODULE_STATE
-    PyObject **__pyx_pyargnames[] = {&__pyx_n_s_be_ass,&__pyx_n_s_cportfolio_wapper,0};
+    PyObject **__pyx_pyargnames[] = {&__pyx_n_s_be_ass,&__pyx_n_s_cportfolio_wapper,&__pyx_n_s_time_step,0};
     #else
-    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_be_ass,&__pyx_n_s_cportfolio_wapper,0};
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_be_ass,&__pyx_n_s_cportfolio_wapper,&__pyx_n_s_time_step,0};
     #endif
-    PyObject* values[2] = {0,0};
+    PyObject* values[3] = {0,0,0};
     if (__pyx_kwds) {
       Py_ssize_t kw_args;
       switch (__pyx_nargs) {
+        case  3: values[2] = __Pyx_Arg_FASTCALL(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
         case  2: values[1] = __Pyx_Arg_FASTCALL(__pyx_args, 1);
         CYTHON_FALLTHROUGH;
         case  1: values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
@@ -12930,40 +12994,49 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       switch (__pyx_nargs) {
         case  0:
         if (likely((values[0] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_be_ass)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 250, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 264, __pyx_L3_error)
         else goto __pyx_L5_argtuple_error;
         CYTHON_FALLTHROUGH;
         case  1:
         if (likely((values[1] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_cportfolio_wapper)) != 0)) kw_args--;
-        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 250, __pyx_L3_error)
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 264, __pyx_L3_error)
         else {
-          __Pyx_RaiseArgtupleInvalid("py_run_c_valuation", 1, 2, 2, 1); __PYX_ERR(1, 250, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("py_run_c_valuation", 1, 3, 3, 1); __PYX_ERR(1, 264, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  2:
+        if (likely((values[2] = __Pyx_GetKwValue_FASTCALL(__pyx_kwds, __pyx_kwvalues, __pyx_n_s_time_step)) != 0)) kw_args--;
+        else if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 264, __pyx_L3_error)
+        else {
+          __Pyx_RaiseArgtupleInvalid("py_run_c_valuation", 1, 3, 3, 2); __PYX_ERR(1, 264, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t kwd_pos_args = __pyx_nargs;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "py_run_c_valuation") < 0)) __PYX_ERR(1, 250, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values + 0, kwd_pos_args, "py_run_c_valuation") < 0)) __PYX_ERR(1, 264, __pyx_L3_error)
       }
-    } else if (unlikely(__pyx_nargs != 2)) {
+    } else if (unlikely(__pyx_nargs != 3)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
       values[1] = __Pyx_Arg_FASTCALL(__pyx_args, 1);
+      values[2] = __Pyx_Arg_FASTCALL(__pyx_args, 2);
     }
     __pyx_v_be_ass = ((struct __pyx_obj_11pyprotolinc_10_actuarial_AssumptionSet *)values[0]);
     __pyx_v_cportfolio_wapper = ((struct __pyx_obj_11pyprotolinc_10_actuarial_CPortfolioWrapper *)values[1]);
+    __pyx_v_time_step = (TimeStep)__Pyx_PyInt_As_int(values[2]); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 264, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("py_run_c_valuation", 1, 2, 2, __pyx_nargs); __PYX_ERR(1, 250, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("py_run_c_valuation", 1, 3, 3, __pyx_nargs); __PYX_ERR(1, 264, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pyprotolinc._actuarial.py_run_c_valuation", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_be_ass), __pyx_ptype_11pyprotolinc_10_actuarial_AssumptionSet, 1, "be_ass", 0))) __PYX_ERR(1, 250, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_cportfolio_wapper), __pyx_ptype_11pyprotolinc_10_actuarial_CPortfolioWrapper, 1, "cportfolio_wapper", 0))) __PYX_ERR(1, 250, __pyx_L1_error)
-  __pyx_r = __pyx_pf_11pyprotolinc_10_actuarial_2py_run_c_valuation(__pyx_self, __pyx_v_be_ass, __pyx_v_cportfolio_wapper);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_be_ass), __pyx_ptype_11pyprotolinc_10_actuarial_AssumptionSet, 1, "be_ass", 0))) __PYX_ERR(1, 264, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_cportfolio_wapper), __pyx_ptype_11pyprotolinc_10_actuarial_CPortfolioWrapper, 1, "cportfolio_wapper", 0))) __PYX_ERR(1, 264, __pyx_L1_error)
+  __pyx_r = __pyx_pf_11pyprotolinc_10_actuarial_2py_run_c_valuation(__pyx_self, __pyx_v_be_ass, __pyx_v_cportfolio_wapper, __pyx_v_time_step);
 
   /* function exit code */
   goto __pyx_L0;
@@ -12974,12 +13047,20 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_2py_run_c_valuation(CYTHON_UNUSED PyObject *__pyx_self, struct __pyx_obj_11pyprotolinc_10_actuarial_AssumptionSet *__pyx_v_be_ass, struct __pyx_obj_11pyprotolinc_10_actuarial_CPortfolioWrapper *__pyx_v_cportfolio_wapper) {
+static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_2py_run_c_valuation(CYTHON_UNUSED PyObject *__pyx_self, struct __pyx_obj_11pyprotolinc_10_actuarial_AssumptionSet *__pyx_v_be_ass, struct __pyx_obj_11pyprotolinc_10_actuarial_CPortfolioWrapper *__pyx_v_cportfolio_wapper, __PYX_ENUM_CLASS_DECL TimeStep __pyx_v_time_step) {
   unsigned int __pyx_v_dim;
   int __pyx_v_num_cpus;
   bool __pyx_v_use_multicore;
   std::shared_ptr<CAssumptionSet>  __pyx_v_c_assumption_set;
+  int __pyx_v_years_to_simulate;
   std::shared_ptr<CRunConfig>  __pyx_v_crun_config;
+  PyObject *__pyx_v_output_columns = NULL;
+  int __pyx_v_no_cols;
+  int __pyx_v_total_timesteps;
+  PyArrayObject *__pyx_v_output = 0;
+  __Pyx_memviewslice __pyx_v_ext_res_view = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_output;
+  __Pyx_Buffer __pyx_pybuffer_output;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   unsigned int __pyx_t_1;
@@ -12989,13 +13070,24 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_2py_run_c_valuation(CYTHON_
   int __pyx_t_5;
   std::shared_ptr<CAssumptionSet>  __pyx_t_6;
   std::shared_ptr<CRunConfig>  __pyx_t_7;
+  Py_ssize_t __pyx_t_8;
+  PyObject *__pyx_t_9 = NULL;
+  PyObject *__pyx_t_10 = NULL;
+  PyArrayObject *__pyx_t_11 = NULL;
+  __Pyx_memviewslice __pyx_t_12 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  Py_ssize_t __pyx_t_13;
+  Py_ssize_t __pyx_t_14;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("py_run_c_valuation", 0);
+  __pyx_pybuffer_output.pybuffer.buf = NULL;
+  __pyx_pybuffer_output.refcount = 0;
+  __pyx_pybuffernd_output.data = NULL;
+  __pyx_pybuffernd_output.rcbuffer = &__pyx_pybuffer_output;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":252
- * def py_run_c_valuation(AssumptionSet be_ass, CPortfolioWrapper cportfolio_wapper):
+  /* "src/pyprotolinc/actuarial/providers.pxd":266
+ * def py_run_c_valuation(AssumptionSet be_ass, CPortfolioWrapper cportfolio_wapper, TimeStep time_step):
  * 
  *     cdef unsigned dim = be_ass.dim             # <<<<<<<<<<<<<<
  *     cdef int num_cpus = cpu_count()
@@ -13004,14 +13096,14 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_2py_run_c_valuation(CYTHON_
   __pyx_t_1 = __pyx_v_be_ass->dim;
   __pyx_v_dim = __pyx_t_1;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":253
+  /* "src/pyprotolinc/actuarial/providers.pxd":267
  * 
  *     cdef unsigned dim = be_ass.dim
  *     cdef int num_cpus = cpu_count()             # <<<<<<<<<<<<<<
  *     cdef bool use_multicore = True
  *     cdef shared_ptr[CAssumptionSet] c_assumption_set = be_ass.c_assumption_set
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_cpu_count); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 253, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_cpu_count); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 267, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = NULL;
   __pyx_t_5 = 0;
@@ -13029,80 +13121,240 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_2py_run_c_valuation(CYTHON_
     PyObject *__pyx_callargs[1] = {__pyx_t_4, };
     __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+1-__pyx_t_5, 0+__pyx_t_5);
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 253, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 267, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
-  __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 253, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 267, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_num_cpus = __pyx_t_5;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":254
+  /* "src/pyprotolinc/actuarial/providers.pxd":268
  *     cdef unsigned dim = be_ass.dim
  *     cdef int num_cpus = cpu_count()
  *     cdef bool use_multicore = True             # <<<<<<<<<<<<<<
  *     cdef shared_ptr[CAssumptionSet] c_assumption_set = be_ass.c_assumption_set
- *     cdef shared_ptr[CRunConfig] crun_config = make_shared[CRunConfig](dim, num_cpus, use_multicore, c_assumption_set)
+ *     cdef int years_to_simulate = 120
  */
   __pyx_v_use_multicore = 1;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":255
+  /* "src/pyprotolinc/actuarial/providers.pxd":269
  *     cdef int num_cpus = cpu_count()
  *     cdef bool use_multicore = True
  *     cdef shared_ptr[CAssumptionSet] c_assumption_set = be_ass.c_assumption_set             # <<<<<<<<<<<<<<
- *     cdef shared_ptr[CRunConfig] crun_config = make_shared[CRunConfig](dim, num_cpus, use_multicore, c_assumption_set)
- * 
+ *     cdef int years_to_simulate = 120
+ *     cdef shared_ptr[CRunConfig] crun_config = make_shared[CRunConfig](dim, time_step, years_to_simulate, num_cpus, use_multicore, c_assumption_set)
  */
   __pyx_t_6 = __pyx_v_be_ass->c_assumption_set;
   __pyx_v_c_assumption_set = __PYX_STD_MOVE_IF_SUPPORTED(__pyx_t_6);
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":256
+  /* "src/pyprotolinc/actuarial/providers.pxd":270
  *     cdef bool use_multicore = True
  *     cdef shared_ptr[CAssumptionSet] c_assumption_set = be_ass.c_assumption_set
- *     cdef shared_ptr[CRunConfig] crun_config = make_shared[CRunConfig](dim, num_cpus, use_multicore, c_assumption_set)             # <<<<<<<<<<<<<<
+ *     cdef int years_to_simulate = 120             # <<<<<<<<<<<<<<
+ *     cdef shared_ptr[CRunConfig] crun_config = make_shared[CRunConfig](dim, time_step, years_to_simulate, num_cpus, use_multicore, c_assumption_set)
  * 
- *     run_c_valuation(crun_config.get()[0], cportfolio_wapper.ptf)
+ */
+  __pyx_v_years_to_simulate = 0x78;
+
+  /* "src/pyprotolinc/actuarial/providers.pxd":271
+ *     cdef shared_ptr[CAssumptionSet] c_assumption_set = be_ass.c_assumption_set
+ *     cdef int years_to_simulate = 120
+ *     cdef shared_ptr[CRunConfig] crun_config = make_shared[CRunConfig](dim, time_step, years_to_simulate, num_cpus, use_multicore, c_assumption_set)             # <<<<<<<<<<<<<<
+ * 
+ *     # reserve memory for aggregate the result
  */
   try {
-    __pyx_t_7 = std::make_shared<CRunConfig>(__pyx_v_dim, __pyx_v_num_cpus, __pyx_v_use_multicore, __pyx_v_c_assumption_set);
+    __pyx_t_7 = std::make_shared<CRunConfig>(__pyx_v_dim, __pyx_v_time_step, __pyx_v_years_to_simulate, __pyx_v_num_cpus, __pyx_v_use_multicore, __pyx_v_c_assumption_set);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 256, __pyx_L1_error)
+    __PYX_ERR(1, 271, __pyx_L1_error)
   }
   __pyx_v_crun_config = __PYX_STD_MOVE_IF_SUPPORTED(__pyx_t_7);
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":258
- *     cdef shared_ptr[CRunConfig] crun_config = make_shared[CRunConfig](dim, num_cpus, use_multicore, c_assumption_set)
+  /* "src/pyprotolinc/actuarial/providers.pxd":274
  * 
- *     run_c_valuation(crun_config.get()[0], cportfolio_wapper.ptf)             # <<<<<<<<<<<<<<
+ *     # reserve memory for aggregate the result
+ *     output_columns = ["YEAR", "QUARTER", "MONTH"]             # <<<<<<<<<<<<<<
+ *     # reserve output space for 120 years and 12 months each
+ *     cdef int no_cols = len(output_columns)
+ */
+  __pyx_t_2 = PyList_New(3); if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 274, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_INCREF(__pyx_n_u_YEAR);
+  __Pyx_GIVEREF(__pyx_n_u_YEAR);
+  PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_u_YEAR);
+  __Pyx_INCREF(__pyx_n_u_QUARTER);
+  __Pyx_GIVEREF(__pyx_n_u_QUARTER);
+  PyList_SET_ITEM(__pyx_t_2, 1, __pyx_n_u_QUARTER);
+  __Pyx_INCREF(__pyx_n_u_MONTH);
+  __Pyx_GIVEREF(__pyx_n_u_MONTH);
+  PyList_SET_ITEM(__pyx_t_2, 2, __pyx_n_u_MONTH);
+  __pyx_v_output_columns = ((PyObject*)__pyx_t_2);
+  __pyx_t_2 = 0;
+
+  /* "src/pyprotolinc/actuarial/providers.pxd":276
+ *     output_columns = ["YEAR", "QUARTER", "MONTH"]
+ *     # reserve output space for 120 years and 12 months each
+ *     cdef int no_cols = len(output_columns)             # <<<<<<<<<<<<<<
+ *     cdef int total_timesteps = dereference(crun_config).get_total_timesteps()
+ *     cdef np.ndarray[double, ndim=2, mode="c"] output = np.zeros((total_timesteps, no_cols))
+ */
+  __pyx_t_8 = PyList_GET_SIZE(__pyx_v_output_columns); if (unlikely(__pyx_t_8 == ((Py_ssize_t)-1))) __PYX_ERR(1, 276, __pyx_L1_error)
+  __pyx_v_no_cols = __pyx_t_8;
+
+  /* "src/pyprotolinc/actuarial/providers.pxd":277
+ *     # reserve output space for 120 years and 12 months each
+ *     cdef int no_cols = len(output_columns)
+ *     cdef int total_timesteps = dereference(crun_config).get_total_timesteps()             # <<<<<<<<<<<<<<
+ *     cdef np.ndarray[double, ndim=2, mode="c"] output = np.zeros((total_timesteps, no_cols))
+ *     cdef double[:, ::1] ext_res_view = output
+ */
+  __pyx_v_total_timesteps = (*__pyx_v_crun_config).get_total_timesteps();
+
+  /* "src/pyprotolinc/actuarial/providers.pxd":278
+ *     cdef int no_cols = len(output_columns)
+ *     cdef int total_timesteps = dereference(crun_config).get_total_timesteps()
+ *     cdef np.ndarray[double, ndim=2, mode="c"] output = np.zeros((total_timesteps, no_cols))             # <<<<<<<<<<<<<<
+ *     cdef double[:, ::1] ext_res_view = output
+ * 
+ */
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 278, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 278, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_total_timesteps); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 278, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_no_cols); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 278, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_9);
+  __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(1, 278, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_10);
+  __Pyx_GIVEREF(__pyx_t_3);
+  PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_3);
+  __Pyx_GIVEREF(__pyx_t_9);
+  PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_t_9);
+  __pyx_t_3 = 0;
+  __pyx_t_9 = 0;
+  __pyx_t_9 = NULL;
+  __pyx_t_5 = 0;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
+    __pyx_t_9 = PyMethod_GET_SELF(__pyx_t_4);
+    if (likely(__pyx_t_9)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+      __Pyx_INCREF(__pyx_t_9);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_4, function);
+      __pyx_t_5 = 1;
+    }
+  }
+  {
+    PyObject *__pyx_callargs[2] = {__pyx_t_9, __pyx_t_10};
+    __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+1-__pyx_t_5, 1+__pyx_t_5);
+    __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
+    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(1, 278, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  }
+  if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(1, 278, __pyx_L1_error)
+  __pyx_t_11 = ((PyArrayObject *)__pyx_t_2);
+  {
+    __Pyx_BufFmt_StackElem __pyx_stack[1];
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_output.rcbuffer->pybuffer, (PyObject*)__pyx_t_11, &__Pyx_TypeInfo_double, PyBUF_FORMAT| PyBUF_C_CONTIGUOUS, 2, 0, __pyx_stack) == -1)) {
+      __pyx_v_output = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_output.rcbuffer->pybuffer.buf = NULL;
+      __PYX_ERR(1, 278, __pyx_L1_error)
+    } else {__pyx_pybuffernd_output.diminfo[0].strides = __pyx_pybuffernd_output.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_output.diminfo[0].shape = __pyx_pybuffernd_output.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_output.diminfo[1].strides = __pyx_pybuffernd_output.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_output.diminfo[1].shape = __pyx_pybuffernd_output.rcbuffer->pybuffer.shape[1];
+    }
+  }
+  __pyx_t_11 = 0;
+  __pyx_v_output = ((PyArrayObject *)__pyx_t_2);
+  __pyx_t_2 = 0;
+
+  /* "src/pyprotolinc/actuarial/providers.pxd":279
+ *     cdef int total_timesteps = dereference(crun_config).get_total_timesteps()
+ *     cdef np.ndarray[double, ndim=2, mode="c"] output = np.zeros((total_timesteps, no_cols))
+ *     cdef double[:, ::1] ext_res_view = output             # <<<<<<<<<<<<<<
  * 
  * 
  */
+  __pyx_t_12 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_double(((PyObject *)__pyx_v_output), PyBUF_WRITABLE); if (unlikely(!__pyx_t_12.memview)) __PYX_ERR(1, 279, __pyx_L1_error)
+  __pyx_v_ext_res_view = __pyx_t_12;
+  __pyx_t_12.memview = NULL;
+  __pyx_t_12.data = NULL;
+
+  /* "src/pyprotolinc/actuarial/providers.pxd":282
+ * 
+ * 
+ *     run_c_valuation(crun_config.get()[0], cportfolio_wapper.ptf, &ext_res_view[0, 0])             # <<<<<<<<<<<<<<
+ *     return output
+ * 
+ */
+  __pyx_t_13 = 0;
+  __pyx_t_14 = 0;
+  __pyx_t_5 = -1;
+  if (__pyx_t_13 < 0) {
+    __pyx_t_13 += __pyx_v_ext_res_view.shape[0];
+    if (unlikely(__pyx_t_13 < 0)) __pyx_t_5 = 0;
+  } else if (unlikely(__pyx_t_13 >= __pyx_v_ext_res_view.shape[0])) __pyx_t_5 = 0;
+  if (__pyx_t_14 < 0) {
+    __pyx_t_14 += __pyx_v_ext_res_view.shape[1];
+    if (unlikely(__pyx_t_14 < 0)) __pyx_t_5 = 1;
+  } else if (unlikely(__pyx_t_14 >= __pyx_v_ext_res_view.shape[1])) __pyx_t_5 = 1;
+  if (unlikely(__pyx_t_5 != -1)) {
+    __Pyx_RaiseBufferIndexError(__pyx_t_5);
+    __PYX_ERR(1, 282, __pyx_L1_error)
+  }
   try {
-    run_c_valuation((__pyx_v_crun_config.get()[0]), __pyx_v_cportfolio_wapper->ptf);
+    run_c_valuation((__pyx_v_crun_config.get()[0]), __pyx_v_cportfolio_wapper->ptf, (&(*((double *) ( /* dim=1 */ ((char *) (((double *) ( /* dim=0 */ (__pyx_v_ext_res_view.data + __pyx_t_13 * __pyx_v_ext_res_view.strides[0]) )) + __pyx_t_14)) )))));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(1, 258, __pyx_L1_error)
+    __PYX_ERR(1, 282, __pyx_L1_error)
   }
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":250
+  /* "src/pyprotolinc/actuarial/providers.pxd":283
+ * 
+ *     run_c_valuation(crun_config.get()[0], cportfolio_wapper.ptf, &ext_res_view[0, 0])
+ *     return output             # <<<<<<<<<<<<<<
  * 
  * 
- * def py_run_c_valuation(AssumptionSet be_ass, CPortfolioWrapper cportfolio_wapper):             # <<<<<<<<<<<<<<
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_INCREF((PyObject *)__pyx_v_output);
+  __pyx_r = ((PyObject *)__pyx_v_output);
+  goto __pyx_L0;
+
+  /* "src/pyprotolinc/actuarial/providers.pxd":264
+ * 
+ * 
+ * def py_run_c_valuation(AssumptionSet be_ass, CPortfolioWrapper cportfolio_wapper, TimeStep time_step):             # <<<<<<<<<<<<<<
  * 
  *     cdef unsigned dim = be_ass.dim
  */
 
   /* function exit code */
-  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
-  goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_9);
+  __Pyx_XDECREF(__pyx_t_10);
+  __PYX_XCLEAR_MEMVIEW(&__pyx_t_12, 1);
+  { PyObject *__pyx_type, *__pyx_value, *__pyx_tb;
+    __Pyx_PyThreadState_declare
+    __Pyx_PyThreadState_assign
+    __Pyx_ErrFetch(&__pyx_type, &__pyx_value, &__pyx_tb);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_output.rcbuffer->pybuffer);
+  __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
   __Pyx_AddTraceback("pyprotolinc._actuarial.py_run_c_valuation", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
+  goto __pyx_L2;
   __pyx_L0:;
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_output.rcbuffer->pybuffer);
+  __pyx_L2:;
+  __Pyx_XDECREF(__pyx_v_output_columns);
+  __Pyx_XDECREF((PyObject *)__pyx_v_output);
+  __PYX_XCLEAR_MEMVIEW(&__pyx_v_ext_res_view, 1);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
@@ -17247,7 +17499,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_4portfolio_valuation(CYTHON
   return __pyx_r;
 }
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":245
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":245
  * 
  *         @property
  *         cdef inline PyObject* base(self) nogil:             # <<<<<<<<<<<<<<
@@ -17258,7 +17510,7 @@ static PyObject *__pyx_pf_11pyprotolinc_10_actuarial_4portfolio_valuation(CYTHON
 static CYTHON_INLINE PyObject *__pyx_f_5numpy_7ndarray_4base_base(PyArrayObject *__pyx_v_self) {
   PyObject *__pyx_r;
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":248
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":248
  *             """Returns a borrowed reference to the object owning the data/memory.
  *             """
  *             return PyArray_BASE(self)             # <<<<<<<<<<<<<<
@@ -17268,7 +17520,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_7ndarray_4base_base(PyArrayObject 
   __pyx_r = PyArray_BASE(__pyx_v_self);
   goto __pyx_L0;
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":245
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":245
  * 
  *         @property
  *         cdef inline PyObject* base(self) nogil:             # <<<<<<<<<<<<<<
@@ -17281,7 +17533,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_7ndarray_4base_base(PyArrayObject 
   return __pyx_r;
 }
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":251
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":251
  * 
  *         @property
  *         cdef inline dtype descr(self):             # <<<<<<<<<<<<<<
@@ -17295,7 +17547,7 @@ static CYTHON_INLINE PyArray_Descr *__pyx_f_5numpy_7ndarray_5descr_descr(PyArray
   PyArray_Descr *__pyx_t_1;
   __Pyx_RefNannySetupContext("descr", 0);
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":254
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":254
  *             """Returns an owned reference to the dtype of the array.
  *             """
  *             return <dtype>PyArray_DESCR(self)             # <<<<<<<<<<<<<<
@@ -17308,7 +17560,7 @@ static CYTHON_INLINE PyArray_Descr *__pyx_f_5numpy_7ndarray_5descr_descr(PyArray
   __pyx_r = ((PyArray_Descr *)__pyx_t_1);
   goto __pyx_L0;
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":251
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":251
  * 
  *         @property
  *         cdef inline dtype descr(self):             # <<<<<<<<<<<<<<
@@ -17323,7 +17575,7 @@ static CYTHON_INLINE PyArray_Descr *__pyx_f_5numpy_7ndarray_5descr_descr(PyArray
   return __pyx_r;
 }
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":257
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":257
  * 
  *         @property
  *         cdef inline int ndim(self) nogil:             # <<<<<<<<<<<<<<
@@ -17334,7 +17586,7 @@ static CYTHON_INLINE PyArray_Descr *__pyx_f_5numpy_7ndarray_5descr_descr(PyArray
 static CYTHON_INLINE int __pyx_f_5numpy_7ndarray_4ndim_ndim(PyArrayObject *__pyx_v_self) {
   int __pyx_r;
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":260
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":260
  *             """Returns the number of dimensions in the array.
  *             """
  *             return PyArray_NDIM(self)             # <<<<<<<<<<<<<<
@@ -17344,7 +17596,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_7ndarray_4ndim_ndim(PyArrayObject *__pyx
   __pyx_r = PyArray_NDIM(__pyx_v_self);
   goto __pyx_L0;
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":257
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":257
  * 
  *         @property
  *         cdef inline int ndim(self) nogil:             # <<<<<<<<<<<<<<
@@ -17357,7 +17609,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_7ndarray_4ndim_ndim(PyArrayObject *__pyx
   return __pyx_r;
 }
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":263
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":263
  * 
  *         @property
  *         cdef inline npy_intp *shape(self) nogil:             # <<<<<<<<<<<<<<
@@ -17368,7 +17620,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_7ndarray_4ndim_ndim(PyArrayObject *__pyx
 static CYTHON_INLINE npy_intp *__pyx_f_5numpy_7ndarray_5shape_shape(PyArrayObject *__pyx_v_self) {
   npy_intp *__pyx_r;
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":268
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":268
  *             Can return NULL for 0-dimensional arrays.
  *             """
  *             return PyArray_DIMS(self)             # <<<<<<<<<<<<<<
@@ -17378,7 +17630,7 @@ static CYTHON_INLINE npy_intp *__pyx_f_5numpy_7ndarray_5shape_shape(PyArrayObjec
   __pyx_r = PyArray_DIMS(__pyx_v_self);
   goto __pyx_L0;
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":263
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":263
  * 
  *         @property
  *         cdef inline npy_intp *shape(self) nogil:             # <<<<<<<<<<<<<<
@@ -17391,7 +17643,7 @@ static CYTHON_INLINE npy_intp *__pyx_f_5numpy_7ndarray_5shape_shape(PyArrayObjec
   return __pyx_r;
 }
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":271
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":271
  * 
  *         @property
  *         cdef inline npy_intp *strides(self) nogil:             # <<<<<<<<<<<<<<
@@ -17402,7 +17654,7 @@ static CYTHON_INLINE npy_intp *__pyx_f_5numpy_7ndarray_5shape_shape(PyArrayObjec
 static CYTHON_INLINE npy_intp *__pyx_f_5numpy_7ndarray_7strides_strides(PyArrayObject *__pyx_v_self) {
   npy_intp *__pyx_r;
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":275
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":275
  *             The number of elements matches the number of dimensions of the array (ndim).
  *             """
  *             return PyArray_STRIDES(self)             # <<<<<<<<<<<<<<
@@ -17412,7 +17664,7 @@ static CYTHON_INLINE npy_intp *__pyx_f_5numpy_7ndarray_7strides_strides(PyArrayO
   __pyx_r = PyArray_STRIDES(__pyx_v_self);
   goto __pyx_L0;
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":271
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":271
  * 
  *         @property
  *         cdef inline npy_intp *strides(self) nogil:             # <<<<<<<<<<<<<<
@@ -17425,7 +17677,7 @@ static CYTHON_INLINE npy_intp *__pyx_f_5numpy_7ndarray_7strides_strides(PyArrayO
   return __pyx_r;
 }
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":278
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":278
  * 
  *         @property
  *         cdef inline npy_intp size(self) nogil:             # <<<<<<<<<<<<<<
@@ -17436,7 +17688,7 @@ static CYTHON_INLINE npy_intp *__pyx_f_5numpy_7ndarray_7strides_strides(PyArrayO
 static CYTHON_INLINE npy_intp __pyx_f_5numpy_7ndarray_4size_size(PyArrayObject *__pyx_v_self) {
   npy_intp __pyx_r;
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":281
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":281
  *             """Returns the total size (in number of elements) of the array.
  *             """
  *             return PyArray_SIZE(self)             # <<<<<<<<<<<<<<
@@ -17446,7 +17698,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_7ndarray_4size_size(PyArrayObject *
   __pyx_r = PyArray_SIZE(__pyx_v_self);
   goto __pyx_L0;
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":278
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":278
  * 
  *         @property
  *         cdef inline npy_intp size(self) nogil:             # <<<<<<<<<<<<<<
@@ -17459,7 +17711,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_7ndarray_4size_size(PyArrayObject *
   return __pyx_r;
 }
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":284
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":284
  * 
  *         @property
  *         cdef inline char* data(self) nogil:             # <<<<<<<<<<<<<<
@@ -17470,7 +17722,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_7ndarray_4size_size(PyArrayObject *
 static CYTHON_INLINE char *__pyx_f_5numpy_7ndarray_4data_data(PyArrayObject *__pyx_v_self) {
   char *__pyx_r;
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":290
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":290
  *             of `PyArray_DATA()` instead, which returns a 'void*'.
  *             """
  *             return PyArray_BYTES(self)             # <<<<<<<<<<<<<<
@@ -17480,7 +17732,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy_7ndarray_4data_data(PyArrayObject *__p
   __pyx_r = PyArray_BYTES(__pyx_v_self);
   goto __pyx_L0;
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":284
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":284
  * 
  *         @property
  *         cdef inline char* data(self) nogil:             # <<<<<<<<<<<<<<
@@ -17493,7 +17745,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy_7ndarray_4data_data(PyArrayObject *__p
   return __pyx_r;
 }
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":776
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":776
  * ctypedef npy_cdouble     complex_t
  * 
  * cdef inline object PyArray_MultiIterNew1(a):             # <<<<<<<<<<<<<<
@@ -17510,7 +17762,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew1(PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew1", 0);
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":777
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":777
  * 
  * cdef inline object PyArray_MultiIterNew1(a):
  *     return PyArray_MultiIterNew(1, <void*>a)             # <<<<<<<<<<<<<<
@@ -17524,7 +17776,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew1(PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":776
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":776
  * ctypedef npy_cdouble     complex_t
  * 
  * cdef inline object PyArray_MultiIterNew1(a):             # <<<<<<<<<<<<<<
@@ -17543,7 +17795,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew1(PyObject *__
   return __pyx_r;
 }
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":779
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":779
  *     return PyArray_MultiIterNew(1, <void*>a)
  * 
  * cdef inline object PyArray_MultiIterNew2(a, b):             # <<<<<<<<<<<<<<
@@ -17560,7 +17812,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew2(PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew2", 0);
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":780
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":780
  * 
  * cdef inline object PyArray_MultiIterNew2(a, b):
  *     return PyArray_MultiIterNew(2, <void*>a, <void*>b)             # <<<<<<<<<<<<<<
@@ -17574,7 +17826,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew2(PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":779
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":779
  *     return PyArray_MultiIterNew(1, <void*>a)
  * 
  * cdef inline object PyArray_MultiIterNew2(a, b):             # <<<<<<<<<<<<<<
@@ -17593,7 +17845,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew2(PyObject *__
   return __pyx_r;
 }
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":782
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":782
  *     return PyArray_MultiIterNew(2, <void*>a, <void*>b)
  * 
  * cdef inline object PyArray_MultiIterNew3(a, b, c):             # <<<<<<<<<<<<<<
@@ -17610,7 +17862,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew3(PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew3", 0);
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":783
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":783
  * 
  * cdef inline object PyArray_MultiIterNew3(a, b, c):
  *     return PyArray_MultiIterNew(3, <void*>a, <void*>b, <void*> c)             # <<<<<<<<<<<<<<
@@ -17624,7 +17876,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew3(PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":782
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":782
  *     return PyArray_MultiIterNew(2, <void*>a, <void*>b)
  * 
  * cdef inline object PyArray_MultiIterNew3(a, b, c):             # <<<<<<<<<<<<<<
@@ -17643,7 +17895,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew3(PyObject *__
   return __pyx_r;
 }
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":785
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":785
  *     return PyArray_MultiIterNew(3, <void*>a, <void*>b, <void*> c)
  * 
  * cdef inline object PyArray_MultiIterNew4(a, b, c, d):             # <<<<<<<<<<<<<<
@@ -17660,7 +17912,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew4(PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew4", 0);
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":786
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":786
  * 
  * cdef inline object PyArray_MultiIterNew4(a, b, c, d):
  *     return PyArray_MultiIterNew(4, <void*>a, <void*>b, <void*>c, <void*> d)             # <<<<<<<<<<<<<<
@@ -17674,7 +17926,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew4(PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":785
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":785
  *     return PyArray_MultiIterNew(3, <void*>a, <void*>b, <void*> c)
  * 
  * cdef inline object PyArray_MultiIterNew4(a, b, c, d):             # <<<<<<<<<<<<<<
@@ -17693,7 +17945,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew4(PyObject *__
   return __pyx_r;
 }
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":788
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":788
  *     return PyArray_MultiIterNew(4, <void*>a, <void*>b, <void*>c, <void*> d)
  * 
  * cdef inline object PyArray_MultiIterNew5(a, b, c, d, e):             # <<<<<<<<<<<<<<
@@ -17710,7 +17962,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew5(PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew5", 0);
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":789
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":789
  * 
  * cdef inline object PyArray_MultiIterNew5(a, b, c, d, e):
  *     return PyArray_MultiIterNew(5, <void*>a, <void*>b, <void*>c, <void*> d, <void*> e)             # <<<<<<<<<<<<<<
@@ -17724,7 +17976,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew5(PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":788
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":788
  *     return PyArray_MultiIterNew(4, <void*>a, <void*>b, <void*>c, <void*> d)
  * 
  * cdef inline object PyArray_MultiIterNew5(a, b, c, d, e):             # <<<<<<<<<<<<<<
@@ -17743,7 +17995,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew5(PyObject *__
   return __pyx_r;
 }
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":791
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":791
  *     return PyArray_MultiIterNew(5, <void*>a, <void*>b, <void*>c, <void*> d, <void*> e)
  * 
  * cdef inline tuple PyDataType_SHAPE(dtype d):             # <<<<<<<<<<<<<<
@@ -17757,7 +18009,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("PyDataType_SHAPE", 0);
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":792
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":792
  * 
  * cdef inline tuple PyDataType_SHAPE(dtype d):
  *     if PyDataType_HASSUBARRAY(d):             # <<<<<<<<<<<<<<
@@ -17767,7 +18019,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
   __pyx_t_1 = PyDataType_HASSUBARRAY(__pyx_v_d);
   if (__pyx_t_1) {
 
-    /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":793
+    /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":793
  * cdef inline tuple PyDataType_SHAPE(dtype d):
  *     if PyDataType_HASSUBARRAY(d):
  *         return <tuple>d.subarray.shape             # <<<<<<<<<<<<<<
@@ -17779,7 +18031,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
     __pyx_r = ((PyObject*)__pyx_v_d->subarray->shape);
     goto __pyx_L0;
 
-    /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":792
+    /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":792
  * 
  * cdef inline tuple PyDataType_SHAPE(dtype d):
  *     if PyDataType_HASSUBARRAY(d):             # <<<<<<<<<<<<<<
@@ -17788,7 +18040,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
  */
   }
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":795
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":795
  *         return <tuple>d.subarray.shape
  *     else:
  *         return ()             # <<<<<<<<<<<<<<
@@ -17802,7 +18054,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
     goto __pyx_L0;
   }
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":791
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":791
  *     return PyArray_MultiIterNew(5, <void*>a, <void*>b, <void*>c, <void*> d, <void*> e)
  * 
  * cdef inline tuple PyDataType_SHAPE(dtype d):             # <<<<<<<<<<<<<<
@@ -17817,7 +18069,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
   return __pyx_r;
 }
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":970
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":970
  *     int _import_umath() except -1
  * 
  * cdef inline void set_array_base(ndarray arr, object base):             # <<<<<<<<<<<<<<
@@ -17829,7 +18081,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("set_array_base", 0);
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":971
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":971
  * 
  * cdef inline void set_array_base(ndarray arr, object base):
  *     Py_INCREF(base) # important to do this before stealing the reference below!             # <<<<<<<<<<<<<<
@@ -17838,7 +18090,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
  */
   Py_INCREF(__pyx_v_base);
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":972
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":972
  * cdef inline void set_array_base(ndarray arr, object base):
  *     Py_INCREF(base) # important to do this before stealing the reference below!
  *     PyArray_SetBaseObject(arr, base)             # <<<<<<<<<<<<<<
@@ -17847,7 +18099,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
  */
   (void)(PyArray_SetBaseObject(__pyx_v_arr, __pyx_v_base));
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":970
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":970
  *     int _import_umath() except -1
  * 
  * cdef inline void set_array_base(ndarray arr, object base):             # <<<<<<<<<<<<<<
@@ -17859,7 +18111,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
   __Pyx_RefNannyFinishContext();
 }
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":974
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":974
  *     PyArray_SetBaseObject(arr, base)
  * 
  * cdef inline object get_array_base(ndarray arr):             # <<<<<<<<<<<<<<
@@ -17874,7 +18126,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("get_array_base", 0);
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":975
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":975
  * 
  * cdef inline object get_array_base(ndarray arr):
  *     base = PyArray_BASE(arr)             # <<<<<<<<<<<<<<
@@ -17883,7 +18135,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
  */
   __pyx_v_base = PyArray_BASE(__pyx_v_arr);
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":976
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":976
  * cdef inline object get_array_base(ndarray arr):
  *     base = PyArray_BASE(arr)
  *     if base is NULL:             # <<<<<<<<<<<<<<
@@ -17893,7 +18145,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   __pyx_t_1 = (__pyx_v_base == NULL);
   if (__pyx_t_1) {
 
-    /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":977
+    /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":977
  *     base = PyArray_BASE(arr)
  *     if base is NULL:
  *         return None             # <<<<<<<<<<<<<<
@@ -17904,7 +18156,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
     __pyx_r = Py_None; __Pyx_INCREF(Py_None);
     goto __pyx_L0;
 
-    /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":976
+    /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":976
  * cdef inline object get_array_base(ndarray arr):
  *     base = PyArray_BASE(arr)
  *     if base is NULL:             # <<<<<<<<<<<<<<
@@ -17913,7 +18165,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
  */
   }
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":978
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":978
  *     if base is NULL:
  *         return None
  *     return <object>base             # <<<<<<<<<<<<<<
@@ -17925,7 +18177,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   __pyx_r = ((PyObject *)__pyx_v_base);
   goto __pyx_L0;
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":974
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":974
  *     PyArray_SetBaseObject(arr, base)
  * 
  * cdef inline object get_array_base(ndarray arr):             # <<<<<<<<<<<<<<
@@ -17940,7 +18192,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   return __pyx_r;
 }
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":982
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":982
  * # Versions of the import_* functions which are more suitable for
  * # Cython code.
  * cdef inline int import_array() except -1:             # <<<<<<<<<<<<<<
@@ -17964,7 +18216,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("import_array", 0);
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":983
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":983
  * # Cython code.
  * cdef inline int import_array() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -17980,7 +18232,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":984
+      /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":984
  * cdef inline int import_array() except -1:
  *     try:
  *         __pyx_import_array()             # <<<<<<<<<<<<<<
@@ -17989,7 +18241,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
  */
       __pyx_t_4 = _import_array(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(4, 984, __pyx_L3_error)
 
-      /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":983
+      /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":983
  * # Cython code.
  * cdef inline int import_array() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -18003,7 +18255,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     goto __pyx_L8_try_end;
     __pyx_L3_error:;
 
-    /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":985
+    /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":985
  *     try:
  *         __pyx_import_array()
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -18018,7 +18270,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_7);
 
-      /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":986
+      /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":986
  *         __pyx_import_array()
  *     except Exception:
  *         raise ImportError("numpy.core.multiarray failed to import")             # <<<<<<<<<<<<<<
@@ -18034,7 +18286,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
 
-    /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":983
+    /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":983
  * # Cython code.
  * cdef inline int import_array() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -18049,7 +18301,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     __pyx_L8_try_end:;
   }
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":982
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":982
  * # Versions of the import_* functions which are more suitable for
  * # Cython code.
  * cdef inline int import_array() except -1:             # <<<<<<<<<<<<<<
@@ -18072,7 +18324,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
   return __pyx_r;
 }
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":988
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":988
  *         raise ImportError("numpy.core.multiarray failed to import")
  * 
  * cdef inline int import_umath() except -1:             # <<<<<<<<<<<<<<
@@ -18096,7 +18348,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("import_umath", 0);
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":989
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":989
  * 
  * cdef inline int import_umath() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -18112,7 +18364,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":990
+      /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":990
  * cdef inline int import_umath() except -1:
  *     try:
  *         _import_umath()             # <<<<<<<<<<<<<<
@@ -18121,7 +18373,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
  */
       __pyx_t_4 = _import_umath(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(4, 990, __pyx_L3_error)
 
-      /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":989
+      /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":989
  * 
  * cdef inline int import_umath() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -18135,7 +18387,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     goto __pyx_L8_try_end;
     __pyx_L3_error:;
 
-    /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":991
+    /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":991
  *     try:
  *         _import_umath()
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -18150,7 +18402,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_7);
 
-      /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":992
+      /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":992
  *         _import_umath()
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")             # <<<<<<<<<<<<<<
@@ -18166,7 +18418,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
 
-    /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":989
+    /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":989
  * 
  * cdef inline int import_umath() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -18181,7 +18433,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     __pyx_L8_try_end:;
   }
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":988
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":988
  *         raise ImportError("numpy.core.multiarray failed to import")
  * 
  * cdef inline int import_umath() except -1:             # <<<<<<<<<<<<<<
@@ -18204,7 +18456,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
   return __pyx_r;
 }
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":994
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":994
  *         raise ImportError("numpy.core.umath failed to import")
  * 
  * cdef inline int import_ufunc() except -1:             # <<<<<<<<<<<<<<
@@ -18228,7 +18480,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("import_ufunc", 0);
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":995
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":995
  * 
  * cdef inline int import_ufunc() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -18244,7 +18496,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":996
+      /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":996
  * cdef inline int import_ufunc() except -1:
  *     try:
  *         _import_umath()             # <<<<<<<<<<<<<<
@@ -18253,7 +18505,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
  */
       __pyx_t_4 = _import_umath(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(4, 996, __pyx_L3_error)
 
-      /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":995
+      /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":995
  * 
  * cdef inline int import_ufunc() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -18267,7 +18519,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     goto __pyx_L8_try_end;
     __pyx_L3_error:;
 
-    /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":997
+    /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":997
  *     try:
  *         _import_umath()
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -18282,7 +18534,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_7);
 
-      /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":998
+      /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":998
  *         _import_umath()
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")             # <<<<<<<<<<<<<<
@@ -18298,7 +18550,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
 
-    /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":995
+    /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":995
  * 
  * cdef inline int import_ufunc() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -18313,7 +18565,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     __pyx_L8_try_end:;
   }
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":994
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":994
  *         raise ImportError("numpy.core.umath failed to import")
  * 
  * cdef inline int import_ufunc() except -1:             # <<<<<<<<<<<<<<
@@ -18336,7 +18588,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
   return __pyx_r;
 }
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":1001
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":1001
  * 
  * 
  * cdef inline bint is_timedelta64_object(object obj):             # <<<<<<<<<<<<<<
@@ -18349,7 +18601,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_timedelta64_object(PyObject *__pyx_v_
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("is_timedelta64_object", 0);
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":1013
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":1013
  *     bool
  *     """
  *     return PyObject_TypeCheck(obj, &PyTimedeltaArrType_Type)             # <<<<<<<<<<<<<<
@@ -18359,7 +18611,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_timedelta64_object(PyObject *__pyx_v_
   __pyx_r = PyObject_TypeCheck(__pyx_v_obj, (&PyTimedeltaArrType_Type));
   goto __pyx_L0;
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":1001
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":1001
  * 
  * 
  * cdef inline bint is_timedelta64_object(object obj):             # <<<<<<<<<<<<<<
@@ -18373,7 +18625,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_timedelta64_object(PyObject *__pyx_v_
   return __pyx_r;
 }
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":1016
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":1016
  * 
  * 
  * cdef inline bint is_datetime64_object(object obj):             # <<<<<<<<<<<<<<
@@ -18386,7 +18638,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_datetime64_object(PyObject *__pyx_v_o
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("is_datetime64_object", 0);
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":1028
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":1028
  *     bool
  *     """
  *     return PyObject_TypeCheck(obj, &PyDatetimeArrType_Type)             # <<<<<<<<<<<<<<
@@ -18396,7 +18648,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_datetime64_object(PyObject *__pyx_v_o
   __pyx_r = PyObject_TypeCheck(__pyx_v_obj, (&PyDatetimeArrType_Type));
   goto __pyx_L0;
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":1016
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":1016
  * 
  * 
  * cdef inline bint is_datetime64_object(object obj):             # <<<<<<<<<<<<<<
@@ -18410,7 +18662,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_datetime64_object(PyObject *__pyx_v_o
   return __pyx_r;
 }
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":1031
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":1031
  * 
  * 
  * cdef inline npy_datetime get_datetime64_value(object obj) nogil:             # <<<<<<<<<<<<<<
@@ -18421,7 +18673,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_datetime64_object(PyObject *__pyx_v_o
 static CYTHON_INLINE npy_datetime __pyx_f_5numpy_get_datetime64_value(PyObject *__pyx_v_obj) {
   npy_datetime __pyx_r;
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":1038
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":1038
  *     also needed.  That can be found using `get_datetime64_unit`.
  *     """
  *     return (<PyDatetimeScalarObject*>obj).obval             # <<<<<<<<<<<<<<
@@ -18431,7 +18683,7 @@ static CYTHON_INLINE npy_datetime __pyx_f_5numpy_get_datetime64_value(PyObject *
   __pyx_r = ((PyDatetimeScalarObject *)__pyx_v_obj)->obval;
   goto __pyx_L0;
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":1031
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":1031
  * 
  * 
  * cdef inline npy_datetime get_datetime64_value(object obj) nogil:             # <<<<<<<<<<<<<<
@@ -18444,7 +18696,7 @@ static CYTHON_INLINE npy_datetime __pyx_f_5numpy_get_datetime64_value(PyObject *
   return __pyx_r;
 }
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":1041
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":1041
  * 
  * 
  * cdef inline npy_timedelta get_timedelta64_value(object obj) nogil:             # <<<<<<<<<<<<<<
@@ -18455,7 +18707,7 @@ static CYTHON_INLINE npy_datetime __pyx_f_5numpy_get_datetime64_value(PyObject *
 static CYTHON_INLINE npy_timedelta __pyx_f_5numpy_get_timedelta64_value(PyObject *__pyx_v_obj) {
   npy_timedelta __pyx_r;
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":1045
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":1045
  *     returns the int64 value underlying scalar numpy timedelta64 object
  *     """
  *     return (<PyTimedeltaScalarObject*>obj).obval             # <<<<<<<<<<<<<<
@@ -18465,7 +18717,7 @@ static CYTHON_INLINE npy_timedelta __pyx_f_5numpy_get_timedelta64_value(PyObject
   __pyx_r = ((PyTimedeltaScalarObject *)__pyx_v_obj)->obval;
   goto __pyx_L0;
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":1041
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":1041
  * 
  * 
  * cdef inline npy_timedelta get_timedelta64_value(object obj) nogil:             # <<<<<<<<<<<<<<
@@ -18478,7 +18730,7 @@ static CYTHON_INLINE npy_timedelta __pyx_f_5numpy_get_timedelta64_value(PyObject
   return __pyx_r;
 }
 
-/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":1048
+/* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":1048
  * 
  * 
  * cdef inline NPY_DATETIMEUNIT get_datetime64_unit(object obj) nogil:             # <<<<<<<<<<<<<<
@@ -18489,7 +18741,7 @@ static CYTHON_INLINE npy_timedelta __pyx_f_5numpy_get_timedelta64_value(PyObject
 static CYTHON_INLINE NPY_DATETIMEUNIT __pyx_f_5numpy_get_datetime64_unit(PyObject *__pyx_v_obj) {
   NPY_DATETIMEUNIT __pyx_r;
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":1052
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":1052
  *     returns the unit part of the dtype for a numpy datetime64 object.
  *     """
  *     return <NPY_DATETIMEUNIT>(<PyDatetimeScalarObject*>obj).obmeta.base             # <<<<<<<<<<<<<<
@@ -18497,7 +18749,7 @@ static CYTHON_INLINE NPY_DATETIMEUNIT __pyx_f_5numpy_get_datetime64_unit(PyObjec
   __pyx_r = ((NPY_DATETIMEUNIT)((PyDatetimeScalarObject *)__pyx_v_obj)->obmeta.base);
   goto __pyx_L0;
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":1048
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":1048
  * 
  * 
  * cdef inline NPY_DATETIMEUNIT get_datetime64_unit(object obj) nogil:             # <<<<<<<<<<<<<<
@@ -36302,6 +36554,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, __pyx_k_LG_Reserve, sizeof(__pyx_k_LG_Reserve), 0, 1, 0, 1},
   {0, __pyx_k_Lookup_indices_for_has_unexpecte, sizeof(__pyx_k_Lookup_indices_for_has_unexpecte), 0, 1, 0, 0},
   {0, __pyx_k_MONTH, sizeof(__pyx_k_MONTH), 0, 1, 0, 1},
+  {0, __pyx_k_MONTHLY, sizeof(__pyx_k_MONTHLY), 0, 0, 1, 1},
   {0, __pyx_k_MemoryError, sizeof(__pyx_k_MemoryError), 0, 0, 1, 1},
   {0, __pyx_k_MemoryView_of_r_at_0x_x, sizeof(__pyx_k_MemoryView_of_r_at_0x_x), 0, 0, 1, 0},
   {0, __pyx_k_MemoryView_of_r_object, sizeof(__pyx_k_MemoryView_of_r_object), 0, 0, 1, 0},
@@ -36326,6 +36579,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, __pyx_k_Pyx_EnumBase___str, sizeof(__pyx_k_Pyx_EnumBase___str), 0, 0, 1, 1},
   {0, __pyx_k_Pyx_EnumMeta___reduce_cython, sizeof(__pyx_k_Pyx_EnumMeta___reduce_cython), 0, 0, 1, 1},
   {0, __pyx_k_Pyx_EnumMeta___setstate_cython, sizeof(__pyx_k_Pyx_EnumMeta___setstate_cython), 0, 0, 1, 1},
+  {0, __pyx_k_QUARTER, sizeof(__pyx_k_QUARTER), 0, 1, 0, 1},
+  {0, __pyx_k_QUARTERLY, sizeof(__pyx_k_QUARTERLY), 0, 0, 1, 1},
   {0, __pyx_k_Required_lengh_must_be_1, sizeof(__pyx_k_Required_lengh_must_be_1), 0, 1, 0, 0},
   {0, __pyx_k_SUM_INSURED, sizeof(__pyx_k_SUM_INSURED), 0, 1, 0, 1},
   {0, __pyx_k_Sequence, sizeof(__pyx_k_Sequence), 0, 0, 1, 1},
@@ -36344,6 +36599,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, __pyx_k_StandardRateProvider_slice, sizeof(__pyx_k_StandardRateProvider_slice), 0, 0, 1, 1},
   {0, __pyx_k_Step_may_not_be_zero_axis_d, sizeof(__pyx_k_Step_may_not_be_zero_axis_d), 0, 0, 1, 0},
   {0, __pyx_k_SumInsured, sizeof(__pyx_k_SumInsured), 0, 1, 0, 1},
+  {0, __pyx_k_TimeStep, sizeof(__pyx_k_TimeStep), 0, 0, 1, 1},
   {0, __pyx_k_TypeError, sizeof(__pyx_k_TypeError), 0, 0, 1, 1},
   {0, __pyx_k_UTF8, sizeof(__pyx_k_UTF8), 0, 1, 0, 1},
   {0, __pyx_k_Unable_to_convert_item_to_object, sizeof(__pyx_k_Unable_to_convert_item_to_object), 0, 0, 1, 0},
@@ -36353,6 +36609,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, __pyx_k_View_MemoryView, sizeof(__pyx_k_View_MemoryView), 0, 0, 1, 1},
   {0, __pyx_k_Wrapper_for, sizeof(__pyx_k_Wrapper_for), 0, 1, 0, 0},
   {0, __pyx_k_YEAR, sizeof(__pyx_k_YEAR), 0, 1, 0, 1},
+  {0, __pyx_k_YEARLY, sizeof(__pyx_k_YEARLY), 0, 0, 1, 1},
   {0, __pyx_k_YearsDisabledIfDisabledAtStart, sizeof(__pyx_k_YearsDisabledIfDisabledAtStart), 0, 0, 1, 1},
   {0, __pyx_k__10, sizeof(__pyx_k__10), 0, 1, 0, 0},
   {0, __pyx_k__11, sizeof(__pyx_k__11), 0, 1, 0, 0},
@@ -36433,6 +36690,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, __pyx_k_enum, sizeof(__pyx_k_enum), 0, 0, 1, 1},
   {0, __pyx_k_enumerate, sizeof(__pyx_k_enumerate), 0, 0, 1, 1},
   {0, __pyx_k_error, sizeof(__pyx_k_error), 0, 0, 1, 1},
+  {0, __pyx_k_ext_res_view, sizeof(__pyx_k_ext_res_view), 0, 0, 1, 1},
   {0, __pyx_k_flags, sizeof(__pyx_k_flags), 0, 0, 1, 1},
   {0, __pyx_k_flatten, sizeof(__pyx_k_flatten), 0, 0, 1, 1},
   {0, __pyx_k_foo, sizeof(__pyx_k_foo), 0, 0, 1, 1},
@@ -36610,9 +36868,11 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, __pyx_k_super, sizeof(__pyx_k_super), 0, 0, 1, 1},
   {0, __pyx_k_sys, sizeof(__pyx_k_sys), 0, 0, 1, 1},
   {0, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
+  {0, __pyx_k_time_step, sizeof(__pyx_k_time_step), 0, 0, 1, 1},
   {0, __pyx_k_tmp_lapse, sizeof(__pyx_k_tmp_lapse), 0, 0, 1, 1},
   {0, __pyx_k_tmp_mort, sizeof(__pyx_k_tmp_mort), 0, 0, 1, 1},
   {0, __pyx_k_tmp_prem, sizeof(__pyx_k_tmp_prem), 0, 0, 1, 1},
+  {0, __pyx_k_total_timesteps, sizeof(__pyx_k_total_timesteps), 0, 0, 1, 1},
   {0, __pyx_k_unable_to_allocate_array_data, sizeof(__pyx_k_unable_to_allocate_array_data), 0, 0, 1, 0},
   {0, __pyx_k_unable_to_allocate_shape_and_str, sizeof(__pyx_k_unable_to_allocate_shape_and_str), 0, 0, 1, 0},
   {0, __pyx_k_unpack, sizeof(__pyx_k_unpack), 0, 0, 1, 1},
@@ -36629,6 +36889,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, __pyx_k_version_info, sizeof(__pyx_k_version_info), 0, 0, 1, 1},
   {0, __pyx_k_year, sizeof(__pyx_k_year), 0, 0, 1, 1},
   {0, __pyx_k_years_of_birth, sizeof(__pyx_k_years_of_birth), 0, 0, 1, 1},
+  {0, __pyx_k_years_to_simulate, sizeof(__pyx_k_years_to_simulate), 0, 0, 1, 1},
   {0, __pyx_k_zeros, sizeof(__pyx_k_zeros), 0, 0, 1, 1},
   #else
   {&__pyx_n_u_AGE_INFORCE_DATE, __pyx_k_AGE_INFORCE_DATE, sizeof(__pyx_k_AGE_INFORCE_DATE), 0, 1, 0, 1},
@@ -36695,6 +36956,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_u_LG_Reserve, __pyx_k_LG_Reserve, sizeof(__pyx_k_LG_Reserve), 0, 1, 0, 1},
   {&__pyx_kp_u_Lookup_indices_for_has_unexpecte, __pyx_k_Lookup_indices_for_has_unexpecte, sizeof(__pyx_k_Lookup_indices_for_has_unexpecte), 0, 1, 0, 0},
   {&__pyx_n_u_MONTH, __pyx_k_MONTH, sizeof(__pyx_k_MONTH), 0, 1, 0, 1},
+  {&__pyx_n_s_MONTHLY, __pyx_k_MONTHLY, sizeof(__pyx_k_MONTHLY), 0, 0, 1, 1},
   {&__pyx_n_s_MemoryError, __pyx_k_MemoryError, sizeof(__pyx_k_MemoryError), 0, 0, 1, 1},
   {&__pyx_kp_s_MemoryView_of_r_at_0x_x, __pyx_k_MemoryView_of_r_at_0x_x, sizeof(__pyx_k_MemoryView_of_r_at_0x_x), 0, 0, 1, 0},
   {&__pyx_kp_s_MemoryView_of_r_object, __pyx_k_MemoryView_of_r_object, sizeof(__pyx_k_MemoryView_of_r_object), 0, 0, 1, 0},
@@ -36719,6 +36981,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_Pyx_EnumBase___str, __pyx_k_Pyx_EnumBase___str, sizeof(__pyx_k_Pyx_EnumBase___str), 0, 0, 1, 1},
   {&__pyx_n_s_Pyx_EnumMeta___reduce_cython, __pyx_k_Pyx_EnumMeta___reduce_cython, sizeof(__pyx_k_Pyx_EnumMeta___reduce_cython), 0, 0, 1, 1},
   {&__pyx_n_s_Pyx_EnumMeta___setstate_cython, __pyx_k_Pyx_EnumMeta___setstate_cython, sizeof(__pyx_k_Pyx_EnumMeta___setstate_cython), 0, 0, 1, 1},
+  {&__pyx_n_u_QUARTER, __pyx_k_QUARTER, sizeof(__pyx_k_QUARTER), 0, 1, 0, 1},
+  {&__pyx_n_s_QUARTERLY, __pyx_k_QUARTERLY, sizeof(__pyx_k_QUARTERLY), 0, 0, 1, 1},
   {&__pyx_kp_u_Required_lengh_must_be_1, __pyx_k_Required_lengh_must_be_1, sizeof(__pyx_k_Required_lengh_must_be_1), 0, 1, 0, 0},
   {&__pyx_n_u_SUM_INSURED, __pyx_k_SUM_INSURED, sizeof(__pyx_k_SUM_INSURED), 0, 1, 0, 1},
   {&__pyx_n_s_Sequence, __pyx_k_Sequence, sizeof(__pyx_k_Sequence), 0, 0, 1, 1},
@@ -36737,6 +37001,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_StandardRateProvider_slice, __pyx_k_StandardRateProvider_slice, sizeof(__pyx_k_StandardRateProvider_slice), 0, 0, 1, 1},
   {&__pyx_kp_s_Step_may_not_be_zero_axis_d, __pyx_k_Step_may_not_be_zero_axis_d, sizeof(__pyx_k_Step_may_not_be_zero_axis_d), 0, 0, 1, 0},
   {&__pyx_n_u_SumInsured, __pyx_k_SumInsured, sizeof(__pyx_k_SumInsured), 0, 1, 0, 1},
+  {&__pyx_n_s_TimeStep, __pyx_k_TimeStep, sizeof(__pyx_k_TimeStep), 0, 0, 1, 1},
   {&__pyx_n_s_TypeError, __pyx_k_TypeError, sizeof(__pyx_k_TypeError), 0, 0, 1, 1},
   {&__pyx_n_u_UTF8, __pyx_k_UTF8, sizeof(__pyx_k_UTF8), 0, 1, 0, 1},
   {&__pyx_kp_s_Unable_to_convert_item_to_object, __pyx_k_Unable_to_convert_item_to_object, sizeof(__pyx_k_Unable_to_convert_item_to_object), 0, 0, 1, 0},
@@ -36746,6 +37011,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_View_MemoryView, __pyx_k_View_MemoryView, sizeof(__pyx_k_View_MemoryView), 0, 0, 1, 1},
   {&__pyx_kp_u_Wrapper_for, __pyx_k_Wrapper_for, sizeof(__pyx_k_Wrapper_for), 0, 1, 0, 0},
   {&__pyx_n_u_YEAR, __pyx_k_YEAR, sizeof(__pyx_k_YEAR), 0, 1, 0, 1},
+  {&__pyx_n_s_YEARLY, __pyx_k_YEARLY, sizeof(__pyx_k_YEARLY), 0, 0, 1, 1},
   {&__pyx_n_s_YearsDisabledIfDisabledAtStart, __pyx_k_YearsDisabledIfDisabledAtStart, sizeof(__pyx_k_YearsDisabledIfDisabledAtStart), 0, 0, 1, 1},
   {&__pyx_kp_u__10, __pyx_k__10, sizeof(__pyx_k__10), 0, 1, 0, 0},
   {&__pyx_kp_u__11, __pyx_k__11, sizeof(__pyx_k__11), 0, 1, 0, 0},
@@ -36826,6 +37092,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_enum, __pyx_k_enum, sizeof(__pyx_k_enum), 0, 0, 1, 1},
   {&__pyx_n_s_enumerate, __pyx_k_enumerate, sizeof(__pyx_k_enumerate), 0, 0, 1, 1},
   {&__pyx_n_s_error, __pyx_k_error, sizeof(__pyx_k_error), 0, 0, 1, 1},
+  {&__pyx_n_s_ext_res_view, __pyx_k_ext_res_view, sizeof(__pyx_k_ext_res_view), 0, 0, 1, 1},
   {&__pyx_n_s_flags, __pyx_k_flags, sizeof(__pyx_k_flags), 0, 0, 1, 1},
   {&__pyx_n_s_flatten, __pyx_k_flatten, sizeof(__pyx_k_flatten), 0, 0, 1, 1},
   {&__pyx_n_s_foo, __pyx_k_foo, sizeof(__pyx_k_foo), 0, 0, 1, 1},
@@ -37003,9 +37270,11 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_super, __pyx_k_super, sizeof(__pyx_k_super), 0, 0, 1, 1},
   {&__pyx_n_s_sys, __pyx_k_sys, sizeof(__pyx_k_sys), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
+  {&__pyx_n_s_time_step, __pyx_k_time_step, sizeof(__pyx_k_time_step), 0, 0, 1, 1},
   {&__pyx_n_s_tmp_lapse, __pyx_k_tmp_lapse, sizeof(__pyx_k_tmp_lapse), 0, 0, 1, 1},
   {&__pyx_n_s_tmp_mort, __pyx_k_tmp_mort, sizeof(__pyx_k_tmp_mort), 0, 0, 1, 1},
   {&__pyx_n_s_tmp_prem, __pyx_k_tmp_prem, sizeof(__pyx_k_tmp_prem), 0, 0, 1, 1},
+  {&__pyx_n_s_total_timesteps, __pyx_k_total_timesteps, sizeof(__pyx_k_total_timesteps), 0, 0, 1, 1},
   {&__pyx_kp_s_unable_to_allocate_array_data, __pyx_k_unable_to_allocate_array_data, sizeof(__pyx_k_unable_to_allocate_array_data), 0, 0, 1, 0},
   {&__pyx_kp_s_unable_to_allocate_shape_and_str, __pyx_k_unable_to_allocate_shape_and_str, sizeof(__pyx_k_unable_to_allocate_shape_and_str), 0, 0, 1, 0},
   {&__pyx_n_s_unpack, __pyx_k_unpack, sizeof(__pyx_k_unpack), 0, 0, 1, 1},
@@ -37022,6 +37291,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_version_info, __pyx_k_version_info, sizeof(__pyx_k_version_info), 0, 0, 1, 1},
   {&__pyx_n_s_year, __pyx_k_year, sizeof(__pyx_k_year), 0, 0, 1, 1},
   {&__pyx_n_s_years_of_birth, __pyx_k_years_of_birth, sizeof(__pyx_k_years_of_birth), 0, 0, 1, 1},
+  {&__pyx_n_s_years_to_simulate, __pyx_k_years_to_simulate, sizeof(__pyx_k_years_to_simulate), 0, 0, 1, 1},
   {&__pyx_n_s_zeros, __pyx_k_zeros, sizeof(__pyx_k_zeros), 0, 0, 1, 1},
   #endif
   {0, 0, 0, 0, 0, 0, 0}
@@ -37029,10 +37299,10 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
 /* #### Code section: cached_builtins ### */
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
   __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(0, 2, __pyx_L1_error)
-  __pyx_builtin_AssertionError = __Pyx_GetBuiltinName(__pyx_n_s_AssertionError); if (!__pyx_builtin_AssertionError) __PYX_ERR(1, 68, __pyx_L1_error)
-  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(1, 95, __pyx_L1_error)
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(1, 107, __pyx_L1_error)
-  __pyx_builtin_print = __Pyx_GetBuiltinName(__pyx_n_s_print); if (!__pyx_builtin_print) __PYX_ERR(1, 185, __pyx_L1_error)
+  __pyx_builtin_AssertionError = __Pyx_GetBuiltinName(__pyx_n_s_AssertionError); if (!__pyx_builtin_AssertionError) __PYX_ERR(1, 66, __pyx_L1_error)
+  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(1, 93, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(1, 105, __pyx_L1_error)
+  __pyx_builtin_print = __Pyx_GetBuiltinName(__pyx_n_s_print); if (!__pyx_builtin_print) __PYX_ERR(1, 183, __pyx_L1_error)
   __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(4, 986, __pyx_L1_error)
   __pyx_builtin___import__ = __Pyx_GetBuiltinName(__pyx_n_s_import); if (!__pyx_builtin___import__) __PYX_ERR(0, 100, __pyx_L1_error)
   __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) __PYX_ERR(0, 155, __pyx_L1_error)
@@ -37072,14 +37342,14 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":95
+  /* "src/pyprotolinc/actuarial/providers.pxd":93
  * 
  *         if not (values.ndim == 1 or values.ndim == 2 or values.ndim == 3 or values.ndim == 4):
  *             raise ValueError("Dimension of data should be 1, 2, 3 or 4.")             # <<<<<<<<<<<<<<
  * 
  *         # check that offsets length matches dim!!
  */
-  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_kp_u_Dimension_of_data_should_be_1_2); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(1, 95, __pyx_L1_error)
+  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_kp_u_Dimension_of_data_should_be_1_2); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(1, 93, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__3);
   __Pyx_GIVEREF(__pyx_tuple__3);
 
@@ -37108,7 +37378,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__6);
   __Pyx_GIVEREF(__pyx_tuple__6);
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":986
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":986
  *         __pyx_import_array()
  *     except Exception:
  *         raise ImportError("numpy.core.multiarray failed to import")             # <<<<<<<<<<<<<<
@@ -37119,7 +37389,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__7);
   __Pyx_GIVEREF(__pyx_tuple__7);
 
-  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-4dd9lg1n/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":992
+  /* "C:/Users/marti/AppData/Local/Temp/pip-build-env-duaqwqfi/overlay/Lib/site-packages/numpy/__init__.cython-30.pxd":992
  *         _import_umath()
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")             # <<<<<<<<<<<<<<
@@ -37211,68 +37481,68 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GIVEREF(__pyx_tuple__23);
   __pyx_codeobj__24 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 17, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_pyprotolinc_actuarial_portfo, __pyx_n_s_build_c_portfolio, 49, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__24)) __PYX_ERR(2, 49, __pyx_L1_error)
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":57
- * 
+  /* "src/pyprotolinc/actuarial/providers.pxd":55
+ *         return self.c_provider.get()[0].to_string().decode()
  * 
  *     def get_risk_factors(self):             # <<<<<<<<<<<<<<
  *         cdef vector[CRiskFactors] rfs = self.c_provider.get()[0].get_risk_factors()
  *         return [CRiskFactors(rf) for rf in rfs]
  */
-  __pyx_tuple__25 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_rfs, __pyx_n_s_rf); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(1, 57, __pyx_L1_error)
+  __pyx_tuple__25 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_rfs, __pyx_n_s_rf); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(1, 55, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__25);
   __Pyx_GIVEREF(__pyx_tuple__25);
-  __pyx_codeobj__26 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_pyprotolinc_actuarial_provid, __pyx_n_s_get_risk_factors, 57, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__26)) __PYX_ERR(1, 57, __pyx_L1_error)
+  __pyx_codeobj__26 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_pyprotolinc_actuarial_provid, __pyx_n_s_get_risk_factors, 55, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__26)) __PYX_ERR(1, 55, __pyx_L1_error)
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":61
+  /* "src/pyprotolinc/actuarial/providers.pxd":59
  *         return [CRiskFactors(rf) for rf in rfs]
  * 
  *     def add_risk_factor(self, rf):             # <<<<<<<<<<<<<<
  *         self.c_provider.get()[0].add_risk_factor(rf)
  * 
  */
-  __pyx_tuple__27 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_rf); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(1, 61, __pyx_L1_error)
+  __pyx_tuple__27 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_rf); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(1, 59, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__27);
   __Pyx_GIVEREF(__pyx_tuple__27);
-  __pyx_codeobj__28 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_pyprotolinc_actuarial_provid, __pyx_n_s_add_risk_factor, 61, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__28)) __PYX_ERR(1, 61, __pyx_L1_error)
+  __pyx_codeobj__28 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_pyprotolinc_actuarial_provid, __pyx_n_s_add_risk_factor, 59, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__28)) __PYX_ERR(1, 59, __pyx_L1_error)
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":64
+  /* "src/pyprotolinc/actuarial/providers.pxd":62
  *         self.c_provider.get()[0].add_risk_factor(rf)
  * 
  *     def get_rate(self, indices=None):             # <<<<<<<<<<<<<<
  *         return self.c_provider.get()[0].get_rate(self.indexes_dummy)
  * 
  */
-  __pyx_tuple__29 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_indices); if (unlikely(!__pyx_tuple__29)) __PYX_ERR(1, 64, __pyx_L1_error)
+  __pyx_tuple__29 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_indices); if (unlikely(!__pyx_tuple__29)) __PYX_ERR(1, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__29);
   __Pyx_GIVEREF(__pyx_tuple__29);
-  __pyx_codeobj__30 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__29, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_pyprotolinc_actuarial_provid, __pyx_n_s_get_rate, 64, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__30)) __PYX_ERR(1, 64, __pyx_L1_error)
-  __pyx_tuple__31 = PyTuple_Pack(1, Py_None); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(1, 64, __pyx_L1_error)
+  __pyx_codeobj__30 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__29, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_pyprotolinc_actuarial_provid, __pyx_n_s_get_rate, 62, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__30)) __PYX_ERR(1, 62, __pyx_L1_error)
+  __pyx_tuple__31 = PyTuple_Pack(1, Py_None); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(1, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__31);
   __Pyx_GIVEREF(__pyx_tuple__31);
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":67
+  /* "src/pyprotolinc/actuarial/providers.pxd":65
  *         return self.c_provider.get()[0].get_rate(self.indexes_dummy)
  * 
  *     def get_rates(self, int _len, **kwargs):             # <<<<<<<<<<<<<<
  *         assert _len >= 1, "Required lengh must be >= 1"
  *         cdef np.ndarray[double, ndim=1, mode="c"] output = np.zeros(_len)
  */
-  __pyx_tuple__32 = PyTuple_Pack(5, __pyx_n_s_self, __pyx_n_s_len, __pyx_n_s_kwargs, __pyx_n_s_output, __pyx_n_s_output_memview); if (unlikely(!__pyx_tuple__32)) __PYX_ERR(1, 67, __pyx_L1_error)
+  __pyx_tuple__32 = PyTuple_Pack(5, __pyx_n_s_self, __pyx_n_s_len, __pyx_n_s_kwargs, __pyx_n_s_output, __pyx_n_s_output_memview); if (unlikely(!__pyx_tuple__32)) __PYX_ERR(1, 65, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__32);
   __Pyx_GIVEREF(__pyx_tuple__32);
-  __pyx_codeobj__33 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__32, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_pyprotolinc_actuarial_provid, __pyx_n_s_get_rates, 67, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__33)) __PYX_ERR(1, 67, __pyx_L1_error)
+  __pyx_codeobj__33 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__32, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_pyprotolinc_actuarial_provid, __pyx_n_s_get_rates, 65, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__33)) __PYX_ERR(1, 65, __pyx_L1_error)
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":74
+  /* "src/pyprotolinc/actuarial/providers.pxd":72
  *         return output
  * 
  *     def initialize(self, **kwargs):             # <<<<<<<<<<<<<<
  *         pass
  * 
  */
-  __pyx_tuple__34 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_kwargs); if (unlikely(!__pyx_tuple__34)) __PYX_ERR(1, 74, __pyx_L1_error)
+  __pyx_tuple__34 = PyTuple_Pack(2, __pyx_n_s_self, __pyx_n_s_kwargs); if (unlikely(!__pyx_tuple__34)) __PYX_ERR(1, 72, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__34);
   __Pyx_GIVEREF(__pyx_tuple__34);
-  __pyx_codeobj__35 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__34, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_pyprotolinc_actuarial_provid, __pyx_n_s_initialize, 74, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__35)) __PYX_ERR(1, 74, __pyx_L1_error)
+  __pyx_codeobj__35 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__34, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_pyprotolinc_actuarial_provid, __pyx_n_s_initialize, 72, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__35)) __PYX_ERR(1, 72, __pyx_L1_error)
 
   /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
@@ -37289,71 +37559,71 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  */
   __pyx_codeobj__37 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_setstate_cython, 3, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__37)) __PYX_ERR(0, 3, __pyx_L1_error)
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":114
+  /* "src/pyprotolinc/actuarial/providers.pxd":112
  *         self.c_provider.get()[0].set_values(shapevec, offsets, &values_memview[0])
  * 
  *     def get_risk_factors(self):             # <<<<<<<<<<<<<<
  *         cdef vector[CRiskFactors] rfs = self.c_provider.get()[0].get_risk_factors()
  *         return [CRiskFactors(rf) for rf in rfs]
  */
-  __pyx_codeobj__38 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_pyprotolinc_actuarial_provid, __pyx_n_s_get_risk_factors, 114, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__38)) __PYX_ERR(1, 114, __pyx_L1_error)
+  __pyx_codeobj__38 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_pyprotolinc_actuarial_provid, __pyx_n_s_get_risk_factors, 112, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__38)) __PYX_ERR(1, 112, __pyx_L1_error)
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":121
+  /* "src/pyprotolinc/actuarial/providers.pxd":119
  *         return self.c_provider.get()[0].to_string().decode(encoding='ASCII')
  * 
  *     def get_rates(self, int _len, **kwargs):             # <<<<<<<<<<<<<<
  *         assert _len >= 1, "Required lengh must be >= 1"
  * 
  */
-  __pyx_tuple__39 = PyTuple_Pack(13, __pyx_n_s_self, __pyx_n_s_len, __pyx_n_s_kwargs, __pyx_n_s_output, __pyx_n_s_output_memview, __pyx_n_s_indices, __pyx_n_s_an_index_vector, __pyx_n_s_rf, __pyx_n_s_applicable_rfs, __pyx_n_s_kwargs_lv, __pyx_n_s_pyrf, __pyx_n_s_k, __pyx_n_s_v); if (unlikely(!__pyx_tuple__39)) __PYX_ERR(1, 121, __pyx_L1_error)
+  __pyx_tuple__39 = PyTuple_Pack(13, __pyx_n_s_self, __pyx_n_s_len, __pyx_n_s_kwargs, __pyx_n_s_output, __pyx_n_s_output_memview, __pyx_n_s_indices, __pyx_n_s_an_index_vector, __pyx_n_s_rf, __pyx_n_s_applicable_rfs, __pyx_n_s_kwargs_lv, __pyx_n_s_pyrf, __pyx_n_s_k, __pyx_n_s_v); if (unlikely(!__pyx_tuple__39)) __PYX_ERR(1, 119, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__39);
   __Pyx_GIVEREF(__pyx_tuple__39);
-  __pyx_codeobj__40 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 13, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__39, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_pyprotolinc_actuarial_provid, __pyx_n_s_get_rates, 121, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__40)) __PYX_ERR(1, 121, __pyx_L1_error)
+  __pyx_codeobj__40 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 13, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__39, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_pyprotolinc_actuarial_provid, __pyx_n_s_get_rates, 119, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__40)) __PYX_ERR(1, 119, __pyx_L1_error)
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":145
+  /* "src/pyprotolinc/actuarial/providers.pxd":143
  *         return output
  * 
  *     def get_rate(self, indices):             # <<<<<<<<<<<<<<
  *         cdef vector[int] indexes
  *         cdef int k
  */
-  __pyx_tuple__41 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_indices, __pyx_n_s_indexes, __pyx_n_s_k); if (unlikely(!__pyx_tuple__41)) __PYX_ERR(1, 145, __pyx_L1_error)
+  __pyx_tuple__41 = PyTuple_Pack(4, __pyx_n_s_self, __pyx_n_s_indices, __pyx_n_s_indexes, __pyx_n_s_k); if (unlikely(!__pyx_tuple__41)) __PYX_ERR(1, 143, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__41);
   __Pyx_GIVEREF(__pyx_tuple__41);
-  __pyx_codeobj__42 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__41, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_pyprotolinc_actuarial_provid, __pyx_n_s_get_rate, 145, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__42)) __PYX_ERR(1, 145, __pyx_L1_error)
+  __pyx_codeobj__42 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 4, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__41, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_pyprotolinc_actuarial_provid, __pyx_n_s_get_rate, 143, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__42)) __PYX_ERR(1, 143, __pyx_L1_error)
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":152
+  /* "src/pyprotolinc/actuarial/providers.pxd":150
  *         return self.c_provider.get()[0].get_rate(indexes)
  * 
  *     def initialize(self, **kwargs):             # <<<<<<<<<<<<<<
  *         pass
  * 
  */
-  __pyx_codeobj__43 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__34, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_pyprotolinc_actuarial_provid, __pyx_n_s_initialize, 152, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__43)) __PYX_ERR(1, 152, __pyx_L1_error)
+  __pyx_codeobj__43 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__34, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_pyprotolinc_actuarial_provid, __pyx_n_s_initialize, 150, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__43)) __PYX_ERR(1, 150, __pyx_L1_error)
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":155
+  /* "src/pyprotolinc/actuarial/providers.pxd":153
  *         pass
  * 
  *     def slice(self, **kwargs):             # <<<<<<<<<<<<<<
  * 
  *         cdef vector[int] indices
  */
-  __pyx_tuple__44 = PyTuple_Pack(12, __pyx_n_s_self, __pyx_n_s_kwargs, __pyx_n_s_indices, __pyx_n_s_applicable_rfs, __pyx_n_s_kwargs_lv, __pyx_n_s_rf, __pyx_n_s_pyrf, __pyx_n_s_an_index, __pyx_n_s_slicedCSRP, __pyx_n_s_sliced_srp, __pyx_n_s_k, __pyx_n_s_v); if (unlikely(!__pyx_tuple__44)) __PYX_ERR(1, 155, __pyx_L1_error)
+  __pyx_tuple__44 = PyTuple_Pack(12, __pyx_n_s_self, __pyx_n_s_kwargs, __pyx_n_s_indices, __pyx_n_s_applicable_rfs, __pyx_n_s_kwargs_lv, __pyx_n_s_rf, __pyx_n_s_pyrf, __pyx_n_s_an_index, __pyx_n_s_slicedCSRP, __pyx_n_s_sliced_srp, __pyx_n_s_k, __pyx_n_s_v); if (unlikely(!__pyx_tuple__44)) __PYX_ERR(1, 153, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__44);
   __Pyx_GIVEREF(__pyx_tuple__44);
-  __pyx_codeobj__45 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 12, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__44, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_pyprotolinc_actuarial_provid, __pyx_n_s_slice, 155, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__45)) __PYX_ERR(1, 155, __pyx_L1_error)
+  __pyx_codeobj__45 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 12, 0, CO_OPTIMIZED|CO_NEWLOCALS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__44, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_pyprotolinc_actuarial_provid, __pyx_n_s_slice, 153, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__45)) __PYX_ERR(1, 153, __pyx_L1_error)
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":184
+  /* "src/pyprotolinc/actuarial/providers.pxd":182
  *         return sliced_srp
  * 
  *     def get_values(self):             # <<<<<<<<<<<<<<
  *         print(self.c_provider.get()[0].size())
  *         cdef np.ndarray[double, ndim=1, mode="c"] values_placeholder = np.zeros(self.c_provider.get()[0].size())
  */
-  __pyx_tuple__46 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_values_placeholder, __pyx_n_s_values_memview); if (unlikely(!__pyx_tuple__46)) __PYX_ERR(1, 184, __pyx_L1_error)
+  __pyx_tuple__46 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_values_placeholder, __pyx_n_s_values_memview); if (unlikely(!__pyx_tuple__46)) __PYX_ERR(1, 182, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__46);
   __Pyx_GIVEREF(__pyx_tuple__46);
-  __pyx_codeobj__47 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__46, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_pyprotolinc_actuarial_provid, __pyx_n_s_get_values, 184, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__47)) __PYX_ERR(1, 184, __pyx_L1_error)
+  __pyx_codeobj__47 = (PyObject*)__Pyx_PyCode_New(1, 0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__46, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_pyprotolinc_actuarial_provid, __pyx_n_s_get_values, 182, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__47)) __PYX_ERR(1, 182, __pyx_L1_error)
 
   /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
@@ -37370,38 +37640,38 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  */
   __pyx_codeobj__49 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_setstate_cython, 3, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__49)) __PYX_ERR(0, 3, __pyx_L1_error)
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":212
+  /* "src/pyprotolinc/actuarial/providers.pxd":210
  *         self.dim = _dim
  * 
  *     def add_provider_std(self, int r, int c, StandardRateProvider rp):             # <<<<<<<<<<<<<<
  *         cdef shared_ptr[CStandardRateProvider] srp = rp.get_provider()
  *         cdef shared_ptr[CBaseRateProvider] brp
  */
-  __pyx_tuple__50 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_r, __pyx_n_s_c, __pyx_n_s_rp, __pyx_n_s_srp, __pyx_n_s_brp); if (unlikely(!__pyx_tuple__50)) __PYX_ERR(1, 212, __pyx_L1_error)
+  __pyx_tuple__50 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_r, __pyx_n_s_c, __pyx_n_s_rp, __pyx_n_s_srp, __pyx_n_s_brp); if (unlikely(!__pyx_tuple__50)) __PYX_ERR(1, 210, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__50);
   __Pyx_GIVEREF(__pyx_tuple__50);
-  __pyx_codeobj__51 = (PyObject*)__Pyx_PyCode_New(4, 0, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__50, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_pyprotolinc_actuarial_provid, __pyx_n_s_add_provider_std, 212, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__51)) __PYX_ERR(1, 212, __pyx_L1_error)
+  __pyx_codeobj__51 = (PyObject*)__Pyx_PyCode_New(4, 0, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__50, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_pyprotolinc_actuarial_provid, __pyx_n_s_add_provider_std, 210, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__51)) __PYX_ERR(1, 210, __pyx_L1_error)
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":221
+  /* "src/pyprotolinc/actuarial/providers.pxd":219
  *         self.c_assumption_set.get()[0].set_provider(r, c, brp)
  * 
  *     def add_provider_const(self, int r, int c, ConstantRateProvider rp):             # <<<<<<<<<<<<<<
  *         cdef shared_ptr[CConstantRateProvider] srp = rp.get_provider()
  *         cdef shared_ptr[CBaseRateProvider] brp
  */
-  __pyx_codeobj__52 = (PyObject*)__Pyx_PyCode_New(4, 0, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__50, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_pyprotolinc_actuarial_provid, __pyx_n_s_add_provider_const, 221, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__52)) __PYX_ERR(1, 221, __pyx_L1_error)
+  __pyx_codeobj__52 = (PyObject*)__Pyx_PyCode_New(4, 0, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__50, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_pyprotolinc_actuarial_provid, __pyx_n_s_add_provider_const, 219, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__52)) __PYX_ERR(1, 219, __pyx_L1_error)
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":228
+  /* "src/pyprotolinc/actuarial/providers.pxd":226
  * 
  * 
  *     def get_single_rateset(self, risk_factor_values):             # <<<<<<<<<<<<<<
  * 
  *         assert len(risk_factor_values) == NUMBER_OF_RISK_FACTORS
  */
-  __pyx_tuple__53 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_risk_factor_values, __pyx_n_s_rf_indexes, __pyx_n_s_rf, __pyx_n_s_output, __pyx_n_s_output_memview); if (unlikely(!__pyx_tuple__53)) __PYX_ERR(1, 228, __pyx_L1_error)
+  __pyx_tuple__53 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_risk_factor_values, __pyx_n_s_rf_indexes, __pyx_n_s_rf, __pyx_n_s_output, __pyx_n_s_output_memview); if (unlikely(!__pyx_tuple__53)) __PYX_ERR(1, 226, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__53);
   __Pyx_GIVEREF(__pyx_tuple__53);
-  __pyx_codeobj__54 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__53, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_pyprotolinc_actuarial_provid, __pyx_n_s_get_single_rateset, 228, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__54)) __PYX_ERR(1, 228, __pyx_L1_error)
+  __pyx_codeobj__54 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 6, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__53, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_pyprotolinc_actuarial_provid, __pyx_n_s_get_single_rateset, 226, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__54)) __PYX_ERR(1, 226, __pyx_L1_error)
 
   /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
@@ -37418,17 +37688,17 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
  */
   __pyx_codeobj__56 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_stringsource, __pyx_n_s_setstate_cython, 3, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__56)) __PYX_ERR(0, 3, __pyx_L1_error)
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":250
+  /* "src/pyprotolinc/actuarial/providers.pxd":264
  * 
  * 
- * def py_run_c_valuation(AssumptionSet be_ass, CPortfolioWrapper cportfolio_wapper):             # <<<<<<<<<<<<<<
+ * def py_run_c_valuation(AssumptionSet be_ass, CPortfolioWrapper cportfolio_wapper, TimeStep time_step):             # <<<<<<<<<<<<<<
  * 
  *     cdef unsigned dim = be_ass.dim
  */
-  __pyx_tuple__57 = PyTuple_Pack(7, __pyx_n_s_be_ass, __pyx_n_s_cportfolio_wapper, __pyx_n_s_dim_2, __pyx_n_s_num_cpus, __pyx_n_s_use_multicore, __pyx_n_s_c_assumption_set, __pyx_n_s_crun_config); if (unlikely(!__pyx_tuple__57)) __PYX_ERR(1, 250, __pyx_L1_error)
+  __pyx_tuple__57 = PyTuple_Pack(14, __pyx_n_s_be_ass, __pyx_n_s_cportfolio_wapper, __pyx_n_s_time_step, __pyx_n_s_dim_2, __pyx_n_s_num_cpus, __pyx_n_s_use_multicore, __pyx_n_s_c_assumption_set, __pyx_n_s_years_to_simulate, __pyx_n_s_crun_config, __pyx_n_s_output_columns, __pyx_n_s_no_cols, __pyx_n_s_total_timesteps, __pyx_n_s_output, __pyx_n_s_ext_res_view); if (unlikely(!__pyx_tuple__57)) __PYX_ERR(1, 264, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__57);
   __Pyx_GIVEREF(__pyx_tuple__57);
-  __pyx_codeobj__58 = (PyObject*)__Pyx_PyCode_New(2, 0, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__57, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_pyprotolinc_actuarial_provid, __pyx_n_s_py_run_c_valuation, 250, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__58)) __PYX_ERR(1, 250, __pyx_L1_error)
+  __pyx_codeobj__58 = (PyObject*)__Pyx_PyCode_New(3, 0, 0, 14, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__57, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_pyprotolinc_actuarial_provid, __pyx_n_s_py_run_c_valuation, 264, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__58)) __PYX_ERR(1, 264, __pyx_L1_error)
 
   /* "(tree fragment)":1
  * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
@@ -37760,334 +38030,343 @@ static CYTHON_SMALL_CODE int __Pyx_InitConstants(void) {
   if (__Pyx_InitString(__pyx_string_tab[61], &__pyx_n_u_LG_Reserve) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
   if (__Pyx_InitString(__pyx_string_tab[62], &__pyx_kp_u_Lookup_indices_for_has_unexpecte) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
   if (__Pyx_InitString(__pyx_string_tab[63], &__pyx_n_u_MONTH) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[64], &__pyx_n_s_MemoryError) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[65], &__pyx_kp_s_MemoryView_of_r_at_0x_x) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[66], &__pyx_kp_s_MemoryView_of_r_object) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[67], &__pyx_kp_u_Number_of_offsets_must_match_dim) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[68], &__pyx_n_b_O) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[69], &__pyx_n_s_OrderedDict) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[70], &__pyx_kp_u_Out_of_bounds) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[71], &__pyx_kp_u_Out_of_bounds_on_buffer_access_a) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[72], &__pyx_n_u_PORTFOLIO_DATE_LONG) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[73], &__pyx_n_u_PRODUCTTYPE) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[74], &__pyx_n_s_PickleError) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[75], &__pyx_kp_u_Portfolio) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[76], &__pyx_n_s_Portfolio_2) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[77], &__pyx_n_s_Portfolio___reduce_cython) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[78], &__pyx_n_s_Portfolio___setstate_cython) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[79], &__pyx_n_s_Portfolio__add_records) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[80], &__pyx_n_s_Portfolio_get) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[81], &__pyx_n_u_Premium) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[82], &__pyx_n_s_Pyx_EnumBase) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[83], &__pyx_n_s_Pyx_EnumBase___new) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[84], &__pyx_n_s_Pyx_EnumBase___repr) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[85], &__pyx_n_s_Pyx_EnumBase___str) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[86], &__pyx_n_s_Pyx_EnumMeta___reduce_cython) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[87], &__pyx_n_s_Pyx_EnumMeta___setstate_cython) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[88], &__pyx_kp_u_Required_lengh_must_be_1) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[89], &__pyx_n_u_SUM_INSURED) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[90], &__pyx_n_s_Sequence) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[91], &__pyx_n_s_SeriatimRecord) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[92], &__pyx_n_s_SeriatimRecord___reduce_cython) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[93], &__pyx_n_s_SeriatimRecord___setstate_cython) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[94], &__pyx_n_s_SmokerStatus) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[95], &__pyx_n_s_StandardRateProvider) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[96], &__pyx_n_s_StandardRateProvider___reduce_cy) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[97], &__pyx_n_s_StandardRateProvider___setstate) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[98], &__pyx_n_s_StandardRateProvider_get_rate) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[99], &__pyx_n_s_StandardRateProvider_get_rates) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[100], &__pyx_n_s_StandardRateProvider_get_risk_fa) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[101], &__pyx_n_s_StandardRateProvider_get_values) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[102], &__pyx_n_s_StandardRateProvider_initialize) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[103], &__pyx_n_s_StandardRateProvider_slice) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[104], &__pyx_kp_s_Step_may_not_be_zero_axis_d) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[105], &__pyx_n_u_SumInsured) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[106], &__pyx_n_s_TypeError) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[107], &__pyx_n_u_UTF8) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[108], &__pyx_kp_s_Unable_to_convert_item_to_object) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[109], &__pyx_kp_s_Unknown_enum_value_s) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[110], &__pyx_n_u_VOLUME) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[111], &__pyx_n_s_ValueError) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[112], &__pyx_n_s_View_MemoryView) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[113], &__pyx_kp_u_Wrapper_for) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[114], &__pyx_n_u_YEAR) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[115], &__pyx_n_s_YearsDisabledIfDisabledAtStart) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[116], &__pyx_kp_u__10) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[117], &__pyx_kp_u__11) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[118], &__pyx_n_s__12) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[119], &__pyx_kp_u__14) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[120], &__pyx_kp_u__15) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[121], &__pyx_n_s__94) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[122], &__pyx_n_s_abc) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[123], &__pyx_n_s_add_provider_const) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[124], &__pyx_n_s_add_provider_std) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[125], &__pyx_n_s_add_records) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[126], &__pyx_n_s_add_risk_factor) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[127], &__pyx_n_s_age_proj_start) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[128], &__pyx_n_s_allocate_buffer) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[129], &__pyx_n_s_an_index) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[130], &__pyx_n_s_an_index_vector) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[131], &__pyx_kp_u_and) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[132], &__pyx_n_s_applicable_rfs) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[133], &__pyx_n_s_arange) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[134], &__pyx_n_s_array) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[135], &__pyx_n_s_astype) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[136], &__pyx_n_s_asyncio_coroutines) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[137], &__pyx_n_s_base) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[138], &__pyx_n_s_base_assump) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[139], &__pyx_n_s_be_ass) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[140], &__pyx_n_s_brp) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[141], &__pyx_n_s_build_c_portfolio) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[142], &__pyx_n_s_c) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[143], &__pyx_n_u_c) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[144], &__pyx_n_s_c_assumption_set) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[145], &__pyx_n_s_cession_id) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[146], &__pyx_n_s_cession_ids) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[147], &__pyx_n_s_class) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[148], &__pyx_n_s_class_getitem) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[149], &__pyx_n_s_cline_in_traceback) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[150], &__pyx_n_s_cls) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[151], &__pyx_n_s_collections) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[152], &__pyx_kp_s_collections_abc) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[153], &__pyx_n_s_columns) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[154], &__pyx_kp_s_contiguous_and_direct) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[155], &__pyx_kp_s_contiguous_and_indirect) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[156], &__pyx_n_s_count) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[157], &__pyx_n_s_coverage_years) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[158], &__pyx_n_s_cp_builder_ptr) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[159], &__pyx_n_s_cp_wrapper) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[160], &__pyx_n_s_cportfolio_wapper) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[161], &__pyx_n_s_cpu_count) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[162], &__pyx_n_s_crun_config) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[163], &__pyx_n_s_data) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[164], &__pyx_n_s_day) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[165], &__pyx_n_s_days_of_birth) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[166], &__pyx_n_s_dct) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[167], &__pyx_n_s_decode) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[168], &__pyx_n_s_df) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[169], &__pyx_n_s_df_portfolio) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[170], &__pyx_n_s_dict) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[171], &__pyx_n_s_dict_2) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[172], &__pyx_n_s_dim) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[173], &__pyx_n_s_dim_2) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[174], &__pyx_kp_u_disable) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[175], &__pyx_n_s_disablement_day) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[176], &__pyx_n_s_disablement_month) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[177], &__pyx_n_s_disablement_year) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[178], &__pyx_n_s_dob_date_long) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[179], &__pyx_n_s_dob_dates_long) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[180], &__pyx_n_s_dobs) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[181], &__pyx_n_s_dobs_mv) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[182], &__pyx_n_s_doc) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[183], &__pyx_n_s_dod) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[184], &__pyx_n_s_dod_mv) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[185], &__pyx_n_s_doi) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[186], &__pyx_n_s_doi_mv) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[187], &__pyx_n_s_dtype) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[188], &__pyx_n_s_dtype_is_object) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[189], &__pyx_kp_u_enable) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[190], &__pyx_n_s_encode) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[191], &__pyx_n_s_encoding) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[192], &__pyx_n_s_enum) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[193], &__pyx_n_s_enumerate) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[194], &__pyx_n_s_error) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[195], &__pyx_n_s_flags) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[196], &__pyx_n_s_flatten) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[197], &__pyx_n_s_foo) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[198], &__pyx_n_s_format) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[199], &__pyx_n_s_fortran) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[200], &__pyx_n_u_fortran) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[201], &__pyx_kp_u_gc) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[202], &__pyx_n_s_gender) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[203], &__pyx_n_s_gender_mv) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[204], &__pyx_n_s_get) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[205], &__pyx_n_s_get_for_age_c) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[206], &__pyx_n_s_get_info) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[207], &__pyx_n_s_get_rate) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[208], &__pyx_n_s_get_rates) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[209], &__pyx_n_s_get_risk_factors) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[210], &__pyx_n_s_get_single_rateset) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[211], &__pyx_n_s_get_values) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[212], &__pyx_n_s_getstate) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[213], &__pyx_kp_u_got) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[214], &__pyx_kp_u_got_differing_extents_in_dimensi) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[215], &__pyx_n_s_homogenous_wrt_product) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[216], &__pyx_n_s_i) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[217], &__pyx_n_s_id) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[218], &__pyx_n_s_ids_mv) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[219], &__pyx_n_s_import) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[220], &__pyx_n_s_index) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[221], &__pyx_n_s_indexes) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[222], &__pyx_n_s_indices) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[223], &__pyx_n_s_init) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[224], &__pyx_n_s_init_subclass) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[225], &__pyx_n_s_initialize) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[226], &__pyx_n_s_initializing) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[227], &__pyx_n_s_int32) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[228], &__pyx_n_s_int64) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[229], &__pyx_n_s_is_coroutine) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[230], &__pyx_kp_u_isenabled) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[231], &__pyx_n_s_issue_date_long) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[232], &__pyx_n_s_issue_dates_long) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[233], &__pyx_n_s_items) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[234], &__pyx_n_s_itemsize) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[235], &__pyx_kp_s_itemsize_0_for_cython_array) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[236], &__pyx_n_s_j) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[237], &__pyx_n_s_k) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[238], &__pyx_n_s_kwargs) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[239], &__pyx_n_s_kwargs_lv) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[240], &__pyx_n_s_l_be) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[241], &__pyx_n_s_l_local_gaap) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[242], &__pyx_n_s_lapse_assumptions) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[243], &__pyx_n_s_len) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[244], &__pyx_n_s_lower) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[245], &__pyx_n_s_main) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[246], &__pyx_n_s_members) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[247], &__pyx_n_s_memview) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[248], &__pyx_n_s_metaclass) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[249], &__pyx_n_s_mode) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[250], &__pyx_n_s_module) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[251], &__pyx_n_s_month) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[252], &__pyx_n_s_months_of_birth) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[253], &__pyx_n_s_mort_assumptions) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[254], &__pyx_n_s_mro_entries) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[255], &__pyx_n_s_multiplier) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[256], &__pyx_n_s_multiprocessing) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[257], &__pyx_n_s_n) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[258], &__pyx_n_s_name) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[259], &__pyx_n_s_name_2) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[260], &__pyx_n_s_ndim) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[261], &__pyx_n_s_new) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[262], &__pyx_n_s_no_cols) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[263], &__pyx_kp_s_no_default___reduce___due_to_non) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[264], &__pyx_n_s_np) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[265], &__pyx_n_s_num_cpus) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[266], &__pyx_n_s_num_policies) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[267], &__pyx_n_s_numpy) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[268], &__pyx_kp_u_numpy_core_multiarray_failed_to) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[269], &__pyx_kp_u_numpy_core_umath_failed_to_impor) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[270], &__pyx_n_s_obj) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[271], &__pyx_n_s_offsets) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[272], &__pyx_n_s_output) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[273], &__pyx_n_s_output_columns) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[274], &__pyx_n_s_output_memview) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[275], &__pyx_n_s_p_be_ass) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[276], &__pyx_n_s_p_c_pf) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[277], &__pyx_n_s_p_locgaap_ass) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[278], &__pyx_n_s_p_vec_lap) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[279], &__pyx_n_s_p_vec_mort) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[280], &__pyx_n_s_p_vec_prem) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[281], &__pyx_n_s_pack) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[282], &__pyx_n_s_pandas) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[283], &__pyx_n_s_parents) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[284], &__pyx_n_s_pd) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[285], &__pyx_n_s_pf) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[286], &__pyx_n_s_pickle) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[287], &__pyx_n_s_policy_age) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[288], &__pyx_n_s_policy_inception_day) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[289], &__pyx_n_s_policy_inception_month) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[290], &__pyx_n_s_policy_inception_yr) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[291], &__pyx_n_s_portfolio_date) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[292], &__pyx_n_s_portfolio_date_long) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[293], &__pyx_n_s_portfolio_dates_long) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[294], &__pyx_n_s_portfolio_name) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[295], &__pyx_n_s_portfolio_valuation) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[296], &__pyx_n_s_prem_assumptions) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[297], &__pyx_n_s_premium_table) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[298], &__pyx_n_s_prepare) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[299], &__pyx_n_s_print) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[300], &__pyx_n_s_product) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[301], &__pyx_n_s_product_types) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[302], &__pyx_n_s_products) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[303], &__pyx_n_s_ptf) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[304], &__pyx_n_s_py_portfolio) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[305], &__pyx_n_s_py_run_c_valuation) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[306], &__pyx_n_s_pyprotolinc__actuarial) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[307], &__pyx_n_s_pyrf) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[308], &__pyx_n_s_pyx_PickleError) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[309], &__pyx_n_s_pyx_checksum) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[310], &__pyx_n_s_pyx_result) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[311], &__pyx_n_s_pyx_state) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[312], &__pyx_n_s_pyx_type) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[313], &__pyx_n_s_pyx_unpickle_Enum) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[314], &__pyx_n_s_pyx_unpickle___Pyx_EnumMeta) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[315], &__pyx_n_s_pyx_vtable) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[316], &__pyx_n_s_q_be) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[317], &__pyx_n_s_q_local_gaap) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[318], &__pyx_n_s_qualname) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[319], &__pyx_n_s_r) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[320], &__pyx_n_s_range) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[321], &__pyx_n_s_rec) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[322], &__pyx_n_s_reduce) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[323], &__pyx_n_s_reduce_cython) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[324], &__pyx_n_s_reduce_ex) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[325], &__pyx_n_s_register) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[326], &__pyx_n_s_repr) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[327], &__pyx_n_s_res) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[328], &__pyx_n_s_res_rate_mv) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[329], &__pyx_n_s_reserving_rate) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[330], &__pyx_n_s_rf) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[331], &__pyx_n_s_rf_indexes) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[332], &__pyx_n_s_rfs) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[333], &__pyx_n_s_risk_factor_values) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[334], &__pyx_n_s_rp) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[335], &__pyx_kp_s_s_s) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[336], &__pyx_kp_s_s_s_d) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[337], &__pyx_n_s_self) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[338], &__pyx_kp_s_self_base_assumptions_be_self_ba) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[339], &__pyx_kp_s_self_ptf_cannot_be_converted_to) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[340], &__pyx_n_s_set_name) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[341], &__pyx_n_s_setstate) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[342], &__pyx_n_s_setstate_cython) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[343], &__pyx_n_s_shape) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[344], &__pyx_n_s_size) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[345], &__pyx_n_s_slice) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[346], &__pyx_n_s_slicedCSRP) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[347], &__pyx_n_s_sliced_srp) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[348], &__pyx_n_s_smoker_mv) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[349], &__pyx_n_s_smokerstatus) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[350], &__pyx_n_s_spec) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[351], &__pyx_kp_s_src_pyprotolinc_actuarial_portfo) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[352], &__pyx_kp_s_src_pyprotolinc_actuarial_provid) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[353], &__pyx_kp_s_src_pyprotolinc_actuarial_valuat) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[354], &__pyx_n_s_srp) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[355], &__pyx_n_s_start) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[356], &__pyx_n_s_start_age_mort) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[357], &__pyx_n_s_state) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[358], &__pyx_n_s_step) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[359], &__pyx_n_s_stop) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[360], &__pyx_n_s_str) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[361], &__pyx_kp_s_strided_and_direct) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[362], &__pyx_kp_s_strided_and_direct_or_indirect) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[363], &__pyx_kp_s_strided_and_indirect) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[364], &__pyx_kp_s_stringsource) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[365], &__pyx_n_s_struct) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[366], &__pyx_n_s_sum_insured) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[367], &__pyx_n_s_sum_insured_mv) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[368], &__pyx_n_s_sums_insured) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[369], &__pyx_n_s_super) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[370], &__pyx_n_s_sys) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[371], &__pyx_n_s_test) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[372], &__pyx_n_s_tmp_lapse) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[373], &__pyx_n_s_tmp_mort) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[374], &__pyx_n_s_tmp_prem) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[375], &__pyx_kp_s_unable_to_allocate_array_data) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[376], &__pyx_kp_s_unable_to_allocate_shape_and_str) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[377], &__pyx_n_s_unpack) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[378], &__pyx_n_s_update) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[379], &__pyx_n_s_use_multicore) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[380], &__pyx_n_s_use_setstate) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[381], &__pyx_n_s_v) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[382], &__pyx_n_s_val) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[383], &__pyx_n_s_valuation_date) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[384], &__pyx_n_s_value) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[385], &__pyx_n_s_values) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[386], &__pyx_n_s_values_memview) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[387], &__pyx_n_s_values_placeholder) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[388], &__pyx_n_s_version_info) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[389], &__pyx_n_s_year) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[390], &__pyx_n_s_years_of_birth) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
-  if (__Pyx_InitString(__pyx_string_tab[391], &__pyx_n_s_zeros) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[64], &__pyx_n_s_MONTHLY) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[65], &__pyx_n_s_MemoryError) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[66], &__pyx_kp_s_MemoryView_of_r_at_0x_x) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[67], &__pyx_kp_s_MemoryView_of_r_object) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[68], &__pyx_kp_u_Number_of_offsets_must_match_dim) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[69], &__pyx_n_b_O) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[70], &__pyx_n_s_OrderedDict) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[71], &__pyx_kp_u_Out_of_bounds) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[72], &__pyx_kp_u_Out_of_bounds_on_buffer_access_a) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[73], &__pyx_n_u_PORTFOLIO_DATE_LONG) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[74], &__pyx_n_u_PRODUCTTYPE) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[75], &__pyx_n_s_PickleError) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[76], &__pyx_kp_u_Portfolio) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[77], &__pyx_n_s_Portfolio_2) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[78], &__pyx_n_s_Portfolio___reduce_cython) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[79], &__pyx_n_s_Portfolio___setstate_cython) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[80], &__pyx_n_s_Portfolio__add_records) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[81], &__pyx_n_s_Portfolio_get) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[82], &__pyx_n_u_Premium) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[83], &__pyx_n_s_Pyx_EnumBase) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[84], &__pyx_n_s_Pyx_EnumBase___new) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[85], &__pyx_n_s_Pyx_EnumBase___repr) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[86], &__pyx_n_s_Pyx_EnumBase___str) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[87], &__pyx_n_s_Pyx_EnumMeta___reduce_cython) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[88], &__pyx_n_s_Pyx_EnumMeta___setstate_cython) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[89], &__pyx_n_u_QUARTER) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[90], &__pyx_n_s_QUARTERLY) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[91], &__pyx_kp_u_Required_lengh_must_be_1) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[92], &__pyx_n_u_SUM_INSURED) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[93], &__pyx_n_s_Sequence) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[94], &__pyx_n_s_SeriatimRecord) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[95], &__pyx_n_s_SeriatimRecord___reduce_cython) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[96], &__pyx_n_s_SeriatimRecord___setstate_cython) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[97], &__pyx_n_s_SmokerStatus) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[98], &__pyx_n_s_StandardRateProvider) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[99], &__pyx_n_s_StandardRateProvider___reduce_cy) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[100], &__pyx_n_s_StandardRateProvider___setstate) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[101], &__pyx_n_s_StandardRateProvider_get_rate) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[102], &__pyx_n_s_StandardRateProvider_get_rates) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[103], &__pyx_n_s_StandardRateProvider_get_risk_fa) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[104], &__pyx_n_s_StandardRateProvider_get_values) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[105], &__pyx_n_s_StandardRateProvider_initialize) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[106], &__pyx_n_s_StandardRateProvider_slice) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[107], &__pyx_kp_s_Step_may_not_be_zero_axis_d) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[108], &__pyx_n_u_SumInsured) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[109], &__pyx_n_s_TimeStep) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[110], &__pyx_n_s_TypeError) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[111], &__pyx_n_u_UTF8) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[112], &__pyx_kp_s_Unable_to_convert_item_to_object) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[113], &__pyx_kp_s_Unknown_enum_value_s) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[114], &__pyx_n_u_VOLUME) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[115], &__pyx_n_s_ValueError) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[116], &__pyx_n_s_View_MemoryView) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[117], &__pyx_kp_u_Wrapper_for) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[118], &__pyx_n_u_YEAR) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[119], &__pyx_n_s_YEARLY) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[120], &__pyx_n_s_YearsDisabledIfDisabledAtStart) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[121], &__pyx_kp_u__10) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[122], &__pyx_kp_u__11) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[123], &__pyx_n_s__12) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[124], &__pyx_kp_u__14) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[125], &__pyx_kp_u__15) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[126], &__pyx_n_s__94) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[127], &__pyx_n_s_abc) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[128], &__pyx_n_s_add_provider_const) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[129], &__pyx_n_s_add_provider_std) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[130], &__pyx_n_s_add_records) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[131], &__pyx_n_s_add_risk_factor) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[132], &__pyx_n_s_age_proj_start) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[133], &__pyx_n_s_allocate_buffer) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[134], &__pyx_n_s_an_index) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[135], &__pyx_n_s_an_index_vector) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[136], &__pyx_kp_u_and) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[137], &__pyx_n_s_applicable_rfs) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[138], &__pyx_n_s_arange) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[139], &__pyx_n_s_array) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[140], &__pyx_n_s_astype) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[141], &__pyx_n_s_asyncio_coroutines) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[142], &__pyx_n_s_base) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[143], &__pyx_n_s_base_assump) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[144], &__pyx_n_s_be_ass) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[145], &__pyx_n_s_brp) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[146], &__pyx_n_s_build_c_portfolio) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[147], &__pyx_n_s_c) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[148], &__pyx_n_u_c) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[149], &__pyx_n_s_c_assumption_set) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[150], &__pyx_n_s_cession_id) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[151], &__pyx_n_s_cession_ids) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[152], &__pyx_n_s_class) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[153], &__pyx_n_s_class_getitem) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[154], &__pyx_n_s_cline_in_traceback) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[155], &__pyx_n_s_cls) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[156], &__pyx_n_s_collections) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[157], &__pyx_kp_s_collections_abc) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[158], &__pyx_n_s_columns) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[159], &__pyx_kp_s_contiguous_and_direct) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[160], &__pyx_kp_s_contiguous_and_indirect) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[161], &__pyx_n_s_count) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[162], &__pyx_n_s_coverage_years) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[163], &__pyx_n_s_cp_builder_ptr) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[164], &__pyx_n_s_cp_wrapper) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[165], &__pyx_n_s_cportfolio_wapper) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[166], &__pyx_n_s_cpu_count) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[167], &__pyx_n_s_crun_config) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[168], &__pyx_n_s_data) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[169], &__pyx_n_s_day) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[170], &__pyx_n_s_days_of_birth) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[171], &__pyx_n_s_dct) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[172], &__pyx_n_s_decode) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[173], &__pyx_n_s_df) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[174], &__pyx_n_s_df_portfolio) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[175], &__pyx_n_s_dict) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[176], &__pyx_n_s_dict_2) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[177], &__pyx_n_s_dim) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[178], &__pyx_n_s_dim_2) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[179], &__pyx_kp_u_disable) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[180], &__pyx_n_s_disablement_day) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[181], &__pyx_n_s_disablement_month) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[182], &__pyx_n_s_disablement_year) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[183], &__pyx_n_s_dob_date_long) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[184], &__pyx_n_s_dob_dates_long) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[185], &__pyx_n_s_dobs) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[186], &__pyx_n_s_dobs_mv) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[187], &__pyx_n_s_doc) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[188], &__pyx_n_s_dod) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[189], &__pyx_n_s_dod_mv) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[190], &__pyx_n_s_doi) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[191], &__pyx_n_s_doi_mv) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[192], &__pyx_n_s_dtype) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[193], &__pyx_n_s_dtype_is_object) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[194], &__pyx_kp_u_enable) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[195], &__pyx_n_s_encode) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[196], &__pyx_n_s_encoding) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[197], &__pyx_n_s_enum) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[198], &__pyx_n_s_enumerate) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[199], &__pyx_n_s_error) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[200], &__pyx_n_s_ext_res_view) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[201], &__pyx_n_s_flags) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[202], &__pyx_n_s_flatten) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[203], &__pyx_n_s_foo) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[204], &__pyx_n_s_format) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[205], &__pyx_n_s_fortran) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[206], &__pyx_n_u_fortran) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[207], &__pyx_kp_u_gc) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[208], &__pyx_n_s_gender) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[209], &__pyx_n_s_gender_mv) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[210], &__pyx_n_s_get) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[211], &__pyx_n_s_get_for_age_c) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[212], &__pyx_n_s_get_info) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[213], &__pyx_n_s_get_rate) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[214], &__pyx_n_s_get_rates) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[215], &__pyx_n_s_get_risk_factors) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[216], &__pyx_n_s_get_single_rateset) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[217], &__pyx_n_s_get_values) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[218], &__pyx_n_s_getstate) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[219], &__pyx_kp_u_got) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[220], &__pyx_kp_u_got_differing_extents_in_dimensi) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[221], &__pyx_n_s_homogenous_wrt_product) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[222], &__pyx_n_s_i) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[223], &__pyx_n_s_id) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[224], &__pyx_n_s_ids_mv) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[225], &__pyx_n_s_import) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[226], &__pyx_n_s_index) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[227], &__pyx_n_s_indexes) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[228], &__pyx_n_s_indices) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[229], &__pyx_n_s_init) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[230], &__pyx_n_s_init_subclass) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[231], &__pyx_n_s_initialize) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[232], &__pyx_n_s_initializing) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[233], &__pyx_n_s_int32) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[234], &__pyx_n_s_int64) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[235], &__pyx_n_s_is_coroutine) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[236], &__pyx_kp_u_isenabled) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[237], &__pyx_n_s_issue_date_long) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[238], &__pyx_n_s_issue_dates_long) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[239], &__pyx_n_s_items) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[240], &__pyx_n_s_itemsize) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[241], &__pyx_kp_s_itemsize_0_for_cython_array) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[242], &__pyx_n_s_j) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[243], &__pyx_n_s_k) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[244], &__pyx_n_s_kwargs) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[245], &__pyx_n_s_kwargs_lv) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[246], &__pyx_n_s_l_be) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[247], &__pyx_n_s_l_local_gaap) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[248], &__pyx_n_s_lapse_assumptions) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[249], &__pyx_n_s_len) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[250], &__pyx_n_s_lower) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[251], &__pyx_n_s_main) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[252], &__pyx_n_s_members) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[253], &__pyx_n_s_memview) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[254], &__pyx_n_s_metaclass) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[255], &__pyx_n_s_mode) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[256], &__pyx_n_s_module) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[257], &__pyx_n_s_month) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[258], &__pyx_n_s_months_of_birth) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[259], &__pyx_n_s_mort_assumptions) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[260], &__pyx_n_s_mro_entries) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[261], &__pyx_n_s_multiplier) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[262], &__pyx_n_s_multiprocessing) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[263], &__pyx_n_s_n) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[264], &__pyx_n_s_name) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[265], &__pyx_n_s_name_2) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[266], &__pyx_n_s_ndim) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[267], &__pyx_n_s_new) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[268], &__pyx_n_s_no_cols) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[269], &__pyx_kp_s_no_default___reduce___due_to_non) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[270], &__pyx_n_s_np) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[271], &__pyx_n_s_num_cpus) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[272], &__pyx_n_s_num_policies) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[273], &__pyx_n_s_numpy) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[274], &__pyx_kp_u_numpy_core_multiarray_failed_to) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[275], &__pyx_kp_u_numpy_core_umath_failed_to_impor) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[276], &__pyx_n_s_obj) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[277], &__pyx_n_s_offsets) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[278], &__pyx_n_s_output) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[279], &__pyx_n_s_output_columns) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[280], &__pyx_n_s_output_memview) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[281], &__pyx_n_s_p_be_ass) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[282], &__pyx_n_s_p_c_pf) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[283], &__pyx_n_s_p_locgaap_ass) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[284], &__pyx_n_s_p_vec_lap) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[285], &__pyx_n_s_p_vec_mort) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[286], &__pyx_n_s_p_vec_prem) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[287], &__pyx_n_s_pack) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[288], &__pyx_n_s_pandas) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[289], &__pyx_n_s_parents) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[290], &__pyx_n_s_pd) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[291], &__pyx_n_s_pf) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[292], &__pyx_n_s_pickle) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[293], &__pyx_n_s_policy_age) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[294], &__pyx_n_s_policy_inception_day) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[295], &__pyx_n_s_policy_inception_month) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[296], &__pyx_n_s_policy_inception_yr) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[297], &__pyx_n_s_portfolio_date) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[298], &__pyx_n_s_portfolio_date_long) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[299], &__pyx_n_s_portfolio_dates_long) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[300], &__pyx_n_s_portfolio_name) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[301], &__pyx_n_s_portfolio_valuation) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[302], &__pyx_n_s_prem_assumptions) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[303], &__pyx_n_s_premium_table) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[304], &__pyx_n_s_prepare) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[305], &__pyx_n_s_print) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[306], &__pyx_n_s_product) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[307], &__pyx_n_s_product_types) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[308], &__pyx_n_s_products) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[309], &__pyx_n_s_ptf) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[310], &__pyx_n_s_py_portfolio) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[311], &__pyx_n_s_py_run_c_valuation) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[312], &__pyx_n_s_pyprotolinc__actuarial) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[313], &__pyx_n_s_pyrf) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[314], &__pyx_n_s_pyx_PickleError) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[315], &__pyx_n_s_pyx_checksum) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[316], &__pyx_n_s_pyx_result) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[317], &__pyx_n_s_pyx_state) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[318], &__pyx_n_s_pyx_type) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[319], &__pyx_n_s_pyx_unpickle_Enum) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[320], &__pyx_n_s_pyx_unpickle___Pyx_EnumMeta) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[321], &__pyx_n_s_pyx_vtable) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[322], &__pyx_n_s_q_be) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[323], &__pyx_n_s_q_local_gaap) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[324], &__pyx_n_s_qualname) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[325], &__pyx_n_s_r) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[326], &__pyx_n_s_range) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[327], &__pyx_n_s_rec) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[328], &__pyx_n_s_reduce) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[329], &__pyx_n_s_reduce_cython) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[330], &__pyx_n_s_reduce_ex) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[331], &__pyx_n_s_register) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[332], &__pyx_n_s_repr) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[333], &__pyx_n_s_res) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[334], &__pyx_n_s_res_rate_mv) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[335], &__pyx_n_s_reserving_rate) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[336], &__pyx_n_s_rf) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[337], &__pyx_n_s_rf_indexes) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[338], &__pyx_n_s_rfs) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[339], &__pyx_n_s_risk_factor_values) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[340], &__pyx_n_s_rp) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[341], &__pyx_kp_s_s_s) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[342], &__pyx_kp_s_s_s_d) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[343], &__pyx_n_s_self) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[344], &__pyx_kp_s_self_base_assumptions_be_self_ba) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[345], &__pyx_kp_s_self_ptf_cannot_be_converted_to) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[346], &__pyx_n_s_set_name) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[347], &__pyx_n_s_setstate) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[348], &__pyx_n_s_setstate_cython) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[349], &__pyx_n_s_shape) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[350], &__pyx_n_s_size) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[351], &__pyx_n_s_slice) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[352], &__pyx_n_s_slicedCSRP) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[353], &__pyx_n_s_sliced_srp) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[354], &__pyx_n_s_smoker_mv) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[355], &__pyx_n_s_smokerstatus) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[356], &__pyx_n_s_spec) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[357], &__pyx_kp_s_src_pyprotolinc_actuarial_portfo) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[358], &__pyx_kp_s_src_pyprotolinc_actuarial_provid) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[359], &__pyx_kp_s_src_pyprotolinc_actuarial_valuat) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[360], &__pyx_n_s_srp) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[361], &__pyx_n_s_start) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[362], &__pyx_n_s_start_age_mort) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[363], &__pyx_n_s_state) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[364], &__pyx_n_s_step) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[365], &__pyx_n_s_stop) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[366], &__pyx_n_s_str) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[367], &__pyx_kp_s_strided_and_direct) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[368], &__pyx_kp_s_strided_and_direct_or_indirect) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[369], &__pyx_kp_s_strided_and_indirect) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[370], &__pyx_kp_s_stringsource) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[371], &__pyx_n_s_struct) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[372], &__pyx_n_s_sum_insured) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[373], &__pyx_n_s_sum_insured_mv) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[374], &__pyx_n_s_sums_insured) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[375], &__pyx_n_s_super) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[376], &__pyx_n_s_sys) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[377], &__pyx_n_s_test) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[378], &__pyx_n_s_time_step) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[379], &__pyx_n_s_tmp_lapse) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[380], &__pyx_n_s_tmp_mort) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[381], &__pyx_n_s_tmp_prem) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[382], &__pyx_n_s_total_timesteps) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[383], &__pyx_kp_s_unable_to_allocate_array_data) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[384], &__pyx_kp_s_unable_to_allocate_shape_and_str) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[385], &__pyx_n_s_unpack) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[386], &__pyx_n_s_update) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[387], &__pyx_n_s_use_multicore) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[388], &__pyx_n_s_use_setstate) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[389], &__pyx_n_s_v) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[390], &__pyx_n_s_val) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[391], &__pyx_n_s_valuation_date) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[392], &__pyx_n_s_value) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[393], &__pyx_n_s_values) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[394], &__pyx_n_s_values_memview) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[395], &__pyx_n_s_values_placeholder) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[396], &__pyx_n_s_version_info) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[397], &__pyx_n_s_year) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[398], &__pyx_n_s_years_of_birth) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[399], &__pyx_n_s_years_to_simulate) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
+  if (__Pyx_InitString(__pyx_string_tab[400], &__pyx_n_s_zeros) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
   #endif
   #if !CYTHON_USE_MODULE_STATE
   if (__Pyx_InitStrings(__pyx_string_tab) < 0) __PYX_ERR(3, 1, __pyx_L1_error);
@@ -38251,15 +38530,15 @@ static int __Pyx_modinit_type_init_code(void) {
   __pyx_vtabptr_11pyprotolinc_10_actuarial_StandardRateProvider = &__pyx_vtable_11pyprotolinc_10_actuarial_StandardRateProvider;
   __pyx_vtable_11pyprotolinc_10_actuarial_StandardRateProvider.get_provider = (std::shared_ptr<CStandardRateProvider>  (*)(struct __pyx_obj_11pyprotolinc_10_actuarial_StandardRateProvider *))__pyx_f_11pyprotolinc_10_actuarial_20StandardRateProvider_get_provider;
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_11pyprotolinc_10_actuarial_StandardRateProvider_spec, NULL); if (unlikely(!__pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider)) __PYX_ERR(1, 78, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_11pyprotolinc_10_actuarial_StandardRateProvider_spec, __pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider) < 0) __PYX_ERR(1, 78, __pyx_L1_error)
+  __pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_11pyprotolinc_10_actuarial_StandardRateProvider_spec, NULL); if (unlikely(!__pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider)) __PYX_ERR(1, 76, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_11pyprotolinc_10_actuarial_StandardRateProvider_spec, __pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider) < 0) __PYX_ERR(1, 76, __pyx_L1_error)
   #else
   __pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider = &__pyx_type_11pyprotolinc_10_actuarial_StandardRateProvider;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider) < 0) __PYX_ERR(1, 78, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider) < 0) __PYX_ERR(1, 76, __pyx_L1_error)
   #endif
   #if PY_MAJOR_VERSION < 3
   __pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider->tp_print = 0;
@@ -38269,24 +38548,24 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider->tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
   #endif
-  if (__Pyx_SetVtable(__pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider, __pyx_vtabptr_11pyprotolinc_10_actuarial_StandardRateProvider) < 0) __PYX_ERR(1, 78, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider, __pyx_vtabptr_11pyprotolinc_10_actuarial_StandardRateProvider) < 0) __PYX_ERR(1, 76, __pyx_L1_error)
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if (__Pyx_MergeVtables(__pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider) < 0) __PYX_ERR(1, 78, __pyx_L1_error)
+  if (__Pyx_MergeVtables(__pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider) < 0) __PYX_ERR(1, 76, __pyx_L1_error)
   #endif
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_StandardRateProvider, (PyObject *) __pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider) < 0) __PYX_ERR(1, 78, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_StandardRateProvider, (PyObject *) __pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider) < 0) __PYX_ERR(1, 76, __pyx_L1_error)
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if (__Pyx_setup_reduce((PyObject *) __pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider) < 0) __PYX_ERR(1, 78, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject *) __pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider) < 0) __PYX_ERR(1, 76, __pyx_L1_error)
   #endif
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_ptype_11pyprotolinc_10_actuarial_AssumptionSet = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_11pyprotolinc_10_actuarial_AssumptionSet_spec, NULL); if (unlikely(!__pyx_ptype_11pyprotolinc_10_actuarial_AssumptionSet)) __PYX_ERR(1, 202, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_11pyprotolinc_10_actuarial_AssumptionSet_spec, __pyx_ptype_11pyprotolinc_10_actuarial_AssumptionSet) < 0) __PYX_ERR(1, 202, __pyx_L1_error)
+  __pyx_ptype_11pyprotolinc_10_actuarial_AssumptionSet = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_11pyprotolinc_10_actuarial_AssumptionSet_spec, NULL); if (unlikely(!__pyx_ptype_11pyprotolinc_10_actuarial_AssumptionSet)) __PYX_ERR(1, 200, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_11pyprotolinc_10_actuarial_AssumptionSet_spec, __pyx_ptype_11pyprotolinc_10_actuarial_AssumptionSet) < 0) __PYX_ERR(1, 200, __pyx_L1_error)
   #else
   __pyx_ptype_11pyprotolinc_10_actuarial_AssumptionSet = &__pyx_type_11pyprotolinc_10_actuarial_AssumptionSet;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_ptype_11pyprotolinc_10_actuarial_AssumptionSet) < 0) __PYX_ERR(1, 202, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_ptype_11pyprotolinc_10_actuarial_AssumptionSet) < 0) __PYX_ERR(1, 200, __pyx_L1_error)
   #endif
   #if PY_MAJOR_VERSION < 3
   __pyx_ptype_11pyprotolinc_10_actuarial_AssumptionSet->tp_print = 0;
@@ -38296,9 +38575,9 @@ static int __Pyx_modinit_type_init_code(void) {
     __pyx_ptype_11pyprotolinc_10_actuarial_AssumptionSet->tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
   #endif
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_AssumptionSet, (PyObject *) __pyx_ptype_11pyprotolinc_10_actuarial_AssumptionSet) < 0) __PYX_ERR(1, 202, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_AssumptionSet, (PyObject *) __pyx_ptype_11pyprotolinc_10_actuarial_AssumptionSet) < 0) __PYX_ERR(1, 200, __pyx_L1_error)
   #if !CYTHON_COMPILING_IN_LIMITED_API
-  if (__Pyx_setup_reduce((PyObject *) __pyx_ptype_11pyprotolinc_10_actuarial_AssumptionSet) < 0) __PYX_ERR(1, 202, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject *) __pyx_ptype_11pyprotolinc_10_actuarial_AssumptionSet) < 0) __PYX_ERR(1, 200, __pyx_L1_error)
   #endif
   #if CYTHON_USE_TYPE_SPECS
   __pyx_ptype_11pyprotolinc_10_actuarial_SeriatimRecord = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_11pyprotolinc_10_actuarial_SeriatimRecord_spec, NULL); if (unlikely(!__pyx_ptype_11pyprotolinc_10_actuarial_SeriatimRecord)) __PYX_ERR(3, 112, __pyx_L1_error)
@@ -39009,69 +39288,69 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_build_c_portfolio, __pyx_t_3) < 0) __PYX_ERR(2, 49, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":57
- * 
+  /* "src/pyprotolinc/actuarial/providers.pxd":55
+ *         return self.c_provider.get()[0].to_string().decode()
  * 
  *     def get_risk_factors(self):             # <<<<<<<<<<<<<<
  *         cdef vector[CRiskFactors] rfs = self.c_provider.get()[0].get_risk_factors()
  *         return [CRiskFactors(rf) for rf in rfs]
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_11pyprotolinc_10_actuarial_20ConstantRateProvider_5get_risk_factors, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_ConstantRateProvider_get_risk_fa, NULL, __pyx_n_s_pyprotolinc__actuarial, __pyx_d, ((PyObject *)__pyx_codeobj__26)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 57, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_11pyprotolinc_10_actuarial_20ConstantRateProvider_5get_risk_factors, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_ConstantRateProvider_get_risk_fa, NULL, __pyx_n_s_pyprotolinc__actuarial, __pyx_d, ((PyObject *)__pyx_codeobj__26)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 55, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_11pyprotolinc_10_actuarial_ConstantRateProvider->tp_dict, __pyx_n_s_get_risk_factors, __pyx_t_3) < 0) __PYX_ERR(1, 57, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_11pyprotolinc_10_actuarial_ConstantRateProvider->tp_dict, __pyx_n_s_get_risk_factors, __pyx_t_3) < 0) __PYX_ERR(1, 55, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   PyType_Modified(__pyx_ptype_11pyprotolinc_10_actuarial_ConstantRateProvider);
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":61
+  /* "src/pyprotolinc/actuarial/providers.pxd":59
  *         return [CRiskFactors(rf) for rf in rfs]
  * 
  *     def add_risk_factor(self, rf):             # <<<<<<<<<<<<<<
  *         self.c_provider.get()[0].add_risk_factor(rf)
  * 
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_11pyprotolinc_10_actuarial_20ConstantRateProvider_7add_risk_factor, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_ConstantRateProvider_add_risk_fa, NULL, __pyx_n_s_pyprotolinc__actuarial, __pyx_d, ((PyObject *)__pyx_codeobj__28)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 61, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_11pyprotolinc_10_actuarial_20ConstantRateProvider_7add_risk_factor, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_ConstantRateProvider_add_risk_fa, NULL, __pyx_n_s_pyprotolinc__actuarial, __pyx_d, ((PyObject *)__pyx_codeobj__28)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 59, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_11pyprotolinc_10_actuarial_ConstantRateProvider->tp_dict, __pyx_n_s_add_risk_factor, __pyx_t_3) < 0) __PYX_ERR(1, 61, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_11pyprotolinc_10_actuarial_ConstantRateProvider->tp_dict, __pyx_n_s_add_risk_factor, __pyx_t_3) < 0) __PYX_ERR(1, 59, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   PyType_Modified(__pyx_ptype_11pyprotolinc_10_actuarial_ConstantRateProvider);
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":64
+  /* "src/pyprotolinc/actuarial/providers.pxd":62
  *         self.c_provider.get()[0].add_risk_factor(rf)
  * 
  *     def get_rate(self, indices=None):             # <<<<<<<<<<<<<<
  *         return self.c_provider.get()[0].get_rate(self.indexes_dummy)
  * 
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_11pyprotolinc_10_actuarial_20ConstantRateProvider_9get_rate, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_ConstantRateProvider_get_rate, NULL, __pyx_n_s_pyprotolinc__actuarial, __pyx_d, ((PyObject *)__pyx_codeobj__30)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 64, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_11pyprotolinc_10_actuarial_20ConstantRateProvider_9get_rate, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_ConstantRateProvider_get_rate, NULL, __pyx_n_s_pyprotolinc__actuarial, __pyx_d, ((PyObject *)__pyx_codeobj__30)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_3, __pyx_tuple__31);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_11pyprotolinc_10_actuarial_ConstantRateProvider->tp_dict, __pyx_n_s_get_rate, __pyx_t_3) < 0) __PYX_ERR(1, 64, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_11pyprotolinc_10_actuarial_ConstantRateProvider->tp_dict, __pyx_n_s_get_rate, __pyx_t_3) < 0) __PYX_ERR(1, 62, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   PyType_Modified(__pyx_ptype_11pyprotolinc_10_actuarial_ConstantRateProvider);
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":67
+  /* "src/pyprotolinc/actuarial/providers.pxd":65
  *         return self.c_provider.get()[0].get_rate(self.indexes_dummy)
  * 
  *     def get_rates(self, int _len, **kwargs):             # <<<<<<<<<<<<<<
  *         assert _len >= 1, "Required lengh must be >= 1"
  *         cdef np.ndarray[double, ndim=1, mode="c"] output = np.zeros(_len)
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_11pyprotolinc_10_actuarial_20ConstantRateProvider_11get_rates, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_ConstantRateProvider_get_rates, NULL, __pyx_n_s_pyprotolinc__actuarial, __pyx_d, ((PyObject *)__pyx_codeobj__33)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 67, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_11pyprotolinc_10_actuarial_20ConstantRateProvider_11get_rates, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_ConstantRateProvider_get_rates, NULL, __pyx_n_s_pyprotolinc__actuarial, __pyx_d, ((PyObject *)__pyx_codeobj__33)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 65, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_11pyprotolinc_10_actuarial_ConstantRateProvider->tp_dict, __pyx_n_s_get_rates, __pyx_t_3) < 0) __PYX_ERR(1, 67, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_11pyprotolinc_10_actuarial_ConstantRateProvider->tp_dict, __pyx_n_s_get_rates, __pyx_t_3) < 0) __PYX_ERR(1, 65, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   PyType_Modified(__pyx_ptype_11pyprotolinc_10_actuarial_ConstantRateProvider);
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":74
+  /* "src/pyprotolinc/actuarial/providers.pxd":72
  *         return output
  * 
  *     def initialize(self, **kwargs):             # <<<<<<<<<<<<<<
  *         pass
  * 
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_11pyprotolinc_10_actuarial_20ConstantRateProvider_13initialize, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_ConstantRateProvider_initialize, NULL, __pyx_n_s_pyprotolinc__actuarial, __pyx_d, ((PyObject *)__pyx_codeobj__35)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 74, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_11pyprotolinc_10_actuarial_20ConstantRateProvider_13initialize, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_ConstantRateProvider_initialize, NULL, __pyx_n_s_pyprotolinc__actuarial, __pyx_d, ((PyObject *)__pyx_codeobj__35)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 72, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_11pyprotolinc_10_actuarial_ConstantRateProvider->tp_dict, __pyx_n_s_initialize, __pyx_t_3) < 0) __PYX_ERR(1, 74, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_11pyprotolinc_10_actuarial_ConstantRateProvider->tp_dict, __pyx_n_s_initialize, __pyx_t_3) < 0) __PYX_ERR(1, 72, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   PyType_Modified(__pyx_ptype_11pyprotolinc_10_actuarial_ConstantRateProvider);
 
@@ -39096,81 +39375,81 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_setstate_cython, __pyx_t_3) < 0) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":114
+  /* "src/pyprotolinc/actuarial/providers.pxd":112
  *         self.c_provider.get()[0].set_values(shapevec, offsets, &values_memview[0])
  * 
  *     def get_risk_factors(self):             # <<<<<<<<<<<<<<
  *         cdef vector[CRiskFactors] rfs = self.c_provider.get()[0].get_risk_factors()
  *         return [CRiskFactors(rf) for rf in rfs]
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_11pyprotolinc_10_actuarial_20StandardRateProvider_3get_risk_factors, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_StandardRateProvider_get_risk_fa, NULL, __pyx_n_s_pyprotolinc__actuarial, __pyx_d, ((PyObject *)__pyx_codeobj__38)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 114, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_11pyprotolinc_10_actuarial_20StandardRateProvider_3get_risk_factors, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_StandardRateProvider_get_risk_fa, NULL, __pyx_n_s_pyprotolinc__actuarial, __pyx_d, ((PyObject *)__pyx_codeobj__38)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 112, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider->tp_dict, __pyx_n_s_get_risk_factors, __pyx_t_3) < 0) __PYX_ERR(1, 114, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider->tp_dict, __pyx_n_s_get_risk_factors, __pyx_t_3) < 0) __PYX_ERR(1, 112, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   PyType_Modified(__pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider);
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":121
+  /* "src/pyprotolinc/actuarial/providers.pxd":119
  *         return self.c_provider.get()[0].to_string().decode(encoding='ASCII')
  * 
  *     def get_rates(self, int _len, **kwargs):             # <<<<<<<<<<<<<<
  *         assert _len >= 1, "Required lengh must be >= 1"
  * 
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_11pyprotolinc_10_actuarial_20StandardRateProvider_7get_rates, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_StandardRateProvider_get_rates, NULL, __pyx_n_s_pyprotolinc__actuarial, __pyx_d, ((PyObject *)__pyx_codeobj__40)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 121, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_11pyprotolinc_10_actuarial_20StandardRateProvider_7get_rates, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_StandardRateProvider_get_rates, NULL, __pyx_n_s_pyprotolinc__actuarial, __pyx_d, ((PyObject *)__pyx_codeobj__40)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 119, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider->tp_dict, __pyx_n_s_get_rates, __pyx_t_3) < 0) __PYX_ERR(1, 121, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider->tp_dict, __pyx_n_s_get_rates, __pyx_t_3) < 0) __PYX_ERR(1, 119, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   PyType_Modified(__pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider);
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":145
+  /* "src/pyprotolinc/actuarial/providers.pxd":143
  *         return output
  * 
  *     def get_rate(self, indices):             # <<<<<<<<<<<<<<
  *         cdef vector[int] indexes
  *         cdef int k
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_11pyprotolinc_10_actuarial_20StandardRateProvider_9get_rate, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_StandardRateProvider_get_rate, NULL, __pyx_n_s_pyprotolinc__actuarial, __pyx_d, ((PyObject *)__pyx_codeobj__42)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 145, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_11pyprotolinc_10_actuarial_20StandardRateProvider_9get_rate, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_StandardRateProvider_get_rate, NULL, __pyx_n_s_pyprotolinc__actuarial, __pyx_d, ((PyObject *)__pyx_codeobj__42)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 143, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider->tp_dict, __pyx_n_s_get_rate, __pyx_t_3) < 0) __PYX_ERR(1, 145, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider->tp_dict, __pyx_n_s_get_rate, __pyx_t_3) < 0) __PYX_ERR(1, 143, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   PyType_Modified(__pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider);
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":152
+  /* "src/pyprotolinc/actuarial/providers.pxd":150
  *         return self.c_provider.get()[0].get_rate(indexes)
  * 
  *     def initialize(self, **kwargs):             # <<<<<<<<<<<<<<
  *         pass
  * 
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_11pyprotolinc_10_actuarial_20StandardRateProvider_11initialize, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_StandardRateProvider_initialize, NULL, __pyx_n_s_pyprotolinc__actuarial, __pyx_d, ((PyObject *)__pyx_codeobj__43)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 152, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_11pyprotolinc_10_actuarial_20StandardRateProvider_11initialize, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_StandardRateProvider_initialize, NULL, __pyx_n_s_pyprotolinc__actuarial, __pyx_d, ((PyObject *)__pyx_codeobj__43)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 150, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider->tp_dict, __pyx_n_s_initialize, __pyx_t_3) < 0) __PYX_ERR(1, 152, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider->tp_dict, __pyx_n_s_initialize, __pyx_t_3) < 0) __PYX_ERR(1, 150, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   PyType_Modified(__pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider);
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":155
+  /* "src/pyprotolinc/actuarial/providers.pxd":153
  *         pass
  * 
  *     def slice(self, **kwargs):             # <<<<<<<<<<<<<<
  * 
  *         cdef vector[int] indices
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_11pyprotolinc_10_actuarial_20StandardRateProvider_13slice, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_StandardRateProvider_slice, NULL, __pyx_n_s_pyprotolinc__actuarial, __pyx_d, ((PyObject *)__pyx_codeobj__45)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 155, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_11pyprotolinc_10_actuarial_20StandardRateProvider_13slice, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_StandardRateProvider_slice, NULL, __pyx_n_s_pyprotolinc__actuarial, __pyx_d, ((PyObject *)__pyx_codeobj__45)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 153, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider->tp_dict, __pyx_n_s_slice, __pyx_t_3) < 0) __PYX_ERR(1, 155, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider->tp_dict, __pyx_n_s_slice, __pyx_t_3) < 0) __PYX_ERR(1, 153, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   PyType_Modified(__pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider);
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":184
+  /* "src/pyprotolinc/actuarial/providers.pxd":182
  *         return sliced_srp
  * 
  *     def get_values(self):             # <<<<<<<<<<<<<<
  *         print(self.c_provider.get()[0].size())
  *         cdef np.ndarray[double, ndim=1, mode="c"] values_placeholder = np.zeros(self.c_provider.get()[0].size())
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_11pyprotolinc_10_actuarial_20StandardRateProvider_15get_values, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_StandardRateProvider_get_values, NULL, __pyx_n_s_pyprotolinc__actuarial, __pyx_d, ((PyObject *)__pyx_codeobj__47)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 184, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_11pyprotolinc_10_actuarial_20StandardRateProvider_15get_values, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_StandardRateProvider_get_values, NULL, __pyx_n_s_pyprotolinc__actuarial, __pyx_d, ((PyObject *)__pyx_codeobj__47)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 182, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider->tp_dict, __pyx_n_s_get_values, __pyx_t_3) < 0) __PYX_ERR(1, 184, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider->tp_dict, __pyx_n_s_get_values, __pyx_t_3) < 0) __PYX_ERR(1, 182, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   PyType_Modified(__pyx_ptype_11pyprotolinc_10_actuarial_StandardRateProvider);
 
@@ -39195,42 +39474,42 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_setstate_cython, __pyx_t_3) < 0) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":212
+  /* "src/pyprotolinc/actuarial/providers.pxd":210
  *         self.dim = _dim
  * 
  *     def add_provider_std(self, int r, int c, StandardRateProvider rp):             # <<<<<<<<<<<<<<
  *         cdef shared_ptr[CStandardRateProvider] srp = rp.get_provider()
  *         cdef shared_ptr[CBaseRateProvider] brp
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_11pyprotolinc_10_actuarial_13AssumptionSet_3add_provider_std, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_AssumptionSet_add_provider_std, NULL, __pyx_n_s_pyprotolinc__actuarial, __pyx_d, ((PyObject *)__pyx_codeobj__51)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 212, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_11pyprotolinc_10_actuarial_13AssumptionSet_3add_provider_std, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_AssumptionSet_add_provider_std, NULL, __pyx_n_s_pyprotolinc__actuarial, __pyx_d, ((PyObject *)__pyx_codeobj__51)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 210, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_11pyprotolinc_10_actuarial_AssumptionSet->tp_dict, __pyx_n_s_add_provider_std, __pyx_t_3) < 0) __PYX_ERR(1, 212, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_11pyprotolinc_10_actuarial_AssumptionSet->tp_dict, __pyx_n_s_add_provider_std, __pyx_t_3) < 0) __PYX_ERR(1, 210, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   PyType_Modified(__pyx_ptype_11pyprotolinc_10_actuarial_AssumptionSet);
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":221
+  /* "src/pyprotolinc/actuarial/providers.pxd":219
  *         self.c_assumption_set.get()[0].set_provider(r, c, brp)
  * 
  *     def add_provider_const(self, int r, int c, ConstantRateProvider rp):             # <<<<<<<<<<<<<<
  *         cdef shared_ptr[CConstantRateProvider] srp = rp.get_provider()
  *         cdef shared_ptr[CBaseRateProvider] brp
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_11pyprotolinc_10_actuarial_13AssumptionSet_5add_provider_const, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_AssumptionSet_add_provider_const, NULL, __pyx_n_s_pyprotolinc__actuarial, __pyx_d, ((PyObject *)__pyx_codeobj__52)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 221, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_11pyprotolinc_10_actuarial_13AssumptionSet_5add_provider_const, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_AssumptionSet_add_provider_const, NULL, __pyx_n_s_pyprotolinc__actuarial, __pyx_d, ((PyObject *)__pyx_codeobj__52)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 219, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_11pyprotolinc_10_actuarial_AssumptionSet->tp_dict, __pyx_n_s_add_provider_const, __pyx_t_3) < 0) __PYX_ERR(1, 221, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_11pyprotolinc_10_actuarial_AssumptionSet->tp_dict, __pyx_n_s_add_provider_const, __pyx_t_3) < 0) __PYX_ERR(1, 219, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   PyType_Modified(__pyx_ptype_11pyprotolinc_10_actuarial_AssumptionSet);
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":228
+  /* "src/pyprotolinc/actuarial/providers.pxd":226
  * 
  * 
  *     def get_single_rateset(self, risk_factor_values):             # <<<<<<<<<<<<<<
  * 
  *         assert len(risk_factor_values) == NUMBER_OF_RISK_FACTORS
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_11pyprotolinc_10_actuarial_13AssumptionSet_7get_single_rateset, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_AssumptionSet_get_single_rateset, NULL, __pyx_n_s_pyprotolinc__actuarial, __pyx_d, ((PyObject *)__pyx_codeobj__54)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 228, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_11pyprotolinc_10_actuarial_13AssumptionSet_7get_single_rateset, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_AssumptionSet_get_single_rateset, NULL, __pyx_n_s_pyprotolinc__actuarial, __pyx_d, ((PyObject *)__pyx_codeobj__54)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 226, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_11pyprotolinc_10_actuarial_AssumptionSet->tp_dict, __pyx_n_s_get_single_rateset, __pyx_t_3) < 0) __PYX_ERR(1, 228, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_11pyprotolinc_10_actuarial_AssumptionSet->tp_dict, __pyx_n_s_get_single_rateset, __pyx_t_3) < 0) __PYX_ERR(1, 226, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   PyType_Modified(__pyx_ptype_11pyprotolinc_10_actuarial_AssumptionSet);
 
@@ -39255,16 +39534,16 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_setstate_cython, __pyx_t_3) < 0) __PYX_ERR(0, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "src/pyprotolinc/actuarial/providers.pxd":250
+  /* "src/pyprotolinc/actuarial/providers.pxd":264
  * 
  * 
- * def py_run_c_valuation(AssumptionSet be_ass, CPortfolioWrapper cportfolio_wapper):             # <<<<<<<<<<<<<<
+ * def py_run_c_valuation(AssumptionSet be_ass, CPortfolioWrapper cportfolio_wapper, TimeStep time_step):             # <<<<<<<<<<<<<<
  * 
  *     cdef unsigned dim = be_ass.dim
  */
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_11pyprotolinc_10_actuarial_3py_run_c_valuation, 0, __pyx_n_s_py_run_c_valuation, NULL, __pyx_n_s_pyprotolinc__actuarial, __pyx_d, ((PyObject *)__pyx_codeobj__58)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 250, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_11pyprotolinc_10_actuarial_3py_run_c_valuation, 0, __pyx_n_s_py_run_c_valuation, NULL, __pyx_n_s_pyprotolinc__actuarial, __pyx_d, ((PyObject *)__pyx_codeobj__58)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 264, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_py_run_c_valuation, __pyx_t_3) < 0) __PYX_ERR(1, 250, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_py_run_c_valuation, __pyx_t_3) < 0) __PYX_ERR(1, 264, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
   /* "(tree fragment)":1
@@ -40437,6 +40716,258 @@ if (!__Pyx_RefNanny) {
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
   }
   __pyx_L31:;
+
+  /* "CppScopedEnumType":70
+ * 
+ * 
+ * cdef dict __Pyx_globals = globals()             # <<<<<<<<<<<<<<
+ * 
+ * if PY_VERSION_HEX >= 0x03040000:
+ */
+  __pyx_t_11 = __Pyx_Globals(); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 70, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_11);
+  if (!(likely(PyDict_CheckExact(__pyx_t_11))||((__pyx_t_11) == Py_None) || __Pyx_RaiseUnexpectedTypeError("dict", __pyx_t_11))) __PYX_ERR(0, 70, __pyx_L1_error)
+  __Pyx_XGOTREF(__Pyx_globals);
+  __Pyx_DECREF_SET(__Pyx_globals, ((PyObject*)__pyx_t_11));
+  __Pyx_GIVEREF(__pyx_t_11);
+  __pyx_t_11 = 0;
+
+  /* "CppScopedEnumType":72
+ * cdef dict __Pyx_globals = globals()
+ * 
+ * if PY_VERSION_HEX >= 0x03040000:             # <<<<<<<<<<<<<<
+ * 
+ *     __Pyx_globals["TimeStep"] = __Pyx_EnumBase('TimeStep', __Pyx_OrderedDict([
+ */
+  __pyx_t_6 = (PY_VERSION_HEX >= 0x03040000);
+  if (__pyx_t_6) {
+
+    /* "CppScopedEnumType":75
+ * 
+ *     __Pyx_globals["TimeStep"] = __Pyx_EnumBase('TimeStep', __Pyx_OrderedDict([
+ *         ('MONTHLY', <int>(TimeStep.MONTHLY)),             # <<<<<<<<<<<<<<
+ *         ('QUARTERLY', <int>(TimeStep.QUARTERLY)),
+ *         ('YEARLY', <int>(TimeStep.YEARLY)),
+ */
+    __pyx_t_11 = __Pyx_PyInt_From_int(((int)TimeStep::MONTHLY)); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 75, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_11);
+    __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 75, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_INCREF(__pyx_n_s_MONTHLY);
+    __Pyx_GIVEREF(__pyx_n_s_MONTHLY);
+    PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_n_s_MONTHLY);
+    __Pyx_GIVEREF(__pyx_t_11);
+    PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_11);
+    __pyx_t_11 = 0;
+
+    /* "CppScopedEnumType":76
+ *     __Pyx_globals["TimeStep"] = __Pyx_EnumBase('TimeStep', __Pyx_OrderedDict([
+ *         ('MONTHLY', <int>(TimeStep.MONTHLY)),
+ *         ('QUARTERLY', <int>(TimeStep.QUARTERLY)),             # <<<<<<<<<<<<<<
+ *         ('YEARLY', <int>(TimeStep.YEARLY)),
+ *     ]))
+ */
+    __pyx_t_11 = __Pyx_PyInt_From_int(((int)TimeStep::QUARTERLY)); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 76, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_11);
+    __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 76, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_10);
+    __Pyx_INCREF(__pyx_n_s_QUARTERLY);
+    __Pyx_GIVEREF(__pyx_n_s_QUARTERLY);
+    PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_n_s_QUARTERLY);
+    __Pyx_GIVEREF(__pyx_t_11);
+    PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_t_11);
+    __pyx_t_11 = 0;
+
+    /* "CppScopedEnumType":77
+ *         ('MONTHLY', <int>(TimeStep.MONTHLY)),
+ *         ('QUARTERLY', <int>(TimeStep.QUARTERLY)),
+ *         ('YEARLY', <int>(TimeStep.YEARLY)),             # <<<<<<<<<<<<<<
+ *     ]))
+ * 
+ */
+    __pyx_t_11 = __Pyx_PyInt_From_int(((int)TimeStep::YEARLY)); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 77, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_11);
+    __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 77, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_INCREF(__pyx_n_s_YEARLY);
+    __Pyx_GIVEREF(__pyx_n_s_YEARLY);
+    PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_YEARLY);
+    __Pyx_GIVEREF(__pyx_t_11);
+    PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_11);
+    __pyx_t_11 = 0;
+
+    /* "CppScopedEnumType":74
+ * if PY_VERSION_HEX >= 0x03040000:
+ * 
+ *     __Pyx_globals["TimeStep"] = __Pyx_EnumBase('TimeStep', __Pyx_OrderedDict([             # <<<<<<<<<<<<<<
+ *         ('MONTHLY', <int>(TimeStep.MONTHLY)),
+ *         ('QUARTERLY', <int>(TimeStep.QUARTERLY)),
+ */
+    __pyx_t_11 = PyList_New(3); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 74, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_11);
+    __Pyx_GIVEREF(__pyx_t_5);
+    PyList_SET_ITEM(__pyx_t_11, 0, __pyx_t_5);
+    __Pyx_GIVEREF(__pyx_t_10);
+    PyList_SET_ITEM(__pyx_t_11, 1, __pyx_t_10);
+    __Pyx_GIVEREF(__pyx_t_2);
+    PyList_SET_ITEM(__pyx_t_11, 2, __pyx_t_2);
+    __pyx_t_5 = 0;
+    __pyx_t_10 = 0;
+    __pyx_t_2 = 0;
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__Pyx_OrderedDict, __pyx_t_11); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 74, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+    __pyx_t_11 = PyTuple_New(2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 74, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_11);
+    __Pyx_INCREF(__pyx_n_s_TimeStep);
+    __Pyx_GIVEREF(__pyx_n_s_TimeStep);
+    PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_n_s_TimeStep);
+    __Pyx_GIVEREF(__pyx_t_2);
+    PyTuple_SET_ITEM(__pyx_t_11, 1, __pyx_t_2);
+    __pyx_t_2 = 0;
+    __pyx_t_2 = __Pyx_PyObject_Call(__Pyx_EnumBase, __pyx_t_11, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 74, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+    if (unlikely(__Pyx_globals == Py_None)) {
+      PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+      __PYX_ERR(0, 74, __pyx_L1_error)
+    }
+    if (unlikely((PyDict_SetItem(__Pyx_globals, __pyx_n_s_TimeStep, __pyx_t_2) < 0))) __PYX_ERR(0, 74, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+    /* "CppScopedEnumType":72
+ * cdef dict __Pyx_globals = globals()
+ * 
+ * if PY_VERSION_HEX >= 0x03040000:             # <<<<<<<<<<<<<<
+ * 
+ *     __Pyx_globals["TimeStep"] = __Pyx_EnumBase('TimeStep', __Pyx_OrderedDict([
+ */
+    goto __pyx_L32;
+  }
+
+  /* "CppScopedEnumType":81
+ * 
+ * else:
+ *     __Pyx_globals["TimeStep"] = type('TimeStep', (__Pyx_EnumBase,), {})             # <<<<<<<<<<<<<<
+ *     __Pyx_globals["TimeStep"](<int>(TimeStep.MONTHLY), 'MONTHLY')
+ *     __Pyx_globals["TimeStep"](<int>(TimeStep.QUARTERLY), 'QUARTERLY')
+ */
+  /*else*/ {
+    __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 81, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_INCREF(__Pyx_EnumBase);
+    __Pyx_GIVEREF(__Pyx_EnumBase);
+    PyTuple_SET_ITEM(__pyx_t_2, 0, __Pyx_EnumBase);
+    __pyx_t_11 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 81, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_11);
+    __pyx_t_10 = PyTuple_New(3); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 81, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_10);
+    __Pyx_INCREF(__pyx_n_s_TimeStep);
+    __Pyx_GIVEREF(__pyx_n_s_TimeStep);
+    PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_n_s_TimeStep);
+    __Pyx_GIVEREF(__pyx_t_2);
+    PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_t_2);
+    __Pyx_GIVEREF(__pyx_t_11);
+    PyTuple_SET_ITEM(__pyx_t_10, 2, __pyx_t_11);
+    __pyx_t_2 = 0;
+    __pyx_t_11 = 0;
+    __pyx_t_11 = __Pyx_PyObject_Call(((PyObject *)(&PyType_Type)), __pyx_t_10, NULL); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 81, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_11);
+    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+    if (unlikely(__Pyx_globals == Py_None)) {
+      PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+      __PYX_ERR(0, 81, __pyx_L1_error)
+    }
+    if (unlikely((PyDict_SetItem(__Pyx_globals, __pyx_n_s_TimeStep, __pyx_t_11) < 0))) __PYX_ERR(0, 81, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+
+    /* "CppScopedEnumType":82
+ * else:
+ *     __Pyx_globals["TimeStep"] = type('TimeStep', (__Pyx_EnumBase,), {})
+ *     __Pyx_globals["TimeStep"](<int>(TimeStep.MONTHLY), 'MONTHLY')             # <<<<<<<<<<<<<<
+ *     __Pyx_globals["TimeStep"](<int>(TimeStep.QUARTERLY), 'QUARTERLY')
+ *     __Pyx_globals["TimeStep"](<int>(TimeStep.YEARLY), 'YEARLY')
+ */
+    if (unlikely(__Pyx_globals == Py_None)) {
+      PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+      __PYX_ERR(0, 82, __pyx_L1_error)
+    }
+    __pyx_t_11 = __Pyx_PyDict_GetItem(__Pyx_globals, __pyx_n_s_TimeStep); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 82, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_11);
+    __pyx_t_10 = __Pyx_PyInt_From_int(((int)TimeStep::MONTHLY)); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 82, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_10);
+    __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 82, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_GIVEREF(__pyx_t_10);
+    PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_10);
+    __Pyx_INCREF(__pyx_n_s_MONTHLY);
+    __Pyx_GIVEREF(__pyx_n_s_MONTHLY);
+    PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_n_s_MONTHLY);
+    __pyx_t_10 = 0;
+    __pyx_t_10 = __Pyx_PyObject_Call(__pyx_t_11, __pyx_t_2, NULL); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 82, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_10);
+    __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+
+    /* "CppScopedEnumType":83
+ *     __Pyx_globals["TimeStep"] = type('TimeStep', (__Pyx_EnumBase,), {})
+ *     __Pyx_globals["TimeStep"](<int>(TimeStep.MONTHLY), 'MONTHLY')
+ *     __Pyx_globals["TimeStep"](<int>(TimeStep.QUARTERLY), 'QUARTERLY')             # <<<<<<<<<<<<<<
+ *     __Pyx_globals["TimeStep"](<int>(TimeStep.YEARLY), 'YEARLY')
+ * 
+ */
+    if (unlikely(__Pyx_globals == Py_None)) {
+      PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+      __PYX_ERR(0, 83, __pyx_L1_error)
+    }
+    __pyx_t_10 = __Pyx_PyDict_GetItem(__Pyx_globals, __pyx_n_s_TimeStep); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 83, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_10);
+    __pyx_t_2 = __Pyx_PyInt_From_int(((int)TimeStep::QUARTERLY)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 83, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_11 = PyTuple_New(2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 83, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_11);
+    __Pyx_GIVEREF(__pyx_t_2);
+    PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_2);
+    __Pyx_INCREF(__pyx_n_s_QUARTERLY);
+    __Pyx_GIVEREF(__pyx_n_s_QUARTERLY);
+    PyTuple_SET_ITEM(__pyx_t_11, 1, __pyx_n_s_QUARTERLY);
+    __pyx_t_2 = 0;
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_11, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 83, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+    __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+    /* "CppScopedEnumType":84
+ *     __Pyx_globals["TimeStep"](<int>(TimeStep.MONTHLY), 'MONTHLY')
+ *     __Pyx_globals["TimeStep"](<int>(TimeStep.QUARTERLY), 'QUARTERLY')
+ *     __Pyx_globals["TimeStep"](<int>(TimeStep.YEARLY), 'YEARLY')             # <<<<<<<<<<<<<<
+ * 
+ */
+    if (unlikely(__Pyx_globals == Py_None)) {
+      PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
+      __PYX_ERR(0, 84, __pyx_L1_error)
+    }
+    __pyx_t_2 = __Pyx_PyDict_GetItem(__Pyx_globals, __pyx_n_s_TimeStep); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 84, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_11 = __Pyx_PyInt_From_int(((int)TimeStep::YEARLY)); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 84, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_11);
+    __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 84, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_10);
+    __Pyx_GIVEREF(__pyx_t_11);
+    PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_11);
+    __Pyx_INCREF(__pyx_n_s_YEARLY);
+    __Pyx_GIVEREF(__pyx_n_s_YEARLY);
+    PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_n_s_YEARLY);
+    __pyx_t_11 = 0;
+    __pyx_t_11 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_10, NULL); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 84, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_11);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+    __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+  }
+  __pyx_L32:;
 
   /*--- Wrapped vars code ---*/
 
@@ -46701,6 +47232,29 @@ static CYTHON_INLINE int __pyx_memview_set_int(const char *itemp, PyObject *obj)
         return 0;
     *(int *) itemp = value;
     return 1;
+}
+
+/* ObjectToMemviewSlice */
+  static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_d_dc_double(PyObject *obj, int writable_flag) {
+    __Pyx_memviewslice result = { 0, 0, { 0 }, { 0 }, { 0 } };
+    __Pyx_BufFmt_StackElem stack[1];
+    int axes_specs[] = { (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_FOLLOW), (__Pyx_MEMVIEW_DIRECT | __Pyx_MEMVIEW_CONTIG) };
+    int retcode;
+    if (obj == Py_None) {
+        result.memview = (struct __pyx_memoryview_obj *) Py_None;
+        return result;
+    }
+    retcode = __Pyx_ValidateAndInit_memviewslice(axes_specs, __Pyx_IS_C_CONTIG,
+                                                 (PyBUF_C_CONTIGUOUS | PyBUF_FORMAT) | writable_flag, 2,
+                                                 &__Pyx_TypeInfo_double, stack,
+                                                 &result, obj);
+    if (unlikely(retcode == -1))
+        goto __pyx_fail;
+    return result;
+__pyx_fail:
+    result.memview = NULL;
+    result.data = NULL;
+    return result;
 }
 
 /* Declarations */

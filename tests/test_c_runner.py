@@ -2,6 +2,7 @@
 
 # import pytest
 # import numpy as np
+from os import times_result
 import pyprotolinc._actuarial as actuarial
 from pyprotolinc.models.model_mortality import MortalityStates
 # from pyprotolinc.models.model_annuity_runoff import AnnuityRunoffStates
@@ -23,9 +24,12 @@ def test_c_run():
     py_portfolio = Portfolio("examples/04_two_state_disability/portfolio/portfolio_med.xlsx", states_model=MultiStateDisabilityStates)
 
     c_portfolio = actuarial.build_c_portfolio(py_portfolio)
+    time_step = actuarial.TimeStep.QUARTERLY   # TODO: test if we get back a result set with this timestep
 
     # not really a test but at least a check if it fails
-    actuarial.py_run_c_valuation(acs, c_portfolio)
+    result = actuarial.py_run_c_valuation(acs, c_portfolio, time_step)
+
+    print(result[:5,:])
     # print("ok")
 
 

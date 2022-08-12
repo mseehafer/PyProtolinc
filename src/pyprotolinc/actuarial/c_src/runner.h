@@ -10,93 +10,33 @@
 #include "assumption_sets.h"
 #include "providers.h"
 #include "portfolio.h"
+#include "run_config.h"
+#include "record_projector.h"
+#include "time_axis.h"
+
 
 using namespace std;
 
-class CRunConfig
-{
 
-protected:
-    // dimension of the state model
-    unsigned int dimension;
+// class RecordProjector {
 
-    int num_cpus;
-    bool use_multicore;
+// private:
+//     const CRunConfig &_run_config;
+// public:
 
-    // valuation assumptions
-    shared_ptr<CAssumptionSet> be_assumptions;
-    shared_ptr<vector<shared_ptr<CAssumptionSet>>> other_assumptions = make_shared<vector<shared_ptr<CAssumptionSet>>>();
-    // nullptr;
+//     RecordProjector(const CRunConfig &run_config): _run_config(run_config)
+//     {}
 
-public:
-    CRunConfig(unsigned _dim, int _num_cpus, bool _use_multicore, shared_ptr<CAssumptionSet> _be_assumptions) : dimension(_dim), num_cpus(_num_cpus),
-                                                                                                                use_multicore(_use_multicore), be_assumptions(_be_assumptions)
-    {
-        // other_assumptions = make_shared<vector<shared_ptr<CAssumptionSet>>>(new vector<shared_ptr<CAssumptionSet>>());
-        if (!_be_assumptions)
-        {
-            throw domain_error("Assumption set pointer must not be null!");
-        }
-        if (_be_assumptions->get_dimension() != _dim)
-        {
-            throw domain_error("Dimension of assumptions set and the one passed in must match");
-        }
-    }
+//     void clear() {
+//     }
 
-    int get_cpu_count() const { return num_cpus; }
-    bool get_use_multicore() const { return use_multicore; }
-
-    void add_assumption_set(shared_ptr<CAssumptionSet> as)
-    {
-
-        // if (!other_assumptions) {
-        //     other_assumptions = make_shared<vector<shared_ptr<CAssumptionSet>>>();
-        // }
-        other_assumptions->push_back(as);
-    }
-
-    const CAssumptionSet &get_be_assumptions() const
-    {
-        return *be_assumptions;
-    }
-
-    const vector<shared_ptr<CAssumptionSet>> &get_other_assumptions() const
-    {
-        return *other_assumptions;
-    }
-};
+//     void run(int runner_no, int record_count, CPolicy &policy) {
+//         if (record_count % 1000 == 0)
+//             cout << "Projector for runner #" << runner_no << ", record_count=" << record_count << ", ID=" << policy.get_cession_id() << endl;
+//     }
+// };
 
 
-
-class TimeAxis {
-
-};
-
-
-class RecordProjector {
-
-private:
-    const CRunConfig &_run_config;
-public:
-
-    RecordProjector(const CRunConfig &run_config): _run_config(run_config)
-    {}
-
-    void clear() {
-    }
-
-    void run(int runner_no, int record_count, CPolicy &policy) {
-        if (record_count % 1000 == 0)
-            cout << "Projector for runner #" << runner_no << ", record_count=" << record_count << ", ID=" << policy.get_cession_id() << endl;
-    }
-};
-
-class RunResult {
-
-public:
-    void save_record_result(const RecordProjector& projector) {
-    }
-};
 
 
 class Runner {
@@ -110,27 +50,33 @@ private:
     
     TimeAxis _ta;
 
-    RecordProjector record_projector;
+    // projection engine for single policy
+    RecordProjector _record_projector;
+
+    // the result of the single record
+    RunResult record_result;
 
 public:
 
     Runner(int runner_no, shared_ptr<CPolicyPortfolio> ptr_portfolio, const CRunConfig &run_config):
-        _runner_no(runner_no), _ptr_portfolio(ptr_portfolio), _run_config (run_config), record_projector(RecordProjector(run_config))
-    {
-        //record_projector = RecordProjector(_run_config);
-    }
+        _runner_no(runner_no),
+        _ptr_portfolio(ptr_portfolio),
+        _run_config (run_config),
+        _ta(TimeAxis(run_config.get_time_step(), run_config.get_years_to_simulate(), ptr_portfolio->_ptf_year,  ptr_portfolio->_ptf_month,  ptr_portfolio->_ptf_day)),
+        _record_projector(RecordProjector(run_config, _ta)),
+        record_result(_ta)
+    {}
     
-    void run(RunResult &result) {
+    void run(RunResult &run_result) {
         // TODO: create time axis object from configuration
-        _ta = TimeAxis();
         cout << "RUNNER " << _runner_no << " run()" <<  "Portfolio size is " << _ptr_portfolio->size() << ". "<<endl;
 
         int record_count = 0;
         for(auto record_ptr: _ptr_portfolio->get_policies()) {
             record_count++;
-            record_projector.clear();
-            record_projector.run(_runner_no, record_count, *record_ptr);
-            result.save_record_result(record_projector);
+            record_result.reset();
+            _record_projector.run(_runner_no, record_count, *record_ptr, record_result);
+            run_result.add_result(record_result);
         }
     }
 };
@@ -144,10 +90,15 @@ protected:
     const CRunConfig &run_config;
 
     const shared_ptr<CPolicyPortfolio> ptr_portfolio;
+    
+    TimeAxis _ta;
 
 public:
     MetaRunner(const CRunConfig &_run_config,
-               const shared_ptr<CPolicyPortfolio> _ptr_portfolio) : run_config(_run_config), ptr_portfolio(_ptr_portfolio)
+               const shared_ptr<CPolicyPortfolio> _ptr_portfolio) : run_config(_run_config),
+                                                                    ptr_portfolio(_ptr_portfolio),
+                                                                    _ta(TimeAxis(run_config.get_time_step(), run_config.get_years_to_simulate(),
+                                                                     ptr_portfolio->_ptf_year,  ptr_portfolio->_ptf_month,  ptr_portfolio->_ptf_day))
     {
         if (!_ptr_portfolio)
         {
@@ -170,7 +121,8 @@ public:
         return tmp == 0 ? 1 : tmp;
     }
 
-    void run()
+    // calculate the result and storein ext_result
+    void run(double *ext_result)
     {
         // some control output
         cout << "CRunner::run(): STARTING RUN" << endl;
@@ -199,7 +151,7 @@ public:
         {
             subportfolios[j] = make_shared<CPolicyPortfolio>(ptr_portfolio->_ptf_year, ptr_portfolio->_ptf_month, ptr_portfolio->_ptf_day);
             runners.emplace_back(Runner(j+1, subportfolios[j], run_config));
-            results.emplace_back(RunResult());
+            results.emplace_back(RunResult(_ta));
         }
         int subportfolio_index = 0;
         const vector<shared_ptr<CPolicy>> &policies = ptr_portfolio->get_policies();
@@ -236,6 +188,14 @@ public:
             //     _valuation(output_loc[j], no_cols, vecs[j], be_ass, locgaap_ass);
         }
 
+        // combine the results of the subportfolios to combined result
+        for (int j = 1; j < NUM_GROUPS; j++)
+        {
+            results[0].add_result(results[j]);
+        }
+
+        // copy result to external output
+        results[0].copy_results(ext_result);
         // // sum up the results just calculated
         // for (int k=0; k<NUM_GROUPS;k++) {
         //     for(int j=0; j<VECTOR_LENGTH_YEARS*12; j++) {
@@ -266,11 +226,11 @@ public:
 
 
 
-void run_c_valuation(const CRunConfig &run_config, shared_ptr<CPolicyPortfolio> ptr_portfolio)
+void run_c_valuation(const CRunConfig &run_config, shared_ptr<CPolicyPortfolio> ptr_portfolio, double *ext_result)
 {
     cout << "run_c_valuation()" << endl;
     MetaRunner runner(run_config, ptr_portfolio);
-    runner.run();
+    runner.run(ext_result);
 };
 
 #endif
