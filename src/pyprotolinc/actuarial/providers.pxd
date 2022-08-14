@@ -254,7 +254,8 @@ cdef extern from "time_axis.h":
         YEARLY,
     
     cdef cppclass TimeAxis:
-        pass
+        int get_length() const
+
 
 
 cdef extern from "run_config.h":
@@ -262,7 +263,7 @@ cdef extern from "run_config.h":
     cdef cppclass CRunConfig:
          CRunConfig(unsigned dim, TimeStep time_step, int years_to_simulate, int num_cpus, bool use_multicore, shared_ptr[CAssumptionSet] _be_assumptions) except +
          void add_assumption_set(shared_ptr[CAssumptionSet])
-         int get_total_timesteps()
+         # int get_total_timesteps()
     
     shared_ptr[TimeAxis] make_time_axis(const CRunConfig &run_config, short _ptf_year, short _ptf_month, short _ptf_day)
 
@@ -318,7 +319,7 @@ def py_run_c_valuation(AssumptionSet be_ass, CPortfolioWrapper cportfolio_wapper
     
     # copy the result over
     cdef int no_cols = len(output_columns)
-    cdef int total_timesteps = dereference(crun_config).get_total_timesteps()
+    cdef int total_timesteps = dereference(ta_ptr).get_length()
     cdef np.ndarray[double, ndim=2, mode="c"] output = np.zeros((total_timesteps, no_cols))
     cdef double[:, ::1] ext_res_view = output
     

@@ -42,12 +42,12 @@ public:
     void copy_results(double *ext_result) {
         const int col_length = 3;
 
-        for (int t=0; t < _ta.get_total_timesteps(); t++) {
-            TimeIndex ti = _ta.at(t);
+        for (int t=0; t < _ta.get_length(); t++) {
+            PeriodEndDate ti = _ta.at(t);
 
             ext_result[t* col_length + 0] = ti.year;
-            ext_result[t* col_length + 1] = ti.quarter;
-            ext_result[t* col_length + 2] = ti.month;
+            ext_result[t* col_length + 1] = ti.month;
+            ext_result[t* col_length + 2] = ti.day;
         }
 
     }
