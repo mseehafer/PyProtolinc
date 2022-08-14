@@ -7,12 +7,14 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <memory>
 #include "assumption_sets.h"
 #include "providers.h"
 #include "portfolio.h"
 #include "run_config.h"
 #include "record_projector.h"
 #include "time_axis.h"
+#include "run_result.h"
 
 
 using namespace std;
@@ -44,9 +46,9 @@ private:
 
     int _runner_no;
 
-    const shared_ptr<CPolicyPortfolio> _ptr_portfolio;
-    
     const CRunConfig &_run_config;
+
+    const shared_ptr<CPolicyPortfolio> _ptr_portfolio;
     
     TimeAxis _ta;
 
@@ -97,8 +99,11 @@ public:
     MetaRunner(const CRunConfig &_run_config,
                const shared_ptr<CPolicyPortfolio> _ptr_portfolio) : run_config(_run_config),
                                                                     ptr_portfolio(_ptr_portfolio),
-                                                                    _ta(TimeAxis(run_config.get_time_step(), run_config.get_years_to_simulate(),
-                                                                     ptr_portfolio->_ptf_year,  ptr_portfolio->_ptf_month,  ptr_portfolio->_ptf_day))
+                                                                    _ta(TimeAxis(_run_config.get_time_step(),
+                                                                                 _run_config.get_years_to_simulate(),
+                                                                                 _ptr_portfolio->_ptf_year,
+                                                                                 _ptr_portfolio->_ptf_month,
+                                                                                 _ptr_portfolio->_ptf_day))
     {
         if (!_ptr_portfolio)
         {
@@ -122,7 +127,8 @@ public:
     }
 
     // calculate the result and storein ext_result
-    void run(double *ext_result)
+    void run(RunResult &run_result)
+    // void run(double *ext_result)
     {
         // some control output
         cout << "CRunner::run(): STARTING RUN" << endl;
@@ -189,13 +195,13 @@ public:
         }
 
         // combine the results of the subportfolios to combined result
-        for (int j = 1; j < NUM_GROUPS; j++)
+        for (int j = 0; j < NUM_GROUPS; j++)
         {
-            results[0].add_result(results[j]);
+            run_result.add_result(results[j]);
         }
 
         // copy result to external output
-        results[0].copy_results(ext_result);
+//        results[0].copy_results(ext_result);
         // // sum up the results just calculated
         // for (int k=0; k<NUM_GROUPS;k++) {
         //     for(int j=0; j<VECTOR_LENGTH_YEARS*12; j++) {
@@ -226,11 +232,11 @@ public:
 
 
 
-void run_c_valuation(const CRunConfig &run_config, shared_ptr<CPolicyPortfolio> ptr_portfolio, double *ext_result)
+void run_c_valuation(const CRunConfig &run_config, shared_ptr<CPolicyPortfolio> ptr_portfolio, RunResult& run_result)
 {
     cout << "run_c_valuation()" << endl;
     MetaRunner runner(run_config, ptr_portfolio);
-    runner.run(ext_result);
+    runner.run(run_result);
 };
 
 #endif

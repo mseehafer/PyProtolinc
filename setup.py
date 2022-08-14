@@ -20,7 +20,7 @@ else:
 extensions = [
     Extension("pyprotolinc._actuarial",
               ["src/pyprotolinc/actuarial/valuation.pyx",
-               "src/pyprotolinc/actuarial/c_src/c_valuation.cpp"],
+              ],
               include_dirs=["src/pyprotolinc/actuarial/c_src",
                             numpy.get_include()],
               extra_compile_args=extra_compile_args,

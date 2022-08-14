@@ -228,7 +228,7 @@ public:
             throw domain_error("Dimension of indices does not match those of the data");      // TODO: testcase
         }
         
-        for (int j=0; j<length;j ++) {
+        for (size_t j=0; j<length;j ++) {
 
             int index = 0;
             for (unsigned k = 0; k < dimensions; k++) {

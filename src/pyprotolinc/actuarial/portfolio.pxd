@@ -13,6 +13,7 @@ cdef extern from "portfolio.h":
     cdef cppclass CPolicyPortfolio:
         size_t size() const
         const CPolicy &at(size_t j) const
+        short _ptf_year, _ptf_month, _ptf_day
 
 
     cdef cppclass CPortfolioBuilder:

@@ -1,5 +1,11 @@
+
 from multiprocessing import cpu_count
-from libcpp.memory cimport shared_ptr, make_shared, static_pointer_cast
+from libcpp.memory cimport shared_ptr, unique_ptr, make_shared, static_pointer_cast
+
+
+from libcpp cimport bool
+from libcpp.string cimport string
+from libcpp.vector cimport vector
 
 include "crisk_factors.pxd"
 include "portfolio.pxd"
@@ -246,6 +252,9 @@ cdef extern from "time_axis.h":
         MONTHLY,
         QUARTERLY,
         YEARLY,
+    
+    cdef cppclass TimeAxis:
+        pass
 
 
 cdef extern from "run_config.h":
@@ -253,12 +262,28 @@ cdef extern from "run_config.h":
     cdef cppclass CRunConfig:
          CRunConfig(unsigned dim, TimeStep time_step, int years_to_simulate, int num_cpus, bool use_multicore, shared_ptr[CAssumptionSet] _be_assumptions) except +
          void add_assumption_set(shared_ptr[CAssumptionSet])
-         int get_total_timesteps() 
+         int get_total_timesteps()
+    
+    shared_ptr[TimeAxis] make_time_axis(const CRunConfig &run_config, short _ptf_year, short _ptf_month, short _ptf_day)
+
+
+cdef extern from "run_result.h":
+
+    # this vector provides the headers for the result
+    const vector[string] result_names
+
+    cdef cppclass RunResult:
+    
+        RunResult(const TimeAxis &ta)
+
+        void copy_results(double *ext_result)
 
 
 cdef extern from "runner.h":
 
-    void run_c_valuation(const CRunConfig& run_config, shared_ptr[CPolicyPortfolio] ptr_portfolio, double*) nogil except + 
+    # void run_c_valuation(const CRunConfig& run_config, shared_ptr[CPolicyPortfolio] ptr_portfolio, double*) nogil except +
+    void run_c_valuation(const CRunConfig &run_config, shared_ptr[CPolicyPortfolio] ptr_portfolio, RunResult& run_result) nogil except +
+
 
 
 def py_run_c_valuation(AssumptionSet be_ass, CPortfolioWrapper cportfolio_wapper, TimeStep time_step):
@@ -271,15 +296,34 @@ def py_run_c_valuation(AssumptionSet be_ass, CPortfolioWrapper cportfolio_wapper
     cdef shared_ptr[CRunConfig] crun_config = make_shared[CRunConfig](dim, time_step, years_to_simulate, num_cpus, use_multicore, c_assumption_set)
 
     # reserve memory for aggregate the result
-    output_columns = ["YEAR", "QUARTER", "MONTH"]
-    # reserve output space for 120 years and 12 months each
+
+    # cdef const vector<string> result_names = {"YEAR", "QUARTER", "MONTH"};
+    output_columns = []
+    cdef string cn
+    for i in range(result_names.size()):
+        cn = result_names[i]  # copy to get rid of the const modifier which is not easy to use in cython for iteration
+        output_columns.append(cn.decode())
+    
+    print(output_columns)
+
+    cdef short _ptf_year = dereference(cportfolio_wapper.ptf)._ptf_year
+    cdef short _ptf_month = dereference(cportfolio_wapper.ptf)._ptf_month
+    cdef short _ptf_day = dereference(cportfolio_wapper.ptf)._ptf_day
+
+
+    cdef shared_ptr[TimeAxis] ta_ptr = make_time_axis(dereference(crun_config), _ptf_year, _ptf_month, _ptf_day)
+
+    cdef unique_ptr[RunResult] ptr_run_result = unique_ptr[RunResult](new RunResult(dereference(ta_ptr)))  # make_unique[RunResult](ta)
+    run_c_valuation(crun_config.get()[0], cportfolio_wapper.ptf, dereference(ptr_run_result))
+    
+    # copy the result over
     cdef int no_cols = len(output_columns)
     cdef int total_timesteps = dereference(crun_config).get_total_timesteps()
     cdef np.ndarray[double, ndim=2, mode="c"] output = np.zeros((total_timesteps, no_cols))
     cdef double[:, ::1] ext_res_view = output
-
-
-    run_c_valuation(crun_config.get()[0], cportfolio_wapper.ptf, &ext_res_view[0, 0])
+    
+    dereference(ptr_run_result).copy_results(&ext_res_view[0, 0])
+    
     return output
 
 

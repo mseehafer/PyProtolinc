@@ -31,7 +31,8 @@ int get_total_steps(TimeStep time_step, int years_to_simulate)
         case TimeStep::QUARTERLY: return 4 * years_to_simulate + 1;
         case TimeStep::YEARLY: return years_to_simulate + 1;
     }    
-};
+    return -1; // shouldn't be reached
+}
 
 
 class TimeAxis {

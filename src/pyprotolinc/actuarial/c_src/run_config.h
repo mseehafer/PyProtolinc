@@ -80,4 +80,11 @@ public:
     }
 };
 
+
+shared_ptr<TimeAxis> make_time_axis(const CRunConfig &run_config, short _ptf_year, short _ptf_month, short _ptf_day) {
+    return make_shared<TimeAxis>(run_config.get_time_step(), run_config.get_years_to_simulate(), _ptf_year,  _ptf_month,  _ptf_day);
+};
+
+
+
 #endif
