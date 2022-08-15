@@ -76,9 +76,9 @@ public:
         return *other_assumptions;
     }
 
-    int get_total_timesteps() const {
-        return  get_total_steps(_time_step, _years_to_simulate);
-    }
+    // int get_total_timesteps() const {
+    //     return  get_total_steps(_time_step, _years_to_simulate);
+    // }
 };
 
 
