@@ -2,15 +2,16 @@ cmake_minimum_required(VERSION 2.8)
 
 project(PyProtolincCore)
 
-include(${CMAKE_SOURCE_DIR}/conanbuildinfo.cmake)
+# include(${CMAKE_SOURCE_DIR}/conanbuildinfo.cmake)
 
-conan_basic_setup()
+# conan_basic_setup()
 
 add_subdirectory(tests)
 
 
 #set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+
 
 # add_subdirectory(modules)
 
