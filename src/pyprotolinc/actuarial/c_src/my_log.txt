@@ -1,0 +1,18 @@
+
+
+Getting gtest to run: https://betterprogramming.pub/introduction-to-google-test-an-open-source-c-c-unit-testing-framework-ec517f4a22d2
+
+To install gtest with clang: https://blog.conan.io/2016/05/10/Programming-C++-with-the-4-Cs-Clang,-CMake,-CLion-and-Conan.html
+
+
+install clang, set preference to it:
+sudo update-alternatives --config cc
+sudo update-alternatives --config c++
+
+
+conan install . -s compiler=clang -s compiler.version=3.4 -s compiler.libcxx=libstdc++ --build=missing
+
+Build tests:
+
+cmake --build . --config Debug --target tests
+

@@ -4,6 +4,7 @@
 #define C_ASSUMPTIONSETS_H
 
 #include <vector>
+#include <memory>
 #include <array>
 #include <iostream>
 #include <string>

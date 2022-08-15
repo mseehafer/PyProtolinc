@@ -1,10 +1,12 @@
 #ifndef C_PORTFOLIO_H
 #define C_PORTFOLIO_H
 
+#include <memory>
 #include <vector>
 #include <iostream>
 #include <string>
 #include <cstdint>
+
 
 // #include "risk_factors.h"
 // #include "providers.h"

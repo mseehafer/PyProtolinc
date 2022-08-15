@@ -8,6 +8,7 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <memory>
 #include "assumption_sets.h"
 #include "providers.h"
 #include "portfolio.h"

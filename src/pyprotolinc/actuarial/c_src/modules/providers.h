@@ -6,6 +6,7 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <memory>
 #include "risk_factors.h"
 
 using namespace std;

@@ -6,6 +6,7 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <memory>
 #include "time_axis.h"
 #include "assumption_sets.h"
 // #include "providers.h"
