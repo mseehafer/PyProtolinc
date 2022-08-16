@@ -15,7 +15,7 @@ using namespace std;
 template <typename T>
 void print_vec(vector<T> v, string name) {
         cout << name << ": " ;
-        for (auto i = 0; i < v.size(); i++) {
+        for (size_t i = 0; i < v.size(); i++) {
             std::cout << v.at(i) << ' ';
         }    
         cout << "\n";     
@@ -322,7 +322,7 @@ public:
             for (int d = dimensions - 1; d >=0; d--) {
                 if (counters[d] + 1 < bounds_upper[d]) {
                     counters[d] += 1;
-                    for (int d2 = d + 1; d2 <= dimensions-1; d2++) {
+                    for (int d2 = d + 1; d2 <= ((int)dimensions)-1; d2++) {
                         counters[d2] = bounds_lower[d2];
                     }
                     incremented = true;

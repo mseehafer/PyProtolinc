@@ -30,6 +30,7 @@ const char* CRiskFactors_names(CRiskFactors rf){
         case CRiskFactors::YearsDisabledIfDisabledAtStart:
             return "YearsDisabledIfDisabledAtStart";
     }
+    return "UNKOWN_RISK_FACTOR";
 }
 
 #endif
