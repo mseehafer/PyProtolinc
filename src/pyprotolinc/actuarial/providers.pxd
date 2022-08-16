@@ -296,28 +296,22 @@ def py_run_c_valuation(AssumptionSet be_ass, CPortfolioWrapper cportfolio_wapper
     cdef int years_to_simulate = 120
     cdef shared_ptr[CRunConfig] crun_config = make_shared[CRunConfig](dim, time_step, years_to_simulate, num_cpus, use_multicore, c_assumption_set)
 
-    # reserve memory for aggregate the result
-
-    # cdef const vector<string> result_names = {"YEAR", "QUARTER", "MONTH"};
     output_columns = []
     cdef string cn
     for i in range(result_names.size()):
         cn = result_names[i]  # copy to get rid of the const modifier which is not easy to use in cython for iteration
         output_columns.append(cn.decode())
     
-    print(output_columns)
-
     cdef short _ptf_year = dereference(cportfolio_wapper.ptf)._ptf_year
     cdef short _ptf_month = dereference(cportfolio_wapper.ptf)._ptf_month
     cdef short _ptf_day = dereference(cportfolio_wapper.ptf)._ptf_day
-
-
     cdef shared_ptr[TimeAxis] ta_ptr = make_time_axis(dereference(crun_config), _ptf_year, _ptf_month, _ptf_day)
-
     cdef unique_ptr[RunResult] ptr_run_result = unique_ptr[RunResult](new RunResult(dereference(ta_ptr)))  # make_unique[RunResult](ta)
+
+    # run cpp code
     run_c_valuation(crun_config.get()[0], cportfolio_wapper.ptf, dereference(ptr_run_result))
     
-    # copy the result over
+    # copy the result over to numpy array
     cdef int no_cols = len(output_columns)
     cdef int total_timesteps = dereference(ta_ptr).get_length()
     cdef np.ndarray[double, ndim=2, mode="c"] output = np.zeros((total_timesteps, no_cols))
