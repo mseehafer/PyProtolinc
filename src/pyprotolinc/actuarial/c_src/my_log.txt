@@ -4,6 +4,7 @@ Getting gtest to run: https://betterprogramming.pub/introduction-to-google-test-
 
 To install gtest with clang: https://blog.conan.io/2016/05/10/Programming-C++-with-the-4-Cs-Clang,-CMake,-CLion-and-Conan.html
 
+Under Linux:
 
 install clang, set preference to it:
 sudo update-alternatives --config cc
@@ -16,3 +17,13 @@ Build tests:
 
 cmake --build . --config Debug --target tests
 
+Install vcpkg
+Use that to install gtest
+Install cmake
+
+
+https://stackoverflow.com/questions/8507723/how-to-start-working-with-gtest-and-cmake
+ cmake -B build -DCMAKE_TOOLCHAIN_FILE="D:\programming\vcpkg\scripts\buildsystems\vcpkg.cmake"
+ cmake --build build --target tests 
+
+build\tests\Debug\tests.exe

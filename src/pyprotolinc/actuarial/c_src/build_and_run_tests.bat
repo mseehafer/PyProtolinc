@@ -1,0 +1,1 @@
+cmake --build build --target tests & build\tests\Debug\tests.exe
