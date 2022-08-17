@@ -319,6 +319,6 @@ def py_run_c_valuation(AssumptionSet be_ass, CPortfolioWrapper cportfolio_wapper
     
     dereference(ptr_run_result).copy_results(&ext_res_view[0, 0])
     
-    return output
+    return output_columns, output
 
 
