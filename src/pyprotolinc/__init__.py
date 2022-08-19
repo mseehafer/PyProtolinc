@@ -1,33 +1,51 @@
 
-import os
 import yaml
 
-import pyprotolinc.assumptions
-import pyprotolinc.models
 
-
-# _DEFAULT_TABLES_PATH = os.path.abspath(os.path.join(pyprotolinc.assumptions.__path__[0],
-#                                                     "tables"))
-
-
-# some constants
+# gloabl constants
 MAX_AGE = 119
 
 
 class RunConfig:
+    """ The RunConfig object.
 
+    Attributes
+    ----------
+    model_name : str
+        Name of the model to be used in the run.
+    years_to_simulate : int
+        Max. simulation period in years.
+    steps_per_month : int
+        Number of steps a month is divided into in the simulation.
+    state_model_name : str
+        The name of the the states set.
+    portfolio_path : str
+        Path to portfolio file
+    assumptions_path : str
+        Path to assumptions config file
+    outfile : str
+        Path of the results file.
+    portfolio_cache : str
+        Path to the caching directory for portfolios
+    profile_out_dir : str
+        Path where to store profiling output.
+    portfolio_chunk_size : str
+        Size of the chunks the portfolio is broken into.
+    use_multicore : bool
+        Flag to indicate if multiprocessing shall be used.
+    """
     def __init__(self,
-                 model_name,
-                 years_to_simulate,
-                 steps_per_month,
-                 state_model_name,
-                 portfolio_path,
-                 assumptions_path,
-                 outfile,
-                 portfolio_cache,
-                 profile_out_dir,
-                 portfolio_chunk_size,
-                 use_multicore
+                 model_name: str,
+                 years_to_simulate: int,
+                 steps_per_month: int,
+                 state_model_name: str,
+                 portfolio_path: str,
+                 assumptions_path: str,
+                 outfile: str,
+                 portfolio_cache: str,
+                 profile_out_dir: str,
+                 portfolio_chunk_size: int,
+                 use_multicore: bool
                  ):
         self.model_name = model_name
         self.years_to_simulate = years_to_simulate
@@ -46,7 +64,15 @@ class RunConfig:
         return str(self.__dict__)
 
 
-def get_config_from_file(config_file):
+def get_config_from_file(config_file: str):
+    """ Return a ``RunConfig`` object from the file.
+
+        :param str config_file: Path to the config file to be loaded.
+
+        :return: Configration object.
+        :rtype: RunConfig
+    """
+
     # load config file data
     with open(config_file, 'r') as conf_file:
         config_raw = yaml.safe_load(conf_file)

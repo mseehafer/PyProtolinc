@@ -1,4 +1,4 @@
-""" Main entry point of the command line runner. """
+""" Main module. Configures the logger and provides the entry points of the command line runner. """
 
 import time
 import logging
@@ -35,6 +35,15 @@ logger = logging.getLogger(__name__)
 
 
 def create_model(model_class, state_model_name, assumptions_file):
+    """ Create a valuation model.
+
+        :param model_class: The class of the model.
+        :param str state_model_name: The name of the state model.
+        :param assumptions_file: Path to the assumptions config file to be used.
+
+        :return: The valuation model.
+        :rtype: Instance of `model_class`
+    """
 
     loader = AssumptionsLoaderFromConfig(assumptions_file)
 
@@ -57,13 +66,12 @@ def project_cashflows(run_config, df_portfolio_overwrite=None, export_to_file=Tr
         a dataframe is passed it will be used to build the portfolio object,
         otherwise the portfolio will be obtained from th run-config.
 
-        :run_conig                 The run configuration object.
-        :df_portfolio_overwrite    An optional dataframe that will be used instead
-                                   of the configured portfolio if provided
-        :export_to_file            Boolean flag to indicate if the results should be written
-                                   to a file (as specified in the config object)
-        
-        Returns: Dictionary containing the result vectors.
+        :param run_conig: The run configuration object.
+        :param df_portfolio_overwrite: An optional dataframe that will be used instead of the configured portfolio if provided
+        :param export_to_file: Boolean flag to indicate if the results should be written to a file (as specified in the config object)
+
+        :return: Dictionary containing the result vectors.
+        :rtype: dict
     """
     t = time.time()
 
@@ -152,7 +160,13 @@ def _project_subportfolio(run_config, model, num_timesteps, portfolio, rows_for_
 
 
 def project_cashflows_cli(config_file='config.yml', multi_processing_overwrite=None):
-    """ Perform a projection run. """
+    """ Perform a projection run, entry point for `run` taks in the CLI client.
+
+        :param str config_file: Path ot the config file
+        :param multi_processing_overwrite: Optional boolen parameters that allows overwriting the multiprocessing setting in the config file.
+
+        :return: None
+    """
     run_config = get_config_from_file(config_file)
     if multi_processing_overwrite is not None:
         run_config.use_multicore = multi_processing_overwrite
@@ -160,7 +174,13 @@ def project_cashflows_cli(config_file='config.yml', multi_processing_overwrite=N
 
 
 def profile(config_file='config.yml', multi_processing_overwrite=None):
-    """ Run and and export a CSV file with runtime statistics.   """
+    """ Run and and export a CSV file with runtime statistics.
+
+        :param str config_file: Path ot the config file
+        :param multi_processing_overwrite: Optional boolen parameters that allows overwriting the multiprocessing setting in the config file.
+
+        :return: None
+    """
 
     run_config = get_config_from_file(config_file)
 
@@ -199,6 +219,12 @@ def profile(config_file='config.yml', multi_processing_overwrite=None):
 
 
 def main():
+    """ Entry point of the CLI client. Declares the following subtasks:
+
+          - `run` to run start a run from the command line
+          - `profile` to run start a run with profile information from the command line
+          - `download_dav_tables` to download soem DAV tables from the R package `mortality tables`
+    """
     fire.Fire({
         "run": project_cashflows_cli,
         "profile": profile,

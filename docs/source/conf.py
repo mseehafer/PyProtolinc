@@ -12,8 +12,9 @@
 #
 import os
 import shutil
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
+
+import sys
+sys.path.insert(0, os.path.abspath('../../src'))
 
 
 # Follow the link for a workaround that show how to include notebooks outside the
@@ -32,8 +33,8 @@ def all_but_ipynb_and_png(dir, contents):
 
 
 project_root = os.path.abspath('../..')
-#shutil.copyfile(os.path.join(project_root, "tests/notebooks/ModelBuilding.ipynb"),
-#                os.path.join(project_root, "docs/source/examples/ModelBuilding.ipynb"))
+# shutil.copyfile(os.path.join(project_root, "tests/notebooks/ModelBuilding.ipynb"),
+#                 os.path.join(project_root, "docs/source/examples/ModelBuilding.ipynb"))
 shutil.rmtree(os.path.join(project_root, "docs/source/examples/example_nbs"), ignore_errors=True)
 shutil.copytree(os.path.join(project_root, "examples"),
                 os.path.join(project_root, "docs/source/examples/example_nbs"),

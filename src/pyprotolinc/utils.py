@@ -8,9 +8,10 @@ import requests
 
 
 def download_dav_tables(target_dir="."):
-    """ Download DAV2004R and DAV2008T from R. Kainhofer's R-Package MortalityTables.
+    """ Download DAV2004R and DAV2008T from R. Kainhofer's R-Package MortalityTables and store them
+        locally in the subfolder *tables* of `target_dir`.
     
-    :target_dir  The directory where to store the downloaded datafiles.
+        :param str target_dir:  The directory where to store the downloaded datafiles.
     """
 
     # create a temporary dict
