@@ -1,11 +1,4 @@
 
-Add:
-- tests
-- documentation
-- license
-- readme
-
-
 Examples:
 - with injected state model
 - example with premiums from the portfolio file
@@ -19,10 +12,6 @@ Examples:
 Product
 - Add premium tables and calculate premiums accordingly (or take premiums from a column in the portfolio)
 
-
-Issues: 
-Early closing breaks the volume projections: end volumes must be extended for the full timeperiod
-Check if different chunk size lead to identical results. (DONE)
 
 Features & Ideas:
 Portfolio forecast,

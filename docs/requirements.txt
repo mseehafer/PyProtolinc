@@ -6,3 +6,15 @@ readthedocs-sphinx-search==0.1.1
 matplotlib==3.5.2
 ipykernel==6.15.1
 sphinx_gallery==0.11.0
+# add the project dependencies here to make 
+# autodoc work
+numpy==1.23.1
+pandas
+pyyaml
+fire
+requests
+# comment some out which i believe are not required for creating the docs
+# openpyxl
+# xlrd
+# cython==3.0.0a11
+# pytest
