@@ -311,17 +311,20 @@ public:
                                                                _years_to_simulate(years_to_simulate),
                                                                _ptf_year(ptf_year), _ptf_month(ptf_month), _ptf_day(ptf_day)
     {
-        cout << "Creating time axis with time_step=" << (int)_time_step << endl;
+        // cout << "Creating time axis with time_step=" << (int)_time_step << endl;
         // the_dates.reserve(2 + 12 * _years_to_simulate);
         the_start_dates.reserve(2 + 12 * _years_to_simulate);
         the_end_dates.reserve(2 + 12 * _years_to_simulate);
 
         PeriodDate d(_ptf_year, _ptf_month, _ptf_day);
         PeriodDate d_start(_ptf_year, _ptf_month, _ptf_day);
-        PeriodDate end_date(_ptf_year + _years_to_simulate, _ptf_month, _ptf_day);
-
-        if (end_date.month != 12 || (end_date.month == 12 && end_date.day != 31))
-            end_date.set_next_end_of_year();
+        
+        // end end date is always the end of the year  
+        PeriodDate end_date(_ptf_year + _years_to_simulate, 12, 31);
+        
+        // PeriodDate end_date(_ptf_year + _years_to_simulate, _ptf_month, _ptf_day);
+        // if (end_date.month != 12 || (end_date.month == 12 && end_date.day != 31))
+        //     end_date.set_next_end_of_year();
         // end_date.set_next_day(); // add one more day
 
         the_start_dates.push_back(d);
