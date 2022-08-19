@@ -24,12 +24,12 @@ def test_c_run():
     py_portfolio = Portfolio("examples/04_two_state_disability/portfolio/portfolio_med.xlsx", states_model=MultiStateDisabilityStates)
 
     c_portfolio = actuarial.build_c_portfolio(py_portfolio)
-    time_step = actuarial.TimeStep.QUARTERLY #actuarial.TimeStep.MONTHLY  # QUARTERLY   # TODO: test if we get back a result set with this timestep
+    time_step = actuarial.TimeStep.MONTHLY  # actuarial.TimeStep.MONTHLY  # QUARTERLY   # TODO: test if we get back a result set with this timestep
 
     # not really a test but at least a check if it fails
-    result = actuarial.py_run_c_valuation(acs, c_portfolio, time_step)
+    output_columns, result = actuarial.py_run_c_valuation(acs, c_portfolio, time_step)
 
-
+    print(output_columns)
     print(result[:15, :].astype(int))
     # print(result[:15,:])
     # print("ok")
