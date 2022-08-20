@@ -30,14 +30,14 @@ protected:
 public:
 
     virtual ~CBaseRateProvider() {}
-    virtual void get_rates(double *out_array, size_t length, vector<int *> &indices) const {
+    virtual void get_rates(double *out_array, size_t length, const vector<int *> &indices) const {
         throw domain_error("Method not implemented in abstract class.");
     }
     
     // do nothing
     virtual void add_risk_factor(CRiskFactors rf) {} 
 
-    virtual double get_rate(vector<int> &indices) const {
+    virtual double get_rate(const vector<int> &indices) const {
         throw domain_error("Method not implemented in abstract class.");
     }
 
@@ -61,13 +61,13 @@ public:
 
     virtual ~CConstantRateProvider() {}
 
-    void get_rates(double *out_array, size_t length, vector<int *> &indices) const {
+    void get_rates(double *out_array, size_t length, const vector<int *> &indices) const {
         for (size_t j = 0; j < length; j++) {
             out_array[j] = val;
         }
     }
 
-    double get_rate(vector<int> &indices) const {
+    double get_rate(const vector<int> &indices) const {
         return val;
     }
 
@@ -197,7 +197,7 @@ public:
         return s + ")>";
     }
 
-    double get_rate(vector<int> &indices) const {
+    double get_rate(const vector<int> &indices) const {
         if (!has_values) {
             throw logic_error("No values have been set before querying.");                   // TODO: testcase
         }
@@ -219,7 +219,7 @@ public:
         return values.get()[index];
     }    
 
-    virtual void get_rates(double *out_array, size_t length, vector<int *> &indices) const {
+    virtual void get_rates(double *out_array, size_t length, const vector<int *> &indices) const {
 
         if (!has_values) {
             throw logic_error("Not values have been set before querying.");                   // TODO: testcase
@@ -244,7 +244,7 @@ public:
         }
     }    
 
-    virtual shared_ptr<CStandardRateProvider> slice(vector<int> &indices) const {
+    virtual shared_ptr<CStandardRateProvider> slice(const vector<int> &indices) const {
         /// Given a vector of indexes take only the dimensions where the values is "-1" in full
         //  and otherwise restrict to the index provided
 

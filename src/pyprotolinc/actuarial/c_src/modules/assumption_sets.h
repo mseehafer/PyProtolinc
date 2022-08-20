@@ -29,8 +29,8 @@ protected:
     MatPtrCBaseRateProvider providers;
 
 public:
-    CAssumptionSet(unsigned dim)    {
-        n = dim;
+    CAssumptionSet(unsigned dim):  n(dim) {
+        
         // make sure we initialize to the right size and put null in
         for (unsigned r = 0; r < n; r++)
         {
