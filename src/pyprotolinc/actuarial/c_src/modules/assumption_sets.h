@@ -56,6 +56,32 @@ public:
         }
     }
 
+    
+    void slice_into(const vector<int> &indices, CAssumptionSet &other) const {
+        if (other.n != this->n) {
+            throw domain_error("Cloning asssumption set requires same dimensions");
+        }
+        for(unsigned r = 0; r < n; r++) {
+            for (unsigned c = 0; c < n; c++) {
+
+                cout << "CAssumptionSet::slice_into() r=" << r << ", c=" << c << endl;
+                shared_ptr<CBaseRateProvider> this_rc_comp = providers[r][c];
+                shared_ptr<CBaseRateProvider> other_rc_comp = other.providers[r][c];
+
+                if (this_rc_comp) {
+                    // cout << "Try slicing" << endl;
+
+                    // cout << "this_rc_comp->to_string()" << this_rc_comp->to_string() << endl;
+                    // cout << "other_rc_comp->to_string()" << other_rc_comp->to_string() << endl;                    
+                    
+                    this_rc_comp->slice_into(indices, other_rc_comp.get());
+                } else {
+                    other.providers[r][c] = nullptr;
+                }
+            }
+        }
+    }    
+
     unsigned get_dimension() const {
         return n;
     }
@@ -68,7 +94,7 @@ public:
           return prvdr -> to_string(); 
     }
     
-    void set_provider(int row, int col, const PtrCBaseRateProvider &prvdr)
+    void set_provider(int row, int col, PtrCBaseRateProvider prvdr)
     {
         providers[row][col] = prvdr;
     }

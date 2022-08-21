@@ -16,3 +16,5 @@ conaninfo.txt
 graph_info.json
 
 build/
+
+cmain.exe

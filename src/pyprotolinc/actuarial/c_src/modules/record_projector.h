@@ -93,7 +93,8 @@ public:
         be_a_yearly = unique_ptr<double[]>(new double[_dimension * _dimension], std::default_delete<double[]>());
         be_a_time_step_dependent = unique_ptr<double[]>(new double[_dimension * _dimension], std::default_delete<double[]>());
 
-        // deep copy of the portfolio assumption set
+        // deep copy of the portfolio assumption set into the record assumption set
+        // which is later on sliced as needed
         _run_config.get_be_assumptions().clone_into(_record_be_assumptions);
         const vector<shared_ptr<CAssumptionSet>> &other_assumptions = _run_config.get_other_assumptions();
         for (const shared_ptr<CAssumptionSet> &oa : other_assumptions)
@@ -113,6 +114,16 @@ public:
     void slice_assumptions(const CPolicy &policy)
     {
         cout << "RecordProjector::slice_assumptions() -- TODO!" << endl;
+        vector<int> slice_indexes(NUMBER_OF_RISK_FACTORS, -1);
+
+        // specialize for Gender and SmokerStatus
+        // slice_indexes[(int)CRiskFactors::Gender] = policy.get_gender();
+        // slice_indexes[(int)CRiskFactors::SmokerStatus] = policy.get_smoker_status();
+
+        _run_config.get_be_assumptions().slice_into(slice_indexes, _record_be_assumptions);
+        // for(int n=0; n < _run_config.get_other_assumptions().size(); n++) {
+        //     _run_config.get_other_assumptions()[n]->slice_into(slice_indexes, *_record_other_assumptions[n]);
+        // }
     }
 
     void run(int runner_no, int record_count, const CPolicy &policy, RunResult &result, const PeriodDate &portfolio_date);

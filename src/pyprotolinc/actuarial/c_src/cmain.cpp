@@ -30,7 +30,7 @@ void add_policies(CPolicyPortfolio &portfolio) {
 }
 
 
-int main(void) {
+void run_calculation(void) {
 
     cout << "PyProtolincCore -- testrun" << endl;
     
@@ -46,7 +46,7 @@ int main(void) {
 
     // create assumptions set
     auto assumption_set = make_shared<CAssumptionSet>(state_dimension);
-    shared_ptr<CBaseRateProvider> rp = make_shared<CConstantRateProvider>(0.1);
+    auto rp = make_shared<CConstantRateProvider>(0.1);
     assumption_set->set_provider(0, 1, rp);
 
     // create a config object
@@ -68,4 +68,14 @@ int main(void) {
 
     cout << "DONE" << endl;
 
+}
+
+
+
+int main(void) {
+
+    cout << "PyProtolincCore -- testrun" << endl;
+    run_calculation();
+
+    return 0;
 }
