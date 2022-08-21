@@ -368,4 +368,34 @@ public:
     }
 };
 
+
+
+// calculate the age in (completed) months
+// given the birthday and the date of interest;
+// returns -1 if not born yet at the given date
+int get_age_at_date(int dob_year, int dob_month, int dob_day, int dt_year, int dt_month, int dt_day) {
+    // check that person is born at dt already
+    if (dt_year < dob_year || (dt_year == dob_year && dt_month < dob_month) ||
+        (dt_year == dob_year && dt_month == dob_month && dt_day < dob_day)) {
+          return -1; // use as a error signal
+    }
+
+    // special case equality of dates
+    if (dt_year == dob_year && dt_month == dob_month && dt_day == dob_day) {
+      return 0;
+    }
+
+    int full_years = (dt_month > dob_month || dob_month == dt_month && dob_day <= dt_day) ? 
+                    dt_year - dob_year : dt_year - dob_year - 1;
+    
+    // so the last birthday before dt was at dob_year + full_years/dob_month/dob_day
+    int full_months = (dt_month < dob_month || (dt_month == dob_month && dt_day < dob_day)) ?
+                     12 + dt_month - dob_month - (dt_day < dob_day ? 1 :0)
+                     : dt_month - dob_month - (dt_day < dob_day ? 1 :0);
+
+    return 12 * full_years + full_months;
+
+}
+
+
 #endif

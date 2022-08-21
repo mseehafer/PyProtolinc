@@ -21,7 +21,8 @@ def test_c_run():
 
     # get a portfolio
     # py_portfolio = Portfolio("examples/03_mortality/portfolio/portfolio_small.xlsx", states_model=MortalityStates)
-    py_portfolio = Portfolio("examples/04_two_state_disability/portfolio/portfolio_med.xlsx", states_model=MultiStateDisabilityStates)
+    # py_portfolio = Portfolio("examples/04_two_state_disability/portfolio/portfolio_med.xlsx", states_model=MultiStateDisabilityStates)
+    py_portfolio = Portfolio("examples/04_two_state_disability/portfolio/portfolio_small.xlsx", states_model=MultiStateDisabilityStates)
 
     c_portfolio = actuarial.build_c_portfolio(py_portfolio)
     time_step = actuarial.TimeStep.MONTHLY  # actuarial.TimeStep.MONTHLY  # QUARTERLY   # TODO: test if we get back a result set with this timestep

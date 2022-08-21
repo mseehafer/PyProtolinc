@@ -28,12 +28,19 @@ private:
     // todo
     double *results;
 
-    const TimeAxis &_ta;
+    shared_ptr<TimeAxis> _ta = nullptr;
+    //shared_ptr<TimeAxis> p_time_axis;
 
     void copy_time_axis(double *ext_result);
 
 public:
-    RunResult(const TimeAxis &ta) : _ta(ta) {}
+    RunResult() {}
+    RunResult(shared_ptr<TimeAxis> p_time_axis) : _ta(p_time_axis) {}
+
+    RunResult & set_time_axis(shared_ptr<TimeAxis> p_time_axis) {
+        _ta = p_time_axis;
+        return *this;
+    }
 
     // reset the result
     void reset() {}
@@ -45,16 +52,20 @@ public:
     {
         copy_time_axis(ext_result);
     }
+
+    int size() {
+        return (int) _ta->get_length();
+    }
 };
 
 void RunResult::copy_time_axis(double *ext_result)
 {
-    const int col_length = result_names.size();
+    size_t col_length = result_names.size();
 
-    for (int t = 0; t < _ta.get_length(); t++)
+    for (int t = 0; t < _ta->get_length(); t++)
     {
-        const PeriodDate &p_end = _ta.end_at(t);
-        const PeriodDate &p_start = _ta.start_at(t);
+        const PeriodDate &p_end = _ta->end_at(t);
+        const PeriodDate &p_start = _ta->start_at(t);
 
         // perdiod start
         ext_result[t * col_length + 0] = p_start.get_year();
@@ -67,7 +78,7 @@ void RunResult::copy_time_axis(double *ext_result)
         ext_result[t * col_length + 5] = p_end.get_day();
 
         // duration
-        ext_result[t * col_length + 6] = _ta.duration_at(t);
+        ext_result[t * col_length + 6] = _ta->duration_at(t);
     }
 }
 

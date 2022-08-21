@@ -56,6 +56,7 @@ public:
     bool get_use_multicore() const { return _use_multicore; }
     TimeStep get_time_step() const { return _time_step; }
     int get_years_to_simulate() const { return _years_to_simulate;}
+    unsigned int get_dimension() const { return dimension; }
 
     void add_assumption_set(shared_ptr<CAssumptionSet> as)
     {
@@ -82,9 +83,9 @@ public:
 };
 
 
-shared_ptr<TimeAxis> make_time_axis(const CRunConfig &run_config, short _ptf_year, short _ptf_month, short _ptf_day) {
-    return make_shared<TimeAxis>(run_config.get_time_step(), run_config.get_years_to_simulate(), _ptf_year,  _ptf_month,  _ptf_day);
-};
+// shared_ptr<TimeAxis> make_time_axis(const CRunConfig &run_config, short _ptf_year, short _ptf_month, short _ptf_day) {
+//     return make_shared<TimeAxis>(run_config.get_time_step(), run_config.get_years_to_simulate(), _ptf_year,  _ptf_month,  _ptf_day);
+// };
 
 
 

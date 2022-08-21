@@ -265,7 +265,7 @@ cdef extern from "run_config.h":
          void add_assumption_set(shared_ptr[CAssumptionSet])
          # int get_total_timesteps()
     
-    shared_ptr[TimeAxis] make_time_axis(const CRunConfig &run_config, short _ptf_year, short _ptf_month, short _ptf_day)
+    # shared_ptr[TimeAxis] make_time_axis(const CRunConfig &run_config, short _ptf_year, short _ptf_month, short _ptf_day)
 
 
 cdef extern from "run_result.h":
@@ -275,8 +275,9 @@ cdef extern from "run_result.h":
 
     cdef cppclass RunResult:
     
-        RunResult(const TimeAxis &ta)
+        RunResult()
 
+        int size()
         void copy_results(double *ext_result)
 
 
@@ -302,22 +303,23 @@ def py_run_c_valuation(AssumptionSet be_ass, CPortfolioWrapper cportfolio_wapper
         cn = result_names[i]  # copy to get rid of the const modifier which is not easy to use in cython for iteration
         output_columns.append(cn.decode())
     
-    cdef short _ptf_year = dereference(cportfolio_wapper.ptf)._ptf_year
-    cdef short _ptf_month = dereference(cportfolio_wapper.ptf)._ptf_month
-    cdef short _ptf_day = dereference(cportfolio_wapper.ptf)._ptf_day
-    cdef shared_ptr[TimeAxis] ta_ptr = make_time_axis(dereference(crun_config), _ptf_year, _ptf_month, _ptf_day)
-    cdef unique_ptr[RunResult] ptr_run_result = unique_ptr[RunResult](new RunResult(dereference(ta_ptr)))  # make_unique[RunResult](ta)
+    #cdef short _ptf_year = dereference(cportfolio_wapper.ptf)._ptf_year
+    #cdef short _ptf_month = dereference(cportfolio_wapper.ptf)._ptf_month
+    #cdef short _ptf_day = dereference(cportfolio_wapper.ptf)._ptf_day
+    # cdef shared_ptr[TimeAxis] ta_ptr = make_time_axis(dereference(crun_config), _ptf_year, _ptf_month, _ptf_day)
+    # cdef unique_ptr[RunResult] ptr_run_result = unique_ptr[RunResult](new RunResult(dereference(ta_ptr)))  # make_unique[RunResult](ta)
+    cdef RunResult run_result = RunResult()
 
     # run cpp code
-    run_c_valuation(crun_config.get()[0], cportfolio_wapper.ptf, dereference(ptr_run_result))
+    run_c_valuation(crun_config.get()[0], cportfolio_wapper.ptf, run_result)
     
     # copy the result over to numpy array
     cdef int no_cols = len(output_columns)
-    cdef int total_timesteps = dereference(ta_ptr).get_length()
+    cdef int total_timesteps = run_result.size() # dereference(ta_ptr).get_length()
     cdef np.ndarray[double, ndim=2, mode="c"] output = np.zeros((total_timesteps, no_cols))
     cdef double[:, ::1] ext_res_view = output
     
-    dereference(ptr_run_result).copy_results(&ext_res_view[0, 0])
+    run_result.copy_results(&ext_res_view[0, 0])
     
     return output_columns, output
 

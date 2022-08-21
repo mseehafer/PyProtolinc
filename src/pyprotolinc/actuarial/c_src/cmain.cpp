@@ -3,59 +3,69 @@
 #include <iostream>
 #include "modules/time_axis.h"
 #include "modules/providers.h"
+#include "modules/assumption_sets.h"
+#include "modules/portfolio.h"
+#include "modules/run_config.h"
+#include "modules/run_result.h"
+#include "modules/runner.h"
+
 
 using namespace std;
 
+
+void add_policies(CPolicyPortfolio &portfolio) {
+   // create a policy and add to the portfolio
+    shared_ptr<CPolicy> policy = make_shared<CPolicy>(
+                   1,            // cession_id,
+                   19850407,     // dob_long,
+                   20200801,     // issue_date_long,
+                   0,            // disablement_date_long,
+                   0,            // gender,
+                   0,            // smoker_status,
+                   100000,       //sum_insured,
+                   0.02,         // reserving_rate,
+                   "TERM"         // product
+                   );
+    portfolio.add(policy);
+}
+
+
 int main(void) {
 
-    cout << "TEST1 - Starting 2021-12-31 | MONTHLY" << endl;
-
-    TimeStep time_step = TimeStep::MONTHLY;
-    int years_to_simulate = 4;
+    cout << "PyProtolincCore -- testrun" << endl;
+    
+    unsigned state_dimension = 2;
+    
     short ptf_year = 2021;
-    short ptf_month = 11;
+    short ptf_month = 12;
     short ptf_day = 20;
+    
+    // create portfolio
+    auto portfolio = make_shared<CPolicyPortfolio> (ptf_year, ptf_month, ptf_day);
+    add_policies(*portfolio);
 
-    TimeAxis ta(time_step, years_to_simulate,ptf_year, ptf_month, ptf_day );
+    // create assumptions set
+    auto assumption_set = make_shared<CAssumptionSet>(state_dimension);
+    shared_ptr<CBaseRateProvider> rp = make_shared<CConstantRateProvider>(0.1);
+    assumption_set->set_provider(0, 1, rp);
 
-    const vector<PeriodDate>& start_dates1 = ta.get_start_dates();
-    const vector<PeriodDate>& end_dates1 = ta.get_end_dates();
-    const vector<int>& period_lengths1 = ta.get_period_length_in_days();  
-    for (size_t t=0; t < end_dates1.size(); t++) {
-        cout << start_dates1[t] << " - " << end_dates1[t] << " : " << period_lengths1[t] << endl;
-    }
+    // create a config object
+    TimeStep time_step = TimeStep::MONTHLY;
+    int years_to_simulate = 2;
+    int num_cpus = 1;
+    bool use_multicore = false;
+    auto run_config = CRunConfig(state_dimension, time_step, years_to_simulate, num_cpus, use_multicore, assumption_set);
 
-    // cout << endl;
-    // cout << "TEST2 - Starting 2021-12-20 | QUARTERLY" << endl;
-    // time_step = TimeStep::QUARTERLY;
-    // years_to_simulate = 4;
-    // ptf_year = 2021;
-    // ptf_month = 12;
-    // ptf_day = 20;
+    // create results set
+    //shared_ptr<TimeAxis> ta = make_time_axis(run_config, ptf_year, ptf_month, ptf_day);
+    auto run_results = RunResult();
 
-    // ta = TimeAxis(time_step, years_to_simulate,ptf_year, ptf_month, ptf_day );
-    // const vector<PeriodDate>& start_dates2 = ta.get_start_dates();
-    // const vector<PeriodDate>& end_dates2 = ta.get_end_dates();
-    // const vector<int>& period_lengths2 = ta.get_period_length_in_days();  
-    // for (size_t t=0; t < end_dates2.size(); t++) {
-    //     cout << start_dates2[t] << " - " << end_dates2[t] << " : " << period_lengths2[t] << endl;
-    // }
+    // calculation
+    run_c_valuation(run_config, portfolio, run_results);
 
-    // cout << endl;
-    // cout << "TEST3 - Starting 2021-12-20 | YEARLY" << endl;
-    // time_step = TimeStep::YEARLY;
-    // years_to_simulate = 4;
-    // ptf_year = 2021;
-    // ptf_month = 12;
-    // ptf_day = 20;
+    // inspect the result
 
-    // ta = TimeAxis(time_step, years_to_simulate,ptf_year, ptf_month, ptf_day );
-    // const vector<PeriodDate>& start_dates3 = ta.get_start_dates();
-    // const vector<PeriodDate>& end_dates3 = ta.get_end_dates();
-    // const vector<int>& period_lengths3 = ta.get_period_length_in_days();  
-    // for (size_t t=0; t < end_dates3.size(); t++) {
-    //     cout << start_dates3[t] << " - " << end_dates3[t] << " : " << period_lengths3[t] << endl;
-    // }
 
+    cout << "DONE" << endl;
 
 }

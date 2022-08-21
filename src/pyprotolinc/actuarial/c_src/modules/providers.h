@@ -7,6 +7,7 @@
 #include <string>
 #include <iostream>
 #include <memory>
+#include <algorithm>
 #include "risk_factors.h"
 
 using namespace std;
@@ -48,6 +49,8 @@ public:
     virtual string to_string() const {
         return "<CBaseRatesProvider (abstract)>";
     }
+
+    virtual shared_ptr<CBaseRateProvider> clone() const = 0;
 };
 
 
@@ -75,13 +78,17 @@ public:
         return "<CConstantRateProvider with constant " + std::to_string(val) + ">";
     }
 
+    shared_ptr<CBaseRateProvider> clone() const {
+        return make_shared<CConstantRateProvider>(val);
+    }
+
 };
 
 
 class CStandardRateProvider: public CBaseRateProvider {
 
 protected:
-    shared_ptr<double> values;
+    shared_ptr<double[]> values = nullptr;
     bool has_values = false;    // flag if the data array is set
 
     int number_values = 0;      // number of values in the data
@@ -94,6 +101,30 @@ protected:
 public:
 
     CStandardRateProvider() {}
+
+    shared_ptr<CBaseRateProvider> clone() const {
+        auto p_clone = make_shared<CStandardRateProvider>();
+
+        // deep copy of all attributes
+        if (this->values != nullptr) {
+            p_clone->values = std::shared_ptr<double[]> ( new double[number_values], std::default_delete<double[]>() );
+            for(int j = 0; j < number_values; j++) {
+                p_clone->values[j] = this->values[j];
+            }
+        }
+
+        p_clone-> has_values = this->has_values;
+        p_clone->number_values = this->number_values;
+
+        copy(this->shape_vec.begin(), this->shape_vec.end(), back_inserter(p_clone->shape_vec)); 
+        copy(this->strides.begin(), this->strides.end(), back_inserter(p_clone->strides)); 
+        copy(this->offsets.begin(), this->offsets.end(), back_inserter(p_clone->offsets)); 
+        
+        p_clone->dimensions = this->dimensions;
+
+        return p_clone;
+    }
+
 
     int get_dimension() const {return dimensions;}
     int size() const {return number_values;}
@@ -163,7 +194,7 @@ public:
 
         // allocate a new array on the heap
         // values = new double[number_values];
-        values = std::shared_ptr<double> ( new double[number_values], std::default_delete<double[]>() );
+        values = std::shared_ptr<double[]> ( new double[number_values], std::default_delete<double[]>() );
         has_values = true;
 
         // copy the data over by hand

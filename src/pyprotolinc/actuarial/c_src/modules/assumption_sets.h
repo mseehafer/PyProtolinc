@@ -40,6 +40,22 @@ public:
         }
     }
 
+    void clone_into(CAssumptionSet &other) const {
+        if (other.n != this->n) {
+            throw domain_error("Cloning asssumption set requires same dimensions");
+        }
+        for(unsigned r = 0; r < n; r++) {
+            for (unsigned c = 0; c < n; c++) {
+                shared_ptr<CBaseRateProvider> this_rc_comp = providers[r][c];
+                if (this_rc_comp) {
+                    other.providers[r][c] = this_rc_comp->clone();
+                } else {
+                    other.providers[r][c] = nullptr;
+                }
+            }
+        }
+    }
+
     unsigned get_dimension() const {
         return n;
     }
@@ -55,6 +71,26 @@ public:
     void set_provider(int row, int col, const PtrCBaseRateProvider &prvdr)
     {
         providers[row][col] = prvdr;
+    }
+
+    // Return a bool vector of the length of the risk factors indicating 
+    // if the assumptions set depends on the risk factor or not
+    void get_relevant_risk_factor_indexes(vector<bool> &relevant_risk_factors) {
+        //vector<bool> relevant_risk_factors(NUMBER_OF_RISK_FACTORS, false);
+        for (unsigned r = 0; r < n; r++)
+        {
+            for (unsigned c = 0; c < n; c++)
+            {
+                if (providers[r][c]) {
+                    const vector<CRiskFactors> &vrf = providers[r][c]->get_risk_factors();
+
+                    for(auto rf: vrf) {
+                        relevant_risk_factors[(int)rf] = true;
+                    }
+                }
+            }
+        }
+        //return relevant_risk_factors;
     }
 
     void get_single_rateset(const vector<int> &rf_indexes, double *rates_ext) const
@@ -80,7 +116,8 @@ public:
                 // cout << "get_single_rateset(): " << r << ", " << c;
 
                 if (!providers[r][c].get()) {
-                    rates_ext[r * NUMBER_OF_RISK_FACTORS + c] = 0;
+                    //rates_ext[r * NUMBER_OF_RISK_FACTORS + c] = 0;
+                    rates_ext[r * n + c] = 0;
                     // cout << " ZERO" << endl;
                     continue;
                 }
