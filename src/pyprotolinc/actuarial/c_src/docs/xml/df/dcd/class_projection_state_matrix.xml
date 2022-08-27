@@ -1,0 +1,253 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
+  <compounddef id="df/dcd/class_projection_state_matrix" kind="class" language="C++" prot="public">
+    <compoundname>ProjectionStateMatrix</compoundname>
+    <includes refid="da/da6/record__projector_8h" local="no">record_projector.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="df/dcd/class_projection_state_matrix_1a11e4c2163da699010ce27af5b25e3b6d" prot="private" static="no" mutable="no">
+        <type>unique_ptr&lt; double[]&gt;</type>
+        <definition>unique_ptr&lt;double[]&gt; ProjectionStateMatrix::_state_probs</definition>
+        <argsstring></argsstring>
+        <name>_state_probs</name>
+        <qualifiedname>ProjectionStateMatrix::_state_probs</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/record_projector.h" line="39" column="16" bodyfile="modules/record_projector.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="df/dcd/class_projection_state_matrix_1a4f745cc7cc5c4616ff60eef0182efc43" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int ProjectionStateMatrix::_num_timesteps</definition>
+        <argsstring></argsstring>
+        <name>_num_timesteps</name>
+        <qualifiedname>ProjectionStateMatrix::_num_timesteps</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/record_projector.h" line="40" column="9" bodyfile="modules/record_projector.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="df/dcd/class_projection_state_matrix_1a62c680353e79c24b56f3657e9f412762" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int ProjectionStateMatrix::_num_states</definition>
+        <argsstring></argsstring>
+        <name>_num_states</name>
+        <qualifiedname>ProjectionStateMatrix::_num_states</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/record_projector.h" line="41" column="9" bodyfile="modules/record_projector.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="df/dcd/class_projection_state_matrix_1a73596f90429cd4d203bf143c975832d6" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int ProjectionStateMatrix::_size</definition>
+        <argsstring></argsstring>
+        <name>_size</name>
+        <qualifiedname>ProjectionStateMatrix::_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/record_projector.h" line="42" column="9" bodyfile="modules/record_projector.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="df/dcd/class_projection_state_matrix_1aae6828056e7090b844818761402d91c7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ProjectionStateMatrix::ProjectionStateMatrix</definition>
+        <argsstring>(int num_timesteps, int num_states)</argsstring>
+        <name>ProjectionStateMatrix</name>
+        <qualifiedname>ProjectionStateMatrix::ProjectionStateMatrix</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>num_timesteps</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>num_states</declname>
+        </param>
+        <briefdescription>
+<para>Construct a new Projection State Matrix object. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>num_timesteps</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of timesteps </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>num_states</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of possible states </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/record_projector.h" line="52" column="5" bodyfile="modules/record_projector.h" bodystart="52" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="df/dcd/class_projection_state_matrix_1a3a65218e070c2bfd4bc6a388b44688eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ProjectionStateMatrix::ProjectionStateMatrix</definition>
+        <argsstring>()=delete</argsstring>
+        <name>ProjectionStateMatrix</name>
+        <qualifiedname>ProjectionStateMatrix::ProjectionStateMatrix</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/record_projector.h" line="59" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="df/dcd/class_projection_state_matrix_1a2e6f2ce1786eebf8a91c8af2eb521414" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ProjectionStateMatrix::ProjectionStateMatrix</definition>
+        <argsstring>(const ProjectionStateMatrix &amp;)=delete</argsstring>
+        <name>ProjectionStateMatrix</name>
+        <qualifiedname>ProjectionStateMatrix::ProjectionStateMatrix</qualifiedname>
+        <param>
+          <type>const <ref refid="df/dcd/class_projection_state_matrix" kindref="compound">ProjectionStateMatrix</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/record_projector.h" line="60" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="df/dcd/class_projection_state_matrix_1ad871e4756222891cbf4b5ceff98e9884" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ProjectionStateMatrix::ProjectionStateMatrix</definition>
+        <argsstring>(ProjectionStateMatrix &amp;&amp;)=delete</argsstring>
+        <name>ProjectionStateMatrix</name>
+        <qualifiedname>ProjectionStateMatrix::ProjectionStateMatrix</qualifiedname>
+        <param>
+          <type><ref refid="df/dcd/class_projection_state_matrix" kindref="compound">ProjectionStateMatrix</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/record_projector.h" line="61" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="df/dcd/class_projection_state_matrix_1a3d897f7c5ee7e6d45ec3681fc7d1c179" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ProjectionStateMatrix::initialize_states</definition>
+        <argsstring>(int start_state)</argsstring>
+        <name>initialize_states</name>
+        <qualifiedname>ProjectionStateMatrix::initialize_states</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>start_state</declname>
+        </param>
+        <briefdescription>
+<para>Reset the state matrix (fill with zero) and set the initial state in the first row. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/record_projector.h" line="65" column="10" bodyfile="modules/record_projector.h" bodystart="65" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="df/dcd/class_projection_state_matrix_1acfb3b2098eb5dbaca5c077653e1656c9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ProjectionStateMatrix::update_state</definition>
+        <argsstring>(int index_last, double *be_a_ts)</argsstring>
+        <name>update_state</name>
+        <qualifiedname>ProjectionStateMatrix::update_state</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>index_last</declname>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>be_a_ts</declname>
+        </param>
+        <briefdescription>
+<para>Calculate the probabilities of the next state. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index_last</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Index (row) of the last valid assumption set </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>be_a_ts</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(Dependent) assumptions to be applied for the current timestep </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/record_projector.h" line="82" column="10" bodyfile="modules/record_projector.h" bodystart="82" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="df/dcd/class_projection_state_matrix_1a57b3db530375aca3a9e4c6523af78228" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ProjectionStateMatrix::print_state_probs</definition>
+        <argsstring>(int time_index)</argsstring>
+        <name>print_state_probs</name>
+        <qualifiedname>ProjectionStateMatrix::print_state_probs</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>time_index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/record_projector.h" line="100" column="10" bodyfile="modules/record_projector.h" bodystart="100" bodyend="114"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Container to store the state of the policy at different times. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="modules/record_projector.h" line="36" column="1" bodyfile="modules/record_projector.h" bodystart="37" bodyend="116"/>
+    <listofallmembers>
+      <member refid="df/dcd/class_projection_state_matrix_1a62c680353e79c24b56f3657e9f412762" prot="private" virt="non-virtual"><scope>ProjectionStateMatrix</scope><name>_num_states</name></member>
+      <member refid="df/dcd/class_projection_state_matrix_1a4f745cc7cc5c4616ff60eef0182efc43" prot="private" virt="non-virtual"><scope>ProjectionStateMatrix</scope><name>_num_timesteps</name></member>
+      <member refid="df/dcd/class_projection_state_matrix_1a73596f90429cd4d203bf143c975832d6" prot="private" virt="non-virtual"><scope>ProjectionStateMatrix</scope><name>_size</name></member>
+      <member refid="df/dcd/class_projection_state_matrix_1a11e4c2163da699010ce27af5b25e3b6d" prot="private" virt="non-virtual"><scope>ProjectionStateMatrix</scope><name>_state_probs</name></member>
+      <member refid="df/dcd/class_projection_state_matrix_1a3d897f7c5ee7e6d45ec3681fc7d1c179" prot="public" virt="non-virtual"><scope>ProjectionStateMatrix</scope><name>initialize_states</name></member>
+      <member refid="df/dcd/class_projection_state_matrix_1a57b3db530375aca3a9e4c6523af78228" prot="public" virt="non-virtual"><scope>ProjectionStateMatrix</scope><name>print_state_probs</name></member>
+      <member refid="df/dcd/class_projection_state_matrix_1aae6828056e7090b844818761402d91c7" prot="public" virt="non-virtual"><scope>ProjectionStateMatrix</scope><name>ProjectionStateMatrix</name></member>
+      <member refid="df/dcd/class_projection_state_matrix_1a3a65218e070c2bfd4bc6a388b44688eb" prot="public" virt="non-virtual"><scope>ProjectionStateMatrix</scope><name>ProjectionStateMatrix</name></member>
+      <member refid="df/dcd/class_projection_state_matrix_1a2e6f2ce1786eebf8a91c8af2eb521414" prot="public" virt="non-virtual"><scope>ProjectionStateMatrix</scope><name>ProjectionStateMatrix</name></member>
+      <member refid="df/dcd/class_projection_state_matrix_1ad871e4756222891cbf4b5ceff98e9884" prot="public" virt="non-virtual"><scope>ProjectionStateMatrix</scope><name>ProjectionStateMatrix</name></member>
+      <member refid="df/dcd/class_projection_state_matrix_1acfb3b2098eb5dbaca5c077653e1656c9" prot="public" virt="non-virtual"><scope>ProjectionStateMatrix</scope><name>update_state</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

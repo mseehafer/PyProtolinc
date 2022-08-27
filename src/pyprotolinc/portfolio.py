@@ -68,7 +68,7 @@ class Portfolio:
         # extract and map the MultiStateDisabilityStates
         _unknown_status = set(df_portfolio["CURRENT_STATUS"]) - {s.name for s in states_model}
         assert len(_unknown_status) == 0, "Unknow status " + str(_unknown_status)
-        self.initial_states = df_portfolio["CURRENT_STATUS"].map({st.name: st for st in states_model}).values
+        self.initial_states = df_portfolio["CURRENT_STATUS"].map({st.name: st for st in states_model}).values.astype(np.int16)
 
         # extract the sums insured
         self.sum_insured = df_portfolio["SUM_INSURED"].values.astype(np.float64)

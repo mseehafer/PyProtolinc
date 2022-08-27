@@ -85,7 +85,7 @@ $(function() {
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;time_axis.h&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;<a class="code" href="../../de/d7d/time__axis_8h.html">time_axis.h</a>&quot;</span></div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &quot;<a class="code" href="../../db/d86/assumption__sets_8h.html">assumption_sets.h</a>&quot;</span></div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">using namespace </span>std;</div>
@@ -96,7 +96,7 @@ $(function() {
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">private</span>:</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> dimension;</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    TimeStep _time_step;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <a class="code hl_enumeration" href="../../de/d7d/time__axis_8h.html#a9599987f95eeea6aff139aba528a47c3">TimeStep</a> _time_step;</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">int</span> _years_to_simulate;</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
@@ -109,7 +109,7 @@ $(function() {
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    shared_ptr&lt;vector&lt;shared_ptr&lt;CAssumptionSet&gt;&gt;&gt; other_assumptions = make_shared&lt;vector&lt;shared_ptr&lt;CAssumptionSet&gt;&gt;&gt;();</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="../../d7/d5e/class_c_run_config.html#ae85777eaae2941c144151813e21785d3">   63</a></span>    <a class="code hl_function" href="../../d7/d5e/class_c_run_config.html#ae85777eaae2941c144151813e21785d3">CRunConfig</a>(<span class="keywordtype">unsigned</span> _dim, TimeStep time_step, <span class="keywordtype">int</span> years_to_simulate, <span class="keywordtype">int</span> num_cpus, <span class="keywordtype">bool</span> use_multicore, shared_ptr&lt;CAssumptionSet&gt; _be_assumptions):</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="../../d7/d5e/class_c_run_config.html#ae85777eaae2941c144151813e21785d3">   63</a></span>    <a class="code hl_function" href="../../d7/d5e/class_c_run_config.html#ae85777eaae2941c144151813e21785d3">CRunConfig</a>(<span class="keywordtype">unsigned</span> _dim, <a class="code hl_enumeration" href="../../de/d7d/time__axis_8h.html#a9599987f95eeea6aff139aba528a47c3">TimeStep</a> time_step, <span class="keywordtype">int</span> years_to_simulate, <span class="keywordtype">int</span> num_cpus, <span class="keywordtype">bool</span> use_multicore, shared_ptr&lt;CAssumptionSet&gt; _be_assumptions):</div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        dimension(_dim),</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        _time_step(time_step),</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        _years_to_simulate(years_to_simulate),</div>
@@ -129,7 +129,7 @@ $(function() {
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordtype">int</span> get_cpu_count()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _num_cpus; }</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordtype">bool</span> get_use_multicore()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _use_multicore; }</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    TimeStep get_time_step()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _time_step; }</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <a class="code hl_enumeration" href="../../de/d7d/time__axis_8h.html#a9599987f95eeea6aff139aba528a47c3">TimeStep</a> get_time_step()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _time_step; }</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keywordtype">int</span> get_years_to_simulate()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _years_to_simulate;}</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="../../d7/d5e/class_c_run_config.html#aa0cd7f805bc475cfff78734abfb195ec">   85</a></span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_function" href="../../d7/d5e/class_c_run_config.html#aa0cd7f805bc475cfff78734abfb195ec">get_dimension</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> dimension; }</div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
@@ -158,6 +158,8 @@ $(function() {
 <div class="ttc" id="aclass_c_run_config_html"><div class="ttname"><a href="../../d7/d5e/class_c_run_config.html">CRunConfig</a></div><div class="ttdoc">Container with configuration parameters.</div><div class="ttdef"><b>Definition:</b> run_config.h:30</div></div>
 <div class="ttc" id="aclass_c_run_config_html_aa0cd7f805bc475cfff78734abfb195ec"><div class="ttname"><a href="../../d7/d5e/class_c_run_config.html#aa0cd7f805bc475cfff78734abfb195ec">CRunConfig::get_dimension</a></div><div class="ttdeci">unsigned int get_dimension() const</div><div class="ttdoc">Add an auxiliary assumption set.</div><div class="ttdef"><b>Definition:</b> run_config.h:85</div></div>
 <div class="ttc" id="aclass_c_run_config_html_ae85777eaae2941c144151813e21785d3"><div class="ttname"><a href="../../d7/d5e/class_c_run_config.html#ae85777eaae2941c144151813e21785d3">CRunConfig::CRunConfig</a></div><div class="ttdeci">CRunConfig(unsigned _dim, TimeStep time_step, int years_to_simulate, int num_cpus, bool use_multicore, shared_ptr&lt; CAssumptionSet &gt; _be_assumptions)</div><div class="ttdoc">Construct a new CRunConfig object.</div><div class="ttdef"><b>Definition:</b> run_config.h:63</div></div>
+<div class="ttc" id="atime__axis_8h_html"><div class="ttname"><a href="../../de/d7d/time__axis_8h.html">time_axis.h</a></div><div class="ttdoc">CPP implementation of the time axis and related objects.</div></div>
+<div class="ttc" id="atime__axis_8h_html_a9599987f95eeea6aff139aba528a47c3"><div class="ttname"><a href="../../de/d7d/time__axis_8h.html#a9599987f95eeea6aff139aba528a47c3">TimeStep</a></div><div class="ttdeci">TimeStep</div><div class="ttdoc">Flag to signal what timestep to use in the calculation.</div><div class="ttdef"><b>Definition:</b> time_axis.h:25</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

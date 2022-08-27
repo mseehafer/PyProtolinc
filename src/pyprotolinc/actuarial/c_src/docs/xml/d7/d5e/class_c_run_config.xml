@@ -21,7 +21,7 @@
         <location file="modules/run_config.h" line="34" column="18" bodyfile="modules/run_config.h" bodystart="34" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="d7/d5e/class_c_run_config_1a867bb78e1ea16fdb7e01d1313ee32b9e" prot="private" static="no" mutable="no">
-        <type>TimeStep</type>
+        <type><ref refid="de/d7d/time__axis_8h_1a9599987f95eeea6aff139aba528a47c3" kindref="member">TimeStep</ref></type>
         <definition>TimeStep CRunConfig::_time_step</definition>
         <argsstring></argsstring>
         <name>_time_step</name>
@@ -121,7 +121,7 @@
           <declname>_dim</declname>
         </param>
         <param>
-          <type>TimeStep</type>
+          <type><ref refid="de/d7d/time__axis_8h_1a9599987f95eeea6aff139aba528a47c3" kindref="member">TimeStep</ref></type>
           <declname>time_step</declname>
         </param>
         <param>
@@ -228,7 +228,7 @@
         <location file="modules/run_config.h" line="82" column="10" bodyfile="modules/run_config.h" bodystart="82" bodyend="82"/>
       </memberdef>
       <memberdef kind="function" id="d7/d5e/class_c_run_config_1a8b72e0d630d405343191558671c267eb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>TimeStep</type>
+        <type><ref refid="de/d7d/time__axis_8h_1a9599987f95eeea6aff139aba528a47c3" kindref="member">TimeStep</ref></type>
         <definition>TimeStep CRunConfig::get_time_step</definition>
         <argsstring>() const</argsstring>
         <name>get_time_step</name>

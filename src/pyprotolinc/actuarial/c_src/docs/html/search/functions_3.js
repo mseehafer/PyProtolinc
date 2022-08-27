@@ -1,11 +1,10 @@
 var searchData=
 [
-  ['get_5fage_5fat_5fdate_0',['get_age_at_date',['../d8/d6c/portfolio_8h.html#ada3d08b9fb193aaf4dc6ad4bbaa1601d',1,'portfolio.h']]],
-  ['get_5fdimension_1',['get_dimension',['../de/d6a/class_c_assumption_set.html#af377af1fc9aaaa952779e944a0feb636',1,'CAssumptionSet::get_dimension()'],['../d7/d5e/class_c_run_config.html#aa0cd7f805bc475cfff78734abfb195ec',1,'CRunConfig::get_dimension()']]],
-  ['get_5fnum_5fgroups_2',['get_num_groups',['../d1/d5b/class_meta_runner.html#a330fc3e6bff0c33e5a047384f2fd15ae',1,'MetaRunner']]],
-  ['get_5fpolicies_3',['get_policies',['../d5/dfd/class_c_policy_portfolio.html#a44a25d9fa168e79f807add11f4367670',1,'CPolicyPortfolio']]],
-  ['get_5fportfolio_5fdate_4',['get_portfolio_date',['../d5/dfd/class_c_policy_portfolio.html#a6a5a4ac63b749a88034d9ac91782e8af',1,'CPolicyPortfolio']]],
-  ['get_5fprovider_5finfo_5',['get_provider_info',['../de/d6a/class_c_assumption_set.html#ad40d00fa9478933a3fed85969e377e66',1,'CAssumptionSet']]],
-  ['get_5frelevant_5frisk_5ffactor_5findexes_6',['get_relevant_risk_factor_indexes',['../de/d6a/class_c_assumption_set.html#a51cc3f9ac50ace8dc64a6f64668e2ab3',1,'CAssumptionSet']]],
-  ['get_5fsingle_5frateset_7',['get_single_rateset',['../de/d6a/class_c_assumption_set.html#a26bfa03d609219ea90e734784cdee736',1,'CAssumptionSet']]]
+  ['cassumptionset_0',['CAssumptionSet',['../de/d6a/class_c_assumption_set.html#a751207f82ccb76b6c2ac0a13f26e4968',1,'CAssumptionSet']]],
+  ['clone_5finto_1',['clone_into',['../de/d6a/class_c_assumption_set.html#acc967cb7cc20319a31d32e151b82d518',1,'CAssumptionSet']]],
+  ['copy_5fresults_2',['copy_results',['../da/dc0/class_run_result.html#a6ad243d2e40f39cc152503272cd72017',1,'RunResult']]],
+  ['cpolicy_3',['CPolicy',['../d5/d61/class_c_policy.html#a0cca834823fb5d6f2c81c84396ad221d',1,'CPolicy']]],
+  ['cpolicyportfolio_4',['CPolicyPortfolio',['../d5/dfd/class_c_policy_portfolio.html#a5d254e7c6c00d0c2016664a4f96992ca',1,'CPolicyPortfolio::CPolicyPortfolio(short ptf_year, short ptf_month, short ptf_day)'],['../d5/dfd/class_c_policy_portfolio.html#a814fb2745b56539a24654802f6beb7e2',1,'CPolicyPortfolio::CPolicyPortfolio(PeriodDate pd)']]],
+  ['cportfoliobuilder_5',['CPortfolioBuilder',['../da/d69/class_c_portfolio_builder.html#ad61d666ceb5c3a8f155eae7511fe1da3',1,'CPortfolioBuilder']]],
+  ['crunconfig_6',['CRunConfig',['../d7/d5e/class_c_run_config.html#ae85777eaae2941c144151813e21785d3',1,'CRunConfig']]]
 ];

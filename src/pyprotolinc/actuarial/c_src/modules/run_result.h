@@ -33,17 +33,26 @@ const vector<string> result_names = {
 class RunResult
 {
 private:
-    // todo
-    double *results;
+    //double *results;
+
+//    int _num_states;
 
     shared_ptr<TimeAxis> _ta = nullptr;
-    //shared_ptr<TimeAxis> p_time_axis;
 
+    unique_ptr<double[]> _be_state_probs = nullptr;
+    //shared_ptr<double[]> _be_prob_movements = nullptr;
+
+    // private methods
     void copy_time_axis(double *ext_result);
+
 
 public:
     RunResult() {}
-    RunResult(shared_ptr<TimeAxis> p_time_axis) : _ta(p_time_axis) {}
+    RunResult(shared_ptr<TimeAxis> p_time_axis): _ta(p_time_axis) {}
+
+    // RunResult(int num_states): _num_states(num_states) {}
+    // RunResult(int num_states, shared_ptr<TimeAxis> p_time_axis) : _num_states(num_states), _ta(p_time_axis) {}
+
 
     RunResult & set_time_axis(shared_ptr<TimeAxis> p_time_axis) {
         _ta = p_time_axis;

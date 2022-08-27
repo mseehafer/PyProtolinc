@@ -76,11 +76,16 @@ $(function() {
   <div class="headertitle"><div class="title">TimeAxis Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><a class="el" href="../../de/d63/class_time_axis.html" title="TimeAxis object, contains vectors with start and end of each discrete poeriod of time.">TimeAxis</a> object, contains vectors with start and end of each discrete poeriod of time.  
+ <a href="../../de/d63/class_time_axis.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="../../de/d7d/time__axis_8h_source.html">time_axis.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:afc53f28e37c62fc824298506f41875f0"><td class="memItemLeft" align="right" valign="top"><a id="afc53f28e37c62fc824298506f41875f0" name="afc53f28e37c62fc824298506f41875f0"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>TimeAxis</b> (TimeStep time_step, int years_to_simulate, short ptf_year, short ptf_month, short ptf_day)</td></tr>
+<tr class="memitem:afc53f28e37c62fc824298506f41875f0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d63/class_time_axis.html#afc53f28e37c62fc824298506f41875f0">TimeAxis</a> (<a class="el" href="../../de/d7d/time__axis_8h.html#a9599987f95eeea6aff139aba528a47c3">TimeStep</a> time_step, int years_to_simulate, short ptf_year, short ptf_month, short ptf_day)</td></tr>
+<tr class="memdesc:afc53f28e37c62fc824298506f41875f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Time Axis object.  <a href="../../de/d63/class_time_axis.html#afc53f28e37c62fc824298506f41875f0">More...</a><br /></td></tr>
 <tr class="separator:afc53f28e37c62fc824298506f41875f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad7ec56e17847e0565cf946bedcf78c7a"><td class="memItemLeft" align="right" valign="top"><a id="ad7ec56e17847e0565cf946bedcf78c7a" name="ad7ec56e17847e0565cf946bedcf78c7a"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>get_portfolio_year</b> () const</td></tr>
@@ -113,6 +118,67 @@ const vector&lt; <a class="el" href="../../d5/d2d/struct_period_date.html">Perio
 const vector&lt; int &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_period_length_in_days</b> () const</td></tr>
 <tr class="separator:a8fcd2e3bd4e03bf2c0b8d0696f0ba6c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p ><a class="el" href="../../de/d63/class_time_axis.html" title="TimeAxis object, contains vectors with start and end of each discrete poeriod of time.">TimeAxis</a> object, contains vectors with start and end of each discrete poeriod of time. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="afc53f28e37c62fc824298506f41875f0" name="afc53f28e37c62fc824298506f41875f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc53f28e37c62fc824298506f41875f0">&#9670;&#160;</a></span>TimeAxis()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TimeAxis::TimeAxis </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../de/d7d/time__axis_8h.html#a9599987f95eeea6aff139aba528a47c3">TimeStep</a>&#160;</td>
+          <td class="paramname"><em>time_step</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>years_to_simulate</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short&#160;</td>
+          <td class="paramname"><em>ptf_year</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short&#160;</td>
+          <td class="paramname"><em>ptf_month</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short&#160;</td>
+          <td class="paramname"><em>ptf_day</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construct a new Time Axis object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">time_step</td><td>Which time step should be applied. </td></tr>
+    <tr><td class="paramname">years_to_simulate</td><td>Number of years to project. </td></tr>
+    <tr><td class="paramname">ptf_year</td><td>Year of the portfolio. inforce date. </td></tr>
+    <tr><td class="paramname">ptf_month</td><td>Month of the portfolio inforce date. </td></tr>
+    <tr><td class="paramname">ptf_day</td><td>Day of the portfolio inforce date. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>modules/<a class="el" href="../../de/d7d/time__axis_8h_source.html">time_axis.h</a></li>
 </ul>

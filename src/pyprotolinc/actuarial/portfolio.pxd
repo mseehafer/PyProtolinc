@@ -1,5 +1,5 @@
 
-from libc.stdint cimport int64_t, int32_t
+from libc.stdint cimport int64_t, int32_t, int16_t
 from cython.operator cimport dereference
 from libcpp.memory cimport shared_ptr, make_shared, static_pointer_cast
 
@@ -28,6 +28,7 @@ cdef extern from "portfolio.h":
         CPortfolioBuilder &set_smoker_status(int32_t *)
         CPortfolioBuilder &set_sum_insured(double *)
         CPortfolioBuilder &set_reserving_rate(double *)
+        CPortfolioBuilder &set_initial_state(int16_t *)
         shared_ptr[CPolicyPortfolio] build() except +
 
 
@@ -105,6 +106,10 @@ def build_c_portfolio(py_portfolio):
     # reserving rate
     cdef double[::1] res_rate_mv = py_portfolio.reserving_rate
     dereference(cp_builder_ptr).set_reserving_rate(&res_rate_mv[0])
+
+    # initial states
+    cdef int16_t[::1] initial_states = py_portfolio.initial_states
+    dereference(cp_builder_ptr).set_initial_state(&initial_states[0])
 
 
     # build and wrap portfolio

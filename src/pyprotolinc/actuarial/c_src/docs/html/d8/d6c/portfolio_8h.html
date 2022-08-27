@@ -85,7 +85,7 @@ $(function() {
 <code>#include &lt;iostream&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;cstdint&gt;</code><br />
-<code>#include &quot;time_axis.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="../../de/d7d/time__axis_8h_source.html">time_axis.h</a>&quot;</code><br />
 </div>
 <p><a href="../../d8/d6c/portfolio_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -106,6 +106,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ada3d08b9fb193aaf4dc6ad4bbaa1601d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d6c/portfolio_8h.html#ada3d08b9fb193aaf4dc6ad4bbaa1601d">get_age_at_date</a> (int dob_year, int dob_month, int dob_day, int dt_year, int dt_month, int dt_day)</td></tr>
 <tr class="memdesc:ada3d08b9fb193aaf4dc6ad4bbaa1601d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the age in (completed) months for a given birthday and the date of interest, returns -1 if not born yet at the given date.  <a href="../../d8/d6c/portfolio_8h.html#ada3d08b9fb193aaf4dc6ad4bbaa1601d">More...</a><br /></td></tr>
 <tr class="separator:ada3d08b9fb193aaf4dc6ad4bbaa1601d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4afca78aff32a2634bfa260bbd1d8944"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d6c/portfolio_8h.html#a4afca78aff32a2634bfa260bbd1d8944">get_age_at_date</a> (const <a class="el" href="../../d5/d2d/struct_period_date.html">PeriodDate</a> &amp;dob, const <a class="el" href="../../d5/d2d/struct_period_date.html">PeriodDate</a> &amp;date_at)</td></tr>
+<tr class="memdesc:a4afca78aff32a2634bfa260bbd1d8944"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the age in (completed) months for a given birthday and the date of interest, returns -1 if not born yet at the given date.  <a href="../../d8/d6c/portfolio_8h.html#a4afca78aff32a2634bfa260bbd1d8944">More...</a><br /></td></tr>
+<tr class="separator:a4afca78aff32a2634bfa260bbd1d8944"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>M. Seehafer </dd></dl>
@@ -113,8 +116,54 @@ Functions</h2></td></tr>
 <dl class="section date"><dt>Date</dt><dd>2022-08-27</dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2022 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="a4afca78aff32a2634bfa260bbd1d8944" name="a4afca78aff32a2634bfa260bbd1d8944"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4afca78aff32a2634bfa260bbd1d8944">&#9670;&#160;</a></span>get_age_at_date() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int get_age_at_date </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d5/d2d/struct_period_date.html">PeriodDate</a> &amp;&#160;</td>
+          <td class="paramname"><em>dob</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d5/d2d/struct_period_date.html">PeriodDate</a> &amp;&#160;</td>
+          <td class="paramname"><em>date_at</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Calculate the age in (completed) months for a given birthday and the date of interest, returns -1 if not born yet at the given date. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dob</td><td>Date of Birthe </td></tr>
+    <tr><td class="paramname">date_at</td><td>Date at which to calculate the age </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>int Age in (completed) months. </dd></dl>
+
+</div>
+</div>
 <a id="ada3d08b9fb193aaf4dc6ad4bbaa1601d" name="ada3d08b9fb193aaf4dc6ad4bbaa1601d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ada3d08b9fb193aaf4dc6ad4bbaa1601d">&#9670;&#160;</a></span>get_age_at_date()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ada3d08b9fb193aaf4dc6ad4bbaa1601d">&#9670;&#160;</a></span>get_age_at_date() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -175,7 +224,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>int </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>int Age in (completed) months. </dd></dl>
 
 </div>
 </div>

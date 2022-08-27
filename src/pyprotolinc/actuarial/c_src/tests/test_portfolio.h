@@ -17,7 +17,8 @@ TEST(test_policy, rate)
                    0,            // smoker_status,
                    100000,       //sum_insured,
                    0.02,         // reserving_rate,
-                   "TERM"         // product
+                   "TERM",       // product
+                   0             // initial state index
                    );
 
     double rate = policy.get_reserving_rate();
@@ -35,12 +36,13 @@ TEST(test_policy, dob)
                    0,            // smoker_status,
                    100000,       //sum_insured,
                    0.02,         // reserving_rate,
-                   "TERM"         // product
+                   "TERM",       // product
+                   0             // initial state index
                    );
 
-    int y = policy.get_dob_year();
-    int m = policy.get_dob_month();
-    int d = policy.get_dob_day();
+    int y = policy.get_dob().year;
+    int m = policy.get_dob().month;
+    int d = policy.get_dob().day;
 
     EXPECT_EQ(y, 1985);
     EXPECT_EQ(m, 4);
@@ -61,7 +63,8 @@ TEST(test_portfolio, create)
                    0,            // smoker_status,
                    100000,       //sum_insured,
                    0.02,         // reserving_rate,
-                   "TERM"         // product
+                   "TERM",       // product
+                   0             // initial state index
                    );
     // create a portfolio with that policy
     short ptf_year = 2021;

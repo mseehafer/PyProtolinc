@@ -28,6 +28,94 @@
 
 using namespace std;
 
+
+/**
+ * @brief Container to store the state of the policy at different times
+ * 
+ */
+class ProjectionStateMatrix
+{
+private:
+    unique_ptr<double[]> _state_probs;
+    int _num_timesteps;
+    int _num_states;
+    int _size;
+
+
+public:
+    /**
+     * @brief Construct a new Projection State Matrix object
+     * 
+     * @param num_timesteps Number of timesteps
+     * @param num_states Number of possible states
+     */
+    ProjectionStateMatrix(int num_timesteps, int num_states): _num_timesteps(num_timesteps), _num_states(num_states), _size(num_timesteps*num_states) {
+        _state_probs = unique_ptr<double[]>(new double[_num_timesteps * _num_states], std::default_delete<double[]>());
+        cout << "Setting up state matrix with dimensions " << _num_timesteps << " x " << _num_states << endl;
+
+    }
+
+    // no copying intended
+    ProjectionStateMatrix() = delete;
+    ProjectionStateMatrix(const ProjectionStateMatrix &) = delete;
+    ProjectionStateMatrix(ProjectionStateMatrix &&) = delete;
+
+
+    /// Reset the state matrix (fill with zero) and set the initial state in the first row
+    void initialize_states(int start_state) {
+        if (start_state < 0 || start_state >= _num_states) {
+            throw domain_error("Invalid state index: " + start_state);
+        }
+        for(int j = 0; j<_size; j++) {
+            _state_probs[j] = 0;
+        }
+        
+        _state_probs[0 * _num_states +  start_state] = 1;
+    }
+
+    /**
+     * @brief Calculate the probabilities of the next state.
+     * 
+     * @param index_last Index (row) of the last valid assumption set
+     * @param be_a_ts (Dependent) assumptions to be applied for the current timestep
+     */
+    void update_state(int index_last, double* be_a_ts)
+    {
+        // SHOULD IT BE AS SIMPLE AS THAT?
+        
+        // use some pointer arithmetics
+        double *current_states = _state_probs.get() + index_last * _num_states;
+        double *updated_states = _state_probs.get() + (1 + index_last) * _num_states;
+
+        for (int r = 0; r < _num_states; r++)
+        {
+            for (int  c = 0; c < _num_states; c++)
+            {
+                updated_states[c] += be_a_ts[r * _num_states + c] * current_states[r];
+            }
+        }        
+    }
+
+
+    void print_state_probs(int time_index)
+    {
+        double *states = _state_probs.get() + time_index * _num_states;
+
+        cout << "STATES (t=" << time_index << ") = [";
+        for (int i = 0; i < _num_states; i++)
+        {
+            if (i > 0) {
+                cout << ", ";
+            }
+            cout << states[i];
+        }
+
+        cout << "]" << endl;
+    }
+    
+};
+
+
 /**
  * @brief Functionality to project cash flows for a single record at a time.
  * 
@@ -63,6 +151,9 @@ private:
     // the risk factors
     vector<int> risk_factors_current = vector<int>(NUMBER_OF_RISK_FACTORS);
     vector<int> risk_factors_last_used = vector<int>(NUMBER_OF_RISK_FACTORS, -1);
+
+    /// the best estimate states
+    unique_ptr<ProjectionStateMatrix> _be_states;
 
     ///////////////////////////////////////
     // private metods
@@ -103,7 +194,7 @@ private:
 
     void slice_assumptions(const CPolicy &policy)
     {
-        cout << "RecordProjector::slice_assumptions() -- TODO!" << endl;
+        cout << "RecordProjector::slice_assumptions()" << endl;
         vector<int> slice_indexes(NUMBER_OF_RISK_FACTORS, -1);
 
         // specialize for Gender and SmokerStatus
@@ -123,7 +214,8 @@ public:
                                                                         _start_dates(_ta.get_start_dates()),
                                                                         _end_dates(_ta.get_end_dates()),
                                                                         _period_lengths(_ta.get_period_length_in_days()),
-                                                                        _record_be_assumptions(_run_config.get_be_assumptions().get_dimension())
+                                                                        _record_be_assumptions(_run_config.get_be_assumptions().get_dimension()),
+                                                                        _be_states(make_unique<ProjectionStateMatrix>((int)_ta.get_length(), (int)_run_config.get_dimension()))
     {
         // array containers for the current assumptions
         be_a_yearly = unique_ptr<double[]>(new double[_dimension * _dimension], std::default_delete<double[]>());
@@ -140,8 +232,6 @@ public:
             _record_other_assumptions.push_back(rec_oas);
         }
     }
-
-
 
 
     /**
@@ -179,7 +269,7 @@ void RecordProjector::run(int runner_no, int record_count, const CPolicy &policy
     print_vec<bool>(relevant_risk_factors, "relevant_risk_factors");
 
     // initialize the risk factors - could have taken the start date from the time axis instead
-    int age_month_completed = get_age_at_date(policy.get_dob_year(), policy.get_dob_month(), policy.get_dob_day(), portfolio_date.get_year(), portfolio_date.get_month(), portfolio_date.get_day());
+
 
     // cout << "RecordProjector::run() - number of time steps is " << _end_dates.size() << endl;
     // cout << "RecordProjector::run(): dimension=" << _record_be_assumptions.get_dimension() << endl;
@@ -197,19 +287,25 @@ void RecordProjector::run(int runner_no, int record_count, const CPolicy &policy
     int time_index = 0;
 
     // special treatment of first time step as needed
+    // assert portfolio_date == _end_dates[0] = _start_dates[0]
+    cout << "Projection start at " << _end_dates[0] <<endl;
+    int age_month_completed = get_age_at_date(policy.get_dob(), portfolio_date);
+    cout << "Age of policyholder: " << age_month_completed << "  (" << age_month_completed / 12.0 << ")" << endl;
+
+    // initialize the state matrix
+    _be_states->initialize_states(policy.get_initial_state());
 
 
     // main loop over time
     bool first_iteration = true;
+    bool yearly_assumptions_updated = false;    
     while (++time_index <= max_time_step_index)
     {
-
-        cout << "Simulation step until " << _end_dates[time_index] << endl;
 
         int days_previous_step = _period_lengths[time_index - 1];
         int days_current_step = _period_lengths[time_index];
 
-        cout <<   "duration_prev=" << days_previous_step << ", duration_curr=" << days_current_step << endl;
+        cout << "Simulation step until " << _end_dates[time_index] << ", duration_prev=" << days_previous_step << ", duration_curr=" << days_current_step << endl;
 
         ///////////////////////////////////////////////////////////////////////////////////////
         // Step 1: identify the assumptions to be used for this step
@@ -223,7 +319,7 @@ void RecordProjector::run(int runner_no, int record_count, const CPolicy &policy
         risk_factors_current[4] = 0;                                   // 4 YearsDisabledIfDisabledAtStart  -- TODO!
 
         // check if we need to update the yearly assumptions
-        bool yearly_assumptions_updated = false;
+        yearly_assumptions_updated = false;
         if (relevant_factor_changed(relevant_risk_factors) || first_iteration)
         {
             cout << "updating yearly assumptions" << endl;
@@ -267,18 +363,22 @@ void RecordProjector::run(int runner_no, int record_count, const CPolicy &policy
 
 
         ///////////////////////////////////////////////////////////////////////////////////////
-        // Step 2: Update the state
+        // Step 2: Payments at begin of period
         ///////////////////////////////////////////////////////////////////////////////////////
 
 
+        ///////////////////////////////////////////////////////////////////////////////////////
+        // Step 3: Update the state
+        ///////////////////////////////////////////////////////////////////////////////////////
+
+        _be_states->print_state_probs(time_index - 1);
+        _be_states->update_state(time_index - 1, be_a_time_step_dependent.get());
+        _be_states->print_state_probs(time_index);
 
 
-
-
-
-
-
-
+        ///////////////////////////////////////////////////////////////////////////////////////
+        // Step 4: Payments at end of period
+        ///////////////////////////////////////////////////////////////////////////////////////
 
 
 

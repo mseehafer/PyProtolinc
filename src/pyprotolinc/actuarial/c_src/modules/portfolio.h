@@ -45,29 +45,42 @@ protected:
 
     string product;
 
+    int initial_state;
+
 public:
+    /// return the technical policy ID
     int64_t get_cession_id() const { return cession_id; }
 
-    short get_issue_year() const { return issue_date.year; }
-    short get_issue_month() const { return issue_date.month; }
-    short get_issue_day() const { return issue_date.day; }
+    /// Return the issue date.
+    const PeriodDate &get_issue_date() const {return issue_date;}
+    // short get_issue_year() const { return issue_date.year; }
+    // short get_issue_month() const { return issue_date.month; }
+    // short get_issue_day() const { return issue_date.day; }
+    
+    /// Get date of birth.
+    const PeriodDate &get_dob() const {return dob;}
+    // short get_dob_year() const { return dob.year; }
+    // short get_dob_month() const { return dob.month; }
+    // short get_dob_day() const { return dob.day; }
 
-    short get_dob_year() const { return dob.year; }
-    short get_dob_month() const { return dob.month; }
-    short get_dob_day() const { return dob.day; }
-
+    /// Return if the policy had a disabled date.
     bool has_disablement_date() const { return _has_disablement_date; }
-    short get_date_dis_year() const { return date_dis.year; }
-    short get_date_dis_month() const { return date_dis.month; }
-    short get_date_dis_day() const { return date_dis.day; }
 
-    int get_gender() const { return gender; }
-    int get_smoker_status() const { return smoker_status; }
+    const PeriodDate &get_date_dis() const {return date_dis;}               ///< Return the *Date of Disablement*.
+    // short get_date_dis_year() const { return date_dis.year; }
+    // short get_date_dis_month() const { return date_dis.month; }
+    // short get_date_dis_day() const { return date_dis.day; }
 
-    double get_sum_insured() const { return sum_insured; }
-    double get_reserving_rate() const { return reserving_rate; }
+    int get_gender() const { return gender; }                               ///< Return the Gender code.
+    int get_smoker_status() const { return smoker_status; }                 ///< Return the SmokerStatus code.
 
-    const string &get_product() const { return product; }
+    double get_sum_insured() const { return sum_insured; }                  ///< Return the insured amount.
+    double get_reserving_rate() const { return reserving_rate; }            ///< Return the reserving rate.
+
+    const string &get_product() const { return product; }                   ///< Return the product code of the policy.
+
+    
+    int get_initial_state() const { return initial_state; }                 ///< Return the initial state
 
     /**
      * @brief Construct a new CPolicy object
@@ -81,6 +94,7 @@ public:
      * @param sum_insured Insured amount.
      * @param reserving_rate (Constant) reserving rate that shall be used for this policy.
      * @param product Product code.
+     * @param initial_state State number (zero based) the policy is in at the start.
      */
     CPolicy(int64_t cession_id,
             int64_t dob_long,
@@ -90,7 +104,8 @@ public:
             int32_t smoker_status,
             double sum_insured,
             double reserving_rate,
-            string product)
+            string product,
+            int initial_state)
     {
         this->cession_id = cession_id;
 
@@ -111,6 +126,7 @@ public:
         this->reserving_rate = reserving_rate;
 
         this->product = product;
+        this->initial_state = initial_state;
     }
 
     string to_string() const
@@ -120,12 +136,13 @@ public:
                    // std::to_string(", ") +        // get_product() + ", " + get_gender() +
                "PRODUCT=" + get_product() +
                ", GENDER=" + std::to_string(get_gender()) +
+               ", INITIAL_STATE=" + std::to_string(initial_state) +
                ", SMOKER_STATUS=" + std::to_string(get_smoker_status()) +
                ", SUM_INSURED=" + std::to_string(get_sum_insured()) +
                ", RESERVING_RATE=" + std::to_string(get_reserving_rate()) +
-               ", BIRTH=" + std::to_string(get_dob_year()) + "-" + std::to_string(get_dob_month()) + "-" + std::to_string(get_dob_day()) +
-               ", ISSUE=" + std::to_string(get_issue_year()) + "-" + std::to_string(get_issue_month()) + "-" + std::to_string(get_issue_day()) +
-               ", DISABLED=" + std::to_string(get_date_dis_year()) + "-" + std::to_string(get_date_dis_month()) + "-" + std::to_string(get_date_dis_day()) +
+               ", BIRTH=" + std::to_string(dob.year) + "-" + std::to_string(dob.month) + "-" + std::to_string(dob.day) +
+               ", ISSUE=" + std::to_string(issue_date.year) + "-" + std::to_string(issue_date.month) + "-" + std::to_string(issue_date.day) +
+               ", DISABLED=" + std::to_string(date_dis.year) + "-" + std::to_string(date_dis.month) + "-" + std::to_string(date_dis.day) +
                "]>";
     }
 };
@@ -245,6 +262,10 @@ private:
     bool has_reserving_rate = false;
     double *ptr_reserving_rate;
 
+    bool has_initial_state = false;
+    int16_t *ptr_initial_state;
+
+
 public:
     /**
      * @brief Construct a new CPortfolioBuilder object
@@ -319,6 +340,14 @@ public:
         return *this;
     }
 
+    CPortfolioBuilder &set_initial_state(int16_t *ptr_initial_state)
+    {
+        this->ptr_initial_state = ptr_initial_state;
+        has_initial_state = true;
+        return *this;
+    }
+
+
     /// Create a new portfolio object from the given input vectors.
     shared_ptr<CPolicyPortfolio> build();
 };
@@ -371,6 +400,11 @@ shared_ptr<CPolicyPortfolio> CPortfolioBuilder::build()
         throw domain_error("ReservingRate is not set.");
     }
 
+    if (!has_initial_state)
+    {
+        throw domain_error("Initial state not set.");
+    }
+
     // two name for the same object
     shared_ptr<CPolicyPortfolio> ptr_portfolio = make_shared<CPolicyPortfolio>(ptf_year, ptf_month, ptf_day);
     CPolicyPortfolio &portfolio = *ptr_portfolio;
@@ -387,7 +421,8 @@ shared_ptr<CPolicyPortfolio> CPortfolioBuilder::build()
                                                           ptr_smoker_status[k],
                                                           ptr_sum_insured[k],
                                                           ptr_reserving_rate[k],
-                                                          product);
+                                                          product,
+                                                          ptr_initial_state[k]);
 
         portfolio.add(record);
     }
@@ -404,7 +439,7 @@ shared_ptr<CPolicyPortfolio> CPortfolioBuilder::build()
  * @param dt_year
  * @param dt_month
  * @param dt_day
- * @return int
+ * @return int Age in (completed) months.
  */
 int get_age_at_date(int dob_year, int dob_month, int dob_day, int dt_year, int dt_month, int dt_day)
 {
@@ -428,6 +463,18 @@ int get_age_at_date(int dob_year, int dob_month, int dob_day, int dt_year, int d
                                                                                             : dt_month - dob_month - (dt_day < dob_day ? 1 : 0);
 
     return 12 * full_years + full_months;
+}
+
+/**
+ * @brief Calculate the age in (completed) months for a given birthday and the date of interest, returns -1 if not born yet at the given date.
+ *
+ * @param dob Date of Birthe
+ * @param date_at Date at which to calculate the age
+ * @return int Age in (completed) months.
+ */
+inline int get_age_at_date(const PeriodDate &dob, const PeriodDate& date_at)
+{
+    return get_age_at_date(dob.year, dob.month, dob.day, date_at.year, date_at.month, date_at.day);
 }
 
 #endif

@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['set_5ffrom_5flong_0',['set_from_long',['../d5/d2d/struct_period_date.html#a29691d71011b0394ac1a0180869b6ef9',1,'PeriodDate']]],
-  ['simpletermproduct_1',['SimpleTermProduct',['../db/df9/class_simple_term_product.html',1,'']]],
-  ['size_2',['size',['../d5/dfd/class_c_policy_portfolio.html#ac8555a243c38760c21360fdd8fd6e84c',1,'CPolicyPortfolio::size()'],['../da/dc0/class_run_result.html#aeb2b4dd88db29a4fb1498322e7cfca88',1,'RunResult::size()']]],
-  ['slice_3',['slice',['../d8/d3f/class_c_standard_rate_provider.html#a0b96999a26d96f9a9418f3bce9f769ee',1,'CStandardRateProvider']]],
-  ['slice_5finto_4',['slice_into',['../de/d6a/class_c_assumption_set.html#acb4dad53748df9e6a98acd1b08cd8f63',1,'CAssumptionSet']]]
+  ['matptrcbaserateprovider_0',['MatPtrCBaseRateProvider',['../db/d86/assumption__sets_8h.html#a7c3062e7c68abb077992818311a7745d',1,'assumption_sets.h']]],
+  ['metarunner_1',['MetaRunner',['../d1/d5b/class_meta_runner.html',1,'MetaRunner'],['../d1/d5b/class_meta_runner.html#a5bd8abcde4efddc27155c7e3d8654d01',1,'MetaRunner::MetaRunner()']]],
+  ['mortalityproductdefinition_2',['MortalityProductDefinition',['../db/d32/class_mortality_product_definition.html',1,'']]]
 ];

@@ -1,6 +1,14 @@
-/* CPP implementation of the time axis and related objects.
-
-Some read on 30/360 time count convention: https://sqlsunday.com/2014/08/17/30-360-day-count-convention/
+/**
+ * @file time_axis.h
+ * @author M. Seehafer
+ * @brief CPP implementation of the time axis and related objects.
+ * @version 0.1
+ * @date 2022-08-27
+ *
+ * @copyright Copyright (c) 2022
+ *
+ *
+ * Some read on 30/360 time count convention: https://sqlsunday.com/2014/08/17/30-360-day-count-convention/
  */
 
 #ifndef C_TIME_AXIS_H
@@ -12,16 +20,18 @@ Some read on 30/360 time count convention: https://sqlsunday.com/2014/08/17/30-3
 
 using namespace std;
 
-// flag to signal what timestep to use in the calculation
+/// Flag to signal what timestep to use in the calculation
 enum class TimeStep : int
 {
-    MONTHLY,   // 0
+    MONTHLY,   // 0  
     QUARTERLY, // 1
     YEARLY     // 2
 };
 
+/// number of day in each month
 const int _days_in_month[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
+/// A simple date structure
 struct PeriodDate
 {
     short year;
@@ -31,9 +41,9 @@ struct PeriodDate
     PeriodDate(short y, short m, short d) : year(y), month(m), day(d) {}
     PeriodDate(const PeriodDate &o) : year(o.year), month(o.month), day(o.day) {}
 
-    short get_year() const { return year;}
-    short get_month() const { return month;}
-    short get_day() const { return day;}
+    short get_year() const { return year; }
+    short get_month() const { return month; }
+    short get_day() const { return day; }
 
     string to_string() const
     {
@@ -67,6 +77,7 @@ struct PeriodDate
             return false;
     }
 
+    /// Return true of this date is strictly before the passed in date tuple
     bool _before(short y, short m, short d) const
     {
         if (year < y || (year == y && month < m) || (year == y && month == m && day < d))
@@ -90,6 +101,7 @@ struct PeriodDate
         return *this == o || *this < o;
     }
 
+    /// Update the value to the next day
     int set_next_day()
     {
         if (day < _days_in_month[month - 1])
@@ -114,6 +126,7 @@ struct PeriodDate
         return 1;
     }
 
+    /// Update the value to the next end of a month.
     int set_next_end_of_month()
     {
         int duration;
@@ -164,6 +177,7 @@ struct PeriodDate
         return duration;
     }
 
+    /// Update the value to the next end of a quarter.
     int set_next_end_of_quarter()
     {
         int duration; // full quarter by default
@@ -201,6 +215,7 @@ struct PeriodDate
         return duration;
     }
 
+    /// Update the value to the next end of a year.
     int set_next_end_of_year()
     {
         int duration = 360; // full year by default
@@ -223,20 +238,16 @@ struct PeriodDate
 
     /**
      * @brief Set the date long which is encoded as YYYYMMDD
-     * 
-     * @param dt_lng 
+     *
+     * @param dt_lng
      */
     void set_from_long(int64_t dt_lng)
     {
-        year = (int)( dt_lng / 10000);
-        month = (int)(( dt_lng % 10000) / 100);
-        day = (int)( dt_lng % 100);        
+        year = (int)(dt_lng / 10000);
+        month = (int)((dt_lng % 10000) / 100);
+        day = (int)(dt_lng % 100);
     }
-
 };
-
-
-
 
 /// US 30/360 convention accoriding to https://sqlsunday.com/2014/08/17/30-360-day-count-convention/
 inline int getdays_30U_360(const PeriodDate &date1, const PeriodDate &date2)
@@ -301,12 +312,16 @@ int getdays_30E_360(const PeriodDate &date1, const PeriodDate &date2)
     return 360 * (date2.year - date1.year) + 30 * (date2.month - date1.month) + (d2 - d1);
 }
 
-// to make the above struct printable with cout
+/// Make the above date struct printable with cout
 std::ostream &operator<<(std::ostream &outs, const PeriodDate &ped)
 {
     return outs << ped.to_string();
 }
 
+/**
+ * @brief TimeAxis object, contains vectors with start and end of each discrete poeriod of time.
+ *
+ */
 class TimeAxis
 {
 private:
@@ -322,62 +337,17 @@ private:
     vector<int> period_length_in_days;
 
 public:
+    /**
+     * @brief Construct a new Time Axis object
+     *
+     * @param time_step Which time step should be applied.
+     * @param years_to_simulate Number of years to project.
+     * @param ptf_year Year of the portfolio. inforce date.
+     * @param ptf_month Month of the portfolio inforce date.
+     * @param ptf_day Day of the portfolio inforce date.
+     */
     TimeAxis(TimeStep time_step, int years_to_simulate,
-             short ptf_year, short ptf_month, short ptf_day) : _time_step(time_step),
-                                                               _years_to_simulate(years_to_simulate),
-                                                               _ptf_year(ptf_year), _ptf_month(ptf_month), _ptf_day(ptf_day)
-    {
-        // cout << "Creating time axis with time_step=" << (int)_time_step << endl;
-        // the_dates.reserve(2 + 12 * _years_to_simulate);
-        the_start_dates.reserve(2 + 12 * _years_to_simulate);
-        the_end_dates.reserve(2 + 12 * _years_to_simulate);
-
-        PeriodDate d(_ptf_year, _ptf_month, _ptf_day);
-        PeriodDate d_start(_ptf_year, _ptf_month, _ptf_day);
-        
-        // end end date is always the end of the year  
-        PeriodDate end_date(_ptf_year + _years_to_simulate, 12, 31);
-        
-        // PeriodDate end_date(_ptf_year + _years_to_simulate, _ptf_month, _ptf_day);
-        // if (end_date.month != 12 || (end_date.month == 12 && end_date.day != 31))
-        //     end_date.set_next_end_of_year();
-        // end_date.set_next_day(); // add one more day
-
-        the_start_dates.push_back(d);
-        the_end_dates.push_back(d);
-        period_length_in_days.push_back(0);
-        // next start date
-        d_start = d;
-        d_start.set_next_day();
-
-        // while (d._before(end_date.year, end_date.month, end_date.day))
-        while (d < end_date)
-        {
-
-            int duration;
-            if (time_step == TimeStep::YEARLY)
-            {
-                duration = d.set_next_end_of_year();
-            }
-            else if (time_step == TimeStep::QUARTERLY)
-            {
-                duration = d.set_next_end_of_quarter();
-            }
-            else
-            {
-                duration = d.set_next_end_of_month();
-            }
-
-            // save copies of the runnig dates
-            the_start_dates.push_back(d_start);
-            the_end_dates.push_back(d);
-
-            // calculate the duration from start date to "end_date+1" (= next start-date)
-            d_start = d;
-            d_start.set_next_day();
-            period_length_in_days.push_back(getdays_30U_360(the_start_dates[the_start_dates.size() - 1], d_start));
-        }
-    }
+             short ptf_year, short ptf_month, short ptf_day);
 
     int get_portfolio_year() const { return _ptf_year; }
     int get_portfolio_month() const { return _ptf_month; }
@@ -393,7 +363,8 @@ public:
         return the_start_dates[k];
     }
 
-    int duration_at(int k) const {
+    int duration_at(int k) const
+    {
         return period_length_in_days[k];
     }
 
@@ -406,5 +377,54 @@ public:
     const vector<PeriodDate> &get_end_dates() const { return the_end_dates; }
     const vector<int> &get_period_length_in_days() const { return period_length_in_days; }
 };
+
+TimeAxis::TimeAxis(TimeStep time_step, int years_to_simulate,
+                   short ptf_year, short ptf_month, short ptf_day) : _time_step(time_step),
+                                                                     _years_to_simulate(years_to_simulate),
+                                                                     _ptf_year(ptf_year), _ptf_month(ptf_month), _ptf_day(ptf_day)
+{
+    the_start_dates.reserve(2 + 12 * _years_to_simulate);
+    the_end_dates.reserve(2 + 12 * _years_to_simulate);
+
+    PeriodDate d(_ptf_year, _ptf_month, _ptf_day);
+    PeriodDate d_start(_ptf_year, _ptf_month, _ptf_day);
+
+    // end end date is always the end of the year
+    PeriodDate end_date(_ptf_year + _years_to_simulate, 12, 31);
+
+    the_start_dates.push_back(d);
+    the_end_dates.push_back(d);
+    period_length_in_days.push_back(0);
+    // next start date
+    d_start = d;
+    d_start.set_next_day();
+
+    while (d < end_date)
+    {
+
+        int duration;
+        if (time_step == TimeStep::YEARLY)
+        {
+            duration = d.set_next_end_of_year();
+        }
+        else if (time_step == TimeStep::QUARTERLY)
+        {
+            duration = d.set_next_end_of_quarter();
+        }
+        else
+        {
+            duration = d.set_next_end_of_month();
+        }
+
+        // save copies of the runnig dates
+        the_start_dates.push_back(d_start);
+        the_end_dates.push_back(d);
+
+        // calculate the duration from start date to "end_date+1" (= next start-date)
+        d_start = d;
+        d_start.set_next_day();
+        period_length_in_days.push_back(getdays_30U_360(the_start_dates[the_start_dates.size() - 1], d_start));
+    }
+}
 
 #endif

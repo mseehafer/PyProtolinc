@@ -284,13 +284,13 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<simplesect kind="return"><para>int </para>
+<simplesect kind="return"><para>int Age in (completed) months. </para>
 </simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/c_valuation.h" line="31" column="5" bodyfile="modules/portfolio.h" bodystart="409" bodyend="431" declfile="modules/c_valuation.h" declline="31" declcolumn="5"/>
+        <location file="modules/c_valuation.h" line="31" column="5" bodyfile="modules/portfolio.h" bodystart="444" bodyend="466" declfile="modules/c_valuation.h" declline="31" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="d7/d34/c__valuation_8h_1a6552fce9df184e1990a7b5e5c7d53254" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>

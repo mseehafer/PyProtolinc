@@ -40,7 +40,8 @@ void add_policies(CPolicyPortfolio &portfolio) {
                    0,            // smoker_status,
                    100000,       //sum_insured,
                    0.02,         // reserving_rate,
-                   "TERM"         // product
+                   "TERM",       // product
+                   0             // initial state
                    );
     portfolio.add(policy);
 }
@@ -92,7 +93,6 @@ void run_calculation(void) {
 
 int main(void) {
 
-    cout << "PyProtolincCore -- testrun" << endl;
     run_calculation();
 
     return 0;

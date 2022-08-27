@@ -4,20 +4,6 @@
     <compoundname>RunResult</compoundname>
     <includes refid="dc/dee/run__result_8h" local="no">run_result.h</includes>
       <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="da/dc0/class_run_result_1aa61be54a8072cbe89f4c17ed7302c14b" prot="private" static="no" mutable="no">
-        <type>double *</type>
-        <definition>double* RunResult::results</definition>
-        <argsstring></argsstring>
-        <name>results</name>
-        <qualifiedname>RunResult::results</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="modules/run_result.h" line="37" column="12" bodyfile="modules/run_result.h" bodystart="37" bodyend="-1"/>
-      </memberdef>
       <memberdef kind="variable" id="da/dc0/class_run_result_1a69e59e76c78dec6ac5c924ab6a670b03" prot="private" static="no" mutable="no">
         <type>shared_ptr&lt; <ref refid="de/d63/class_time_axis" kindref="compound">TimeAxis</ref> &gt;</type>
         <definition>shared_ptr&lt;TimeAxis&gt; RunResult::_ta</definition>
@@ -31,7 +17,22 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/run_result.h" line="39" column="16" bodyfile="modules/run_result.h" bodystart="39" bodyend="-1"/>
+        <location file="modules/run_result.h" line="40" column="16" bodyfile="modules/run_result.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="da/dc0/class_run_result_1af096d6963eecb5a88ed6ff6bb1a67832" prot="private" static="no" mutable="no">
+        <type>unique_ptr&lt; double[]&gt;</type>
+        <definition>unique_ptr&lt;double[]&gt; RunResult::_be_state_probs</definition>
+        <argsstring></argsstring>
+        <name>_be_state_probs</name>
+        <qualifiedname>RunResult::_be_state_probs</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/run_result.h" line="42" column="16" bodyfile="modules/run_result.h" bodystart="42" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -51,7 +52,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/run_result.h" line="42" column="10" bodyfile="modules/run_result.h" bodystart="71" bodyend="93"/>
+        <location file="modules/run_result.h" line="46" column="10" bodyfile="modules/run_result.h" bodystart="80" bodyend="102"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -67,7 +68,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/run_result.h" line="45" column="5" bodyfile="modules/run_result.h" bodystart="45" bodyend="45"/>
+        <location file="modules/run_result.h" line="50" column="5" bodyfile="modules/run_result.h" bodystart="50" bodyend="50"/>
       </memberdef>
       <memberdef kind="function" id="da/dc0/class_run_result_1a9320b68e4d1c43868ae33739861e3cc4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -85,7 +86,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/run_result.h" line="46" column="5" bodyfile="modules/run_result.h" bodystart="46" bodyend="46"/>
+        <location file="modules/run_result.h" line="51" column="5" bodyfile="modules/run_result.h" bodystart="51" bodyend="51"/>
       </memberdef>
       <memberdef kind="function" id="da/dc0/class_run_result_1aca921da6892196c9368b07278a427470" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="da/dc0/class_run_result" kindref="compound">RunResult</ref> &amp;</type>
@@ -103,7 +104,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/run_result.h" line="48" column="16" bodyfile="modules/run_result.h" bodystart="48" bodyend="51"/>
+        <location file="modules/run_result.h" line="57" column="16" bodyfile="modules/run_result.h" bodystart="57" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="da/dc0/class_run_result_1aa04e76054d95e76b92b045bf3e73045e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -118,7 +119,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/run_result.h" line="54" column="10" bodyfile="modules/run_result.h" bodystart="54" bodyend="54"/>
+        <location file="modules/run_result.h" line="63" column="10" bodyfile="modules/run_result.h" bodystart="63" bodyend="63"/>
       </memberdef>
       <memberdef kind="function" id="da/dc0/class_run_result_1afd6b97a6120c5aba923d56166bdf0a7a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -137,7 +138,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/run_result.h" line="57" column="10" bodyfile="modules/run_result.h" bodystart="57" bodyend="57"/>
+        <location file="modules/run_result.h" line="66" column="10" bodyfile="modules/run_result.h" bodystart="66" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="da/dc0/class_run_result_1a6ad243d2e40f39cc152503272cd72017" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -156,7 +157,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/run_result.h" line="60" column="10" bodyfile="modules/run_result.h" bodystart="60" bodyend="63"/>
+        <location file="modules/run_result.h" line="69" column="10" bodyfile="modules/run_result.h" bodystart="69" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="da/dc0/class_run_result_1aeb2b4dd88db29a4fb1498322e7cfca88" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>int</type>
@@ -171,7 +172,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/run_result.h" line="66" column="9" bodyfile="modules/run_result.h" bodystart="66" bodyend="68"/>
+        <location file="modules/run_result.h" line="75" column="9" bodyfile="modules/run_result.h" bodystart="75" bodyend="77"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -179,14 +180,14 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="modules/run_result.h" line="33" column="1" bodyfile="modules/run_result.h" bodystart="34" bodyend="69"/>
+    <location file="modules/run_result.h" line="33" column="1" bodyfile="modules/run_result.h" bodystart="34" bodyend="78"/>
     <listofallmembers>
+      <member refid="da/dc0/class_run_result_1af096d6963eecb5a88ed6ff6bb1a67832" prot="private" virt="non-virtual"><scope>RunResult</scope><name>_be_state_probs</name></member>
       <member refid="da/dc0/class_run_result_1a69e59e76c78dec6ac5c924ab6a670b03" prot="private" virt="non-virtual"><scope>RunResult</scope><name>_ta</name></member>
       <member refid="da/dc0/class_run_result_1afd6b97a6120c5aba923d56166bdf0a7a" prot="public" virt="non-virtual"><scope>RunResult</scope><name>add_result</name></member>
       <member refid="da/dc0/class_run_result_1a6ad243d2e40f39cc152503272cd72017" prot="public" virt="non-virtual"><scope>RunResult</scope><name>copy_results</name></member>
       <member refid="da/dc0/class_run_result_1ac2dc1938db73ddda7a27be4a8877ef74" prot="private" virt="non-virtual"><scope>RunResult</scope><name>copy_time_axis</name></member>
       <member refid="da/dc0/class_run_result_1aa04e76054d95e76b92b045bf3e73045e" prot="public" virt="non-virtual"><scope>RunResult</scope><name>reset</name></member>
-      <member refid="da/dc0/class_run_result_1aa61be54a8072cbe89f4c17ed7302c14b" prot="private" virt="non-virtual"><scope>RunResult</scope><name>results</name></member>
       <member refid="da/dc0/class_run_result_1a6e7a2c991482a6b574188cbbd5518281" prot="public" virt="non-virtual"><scope>RunResult</scope><name>RunResult</name></member>
       <member refid="da/dc0/class_run_result_1a9320b68e4d1c43868ae33739861e3cc4" prot="public" virt="non-virtual"><scope>RunResult</scope><name>RunResult</name></member>
       <member refid="da/dc0/class_run_result_1aca921da6892196c9368b07278a427470" prot="public" virt="non-virtual"><scope>RunResult</scope><name>set_time_axis</name></member>

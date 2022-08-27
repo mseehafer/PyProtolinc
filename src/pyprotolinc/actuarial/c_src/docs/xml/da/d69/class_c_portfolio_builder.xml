@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="216" column="12" bodyfile="modules/portfolio.h" bodystart="216" bodyend="-1"/>
+        <location file="modules/portfolio.h" line="233" column="12" bodyfile="modules/portfolio.h" bodystart="233" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1a8a949bb75c3b960562d7f5ea6941981b" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="218" column="10" bodyfile="modules/portfolio.h" bodystart="218" bodyend="-1"/>
+        <location file="modules/portfolio.h" line="235" column="10" bodyfile="modules/portfolio.h" bodystart="235" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1abcfeb25839855eb19238540b2bc68405" prot="private" static="no" mutable="no">
         <type>short</type>
@@ -46,7 +46,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="219" column="11" bodyfile="modules/portfolio.h" bodystart="219" bodyend="-1"/>
+        <location file="modules/portfolio.h" line="236" column="11" bodyfile="modules/portfolio.h" bodystart="236" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1a19425c19c40ca7b7a1afaebffdd3fa56" prot="private" static="no" mutable="no">
         <type>short</type>
@@ -60,7 +60,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="219" column="20" bodyfile="modules/portfolio.h" bodystart="219" bodyend="-1"/>
+        <location file="modules/portfolio.h" line="236" column="20" bodyfile="modules/portfolio.h" bodystart="236" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1a241289882257c82f7110ec64a3664b4c" prot="private" static="no" mutable="no">
         <type>short</type>
@@ -74,7 +74,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="219" column="30" bodyfile="modules/portfolio.h" bodystart="219" bodyend="-1"/>
+        <location file="modules/portfolio.h" line="236" column="30" bodyfile="modules/portfolio.h" bodystart="236" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1accd5e59f79a633b54c5b8a0289203d65" prot="private" static="no" mutable="no">
         <type>string</type>
@@ -88,7 +88,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="222" column="12" bodyfile="modules/portfolio.h" bodystart="222" bodyend="-1"/>
+        <location file="modules/portfolio.h" line="239" column="12" bodyfile="modules/portfolio.h" bodystart="239" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1a0d8192a81a6288e8a82f816ad9a6f99c" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -103,7 +103,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="224" column="10" bodyfile="modules/portfolio.h" bodystart="224" bodyend="-1"/>
+        <location file="modules/portfolio.h" line="241" column="10" bodyfile="modules/portfolio.h" bodystart="241" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1a0be4be7b07b385727ee5f13569197266" prot="private" static="no" mutable="no">
         <type>int64_t *</type>
@@ -117,7 +117,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="225" column="13" bodyfile="modules/portfolio.h" bodystart="225" bodyend="-1"/>
+        <location file="modules/portfolio.h" line="242" column="13" bodyfile="modules/portfolio.h" bodystart="242" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1a45a7ecf9cae177bc9c86f0d804d31076" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -132,7 +132,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="227" column="10" bodyfile="modules/portfolio.h" bodystart="227" bodyend="-1"/>
+        <location file="modules/portfolio.h" line="244" column="10" bodyfile="modules/portfolio.h" bodystart="244" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1a4348ded2041621d090e6ee00d0ebf9c2" prot="private" static="no" mutable="no">
         <type>int64_t *</type>
@@ -146,7 +146,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="228" column="13" bodyfile="modules/portfolio.h" bodystart="228" bodyend="-1"/>
+        <location file="modules/portfolio.h" line="245" column="13" bodyfile="modules/portfolio.h" bodystart="245" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1ade1f55d85a95e2ab0cf6aea8b27b9636" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -161,7 +161,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="230" column="10" bodyfile="modules/portfolio.h" bodystart="230" bodyend="-1"/>
+        <location file="modules/portfolio.h" line="247" column="10" bodyfile="modules/portfolio.h" bodystart="247" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1aedf6a20325e95bbafb215b240481db14" prot="private" static="no" mutable="no">
         <type>int64_t *</type>
@@ -175,7 +175,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="231" column="13" bodyfile="modules/portfolio.h" bodystart="231" bodyend="-1"/>
+        <location file="modules/portfolio.h" line="248" column="13" bodyfile="modules/portfolio.h" bodystart="248" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1addcedce2f48e67a16b7b5e2d17326323" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -190,7 +190,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="233" column="10" bodyfile="modules/portfolio.h" bodystart="233" bodyend="-1"/>
+        <location file="modules/portfolio.h" line="250" column="10" bodyfile="modules/portfolio.h" bodystart="250" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1adc4682b8551bd6927cadd7088b107023" prot="private" static="no" mutable="no">
         <type>int64_t *</type>
@@ -204,7 +204,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="234" column="13" bodyfile="modules/portfolio.h" bodystart="234" bodyend="-1"/>
+        <location file="modules/portfolio.h" line="251" column="13" bodyfile="modules/portfolio.h" bodystart="251" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1a365aad190ee0fd8d3d0b777bdc018c5a" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -219,7 +219,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="236" column="10" bodyfile="modules/portfolio.h" bodystart="236" bodyend="-1"/>
+        <location file="modules/portfolio.h" line="253" column="10" bodyfile="modules/portfolio.h" bodystart="253" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1a7d7446ec4b2f988aba4fed148e09448d" prot="private" static="no" mutable="no">
         <type>int32_t *</type>
@@ -233,7 +233,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="237" column="13" bodyfile="modules/portfolio.h" bodystart="237" bodyend="-1"/>
+        <location file="modules/portfolio.h" line="254" column="13" bodyfile="modules/portfolio.h" bodystart="254" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1a4913893c505dd8219293a9c8ab9e1305" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -248,7 +248,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="239" column="10" bodyfile="modules/portfolio.h" bodystart="239" bodyend="-1"/>
+        <location file="modules/portfolio.h" line="256" column="10" bodyfile="modules/portfolio.h" bodystart="256" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1a2ed55907e7db52fa2d62b212d6fccb9b" prot="private" static="no" mutable="no">
         <type>int32_t *</type>
@@ -262,7 +262,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="240" column="13" bodyfile="modules/portfolio.h" bodystart="240" bodyend="-1"/>
+        <location file="modules/portfolio.h" line="257" column="13" bodyfile="modules/portfolio.h" bodystart="257" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1a38fb0fb69f3a35e575b4917f5cb2b9da" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -277,7 +277,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="242" column="10" bodyfile="modules/portfolio.h" bodystart="242" bodyend="-1"/>
+        <location file="modules/portfolio.h" line="259" column="10" bodyfile="modules/portfolio.h" bodystart="259" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1abb3610d793a9bc8402d22279625e3783" prot="private" static="no" mutable="no">
         <type>double *</type>
@@ -291,7 +291,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="243" column="12" bodyfile="modules/portfolio.h" bodystart="243" bodyend="-1"/>
+        <location file="modules/portfolio.h" line="260" column="12" bodyfile="modules/portfolio.h" bodystart="260" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1aef487a248a05778369ec678c1c9d55c4" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -306,7 +306,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="245" column="10" bodyfile="modules/portfolio.h" bodystart="245" bodyend="-1"/>
+        <location file="modules/portfolio.h" line="262" column="10" bodyfile="modules/portfolio.h" bodystart="262" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1a72017fef2da023381456766057656164" prot="private" static="no" mutable="no">
         <type>double *</type>
@@ -320,7 +320,36 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="246" column="12" bodyfile="modules/portfolio.h" bodystart="246" bodyend="-1"/>
+        <location file="modules/portfolio.h" line="263" column="12" bodyfile="modules/portfolio.h" bodystart="263" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1ad89cf1190597053dcde66967b09c58f3" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool CPortfolioBuilder::has_initial_state</definition>
+        <argsstring></argsstring>
+        <name>has_initial_state</name>
+        <qualifiedname>CPortfolioBuilder::has_initial_state</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="265" column="10" bodyfile="modules/portfolio.h" bodystart="265" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1a39941d48ba2469c5d6a7a1f18fd900c6" prot="private" static="no" mutable="no">
+        <type>int16_t *</type>
+        <definition>int16_t* CPortfolioBuilder::ptr_initial_state</definition>
+        <argsstring></argsstring>
+        <name>ptr_initial_state</name>
+        <qualifiedname>CPortfolioBuilder::ptr_initial_state</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="266" column="13" bodyfile="modules/portfolio.h" bodystart="266" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -363,7 +392,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="255" column="5" bodyfile="modules/portfolio.h" bodystart="255" bodyend="255"/>
+        <location file="modules/portfolio.h" line="276" column="5" bodyfile="modules/portfolio.h" bodystart="276" bodyend="276"/>
       </memberdef>
       <memberdef kind="function" id="da/d69/class_c_portfolio_builder_1ac15e1bb228261a532c4cbd47661e3311" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="da/d69/class_c_portfolio_builder" kindref="compound">CPortfolioBuilder</ref> &amp;</type>
@@ -389,7 +418,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="257" column="23" bodyfile="modules/portfolio.h" bodystart="257" bodyend="264"/>
+        <location file="modules/portfolio.h" line="278" column="23" bodyfile="modules/portfolio.h" bodystart="278" bodyend="285"/>
       </memberdef>
       <memberdef kind="function" id="da/d69/class_c_portfolio_builder_1abd008e2707c29d195bb63491d95a0682" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="da/d69/class_c_portfolio_builder" kindref="compound">CPortfolioBuilder</ref> &amp;</type>
@@ -407,7 +436,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="266" column="23" bodyfile="modules/portfolio.h" bodystart="266" bodyend="271"/>
+        <location file="modules/portfolio.h" line="287" column="23" bodyfile="modules/portfolio.h" bodystart="287" bodyend="292"/>
       </memberdef>
       <memberdef kind="function" id="da/d69/class_c_portfolio_builder_1a1cf75de394a7dc45ec17d17125c0008c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="da/d69/class_c_portfolio_builder" kindref="compound">CPortfolioBuilder</ref> &amp;</type>
@@ -425,7 +454,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="273" column="23" bodyfile="modules/portfolio.h" bodystart="273" bodyend="278"/>
+        <location file="modules/portfolio.h" line="294" column="23" bodyfile="modules/portfolio.h" bodystart="294" bodyend="299"/>
       </memberdef>
       <memberdef kind="function" id="da/d69/class_c_portfolio_builder_1a956b148c85d36942c443177c44018169" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="da/d69/class_c_portfolio_builder" kindref="compound">CPortfolioBuilder</ref> &amp;</type>
@@ -443,7 +472,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="280" column="23" bodyfile="modules/portfolio.h" bodystart="280" bodyend="285"/>
+        <location file="modules/portfolio.h" line="301" column="23" bodyfile="modules/portfolio.h" bodystart="301" bodyend="306"/>
       </memberdef>
       <memberdef kind="function" id="da/d69/class_c_portfolio_builder_1a0555a2af85bfa331a02ca22fc33dd9e9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="da/d69/class_c_portfolio_builder" kindref="compound">CPortfolioBuilder</ref> &amp;</type>
@@ -461,7 +490,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="287" column="23" bodyfile="modules/portfolio.h" bodystart="287" bodyend="292"/>
+        <location file="modules/portfolio.h" line="308" column="23" bodyfile="modules/portfolio.h" bodystart="308" bodyend="313"/>
       </memberdef>
       <memberdef kind="function" id="da/d69/class_c_portfolio_builder_1a84f6fbb376dc612c30c7c96410d9be48" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="da/d69/class_c_portfolio_builder" kindref="compound">CPortfolioBuilder</ref> &amp;</type>
@@ -479,7 +508,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="294" column="23" bodyfile="modules/portfolio.h" bodystart="294" bodyend="299"/>
+        <location file="modules/portfolio.h" line="315" column="23" bodyfile="modules/portfolio.h" bodystart="315" bodyend="320"/>
       </memberdef>
       <memberdef kind="function" id="da/d69/class_c_portfolio_builder_1a53606241bb256ea47dd675a0cc39e5e2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="da/d69/class_c_portfolio_builder" kindref="compound">CPortfolioBuilder</ref> &amp;</type>
@@ -497,7 +526,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="301" column="23" bodyfile="modules/portfolio.h" bodystart="301" bodyend="306"/>
+        <location file="modules/portfolio.h" line="322" column="23" bodyfile="modules/portfolio.h" bodystart="322" bodyend="327"/>
       </memberdef>
       <memberdef kind="function" id="da/d69/class_c_portfolio_builder_1acf0caa028f0a9c7e2063d48472d691fe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="da/d69/class_c_portfolio_builder" kindref="compound">CPortfolioBuilder</ref> &amp;</type>
@@ -515,7 +544,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="308" column="23" bodyfile="modules/portfolio.h" bodystart="308" bodyend="313"/>
+        <location file="modules/portfolio.h" line="329" column="23" bodyfile="modules/portfolio.h" bodystart="329" bodyend="334"/>
       </memberdef>
       <memberdef kind="function" id="da/d69/class_c_portfolio_builder_1a96021d838d14ba8288716a1599863aa1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="da/d69/class_c_portfolio_builder" kindref="compound">CPortfolioBuilder</ref> &amp;</type>
@@ -533,7 +562,25 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="315" column="23" bodyfile="modules/portfolio.h" bodystart="315" bodyend="320"/>
+        <location file="modules/portfolio.h" line="336" column="23" bodyfile="modules/portfolio.h" bodystart="336" bodyend="341"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d69/class_c_portfolio_builder_1addf814aedaecb524c606936377929c4b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="da/d69/class_c_portfolio_builder" kindref="compound">CPortfolioBuilder</ref> &amp;</type>
+        <definition>CPortfolioBuilder &amp; CPortfolioBuilder::set_initial_state</definition>
+        <argsstring>(int16_t *ptr_initial_state)</argsstring>
+        <name>set_initial_state</name>
+        <qualifiedname>CPortfolioBuilder::set_initial_state</qualifiedname>
+        <param>
+          <type>int16_t *</type>
+          <declname>ptr_initial_state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="343" column="23" bodyfile="modules/portfolio.h" bodystart="343" bodyend="348"/>
       </memberdef>
       <memberdef kind="function" id="da/d69/class_c_portfolio_builder_1a99d693406d518c9f3be9769ae26d2d92" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>shared_ptr&lt; <ref refid="d5/dfd/class_c_policy_portfolio" kindref="compound">CPolicyPortfolio</ref> &gt;</type>
@@ -548,7 +595,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="323" column="16" bodyfile="modules/portfolio.h" bodystart="326" bodyend="396"/>
+        <location file="modules/portfolio.h" line="352" column="16" bodyfile="modules/portfolio.h" bodystart="355" bodyend="431"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -556,7 +603,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="modules/portfolio.h" line="212" column="1" bodyfile="modules/portfolio.h" bodystart="213" bodyend="324"/>
+    <location file="modules/portfolio.h" line="229" column="1" bodyfile="modules/portfolio.h" bodystart="230" bodyend="353"/>
     <listofallmembers>
       <member refid="da/d69/class_c_portfolio_builder_1a99d693406d518c9f3be9769ae26d2d92" prot="public" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>build</name></member>
       <member refid="da/d69/class_c_portfolio_builder_1ad61d666ceb5c3a8f155eae7511fe1da3" prot="public" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>CPortfolioBuilder</name></member>
@@ -564,6 +611,7 @@
       <member refid="da/d69/class_c_portfolio_builder_1addcedce2f48e67a16b7b5e2d17326323" prot="private" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>has_dis_dates</name></member>
       <member refid="da/d69/class_c_portfolio_builder_1a45a7ecf9cae177bc9c86f0d804d31076" prot="private" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>has_dob</name></member>
       <member refid="da/d69/class_c_portfolio_builder_1a365aad190ee0fd8d3d0b777bdc018c5a" prot="private" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>has_gender</name></member>
+      <member refid="da/d69/class_c_portfolio_builder_1ad89cf1190597053dcde66967b09c58f3" prot="private" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>has_initial_state</name></member>
       <member refid="da/d69/class_c_portfolio_builder_1ade1f55d85a95e2ab0cf6aea8b27b9636" prot="private" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>has_issue_dates</name></member>
       <member refid="da/d69/class_c_portfolio_builder_1a8a949bb75c3b960562d7f5ea6941981b" prot="private" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>has_portfolio_date</name></member>
       <member refid="da/d69/class_c_portfolio_builder_1aef487a248a05778369ec678c1c9d55c4" prot="private" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>has_reserving_rate</name></member>
@@ -578,6 +626,7 @@
       <member refid="da/d69/class_c_portfolio_builder_1adc4682b8551bd6927cadd7088b107023" prot="private" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>ptr_disablement_date</name></member>
       <member refid="da/d69/class_c_portfolio_builder_1a4348ded2041621d090e6ee00d0ebf9c2" prot="private" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>ptr_dob</name></member>
       <member refid="da/d69/class_c_portfolio_builder_1a7d7446ec4b2f988aba4fed148e09448d" prot="private" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>ptr_gender</name></member>
+      <member refid="da/d69/class_c_portfolio_builder_1a39941d48ba2469c5d6a7a1f18fd900c6" prot="private" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>ptr_initial_state</name></member>
       <member refid="da/d69/class_c_portfolio_builder_1aedf6a20325e95bbafb215b240481db14" prot="private" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>ptr_issue_date</name></member>
       <member refid="da/d69/class_c_portfolio_builder_1a72017fef2da023381456766057656164" prot="private" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>ptr_reserving_rate</name></member>
       <member refid="da/d69/class_c_portfolio_builder_1a2ed55907e7db52fa2d62b212d6fccb9b" prot="private" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>ptr_smoker_status</name></member>
@@ -586,6 +635,7 @@
       <member refid="da/d69/class_c_portfolio_builder_1a0555a2af85bfa331a02ca22fc33dd9e9" prot="public" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>set_date_disablement</name></member>
       <member refid="da/d69/class_c_portfolio_builder_1a1cf75de394a7dc45ec17d17125c0008c" prot="public" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>set_date_of_birth</name></member>
       <member refid="da/d69/class_c_portfolio_builder_1a84f6fbb376dc612c30c7c96410d9be48" prot="public" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>set_gender</name></member>
+      <member refid="da/d69/class_c_portfolio_builder_1addf814aedaecb524c606936377929c4b" prot="public" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>set_initial_state</name></member>
       <member refid="da/d69/class_c_portfolio_builder_1a956b148c85d36942c443177c44018169" prot="public" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>set_issue_date</name></member>
       <member refid="da/d69/class_c_portfolio_builder_1ac15e1bb228261a532c4cbd47661e3311" prot="public" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>set_portfolio_date</name></member>
       <member refid="da/d69/class_c_portfolio_builder_1a96021d838d14ba8288716a1599863aa1" prot="public" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>set_reserving_rate</name></member>

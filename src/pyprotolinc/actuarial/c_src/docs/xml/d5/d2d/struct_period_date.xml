@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
   <compounddef id="d5/d2d/struct_period_date" kind="struct" language="C++" prot="public">
     <compoundname>PeriodDate</compoundname>
+    <includes refid="de/d7d/time__axis_8h" local="no">time_axis.h</includes>
       <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="d5/d2d/struct_period_date_1a42dc1a181f54ada4291307ace3417e41" prot="public" static="no" mutable="no">
         <type>short</type>
@@ -15,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/time_axis.h" line="27" column="11" bodyfile="modules/time_axis.h" bodystart="27" bodyend="-1"/>
+        <location file="modules/time_axis.h" line="37" column="11" bodyfile="modules/time_axis.h" bodystart="37" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="d5/d2d/struct_period_date_1aa4290daba26d1a9eb14d798ceaa7c88a" prot="public" static="no" mutable="no">
         <type>short</type>
@@ -29,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/time_axis.h" line="28" column="11" bodyfile="modules/time_axis.h" bodystart="28" bodyend="-1"/>
+        <location file="modules/time_axis.h" line="38" column="11" bodyfile="modules/time_axis.h" bodystart="38" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="d5/d2d/struct_period_date_1ad6920165cad4008b0d88519eedf40867" prot="public" static="no" mutable="no">
         <type>short</type>
@@ -43,7 +44,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/time_axis.h" line="29" column="11" bodyfile="modules/time_axis.h" bodystart="29" bodyend="-1"/>
+        <location file="modules/time_axis.h" line="39" column="11" bodyfile="modules/time_axis.h" bodystart="39" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -71,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/time_axis.h" line="31" column="5" bodyfile="modules/time_axis.h" bodystart="31" bodyend="31"/>
+        <location file="modules/time_axis.h" line="41" column="5" bodyfile="modules/time_axis.h" bodystart="41" bodyend="41"/>
       </memberdef>
       <memberdef kind="function" id="d5/d2d/struct_period_date_1ae3895a06fcaaf037f6bf68effd47972d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -89,7 +90,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/time_axis.h" line="32" column="5" bodyfile="modules/time_axis.h" bodystart="32" bodyend="32"/>
+        <location file="modules/time_axis.h" line="42" column="5" bodyfile="modules/time_axis.h" bodystart="42" bodyend="42"/>
       </memberdef>
       <memberdef kind="function" id="d5/d2d/struct_period_date_1a129b82307cc132df7f2f9a396b77c36e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>short</type>
@@ -103,7 +104,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/time_axis.h" line="34" column="11" bodyfile="modules/time_axis.h" bodystart="34" bodyend="34"/>
+        <location file="modules/time_axis.h" line="44" column="11" bodyfile="modules/time_axis.h" bodystart="44" bodyend="44"/>
       </memberdef>
       <memberdef kind="function" id="d5/d2d/struct_period_date_1a609549dab593e5eb1a3fee35006b449f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>short</type>
@@ -117,7 +118,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/time_axis.h" line="35" column="11" bodyfile="modules/time_axis.h" bodystart="35" bodyend="35"/>
+        <location file="modules/time_axis.h" line="45" column="11" bodyfile="modules/time_axis.h" bodystart="45" bodyend="45"/>
       </memberdef>
       <memberdef kind="function" id="d5/d2d/struct_period_date_1a4c7c0f410606c2326ea907bb4e3180f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>short</type>
@@ -131,7 +132,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/time_axis.h" line="36" column="11" bodyfile="modules/time_axis.h" bodystart="36" bodyend="36"/>
+        <location file="modules/time_axis.h" line="46" column="11" bodyfile="modules/time_axis.h" bodystart="46" bodyend="46"/>
       </memberdef>
       <memberdef kind="function" id="d5/d2d/struct_period_date_1a0613753f1f38f44ddaad173eed1fe0d4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>string</type>
@@ -145,7 +146,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/time_axis.h" line="38" column="12" bodyfile="modules/time_axis.h" bodystart="38" bodyend="43"/>
+        <location file="modules/time_axis.h" line="48" column="12" bodyfile="modules/time_axis.h" bodystart="48" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="d5/d2d/struct_period_date_1a8f3517365f6e72954c6015a05b52d033" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -171,7 +172,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/time_axis.h" line="45" column="10" bodyfile="modules/time_axis.h" bodystart="45" bodyend="50"/>
+        <location file="modules/time_axis.h" line="55" column="10" bodyfile="modules/time_axis.h" bodystart="55" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="d5/d2d/struct_period_date_1a30239eeefb7664bbef9cd0b36262e387" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="d5/d2d/struct_period_date" kindref="compound">PeriodDate</ref> &amp;</type>
@@ -189,7 +190,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/time_axis.h" line="52" column="16" bodyfile="modules/time_axis.h" bodystart="52" bodyend="56"/>
+        <location file="modules/time_axis.h" line="62" column="16" bodyfile="modules/time_axis.h" bodystart="62" bodyend="66"/>
       </memberdef>
       <memberdef kind="function" id="d5/d2d/struct_period_date_1a3291a22220bb3674aeb86b8a3d35da7a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -203,7 +204,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/time_axis.h" line="58" column="10" bodyfile="modules/time_axis.h" bodystart="58" bodyend="68"/>
+        <location file="modules/time_axis.h" line="68" column="10" bodyfile="modules/time_axis.h" bodystart="68" bodyend="78"/>
       </memberdef>
       <memberdef kind="function" id="d5/d2d/struct_period_date_1ad64661b43331dc6ad1bfaf468be79740" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -224,12 +225,13 @@
           <declname>d</declname>
         </param>
         <briefdescription>
+<para>Return true of this date is strictly before the passed in date tuple. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/time_axis.h" line="70" column="10" bodyfile="modules/time_axis.h" bodystart="70" bodyend="76"/>
+        <location file="modules/time_axis.h" line="81" column="10" bodyfile="modules/time_axis.h" bodystart="81" bodyend="87"/>
       </memberdef>
       <memberdef kind="function" id="d5/d2d/struct_period_date_1a64ea004f4a3565d3b2470302c73ad9a5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -247,7 +249,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/time_axis.h" line="78" column="5" bodyfile="modules/time_axis.h" bodystart="78" bodyend="81"/>
+        <location file="modules/time_axis.h" line="89" column="5" bodyfile="modules/time_axis.h" bodystart="89" bodyend="92"/>
       </memberdef>
       <memberdef kind="function" id="d5/d2d/struct_period_date_1abfb9cd98a2657509632b7f8ad4e54e4e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -265,7 +267,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/time_axis.h" line="83" column="10" bodyfile="modules/time_axis.h" bodystart="83" bodyend="86"/>
+        <location file="modules/time_axis.h" line="94" column="10" bodyfile="modules/time_axis.h" bodystart="94" bodyend="97"/>
       </memberdef>
       <memberdef kind="function" id="d5/d2d/struct_period_date_1a718b72c9c3222237b1ca7546baa9fc98" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -283,7 +285,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/time_axis.h" line="88" column="5" bodyfile="modules/time_axis.h" bodystart="88" bodyend="91"/>
+        <location file="modules/time_axis.h" line="99" column="5" bodyfile="modules/time_axis.h" bodystart="99" bodyend="102"/>
       </memberdef>
       <memberdef kind="function" id="d5/d2d/struct_period_date_1a0ef71c4882e91122091215f1ef55ba31" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>int</type>
@@ -292,12 +294,13 @@
         <name>set_next_day</name>
         <qualifiedname>PeriodDate::set_next_day</qualifiedname>
         <briefdescription>
+<para>Update the value to the next day. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/time_axis.h" line="93" column="9" bodyfile="modules/time_axis.h" bodystart="93" bodyend="115"/>
+        <location file="modules/time_axis.h" line="105" column="9" bodyfile="modules/time_axis.h" bodystart="105" bodyend="127"/>
       </memberdef>
       <memberdef kind="function" id="d5/d2d/struct_period_date_1aef6c0144ff5a942edcff6eeae89f7024" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>int</type>
@@ -306,12 +309,13 @@
         <name>set_next_end_of_month</name>
         <qualifiedname>PeriodDate::set_next_end_of_month</qualifiedname>
         <briefdescription>
+<para>Update the value to the next end of a month. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/time_axis.h" line="117" column="9" bodyfile="modules/time_axis.h" bodystart="117" bodyend="165"/>
+        <location file="modules/time_axis.h" line="130" column="9" bodyfile="modules/time_axis.h" bodystart="130" bodyend="178"/>
       </memberdef>
       <memberdef kind="function" id="d5/d2d/struct_period_date_1afd08b8a51039ccc0c9175ed066a33f9f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>int</type>
@@ -320,12 +324,13 @@
         <name>set_next_end_of_quarter</name>
         <qualifiedname>PeriodDate::set_next_end_of_quarter</qualifiedname>
         <briefdescription>
+<para>Update the value to the next end of a quarter. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/time_axis.h" line="167" column="9" bodyfile="modules/time_axis.h" bodystart="167" bodyend="202"/>
+        <location file="modules/time_axis.h" line="181" column="9" bodyfile="modules/time_axis.h" bodystart="181" bodyend="216"/>
       </memberdef>
       <memberdef kind="function" id="d5/d2d/struct_period_date_1a98a8b3e7e5e2b7271631ffe5f3b0bd75" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>int</type>
@@ -334,12 +339,13 @@
         <name>set_next_end_of_year</name>
         <qualifiedname>PeriodDate::set_next_end_of_year</qualifiedname>
         <briefdescription>
+<para>Update the value to the next end of a year. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/time_axis.h" line="204" column="9" bodyfile="modules/time_axis.h" bodystart="204" bodyend="222"/>
+        <location file="modules/time_axis.h" line="219" column="9" bodyfile="modules/time_axis.h" bodystart="219" bodyend="237"/>
       </memberdef>
       <memberdef kind="function" id="d5/d2d/struct_period_date_1a29691d71011b0394ac1a0180869b6ef9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -368,14 +374,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/time_axis.h" line="229" column="10" bodyfile="modules/time_axis.h" bodystart="229" bodyend="234"/>
+        <location file="modules/time_axis.h" line="244" column="10" bodyfile="modules/time_axis.h" bodystart="244" bodyend="249"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>A simple date structure. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="modules/time_axis.h" line="25" column="1" bodyfile="modules/time_axis.h" bodystart="26" bodyend="236"/>
+    <location file="modules/time_axis.h" line="35" column="1" bodyfile="modules/time_axis.h" bodystart="36" bodyend="250"/>
     <listofallmembers>
       <member refid="d5/d2d/struct_period_date_1ad64661b43331dc6ad1bfaf468be79740" prot="public" virt="non-virtual"><scope>PeriodDate</scope><name>_before</name></member>
       <member refid="d5/d2d/struct_period_date_1ad6920165cad4008b0d88519eedf40867" prot="public" virt="non-virtual"><scope>PeriodDate</scope><name>day</name></member>

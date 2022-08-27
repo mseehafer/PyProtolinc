@@ -77,6 +77,11 @@ $(function() {
   <div class="headertitle"><div class="title">PeriodDate Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>A simple date structure.  
+ <a href="../../d5/d2d/struct_period_date.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="../../de/d7d/time__axis_8h_source.html">time_axis.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -109,6 +114,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_leap_year</b> () c
 <tr class="separator:a3291a22220bb3674aeb86b8a3d35da7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad64661b43331dc6ad1bfaf468be79740"><td class="memItemLeft" align="right" valign="top"><a id="ad64661b43331dc6ad1bfaf468be79740" name="ad64661b43331dc6ad1bfaf468be79740"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>_before</b> (short y, short m, short d) const</td></tr>
+<tr class="memdesc:ad64661b43331dc6ad1bfaf468be79740"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true of this date is strictly before the passed in date tuple. <br /></td></tr>
 <tr class="separator:ad64661b43331dc6ad1bfaf468be79740"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64ea004f4a3565d3b2470302c73ad9a5"><td class="memItemLeft" align="right" valign="top"><a id="a64ea004f4a3565d3b2470302c73ad9a5" name="a64ea004f4a3565d3b2470302c73ad9a5"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;</b> (const <a class="el" href="../../d5/d2d/struct_period_date.html">PeriodDate</a> &amp;o) const</td></tr>
@@ -121,15 +127,19 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;=</b> (co
 <tr class="separator:a718b72c9c3222237b1ca7546baa9fc98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ef71c4882e91122091215f1ef55ba31"><td class="memItemLeft" align="right" valign="top"><a id="a0ef71c4882e91122091215f1ef55ba31" name="a0ef71c4882e91122091215f1ef55ba31"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>set_next_day</b> ()</td></tr>
+<tr class="memdesc:a0ef71c4882e91122091215f1ef55ba31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the value to the next day. <br /></td></tr>
 <tr class="separator:a0ef71c4882e91122091215f1ef55ba31"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef6c0144ff5a942edcff6eeae89f7024"><td class="memItemLeft" align="right" valign="top"><a id="aef6c0144ff5a942edcff6eeae89f7024" name="aef6c0144ff5a942edcff6eeae89f7024"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>set_next_end_of_month</b> ()</td></tr>
+<tr class="memdesc:aef6c0144ff5a942edcff6eeae89f7024"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the value to the next end of a month. <br /></td></tr>
 <tr class="separator:aef6c0144ff5a942edcff6eeae89f7024"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afd08b8a51039ccc0c9175ed066a33f9f"><td class="memItemLeft" align="right" valign="top"><a id="afd08b8a51039ccc0c9175ed066a33f9f" name="afd08b8a51039ccc0c9175ed066a33f9f"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>set_next_end_of_quarter</b> ()</td></tr>
+<tr class="memdesc:afd08b8a51039ccc0c9175ed066a33f9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the value to the next end of a quarter. <br /></td></tr>
 <tr class="separator:afd08b8a51039ccc0c9175ed066a33f9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98a8b3e7e5e2b7271631ffe5f3b0bd75"><td class="memItemLeft" align="right" valign="top"><a id="a98a8b3e7e5e2b7271631ffe5f3b0bd75" name="a98a8b3e7e5e2b7271631ffe5f3b0bd75"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>set_next_end_of_year</b> ()</td></tr>
+<tr class="memdesc:a98a8b3e7e5e2b7271631ffe5f3b0bd75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update the value to the next end of a year. <br /></td></tr>
 <tr class="separator:a98a8b3e7e5e2b7271631ffe5f3b0bd75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a29691d71011b0394ac1a0180869b6ef9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d2d/struct_period_date.html#a29691d71011b0394ac1a0180869b6ef9">set_from_long</a> (int64_t dt_lng)</td></tr>
 <tr class="memdesc:a29691d71011b0394ac1a0180869b6ef9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the date long which is encoded as YYYYMMDD.  <a href="../../d5/d2d/struct_period_date.html#a29691d71011b0394ac1a0180869b6ef9">More...</a><br /></td></tr>
@@ -147,7 +157,9 @@ short&#160;</td><td class="memItemRight" valign="bottom"><b>month</b></td></tr>
 short&#160;</td><td class="memItemRight" valign="bottom"><b>day</b></td></tr>
 <tr class="separator:ad6920165cad4008b0d88519eedf40867"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >A simple date structure. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a29691d71011b0394ac1a0180869b6ef9" name="a29691d71011b0394ac1a0180869b6ef9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a29691d71011b0394ac1a0180869b6ef9">&#9670;&#160;</a></span>set_from_long()</h2>
 

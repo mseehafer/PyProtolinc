@@ -56,23 +56,19 @@
     <member refid="d5/d61/class_c_policy_1abba817cdec1d2b65b26c7df19070fbb5" kind="variable"><name>sum_insured</name></member>
     <member refid="d5/d61/class_c_policy_1a65114317473890c9e4e7b156326725d8" kind="variable"><name>reserving_rate</name></member>
     <member refid="d5/d61/class_c_policy_1a89bd1d0fc1f27f06b40889c845cec141" kind="variable"><name>product</name></member>
+    <member refid="d5/d61/class_c_policy_1ad7fe9117fea0f122d5033769f4eac65c" kind="variable"><name>initial_state</name></member>
     <member refid="d5/d61/class_c_policy_1a34d17a783c11cf18fcae8362a7277d09" kind="function"><name>get_cession_id</name></member>
-    <member refid="d5/d61/class_c_policy_1a79a08ce9d4e21f52e5a4e2ff04be6095" kind="function"><name>get_issue_year</name></member>
-    <member refid="d5/d61/class_c_policy_1a2eae21fca249316aeab9f40d8d85797d" kind="function"><name>get_issue_month</name></member>
-    <member refid="d5/d61/class_c_policy_1ab1f6b259443e085de5b4e2fcefa6fa34" kind="function"><name>get_issue_day</name></member>
-    <member refid="d5/d61/class_c_policy_1a81eda3f54e8f8b437aae1661ac838ac4" kind="function"><name>get_dob_year</name></member>
-    <member refid="d5/d61/class_c_policy_1a88793fb61720abdfb78d69ce4341486d" kind="function"><name>get_dob_month</name></member>
-    <member refid="d5/d61/class_c_policy_1affa8ad68a8933bb0b0c3c1ca6c1c7b6c" kind="function"><name>get_dob_day</name></member>
+    <member refid="d5/d61/class_c_policy_1a1f69f01950906fd5668eac2901a5f8c4" kind="function"><name>get_issue_date</name></member>
+    <member refid="d5/d61/class_c_policy_1afc1b10cd6f92e7064fbbd00635a4251f" kind="function"><name>get_dob</name></member>
     <member refid="d5/d61/class_c_policy_1ae541465b14f4f1da095a24f013173231" kind="function"><name>has_disablement_date</name></member>
-    <member refid="d5/d61/class_c_policy_1ae0412e7a67459d13be2d27d7086df22e" kind="function"><name>get_date_dis_year</name></member>
-    <member refid="d5/d61/class_c_policy_1aae2da360e67521d6e718118dde7243a1" kind="function"><name>get_date_dis_month</name></member>
-    <member refid="d5/d61/class_c_policy_1a7fa9d008e23d4432864f61e2d84b302e" kind="function"><name>get_date_dis_day</name></member>
+    <member refid="d5/d61/class_c_policy_1a7503ea43b894fac0ae0f4cf5766158f2" kind="function"><name>get_date_dis</name></member>
     <member refid="d5/d61/class_c_policy_1ab6ff71c6850b2398f1a7ff54e094ba07" kind="function"><name>get_gender</name></member>
     <member refid="d5/d61/class_c_policy_1a376b8b1b506131e717cb0da4ccdc7c6a" kind="function"><name>get_smoker_status</name></member>
     <member refid="d5/d61/class_c_policy_1a642abb4e6c77af0175de24882432eb0f" kind="function"><name>get_sum_insured</name></member>
     <member refid="d5/d61/class_c_policy_1afbe343ce61093f993a0a09a308320a7b" kind="function"><name>get_reserving_rate</name></member>
     <member refid="d5/d61/class_c_policy_1ab0ad00f8d8714cb0d09f6c5bcf859e52" kind="function"><name>get_product</name></member>
-    <member refid="d5/d61/class_c_policy_1aef746f04a3a465883f45f1e2986e0e0f" kind="function"><name>CPolicy</name></member>
+    <member refid="d5/d61/class_c_policy_1aa1b5cc0516be082b4daae611e06d5fa5" kind="function"><name>get_initial_state</name></member>
+    <member refid="d5/d61/class_c_policy_1a0cca834823fb5d6f2c81c84396ad221d" kind="function"><name>CPolicy</name></member>
     <member refid="d5/d61/class_c_policy_1a478619289edd33d766902232c77c4cd7" kind="function"><name>to_string</name></member>
   </compound>
   <compound refid="d5/dfd/class_c_policy_portfolio" kind="class"><name>CPolicyPortfolio</name>
@@ -124,6 +120,8 @@
     <member refid="da/d69/class_c_portfolio_builder_1abb3610d793a9bc8402d22279625e3783" kind="variable"><name>ptr_sum_insured</name></member>
     <member refid="da/d69/class_c_portfolio_builder_1aef487a248a05778369ec678c1c9d55c4" kind="variable"><name>has_reserving_rate</name></member>
     <member refid="da/d69/class_c_portfolio_builder_1a72017fef2da023381456766057656164" kind="variable"><name>ptr_reserving_rate</name></member>
+    <member refid="da/d69/class_c_portfolio_builder_1ad89cf1190597053dcde66967b09c58f3" kind="variable"><name>has_initial_state</name></member>
+    <member refid="da/d69/class_c_portfolio_builder_1a39941d48ba2469c5d6a7a1f18fd900c6" kind="variable"><name>ptr_initial_state</name></member>
     <member refid="da/d69/class_c_portfolio_builder_1ad61d666ceb5c3a8f155eae7511fe1da3" kind="function"><name>CPortfolioBuilder</name></member>
     <member refid="da/d69/class_c_portfolio_builder_1ac15e1bb228261a532c4cbd47661e3311" kind="function"><name>set_portfolio_date</name></member>
     <member refid="da/d69/class_c_portfolio_builder_1abd008e2707c29d195bb63491d95a0682" kind="function"><name>set_cession_id</name></member>
@@ -134,6 +132,7 @@
     <member refid="da/d69/class_c_portfolio_builder_1a53606241bb256ea47dd675a0cc39e5e2" kind="function"><name>set_smoker_status</name></member>
     <member refid="da/d69/class_c_portfolio_builder_1acf0caa028f0a9c7e2063d48472d691fe" kind="function"><name>set_sum_insured</name></member>
     <member refid="da/d69/class_c_portfolio_builder_1a96021d838d14ba8288716a1599863aa1" kind="function"><name>set_reserving_rate</name></member>
+    <member refid="da/d69/class_c_portfolio_builder_1addf814aedaecb524c606936377929c4b" kind="function"><name>set_initial_state</name></member>
     <member refid="da/d69/class_c_portfolio_builder_1a99d693406d518c9f3be9769ae26d2d92" kind="function"><name>build</name></member>
   </compound>
   <compound refid="d7/d5e/class_c_run_config" kind="class"><name>CRunConfig</name>
@@ -265,6 +264,19 @@
     <member refid="d5/d2d/struct_period_date_1a98a8b3e7e5e2b7271631ffe5f3b0bd75" kind="function"><name>set_next_end_of_year</name></member>
     <member refid="d5/d2d/struct_period_date_1a29691d71011b0394ac1a0180869b6ef9" kind="function"><name>set_from_long</name></member>
   </compound>
+  <compound refid="df/dcd/class_projection_state_matrix" kind="class"><name>ProjectionStateMatrix</name>
+    <member refid="df/dcd/class_projection_state_matrix_1a11e4c2163da699010ce27af5b25e3b6d" kind="variable"><name>_state_probs</name></member>
+    <member refid="df/dcd/class_projection_state_matrix_1a4f745cc7cc5c4616ff60eef0182efc43" kind="variable"><name>_num_timesteps</name></member>
+    <member refid="df/dcd/class_projection_state_matrix_1a62c680353e79c24b56f3657e9f412762" kind="variable"><name>_num_states</name></member>
+    <member refid="df/dcd/class_projection_state_matrix_1a73596f90429cd4d203bf143c975832d6" kind="variable"><name>_size</name></member>
+    <member refid="df/dcd/class_projection_state_matrix_1aae6828056e7090b844818761402d91c7" kind="function"><name>ProjectionStateMatrix</name></member>
+    <member refid="df/dcd/class_projection_state_matrix_1a3a65218e070c2bfd4bc6a388b44688eb" kind="function"><name>ProjectionStateMatrix</name></member>
+    <member refid="df/dcd/class_projection_state_matrix_1a2e6f2ce1786eebf8a91c8af2eb521414" kind="function"><name>ProjectionStateMatrix</name></member>
+    <member refid="df/dcd/class_projection_state_matrix_1ad871e4756222891cbf4b5ceff98e9884" kind="function"><name>ProjectionStateMatrix</name></member>
+    <member refid="df/dcd/class_projection_state_matrix_1a3d897f7c5ee7e6d45ec3681fc7d1c179" kind="function"><name>initialize_states</name></member>
+    <member refid="df/dcd/class_projection_state_matrix_1acfb3b2098eb5dbaca5c077653e1656c9" kind="function"><name>update_state</name></member>
+    <member refid="df/dcd/class_projection_state_matrix_1a57b3db530375aca3a9e4c6523af78228" kind="function"><name>print_state_probs</name></member>
+  </compound>
   <compound refid="d0/dc7/class_record_projector" kind="class"><name>RecordProjector</name>
     <member refid="d0/dc7/class_record_projector_1a15755339d6ae94264e950519021e98b9" kind="variable"><name>_run_config</name></member>
     <member refid="d0/dc7/class_record_projector_1a7cab267d95df46ffce75f3c493b4ddd9" kind="variable"><name>_ta</name></member>
@@ -278,6 +290,7 @@
     <member refid="d0/dc7/class_record_projector_1a5fdf800844756c8e3c43fa99b520171b" kind="variable"><name>be_a_time_step_dependent</name></member>
     <member refid="d0/dc7/class_record_projector_1af5d101d3fe350dff47f4a389a3bc7fae" kind="variable"><name>risk_factors_current</name></member>
     <member refid="d0/dc7/class_record_projector_1ada2dd96b54162e47663e3b462aee07f9" kind="variable"><name>risk_factors_last_used</name></member>
+    <member refid="d0/dc7/class_record_projector_1a37ae1a887f344512c8ae6b616275caf9" kind="variable"><name>_be_states</name></member>
     <member refid="d0/dc7/class_record_projector_1a07a159912306b78f348f24bf01d922e7" kind="function"><name>adjust_assumptions_simple</name></member>
     <member refid="d0/dc7/class_record_projector_1a030ba27f569178802691fe7bc5e88451" kind="function"><name>set_relevant_risk_factors</name></member>
     <member refid="d0/dc7/class_record_projector_1a2f616509af72694ac6bd66722596f6c7" kind="function"><name>relevant_factor_changed</name></member>
@@ -301,8 +314,8 @@
     <member refid="d3/dd8/struct_run_parameters_term_1a2e2e8c5dbb84d4d5548136910d7a6b95" kind="variable"><name>shifted_age</name></member>
   </compound>
   <compound refid="da/dc0/class_run_result" kind="class"><name>RunResult</name>
-    <member refid="da/dc0/class_run_result_1aa61be54a8072cbe89f4c17ed7302c14b" kind="variable"><name>results</name></member>
     <member refid="da/dc0/class_run_result_1a69e59e76c78dec6ac5c924ab6a670b03" kind="variable"><name>_ta</name></member>
+    <member refid="da/dc0/class_run_result_1af096d6963eecb5a88ed6ff6bb1a67832" kind="variable"><name>_be_state_probs</name></member>
     <member refid="da/dc0/class_run_result_1ac2dc1938db73ddda7a27be4a8877ef74" kind="function"><name>copy_time_axis</name></member>
     <member refid="da/dc0/class_run_result_1a6e7a2c991482a6b574188cbbd5518281" kind="function"><name>RunResult</name></member>
     <member refid="da/dc0/class_run_result_1a9320b68e4d1c43868ae33739861e3cc4" kind="function"><name>RunResult</name></member>
@@ -347,6 +360,8 @@
     <member refid="d2/de2/cmain_8cpp_1a09548ebbdf29bbe35e412de2b1011635" kind="function"><name>run_calculation</name></member>
     <member refid="d2/de2/cmain_8cpp_1a840291bc02cba5474a4cb46a9b9566fe" kind="function"><name>main</name></member>
   </compound>
+  <compound refid="d0/dcb/core__readme_8md" kind="file"><name>core_readme.md</name>
+  </compound>
   <compound refid="db/d86/assumption__sets_8h" kind="file"><name>assumption_sets.h</name>
     <member refid="db/d86/assumption__sets_8h_1a641c12a58c3d951f1a034ef9f5b9bebd" kind="typedef"><name>PtrCBaseRateProvider</name></member>
     <member refid="db/d86/assumption__sets_8h_1a7c3062e7c68abb077992818311a7745d" kind="typedef"><name>MatPtrCBaseRateProvider</name></member>
@@ -377,6 +392,7 @@
   </compound>
   <compound refid="d8/d6c/portfolio_8h" kind="file"><name>portfolio.h</name>
     <member refid="d8/d6c/portfolio_8h_1ada3d08b9fb193aaf4dc6ad4bbaa1601d" kind="function"><name>get_age_at_date</name></member>
+    <member refid="d8/d6c/portfolio_8h_1a4afca78aff32a2634bfa260bbd1d8944" kind="function"><name>get_age_at_date</name></member>
   </compound>
   <compound refid="d0/d18/products_8h" kind="file"><name>products.h</name>
   </compound>
@@ -413,6 +429,10 @@
     <member refid="de/d7d/time__axis_8h_1a459de1cb56369f10852e8e736a741263" kind="function"><name>getdays_30E_360</name></member>
     <member refid="de/d7d/time__axis_8h_1afd3044d4daad3bd6c10ce5ffb7ddcf78" kind="function"><name>operator&lt;&lt;</name></member>
   </compound>
+  <compound refid="dir_49e56c817e5e54854c35e136979f97ca" kind="dir"><name>docs</name>
+  </compound>
   <compound refid="dir_e05d7e2b1ecd646af5bb94391405f3b5" kind="dir"><name>modules</name>
+  </compound>
+  <compound refid="indexpage" kind="page"><name>index</name>
   </compound>
 </doxygenindex>

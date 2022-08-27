@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['dimension_0',['dimension',['../d7/d5e/class_c_run_config.html#ab889588c78c87529348ce6226c54e8a0',1,'CRunConfig']]]
+  ['result_5fnames_0',['result_names',['../dc/dee/run__result_8h.html#a8dfffbe519e107dc550c3f456ce8f472',1,'run_result.h']]]
 ];
