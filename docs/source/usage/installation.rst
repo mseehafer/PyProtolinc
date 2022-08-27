@@ -22,12 +22,19 @@ from the root directory of the repository.
 Building the Documentation
 ----------------------------
 
-To build the docs locally *cd* into the *docs* subdirectory and run::
+To build the docs locally the first step is to build the xml output for the C++ documentation. To do that ``doxygen``
+needs to be installed and in the path. Change into the C++ root directory and build the docs::
+
+  cd src\pyprotolinc\actuarial\c_src
+  doxygen
+
+The second step is to *cd* into the *docs* subdirectory of the root folder and run::
 
   pip install -r requirements.txt
   make html
 
 On windows I needed to install *pandoc* as well and this worked using the conda package manager.
+
 
 Tests
 ----------
