@@ -22,7 +22,8 @@ sys.path.append("breathe")
 read_the_docs_build = os.environ.get('READTHEDOCS', None) == 'True'
 
 # if so run doxygen
-if read_the_docs_build or True:
+if read_the_docs_build:
+    subprocess.call('cd ../..; pip install -e .', shell=True)
     subprocess.call('cd ../../src/pyprotolinc/actuarial/c_src; doxygen', shell=True)
     # subprocess.call(r'cd ..\..\src\pyprotolinc\actuarial\c_src && doxygen', shell=True)
 
