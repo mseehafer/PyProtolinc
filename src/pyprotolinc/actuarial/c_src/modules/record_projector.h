@@ -214,9 +214,10 @@ public:
                                                                         _start_dates(_ta.get_start_dates()),
                                                                         _end_dates(_ta.get_end_dates()),
                                                                         _period_lengths(_ta.get_period_length_in_days()),
-                                                                        _record_be_assumptions(_run_config.get_be_assumptions().get_dimension()),
-                                                                        _be_states(make_unique<ProjectionStateMatrix>((int)_ta.get_length(), (int)_run_config.get_dimension()))
+                                                                        _record_be_assumptions(_run_config.get_be_assumptions().get_dimension())
+                                                                        
     {
+        _be_states = unique_ptr<ProjectionStateMatrix>(new ProjectionStateMatrix((int)_ta.get_length(), (int)_run_config.get_dimension()));
         // array containers for the current assumptions
         be_a_yearly = unique_ptr<double[]>(new double[_dimension * _dimension], std::default_delete<double[]>());
         be_a_time_step_dependent = unique_ptr<double[]>(new double[_dimension * _dimension], std::default_delete<double[]>());
