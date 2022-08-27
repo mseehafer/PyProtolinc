@@ -10,12 +10,21 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
+import subprocess
 import os
 import shutil
 
 import sys
 sys.path.insert(0, os.path.abspath('../../src'))
 sys.path.append("breathe")
+
+# check if this is a build on readthedocs, cf. https://breathe.readthedocs.io/en/latest/readthedocs.html
+read_the_docs_build = os.environ.get('READTHEDOCS', None) == 'True'
+
+# if so run doxygen
+if read_the_docs_build or True:
+    subprocess.call('cd ../../src/pyprotolinc/actuarial/c_src; doxygen', shell=True)
+    # subprocess.call(r'cd ..\..\src\pyprotolinc\actuarial\c_src && doxygen', shell=True)
 
 
 # Follow the link for a workaround that show how to include notebooks outside the
