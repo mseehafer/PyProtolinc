@@ -2,64 +2,70 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
   <compounddef id="d7/d5e/class_c_run_config" kind="class" language="C++" prot="public">
     <compoundname>CRunConfig</compoundname>
-      <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="d7/d5e/class_c_run_config_1ab889588c78c87529348ce6226c54e8a0" prot="protected" static="no" mutable="no">
+    <includes refid="dc/d35/run__config_8h" local="no">run_config.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="d7/d5e/class_c_run_config_1ab889588c78c87529348ce6226c54e8a0" prot="private" static="no" mutable="no">
         <type>unsigned int</type>
         <definition>unsigned int CRunConfig::dimension</definition>
         <argsstring></argsstring>
         <name>dimension</name>
         <qualifiedname>CRunConfig::dimension</qualifiedname>
         <briefdescription>
+<para>&lt; dimension of the state model </para>
         </briefdescription>
         <detaileddescription>
+<para>Time scale on which to calculate </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/run_config.h" line="22" column="18" bodyfile="modules/run_config.h" bodystart="22" bodyend="-1"/>
+        <location file="modules/run_config.h" line="34" column="18" bodyfile="modules/run_config.h" bodystart="34" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="d7/d5e/class_c_run_config_1a867bb78e1ea16fdb7e01d1313ee32b9e" prot="protected" static="no" mutable="no">
+      <memberdef kind="variable" id="d7/d5e/class_c_run_config_1a867bb78e1ea16fdb7e01d1313ee32b9e" prot="private" static="no" mutable="no">
         <type>TimeStep</type>
         <definition>TimeStep CRunConfig::_time_step</definition>
         <argsstring></argsstring>
         <name>_time_step</name>
         <qualifiedname>CRunConfig::_time_step</qualifiedname>
         <briefdescription>
+<para>Time scale on which to calculate. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/run_config.h" line="24" column="14" bodyfile="modules/run_config.h" bodystart="24" bodyend="-1"/>
+        <location file="modules/run_config.h" line="37" column="14" bodyfile="modules/run_config.h" bodystart="37" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="d7/d5e/class_c_run_config_1ad2b6cea3767c8d9142df4a787f2229b1" prot="protected" static="no" mutable="no">
+      <memberdef kind="variable" id="d7/d5e/class_c_run_config_1ad2b6cea3767c8d9142df4a787f2229b1" prot="private" static="no" mutable="no">
         <type>int</type>
         <definition>int CRunConfig::_years_to_simulate</definition>
         <argsstring></argsstring>
         <name>_years_to_simulate</name>
         <qualifiedname>CRunConfig::_years_to_simulate</qualifiedname>
         <briefdescription>
+<para>Number of cpus to use. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/run_config.h" line="25" column="9" bodyfile="modules/run_config.h" bodystart="25" bodyend="-1"/>
+        <location file="modules/run_config.h" line="40" column="9" bodyfile="modules/run_config.h" bodystart="40" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="d7/d5e/class_c_run_config_1a72116627dfcf7f0444376ba119eb98d1" prot="protected" static="no" mutable="no">
+      <memberdef kind="variable" id="d7/d5e/class_c_run_config_1a72116627dfcf7f0444376ba119eb98d1" prot="private" static="no" mutable="no">
         <type>int</type>
         <definition>int CRunConfig::_num_cpus</definition>
         <argsstring></argsstring>
         <name>_num_cpus</name>
         <qualifiedname>CRunConfig::_num_cpus</qualifiedname>
         <briefdescription>
+<para>Use multicore flag. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/run_config.h" line="27" column="9" bodyfile="modules/run_config.h" bodystart="27" bodyend="-1"/>
+        <location file="modules/run_config.h" line="43" column="9" bodyfile="modules/run_config.h" bodystart="43" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="d7/d5e/class_c_run_config_1af9d38b6c170bd99440bb1360fa3c58bd" prot="protected" static="no" mutable="no">
+      <memberdef kind="variable" id="d7/d5e/class_c_run_config_1af9d38b6c170bd99440bb1360fa3c58bd" prot="private" static="no" mutable="no">
         <type>bool</type>
         <definition>bool CRunConfig::_use_multicore</definition>
         <argsstring></argsstring>
@@ -71,9 +77,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/run_config.h" line="28" column="10" bodyfile="modules/run_config.h" bodystart="28" bodyend="-1"/>
+        <location file="modules/run_config.h" line="46" column="10" bodyfile="modules/run_config.h" bodystart="46" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="d7/d5e/class_c_run_config_1af250935eb4e5e17358731b11b406d153" prot="protected" static="no" mutable="no">
+      <memberdef kind="variable" id="d7/d5e/class_c_run_config_1af250935eb4e5e17358731b11b406d153" prot="private" static="no" mutable="no">
         <type>shared_ptr&lt; <ref refid="de/d6a/class_c_assumption_set" kindref="compound">CAssumptionSet</ref> &gt;</type>
         <definition>shared_ptr&lt;CAssumptionSet&gt; CRunConfig::be_assumptions</definition>
         <argsstring></argsstring>
@@ -85,9 +91,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/run_config.h" line="31" column="16" bodyfile="modules/run_config.h" bodystart="31" bodyend="-1"/>
+        <location file="modules/run_config.h" line="49" column="16" bodyfile="modules/run_config.h" bodystart="49" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="d7/d5e/class_c_run_config_1a16ecdddebe0f4df61b2aed1adf3efeed" prot="protected" static="no" mutable="no">
+      <memberdef kind="variable" id="d7/d5e/class_c_run_config_1a16ecdddebe0f4df61b2aed1adf3efeed" prot="private" static="no" mutable="no">
         <type>shared_ptr&lt; vector&lt; shared_ptr&lt; <ref refid="de/d6a/class_c_assumption_set" kindref="compound">CAssumptionSet</ref> &gt; &gt; &gt;</type>
         <definition>shared_ptr&lt;vector&lt;shared_ptr&lt;CAssumptionSet&gt; &gt; &gt; CRunConfig::other_assumptions</definition>
         <argsstring></argsstring>
@@ -100,7 +106,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/run_config.h" line="32" column="16" bodyfile="modules/run_config.h" bodystart="32" bodyend="-1"/>
+        <location file="modules/run_config.h" line="50" column="16" bodyfile="modules/run_config.h" bodystart="50" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -135,12 +141,63 @@
           <declname>_be_assumptions</declname>
         </param>
         <briefdescription>
+<para>Construct a new <ref refid="d7/d5e/class_c_run_config" kindref="compound">CRunConfig</ref> object. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>_dim</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Dimension of the state model </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>time_step</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Time scale on which to calculate </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>years_to_simulate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Time scale on which to calculate </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>num_cpus</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of cpus to use if <computeroutput>use_multicore=true</computeroutput> </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>use_multicore</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Use multicore flag </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>_be_assumptions</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Best estimate assumptions </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/run_config.h" line="36" column="5" bodyfile="modules/run_config.h" bodystart="36" bodyend="53"/>
+        <location file="modules/run_config.h" line="63" column="5" bodyfile="modules/run_config.h" bodystart="63" bodyend="79"/>
       </memberdef>
       <memberdef kind="function" id="d7/d5e/class_c_run_config_1ad4f1e3d841f51e1be732613da6b03805" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>int</type>
@@ -154,7 +211,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/run_config.h" line="55" column="9" bodyfile="modules/run_config.h" bodystart="55" bodyend="55"/>
+        <location file="modules/run_config.h" line="81" column="9" bodyfile="modules/run_config.h" bodystart="81" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="d7/d5e/class_c_run_config_1a4ccb593be2772b615b0174c8b9152fd1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -168,7 +225,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/run_config.h" line="56" column="10" bodyfile="modules/run_config.h" bodystart="56" bodyend="56"/>
+        <location file="modules/run_config.h" line="82" column="10" bodyfile="modules/run_config.h" bodystart="82" bodyend="82"/>
       </memberdef>
       <memberdef kind="function" id="d7/d5e/class_c_run_config_1a8b72e0d630d405343191558671c267eb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>TimeStep</type>
@@ -182,7 +239,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/run_config.h" line="57" column="14" bodyfile="modules/run_config.h" bodystart="57" bodyend="57"/>
+        <location file="modules/run_config.h" line="83" column="14" bodyfile="modules/run_config.h" bodystart="83" bodyend="83"/>
       </memberdef>
       <memberdef kind="function" id="d7/d5e/class_c_run_config_1a23afbd5db5740f39b573b599bf7136cf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>int</type>
@@ -196,7 +253,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/run_config.h" line="58" column="9" bodyfile="modules/run_config.h" bodystart="58" bodyend="58"/>
+        <location file="modules/run_config.h" line="84" column="9" bodyfile="modules/run_config.h" bodystart="84" bodyend="84"/>
       </memberdef>
       <memberdef kind="function" id="d7/d5e/class_c_run_config_1aa0cd7f805bc475cfff78734abfb195ec" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>unsigned int</type>
@@ -205,12 +262,13 @@
         <name>get_dimension</name>
         <qualifiedname>CRunConfig::get_dimension</qualifiedname>
         <briefdescription>
+<para>Add an auxiliary assumption set. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/run_config.h" line="59" column="18" bodyfile="modules/run_config.h" bodystart="59" bodyend="59"/>
+        <location file="modules/run_config.h" line="85" column="18" bodyfile="modules/run_config.h" bodystart="85" bodyend="-1"/>
       </memberdef>
       <memberdef kind="function" id="d7/d5e/class_c_run_config_1aa46c8ed16ae4b837f9406ec28d5f0ba3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -228,7 +286,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/run_config.h" line="61" column="10" bodyfile="modules/run_config.h" bodystart="61" bodyend="68"/>
+        <location file="modules/run_config.h" line="88" column="10" bodyfile="modules/run_config.h" bodystart="88" bodyend="91"/>
       </memberdef>
       <memberdef kind="function" id="d7/d5e/class_c_run_config_1ade91ef2293cf3c4f1049eb002cadbf45" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="de/d6a/class_c_assumption_set" kindref="compound">CAssumptionSet</ref> &amp;</type>
@@ -242,7 +300,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/run_config.h" line="70" column="26" bodyfile="modules/run_config.h" bodystart="70" bodyend="73"/>
+        <location file="modules/run_config.h" line="93" column="26" bodyfile="modules/run_config.h" bodystart="93" bodyend="96"/>
       </memberdef>
       <memberdef kind="function" id="d7/d5e/class_c_run_config_1a455c5c665cd51bec115f2bc0f2901ddb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const vector&lt; shared_ptr&lt; <ref refid="de/d6a/class_c_assumption_set" kindref="compound">CAssumptionSet</ref> &gt; &gt; &amp;</type>
@@ -256,23 +314,24 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/run_config.h" line="75" column="18" bodyfile="modules/run_config.h" bodystart="75" bodyend="78"/>
+        <location file="modules/run_config.h" line="98" column="18" bodyfile="modules/run_config.h" bodystart="98" bodyend="101"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Container with configuration parameters. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="modules/run_config.h" line="17" column="1" bodyfile="modules/run_config.h" bodystart="18" bodyend="83"/>
+    <location file="modules/run_config.h" line="29" column="1" bodyfile="modules/run_config.h" bodystart="30" bodyend="103"/>
     <listofallmembers>
-      <member refid="d7/d5e/class_c_run_config_1a72116627dfcf7f0444376ba119eb98d1" prot="protected" virt="non-virtual"><scope>CRunConfig</scope><name>_num_cpus</name></member>
-      <member refid="d7/d5e/class_c_run_config_1a867bb78e1ea16fdb7e01d1313ee32b9e" prot="protected" virt="non-virtual"><scope>CRunConfig</scope><name>_time_step</name></member>
-      <member refid="d7/d5e/class_c_run_config_1af9d38b6c170bd99440bb1360fa3c58bd" prot="protected" virt="non-virtual"><scope>CRunConfig</scope><name>_use_multicore</name></member>
-      <member refid="d7/d5e/class_c_run_config_1ad2b6cea3767c8d9142df4a787f2229b1" prot="protected" virt="non-virtual"><scope>CRunConfig</scope><name>_years_to_simulate</name></member>
+      <member refid="d7/d5e/class_c_run_config_1a72116627dfcf7f0444376ba119eb98d1" prot="private" virt="non-virtual"><scope>CRunConfig</scope><name>_num_cpus</name></member>
+      <member refid="d7/d5e/class_c_run_config_1a867bb78e1ea16fdb7e01d1313ee32b9e" prot="private" virt="non-virtual"><scope>CRunConfig</scope><name>_time_step</name></member>
+      <member refid="d7/d5e/class_c_run_config_1af9d38b6c170bd99440bb1360fa3c58bd" prot="private" virt="non-virtual"><scope>CRunConfig</scope><name>_use_multicore</name></member>
+      <member refid="d7/d5e/class_c_run_config_1ad2b6cea3767c8d9142df4a787f2229b1" prot="private" virt="non-virtual"><scope>CRunConfig</scope><name>_years_to_simulate</name></member>
       <member refid="d7/d5e/class_c_run_config_1aa46c8ed16ae4b837f9406ec28d5f0ba3" prot="public" virt="non-virtual"><scope>CRunConfig</scope><name>add_assumption_set</name></member>
-      <member refid="d7/d5e/class_c_run_config_1af250935eb4e5e17358731b11b406d153" prot="protected" virt="non-virtual"><scope>CRunConfig</scope><name>be_assumptions</name></member>
+      <member refid="d7/d5e/class_c_run_config_1af250935eb4e5e17358731b11b406d153" prot="private" virt="non-virtual"><scope>CRunConfig</scope><name>be_assumptions</name></member>
       <member refid="d7/d5e/class_c_run_config_1ae85777eaae2941c144151813e21785d3" prot="public" virt="non-virtual"><scope>CRunConfig</scope><name>CRunConfig</name></member>
-      <member refid="d7/d5e/class_c_run_config_1ab889588c78c87529348ce6226c54e8a0" prot="protected" virt="non-virtual"><scope>CRunConfig</scope><name>dimension</name></member>
+      <member refid="d7/d5e/class_c_run_config_1ab889588c78c87529348ce6226c54e8a0" prot="private" virt="non-virtual"><scope>CRunConfig</scope><name>dimension</name></member>
       <member refid="d7/d5e/class_c_run_config_1ade91ef2293cf3c4f1049eb002cadbf45" prot="public" virt="non-virtual"><scope>CRunConfig</scope><name>get_be_assumptions</name></member>
       <member refid="d7/d5e/class_c_run_config_1ad4f1e3d841f51e1be732613da6b03805" prot="public" virt="non-virtual"><scope>CRunConfig</scope><name>get_cpu_count</name></member>
       <member refid="d7/d5e/class_c_run_config_1aa0cd7f805bc475cfff78734abfb195ec" prot="public" virt="non-virtual"><scope>CRunConfig</scope><name>get_dimension</name></member>
@@ -280,7 +339,7 @@
       <member refid="d7/d5e/class_c_run_config_1a8b72e0d630d405343191558671c267eb" prot="public" virt="non-virtual"><scope>CRunConfig</scope><name>get_time_step</name></member>
       <member refid="d7/d5e/class_c_run_config_1a4ccb593be2772b615b0174c8b9152fd1" prot="public" virt="non-virtual"><scope>CRunConfig</scope><name>get_use_multicore</name></member>
       <member refid="d7/d5e/class_c_run_config_1a23afbd5db5740f39b573b599bf7136cf" prot="public" virt="non-virtual"><scope>CRunConfig</scope><name>get_years_to_simulate</name></member>
-      <member refid="d7/d5e/class_c_run_config_1a16ecdddebe0f4df61b2aed1adf3efeed" prot="protected" virt="non-virtual"><scope>CRunConfig</scope><name>other_assumptions</name></member>
+      <member refid="d7/d5e/class_c_run_config_1a16ecdddebe0f4df61b2aed1adf3efeed" prot="private" virt="non-virtual"><scope>CRunConfig</scope><name>other_assumptions</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

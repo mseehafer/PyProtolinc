@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
   <compounddef id="da/df0/class_runner" kind="class" language="C++" prot="public">
     <compoundname>Runner</compoundname>
+    <includes refid="d8/d4d/runner_8h" local="no">runner.h</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="da/df0/class_runner_1af2a6db8a99e8f0307e4054c1ef44fc76" prot="private" static="no" mutable="no">
         <type>int</type>
@@ -10,12 +11,14 @@
         <name>_runner_no</name>
         <qualifiedname>Runner::_runner_no</qualifiedname>
         <briefdescription>
+<para>&lt; Number of this runner. </para>
         </briefdescription>
         <detaileddescription>
+<para>Run configuration object. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/runner.h" line="24" column="9" bodyfile="modules/runner.h" bodystart="24" bodyend="-1"/>
+        <location file="modules/runner.h" line="38" column="9" bodyfile="modules/runner.h" bodystart="38" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="da/df0/class_runner_1a0d528dc050eff3246ed54b50d3781b3f" prot="private" static="no" mutable="no">
         <type>const <ref refid="d7/d5e/class_c_run_config" kindref="compound">CRunConfig</ref> &amp;</type>
@@ -24,12 +27,13 @@
         <name>_run_config</name>
         <qualifiedname>Runner::_run_config</qualifiedname>
         <briefdescription>
+<para>The (sub-)portfolio that shall be valued. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/runner.h" line="26" column="22" bodyfile="modules/runner.h" bodystart="26" bodyend="-1"/>
+        <location file="modules/runner.h" line="41" column="22" bodyfile="modules/runner.h" bodystart="41" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="da/df0/class_runner_1aa4c54e171c93fe95f52243815d5f58f9" prot="private" static="no" mutable="no">
         <type>const shared_ptr&lt; <ref refid="d5/dfd/class_c_policy_portfolio" kindref="compound">CPolicyPortfolio</ref> &gt;</type>
@@ -38,12 +42,13 @@
         <name>_ptr_portfolio</name>
         <qualifiedname>Runner::_ptr_portfolio</qualifiedname>
         <briefdescription>
+<para>Time axis to be used for the simulation. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/runner.h" line="28" column="22" bodyfile="modules/runner.h" bodystart="28" bodyend="-1"/>
+        <location file="modules/runner.h" line="44" column="22" bodyfile="modules/runner.h" bodystart="44" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="da/df0/class_runner_1ae50bfa263025f11df9c893bed7c32a8d" prot="private" static="no" mutable="no">
         <type>const shared_ptr&lt; <ref refid="de/d63/class_time_axis" kindref="compound">TimeAxis</ref> &gt;</type>
@@ -52,12 +57,13 @@
         <name>_ta</name>
         <qualifiedname>Runner::_ta</qualifiedname>
         <briefdescription>
+<para>projection engine for single policy </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/runner.h" line="30" column="22" bodyfile="modules/runner.h" bodystart="30" bodyend="-1"/>
+        <location file="modules/runner.h" line="47" column="22" bodyfile="modules/runner.h" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="da/df0/class_runner_1aac363a7b3f7bbe246cd7315bccf834ca" prot="private" static="no" mutable="no">
         <type><ref refid="d0/dc7/class_record_projector" kindref="compound">RecordProjector</ref></type>
@@ -66,12 +72,13 @@
         <name>_record_projector</name>
         <qualifiedname>Runner::_record_projector</qualifiedname>
         <briefdescription>
+<para>the result of the single record </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/runner.h" line="33" column="21" bodyfile="modules/runner.h" bodystart="33" bodyend="-1"/>
+        <location file="modules/runner.h" line="50" column="21" bodyfile="modules/runner.h" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="da/df0/class_runner_1af21811b8dc8d615f37f72300cd40ca60" prot="private" static="no" mutable="no">
         <type><ref refid="da/dc0/class_run_result" kindref="compound">RunResult</ref></type>
@@ -85,7 +92,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/runner.h" line="36" column="15" bodyfile="modules/runner.h" bodystart="36" bodyend="-1"/>
+        <location file="modules/runner.h" line="53" column="15" bodyfile="modules/runner.h" bodystart="53" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -112,12 +119,47 @@
           <declname>ta</declname>
         </param>
         <briefdescription>
+<para>Construct a new <ref refid="da/df0/class_runner" kindref="compound">Runner</ref> object. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>runner_no</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of this runner. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ptr_portfolio</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The (sub-)portfolio of type <ref refid="d5/dfd/class_c_policy_portfolio" kindref="compound">CPolicyPortfolio</ref> that shall be valued. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>run_config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="d7/d5e/class_c_run_config" kindref="compound">CRunConfig</ref> configuration object. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ta</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Time axis to be used for the simulation. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/runner.h" line="39" column="5" bodyfile="modules/runner.h" bodystart="39" bodyend="47"/>
+        <location file="modules/runner.h" line="64" column="5" bodyfile="modules/runner.h" bodystart="64" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="da/df0/class_runner_1a76a0b06c73f89b7c34c700c3324b3527" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -130,19 +172,21 @@
           <declname>run_result</declname>
         </param>
         <briefdescription>
+<para>Starts the main loop over the policies in the portfolio and combines the results. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/runner.h" line="49" column="10" bodyfile="modules/runner.h" bodystart="52" bodyend="69"/>
+        <location file="modules/runner.h" line="75" column="10" bodyfile="modules/runner.h" bodystart="78" bodyend="93"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Provides an interface to the calculation functionality for a portfolio that will be made in one sequential batch. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="modules/runner.h" line="21" column="1" bodyfile="modules/runner.h" bodystart="22" bodyend="50"/>
+    <location file="modules/runner.h" line="34" column="1" bodyfile="modules/runner.h" bodystart="35" bodyend="76"/>
     <listofallmembers>
       <member refid="da/df0/class_runner_1aa4c54e171c93fe95f52243815d5f58f9" prot="private" virt="non-virtual"><scope>Runner</scope><name>_ptr_portfolio</name></member>
       <member refid="da/df0/class_runner_1aac363a7b3f7bbe246cd7315bccf834ca" prot="private" virt="non-virtual"><scope>Runner</scope><name>_record_projector</name></member>

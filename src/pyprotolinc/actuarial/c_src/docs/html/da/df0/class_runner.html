@@ -76,16 +76,84 @@ $(function() {
   <div class="headertitle"><div class="title">Runner Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Provides an interface to the calculation functionality for a portfolio that will be made in one sequential batch.  
+ <a href="../../da/df0/class_runner.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="../../d8/d4d/runner_8h_source.html">runner.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a44fb152099d6abceb628418d82c6299c"><td class="memItemLeft" align="right" valign="top"><a id="a44fb152099d6abceb628418d82c6299c" name="a44fb152099d6abceb628418d82c6299c"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Runner</b> (int runner_no, const shared_ptr&lt; <a class="el" href="../../d5/dfd/class_c_policy_portfolio.html">CPolicyPortfolio</a> &gt; ptr_portfolio, const <a class="el" href="../../d7/d5e/class_c_run_config.html">CRunConfig</a> &amp;run_config, const shared_ptr&lt; <a class="el" href="../../de/d63/class_time_axis.html">TimeAxis</a> &gt; ta)</td></tr>
+<tr class="memitem:a44fb152099d6abceb628418d82c6299c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/df0/class_runner.html#a44fb152099d6abceb628418d82c6299c">Runner</a> (int runner_no, const shared_ptr&lt; <a class="el" href="../../d5/dfd/class_c_policy_portfolio.html">CPolicyPortfolio</a> &gt; ptr_portfolio, const <a class="el" href="../../d7/d5e/class_c_run_config.html">CRunConfig</a> &amp;run_config, const shared_ptr&lt; <a class="el" href="../../de/d63/class_time_axis.html">TimeAxis</a> &gt; ta)</td></tr>
+<tr class="memdesc:a44fb152099d6abceb628418d82c6299c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="../../da/df0/class_runner.html" title="Provides an interface to the calculation functionality for a portfolio that will be made in one seque...">Runner</a> object.  <a href="../../da/df0/class_runner.html#a44fb152099d6abceb628418d82c6299c">More...</a><br /></td></tr>
 <tr class="separator:a44fb152099d6abceb628418d82c6299c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76a0b06c73f89b7c34c700c3324b3527"><td class="memItemLeft" align="right" valign="top"><a id="a76a0b06c73f89b7c34c700c3324b3527" name="a76a0b06c73f89b7c34c700c3324b3527"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>run</b> (<a class="el" href="../../da/dc0/class_run_result.html">RunResult</a> &amp;run_result)</td></tr>
+<tr class="memdesc:a76a0b06c73f89b7c34c700c3324b3527"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the main loop over the policies in the portfolio and combines the results. <br /></td></tr>
 <tr class="separator:a76a0b06c73f89b7c34c700c3324b3527"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Provides an interface to the calculation functionality for a portfolio that will be made in one sequential batch. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a44fb152099d6abceb628418d82c6299c" name="a44fb152099d6abceb628418d82c6299c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44fb152099d6abceb628418d82c6299c">&#9670;&#160;</a></span>Runner()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Runner::Runner </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>runner_no</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const shared_ptr&lt; <a class="el" href="../../d5/dfd/class_c_policy_portfolio.html">CPolicyPortfolio</a> &gt;&#160;</td>
+          <td class="paramname"><em>ptr_portfolio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d7/d5e/class_c_run_config.html">CRunConfig</a> &amp;&#160;</td>
+          <td class="paramname"><em>run_config</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const shared_ptr&lt; <a class="el" href="../../de/d63/class_time_axis.html">TimeAxis</a> &gt;&#160;</td>
+          <td class="paramname"><em>ta</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct a new <a class="el" href="../../da/df0/class_runner.html" title="Provides an interface to the calculation functionality for a portfolio that will be made in one seque...">Runner</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">runner_no</td><td>Number of this runner. </td></tr>
+    <tr><td class="paramname">ptr_portfolio</td><td>The (sub-)portfolio of type <a class="el" href="../../d5/dfd/class_c_policy_portfolio.html" title="A portfolio of policies.">CPolicyPortfolio</a> that shall be valued. </td></tr>
+    <tr><td class="paramname">run_config</td><td><a class="el" href="../../d7/d5e/class_c_run_config.html" title="Container with configuration parameters.">CRunConfig</a> configuration object. </td></tr>
+    <tr><td class="paramname">ta</td><td>Time axis to be used for the simulation. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>modules/<a class="el" href="../../d8/d4d/runner_8h_source.html">runner.h</a></li>
 </ul>

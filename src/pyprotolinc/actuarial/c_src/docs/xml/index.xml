@@ -47,32 +47,26 @@
   </compound>
   <compound refid="d5/d61/class_c_policy" kind="class"><name>CPolicy</name>
     <member refid="d5/d61/class_c_policy_1a6f5038f7e71b09e6f6adb56d305b1358" kind="variable"><name>cession_id</name></member>
-    <member refid="d5/d61/class_c_policy_1abb93a8d4d42fbe6bc6b1bf584d71ad8e" kind="variable"><name>issue_year</name></member>
-    <member refid="d5/d61/class_c_policy_1a0cd616ccfbba06f10b711940d1ff7eb6" kind="variable"><name>issue_month</name></member>
-    <member refid="d5/d61/class_c_policy_1adf87660bef6ac41895fd4361ce9537dd" kind="variable"><name>issue_day</name></member>
-    <member refid="d5/d61/class_c_policy_1a3b14cafe295113094600794f51a02dc4" kind="variable"><name>dob_year</name></member>
-    <member refid="d5/d61/class_c_policy_1a2368743e6cfc5470fdeb730f3b4db36d" kind="variable"><name>dob_month</name></member>
-    <member refid="d5/d61/class_c_policy_1aa30d9c94bf34c1a552e7da28b4dfddc1" kind="variable"><name>dob_day</name></member>
+    <member refid="d5/d61/class_c_policy_1a492ab98e29bb45da519449f0db546712" kind="variable"><name>issue_date</name></member>
+    <member refid="d5/d61/class_c_policy_1a008d5b1c2e6b423bbebad85890260db9" kind="variable"><name>dob</name></member>
     <member refid="d5/d61/class_c_policy_1a43e3c393071dcdfea9d1d8fb19bccb02" kind="variable"><name>_has_disablement_date</name></member>
-    <member refid="d5/d61/class_c_policy_1abf977d1c834aa8cfe77d74d1c4d61d05" kind="variable"><name>date_dis_year</name></member>
-    <member refid="d5/d61/class_c_policy_1ac47bf02c59a96962dc93b5237460390c" kind="variable"><name>date_dis_month</name></member>
-    <member refid="d5/d61/class_c_policy_1a149fdf987c9d38072acc6f5cdf310523" kind="variable"><name>date_dis_day</name></member>
+    <member refid="d5/d61/class_c_policy_1a77741c75f08996136b508d13dd244b38" kind="variable"><name>date_dis</name></member>
     <member refid="d5/d61/class_c_policy_1acd9ce9a5ea68e1d07869a5d735156b2f" kind="variable"><name>gender</name></member>
     <member refid="d5/d61/class_c_policy_1a38a7455428c382a00d1a9e8521992582" kind="variable"><name>smoker_status</name></member>
     <member refid="d5/d61/class_c_policy_1abba817cdec1d2b65b26c7df19070fbb5" kind="variable"><name>sum_insured</name></member>
     <member refid="d5/d61/class_c_policy_1a65114317473890c9e4e7b156326725d8" kind="variable"><name>reserving_rate</name></member>
     <member refid="d5/d61/class_c_policy_1a89bd1d0fc1f27f06b40889c845cec141" kind="variable"><name>product</name></member>
     <member refid="d5/d61/class_c_policy_1a34d17a783c11cf18fcae8362a7277d09" kind="function"><name>get_cession_id</name></member>
-    <member refid="d5/d61/class_c_policy_1a80861708c461d3fc29de2ff9c480d889" kind="function"><name>get_issue_year</name></member>
-    <member refid="d5/d61/class_c_policy_1afe0aeedf4a5b8281d72ef05a7df26eb3" kind="function"><name>get_issue_month</name></member>
-    <member refid="d5/d61/class_c_policy_1ac5c0a3ab05bc7ca97ea314c7025ff556" kind="function"><name>get_issue_day</name></member>
-    <member refid="d5/d61/class_c_policy_1a2ebb6a5e4bd6c6b73ef4c7484deb905c" kind="function"><name>get_dob_year</name></member>
-    <member refid="d5/d61/class_c_policy_1aedbd7569d4ca3cb5798710482b950970" kind="function"><name>get_dob_month</name></member>
-    <member refid="d5/d61/class_c_policy_1ad683b20860f8a607712fa90b4ade58b0" kind="function"><name>get_dob_day</name></member>
+    <member refid="d5/d61/class_c_policy_1a79a08ce9d4e21f52e5a4e2ff04be6095" kind="function"><name>get_issue_year</name></member>
+    <member refid="d5/d61/class_c_policy_1a2eae21fca249316aeab9f40d8d85797d" kind="function"><name>get_issue_month</name></member>
+    <member refid="d5/d61/class_c_policy_1ab1f6b259443e085de5b4e2fcefa6fa34" kind="function"><name>get_issue_day</name></member>
+    <member refid="d5/d61/class_c_policy_1a81eda3f54e8f8b437aae1661ac838ac4" kind="function"><name>get_dob_year</name></member>
+    <member refid="d5/d61/class_c_policy_1a88793fb61720abdfb78d69ce4341486d" kind="function"><name>get_dob_month</name></member>
+    <member refid="d5/d61/class_c_policy_1affa8ad68a8933bb0b0c3c1ca6c1c7b6c" kind="function"><name>get_dob_day</name></member>
     <member refid="d5/d61/class_c_policy_1ae541465b14f4f1da095a24f013173231" kind="function"><name>has_disablement_date</name></member>
-    <member refid="d5/d61/class_c_policy_1a4b730799c1e66a6faaf922e3c82f142c" kind="function"><name>get_date_dis_year</name></member>
-    <member refid="d5/d61/class_c_policy_1ab6daa00f7411575a037818a04ccd8c97" kind="function"><name>get_date_dis_month</name></member>
-    <member refid="d5/d61/class_c_policy_1a5aa84f060f3f44673e32f9ac63a82191" kind="function"><name>get_date_dis_day</name></member>
+    <member refid="d5/d61/class_c_policy_1ae0412e7a67459d13be2d27d7086df22e" kind="function"><name>get_date_dis_year</name></member>
+    <member refid="d5/d61/class_c_policy_1aae2da360e67521d6e718118dde7243a1" kind="function"><name>get_date_dis_month</name></member>
+    <member refid="d5/d61/class_c_policy_1a7fa9d008e23d4432864f61e2d84b302e" kind="function"><name>get_date_dis_day</name></member>
     <member refid="d5/d61/class_c_policy_1ab6ff71c6850b2398f1a7ff54e094ba07" kind="function"><name>get_gender</name></member>
     <member refid="d5/d61/class_c_policy_1a376b8b1b506131e717cb0da4ccdc7c6a" kind="function"><name>get_smoker_status</name></member>
     <member refid="d5/d61/class_c_policy_1a642abb4e6c77af0175de24882432eb0f" kind="function"><name>get_sum_insured</name></member>
@@ -84,14 +78,15 @@
   <compound refid="d5/dfd/class_c_policy_portfolio" kind="class"><name>CPolicyPortfolio</name>
     <member refid="d5/dfd/class_c_policy_portfolio_1af6f3022b239ec6dfb0395eb823bd1b83" kind="variable"><name>_policies</name></member>
     <member refid="d5/dfd/class_c_policy_portfolio_1ab1fb5c999d0a7633140a59bc091fddb7" kind="variable"><name>_num_policies</name></member>
-    <member refid="d5/dfd/class_c_policy_portfolio_1afbbccfe6aad06351151c457db8d63f2f" kind="variable"><name>_ptf_year</name></member>
-    <member refid="d5/dfd/class_c_policy_portfolio_1a8b78ba037a1e1bcbcb4503668fa278ed" kind="variable"><name>_ptf_month</name></member>
-    <member refid="d5/dfd/class_c_policy_portfolio_1aff2cbf2d55dd2617c45a737ec78d86e2" kind="variable"><name>_ptf_day</name></member>
+    <member refid="d5/dfd/class_c_policy_portfolio_1a7cc924e530241a21762ac033741643ac" kind="variable"><name>_portfolio_date</name></member>
+    <member refid="d5/dfd/class_c_policy_portfolio_1a0a0d22e4965af034e3c9c9844a7503b0" kind="friend"><name>CPortfolioBuilder</name></member>
+    <member refid="d5/dfd/class_c_policy_portfolio_1ac54477ea72cef0772c4b648db5755d6c" kind="function"><name>reserve</name></member>
     <member refid="d5/dfd/class_c_policy_portfolio_1a5d254e7c6c00d0c2016664a4f96992ca" kind="function"><name>CPolicyPortfolio</name></member>
+    <member refid="d5/dfd/class_c_policy_portfolio_1a814fb2745b56539a24654802f6beb7e2" kind="function"><name>CPolicyPortfolio</name></member>
+    <member refid="d5/dfd/class_c_policy_portfolio_1a6a5a4ac63b749a88034d9ac91782e8af" kind="function"><name>get_portfolio_date</name></member>
     <member refid="d5/dfd/class_c_policy_portfolio_1a44a25d9fa168e79f807add11f4367670" kind="function"><name>get_policies</name></member>
     <member refid="d5/dfd/class_c_policy_portfolio_1ac8555a243c38760c21360fdd8fd6e84c" kind="function"><name>size</name></member>
     <member refid="d5/dfd/class_c_policy_portfolio_1a52506b291d31414a9f04171d10ec1d22" kind="function"><name>add</name></member>
-    <member refid="d5/dfd/class_c_policy_portfolio_1ac54477ea72cef0772c4b648db5755d6c" kind="function"><name>reserve</name></member>
     <member refid="d5/dfd/class_c_policy_portfolio_1ad344ddf436066f098cdbd8bb44960b2d" kind="function"><name>at</name></member>
   </compound>
   <compound refid="d5/d9c/class_c_portfolio" kind="class"><name>CPortfolio</name>
@@ -231,10 +226,10 @@
     <member refid="de/d30/class_generic_mortality_product_1a597d82a76411d2d28893448d6d74ba89" kind="function"><name>is_premium_due</name></member>
   </compound>
   <compound refid="d1/d5b/class_meta_runner" kind="class"><name>MetaRunner</name>
-    <member refid="d1/d5b/class_meta_runner_1a9b611df30450b2e457e63dfff4198d40" kind="variable"><name>run_config</name></member>
-    <member refid="d1/d5b/class_meta_runner_1a2b02033a0dd6f3d91f4dc716165320c9" kind="variable"><name>ptr_portfolio</name></member>
+    <member refid="d1/d5b/class_meta_runner_1a2b2cb63448bf6afe7087160ce4bd5c46" kind="variable"><name>_run_config</name></member>
+    <member refid="d1/d5b/class_meta_runner_1a14ffb1fd3074f8bd48072d3fc322044c" kind="variable"><name>_ptr_portfolio</name></member>
     <member refid="d1/d5b/class_meta_runner_1acfb6bcdd0134faa773e44ca4a99f412e" kind="variable"><name>_ta</name></member>
-    <member refid="d1/d5b/class_meta_runner_1a2788ca0fead57f27eee438916cf6d65c" kind="function"><name>MetaRunner</name></member>
+    <member refid="d1/d5b/class_meta_runner_1a5bd8abcde4efddc27155c7e3d8654d01" kind="function"><name>MetaRunner</name></member>
     <member refid="d1/d5b/class_meta_runner_1a330fc3e6bff0c33e5a047384f2fd15ae" kind="function"><name>get_num_groups</name></member>
     <member refid="d1/d5b/class_meta_runner_1aae41407bc33319e6971a138fae444a2c" kind="function"><name>run</name></member>
   </compound>
@@ -268,6 +263,7 @@
     <member refid="d5/d2d/struct_period_date_1aef6c0144ff5a942edcff6eeae89f7024" kind="function"><name>set_next_end_of_month</name></member>
     <member refid="d5/d2d/struct_period_date_1afd08b8a51039ccc0c9175ed066a33f9f" kind="function"><name>set_next_end_of_quarter</name></member>
     <member refid="d5/d2d/struct_period_date_1a98a8b3e7e5e2b7271631ffe5f3b0bd75" kind="function"><name>set_next_end_of_year</name></member>
+    <member refid="d5/d2d/struct_period_date_1a29691d71011b0394ac1a0180869b6ef9" kind="function"><name>set_from_long</name></member>
   </compound>
   <compound refid="d0/dc7/class_record_projector" kind="class"><name>RecordProjector</name>
     <member refid="d0/dc7/class_record_projector_1a15755339d6ae94264e950519021e98b9" kind="variable"><name>_run_config</name></member>
@@ -285,9 +281,9 @@
     <member refid="d0/dc7/class_record_projector_1a07a159912306b78f348f24bf01d922e7" kind="function"><name>adjust_assumptions_simple</name></member>
     <member refid="d0/dc7/class_record_projector_1a030ba27f569178802691fe7bc5e88451" kind="function"><name>set_relevant_risk_factors</name></member>
     <member refid="d0/dc7/class_record_projector_1a2f616509af72694ac6bd66722596f6c7" kind="function"><name>relevant_factor_changed</name></member>
-    <member refid="d0/dc7/class_record_projector_1aae1e6c22acb37d9e0c98400d28397015" kind="function"><name>RecordProjector</name></member>
     <member refid="d0/dc7/class_record_projector_1ab0cddf8a97abd989eee728efb2d08c3a" kind="function"><name>clear</name></member>
     <member refid="d0/dc7/class_record_projector_1a7f3f5bd8c0eb430aafcb558103deae29" kind="function"><name>slice_assumptions</name></member>
+    <member refid="d0/dc7/class_record_projector_1aae1e6c22acb37d9e0c98400d28397015" kind="function"><name>RecordProjector</name></member>
     <member refid="d0/dc7/class_record_projector_1a21e48528b112356bb18ac1f5f142ad34" kind="function"><name>run</name></member>
   </compound>
   <compound refid="da/df0/class_runner" kind="class"><name>Runner</name>
@@ -360,7 +356,6 @@
     <member refid="db/d73/c__valuation_8cpp_1abc703b0740db45ab62972c6d2cdecbfe" kind="function"><name>project_record</name></member>
     <member refid="db/d73/c__valuation_8cpp_1a892e2946052502cf0c073ca4598fa589" kind="function"><name>_valuation</name></member>
     <member refid="db/d73/c__valuation_8cpp_1a5948dae04d5560c22c594a502efa511c" kind="function"><name>valuation</name></member>
-    <member refid="db/d73/c__valuation_8cpp_1ada3d08b9fb193aaf4dc6ad4bbaa1601d" kind="function"><name>get_age_at_date</name></member>
   </compound>
   <compound refid="d7/d34/c__valuation_8h" kind="file"><name>c_valuation.h</name>
     <member refid="d7/d34/c__valuation_8h_1a3667e3c5ec056737c8789615a989324f" kind="enum"><name>Gender</name></member>

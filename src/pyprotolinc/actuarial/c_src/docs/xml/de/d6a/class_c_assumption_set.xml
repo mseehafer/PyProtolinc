@@ -16,10 +16,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/assumption_sets.h" line="37" column="14" bodyfile="modules/assumption_sets.h" bodystart="37" bodyend="-1"/>
+        <location file="modules/assumption_sets.h" line="42" column="14" bodyfile="modules/assumption_sets.h" bodystart="42" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="de/d6a/class_c_assumption_set_1a810cc741691a633414b8a2f90a05e605" prot="protected" static="no" mutable="no">
-        <type>MatPtrCBaseRateProvider</type>
+        <type><ref refid="db/d86/assumption__sets_8h_1a7c3062e7c68abb077992818311a7745d" kindref="member">MatPtrCBaseRateProvider</ref></type>
         <definition>MatPtrCBaseRateProvider CAssumptionSet::providers</definition>
         <argsstring></argsstring>
         <name>providers</name>
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/assumption_sets.h" line="38" column="29" bodyfile="modules/assumption_sets.h" bodystart="38" bodyend="-1"/>
+        <location file="modules/assumption_sets.h" line="43" column="29" bodyfile="modules/assumption_sets.h" bodystart="43" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -45,12 +45,23 @@
           <declname>dim</declname>
         </param>
         <briefdescription>
+<para>Construct a new <ref refid="de/d6a/class_c_assumption_set" kindref="compound">CAssumptionSet</ref> object. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dim</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of states in the State-Model </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/assumption_sets.h" line="41" column="5" bodyfile="modules/assumption_sets.h" bodystart="41" bodyend="50"/>
+        <location file="modules/assumption_sets.h" line="51" column="5" bodyfile="modules/assumption_sets.h" bodystart="51" bodyend="60"/>
       </memberdef>
       <memberdef kind="function" id="de/d6a/class_c_assumption_set_1acc967cb7cc20319a31d32e151b82d518" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -63,12 +74,13 @@
           <declname>other</declname>
         </param>
         <briefdescription>
+<para>Copy this assumption by making a deep copy of the underlying data. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/assumption_sets.h" line="52" column="10" bodyfile="modules/assumption_sets.h" bodystart="52" bodyend="66"/>
+        <location file="modules/assumption_sets.h" line="63" column="10" bodyfile="modules/assumption_sets.h" bodystart="63" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="de/d6a/class_c_assumption_set_1acb4dad53748df9e6a98acd1b08cd8f63" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -85,12 +97,13 @@
           <declname>other</declname>
         </param>
         <briefdescription>
+<para>Perform a slicing operation on all provider objects contained in this object. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/assumption_sets.h" line="69" column="10" bodyfile="modules/assumption_sets.h" bodystart="69" bodyend="92"/>
+        <location file="modules/assumption_sets.h" line="81" column="10" bodyfile="modules/assumption_sets.h" bodystart="81" bodyend="99"/>
       </memberdef>
       <memberdef kind="function" id="de/d6a/class_c_assumption_set_1af377af1fc9aaaa952779e944a0feb636" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>unsigned</type>
@@ -99,12 +112,13 @@
         <name>get_dimension</name>
         <qualifiedname>CAssumptionSet::get_dimension</qualifiedname>
         <briefdescription>
+<para>Returns the number of dimensions of the state model. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/assumption_sets.h" line="94" column="14" bodyfile="modules/assumption_sets.h" bodystart="94" bodyend="96"/>
+        <location file="modules/assumption_sets.h" line="102" column="14" bodyfile="modules/assumption_sets.h" bodystart="102" bodyend="104"/>
       </memberdef>
       <memberdef kind="function" id="de/d6a/class_c_assumption_set_1ad40d00fa9478933a3fed85969e377e66" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>string</type>
@@ -121,12 +135,13 @@
           <declname>c</declname>
         </param>
         <briefdescription>
+<para>Returns a description of the provider in row r and column c. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/assumption_sets.h" line="98" column="12" bodyfile="modules/assumption_sets.h" bodystart="98" bodyend="104"/>
+        <location file="modules/assumption_sets.h" line="107" column="12" bodyfile="modules/assumption_sets.h" bodystart="107" bodyend="113"/>
       </memberdef>
       <memberdef kind="function" id="de/d6a/class_c_assumption_set_1a73bb7fd52d0421b07f66fd05623e8a2b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -143,7 +158,7 @@
           <declname>col</declname>
         </param>
         <param>
-          <type>PtrCBaseRateProvider</type>
+          <type><ref refid="db/d86/assumption__sets_8h_1a641c12a58c3d951f1a034ef9f5b9bebd" kindref="member">PtrCBaseRateProvider</ref></type>
           <declname>prvdr</declname>
         </param>
         <briefdescription>
@@ -152,7 +167,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/assumption_sets.h" line="106" column="10" bodyfile="modules/assumption_sets.h" bodystart="106" bodyend="109"/>
+        <location file="modules/assumption_sets.h" line="115" column="10" bodyfile="modules/assumption_sets.h" bodystart="115" bodyend="118"/>
       </memberdef>
       <memberdef kind="function" id="de/d6a/class_c_assumption_set_1a51cc3f9ac50ace8dc64a6f64668e2ab3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -167,10 +182,11 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
+<para>Return a bool vector of the length of the risk factors indicating if the assumptions set depends on the risk factor or not </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/assumption_sets.h" line="113" column="10" bodyfile="modules/assumption_sets.h" bodystart="113" bodyend="129"/>
+        <location file="modules/assumption_sets.h" line="122" column="10" bodyfile="modules/assumption_sets.h" bodystart="122" bodyend="136"/>
       </memberdef>
       <memberdef kind="function" id="de/d6a/class_c_assumption_set_1a26bfa03d609219ea90e734784cdee736" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -187,20 +203,21 @@
           <declname>rates_ext</declname>
         </param>
         <briefdescription>
+<para>Populate the an external array with the matrix of rates selected by the index vector passed in. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/assumption_sets.h" line="131" column="10" bodyfile="modules/assumption_sets.h" bodystart="131" bodyend="178"/>
+        <location file="modules/assumption_sets.h" line="139" column="10" bodyfile="modules/assumption_sets.h" bodystart="139" bodyend="176"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Container to hold the providers required for a run of a policy or a portfolio, houses a matrix of providers. </para>
     </briefdescription>
     <detaileddescription>
-<para>Container to hold the providers required for a run or a policy </para>
     </detaileddescription>
-    <location file="modules/assumption_sets.h" line="33" column="1" bodyfile="modules/assumption_sets.h" bodystart="34" bodyend="179"/>
+    <location file="modules/assumption_sets.h" line="38" column="1" bodyfile="modules/assumption_sets.h" bodystart="39" bodyend="177"/>
     <listofallmembers>
       <member refid="de/d6a/class_c_assumption_set_1a751207f82ccb76b6c2ac0a13f26e4968" prot="public" virt="non-virtual"><scope>CAssumptionSet</scope><name>CAssumptionSet</name></member>
       <member refid="de/d6a/class_c_assumption_set_1acc967cb7cc20319a31d32e151b82d518" prot="public" virt="non-virtual"><scope>CAssumptionSet</scope><name>clone_into</name></member>

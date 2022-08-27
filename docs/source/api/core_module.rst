@@ -1,8 +1,7 @@
 
-Core Nodule
+Core Module
 =============
 
 
 .. doxygenindex::
-   :outline:
    :no-link:

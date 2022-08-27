@@ -1,4 +1,14 @@
-/* Configuration object for a run. */
+/**
+ * @file run_config.h
+ * @author M. Seehafer
+ * @brief Configuration object for a run. The settings stored here control the flow of the calculation and the parameters used.
+ * @version 0.1
+ * @date 2022-08-27
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ * 
+ */
 
 #ifndef C_RUNCONFIG_H
 #define C_RUNCONFIG_H
@@ -9,30 +19,47 @@
 #include <memory>
 #include "time_axis.h"
 #include "assumption_sets.h"
-// #include "providers.h"
-// #include "portfolio.h"
 
 using namespace std;
 
+/**
+ * @brief Container with configuration parameters.
+ * 
+ */
 class CRunConfig
 {
 
-protected:
-    // dimension of the state model
+private:
+    ///< dimension of the state model
     unsigned int dimension;
 
+    ///< Time scale on which to calculate
     TimeStep _time_step;
+
+    ///< Time scale on which to calculate
     int _years_to_simulate;
 
+    ///< Number of cpus to use
     int _num_cpus;
+
+    ///< Use multicore flag
     bool _use_multicore;
 
     // valuation assumptions
     shared_ptr<CAssumptionSet> be_assumptions;
     shared_ptr<vector<shared_ptr<CAssumptionSet>>> other_assumptions = make_shared<vector<shared_ptr<CAssumptionSet>>>();
-    // nullptr;
 
 public:
+    /**
+     * @brief Construct a new CRunConfig object
+     * 
+     * @param _dim Dimension of the state model
+     * @param time_step Time scale on which to calculate
+     * @param years_to_simulate Time scale on which to calculate
+     * @param num_cpus Number of cpus to use if `use_multicore=true`
+     * @param use_multicore Use multicore flag
+     * @param _be_assumptions Best estimate assumptions
+     */
     CRunConfig(unsigned _dim, TimeStep time_step, int years_to_simulate, int num_cpus, bool use_multicore, shared_ptr<CAssumptionSet> _be_assumptions):
         dimension(_dim),
         _time_step(time_step),
@@ -41,7 +68,6 @@ public:
         _use_multicore(use_multicore),
         be_assumptions(_be_assumptions)
     {
-        // other_assumptions = make_shared<vector<shared_ptr<CAssumptionSet>>>(new vector<shared_ptr<CAssumptionSet>>());
         if (!_be_assumptions)
         {
             throw domain_error("Assumption set pointer must not be null!");
@@ -58,12 +84,9 @@ public:
     int get_years_to_simulate() const { return _years_to_simulate;}
     unsigned int get_dimension() const { return dimension; }
 
+    ///< Add an auxiliary assumption set.
     void add_assumption_set(shared_ptr<CAssumptionSet> as)
     {
-
-        // if (!other_assumptions) {
-        //     other_assumptions = make_shared<vector<shared_ptr<CAssumptionSet>>>();
-        // }
         other_assumptions->push_back(as);
     }
 
@@ -77,15 +100,7 @@ public:
         return *other_assumptions;
     }
 
-    // int get_total_timesteps() const {
-    //     return  get_total_steps(_time_step, _years_to_simulate);
-    // }
 };
-
-
-// shared_ptr<TimeAxis> make_time_axis(const CRunConfig &run_config, short _ptf_year, short _ptf_month, short _ptf_day) {
-//     return make_shared<TimeAxis>(run_config.get_time_step(), run_config.get_years_to_simulate(), _ptf_year,  _ptf_month,  _ptf_day);
-// };
 
 
 

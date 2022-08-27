@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
   <compounddef id="d0/dc7/class_record_projector" kind="class" language="C++" prot="public">
     <compoundname>RecordProjector</compoundname>
+    <includes refid="da/da6/record__projector_8h" local="no">record_projector.h</includes>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="d0/dc7/class_record_projector_1a15755339d6ae94264e950519021e98b9" prot="private" static="no" mutable="no">
         <type>const <ref refid="d7/d5e/class_c_run_config" kindref="compound">CRunConfig</ref> &amp;</type>
@@ -15,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/record_projector.h" line="25" column="22" bodyfile="modules/record_projector.h" bodystart="25" bodyend="-1"/>
+        <location file="modules/record_projector.h" line="39" column="22" bodyfile="modules/record_projector.h" bodystart="39" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="d0/dc7/class_record_projector_1a7cab267d95df46ffce75f3c493b4ddd9" prot="private" static="no" mutable="no">
         <type>const <ref refid="de/d63/class_time_axis" kindref="compound">TimeAxis</ref> &amp;</type>
@@ -29,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/record_projector.h" line="26" column="20" bodyfile="modules/record_projector.h" bodystart="26" bodyend="-1"/>
+        <location file="modules/record_projector.h" line="40" column="20" bodyfile="modules/record_projector.h" bodystart="40" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="d0/dc7/class_record_projector_1a032a675480ab6c8677492ba5738759e5" prot="private" static="no" mutable="no">
         <type>const unsigned int</type>
@@ -43,7 +44,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/record_projector.h" line="28" column="24" bodyfile="modules/record_projector.h" bodystart="28" bodyend="-1"/>
+        <location file="modules/record_projector.h" line="42" column="24" bodyfile="modules/record_projector.h" bodystart="42" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="d0/dc7/class_record_projector_1a948aadf54d9aa3e37249b35dc33d59d0" prot="private" static="no" mutable="no">
         <type>const vector&lt; <ref refid="d5/d2d/struct_period_date" kindref="compound">PeriodDate</ref> &gt; &amp;</type>
@@ -58,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/record_projector.h" line="31" column="18" bodyfile="modules/record_projector.h" bodystart="31" bodyend="-1"/>
+        <location file="modules/record_projector.h" line="45" column="18" bodyfile="modules/record_projector.h" bodystart="45" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="d0/dc7/class_record_projector_1a40df1fcbda65b3b903135a6b3c68a007" prot="private" static="no" mutable="no">
         <type>const vector&lt; <ref refid="d5/d2d/struct_period_date" kindref="compound">PeriodDate</ref> &gt; &amp;</type>
@@ -73,7 +74,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/record_projector.h" line="32" column="18" bodyfile="modules/record_projector.h" bodystart="32" bodyend="-1"/>
+        <location file="modules/record_projector.h" line="46" column="18" bodyfile="modules/record_projector.h" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="d0/dc7/class_record_projector_1af9167d6b72d6c3c7b3686b3b843e5dec" prot="private" static="no" mutable="no">
         <type>const vector&lt; int &gt; &amp;</type>
@@ -88,7 +89,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/record_projector.h" line="33" column="18" bodyfile="modules/record_projector.h" bodystart="33" bodyend="-1"/>
+        <location file="modules/record_projector.h" line="47" column="18" bodyfile="modules/record_projector.h" bodystart="47" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="d0/dc7/class_record_projector_1aba8169c3ea012f14ef385a15aecffaa3" prot="private" static="no" mutable="no">
         <type><ref refid="de/d6a/class_c_assumption_set" kindref="compound">CAssumptionSet</ref></type>
@@ -102,7 +103,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/record_projector.h" line="36" column="20" bodyfile="modules/record_projector.h" bodystart="36" bodyend="-1"/>
+        <location file="modules/record_projector.h" line="50" column="20" bodyfile="modules/record_projector.h" bodystart="50" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="d0/dc7/class_record_projector_1a6eb6dae1a59265ad6d17e4ce6861767f" prot="private" static="no" mutable="no">
         <type>vector&lt; shared_ptr&lt; <ref refid="de/d6a/class_c_assumption_set" kindref="compound">CAssumptionSet</ref> &gt; &gt;</type>
@@ -116,7 +117,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/record_projector.h" line="37" column="12" bodyfile="modules/record_projector.h" bodystart="37" bodyend="-1"/>
+        <location file="modules/record_projector.h" line="51" column="12" bodyfile="modules/record_projector.h" bodystart="51" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="d0/dc7/class_record_projector_1afd783994554159f56279e7afbfcb605b" prot="private" static="no" mutable="no">
         <type>unique_ptr&lt; double[]&gt;</type>
@@ -130,7 +131,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/record_projector.h" line="43" column="16" bodyfile="modules/record_projector.h" bodystart="43" bodyend="-1"/>
+        <location file="modules/record_projector.h" line="57" column="16" bodyfile="modules/record_projector.h" bodystart="57" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="d0/dc7/class_record_projector_1a5fdf800844756c8e3c43fa99b520171b" prot="private" static="no" mutable="no">
         <type>unique_ptr&lt; double[]&gt;</type>
@@ -144,7 +145,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/record_projector.h" line="46" column="16" bodyfile="modules/record_projector.h" bodystart="46" bodyend="-1"/>
+        <location file="modules/record_projector.h" line="60" column="16" bodyfile="modules/record_projector.h" bodystart="60" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="d0/dc7/class_record_projector_1af5d101d3fe350dff47f4a389a3bc7fae" prot="private" static="no" mutable="no">
         <type>vector&lt; int &gt;</type>
@@ -159,7 +160,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/record_projector.h" line="50" column="12" bodyfile="modules/record_projector.h" bodystart="50" bodyend="-1"/>
+        <location file="modules/record_projector.h" line="64" column="12" bodyfile="modules/record_projector.h" bodystart="64" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="d0/dc7/class_record_projector_1ada2dd96b54162e47663e3b462aee07f9" prot="private" static="no" mutable="no">
         <type>vector&lt; int &gt;</type>
@@ -174,7 +175,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/record_projector.h" line="51" column="12" bodyfile="modules/record_projector.h" bodystart="51" bodyend="-1"/>
+        <location file="modules/record_projector.h" line="65" column="12" bodyfile="modules/record_projector.h" bodystart="65" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="private-func">
@@ -194,7 +195,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/record_projector.h" line="57" column="10" bodyfile="modules/record_projector.h" bodystart="273" bodyend="294"/>
+        <location file="modules/record_projector.h" line="71" column="10" bodyfile="modules/record_projector.h" bodystart="300" bodyend="321"/>
       </memberdef>
       <memberdef kind="function" id="d0/dc7/class_record_projector_1a030ba27f569178802691fe7bc5e88451" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
@@ -207,12 +208,13 @@
           <declname>relevant_risk_factors</declname>
         </param>
         <briefdescription>
+<para>Check if a risk factor relevant for the projection was updated. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/record_projector.h" line="59" column="10" bodyfile="modules/record_projector.h" bodystart="59" bodyend="68"/>
+        <location file="modules/record_projector.h" line="73" column="10" bodyfile="modules/record_projector.h" bodystart="73" bodyend="-1"/>
       </memberdef>
       <memberdef kind="function" id="d0/dc7/class_record_projector_1a2f616509af72694ac6bd66722596f6c7" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -225,12 +227,45 @@
           <declname>relevant_risk_factors</declname>
         </param>
         <briefdescription>
+<para>Clear temporary values stored in the projector object. </para>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/record_projector.h" line="71" column="10" bodyfile="modules/record_projector.h" bodystart="71" bodyend="81"/>
+        <location file="modules/record_projector.h" line="85" column="10" bodyfile="modules/record_projector.h" bodystart="85" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/dc7/class_record_projector_1ab0cddf8a97abd989eee728efb2d08c3a" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void RecordProjector::clear</definition>
+        <argsstring>()</argsstring>
+        <name>clear</name>
+        <qualifiedname>RecordProjector::clear</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/record_projector.h" line="98" column="10" bodyfile="modules/record_projector.h" bodystart="98" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="function" id="d0/dc7/class_record_projector_1a7f3f5bd8c0eb430aafcb558103deae29" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void RecordProjector::slice_assumptions</definition>
+        <argsstring>(const CPolicy &amp;policy)</argsstring>
+        <name>slice_assumptions</name>
+        <qualifiedname>RecordProjector::slice_assumptions</qualifiedname>
+        <param>
+          <type>const <ref refid="d5/d61/class_c_policy" kindref="compound">CPolicy</ref> &amp;</type>
+          <declname>policy</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/record_projector.h" line="104" column="10" bodyfile="modules/record_projector.h" bodystart="104" bodyend="117"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -254,39 +289,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/record_projector.h" line="84" column="5" bodyfile="modules/record_projector.h" bodystart="84" bodyend="106"/>
-      </memberdef>
-      <memberdef kind="function" id="d0/dc7/class_record_projector_1ab0cddf8a97abd989eee728efb2d08c3a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>void</type>
-        <definition>void RecordProjector::clear</definition>
-        <argsstring>()</argsstring>
-        <name>clear</name>
-        <qualifiedname>RecordProjector::clear</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="modules/record_projector.h" line="109" column="10" bodyfile="modules/record_projector.h" bodystart="109" bodyend="112"/>
-      </memberdef>
-      <memberdef kind="function" id="d0/dc7/class_record_projector_1a7f3f5bd8c0eb430aafcb558103deae29" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>void</type>
-        <definition>void RecordProjector::slice_assumptions</definition>
-        <argsstring>(const CPolicy &amp;policy)</argsstring>
-        <name>slice_assumptions</name>
-        <qualifiedname>RecordProjector::slice_assumptions</qualifiedname>
-        <param>
-          <type>const <ref refid="d5/d61/class_c_policy" kindref="compound">CPolicy</ref> &amp;</type>
-          <declname>policy</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="modules/record_projector.h" line="114" column="10" bodyfile="modules/record_projector.h" bodystart="114" bodyend="127"/>
+        <location file="modules/record_projector.h" line="120" column="5" bodyfile="modules/record_projector.h" bodystart="120" bodyend="142"/>
       </memberdef>
       <memberdef kind="function" id="d0/dc7/class_record_projector_1a21e48528b112356bb18ac1f5f142ad34" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -315,19 +318,63 @@
           <declname>portfolio_date</declname>
         </param>
         <briefdescription>
+<para>Create the projection result for one policy. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>runner_no</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of the runner instance. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>record_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of record in batch for this runner. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>policy</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The record to project </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Container for the result </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>portfolio_date</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>portfolio date </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/record_projector.h" line="129" column="10" bodyfile="modules/record_projector.h" bodystart="132" bodyend="271"/>
+        <location file="modules/record_projector.h" line="156" column="10" bodyfile="modules/record_projector.h" bodystart="159" bodyend="298"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Functionality to project cash flows for a single record at a time. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="modules/record_projector.h" line="21" column="1" bodyfile="modules/record_projector.h" bodystart="22" bodyend="130"/>
+    <location file="modules/record_projector.h" line="35" column="1" bodyfile="modules/record_projector.h" bodystart="36" bodyend="157"/>
     <listofallmembers>
       <member refid="d0/dc7/class_record_projector_1a032a675480ab6c8677492ba5738759e5" prot="private" virt="non-virtual"><scope>RecordProjector</scope><name>_dimension</name></member>
       <member refid="d0/dc7/class_record_projector_1a40df1fcbda65b3b903135a6b3c68a007" prot="private" virt="non-virtual"><scope>RecordProjector</scope><name>_end_dates</name></member>
@@ -340,14 +387,14 @@
       <member refid="d0/dc7/class_record_projector_1a07a159912306b78f348f24bf01d922e7" prot="private" virt="non-virtual"><scope>RecordProjector</scope><name>adjust_assumptions_simple</name></member>
       <member refid="d0/dc7/class_record_projector_1a5fdf800844756c8e3c43fa99b520171b" prot="private" virt="non-virtual"><scope>RecordProjector</scope><name>be_a_time_step_dependent</name></member>
       <member refid="d0/dc7/class_record_projector_1afd783994554159f56279e7afbfcb605b" prot="private" virt="non-virtual"><scope>RecordProjector</scope><name>be_a_yearly</name></member>
-      <member refid="d0/dc7/class_record_projector_1ab0cddf8a97abd989eee728efb2d08c3a" prot="public" virt="non-virtual"><scope>RecordProjector</scope><name>clear</name></member>
+      <member refid="d0/dc7/class_record_projector_1ab0cddf8a97abd989eee728efb2d08c3a" prot="private" virt="non-virtual"><scope>RecordProjector</scope><name>clear</name></member>
       <member refid="d0/dc7/class_record_projector_1aae1e6c22acb37d9e0c98400d28397015" prot="public" virt="non-virtual"><scope>RecordProjector</scope><name>RecordProjector</name></member>
       <member refid="d0/dc7/class_record_projector_1a2f616509af72694ac6bd66722596f6c7" prot="private" virt="non-virtual"><scope>RecordProjector</scope><name>relevant_factor_changed</name></member>
       <member refid="d0/dc7/class_record_projector_1af5d101d3fe350dff47f4a389a3bc7fae" prot="private" virt="non-virtual"><scope>RecordProjector</scope><name>risk_factors_current</name></member>
       <member refid="d0/dc7/class_record_projector_1ada2dd96b54162e47663e3b462aee07f9" prot="private" virt="non-virtual"><scope>RecordProjector</scope><name>risk_factors_last_used</name></member>
       <member refid="d0/dc7/class_record_projector_1a21e48528b112356bb18ac1f5f142ad34" prot="public" virt="non-virtual"><scope>RecordProjector</scope><name>run</name></member>
       <member refid="d0/dc7/class_record_projector_1a030ba27f569178802691fe7bc5e88451" prot="private" virt="non-virtual"><scope>RecordProjector</scope><name>set_relevant_risk_factors</name></member>
-      <member refid="d0/dc7/class_record_projector_1a7f3f5bd8c0eb430aafcb558103deae29" prot="public" virt="non-virtual"><scope>RecordProjector</scope><name>slice_assumptions</name></member>
+      <member refid="d0/dc7/class_record_projector_1a7f3f5bd8c0eb430aafcb558103deae29" prot="private" virt="non-virtual"><scope>RecordProjector</scope><name>slice_assumptions</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

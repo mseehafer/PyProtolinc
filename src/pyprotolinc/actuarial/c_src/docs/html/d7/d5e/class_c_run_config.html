@@ -72,16 +72,20 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="../../d5/d9b/class_c_run_config-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">CRunConfig Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Container with configuration parameters.  
+ <a href="../../d7/d5e/class_c_run_config.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="../../dc/d35/run__config_8h_source.html">run_config.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae85777eaae2941c144151813e21785d3"><td class="memItemLeft" align="right" valign="top"><a id="ae85777eaae2941c144151813e21785d3" name="ae85777eaae2941c144151813e21785d3"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>CRunConfig</b> (unsigned _dim, TimeStep time_step, int years_to_simulate, int num_cpus, bool use_multicore, shared_ptr&lt; <a class="el" href="../../de/d6a/class_c_assumption_set.html">CAssumptionSet</a> &gt; _be_assumptions)</td></tr>
+<tr class="memitem:ae85777eaae2941c144151813e21785d3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d5e/class_c_run_config.html#ae85777eaae2941c144151813e21785d3">CRunConfig</a> (unsigned _dim, TimeStep time_step, int years_to_simulate, int num_cpus, bool use_multicore, shared_ptr&lt; <a class="el" href="../../de/d6a/class_c_assumption_set.html">CAssumptionSet</a> &gt; _be_assumptions)</td></tr>
+<tr class="memdesc:ae85777eaae2941c144151813e21785d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="../../d7/d5e/class_c_run_config.html" title="Container with configuration parameters.">CRunConfig</a> object.  <a href="../../d7/d5e/class_c_run_config.html#ae85777eaae2941c144151813e21785d3">More...</a><br /></td></tr>
 <tr class="separator:ae85777eaae2941c144151813e21785d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4f1e3d841f51e1be732613da6b03805"><td class="memItemLeft" align="right" valign="top"><a id="ad4f1e3d841f51e1be732613da6b03805" name="ad4f1e3d841f51e1be732613da6b03805"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>get_cpu_count</b> () const</td></tr>
@@ -97,6 +101,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>get_years_to_simulate<
 <tr class="separator:a23afbd5db5740f39b573b599bf7136cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa0cd7f805bc475cfff78734abfb195ec"><td class="memItemLeft" align="right" valign="top"><a id="aa0cd7f805bc475cfff78734abfb195ec" name="aa0cd7f805bc475cfff78734abfb195ec"></a>
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>get_dimension</b> () const</td></tr>
+<tr class="memdesc:aa0cd7f805bc475cfff78734abfb195ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add an auxiliary assumption set. <br /></td></tr>
 <tr class="separator:aa0cd7f805bc475cfff78734abfb195ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa46c8ed16ae4b837f9406ec28d5f0ba3"><td class="memItemLeft" align="right" valign="top"><a id="aa46c8ed16ae4b837f9406ec28d5f0ba3" name="aa46c8ed16ae4b837f9406ec28d5f0ba3"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>add_assumption_set</b> (shared_ptr&lt; <a class="el" href="../../de/d6a/class_c_assumption_set.html">CAssumptionSet</a> &gt; as)</td></tr>
@@ -107,31 +112,83 @@ const <a class="el" href="../../de/d6a/class_c_assumption_set.html">CAssumptionS
 <tr class="memitem:a455c5c665cd51bec115f2bc0f2901ddb"><td class="memItemLeft" align="right" valign="top"><a id="a455c5c665cd51bec115f2bc0f2901ddb" name="a455c5c665cd51bec115f2bc0f2901ddb"></a>
 const vector&lt; shared_ptr&lt; <a class="el" href="../../de/d6a/class_c_assumption_set.html">CAssumptionSet</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_other_assumptions</b> () const</td></tr>
 <tr class="separator:a455c5c665cd51bec115f2bc0f2901ddb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
-Protected Attributes</h2></td></tr>
-<tr class="memitem:ab889588c78c87529348ce6226c54e8a0"><td class="memItemLeft" align="right" valign="top"><a id="ab889588c78c87529348ce6226c54e8a0" name="ab889588c78c87529348ce6226c54e8a0"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>dimension</b></td></tr>
-<tr class="separator:ab889588c78c87529348ce6226c54e8a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a867bb78e1ea16fdb7e01d1313ee32b9e"><td class="memItemLeft" align="right" valign="top"><a id="a867bb78e1ea16fdb7e01d1313ee32b9e" name="a867bb78e1ea16fdb7e01d1313ee32b9e"></a>
-TimeStep&#160;</td><td class="memItemRight" valign="bottom"><b>_time_step</b></td></tr>
-<tr class="separator:a867bb78e1ea16fdb7e01d1313ee32b9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad2b6cea3767c8d9142df4a787f2229b1"><td class="memItemLeft" align="right" valign="top"><a id="ad2b6cea3767c8d9142df4a787f2229b1" name="ad2b6cea3767c8d9142df4a787f2229b1"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>_years_to_simulate</b></td></tr>
-<tr class="separator:ad2b6cea3767c8d9142df4a787f2229b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72116627dfcf7f0444376ba119eb98d1"><td class="memItemLeft" align="right" valign="top"><a id="a72116627dfcf7f0444376ba119eb98d1" name="a72116627dfcf7f0444376ba119eb98d1"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>_num_cpus</b></td></tr>
-<tr class="separator:a72116627dfcf7f0444376ba119eb98d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af9d38b6c170bd99440bb1360fa3c58bd"><td class="memItemLeft" align="right" valign="top"><a id="af9d38b6c170bd99440bb1360fa3c58bd" name="af9d38b6c170bd99440bb1360fa3c58bd"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>_use_multicore</b></td></tr>
-<tr class="separator:af9d38b6c170bd99440bb1360fa3c58bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af250935eb4e5e17358731b11b406d153"><td class="memItemLeft" align="right" valign="top"><a id="af250935eb4e5e17358731b11b406d153" name="af250935eb4e5e17358731b11b406d153"></a>
-shared_ptr&lt; <a class="el" href="../../de/d6a/class_c_assumption_set.html">CAssumptionSet</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>be_assumptions</b></td></tr>
-<tr class="separator:af250935eb4e5e17358731b11b406d153"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a16ecdddebe0f4df61b2aed1adf3efeed"><td class="memItemLeft" align="right" valign="top"><a id="a16ecdddebe0f4df61b2aed1adf3efeed" name="a16ecdddebe0f4df61b2aed1adf3efeed"></a>
-shared_ptr&lt; vector&lt; shared_ptr&lt; <a class="el" href="../../de/d6a/class_c_assumption_set.html">CAssumptionSet</a> &gt; &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>other_assumptions</b> = make_shared&lt;vector&lt;shared_ptr&lt;<a class="el" href="../../de/d6a/class_c_assumption_set.html">CAssumptionSet</a>&gt;&gt;&gt;()</td></tr>
-<tr class="separator:a16ecdddebe0f4df61b2aed1adf3efeed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Container with configuration parameters. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ae85777eaae2941c144151813e21785d3" name="ae85777eaae2941c144151813e21785d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae85777eaae2941c144151813e21785d3">&#9670;&#160;</a></span>CRunConfig()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">CRunConfig::CRunConfig </td>
+          <td>(</td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>_dim</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TimeStep&#160;</td>
+          <td class="paramname"><em>time_step</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>years_to_simulate</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num_cpus</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>use_multicore</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">shared_ptr&lt; <a class="el" href="../../de/d6a/class_c_assumption_set.html">CAssumptionSet</a> &gt;&#160;</td>
+          <td class="paramname"><em>_be_assumptions</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct a new <a class="el" href="../../d7/d5e/class_c_run_config.html" title="Container with configuration parameters.">CRunConfig</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">_dim</td><td>Dimension of the state model </td></tr>
+    <tr><td class="paramname">time_step</td><td>Time scale on which to calculate </td></tr>
+    <tr><td class="paramname">years_to_simulate</td><td>Time scale on which to calculate </td></tr>
+    <tr><td class="paramname">num_cpus</td><td>Number of cpus to use if <code>use_multicore=true</code> </td></tr>
+    <tr><td class="paramname">use_multicore</td><td>Use multicore flag </td></tr>
+    <tr><td class="paramname">_be_assumptions</td><td>Best estimate assumptions </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>modules/<a class="el" href="../../dc/d35/run__config_8h_source.html">run_config.h</a></li>
 </ul>

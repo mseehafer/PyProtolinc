@@ -4,33 +4,33 @@
     <compoundname>MetaRunner</compoundname>
     <includes refid="d8/d4d/runner_8h" local="no">runner.h</includes>
       <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="d1/d5b/class_meta_runner_1a9b611df30450b2e457e63dfff4198d40" prot="protected" static="no" mutable="no">
+      <memberdef kind="variable" id="d1/d5b/class_meta_runner_1a2b2cb63448bf6afe7087160ce4bd5c46" prot="protected" static="no" mutable="no">
         <type>const <ref refid="d7/d5e/class_c_run_config" kindref="compound">CRunConfig</ref> &amp;</type>
-        <definition>const CRunConfig&amp; MetaRunner::run_config</definition>
+        <definition>const CRunConfig&amp; MetaRunner::_run_config</definition>
         <argsstring></argsstring>
-        <name>run_config</name>
-        <qualifiedname>MetaRunner::run_config</qualifiedname>
+        <name>_run_config</name>
+        <qualifiedname>MetaRunner::_run_config</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/runner.h" line="75" column="22" bodyfile="modules/runner.h" bodystart="75" bodyend="-1"/>
+        <location file="modules/runner.h" line="103" column="22" bodyfile="modules/runner.h" bodystart="103" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="d1/d5b/class_meta_runner_1a2b02033a0dd6f3d91f4dc716165320c9" prot="protected" static="no" mutable="no">
+      <memberdef kind="variable" id="d1/d5b/class_meta_runner_1a14ffb1fd3074f8bd48072d3fc322044c" prot="protected" static="no" mutable="no">
         <type>const shared_ptr&lt; <ref refid="d5/dfd/class_c_policy_portfolio" kindref="compound">CPolicyPortfolio</ref> &gt;</type>
-        <definition>const shared_ptr&lt;CPolicyPortfolio&gt; MetaRunner::ptr_portfolio</definition>
+        <definition>const shared_ptr&lt;CPolicyPortfolio&gt; MetaRunner::_ptr_portfolio</definition>
         <argsstring></argsstring>
-        <name>ptr_portfolio</name>
-        <qualifiedname>MetaRunner::ptr_portfolio</qualifiedname>
+        <name>_ptr_portfolio</name>
+        <qualifiedname>MetaRunner::_ptr_portfolio</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/runner.h" line="77" column="22" bodyfile="modules/runner.h" bodystart="77" bodyend="-1"/>
+        <location file="modules/runner.h" line="105" column="22" bodyfile="modules/runner.h" bodystart="105" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="d1/d5b/class_meta_runner_1acfb6bcdd0134faa773e44ca4a99f412e" prot="protected" static="no" mutable="no">
         <type>const shared_ptr&lt; <ref refid="de/d63/class_time_axis" kindref="compound">TimeAxis</ref> &gt;</type>
@@ -44,35 +44,62 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/runner.h" line="79" column="22" bodyfile="modules/runner.h" bodystart="79" bodyend="-1"/>
+        <location file="modules/runner.h" line="107" column="22" bodyfile="modules/runner.h" bodystart="107" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="d1/d5b/class_meta_runner_1a2788ca0fead57f27eee438916cf6d65c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="d1/d5b/class_meta_runner_1a5bd8abcde4efddc27155c7e3d8654d01" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>MetaRunner::MetaRunner</definition>
-        <argsstring>(const CRunConfig &amp;_run_config, const shared_ptr&lt; CPolicyPortfolio &gt; _ptr_portfolio, const shared_ptr&lt; TimeAxis &gt; ta)</argsstring>
+        <argsstring>(const CRunConfig &amp;run_config, const shared_ptr&lt; CPolicyPortfolio &gt; ptr_portfolio, const shared_ptr&lt; TimeAxis &gt; ta)</argsstring>
         <name>MetaRunner</name>
         <qualifiedname>MetaRunner::MetaRunner</qualifiedname>
         <param>
           <type>const <ref refid="d7/d5e/class_c_run_config" kindref="compound">CRunConfig</ref> &amp;</type>
-          <declname>_run_config</declname>
+          <declname>run_config</declname>
         </param>
         <param>
           <type>const shared_ptr&lt; <ref refid="d5/dfd/class_c_policy_portfolio" kindref="compound">CPolicyPortfolio</ref> &gt;</type>
-          <declname>_ptr_portfolio</declname>
+          <declname>ptr_portfolio</declname>
         </param>
         <param>
           <type>const shared_ptr&lt; <ref refid="de/d63/class_time_axis" kindref="compound">TimeAxis</ref> &gt;</type>
           <declname>ta</declname>
         </param>
         <briefdescription>
+<para>Construct a new Meta <ref refid="da/df0/class_runner" kindref="compound">Runner</ref> object. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>run_config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Run configutaion object </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ptr_portfolio</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to portfolio of policies. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>ta</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="de/d63/class_time_axis" kindref="compound">TimeAxis</ref> object to be used for the calculation. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/runner.h" line="82" column="5" bodyfile="modules/runner.h" bodystart="82" bodyend="92"/>
+        <location file="modules/runner.h" line="117" column="5" bodyfile="modules/runner.h" bodystart="117" bodyend="127"/>
       </memberdef>
       <memberdef kind="function" id="d1/d5b/class_meta_runner_1a330fc3e6bff0c33e5a047384f2fd15ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -81,13 +108,14 @@
         <name>get_num_groups</name>
         <qualifiedname>MetaRunner::get_num_groups</qualifiedname>
         <briefdescription>
-<para>Calculate the number of groups the portfolio will be split into. </para>
         </briefdescription>
         <detaileddescription>
+<para><blockquote><para><zwj/>Calculates into how many sub-portfolios the portfolio will be split into depending on the cpu_count/use_multicore settings in the config and the portfolio size. </para>
+</blockquote></para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/runner.h" line="94" column="9" bodyfile="modules/runner.h" bodystart="100" bodyend="112"/>
+        <location file="modules/runner.h" line="131" column="9" bodyfile="modules/runner.h" bodystart="138" bodyend="150"/>
       </memberdef>
       <memberdef kind="function" id="d1/d5b/class_meta_runner_1aae41407bc33319e6971a138fae444a2c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -102,14 +130,17 @@
         <briefdescription>
         </briefdescription>
         <detaileddescription>
+<para><blockquote><para><zwj/>Calculate the result and store it in the reference passed in.</para>
+<para></para>
+</blockquote></para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/runner.h" line="96" column="10" bodyfile="modules/runner.h" bodystart="115" bodyend="171"/>
+        <location file="modules/runner.h" line="135" column="10" bodyfile="modules/runner.h" bodystart="153" bodyend="210"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>The runner object. </para>
+<para>The <ref refid="d1/d5b/class_meta_runner" kindref="compound">MetaRunner</ref> object. Splits the portfolio and triggers a (possibly) parallelized run by instantiating several runner objects, starting them and combining their results. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
@@ -122,18 +153,18 @@
         <label>MetaRunner</label>
         <link refid="d1/d5b/class_meta_runner"/>
         <childnode refid="2" relation="usage">
-          <edgelabel>run_config</edgelabel>
+          <edgelabel>_run_config</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="modules/runner.h" line="72" column="1" bodyfile="modules/runner.h" bodystart="73" bodyend="97"/>
+    <location file="modules/runner.h" line="100" column="1" bodyfile="modules/runner.h" bodystart="101" bodyend="136"/>
     <listofallmembers>
+      <member refid="d1/d5b/class_meta_runner_1a14ffb1fd3074f8bd48072d3fc322044c" prot="protected" virt="non-virtual"><scope>MetaRunner</scope><name>_ptr_portfolio</name></member>
+      <member refid="d1/d5b/class_meta_runner_1a2b2cb63448bf6afe7087160ce4bd5c46" prot="protected" virt="non-virtual"><scope>MetaRunner</scope><name>_run_config</name></member>
       <member refid="d1/d5b/class_meta_runner_1acfb6bcdd0134faa773e44ca4a99f412e" prot="protected" virt="non-virtual"><scope>MetaRunner</scope><name>_ta</name></member>
       <member refid="d1/d5b/class_meta_runner_1a330fc3e6bff0c33e5a047384f2fd15ae" prot="public" virt="non-virtual"><scope>MetaRunner</scope><name>get_num_groups</name></member>
-      <member refid="d1/d5b/class_meta_runner_1a2788ca0fead57f27eee438916cf6d65c" prot="public" virt="non-virtual"><scope>MetaRunner</scope><name>MetaRunner</name></member>
-      <member refid="d1/d5b/class_meta_runner_1a2b02033a0dd6f3d91f4dc716165320c9" prot="protected" virt="non-virtual"><scope>MetaRunner</scope><name>ptr_portfolio</name></member>
+      <member refid="d1/d5b/class_meta_runner_1a5bd8abcde4efddc27155c7e3d8654d01" prot="public" virt="non-virtual"><scope>MetaRunner</scope><name>MetaRunner</name></member>
       <member refid="d1/d5b/class_meta_runner_1aae41407bc33319e6971a138fae444a2c" prot="public" virt="non-virtual"><scope>MetaRunner</scope><name>run</name></member>
-      <member refid="d1/d5b/class_meta_runner_1a9b611df30450b2e457e63dfff4198d40" prot="protected" virt="non-virtual"><scope>MetaRunner</scope><name>run_config</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['slice_0',['slice',['../d8/d3f/class_c_standard_rate_provider.html#a0b96999a26d96f9a9418f3bce9f769ee',1,'CStandardRateProvider']]]
+  ['print_5fvec_0',['print_vec',['../d6/dd6/providers_8h.html#a5870506723a11cbed102326a4be2d9ab',1,'providers.h']]]
 ];

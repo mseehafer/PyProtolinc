@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
   <compounddef id="d5/d61/class_c_policy" kind="class" language="C++" prot="public">
     <compoundname>CPolicy</compoundname>
+    <includes refid="d8/d6c/portfolio_8h" local="no">portfolio.h</includes>
       <sectiondef kind="protected-attrib">
       <memberdef kind="variable" id="d5/d61/class_c_policy_1a6f5038f7e71b09e6f6adb56d305b1358" prot="protected" static="no" mutable="no">
         <type>int64_t</type>
@@ -15,91 +16,37 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="19" column="13" bodyfile="modules/portfolio.h" bodystart="19" bodyend="-1"/>
+        <location file="modules/portfolio.h" line="31" column="13" bodyfile="modules/portfolio.h" bodystart="31" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="d5/d61/class_c_policy_1abb93a8d4d42fbe6bc6b1bf584d71ad8e" prot="protected" static="no" mutable="no">
-        <type>int</type>
-        <definition>int CPolicy::issue_year</definition>
+      <memberdef kind="variable" id="d5/d61/class_c_policy_1a492ab98e29bb45da519449f0db546712" prot="protected" static="no" mutable="no">
+        <type><ref refid="d5/d2d/struct_period_date" kindref="compound">PeriodDate</ref></type>
+        <definition>PeriodDate CPolicy::issue_date</definition>
         <argsstring></argsstring>
-        <name>issue_year</name>
-        <qualifiedname>CPolicy::issue_year</qualifiedname>
+        <name>issue_date</name>
+        <qualifiedname>CPolicy::issue_date</qualifiedname>
+        <initializer>= <ref refid="d5/d2d/struct_period_date" kindref="compound">PeriodDate</ref>(0, 0, 0)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="22" column="9" bodyfile="modules/portfolio.h" bodystart="22" bodyend="-1"/>
+        <location file="modules/portfolio.h" line="33" column="16" bodyfile="modules/portfolio.h" bodystart="33" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="d5/d61/class_c_policy_1a0cd616ccfbba06f10b711940d1ff7eb6" prot="protected" static="no" mutable="no">
-        <type>int</type>
-        <definition>int CPolicy::issue_month</definition>
+      <memberdef kind="variable" id="d5/d61/class_c_policy_1a008d5b1c2e6b423bbebad85890260db9" prot="protected" static="no" mutable="no">
+        <type><ref refid="d5/d2d/struct_period_date" kindref="compound">PeriodDate</ref></type>
+        <definition>PeriodDate CPolicy::dob</definition>
         <argsstring></argsstring>
-        <name>issue_month</name>
-        <qualifiedname>CPolicy::issue_month</qualifiedname>
+        <name>dob</name>
+        <qualifiedname>CPolicy::dob</qualifiedname>
+        <initializer>= <ref refid="d5/d2d/struct_period_date" kindref="compound">PeriodDate</ref>(0, 0, 0)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="23" column="9" bodyfile="modules/portfolio.h" bodystart="23" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="d5/d61/class_c_policy_1adf87660bef6ac41895fd4361ce9537dd" prot="protected" static="no" mutable="no">
-        <type>int</type>
-        <definition>int CPolicy::issue_day</definition>
-        <argsstring></argsstring>
-        <name>issue_day</name>
-        <qualifiedname>CPolicy::issue_day</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="modules/portfolio.h" line="24" column="9" bodyfile="modules/portfolio.h" bodystart="24" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="d5/d61/class_c_policy_1a3b14cafe295113094600794f51a02dc4" prot="protected" static="no" mutable="no">
-        <type>int</type>
-        <definition>int CPolicy::dob_year</definition>
-        <argsstring></argsstring>
-        <name>dob_year</name>
-        <qualifiedname>CPolicy::dob_year</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="modules/portfolio.h" line="27" column="9" bodyfile="modules/portfolio.h" bodystart="27" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="d5/d61/class_c_policy_1a2368743e6cfc5470fdeb730f3b4db36d" prot="protected" static="no" mutable="no">
-        <type>int</type>
-        <definition>int CPolicy::dob_month</definition>
-        <argsstring></argsstring>
-        <name>dob_month</name>
-        <qualifiedname>CPolicy::dob_month</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="modules/portfolio.h" line="28" column="9" bodyfile="modules/portfolio.h" bodystart="28" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="d5/d61/class_c_policy_1aa30d9c94bf34c1a552e7da28b4dfddc1" prot="protected" static="no" mutable="no">
-        <type>int</type>
-        <definition>int CPolicy::dob_day</definition>
-        <argsstring></argsstring>
-        <name>dob_day</name>
-        <qualifiedname>CPolicy::dob_day</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="modules/portfolio.h" line="29" column="9" bodyfile="modules/portfolio.h" bodystart="29" bodyend="-1"/>
+        <location file="modules/portfolio.h" line="34" column="16" bodyfile="modules/portfolio.h" bodystart="34" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="d5/d61/class_c_policy_1a43e3c393071dcdfea9d1d8fb19bccb02" prot="protected" static="no" mutable="no">
         <type>bool</type>
@@ -113,52 +60,22 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="32" column="10" bodyfile="modules/portfolio.h" bodystart="32" bodyend="-1"/>
+        <location file="modules/portfolio.h" line="37" column="10" bodyfile="modules/portfolio.h" bodystart="37" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="d5/d61/class_c_policy_1abf977d1c834aa8cfe77d74d1c4d61d05" prot="protected" static="no" mutable="no">
-        <type>int</type>
-        <definition>int CPolicy::date_dis_year</definition>
+      <memberdef kind="variable" id="d5/d61/class_c_policy_1a77741c75f08996136b508d13dd244b38" prot="protected" static="no" mutable="no">
+        <type><ref refid="d5/d2d/struct_period_date" kindref="compound">PeriodDate</ref></type>
+        <definition>PeriodDate CPolicy::date_dis</definition>
         <argsstring></argsstring>
-        <name>date_dis_year</name>
-        <qualifiedname>CPolicy::date_dis_year</qualifiedname>
-        <initializer>= 0</initializer>
+        <name>date_dis</name>
+        <qualifiedname>CPolicy::date_dis</qualifiedname>
+        <initializer>= <ref refid="d5/d2d/struct_period_date" kindref="compound">PeriodDate</ref>(0, 0, 0)</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="33" column="9" bodyfile="modules/portfolio.h" bodystart="33" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="d5/d61/class_c_policy_1ac47bf02c59a96962dc93b5237460390c" prot="protected" static="no" mutable="no">
-        <type>int</type>
-        <definition>int CPolicy::date_dis_month</definition>
-        <argsstring></argsstring>
-        <name>date_dis_month</name>
-        <qualifiedname>CPolicy::date_dis_month</qualifiedname>
-        <initializer>= 0</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="modules/portfolio.h" line="34" column="9" bodyfile="modules/portfolio.h" bodystart="34" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="d5/d61/class_c_policy_1a149fdf987c9d38072acc6f5cdf310523" prot="protected" static="no" mutable="no">
-        <type>int</type>
-        <definition>int CPolicy::date_dis_day</definition>
-        <argsstring></argsstring>
-        <name>date_dis_day</name>
-        <qualifiedname>CPolicy::date_dis_day</qualifiedname>
-        <initializer>= 0</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="modules/portfolio.h" line="35" column="9" bodyfile="modules/portfolio.h" bodystart="35" bodyend="-1"/>
+        <location file="modules/portfolio.h" line="38" column="16" bodyfile="modules/portfolio.h" bodystart="38" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="d5/d61/class_c_policy_1acd9ce9a5ea68e1d07869a5d735156b2f" prot="protected" static="no" mutable="no">
         <type>int</type>
@@ -172,7 +89,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="37" column="9" bodyfile="modules/portfolio.h" bodystart="37" bodyend="-1"/>
+        <location file="modules/portfolio.h" line="40" column="9" bodyfile="modules/portfolio.h" bodystart="40" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="d5/d61/class_c_policy_1a38a7455428c382a00d1a9e8521992582" prot="protected" static="no" mutable="no">
         <type>int</type>
@@ -186,7 +103,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="38" column="9" bodyfile="modules/portfolio.h" bodystart="38" bodyend="-1"/>
+        <location file="modules/portfolio.h" line="41" column="9" bodyfile="modules/portfolio.h" bodystart="41" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="d5/d61/class_c_policy_1abba817cdec1d2b65b26c7df19070fbb5" prot="protected" static="no" mutable="no">
         <type>double</type>
@@ -200,7 +117,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="40" column="12" bodyfile="modules/portfolio.h" bodystart="40" bodyend="-1"/>
+        <location file="modules/portfolio.h" line="43" column="12" bodyfile="modules/portfolio.h" bodystart="43" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="d5/d61/class_c_policy_1a65114317473890c9e4e7b156326725d8" prot="protected" static="no" mutable="no">
         <type>double</type>
@@ -214,7 +131,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="41" column="12" bodyfile="modules/portfolio.h" bodystart="41" bodyend="-1"/>
+        <location file="modules/portfolio.h" line="44" column="12" bodyfile="modules/portfolio.h" bodystart="44" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="d5/d61/class_c_policy_1a89bd1d0fc1f27f06b40889c845cec141" prot="protected" static="no" mutable="no">
         <type>string</type>
@@ -228,7 +145,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="43" column="12" bodyfile="modules/portfolio.h" bodystart="43" bodyend="-1"/>
+        <location file="modules/portfolio.h" line="46" column="12" bodyfile="modules/portfolio.h" bodystart="46" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -244,11 +161,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="46" column="13" bodyfile="modules/portfolio.h" bodystart="46" bodyend="46"/>
+        <location file="modules/portfolio.h" line="49" column="13" bodyfile="modules/portfolio.h" bodystart="49" bodyend="49"/>
       </memberdef>
-      <memberdef kind="function" id="d5/d61/class_c_policy_1a80861708c461d3fc29de2ff9c480d889" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>int</type>
-        <definition>int CPolicy::get_issue_year</definition>
+      <memberdef kind="function" id="d5/d61/class_c_policy_1a79a08ce9d4e21f52e5a4e2ff04be6095" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>short</type>
+        <definition>short CPolicy::get_issue_year</definition>
         <argsstring>() const</argsstring>
         <name>get_issue_year</name>
         <qualifiedname>CPolicy::get_issue_year</qualifiedname>
@@ -258,11 +175,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="48" column="9" bodyfile="modules/portfolio.h" bodystart="48" bodyend="48"/>
+        <location file="modules/portfolio.h" line="51" column="11" bodyfile="modules/portfolio.h" bodystart="51" bodyend="51"/>
       </memberdef>
-      <memberdef kind="function" id="d5/d61/class_c_policy_1afe0aeedf4a5b8281d72ef05a7df26eb3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>int</type>
-        <definition>int CPolicy::get_issue_month</definition>
+      <memberdef kind="function" id="d5/d61/class_c_policy_1a2eae21fca249316aeab9f40d8d85797d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>short</type>
+        <definition>short CPolicy::get_issue_month</definition>
         <argsstring>() const</argsstring>
         <name>get_issue_month</name>
         <qualifiedname>CPolicy::get_issue_month</qualifiedname>
@@ -272,11 +189,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="49" column="9" bodyfile="modules/portfolio.h" bodystart="49" bodyend="49"/>
+        <location file="modules/portfolio.h" line="52" column="11" bodyfile="modules/portfolio.h" bodystart="52" bodyend="52"/>
       </memberdef>
-      <memberdef kind="function" id="d5/d61/class_c_policy_1ac5c0a3ab05bc7ca97ea314c7025ff556" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>int</type>
-        <definition>int CPolicy::get_issue_day</definition>
+      <memberdef kind="function" id="d5/d61/class_c_policy_1ab1f6b259443e085de5b4e2fcefa6fa34" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>short</type>
+        <definition>short CPolicy::get_issue_day</definition>
         <argsstring>() const</argsstring>
         <name>get_issue_day</name>
         <qualifiedname>CPolicy::get_issue_day</qualifiedname>
@@ -286,11 +203,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="50" column="9" bodyfile="modules/portfolio.h" bodystart="50" bodyend="50"/>
+        <location file="modules/portfolio.h" line="53" column="11" bodyfile="modules/portfolio.h" bodystart="53" bodyend="53"/>
       </memberdef>
-      <memberdef kind="function" id="d5/d61/class_c_policy_1a2ebb6a5e4bd6c6b73ef4c7484deb905c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>int</type>
-        <definition>int CPolicy::get_dob_year</definition>
+      <memberdef kind="function" id="d5/d61/class_c_policy_1a81eda3f54e8f8b437aae1661ac838ac4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>short</type>
+        <definition>short CPolicy::get_dob_year</definition>
         <argsstring>() const</argsstring>
         <name>get_dob_year</name>
         <qualifiedname>CPolicy::get_dob_year</qualifiedname>
@@ -300,11 +217,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="52" column="9" bodyfile="modules/portfolio.h" bodystart="52" bodyend="52"/>
+        <location file="modules/portfolio.h" line="55" column="11" bodyfile="modules/portfolio.h" bodystart="55" bodyend="55"/>
       </memberdef>
-      <memberdef kind="function" id="d5/d61/class_c_policy_1aedbd7569d4ca3cb5798710482b950970" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>int</type>
-        <definition>int CPolicy::get_dob_month</definition>
+      <memberdef kind="function" id="d5/d61/class_c_policy_1a88793fb61720abdfb78d69ce4341486d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>short</type>
+        <definition>short CPolicy::get_dob_month</definition>
         <argsstring>() const</argsstring>
         <name>get_dob_month</name>
         <qualifiedname>CPolicy::get_dob_month</qualifiedname>
@@ -314,11 +231,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="53" column="9" bodyfile="modules/portfolio.h" bodystart="53" bodyend="53"/>
+        <location file="modules/portfolio.h" line="56" column="11" bodyfile="modules/portfolio.h" bodystart="56" bodyend="56"/>
       </memberdef>
-      <memberdef kind="function" id="d5/d61/class_c_policy_1ad683b20860f8a607712fa90b4ade58b0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>int</type>
-        <definition>int CPolicy::get_dob_day</definition>
+      <memberdef kind="function" id="d5/d61/class_c_policy_1affa8ad68a8933bb0b0c3c1ca6c1c7b6c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>short</type>
+        <definition>short CPolicy::get_dob_day</definition>
         <argsstring>() const</argsstring>
         <name>get_dob_day</name>
         <qualifiedname>CPolicy::get_dob_day</qualifiedname>
@@ -328,7 +245,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="54" column="9" bodyfile="modules/portfolio.h" bodystart="54" bodyend="54"/>
+        <location file="modules/portfolio.h" line="57" column="11" bodyfile="modules/portfolio.h" bodystart="57" bodyend="57"/>
       </memberdef>
       <memberdef kind="function" id="d5/d61/class_c_policy_1ae541465b14f4f1da095a24f013173231" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -342,11 +259,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="56" column="10" bodyfile="modules/portfolio.h" bodystart="56" bodyend="56"/>
+        <location file="modules/portfolio.h" line="59" column="10" bodyfile="modules/portfolio.h" bodystart="59" bodyend="59"/>
       </memberdef>
-      <memberdef kind="function" id="d5/d61/class_c_policy_1a4b730799c1e66a6faaf922e3c82f142c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>int</type>
-        <definition>int CPolicy::get_date_dis_year</definition>
+      <memberdef kind="function" id="d5/d61/class_c_policy_1ae0412e7a67459d13be2d27d7086df22e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>short</type>
+        <definition>short CPolicy::get_date_dis_year</definition>
         <argsstring>() const</argsstring>
         <name>get_date_dis_year</name>
         <qualifiedname>CPolicy::get_date_dis_year</qualifiedname>
@@ -356,11 +273,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="57" column="9" bodyfile="modules/portfolio.h" bodystart="57" bodyend="57"/>
+        <location file="modules/portfolio.h" line="60" column="11" bodyfile="modules/portfolio.h" bodystart="60" bodyend="60"/>
       </memberdef>
-      <memberdef kind="function" id="d5/d61/class_c_policy_1ab6daa00f7411575a037818a04ccd8c97" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>int</type>
-        <definition>int CPolicy::get_date_dis_month</definition>
+      <memberdef kind="function" id="d5/d61/class_c_policy_1aae2da360e67521d6e718118dde7243a1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>short</type>
+        <definition>short CPolicy::get_date_dis_month</definition>
         <argsstring>() const</argsstring>
         <name>get_date_dis_month</name>
         <qualifiedname>CPolicy::get_date_dis_month</qualifiedname>
@@ -370,11 +287,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="58" column="9" bodyfile="modules/portfolio.h" bodystart="58" bodyend="58"/>
+        <location file="modules/portfolio.h" line="61" column="11" bodyfile="modules/portfolio.h" bodystart="61" bodyend="61"/>
       </memberdef>
-      <memberdef kind="function" id="d5/d61/class_c_policy_1a5aa84f060f3f44673e32f9ac63a82191" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>int</type>
-        <definition>int CPolicy::get_date_dis_day</definition>
+      <memberdef kind="function" id="d5/d61/class_c_policy_1a7fa9d008e23d4432864f61e2d84b302e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>short</type>
+        <definition>short CPolicy::get_date_dis_day</definition>
         <argsstring>() const</argsstring>
         <name>get_date_dis_day</name>
         <qualifiedname>CPolicy::get_date_dis_day</qualifiedname>
@@ -384,7 +301,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="59" column="9" bodyfile="modules/portfolio.h" bodystart="59" bodyend="59"/>
+        <location file="modules/portfolio.h" line="62" column="11" bodyfile="modules/portfolio.h" bodystart="62" bodyend="62"/>
       </memberdef>
       <memberdef kind="function" id="d5/d61/class_c_policy_1ab6ff71c6850b2398f1a7ff54e094ba07" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>int</type>
@@ -398,7 +315,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="61" column="9" bodyfile="modules/portfolio.h" bodystart="61" bodyend="61"/>
+        <location file="modules/portfolio.h" line="64" column="9" bodyfile="modules/portfolio.h" bodystart="64" bodyend="64"/>
       </memberdef>
       <memberdef kind="function" id="d5/d61/class_c_policy_1a376b8b1b506131e717cb0da4ccdc7c6a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>int</type>
@@ -412,7 +329,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="62" column="9" bodyfile="modules/portfolio.h" bodystart="62" bodyend="62"/>
+        <location file="modules/portfolio.h" line="65" column="9" bodyfile="modules/portfolio.h" bodystart="65" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="d5/d61/class_c_policy_1a642abb4e6c77af0175de24882432eb0f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>double</type>
@@ -426,7 +343,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="64" column="12" bodyfile="modules/portfolio.h" bodystart="64" bodyend="64"/>
+        <location file="modules/portfolio.h" line="67" column="12" bodyfile="modules/portfolio.h" bodystart="67" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="d5/d61/class_c_policy_1afbe343ce61093f993a0a09a308320a7b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>double</type>
@@ -440,7 +357,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="65" column="12" bodyfile="modules/portfolio.h" bodystart="65" bodyend="65"/>
+        <location file="modules/portfolio.h" line="68" column="12" bodyfile="modules/portfolio.h" bodystart="68" bodyend="68"/>
       </memberdef>
       <memberdef kind="function" id="d5/d61/class_c_policy_1ab0ad00f8d8714cb0d09f6c5bcf859e52" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const string &amp;</type>
@@ -454,7 +371,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="67" column="18" bodyfile="modules/portfolio.h" bodystart="67" bodyend="67"/>
+        <location file="modules/portfolio.h" line="70" column="18" bodyfile="modules/portfolio.h" bodystart="70" bodyend="70"/>
       </memberdef>
       <memberdef kind="function" id="d5/d61/class_c_policy_1aef746f04a3a465883f45f1e2986e0e0f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -499,12 +416,87 @@
           <declname>product</declname>
         </param>
         <briefdescription>
+<para>Construct a new <ref refid="d5/d61/class_c_policy" kindref="compound">CPolicy</ref> object. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>cession_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Technical ID of the record. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dob_long</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Date of birth in the format YYYYMMDD </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>issue_date_long</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Date of policy issue in the format YYYYMMDD </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>disablement_date_long</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Date of disablement of the policy in format YYYYMMDD </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>gender</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value for the selector of the risk factor Gender. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>smoker_status</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value for the selector of the risk factor SmokerStatus. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sum_insured</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Insured amount. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>reserving_rate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>(Constant) reserving rate that shall be used for this policy. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>product</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Product code. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="69" column="5" bodyfile="modules/portfolio.h" bodystart="69" bodyend="130"/>
+        <location file="modules/portfolio.h" line="85" column="5" bodyfile="modules/portfolio.h" bodystart="85" bodyend="114"/>
       </memberdef>
       <memberdef kind="function" id="d5/d61/class_c_policy_1a478619289edd33d766902232c77c4cd7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>string</type>
@@ -518,44 +510,54 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/portfolio.h" line="132" column="12" bodyfile="modules/portfolio.h" bodystart="132" bodyend="146"/>
+        <location file="modules/portfolio.h" line="116" column="12" bodyfile="modules/portfolio.h" bodystart="116" bodyend="130"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
+<para>Represents a seriatim record. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="modules/portfolio.h" line="16" column="1" bodyfile="modules/portfolio.h" bodystart="17" bodyend="147"/>
+    <collaborationgraph>
+      <node id="1">
+        <label>CPolicy</label>
+        <link refid="d5/d61/class_c_policy"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>date_dis</edgelabel>
+          <edgelabel>dob</edgelabel>
+          <edgelabel>issue_date</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>PeriodDate</label>
+        <link refid="d5/d2d/struct_period_date"/>
+      </node>
+    </collaborationgraph>
+    <location file="modules/portfolio.h" line="28" column="1" bodyfile="modules/portfolio.h" bodystart="29" bodyend="131"/>
     <listofallmembers>
       <member refid="d5/d61/class_c_policy_1a43e3c393071dcdfea9d1d8fb19bccb02" prot="protected" virt="non-virtual"><scope>CPolicy</scope><name>_has_disablement_date</name></member>
       <member refid="d5/d61/class_c_policy_1a6f5038f7e71b09e6f6adb56d305b1358" prot="protected" virt="non-virtual"><scope>CPolicy</scope><name>cession_id</name></member>
       <member refid="d5/d61/class_c_policy_1aef746f04a3a465883f45f1e2986e0e0f" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>CPolicy</name></member>
-      <member refid="d5/d61/class_c_policy_1a149fdf987c9d38072acc6f5cdf310523" prot="protected" virt="non-virtual"><scope>CPolicy</scope><name>date_dis_day</name></member>
-      <member refid="d5/d61/class_c_policy_1ac47bf02c59a96962dc93b5237460390c" prot="protected" virt="non-virtual"><scope>CPolicy</scope><name>date_dis_month</name></member>
-      <member refid="d5/d61/class_c_policy_1abf977d1c834aa8cfe77d74d1c4d61d05" prot="protected" virt="non-virtual"><scope>CPolicy</scope><name>date_dis_year</name></member>
-      <member refid="d5/d61/class_c_policy_1aa30d9c94bf34c1a552e7da28b4dfddc1" prot="protected" virt="non-virtual"><scope>CPolicy</scope><name>dob_day</name></member>
-      <member refid="d5/d61/class_c_policy_1a2368743e6cfc5470fdeb730f3b4db36d" prot="protected" virt="non-virtual"><scope>CPolicy</scope><name>dob_month</name></member>
-      <member refid="d5/d61/class_c_policy_1a3b14cafe295113094600794f51a02dc4" prot="protected" virt="non-virtual"><scope>CPolicy</scope><name>dob_year</name></member>
+      <member refid="d5/d61/class_c_policy_1a77741c75f08996136b508d13dd244b38" prot="protected" virt="non-virtual"><scope>CPolicy</scope><name>date_dis</name></member>
+      <member refid="d5/d61/class_c_policy_1a008d5b1c2e6b423bbebad85890260db9" prot="protected" virt="non-virtual"><scope>CPolicy</scope><name>dob</name></member>
       <member refid="d5/d61/class_c_policy_1acd9ce9a5ea68e1d07869a5d735156b2f" prot="protected" virt="non-virtual"><scope>CPolicy</scope><name>gender</name></member>
       <member refid="d5/d61/class_c_policy_1a34d17a783c11cf18fcae8362a7277d09" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>get_cession_id</name></member>
-      <member refid="d5/d61/class_c_policy_1a5aa84f060f3f44673e32f9ac63a82191" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>get_date_dis_day</name></member>
-      <member refid="d5/d61/class_c_policy_1ab6daa00f7411575a037818a04ccd8c97" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>get_date_dis_month</name></member>
-      <member refid="d5/d61/class_c_policy_1a4b730799c1e66a6faaf922e3c82f142c" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>get_date_dis_year</name></member>
-      <member refid="d5/d61/class_c_policy_1ad683b20860f8a607712fa90b4ade58b0" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>get_dob_day</name></member>
-      <member refid="d5/d61/class_c_policy_1aedbd7569d4ca3cb5798710482b950970" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>get_dob_month</name></member>
-      <member refid="d5/d61/class_c_policy_1a2ebb6a5e4bd6c6b73ef4c7484deb905c" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>get_dob_year</name></member>
+      <member refid="d5/d61/class_c_policy_1a7fa9d008e23d4432864f61e2d84b302e" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>get_date_dis_day</name></member>
+      <member refid="d5/d61/class_c_policy_1aae2da360e67521d6e718118dde7243a1" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>get_date_dis_month</name></member>
+      <member refid="d5/d61/class_c_policy_1ae0412e7a67459d13be2d27d7086df22e" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>get_date_dis_year</name></member>
+      <member refid="d5/d61/class_c_policy_1affa8ad68a8933bb0b0c3c1ca6c1c7b6c" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>get_dob_day</name></member>
+      <member refid="d5/d61/class_c_policy_1a88793fb61720abdfb78d69ce4341486d" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>get_dob_month</name></member>
+      <member refid="d5/d61/class_c_policy_1a81eda3f54e8f8b437aae1661ac838ac4" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>get_dob_year</name></member>
       <member refid="d5/d61/class_c_policy_1ab6ff71c6850b2398f1a7ff54e094ba07" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>get_gender</name></member>
-      <member refid="d5/d61/class_c_policy_1ac5c0a3ab05bc7ca97ea314c7025ff556" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>get_issue_day</name></member>
-      <member refid="d5/d61/class_c_policy_1afe0aeedf4a5b8281d72ef05a7df26eb3" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>get_issue_month</name></member>
-      <member refid="d5/d61/class_c_policy_1a80861708c461d3fc29de2ff9c480d889" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>get_issue_year</name></member>
+      <member refid="d5/d61/class_c_policy_1ab1f6b259443e085de5b4e2fcefa6fa34" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>get_issue_day</name></member>
+      <member refid="d5/d61/class_c_policy_1a2eae21fca249316aeab9f40d8d85797d" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>get_issue_month</name></member>
+      <member refid="d5/d61/class_c_policy_1a79a08ce9d4e21f52e5a4e2ff04be6095" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>get_issue_year</name></member>
       <member refid="d5/d61/class_c_policy_1ab0ad00f8d8714cb0d09f6c5bcf859e52" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>get_product</name></member>
       <member refid="d5/d61/class_c_policy_1afbe343ce61093f993a0a09a308320a7b" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>get_reserving_rate</name></member>
       <member refid="d5/d61/class_c_policy_1a376b8b1b506131e717cb0da4ccdc7c6a" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>get_smoker_status</name></member>
       <member refid="d5/d61/class_c_policy_1a642abb4e6c77af0175de24882432eb0f" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>get_sum_insured</name></member>
       <member refid="d5/d61/class_c_policy_1ae541465b14f4f1da095a24f013173231" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>has_disablement_date</name></member>
-      <member refid="d5/d61/class_c_policy_1adf87660bef6ac41895fd4361ce9537dd" prot="protected" virt="non-virtual"><scope>CPolicy</scope><name>issue_day</name></member>
-      <member refid="d5/d61/class_c_policy_1a0cd616ccfbba06f10b711940d1ff7eb6" prot="protected" virt="non-virtual"><scope>CPolicy</scope><name>issue_month</name></member>
-      <member refid="d5/d61/class_c_policy_1abb93a8d4d42fbe6bc6b1bf584d71ad8e" prot="protected" virt="non-virtual"><scope>CPolicy</scope><name>issue_year</name></member>
+      <member refid="d5/d61/class_c_policy_1a492ab98e29bb45da519449f0db546712" prot="protected" virt="non-virtual"><scope>CPolicy</scope><name>issue_date</name></member>
       <member refid="d5/d61/class_c_policy_1a89bd1d0fc1f27f06b40889c845cec141" prot="protected" virt="non-virtual"><scope>CPolicy</scope><name>product</name></member>
       <member refid="d5/d61/class_c_policy_1a65114317473890c9e4e7b156326725d8" prot="protected" virt="non-virtual"><scope>CPolicy</scope><name>reserving_rate</name></member>
       <member refid="d5/d61/class_c_policy_1a38a7455428c382a00d1a9e8521992582" prot="protected" virt="non-virtual"><scope>CPolicy</scope><name>smoker_status</name></member>

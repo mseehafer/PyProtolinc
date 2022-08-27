@@ -1,27 +1,35 @@
-
-
-/* Projection of one record. */
+/**
+ * @file run_result.h
+ * @author M. Seehafer
+ * @brief Stores the result of a calculation.
+ * @version 0.1
+ * @date 2022-08-27
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 
 #ifndef C_RUN_RESULT_H
 #define C_RUN_RESULT_H
 
 #include <vector>
 #include <string>
-// #include <iostream>
-// #include "assumption_sets.h"
-// #include "providers.h"
-// #include "portfolio.h"
-// #include "run_config.h"
 #include "time_axis.h"
 
 using namespace std;
 
+/// Column meaning of the result array when an external array is populated.
 const vector<string> result_names = {
     "PERIOD_START_Y", "PERIOD_START_M", "PERIOD_START_D",
     "PERIOD_END_Y", "PERIOD_END_M", "PERIOD_END_D",
     "PERIOD_DAYS"};
 
-/// a result container that is used at various granularities
+
+/**
+ * @brief Result container that is used to store results at various granularities and provides for
+ * aggregation functinality of partial results.
+ * 
+ */
 class RunResult
 {
 private:
@@ -42,17 +50,19 @@ public:
         return *this;
     }
 
-    // reset the result
+    /// Reset the result
     void reset() {}
 
-    // add another result to this one
+    /// Add another result to this one
     void add_result(const RunResult &other_res) {}
 
+    /// Copy results to an external array
     void copy_results(double *ext_result)
     {
         copy_time_axis(ext_result);
     }
 
+    /// Return the number of rows in the result set
     int size() {
         return (int) _ta->get_length();
     }

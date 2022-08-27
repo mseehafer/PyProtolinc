@@ -78,39 +78,132 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>The runner object.  
+<p>The <a class="el" href="../../d1/d5b/class_meta_runner.html" title="The MetaRunner object. Splits the portfolio and triggers a (possibly) parallelized run by instantiati...">MetaRunner</a> object. Splits the portfolio and triggers a (possibly) parallelized run by instantiating several runner objects, starting them and combining their results.  
  <a href="../../d1/d5b/class_meta_runner.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="../../d8/d4d/runner_8h_source.html">runner.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2788ca0fead57f27eee438916cf6d65c"><td class="memItemLeft" align="right" valign="top"><a id="a2788ca0fead57f27eee438916cf6d65c" name="a2788ca0fead57f27eee438916cf6d65c"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>MetaRunner</b> (const <a class="el" href="../../d7/d5e/class_c_run_config.html">CRunConfig</a> &amp;_run_config, const shared_ptr&lt; <a class="el" href="../../d5/dfd/class_c_policy_portfolio.html">CPolicyPortfolio</a> &gt; _ptr_portfolio, const shared_ptr&lt; <a class="el" href="../../de/d63/class_time_axis.html">TimeAxis</a> &gt; ta)</td></tr>
-<tr class="separator:a2788ca0fead57f27eee438916cf6d65c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a330fc3e6bff0c33e5a047384f2fd15ae"><td class="memItemLeft" align="right" valign="top"><a id="a330fc3e6bff0c33e5a047384f2fd15ae" name="a330fc3e6bff0c33e5a047384f2fd15ae"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>get_num_groups</b> ()</td></tr>
-<tr class="memdesc:a330fc3e6bff0c33e5a047384f2fd15ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the number of groups the portfolio will be split into. <br /></td></tr>
+<tr class="memitem:a5bd8abcde4efddc27155c7e3d8654d01"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d5b/class_meta_runner.html#a5bd8abcde4efddc27155c7e3d8654d01">MetaRunner</a> (const <a class="el" href="../../d7/d5e/class_c_run_config.html">CRunConfig</a> &amp;run_config, const shared_ptr&lt; <a class="el" href="../../d5/dfd/class_c_policy_portfolio.html">CPolicyPortfolio</a> &gt; ptr_portfolio, const shared_ptr&lt; <a class="el" href="../../de/d63/class_time_axis.html">TimeAxis</a> &gt; ta)</td></tr>
+<tr class="memdesc:a5bd8abcde4efddc27155c7e3d8654d01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Meta <a class="el" href="../../da/df0/class_runner.html" title="Provides an interface to the calculation functionality for a portfolio that will be made in one seque...">Runner</a> object.  <a href="../../d1/d5b/class_meta_runner.html#a5bd8abcde4efddc27155c7e3d8654d01">More...</a><br /></td></tr>
+<tr class="separator:a5bd8abcde4efddc27155c7e3d8654d01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a330fc3e6bff0c33e5a047384f2fd15ae"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d5b/class_meta_runner.html#a330fc3e6bff0c33e5a047384f2fd15ae">get_num_groups</a> ()</td></tr>
 <tr class="separator:a330fc3e6bff0c33e5a047384f2fd15ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae41407bc33319e6971a138fae444a2c"><td class="memItemLeft" align="right" valign="top"><a id="aae41407bc33319e6971a138fae444a2c" name="aae41407bc33319e6971a138fae444a2c"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>run</b> (<a class="el" href="../../da/dc0/class_run_result.html">RunResult</a> &amp;run_result)</td></tr>
+<tr class="memitem:aae41407bc33319e6971a138fae444a2c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d5b/class_meta_runner.html#aae41407bc33319e6971a138fae444a2c">run</a> (<a class="el" href="../../da/dc0/class_run_result.html">RunResult</a> &amp;run_result)</td></tr>
 <tr class="separator:aae41407bc33319e6971a138fae444a2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a9b611df30450b2e457e63dfff4198d40"><td class="memItemLeft" align="right" valign="top"><a id="a9b611df30450b2e457e63dfff4198d40" name="a9b611df30450b2e457e63dfff4198d40"></a>
-const <a class="el" href="../../d7/d5e/class_c_run_config.html">CRunConfig</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>run_config</b></td></tr>
-<tr class="separator:a9b611df30450b2e457e63dfff4198d40"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b02033a0dd6f3d91f4dc716165320c9"><td class="memItemLeft" align="right" valign="top"><a id="a2b02033a0dd6f3d91f4dc716165320c9" name="a2b02033a0dd6f3d91f4dc716165320c9"></a>
-const shared_ptr&lt; <a class="el" href="../../d5/dfd/class_c_policy_portfolio.html">CPolicyPortfolio</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>ptr_portfolio</b></td></tr>
-<tr class="separator:a2b02033a0dd6f3d91f4dc716165320c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2b2cb63448bf6afe7087160ce4bd5c46"><td class="memItemLeft" align="right" valign="top"><a id="a2b2cb63448bf6afe7087160ce4bd5c46" name="a2b2cb63448bf6afe7087160ce4bd5c46"></a>
+const <a class="el" href="../../d7/d5e/class_c_run_config.html">CRunConfig</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>_run_config</b></td></tr>
+<tr class="separator:a2b2cb63448bf6afe7087160ce4bd5c46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14ffb1fd3074f8bd48072d3fc322044c"><td class="memItemLeft" align="right" valign="top"><a id="a14ffb1fd3074f8bd48072d3fc322044c" name="a14ffb1fd3074f8bd48072d3fc322044c"></a>
+const shared_ptr&lt; <a class="el" href="../../d5/dfd/class_c_policy_portfolio.html">CPolicyPortfolio</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_ptr_portfolio</b></td></tr>
+<tr class="separator:a14ffb1fd3074f8bd48072d3fc322044c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acfb6bcdd0134faa773e44ca4a99f412e"><td class="memItemLeft" align="right" valign="top"><a id="acfb6bcdd0134faa773e44ca4a99f412e" name="acfb6bcdd0134faa773e44ca4a99f412e"></a>
 const shared_ptr&lt; <a class="el" href="../../de/d63/class_time_axis.html">TimeAxis</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>_ta</b></td></tr>
 <tr class="separator:acfb6bcdd0134faa773e44ca4a99f412e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >The runner object. </p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+<div class="textblock"><p >The <a class="el" href="../../d1/d5b/class_meta_runner.html" title="The MetaRunner object. Splits the portfolio and triggers a (possibly) parallelized run by instantiati...">MetaRunner</a> object. Splits the portfolio and triggers a (possibly) parallelized run by instantiating several runner objects, starting them and combining their results. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a5bd8abcde4efddc27155c7e3d8654d01" name="a5bd8abcde4efddc27155c7e3d8654d01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5bd8abcde4efddc27155c7e3d8654d01">&#9670;&#160;</a></span>MetaRunner()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">MetaRunner::MetaRunner </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="../../d7/d5e/class_c_run_config.html">CRunConfig</a> &amp;&#160;</td>
+          <td class="paramname"><em>run_config</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const shared_ptr&lt; <a class="el" href="../../d5/dfd/class_c_policy_portfolio.html">CPolicyPortfolio</a> &gt;&#160;</td>
+          <td class="paramname"><em>ptr_portfolio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const shared_ptr&lt; <a class="el" href="../../de/d63/class_time_axis.html">TimeAxis</a> &gt;&#160;</td>
+          <td class="paramname"><em>ta</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct a new Meta <a class="el" href="../../da/df0/class_runner.html" title="Provides an interface to the calculation functionality for a portfolio that will be made in one seque...">Runner</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">run_config</td><td>Run configutaion object </td></tr>
+    <tr><td class="paramname">ptr_portfolio</td><td>Pointer to portfolio of policies. </td></tr>
+    <tr><td class="paramname">ta</td><td><a class="el" href="../../de/d63/class_time_axis.html">TimeAxis</a> object to be used for the calculation. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a330fc3e6bff0c33e5a047384f2fd15ae" name="a330fc3e6bff0c33e5a047384f2fd15ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a330fc3e6bff0c33e5a047384f2fd15ae">&#9670;&#160;</a></span>get_num_groups()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int MetaRunner::get_num_groups </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<blockquote class="doxtable">
+<p >&zwj;Calculates into how many sub-portfolios the portfolio will be split into depending on the cpu_count/use_multicore settings in the config and the portfolio size. </p>
+</blockquote>
+
+</div>
+</div>
+<a id="aae41407bc33319e6971a138fae444a2c" name="aae41407bc33319e6971a138fae444a2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae41407bc33319e6971a138fae444a2c">&#9670;&#160;</a></span>run()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MetaRunner::run </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../da/dc0/class_run_result.html">RunResult</a> &amp;&#160;</td>
+          <td class="paramname"><em>run_result</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<blockquote class="doxtable">
+<p >&zwj;Calculate the result and store it in the reference passed in.</p>
+<p ></p>
+</blockquote>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>modules/<a class="el" href="../../d8/d4d/runner_8h_source.html">runner.h</a></li>
 </ul>
 </div><!-- contents -->

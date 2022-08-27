@@ -76,22 +76,82 @@ $(function() {
   <div class="headertitle"><div class="title">RecordProjector Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Functionality to project cash flows for a single record at a time.  
+ <a href="../../d0/dc7/class_record_projector.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="../../da/da6/record__projector_8h_source.html">record_projector.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aae1e6c22acb37d9e0c98400d28397015"><td class="memItemLeft" align="right" valign="top"><a id="aae1e6c22acb37d9e0c98400d28397015" name="aae1e6c22acb37d9e0c98400d28397015"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>RecordProjector</b> (const <a class="el" href="../../d7/d5e/class_c_run_config.html">CRunConfig</a> &amp;run_config, const <a class="el" href="../../de/d63/class_time_axis.html">TimeAxis</a> &amp;ta)</td></tr>
 <tr class="separator:aae1e6c22acb37d9e0c98400d28397015"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab0cddf8a97abd989eee728efb2d08c3a"><td class="memItemLeft" align="right" valign="top"><a id="ab0cddf8a97abd989eee728efb2d08c3a" name="ab0cddf8a97abd989eee728efb2d08c3a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>clear</b> ()</td></tr>
-<tr class="separator:ab0cddf8a97abd989eee728efb2d08c3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f3f5bd8c0eb430aafcb558103deae29"><td class="memItemLeft" align="right" valign="top"><a id="a7f3f5bd8c0eb430aafcb558103deae29" name="a7f3f5bd8c0eb430aafcb558103deae29"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>slice_assumptions</b> (const <a class="el" href="../../d5/d61/class_c_policy.html">CPolicy</a> &amp;policy)</td></tr>
-<tr class="separator:a7f3f5bd8c0eb430aafcb558103deae29"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21e48528b112356bb18ac1f5f142ad34"><td class="memItemLeft" align="right" valign="top"><a id="a21e48528b112356bb18ac1f5f142ad34" name="a21e48528b112356bb18ac1f5f142ad34"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>run</b> (int runner_no, int record_count, const <a class="el" href="../../d5/d61/class_c_policy.html">CPolicy</a> &amp;policy, <a class="el" href="../../da/dc0/class_run_result.html">RunResult</a> &amp;result, const <a class="el" href="../../d5/d2d/struct_period_date.html">PeriodDate</a> &amp;portfolio_date)</td></tr>
+<tr class="memitem:a21e48528b112356bb18ac1f5f142ad34"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/dc7/class_record_projector.html#a21e48528b112356bb18ac1f5f142ad34">run</a> (int runner_no, int record_count, const <a class="el" href="../../d5/d61/class_c_policy.html">CPolicy</a> &amp;policy, <a class="el" href="../../da/dc0/class_run_result.html">RunResult</a> &amp;result, const <a class="el" href="../../d5/d2d/struct_period_date.html">PeriodDate</a> &amp;portfolio_date)</td></tr>
+<tr class="memdesc:a21e48528b112356bb18ac1f5f142ad34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create the projection result for one policy.  <a href="../../d0/dc7/class_record_projector.html#a21e48528b112356bb18ac1f5f142ad34">More...</a><br /></td></tr>
 <tr class="separator:a21e48528b112356bb18ac1f5f142ad34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Functionality to project cash flows for a single record at a time. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a21e48528b112356bb18ac1f5f142ad34" name="a21e48528b112356bb18ac1f5f142ad34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21e48528b112356bb18ac1f5f142ad34">&#9670;&#160;</a></span>run()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RecordProjector::run </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>runner_no</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>record_count</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d5/d61/class_c_policy.html">CPolicy</a> &amp;&#160;</td>
+          <td class="paramname"><em>policy</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../da/dc0/class_run_result.html">RunResult</a> &amp;&#160;</td>
+          <td class="paramname"><em>result</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="../../d5/d2d/struct_period_date.html">PeriodDate</a> &amp;&#160;</td>
+          <td class="paramname"><em>portfolio_date</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Create the projection result for one policy. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">runner_no</td><td>Number of the runner instance. </td></tr>
+    <tr><td class="paramname">record_count</td><td>Number of record in batch for this runner. </td></tr>
+    <tr><td class="paramname">policy</td><td>The record to project </td></tr>
+    <tr><td class="paramname">result</td><td>Container for the result </td></tr>
+    <tr><td class="paramname">portfolio_date</td><td>portfolio date </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>modules/<a class="el" href="../../da/da6/record__projector_8h_source.html">record_projector.h</a></li>
 </ul>

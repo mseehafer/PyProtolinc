@@ -10,7 +10,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread")
 
 
 find_package(GTest CONFIG REQUIRED)
-add_executable(tests test_portfolio.cpp test_calculations.cpp)
+add_executable(tests test_calculations.cpp)
 
 # target_link_libraries(tests PUBLIC GTest::gmock GTest::gtest GTest::gmock_main GTest::gtest_main)
 target_link_libraries(tests PUBLIC GTest::gtest GTest::gtest_main)

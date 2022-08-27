@@ -72,45 +72,53 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="../../d3/d96/class_c_policy_portfolio-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">CPolicyPortfolio Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>A portfolio of policies.  
+ <a href="../../d5/dfd/class_c_policy_portfolio.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="../../d8/d6c/portfolio_8h_source.html">portfolio.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5d254e7c6c00d0c2016664a4f96992ca"><td class="memItemLeft" align="right" valign="top"><a id="a5d254e7c6c00d0c2016664a4f96992ca" name="a5d254e7c6c00d0c2016664a4f96992ca"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>CPolicyPortfolio</b> (short ptf_year, short ptf_month, short ptf_day)</td></tr>
+<tr class="memitem:a5d254e7c6c00d0c2016664a4f96992ca"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dfd/class_c_policy_portfolio.html#a5d254e7c6c00d0c2016664a4f96992ca">CPolicyPortfolio</a> (short ptf_year, short ptf_month, short ptf_day)</td></tr>
+<tr class="memdesc:a5d254e7c6c00d0c2016664a4f96992ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="../../d5/dfd/class_c_policy_portfolio.html" title="A portfolio of policies.">CPolicyPortfolio</a> object.  <a href="../../d5/dfd/class_c_policy_portfolio.html#a5d254e7c6c00d0c2016664a4f96992ca">More...</a><br /></td></tr>
 <tr class="separator:a5d254e7c6c00d0c2016664a4f96992ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a814fb2745b56539a24654802f6beb7e2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/dfd/class_c_policy_portfolio.html#a814fb2745b56539a24654802f6beb7e2">CPolicyPortfolio</a> (<a class="el" href="../../d5/d2d/struct_period_date.html">PeriodDate</a> pd)</td></tr>
+<tr class="memdesc:a814fb2745b56539a24654802f6beb7e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="../../d5/dfd/class_c_policy_portfolio.html" title="A portfolio of policies.">CPolicyPortfolio</a> object.  <a href="../../d5/dfd/class_c_policy_portfolio.html#a814fb2745b56539a24654802f6beb7e2">More...</a><br /></td></tr>
+<tr class="separator:a814fb2745b56539a24654802f6beb7e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a5a4ac63b749a88034d9ac91782e8af"><td class="memItemLeft" align="right" valign="top"><a id="a6a5a4ac63b749a88034d9ac91782e8af" name="a6a5a4ac63b749a88034d9ac91782e8af"></a>
+const <a class="el" href="../../d5/d2d/struct_period_date.html">PeriodDate</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_portfolio_date</b> ()</td></tr>
+<tr class="memdesc:a6a5a4ac63b749a88034d9ac91782e8af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the portfolio date. <br /></td></tr>
+<tr class="separator:a6a5a4ac63b749a88034d9ac91782e8af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a44a25d9fa168e79f807add11f4367670"><td class="memItemLeft" align="right" valign="top"><a id="a44a25d9fa168e79f807add11f4367670" name="a44a25d9fa168e79f807add11f4367670"></a>
 const vector&lt; shared_ptr&lt; <a class="el" href="../../d5/d61/class_c_policy.html">CPolicy</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>get_policies</b> ()</td></tr>
+<tr class="memdesc:a44a25d9fa168e79f807add11f4367670"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the vector of policies. <br /></td></tr>
 <tr class="separator:a44a25d9fa168e79f807add11f4367670"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8555a243c38760c21360fdd8fd6e84c"><td class="memItemLeft" align="right" valign="top"><a id="ac8555a243c38760c21360fdd8fd6e84c" name="ac8555a243c38760c21360fdd8fd6e84c"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>size</b> () const</td></tr>
+<tr class="memdesc:ac8555a243c38760c21360fdd8fd6e84c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the size of the portfolio. <br /></td></tr>
 <tr class="separator:ac8555a243c38760c21360fdd8fd6e84c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52506b291d31414a9f04171d10ec1d22"><td class="memItemLeft" align="right" valign="top"><a id="a52506b291d31414a9f04171d10ec1d22" name="a52506b291d31414a9f04171d10ec1d22"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>add</b> (shared_ptr&lt; <a class="el" href="../../d5/d61/class_c_policy.html">CPolicy</a> &gt; record_ptr)</td></tr>
+<tr class="memdesc:a52506b291d31414a9f04171d10ec1d22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a policy to the portfolio. <br /></td></tr>
 <tr class="separator:a52506b291d31414a9f04171d10ec1d22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad344ddf436066f098cdbd8bb44960b2d"><td class="memItemLeft" align="right" valign="top"><a id="ad344ddf436066f098cdbd8bb44960b2d" name="ad344ddf436066f098cdbd8bb44960b2d"></a>
+const <a class="el" href="../../d5/d61/class_c_policy.html">CPolicy</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>at</b> (size_t j) const</td></tr>
+<tr class="memdesc:ad344ddf436066f098cdbd8bb44960b2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the policy at the given index. <br /></td></tr>
+<tr class="separator:ad344ddf436066f098cdbd8bb44960b2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
 <tr class="memitem:ac54477ea72cef0772c4b648db5755d6c"><td class="memItemLeft" align="right" valign="top"><a id="ac54477ea72cef0772c4b648db5755d6c" name="ac54477ea72cef0772c4b648db5755d6c"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>reserve</b> (size_t capa)</td></tr>
 <tr class="separator:ac54477ea72cef0772c4b648db5755d6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad344ddf436066f098cdbd8bb44960b2d"><td class="memItemLeft" align="right" valign="top"><a id="ad344ddf436066f098cdbd8bb44960b2d" name="ad344ddf436066f098cdbd8bb44960b2d"></a>
-const <a class="el" href="../../d5/d61/class_c_policy.html">CPolicy</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>at</b> (size_t j) const</td></tr>
-<tr class="separator:ad344ddf436066f098cdbd8bb44960b2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:afbbccfe6aad06351151c457db8d63f2f"><td class="memItemLeft" align="right" valign="top"><a id="afbbccfe6aad06351151c457db8d63f2f" name="afbbccfe6aad06351151c457db8d63f2f"></a>
-short&#160;</td><td class="memItemRight" valign="bottom"><b>_ptf_year</b></td></tr>
-<tr class="separator:afbbccfe6aad06351151c457db8d63f2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b78ba037a1e1bcbcb4503668fa278ed"><td class="memItemLeft" align="right" valign="top"><a id="a8b78ba037a1e1bcbcb4503668fa278ed" name="a8b78ba037a1e1bcbcb4503668fa278ed"></a>
-short&#160;</td><td class="memItemRight" valign="bottom"><b>_ptf_month</b></td></tr>
-<tr class="separator:a8b78ba037a1e1bcbcb4503668fa278ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff2cbf2d55dd2617c45a737ec78d86e2"><td class="memItemLeft" align="right" valign="top"><a id="aff2cbf2d55dd2617c45a737ec78d86e2" name="aff2cbf2d55dd2617c45a737ec78d86e2"></a>
-short&#160;</td><td class="memItemRight" valign="bottom"><b>_ptf_day</b></td></tr>
-<tr class="separator:aff2cbf2d55dd2617c45a737ec78d86e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -120,7 +128,105 @@ vector&lt; shared_ptr&lt; <a class="el" href="../../d5/d61/class_c_policy.html">
 <tr class="memitem:ab1fb5c999d0a7633140a59bc091fddb7"><td class="memItemLeft" align="right" valign="top"><a id="ab1fb5c999d0a7633140a59bc091fddb7" name="ab1fb5c999d0a7633140a59bc091fddb7"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>_num_policies</b> = 0</td></tr>
 <tr class="separator:ab1fb5c999d0a7633140a59bc091fddb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7cc924e530241a21762ac033741643ac"><td class="memItemLeft" align="right" valign="top"><a id="a7cc924e530241a21762ac033741643ac" name="a7cc924e530241a21762ac033741643ac"></a>
+<a class="el" href="../../d5/d2d/struct_period_date.html">PeriodDate</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_portfolio_date</b></td></tr>
+<tr class="separator:a7cc924e530241a21762ac033741643ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a0a0d22e4965af034e3c9c9844a7503b0"><td class="memItemLeft" align="right" valign="top"><a id="a0a0d22e4965af034e3c9c9844a7503b0" name="a0a0d22e4965af034e3c9c9844a7503b0"></a>
+class&#160;</td><td class="memItemRight" valign="bottom"><b>CPortfolioBuilder</b></td></tr>
+<tr class="separator:a0a0d22e4965af034e3c9c9844a7503b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >A portfolio of policies. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a5d254e7c6c00d0c2016664a4f96992ca" name="a5d254e7c6c00d0c2016664a4f96992ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d254e7c6c00d0c2016664a4f96992ca">&#9670;&#160;</a></span>CPolicyPortfolio() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">CPolicyPortfolio::CPolicyPortfolio </td>
+          <td>(</td>
+          <td class="paramtype">short&#160;</td>
+          <td class="paramname"><em>ptf_year</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short&#160;</td>
+          <td class="paramname"><em>ptf_month</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">short&#160;</td>
+          <td class="paramname"><em>ptf_day</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct a new <a class="el" href="../../d5/dfd/class_c_policy_portfolio.html" title="A portfolio of policies.">CPolicyPortfolio</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ptf_year</td><td>Year of the portfolio date </td></tr>
+    <tr><td class="paramname">ptf_month</td><td>Month of the portfolio date </td></tr>
+    <tr><td class="paramname">ptf_day</td><td>Day of the portfolio date </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a814fb2745b56539a24654802f6beb7e2" name="a814fb2745b56539a24654802f6beb7e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a814fb2745b56539a24654802f6beb7e2">&#9670;&#160;</a></span>CPolicyPortfolio() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">CPolicyPortfolio::CPolicyPortfolio </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d5/d2d/struct_period_date.html">PeriodDate</a>&#160;</td>
+          <td class="paramname"><em>pd</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct a new <a class="el" href="../../d5/dfd/class_c_policy_portfolio.html" title="A portfolio of policies.">CPolicyPortfolio</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pd</td><td>The portfolio date </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>modules/<a class="el" href="../../d8/d6c/portfolio_8h_source.html">portfolio.h</a></li>
 </ul>

@@ -1,3 +1,13 @@
+/**
+ * @file portfolio.h
+ * @author M. Seehafer
+ * @brief
+ * @version 0.2.0
+ * @date 2022-08-27
+ *
+ * @copyright Copyright (c) 2022
+ *
+ */
 #ifndef C_PORTFOLIO_H
 #define C_PORTFOLIO_H
 
@@ -7,32 +17,25 @@
 #include <string>
 #include <cstdint>
 
-
-// #include "risk_factors.h"
-// #include "providers.h"
+#include "time_axis.h"
 
 using namespace std;
 
+/**
+ * @brief Represents a seriatim record.
+ *
+ */
 class CPolicy
 {
 protected:
     int64_t cession_id;
 
-    // issue date
-    int issue_year;
-    int issue_month;
-    int issue_day;
-
-    // date of birth
-    int dob_year;
-    int dob_month;
-    int dob_day;
+    PeriodDate issue_date = PeriodDate(0, 0, 0);
+    PeriodDate dob = PeriodDate(0, 0, 0);
 
     // disablement_date
     bool _has_disablement_date;
-    int date_dis_year = 0;
-    int date_dis_month = 0;
-    int date_dis_day = 0;
+    PeriodDate date_dis = PeriodDate(0, 0, 0);
 
     int gender;
     int smoker_status;
@@ -45,18 +48,18 @@ protected:
 public:
     int64_t get_cession_id() const { return cession_id; }
 
-    int get_issue_year() const { return issue_year; }
-    int get_issue_month() const { return issue_month; }
-    int get_issue_day() const { return issue_day; }
+    short get_issue_year() const { return issue_date.year; }
+    short get_issue_month() const { return issue_date.month; }
+    short get_issue_day() const { return issue_date.day; }
 
-    int get_dob_year() const { return dob_year; }
-    int get_dob_month() const { return dob_month; }
-    int get_dob_day() const { return dob_day; }
+    short get_dob_year() const { return dob.year; }
+    short get_dob_month() const { return dob.month; }
+    short get_dob_day() const { return dob.day; }
 
     bool has_disablement_date() const { return _has_disablement_date; }
-    int get_date_dis_year() const { return date_dis_year; }
-    int get_date_dis_month() const { return date_dis_month; }
-    int get_date_dis_day() const { return date_dis_day; }
+    short get_date_dis_year() const { return date_dis.year; }
+    short get_date_dis_month() const { return date_dis.month; }
+    short get_date_dis_day() const { return date_dis.day; }
 
     int get_gender() const { return gender; }
     int get_smoker_status() const { return smoker_status; }
@@ -64,8 +67,21 @@ public:
     double get_sum_insured() const { return sum_insured; }
     double get_reserving_rate() const { return reserving_rate; }
 
-    const string& get_product() const { return product;}
+    const string &get_product() const { return product; }
 
+    /**
+     * @brief Construct a new CPolicy object
+     *
+     * @param cession_id Technical ID of the record.
+     * @param dob_long Date of birth in the format YYYYMMDD
+     * @param issue_date_long Date of policy issue in the format YYYYMMDD
+     * @param disablement_date_long Date of disablement of the policy in format YYYYMMDD
+     * @param gender Value for the selector of the risk factor Gender.
+     * @param smoker_status Value for the selector of the risk factor SmokerStatus.
+     * @param sum_insured Insured amount.
+     * @param reserving_rate (Constant) reserving rate that shall be used for this policy.
+     * @param product Product code.
+     */
     CPolicy(int64_t cession_id,
             int64_t dob_long,
             int64_t issue_date_long,
@@ -78,23 +94,15 @@ public:
     {
         this->cession_id = cession_id;
 
-        // issue date
-        this->issue_year = (int)(issue_date_long / 10000);
-        this->issue_month = (int)((issue_date_long % 10000) / 100);
-        this->issue_day = (int)(issue_date_long % 100);
+        this->issue_date.set_from_long(issue_date_long);
 
-        // date of birth
-        this->dob_year = (int)(dob_long / 10000);
-        this->dob_month = (int)((dob_long % 10000) / 100);
-        this->dob_day = (int)(dob_long % 100);
+        this->dob.set_from_long(dob_long);
 
         // disablement_date
         this->_has_disablement_date = disablement_date_long >= 0;
         if (this->_has_disablement_date)
         {
-            this->date_dis_year = (int)(disablement_date_long / 10000);
-            this->date_dis_month = (int)((disablement_date_long % 10000) / 100);
-            this->date_dis_day = (int)(disablement_date_long % 100);
+            this->date_dis.set_from_long(disablement_date_long);
         }
 
         this->gender = gender;
@@ -102,30 +110,6 @@ public:
         this->sum_insured = sum_insured;
         this->reserving_rate = reserving_rate;
 
-        //   string prodUpper = product;
-        //   transform(prodUpper.begin(), prodUpper.end(), prodUpper.begin(), ::toupper);
-
-        //   // start out with unknown product
-        //   this-> prod = ProdOther;
-        //   for(int j=0; j < NUM_PRODS; j++) {
-        //       string thisProdUpper = ProductNames[j];
-        //       transform(thisProdUpper.begin(), thisProdUpper.end(), thisProdUpper.begin(), ::toupper);
-
-        //       if (thisProdUpper.compare(prodUpper) == 0) {
-        //         this -> prod = static_cast<Product>(j);
-        //         break;
-        //       }
-        //   }
-        //   this -> gender = static_cast<Gender> (gender < 3 ? gender : 2);
-
-        //   issue_age = get_age_at_date(dob_year, dob_month, dob_day,
-        //                               issue_year, issue_month, issue_day);
-
-        //   this -> coverage_years = coverage_years;
-        //   this -> sum_insured = sum_insured;
-
-        //   age_projection_start =  get_age_at_date(dob_year, dob_month, dob_day,
-        //                                           portfolio_year, portfolio_month, portfolio_day);
         this->product = product;
     }
 
@@ -146,7 +130,10 @@ public:
     }
 };
 
-
+/**
+ * @brief A portfolio of policies.
+ *
+ */
 class CPolicyPortfolio
 {
 protected:
@@ -154,43 +141,74 @@ protected:
 
     size_t _num_policies = 0;
 
-
-public:
-    // portfolio date
-    short _ptf_year, _ptf_month, _ptf_day;
-
-    CPolicyPortfolio(short ptf_year, short ptf_month, short ptf_day) : _ptf_year(ptf_year),
-                                                                       _ptf_month(ptf_month),
-                                                                       _ptf_day(ptf_day)
-    {
-    }
-
-    const vector<shared_ptr<CPolicy>>& get_policies() {
-        return _policies;
-    }
-
-    size_t size() const
-    {
-        return _num_policies;
-    }
-
-    void add(shared_ptr<CPolicy> record_ptr)
-    {
-        _policies.push_back(record_ptr);
-        _num_policies++;
-    }
+    PeriodDate _portfolio_date;
 
     void reserve(size_t capa)
     {
         _policies.reserve(capa);
     }
 
+public:
+    // // portfolio date
+    // short _ptf_year, _ptf_month, _ptf_day;
+
+    /**
+     * @brief Construct a new CPolicyPortfolio object
+     *
+     * @param ptf_year Year of the portfolio date
+     * @param ptf_month Month of the portfolio date
+     * @param ptf_day Day of the portfolio date
+     */
+    CPolicyPortfolio(short ptf_year, short ptf_month, short ptf_day) : _portfolio_date(ptf_year, ptf_month, ptf_day)
+    {
+    }
+
+    /**
+     * @brief Construct a new CPolicyPortfolio object
+     *
+     * @param pd The portfolio date
+     */
+    CPolicyPortfolio(PeriodDate pd) : _portfolio_date(pd)
+    {
+    }
+
+    /// Return the portfolio date
+    const PeriodDate &get_portfolio_date() { return _portfolio_date; }
+
+    /// Return the vector of policies
+    const vector<shared_ptr<CPolicy>> &get_policies()
+    {
+        return _policies;
+    }
+
+    /// Return the size of the portfolio
+    size_t size() const
+    {
+        return _num_policies;
+    }
+
+    /// Add a policy to the portfolio.
+    void add(shared_ptr<CPolicy> record_ptr)
+    {
+        _policies.push_back(record_ptr);
+        _num_policies++;
+    }
+
+    /// Get the policy at the given index.
     const CPolicy &at(size_t j) const
     {
         return *_policies[j];
     }
+
+    // to allow access the reserve method
+    friend class CPortfolioBuilder;
 };
 
+/**
+ * @brief Builder class that allows to create portfolios from a number of
+ * appropriately typed vectors.
+ *
+ */
 class CPortfolioBuilder
 {
 
@@ -227,8 +245,13 @@ private:
     bool has_reserving_rate = false;
     double *ptr_reserving_rate;
 
-
 public:
+    /**
+     * @brief Construct a new CPortfolioBuilder object
+     *
+     * @param s The required size (number of records) in the portfolio
+     * @param _product The product code applicable throughout the portfolio.
+     */
     CPortfolioBuilder(size_t s, string _product) : num_policies(s), product(_product) {}
 
     CPortfolioBuilder &set_portfolio_date(short ptf_year, short ptf_month, short ptf_day)
@@ -296,106 +319,115 @@ public:
         return *this;
     }
 
-
-
-    /// function that creates a CPolicyPortfolio
-    shared_ptr<CPolicyPortfolio> build()
-    {
-
-        if (!has_portfolio_date)
-        {
-            throw domain_error("Portfolio date not set.");
-        }
-
-        if (!has_dis_dates)
-        {
-            throw domain_error("Disablement dates not set.");
-        }
-
-        if (!has_issue_dates)
-        {
-            throw domain_error("Issue dates dates not set.");
-        }
-
-        if (!has_dob)
-        {
-            throw domain_error("Dates of birth not set.");
-        }
-
-        if (!has_cession_ids)
-        {
-            throw domain_error("Cession IDs not set.");
-        }
-
-        if (!has_gender) {
-            throw domain_error("Gender is not set.");
-        }
-
-        if (!has_smoker_status) {
-            throw domain_error("SmokerStatus is not set.");
-        }
-
-        if (!has_sum_insured) {
-            throw domain_error("SumInsured is not set.");
-        } 
-
-        if (!has_reserving_rate) {
-            throw domain_error("ReservingRate is not set.");
-        } 
-
-        // two name for the same object
-        shared_ptr<CPolicyPortfolio> ptr_portfolio = make_shared<CPolicyPortfolio>(ptf_year, ptf_month, ptf_day);
-        CPolicyPortfolio &portfolio = *ptr_portfolio;
-
-        portfolio.reserve(num_policies);
-
-        for (size_t k = 0; k < num_policies; k++)
-        {
-            shared_ptr<CPolicy> record = make_shared<CPolicy>(ptr_cession_id[k],
-                                                              ptr_dob[k],
-                                                              ptr_issue_date[k],
-                                                              ptr_disablement_date[k],
-                                                              ptr_gender[k],
-                                                              ptr_smoker_status[k],
-                                                              ptr_sum_insured[k],
-                                                              ptr_reserving_rate[k],
-                                                              product);
-
-            portfolio.add(record);
-        }
-
-        return ptr_portfolio;
-    }
+    /// Create a new portfolio object from the given input vectors.
+    shared_ptr<CPolicyPortfolio> build();
 };
 
+shared_ptr<CPolicyPortfolio> CPortfolioBuilder::build()
+{
 
+    if (!has_portfolio_date)
+    {
+        throw domain_error("Portfolio date not set.");
+    }
 
-// calculate the age in (completed) months
-// given the birthday and the date of interest;
-// returns -1 if not born yet at the given date
-int get_age_at_date(int dob_year, int dob_month, int dob_day, int dt_year, int dt_month, int dt_day) {
+    if (!has_dis_dates)
+    {
+        throw domain_error("Disablement dates not set.");
+    }
+
+    if (!has_issue_dates)
+    {
+        throw domain_error("Issue dates dates not set.");
+    }
+
+    if (!has_dob)
+    {
+        throw domain_error("Dates of birth not set.");
+    }
+
+    if (!has_cession_ids)
+    {
+        throw domain_error("Cession IDs not set.");
+    }
+
+    if (!has_gender)
+    {
+        throw domain_error("Gender is not set.");
+    }
+
+    if (!has_smoker_status)
+    {
+        throw domain_error("SmokerStatus is not set.");
+    }
+
+    if (!has_sum_insured)
+    {
+        throw domain_error("SumInsured is not set.");
+    }
+
+    if (!has_reserving_rate)
+    {
+        throw domain_error("ReservingRate is not set.");
+    }
+
+    // two name for the same object
+    shared_ptr<CPolicyPortfolio> ptr_portfolio = make_shared<CPolicyPortfolio>(ptf_year, ptf_month, ptf_day);
+    CPolicyPortfolio &portfolio = *ptr_portfolio;
+
+    portfolio.reserve(num_policies);
+
+    for (size_t k = 0; k < num_policies; k++)
+    {
+        shared_ptr<CPolicy> record = make_shared<CPolicy>(ptr_cession_id[k],
+                                                          ptr_dob[k],
+                                                          ptr_issue_date[k],
+                                                          ptr_disablement_date[k],
+                                                          ptr_gender[k],
+                                                          ptr_smoker_status[k],
+                                                          ptr_sum_insured[k],
+                                                          ptr_reserving_rate[k],
+                                                          product);
+
+        portfolio.add(record);
+    }
+
+    return ptr_portfolio;
+}
+
+/**
+ * @brief Calculate the age in (completed) months for a given birthday and the date of interest, returns -1 if not born yet at the given date.
+ *
+ * @param dob_year
+ * @param dob_month
+ * @param dob_day
+ * @param dt_year
+ * @param dt_month
+ * @param dt_day
+ * @return int
+ */
+int get_age_at_date(int dob_year, int dob_month, int dob_day, int dt_year, int dt_month, int dt_day)
+{
     // check that person is born at dt already
     if (dt_year < dob_year || (dt_year == dob_year && dt_month < dob_month) ||
-        (dt_year == dob_year && dt_month == dob_month && dt_day < dob_day)) {
-          return -1; // use as a error signal
+        (dt_year == dob_year && dt_month == dob_month && dt_day < dob_day))
+    {
+        return -1; // use as a error signal
     }
 
     // special case equality of dates
-    if (dt_year == dob_year && dt_month == dob_month && dt_day == dob_day) {
-      return 0;
+    if (dt_year == dob_year && dt_month == dob_month && dt_day == dob_day)
+    {
+        return 0;
     }
 
-    int full_years = (dt_month > dob_month || dob_month == dt_month && dob_day <= dt_day) ? 
-                    dt_year - dob_year : dt_year - dob_year - 1;
-    
+    int full_years = (dt_month > dob_month || dob_month == dt_month && dob_day <= dt_day) ? dt_year - dob_year : dt_year - dob_year - 1;
+
     // so the last birthday before dt was at dob_year + full_years/dob_month/dob_day
-    int full_months = (dt_month < dob_month || (dt_month == dob_month && dt_day < dob_day)) ?
-                     12 + dt_month - dob_month - (dt_day < dob_day ? 1 :0)
-                     : dt_month - dob_month - (dt_day < dob_day ? 1 :0);
+    int full_months = (dt_month < dob_month || (dt_month == dob_month && dt_day < dob_day)) ? 12 + dt_month - dob_month - (dt_day < dob_day ? 1 : 0)
+                                                                                            : dt_month - dob_month - (dt_day < dob_day ? 1 : 0);
 
     return 12 * full_years + full_months;
-
 }
-
 
 #endif

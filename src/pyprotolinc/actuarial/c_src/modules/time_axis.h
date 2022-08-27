@@ -220,7 +220,23 @@ struct PeriodDate
         }
         return duration;
     }
+
+    /**
+     * @brief Set the date long which is encoded as YYYYMMDD
+     * 
+     * @param dt_lng 
+     */
+    void set_from_long(int64_t dt_lng)
+    {
+        year = (int)( dt_lng / 10000);
+        month = (int)(( dt_lng % 10000) / 100);
+        day = (int)( dt_lng % 100);        
+    }
+
 };
+
+
+
 
 /// US 30/360 convention accoriding to https://sqlsunday.com/2014/08/17/30-360-day-count-convention/
 inline int getdays_30U_360(const PeriodDate &date1, const PeriodDate &date2)

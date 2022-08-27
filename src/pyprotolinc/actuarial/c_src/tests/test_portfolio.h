@@ -1,3 +1,5 @@
+#ifndef TEST_PORTFOLIO_H
+#define TEST_PORTFOLIO_H
 
 #include <gtest/gtest.h>
 
@@ -77,3 +79,5 @@ TEST(test_portfolio, create)
 
 }
 
+
+#endif

@@ -232,12 +232,65 @@
           <declname>dt_day</declname>
         </param>
         <briefdescription>
+<para>Calculate the age in (completed) months for a given birthday and the date of interest, returns -1 if not born yet at the given date. </para>
         </briefdescription>
         <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dob_year</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dob_month</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dob_day</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dt_year</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dt_month</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dt_day</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int </para>
+</simplesect>
+</para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="modules/c_valuation.h" line="31" column="5" bodyfile="modules/c_valuation.cpp" bodystart="403" bodyend="425" declfile="modules/c_valuation.h" declline="31" declcolumn="5"/>
+        <location file="modules/c_valuation.h" line="31" column="5" bodyfile="modules/portfolio.h" bodystart="409" bodyend="431" declfile="modules/c_valuation.h" declline="31" declcolumn="5"/>
       </memberdef>
       <memberdef kind="function" id="d7/d34/c__valuation_8h_1a6552fce9df184e1990a7b5e5c7d53254" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>

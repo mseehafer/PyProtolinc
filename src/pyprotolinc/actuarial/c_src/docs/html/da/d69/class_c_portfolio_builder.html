@@ -76,11 +76,16 @@ $(function() {
   <div class="headertitle"><div class="title">CPortfolioBuilder Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Builder class that allows to create portfolios from a number of appropriately typed vectors.  
+ <a href="../../da/d69/class_c_portfolio_builder.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="../../d8/d6c/portfolio_8h_source.html">portfolio.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ad61d666ceb5c3a8f155eae7511fe1da3"><td class="memItemLeft" align="right" valign="top"><a id="ad61d666ceb5c3a8f155eae7511fe1da3" name="ad61d666ceb5c3a8f155eae7511fe1da3"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>CPortfolioBuilder</b> (size_t s, string _product)</td></tr>
+<tr class="memitem:ad61d666ceb5c3a8f155eae7511fe1da3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d69/class_c_portfolio_builder.html#ad61d666ceb5c3a8f155eae7511fe1da3">CPortfolioBuilder</a> (size_t s, string _product)</td></tr>
+<tr class="memdesc:ad61d666ceb5c3a8f155eae7511fe1da3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="../../da/d69/class_c_portfolio_builder.html" title="Builder class that allows to create portfolios from a number of appropriately typed vectors.">CPortfolioBuilder</a> object.  <a href="../../da/d69/class_c_portfolio_builder.html#ad61d666ceb5c3a8f155eae7511fe1da3">More...</a><br /></td></tr>
 <tr class="separator:ad61d666ceb5c3a8f155eae7511fe1da3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac15e1bb228261a532c4cbd47661e3311"><td class="memItemLeft" align="right" valign="top"><a id="ac15e1bb228261a532c4cbd47661e3311" name="ac15e1bb228261a532c4cbd47661e3311"></a>
 <a class="el" href="../../da/d69/class_c_portfolio_builder.html">CPortfolioBuilder</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>set_portfolio_date</b> (short ptf_year, short ptf_month, short ptf_day)</td></tr>
@@ -111,9 +116,57 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a96021d838d14ba8288716a1599863aa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a99d693406d518c9f3be9769ae26d2d92"><td class="memItemLeft" align="right" valign="top"><a id="a99d693406d518c9f3be9769ae26d2d92" name="a99d693406d518c9f3be9769ae26d2d92"></a>
 shared_ptr&lt; <a class="el" href="../../d5/dfd/class_c_policy_portfolio.html">CPolicyPortfolio</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>build</b> ()</td></tr>
-<tr class="memdesc:a99d693406d518c9f3be9769ae26d2d92"><td class="mdescLeft">&#160;</td><td class="mdescRight">function that creates a <a class="el" href="../../d5/dfd/class_c_policy_portfolio.html">CPolicyPortfolio</a> <br /></td></tr>
+<tr class="memdesc:a99d693406d518c9f3be9769ae26d2d92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new portfolio object from the given input vectors. <br /></td></tr>
 <tr class="separator:a99d693406d518c9f3be9769ae26d2d92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Builder class that allows to create portfolios from a number of appropriately typed vectors. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ad61d666ceb5c3a8f155eae7511fe1da3" name="ad61d666ceb5c3a8f155eae7511fe1da3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad61d666ceb5c3a8f155eae7511fe1da3">&#9670;&#160;</a></span>CPortfolioBuilder()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">CPortfolioBuilder::CPortfolioBuilder </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>_product</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct a new <a class="el" href="../../da/d69/class_c_portfolio_builder.html" title="Builder class that allows to create portfolios from a number of appropriately typed vectors.">CPortfolioBuilder</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>The required size (number of records) in the portfolio </td></tr>
+    <tr><td class="paramname">_product</td><td>The product code applicable throughout the portfolio. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>modules/<a class="el" href="../../d8/d6c/portfolio_8h_source.html">portfolio.h</a></li>
 </ul>

@@ -23,13 +23,18 @@
 
 using namespace std;
 
-
+/// Pointer to a provider object
 typedef shared_ptr<CBaseRateProvider> PtrCBaseRateProvider;
+
+/// "Matrix" of pointers to provider objects
 typedef vector<vector<PtrCBaseRateProvider>> MatPtrCBaseRateProvider;
 
 
-/// Container to hold the providers required for
-/// a run or a policy
+
+/**
+ * @brief Container to hold the providers required for a run of a policy or a portfolio, houses a matrix of providers.
+ * 
+ */
 class CAssumptionSet
 {
 
@@ -38,6 +43,11 @@ protected:
     MatPtrCBaseRateProvider providers;
 
 public:
+    /**
+     * @brief Construct a new CAssumptionSet object
+     * 
+     * @param dim Number of states in the State-Model
+     */
     CAssumptionSet(unsigned dim):  n(dim) {
         
         // make sure we initialize to the right size and put null in
@@ -49,6 +59,7 @@ public:
         }
     }
 
+    /// Copy this assumption by making a deep copy of the underlying data.
     void clone_into(CAssumptionSet &other) const {
         if (other.n != this->n) {
             throw domain_error("Cloning asssumption set requires same dimensions");
@@ -65,7 +76,8 @@ public:
         }
     }
 
-    
+    /// Perform a slicing operation on all provider objects contained in this object
+    // and store the results in the provider passed in.
     void slice_into(const vector<int> &indices, CAssumptionSet &other) const {
         if (other.n != this->n) {
             throw domain_error("Cloning asssumption set requires same dimensions");
@@ -78,11 +90,6 @@ public:
                 shared_ptr<CBaseRateProvider> other_rc_comp = other.providers[r][c];
 
                 if (this_rc_comp) {
-                    // cout << "Try slicing" << endl;
-
-                    // cout << "this_rc_comp->to_string()" << this_rc_comp->to_string() << endl;
-                    // cout << "other_rc_comp->to_string()" << other_rc_comp->to_string() << endl;                    
-                    
                     this_rc_comp->slice_into(indices, other_rc_comp.get());
                 } else {
                     other.providers[r][c] = nullptr;
@@ -91,10 +98,12 @@ public:
         }
     }    
 
+    /// Returns the number of dimensions of the state model.
     unsigned get_dimension() const {
         return n;
     }
 
+    /// Returns a description of the provider in row r and column c.
     string get_provider_info(int r, int c) const {
         PtrCBaseRateProvider prvdr = providers.at(r).at(c);
         if (!prvdr)
@@ -108,10 +117,9 @@ public:
         providers[row][col] = prvdr;
     }
 
-    // Return a bool vector of the length of the risk factors indicating 
-    // if the assumptions set depends on the risk factor or not
+    /// Return a bool vector of the length of the risk factors indicating 
+    /// if the assumptions set depends on the risk factor or not
     void get_relevant_risk_factor_indexes(vector<bool> &relevant_risk_factors) {
-        //vector<bool> relevant_risk_factors(NUMBER_OF_RISK_FACTORS, false);
         for (unsigned r = 0; r < n; r++)
         {
             for (unsigned c = 0; c < n; c++)
@@ -125,9 +133,9 @@ public:
                 }
             }
         }
-        //return relevant_risk_factors;
     }
 
+    /// Populate the an external array with the matrix of rates selected by the index vector passed in.
     void get_single_rateset(const vector<int> &rf_indexes, double *rates_ext) const
     {
         // the index represent the values of each risk factor in their order
@@ -146,18 +154,10 @@ public:
         {
             for (unsigned c = 0; c < n; c++)
             {
-                //PtrCBaseRateProvider &prvdr = providers[r][c];
-
-                // cout << "get_single_rateset(): " << r << ", " << c;
-
                 if (!providers[r][c].get()) {
-                    //rates_ext[r * NUMBER_OF_RISK_FACTORS + c] = 0;
                     rates_ext[r * n + c] = 0;
-                    // cout << " ZERO" << endl;
                     continue;
                 }
-
-                // cout << " OTHER" << endl;
 
                 const vector<CRiskFactors> &rf_for_this_prvdr = providers[r][c]->get_risk_factors();
 
@@ -169,9 +169,7 @@ public:
                     this_provider_indexes[l] = rf_indexes.at(rf);
                 }
 
-                // cout << "PTR" << providers[r][c];
                 double rate = providers[r][c] -> get_rate(this_provider_indexes);
-                // cout << rate << endl;
                 rates_ext[r * n + c] = rate;
             }
         }

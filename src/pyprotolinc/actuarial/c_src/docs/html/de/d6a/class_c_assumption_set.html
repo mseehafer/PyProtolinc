@@ -78,33 +78,40 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
+<p>Container to hold the providers required for a run of a policy or a portfolio, houses a matrix of providers.  
+ <a href="../../de/d6a/class_c_assumption_set.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="../../db/d86/assumption__sets_8h_source.html">assumption_sets.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a751207f82ccb76b6c2ac0a13f26e4968"><td class="memItemLeft" align="right" valign="top"><a id="a751207f82ccb76b6c2ac0a13f26e4968" name="a751207f82ccb76b6c2ac0a13f26e4968"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>CAssumptionSet</b> (unsigned dim)</td></tr>
+<tr class="memitem:a751207f82ccb76b6c2ac0a13f26e4968"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d6a/class_c_assumption_set.html#a751207f82ccb76b6c2ac0a13f26e4968">CAssumptionSet</a> (unsigned dim)</td></tr>
+<tr class="memdesc:a751207f82ccb76b6c2ac0a13f26e4968"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="../../de/d6a/class_c_assumption_set.html" title="Container to hold the providers required for a run of a policy or a portfolio, houses a matrix of pro...">CAssumptionSet</a> object.  <a href="../../de/d6a/class_c_assumption_set.html#a751207f82ccb76b6c2ac0a13f26e4968">More...</a><br /></td></tr>
 <tr class="separator:a751207f82ccb76b6c2ac0a13f26e4968"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc967cb7cc20319a31d32e151b82d518"><td class="memItemLeft" align="right" valign="top"><a id="acc967cb7cc20319a31d32e151b82d518" name="acc967cb7cc20319a31d32e151b82d518"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>clone_into</b> (<a class="el" href="../../de/d6a/class_c_assumption_set.html">CAssumptionSet</a> &amp;other) const</td></tr>
+<tr class="memdesc:acc967cb7cc20319a31d32e151b82d518"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy this assumption by making a deep copy of the underlying data. <br /></td></tr>
 <tr class="separator:acc967cb7cc20319a31d32e151b82d518"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb4dad53748df9e6a98acd1b08cd8f63"><td class="memItemLeft" align="right" valign="top"><a id="acb4dad53748df9e6a98acd1b08cd8f63" name="acb4dad53748df9e6a98acd1b08cd8f63"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>slice_into</b> (const vector&lt; int &gt; &amp;indices, <a class="el" href="../../de/d6a/class_c_assumption_set.html">CAssumptionSet</a> &amp;other) const</td></tr>
+<tr class="memdesc:acb4dad53748df9e6a98acd1b08cd8f63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform a slicing operation on all provider objects contained in this object. <br /></td></tr>
 <tr class="separator:acb4dad53748df9e6a98acd1b08cd8f63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af377af1fc9aaaa952779e944a0feb636"><td class="memItemLeft" align="right" valign="top"><a id="af377af1fc9aaaa952779e944a0feb636" name="af377af1fc9aaaa952779e944a0feb636"></a>
 unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>get_dimension</b> () const</td></tr>
+<tr class="memdesc:af377af1fc9aaaa952779e944a0feb636"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of dimensions of the state model. <br /></td></tr>
 <tr class="separator:af377af1fc9aaaa952779e944a0feb636"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad40d00fa9478933a3fed85969e377e66"><td class="memItemLeft" align="right" valign="top"><a id="ad40d00fa9478933a3fed85969e377e66" name="ad40d00fa9478933a3fed85969e377e66"></a>
 string&#160;</td><td class="memItemRight" valign="bottom"><b>get_provider_info</b> (int r, int c) const</td></tr>
+<tr class="memdesc:ad40d00fa9478933a3fed85969e377e66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a description of the provider in row r and column c. <br /></td></tr>
 <tr class="separator:ad40d00fa9478933a3fed85969e377e66"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a73bb7fd52d0421b07f66fd05623e8a2b"><td class="memItemLeft" align="right" valign="top"><a id="a73bb7fd52d0421b07f66fd05623e8a2b" name="a73bb7fd52d0421b07f66fd05623e8a2b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_provider</b> (int row, int col, PtrCBaseRateProvider prvdr)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_provider</b> (int row, int col, <a class="el" href="../../db/d86/assumption__sets_8h.html#a641c12a58c3d951f1a034ef9f5b9bebd">PtrCBaseRateProvider</a> prvdr)</td></tr>
 <tr class="separator:a73bb7fd52d0421b07f66fd05623e8a2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51cc3f9ac50ace8dc64a6f64668e2ab3"><td class="memItemLeft" align="right" valign="top"><a id="a51cc3f9ac50ace8dc64a6f64668e2ab3" name="a51cc3f9ac50ace8dc64a6f64668e2ab3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>get_relevant_risk_factor_indexes</b> (vector&lt; bool &gt; &amp;relevant_risk_factors)</td></tr>
+<tr class="memitem:a51cc3f9ac50ace8dc64a6f64668e2ab3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d6a/class_c_assumption_set.html#a51cc3f9ac50ace8dc64a6f64668e2ab3">get_relevant_risk_factor_indexes</a> (vector&lt; bool &gt; &amp;relevant_risk_factors)</td></tr>
 <tr class="separator:a51cc3f9ac50ace8dc64a6f64668e2ab3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26bfa03d609219ea90e734784cdee736"><td class="memItemLeft" align="right" valign="top"><a id="a26bfa03d609219ea90e734784cdee736" name="a26bfa03d609219ea90e734784cdee736"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>get_single_rateset</b> (const vector&lt; int &gt; &amp;rf_indexes, double *rates_ext) const</td></tr>
+<tr class="memdesc:a26bfa03d609219ea90e734784cdee736"><td class="mdescLeft">&#160;</td><td class="mdescRight">Populate the an external array with the matrix of rates selected by the index vector passed in. <br /></td></tr>
 <tr class="separator:a26bfa03d609219ea90e734784cdee736"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
@@ -113,12 +120,75 @@ Protected Attributes</h2></td></tr>
 unsigned&#160;</td><td class="memItemRight" valign="bottom"><b>n</b></td></tr>
 <tr class="separator:ae3f4726797b942bb8046e09a6687317e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a810cc741691a633414b8a2f90a05e605"><td class="memItemLeft" align="right" valign="top"><a id="a810cc741691a633414b8a2f90a05e605" name="a810cc741691a633414b8a2f90a05e605"></a>
-MatPtrCBaseRateProvider&#160;</td><td class="memItemRight" valign="bottom"><b>providers</b></td></tr>
+<a class="el" href="../../db/d86/assumption__sets_8h.html#a7c3062e7c68abb077992818311a7745d">MatPtrCBaseRateProvider</a>&#160;</td><td class="memItemRight" valign="bottom"><b>providers</b></td></tr>
 <tr class="separator:a810cc741691a633414b8a2f90a05e605"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >Container to hold the providers required for a run or a policy </p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+<div class="textblock"><p >Container to hold the providers required for a run of a policy or a portfolio, houses a matrix of providers. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a751207f82ccb76b6c2ac0a13f26e4968" name="a751207f82ccb76b6c2ac0a13f26e4968"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a751207f82ccb76b6c2ac0a13f26e4968">&#9670;&#160;</a></span>CAssumptionSet()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">CAssumptionSet::CAssumptionSet </td>
+          <td>(</td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>dim</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct a new <a class="el" href="../../de/d6a/class_c_assumption_set.html" title="Container to hold the providers required for a run of a policy or a portfolio, houses a matrix of pro...">CAssumptionSet</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dim</td><td>Number of states in the State-Model </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a51cc3f9ac50ace8dc64a6f64668e2ab3" name="a51cc3f9ac50ace8dc64a6f64668e2ab3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51cc3f9ac50ace8dc64a6f64668e2ab3">&#9670;&#160;</a></span>get_relevant_risk_factor_indexes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CAssumptionSet::get_relevant_risk_factor_indexes </td>
+          <td>(</td>
+          <td class="paramtype">vector&lt; bool &gt; &amp;&#160;</td>
+          <td class="paramname"><em>relevant_risk_factors</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Return a bool vector of the length of the risk factors indicating if the assumptions set depends on the risk factor or not </p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>modules/<a class="el" href="../../db/d86/assumption__sets_8h_source.html">assumption_sets.h</a></li>
 </ul>
 </div><!-- contents -->

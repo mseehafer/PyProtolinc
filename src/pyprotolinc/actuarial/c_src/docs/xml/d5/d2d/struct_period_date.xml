@@ -341,12 +341,41 @@
         </inbodydescription>
         <location file="modules/time_axis.h" line="204" column="9" bodyfile="modules/time_axis.h" bodystart="204" bodyend="222"/>
       </memberdef>
+      <memberdef kind="function" id="d5/d2d/struct_period_date_1a29691d71011b0394ac1a0180869b6ef9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void PeriodDate::set_from_long</definition>
+        <argsstring>(int64_t dt_lng)</argsstring>
+        <name>set_from_long</name>
+        <qualifiedname>PeriodDate::set_from_long</qualifiedname>
+        <param>
+          <type>int64_t</type>
+          <declname>dt_lng</declname>
+        </param>
+        <briefdescription>
+<para>Set the date long which is encoded as YYYYMMDD. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dt_lng</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/time_axis.h" line="229" column="10" bodyfile="modules/time_axis.h" bodystart="229" bodyend="234"/>
+      </memberdef>
       </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="modules/time_axis.h" line="25" column="1" bodyfile="modules/time_axis.h" bodystart="26" bodyend="223"/>
+    <location file="modules/time_axis.h" line="25" column="1" bodyfile="modules/time_axis.h" bodystart="26" bodyend="236"/>
     <listofallmembers>
       <member refid="d5/d2d/struct_period_date_1ad64661b43331dc6ad1bfaf468be79740" prot="public" virt="non-virtual"><scope>PeriodDate</scope><name>_before</name></member>
       <member refid="d5/d2d/struct_period_date_1ad6920165cad4008b0d88519eedf40867" prot="public" virt="non-virtual"><scope>PeriodDate</scope><name>day</name></member>
@@ -362,6 +391,7 @@
       <member refid="d5/d2d/struct_period_date_1a986259fa6343184eb7a32628aaedb5d9" prot="public" virt="non-virtual"><scope>PeriodDate</scope><name>PeriodDate</name></member>
       <member refid="d5/d2d/struct_period_date_1ae3895a06fcaaf037f6bf68effd47972d" prot="public" virt="non-virtual"><scope>PeriodDate</scope><name>PeriodDate</name></member>
       <member refid="d5/d2d/struct_period_date_1a8f3517365f6e72954c6015a05b52d033" prot="public" virt="non-virtual"><scope>PeriodDate</scope><name>set</name></member>
+      <member refid="d5/d2d/struct_period_date_1a29691d71011b0394ac1a0180869b6ef9" prot="public" virt="non-virtual"><scope>PeriodDate</scope><name>set_from_long</name></member>
       <member refid="d5/d2d/struct_period_date_1a0ef71c4882e91122091215f1ef55ba31" prot="public" virt="non-virtual"><scope>PeriodDate</scope><name>set_next_day</name></member>
       <member refid="d5/d2d/struct_period_date_1aef6c0144ff5a942edcff6eeae89f7024" prot="public" virt="non-virtual"><scope>PeriodDate</scope><name>set_next_end_of_month</name></member>
       <member refid="d5/d2d/struct_period_date_1afd08b8a51039ccc0c9175ed066a33f9f" prot="public" virt="non-virtual"><scope>PeriodDate</scope><name>set_next_end_of_quarter</name></member>

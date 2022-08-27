@@ -1,4 +1,14 @@
-/* Projection engine for one record. */
+/**
+ * @file record_projector.h
+ * @author M. Seehafer
+ * @brief Projection engine for one record.
+ * @version 0.1
+ * @date 2022-08-27
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 
 #ifndef C_RECORD_PROJECTOR_H
 #define C_RECORD_PROJECTOR_H
@@ -18,6 +28,10 @@
 
 using namespace std;
 
+/**
+ * @brief Functionality to project cash flows for a single record at a time.
+ * 
+ */
 class RecordProjector
 {
 
@@ -67,7 +81,7 @@ private:
         }
     }
 
-    // check if a risk factor relevant for the projection was updated
+    ///< Check if a risk factor relevant for the projection was updated
     bool relevant_factor_changed(const vector<bool> &relevant_risk_factors)
     {
         for (size_t s = 0; s < NUMBER_OF_RISK_FACTORS; s++)
@@ -79,6 +93,28 @@ private:
         }
         return false;
     }
+
+    ///< Clear temporary values stored in the projector object.
+    void clear()
+    {
+        cout << "RecordProjector::clear()" << endl;
+    }
+
+
+    void slice_assumptions(const CPolicy &policy)
+    {
+        cout << "RecordProjector::slice_assumptions() -- TODO!" << endl;
+        vector<int> slice_indexes(NUMBER_OF_RISK_FACTORS, -1);
+
+        // specialize for Gender and SmokerStatus
+        slice_indexes[(int)CRiskFactors::Gender] = policy.get_gender();
+        slice_indexes[(int)CRiskFactors::SmokerStatus] = policy.get_smoker_status();
+
+        _run_config.get_be_assumptions().slice_into(slice_indexes, _record_be_assumptions);
+        for(int n=0; n < _run_config.get_other_assumptions().size(); n++) {
+             _run_config.get_other_assumptions()[n]->slice_into(slice_indexes, *_record_other_assumptions[n]);
+        }
+    }    
 
 public:
     RecordProjector(const CRunConfig &run_config, const TimeAxis &ta) : _run_config(run_config),
@@ -105,27 +141,18 @@ public:
         }
     }
 
-    // clear the temporary values
-    void clear()
-    {
-        cout << "RecordProjector::clear()" << endl;
-    }
 
-    void slice_assumptions(const CPolicy &policy)
-    {
-        cout << "RecordProjector::slice_assumptions() -- TODO!" << endl;
-        vector<int> slice_indexes(NUMBER_OF_RISK_FACTORS, -1);
 
-        // specialize for Gender and SmokerStatus
-        // slice_indexes[(int)CRiskFactors::Gender] = policy.get_gender();
-        // slice_indexes[(int)CRiskFactors::SmokerStatus] = policy.get_smoker_status();
 
-        _run_config.get_be_assumptions().slice_into(slice_indexes, _record_be_assumptions);
-        // for(int n=0; n < _run_config.get_other_assumptions().size(); n++) {
-        //     _run_config.get_other_assumptions()[n]->slice_into(slice_indexes, *_record_other_assumptions[n]);
-        // }
-    }
-
+    /**
+     * @brief Create the projection result for one policy.
+     * 
+     * @param runner_no Number of the runner instance.
+     * @param record_count Number of record in batch for this runner.
+     * @param policy The record to project
+     * @param result Container for the result
+     * @param portfolio_date portfolio date
+     */
     void run(int runner_no, int record_count, const CPolicy &policy, RunResult &result, const PeriodDate &portfolio_date);
 };
 
