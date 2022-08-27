@@ -1,0 +1,192 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
+  <compounddef id="da/dc0/class_run_result" kind="class" language="C++" prot="public">
+    <compoundname>RunResult</compoundname>
+    <includes refid="dc/dee/run__result_8h" local="no">run_result.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="da/dc0/class_run_result_1aa61be54a8072cbe89f4c17ed7302c14b" prot="private" static="no" mutable="no">
+        <type>double *</type>
+        <definition>double* RunResult::results</definition>
+        <argsstring></argsstring>
+        <name>results</name>
+        <qualifiedname>RunResult::results</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/run_result.h" line="29" column="12" bodyfile="modules/run_result.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="da/dc0/class_run_result_1a69e59e76c78dec6ac5c924ab6a670b03" prot="private" static="no" mutable="no">
+        <type>shared_ptr&lt; <ref refid="de/d63/class_time_axis" kindref="compound">TimeAxis</ref> &gt;</type>
+        <definition>shared_ptr&lt;TimeAxis&gt; RunResult::_ta</definition>
+        <argsstring></argsstring>
+        <name>_ta</name>
+        <qualifiedname>RunResult::_ta</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/run_result.h" line="31" column="16" bodyfile="modules/run_result.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="da/dc0/class_run_result_1ac2dc1938db73ddda7a27be4a8877ef74" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void RunResult::copy_time_axis</definition>
+        <argsstring>(double *ext_result)</argsstring>
+        <name>copy_time_axis</name>
+        <qualifiedname>RunResult::copy_time_axis</qualifiedname>
+        <param>
+          <type>double *</type>
+          <declname>ext_result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/run_result.h" line="34" column="10" bodyfile="modules/run_result.h" bodystart="61" bodyend="83"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="da/dc0/class_run_result_1a6e7a2c991482a6b574188cbbd5518281" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>RunResult::RunResult</definition>
+        <argsstring>()</argsstring>
+        <name>RunResult</name>
+        <qualifiedname>RunResult::RunResult</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/run_result.h" line="37" column="5" bodyfile="modules/run_result.h" bodystart="37" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="da/dc0/class_run_result_1a9320b68e4d1c43868ae33739861e3cc4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>RunResult::RunResult</definition>
+        <argsstring>(shared_ptr&lt; TimeAxis &gt; p_time_axis)</argsstring>
+        <name>RunResult</name>
+        <qualifiedname>RunResult::RunResult</qualifiedname>
+        <param>
+          <type>shared_ptr&lt; <ref refid="de/d63/class_time_axis" kindref="compound">TimeAxis</ref> &gt;</type>
+          <declname>p_time_axis</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/run_result.h" line="38" column="5" bodyfile="modules/run_result.h" bodystart="38" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="da/dc0/class_run_result_1aca921da6892196c9368b07278a427470" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="da/dc0/class_run_result" kindref="compound">RunResult</ref> &amp;</type>
+        <definition>RunResult &amp; RunResult::set_time_axis</definition>
+        <argsstring>(shared_ptr&lt; TimeAxis &gt; p_time_axis)</argsstring>
+        <name>set_time_axis</name>
+        <qualifiedname>RunResult::set_time_axis</qualifiedname>
+        <param>
+          <type>shared_ptr&lt; <ref refid="de/d63/class_time_axis" kindref="compound">TimeAxis</ref> &gt;</type>
+          <declname>p_time_axis</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/run_result.h" line="40" column="16" bodyfile="modules/run_result.h" bodystart="40" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="da/dc0/class_run_result_1aa04e76054d95e76b92b045bf3e73045e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void RunResult::reset</definition>
+        <argsstring>()</argsstring>
+        <name>reset</name>
+        <qualifiedname>RunResult::reset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/run_result.h" line="46" column="10" bodyfile="modules/run_result.h" bodystart="46" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="da/dc0/class_run_result_1afd6b97a6120c5aba923d56166bdf0a7a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void RunResult::add_result</definition>
+        <argsstring>(const RunResult &amp;other_res)</argsstring>
+        <name>add_result</name>
+        <qualifiedname>RunResult::add_result</qualifiedname>
+        <param>
+          <type>const <ref refid="da/dc0/class_run_result" kindref="compound">RunResult</ref> &amp;</type>
+          <declname>other_res</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/run_result.h" line="49" column="10" bodyfile="modules/run_result.h" bodystart="49" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="da/dc0/class_run_result_1a6ad243d2e40f39cc152503272cd72017" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void RunResult::copy_results</definition>
+        <argsstring>(double *ext_result)</argsstring>
+        <name>copy_results</name>
+        <qualifiedname>RunResult::copy_results</qualifiedname>
+        <param>
+          <type>double *</type>
+          <declname>ext_result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/run_result.h" line="51" column="10" bodyfile="modules/run_result.h" bodystart="51" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="da/dc0/class_run_result_1aeb2b4dd88db29a4fb1498322e7cfca88" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int RunResult::size</definition>
+        <argsstring>()</argsstring>
+        <name>size</name>
+        <qualifiedname>RunResult::size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/run_result.h" line="56" column="9" bodyfile="modules/run_result.h" bodystart="56" bodyend="58"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>a result container that is used at various granularities </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="modules/run_result.h" line="25" column="1" bodyfile="modules/run_result.h" bodystart="26" bodyend="59"/>
+    <listofallmembers>
+      <member refid="da/dc0/class_run_result_1a69e59e76c78dec6ac5c924ab6a670b03" prot="private" virt="non-virtual"><scope>RunResult</scope><name>_ta</name></member>
+      <member refid="da/dc0/class_run_result_1afd6b97a6120c5aba923d56166bdf0a7a" prot="public" virt="non-virtual"><scope>RunResult</scope><name>add_result</name></member>
+      <member refid="da/dc0/class_run_result_1a6ad243d2e40f39cc152503272cd72017" prot="public" virt="non-virtual"><scope>RunResult</scope><name>copy_results</name></member>
+      <member refid="da/dc0/class_run_result_1ac2dc1938db73ddda7a27be4a8877ef74" prot="private" virt="non-virtual"><scope>RunResult</scope><name>copy_time_axis</name></member>
+      <member refid="da/dc0/class_run_result_1aa04e76054d95e76b92b045bf3e73045e" prot="public" virt="non-virtual"><scope>RunResult</scope><name>reset</name></member>
+      <member refid="da/dc0/class_run_result_1aa61be54a8072cbe89f4c17ed7302c14b" prot="private" virt="non-virtual"><scope>RunResult</scope><name>results</name></member>
+      <member refid="da/dc0/class_run_result_1a6e7a2c991482a6b574188cbbd5518281" prot="public" virt="non-virtual"><scope>RunResult</scope><name>RunResult</name></member>
+      <member refid="da/dc0/class_run_result_1a9320b68e4d1c43868ae33739861e3cc4" prot="public" virt="non-virtual"><scope>RunResult</scope><name>RunResult</name></member>
+      <member refid="da/dc0/class_run_result_1aca921da6892196c9368b07278a427470" prot="public" virt="non-virtual"><scope>RunResult</scope><name>set_time_axis</name></member>
+      <member refid="da/dc0/class_run_result_1aeb2b4dd88db29a4fb1498322e7cfca88" prot="public" virt="non-virtual"><scope>RunResult</scope><name>size</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

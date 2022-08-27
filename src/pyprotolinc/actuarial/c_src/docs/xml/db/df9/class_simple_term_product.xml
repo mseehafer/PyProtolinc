@@ -1,0 +1,164 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
+  <compounddef id="db/df9/class_simple_term_product" kind="class" language="C++" prot="public">
+    <compoundname>SimpleTermProduct</compoundname>
+    <basecompoundref refid="de/d30/class_generic_mortality_product" prot="public" virt="non-virtual">GenericMortalityProduct</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="db/df9/class_simple_term_product_1a7b18c2cda30362c86b3936d4dde7f589" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>SimpleTermProduct::SimpleTermProduct</definition>
+        <argsstring>(CSeriatimRecord &amp;rec)</argsstring>
+        <name>SimpleTermProduct</name>
+        <qualifiedname>SimpleTermProduct::SimpleTermProduct</qualifiedname>
+        <param>
+          <type><ref refid="d6/d4e/class_c_seriatim_record" kindref="compound">CSeriatimRecord</ref> &amp;</type>
+          <declname>rec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/products.h" line="47" column="5" bodyfile="modules/products.h" bodystart="47" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="db/df9/class_simple_term_product_1a66641f4b238ff541c95731d6d87726e8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>double</type>
+        <definition>virtual double SimpleTermProduct::get_benefit_if_died</definition>
+        <argsstring>(int year, int month)</argsstring>
+        <name>get_benefit_if_died</name>
+        <qualifiedname>SimpleTermProduct::get_benefit_if_died</qualifiedname>
+        <reimplements refid="de/d30/class_generic_mortality_product_1ab3818ba65a85d29bb6b29a13c3864071">get_benefit_if_died</reimplements>
+        <param>
+          <type>int</type>
+          <declname>year</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>month</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/products.h" line="49" column="20" bodyfile="modules/products.h" bodystart="49" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="db/df9/class_simple_term_product_1a433cfe5263d6cf7a6b5b46bdd278257e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>double</type>
+        <definition>virtual double SimpleTermProduct::get_benefit_if_survived</definition>
+        <argsstring>(int year, int month)</argsstring>
+        <name>get_benefit_if_survived</name>
+        <qualifiedname>SimpleTermProduct::get_benefit_if_survived</qualifiedname>
+        <reimplements refid="de/d30/class_generic_mortality_product_1a5a912f8842bb45ba07f049427ccadc1c">get_benefit_if_survived</reimplements>
+        <param>
+          <type>int</type>
+          <declname>year</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>month</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/products.h" line="53" column="20" bodyfile="modules/products.h" bodystart="53" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="db/df9/class_simple_term_product_1a3040bf326962c7dfa30e5db69cb9ec41" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>double</type>
+        <definition>virtual double SimpleTermProduct::get_benefit_if_lapsed</definition>
+        <argsstring>(int year, int month)</argsstring>
+        <name>get_benefit_if_lapsed</name>
+        <qualifiedname>SimpleTermProduct::get_benefit_if_lapsed</qualifiedname>
+        <reimplements refid="de/d30/class_generic_mortality_product_1a88df55094bd5b11f53c6690715d5d2cd">get_benefit_if_lapsed</reimplements>
+        <param>
+          <type>int</type>
+          <declname>year</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>month</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/products.h" line="55" column="20" bodyfile="modules/products.h" bodystart="55" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="db/df9/class_simple_term_product_1ad97919104d53908f1cd62faa48cd3edc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool SimpleTermProduct::is_premium_due</definition>
+        <argsstring>(int year, int month)</argsstring>
+        <name>is_premium_due</name>
+        <qualifiedname>SimpleTermProduct::is_premium_due</qualifiedname>
+        <reimplements refid="de/d30/class_generic_mortality_product_1a597d82a76411d2d28893448d6d74ba89">is_premium_due</reimplements>
+        <param>
+          <type>int</type>
+          <declname>year</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>month</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/products.h" line="57" column="18" bodyfile="modules/products.h" bodystart="57" bodyend="60"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>GenericMortalityProduct</label>
+        <link refid="de/d30/class_generic_mortality_product"/>
+      </node>
+      <node id="1">
+        <label>SimpleTermProduct</label>
+        <link refid="db/df9/class_simple_term_product"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>CSeriatimRecord</label>
+        <link refid="d6/d4e/class_c_seriatim_record"/>
+      </node>
+      <node id="2">
+        <label>GenericMortalityProduct</label>
+        <link refid="de/d30/class_generic_mortality_product"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>_rec</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>SimpleTermProduct</label>
+        <link refid="db/df9/class_simple_term_product"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="modules/products.h" line="45" column="1" bodyfile="modules/products.h" bodystart="45" bodyend="61"/>
+    <listofallmembers>
+      <member refid="de/d30/class_generic_mortality_product_1a4a54af95ef35b0105414b86c1f1bb509" prot="protected" virt="non-virtual"><scope>SimpleTermProduct</scope><name>_rec</name></member>
+      <member refid="de/d30/class_generic_mortality_product_1a0d47aa14dd18e4484341ac91adf039dd" prot="public" virt="non-virtual"><scope>SimpleTermProduct</scope><name>GenericMortalityProduct</name></member>
+      <member refid="db/df9/class_simple_term_product_1a66641f4b238ff541c95731d6d87726e8" prot="public" virt="virtual"><scope>SimpleTermProduct</scope><name>get_benefit_if_died</name></member>
+      <member refid="db/df9/class_simple_term_product_1a3040bf326962c7dfa30e5db69cb9ec41" prot="public" virt="virtual"><scope>SimpleTermProduct</scope><name>get_benefit_if_lapsed</name></member>
+      <member refid="db/df9/class_simple_term_product_1a433cfe5263d6cf7a6b5b46bdd278257e" prot="public" virt="virtual"><scope>SimpleTermProduct</scope><name>get_benefit_if_survived</name></member>
+      <member refid="db/df9/class_simple_term_product_1ad97919104d53908f1cd62faa48cd3edc" prot="public" virt="virtual"><scope>SimpleTermProduct</scope><name>is_premium_due</name></member>
+      <member refid="db/df9/class_simple_term_product_1a7b18c2cda30362c86b3936d4dde7f589" prot="public" virt="non-virtual"><scope>SimpleTermProduct</scope><name>SimpleTermProduct</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

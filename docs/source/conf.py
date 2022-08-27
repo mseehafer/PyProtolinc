@@ -15,6 +15,7 @@ import shutil
 
 import sys
 sys.path.insert(0, os.path.abspath('../../src'))
+sys.path.append("breathe")
 
 
 # Follow the link for a workaround that show how to include notebooks outside the
@@ -60,6 +61,7 @@ extensions = [
     'nbsphinx',
     'sphinx_rtd_theme',
     'sphinx_gallery.load_style',
+    'breathe'
 ]
 
 # suppress_warnings = [
@@ -91,3 +93,6 @@ html_static_path = ['_static']
 
 # nbsphinx_execute = 'never'
 # nbsphinx_kernel_name = 'python'
+
+breathe_projects = {"PyProtolinc-Core": "../../src/pyprotolinc/actuarial/c_src/docs/xml/"}
+breathe_default_project = "PyProtolinc-Core"

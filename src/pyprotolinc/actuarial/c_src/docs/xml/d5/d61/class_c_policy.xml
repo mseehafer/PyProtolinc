@@ -1,0 +1,566 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
+  <compounddef id="d5/d61/class_c_policy" kind="class" language="C++" prot="public">
+    <compoundname>CPolicy</compoundname>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="d5/d61/class_c_policy_1a6f5038f7e71b09e6f6adb56d305b1358" prot="protected" static="no" mutable="no">
+        <type>int64_t</type>
+        <definition>int64_t CPolicy::cession_id</definition>
+        <argsstring></argsstring>
+        <name>cession_id</name>
+        <qualifiedname>CPolicy::cession_id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="19" column="13" bodyfile="modules/portfolio.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d5/d61/class_c_policy_1abb93a8d4d42fbe6bc6b1bf584d71ad8e" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int CPolicy::issue_year</definition>
+        <argsstring></argsstring>
+        <name>issue_year</name>
+        <qualifiedname>CPolicy::issue_year</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="22" column="9" bodyfile="modules/portfolio.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d5/d61/class_c_policy_1a0cd616ccfbba06f10b711940d1ff7eb6" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int CPolicy::issue_month</definition>
+        <argsstring></argsstring>
+        <name>issue_month</name>
+        <qualifiedname>CPolicy::issue_month</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="23" column="9" bodyfile="modules/portfolio.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d5/d61/class_c_policy_1adf87660bef6ac41895fd4361ce9537dd" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int CPolicy::issue_day</definition>
+        <argsstring></argsstring>
+        <name>issue_day</name>
+        <qualifiedname>CPolicy::issue_day</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="24" column="9" bodyfile="modules/portfolio.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d5/d61/class_c_policy_1a3b14cafe295113094600794f51a02dc4" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int CPolicy::dob_year</definition>
+        <argsstring></argsstring>
+        <name>dob_year</name>
+        <qualifiedname>CPolicy::dob_year</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="27" column="9" bodyfile="modules/portfolio.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d5/d61/class_c_policy_1a2368743e6cfc5470fdeb730f3b4db36d" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int CPolicy::dob_month</definition>
+        <argsstring></argsstring>
+        <name>dob_month</name>
+        <qualifiedname>CPolicy::dob_month</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="28" column="9" bodyfile="modules/portfolio.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d5/d61/class_c_policy_1aa30d9c94bf34c1a552e7da28b4dfddc1" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int CPolicy::dob_day</definition>
+        <argsstring></argsstring>
+        <name>dob_day</name>
+        <qualifiedname>CPolicy::dob_day</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="29" column="9" bodyfile="modules/portfolio.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d5/d61/class_c_policy_1a43e3c393071dcdfea9d1d8fb19bccb02" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool CPolicy::_has_disablement_date</definition>
+        <argsstring></argsstring>
+        <name>_has_disablement_date</name>
+        <qualifiedname>CPolicy::_has_disablement_date</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="32" column="10" bodyfile="modules/portfolio.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d5/d61/class_c_policy_1abf977d1c834aa8cfe77d74d1c4d61d05" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int CPolicy::date_dis_year</definition>
+        <argsstring></argsstring>
+        <name>date_dis_year</name>
+        <qualifiedname>CPolicy::date_dis_year</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="33" column="9" bodyfile="modules/portfolio.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d5/d61/class_c_policy_1ac47bf02c59a96962dc93b5237460390c" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int CPolicy::date_dis_month</definition>
+        <argsstring></argsstring>
+        <name>date_dis_month</name>
+        <qualifiedname>CPolicy::date_dis_month</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="34" column="9" bodyfile="modules/portfolio.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d5/d61/class_c_policy_1a149fdf987c9d38072acc6f5cdf310523" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int CPolicy::date_dis_day</definition>
+        <argsstring></argsstring>
+        <name>date_dis_day</name>
+        <qualifiedname>CPolicy::date_dis_day</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="35" column="9" bodyfile="modules/portfolio.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d5/d61/class_c_policy_1acd9ce9a5ea68e1d07869a5d735156b2f" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int CPolicy::gender</definition>
+        <argsstring></argsstring>
+        <name>gender</name>
+        <qualifiedname>CPolicy::gender</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="37" column="9" bodyfile="modules/portfolio.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d5/d61/class_c_policy_1a38a7455428c382a00d1a9e8521992582" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int CPolicy::smoker_status</definition>
+        <argsstring></argsstring>
+        <name>smoker_status</name>
+        <qualifiedname>CPolicy::smoker_status</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="38" column="9" bodyfile="modules/portfolio.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d5/d61/class_c_policy_1abba817cdec1d2b65b26c7df19070fbb5" prot="protected" static="no" mutable="no">
+        <type>double</type>
+        <definition>double CPolicy::sum_insured</definition>
+        <argsstring></argsstring>
+        <name>sum_insured</name>
+        <qualifiedname>CPolicy::sum_insured</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="40" column="12" bodyfile="modules/portfolio.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d5/d61/class_c_policy_1a65114317473890c9e4e7b156326725d8" prot="protected" static="no" mutable="no">
+        <type>double</type>
+        <definition>double CPolicy::reserving_rate</definition>
+        <argsstring></argsstring>
+        <name>reserving_rate</name>
+        <qualifiedname>CPolicy::reserving_rate</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="41" column="12" bodyfile="modules/portfolio.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d5/d61/class_c_policy_1a89bd1d0fc1f27f06b40889c845cec141" prot="protected" static="no" mutable="no">
+        <type>string</type>
+        <definition>string CPolicy::product</definition>
+        <argsstring></argsstring>
+        <name>product</name>
+        <qualifiedname>CPolicy::product</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="43" column="12" bodyfile="modules/portfolio.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d5/d61/class_c_policy_1a34d17a783c11cf18fcae8362a7277d09" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int64_t</type>
+        <definition>int64_t CPolicy::get_cession_id</definition>
+        <argsstring>() const</argsstring>
+        <name>get_cession_id</name>
+        <qualifiedname>CPolicy::get_cession_id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="46" column="13" bodyfile="modules/portfolio.h" bodystart="46" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d61/class_c_policy_1a80861708c461d3fc29de2ff9c480d889" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int CPolicy::get_issue_year</definition>
+        <argsstring>() const</argsstring>
+        <name>get_issue_year</name>
+        <qualifiedname>CPolicy::get_issue_year</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="48" column="9" bodyfile="modules/portfolio.h" bodystart="48" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d61/class_c_policy_1afe0aeedf4a5b8281d72ef05a7df26eb3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int CPolicy::get_issue_month</definition>
+        <argsstring>() const</argsstring>
+        <name>get_issue_month</name>
+        <qualifiedname>CPolicy::get_issue_month</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="49" column="9" bodyfile="modules/portfolio.h" bodystart="49" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d61/class_c_policy_1ac5c0a3ab05bc7ca97ea314c7025ff556" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int CPolicy::get_issue_day</definition>
+        <argsstring>() const</argsstring>
+        <name>get_issue_day</name>
+        <qualifiedname>CPolicy::get_issue_day</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="50" column="9" bodyfile="modules/portfolio.h" bodystart="50" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d61/class_c_policy_1a2ebb6a5e4bd6c6b73ef4c7484deb905c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int CPolicy::get_dob_year</definition>
+        <argsstring>() const</argsstring>
+        <name>get_dob_year</name>
+        <qualifiedname>CPolicy::get_dob_year</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="52" column="9" bodyfile="modules/portfolio.h" bodystart="52" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d61/class_c_policy_1aedbd7569d4ca3cb5798710482b950970" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int CPolicy::get_dob_month</definition>
+        <argsstring>() const</argsstring>
+        <name>get_dob_month</name>
+        <qualifiedname>CPolicy::get_dob_month</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="53" column="9" bodyfile="modules/portfolio.h" bodystart="53" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d61/class_c_policy_1ad683b20860f8a607712fa90b4ade58b0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int CPolicy::get_dob_day</definition>
+        <argsstring>() const</argsstring>
+        <name>get_dob_day</name>
+        <qualifiedname>CPolicy::get_dob_day</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="54" column="9" bodyfile="modules/portfolio.h" bodystart="54" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d61/class_c_policy_1ae541465b14f4f1da095a24f013173231" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CPolicy::has_disablement_date</definition>
+        <argsstring>() const</argsstring>
+        <name>has_disablement_date</name>
+        <qualifiedname>CPolicy::has_disablement_date</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="56" column="10" bodyfile="modules/portfolio.h" bodystart="56" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d61/class_c_policy_1a4b730799c1e66a6faaf922e3c82f142c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int CPolicy::get_date_dis_year</definition>
+        <argsstring>() const</argsstring>
+        <name>get_date_dis_year</name>
+        <qualifiedname>CPolicy::get_date_dis_year</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="57" column="9" bodyfile="modules/portfolio.h" bodystart="57" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d61/class_c_policy_1ab6daa00f7411575a037818a04ccd8c97" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int CPolicy::get_date_dis_month</definition>
+        <argsstring>() const</argsstring>
+        <name>get_date_dis_month</name>
+        <qualifiedname>CPolicy::get_date_dis_month</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="58" column="9" bodyfile="modules/portfolio.h" bodystart="58" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d61/class_c_policy_1a5aa84f060f3f44673e32f9ac63a82191" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int CPolicy::get_date_dis_day</definition>
+        <argsstring>() const</argsstring>
+        <name>get_date_dis_day</name>
+        <qualifiedname>CPolicy::get_date_dis_day</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="59" column="9" bodyfile="modules/portfolio.h" bodystart="59" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d61/class_c_policy_1ab6ff71c6850b2398f1a7ff54e094ba07" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int CPolicy::get_gender</definition>
+        <argsstring>() const</argsstring>
+        <name>get_gender</name>
+        <qualifiedname>CPolicy::get_gender</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="61" column="9" bodyfile="modules/portfolio.h" bodystart="61" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d61/class_c_policy_1a376b8b1b506131e717cb0da4ccdc7c6a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int CPolicy::get_smoker_status</definition>
+        <argsstring>() const</argsstring>
+        <name>get_smoker_status</name>
+        <qualifiedname>CPolicy::get_smoker_status</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="62" column="9" bodyfile="modules/portfolio.h" bodystart="62" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d61/class_c_policy_1a642abb4e6c77af0175de24882432eb0f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double CPolicy::get_sum_insured</definition>
+        <argsstring>() const</argsstring>
+        <name>get_sum_insured</name>
+        <qualifiedname>CPolicy::get_sum_insured</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="64" column="12" bodyfile="modules/portfolio.h" bodystart="64" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d61/class_c_policy_1afbe343ce61093f993a0a09a308320a7b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>double</type>
+        <definition>double CPolicy::get_reserving_rate</definition>
+        <argsstring>() const</argsstring>
+        <name>get_reserving_rate</name>
+        <qualifiedname>CPolicy::get_reserving_rate</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="65" column="12" bodyfile="modules/portfolio.h" bodystart="65" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d61/class_c_policy_1ab0ad00f8d8714cb0d09f6c5bcf859e52" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const string &amp;</type>
+        <definition>const string &amp; CPolicy::get_product</definition>
+        <argsstring>() const</argsstring>
+        <name>get_product</name>
+        <qualifiedname>CPolicy::get_product</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="67" column="18" bodyfile="modules/portfolio.h" bodystart="67" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d61/class_c_policy_1aef746f04a3a465883f45f1e2986e0e0f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CPolicy::CPolicy</definition>
+        <argsstring>(int64_t cession_id, int64_t dob_long, int64_t issue_date_long, int64_t disablement_date_long, int32_t gender, int32_t smoker_status, double sum_insured, double reserving_rate, string product)</argsstring>
+        <name>CPolicy</name>
+        <qualifiedname>CPolicy::CPolicy</qualifiedname>
+        <param>
+          <type>int64_t</type>
+          <declname>cession_id</declname>
+        </param>
+        <param>
+          <type>int64_t</type>
+          <declname>dob_long</declname>
+        </param>
+        <param>
+          <type>int64_t</type>
+          <declname>issue_date_long</declname>
+        </param>
+        <param>
+          <type>int64_t</type>
+          <declname>disablement_date_long</declname>
+        </param>
+        <param>
+          <type>int32_t</type>
+          <declname>gender</declname>
+        </param>
+        <param>
+          <type>int32_t</type>
+          <declname>smoker_status</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>sum_insured</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>reserving_rate</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>product</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="69" column="5" bodyfile="modules/portfolio.h" bodystart="69" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d61/class_c_policy_1a478619289edd33d766902232c77c4cd7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>string CPolicy::to_string</definition>
+        <argsstring>() const</argsstring>
+        <name>to_string</name>
+        <qualifiedname>CPolicy::to_string</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="132" column="12" bodyfile="modules/portfolio.h" bodystart="132" bodyend="146"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="modules/portfolio.h" line="16" column="1" bodyfile="modules/portfolio.h" bodystart="17" bodyend="147"/>
+    <listofallmembers>
+      <member refid="d5/d61/class_c_policy_1a43e3c393071dcdfea9d1d8fb19bccb02" prot="protected" virt="non-virtual"><scope>CPolicy</scope><name>_has_disablement_date</name></member>
+      <member refid="d5/d61/class_c_policy_1a6f5038f7e71b09e6f6adb56d305b1358" prot="protected" virt="non-virtual"><scope>CPolicy</scope><name>cession_id</name></member>
+      <member refid="d5/d61/class_c_policy_1aef746f04a3a465883f45f1e2986e0e0f" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>CPolicy</name></member>
+      <member refid="d5/d61/class_c_policy_1a149fdf987c9d38072acc6f5cdf310523" prot="protected" virt="non-virtual"><scope>CPolicy</scope><name>date_dis_day</name></member>
+      <member refid="d5/d61/class_c_policy_1ac47bf02c59a96962dc93b5237460390c" prot="protected" virt="non-virtual"><scope>CPolicy</scope><name>date_dis_month</name></member>
+      <member refid="d5/d61/class_c_policy_1abf977d1c834aa8cfe77d74d1c4d61d05" prot="protected" virt="non-virtual"><scope>CPolicy</scope><name>date_dis_year</name></member>
+      <member refid="d5/d61/class_c_policy_1aa30d9c94bf34c1a552e7da28b4dfddc1" prot="protected" virt="non-virtual"><scope>CPolicy</scope><name>dob_day</name></member>
+      <member refid="d5/d61/class_c_policy_1a2368743e6cfc5470fdeb730f3b4db36d" prot="protected" virt="non-virtual"><scope>CPolicy</scope><name>dob_month</name></member>
+      <member refid="d5/d61/class_c_policy_1a3b14cafe295113094600794f51a02dc4" prot="protected" virt="non-virtual"><scope>CPolicy</scope><name>dob_year</name></member>
+      <member refid="d5/d61/class_c_policy_1acd9ce9a5ea68e1d07869a5d735156b2f" prot="protected" virt="non-virtual"><scope>CPolicy</scope><name>gender</name></member>
+      <member refid="d5/d61/class_c_policy_1a34d17a783c11cf18fcae8362a7277d09" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>get_cession_id</name></member>
+      <member refid="d5/d61/class_c_policy_1a5aa84f060f3f44673e32f9ac63a82191" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>get_date_dis_day</name></member>
+      <member refid="d5/d61/class_c_policy_1ab6daa00f7411575a037818a04ccd8c97" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>get_date_dis_month</name></member>
+      <member refid="d5/d61/class_c_policy_1a4b730799c1e66a6faaf922e3c82f142c" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>get_date_dis_year</name></member>
+      <member refid="d5/d61/class_c_policy_1ad683b20860f8a607712fa90b4ade58b0" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>get_dob_day</name></member>
+      <member refid="d5/d61/class_c_policy_1aedbd7569d4ca3cb5798710482b950970" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>get_dob_month</name></member>
+      <member refid="d5/d61/class_c_policy_1a2ebb6a5e4bd6c6b73ef4c7484deb905c" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>get_dob_year</name></member>
+      <member refid="d5/d61/class_c_policy_1ab6ff71c6850b2398f1a7ff54e094ba07" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>get_gender</name></member>
+      <member refid="d5/d61/class_c_policy_1ac5c0a3ab05bc7ca97ea314c7025ff556" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>get_issue_day</name></member>
+      <member refid="d5/d61/class_c_policy_1afe0aeedf4a5b8281d72ef05a7df26eb3" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>get_issue_month</name></member>
+      <member refid="d5/d61/class_c_policy_1a80861708c461d3fc29de2ff9c480d889" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>get_issue_year</name></member>
+      <member refid="d5/d61/class_c_policy_1ab0ad00f8d8714cb0d09f6c5bcf859e52" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>get_product</name></member>
+      <member refid="d5/d61/class_c_policy_1afbe343ce61093f993a0a09a308320a7b" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>get_reserving_rate</name></member>
+      <member refid="d5/d61/class_c_policy_1a376b8b1b506131e717cb0da4ccdc7c6a" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>get_smoker_status</name></member>
+      <member refid="d5/d61/class_c_policy_1a642abb4e6c77af0175de24882432eb0f" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>get_sum_insured</name></member>
+      <member refid="d5/d61/class_c_policy_1ae541465b14f4f1da095a24f013173231" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>has_disablement_date</name></member>
+      <member refid="d5/d61/class_c_policy_1adf87660bef6ac41895fd4361ce9537dd" prot="protected" virt="non-virtual"><scope>CPolicy</scope><name>issue_day</name></member>
+      <member refid="d5/d61/class_c_policy_1a0cd616ccfbba06f10b711940d1ff7eb6" prot="protected" virt="non-virtual"><scope>CPolicy</scope><name>issue_month</name></member>
+      <member refid="d5/d61/class_c_policy_1abb93a8d4d42fbe6bc6b1bf584d71ad8e" prot="protected" virt="non-virtual"><scope>CPolicy</scope><name>issue_year</name></member>
+      <member refid="d5/d61/class_c_policy_1a89bd1d0fc1f27f06b40889c845cec141" prot="protected" virt="non-virtual"><scope>CPolicy</scope><name>product</name></member>
+      <member refid="d5/d61/class_c_policy_1a65114317473890c9e4e7b156326725d8" prot="protected" virt="non-virtual"><scope>CPolicy</scope><name>reserving_rate</name></member>
+      <member refid="d5/d61/class_c_policy_1a38a7455428c382a00d1a9e8521992582" prot="protected" virt="non-virtual"><scope>CPolicy</scope><name>smoker_status</name></member>
+      <member refid="d5/d61/class_c_policy_1abba817cdec1d2b65b26c7df19070fbb5" prot="protected" virt="non-virtual"><scope>CPolicy</scope><name>sum_insured</name></member>
+      <member refid="d5/d61/class_c_policy_1a478619289edd33d766902232c77c4cd7" prot="public" virt="non-virtual"><scope>CPolicy</scope><name>to_string</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

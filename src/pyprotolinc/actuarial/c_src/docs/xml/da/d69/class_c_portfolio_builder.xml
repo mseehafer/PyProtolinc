@@ -1,0 +1,575 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
+  <compounddef id="da/d69/class_c_portfolio_builder" kind="class" language="C++" prot="public">
+    <compoundname>CPortfolioBuilder</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1af684f26e6c34557d8762e9ba34f0050f" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t CPortfolioBuilder::num_policies</definition>
+        <argsstring></argsstring>
+        <name>num_policies</name>
+        <qualifiedname>CPortfolioBuilder::num_policies</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="198" column="12" bodyfile="modules/portfolio.h" bodystart="198" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1a8a949bb75c3b960562d7f5ea6941981b" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool CPortfolioBuilder::has_portfolio_date</definition>
+        <argsstring></argsstring>
+        <name>has_portfolio_date</name>
+        <qualifiedname>CPortfolioBuilder::has_portfolio_date</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="200" column="10" bodyfile="modules/portfolio.h" bodystart="200" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1abcfeb25839855eb19238540b2bc68405" prot="private" static="no" mutable="no">
+        <type>short</type>
+        <definition>short CPortfolioBuilder::ptf_year</definition>
+        <argsstring></argsstring>
+        <name>ptf_year</name>
+        <qualifiedname>CPortfolioBuilder::ptf_year</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="201" column="11" bodyfile="modules/portfolio.h" bodystart="201" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1a19425c19c40ca7b7a1afaebffdd3fa56" prot="private" static="no" mutable="no">
+        <type>short</type>
+        <definition>short CPortfolioBuilder::ptf_month</definition>
+        <argsstring></argsstring>
+        <name>ptf_month</name>
+        <qualifiedname>CPortfolioBuilder::ptf_month</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="201" column="20" bodyfile="modules/portfolio.h" bodystart="201" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1a241289882257c82f7110ec64a3664b4c" prot="private" static="no" mutable="no">
+        <type>short</type>
+        <definition>short CPortfolioBuilder::ptf_day</definition>
+        <argsstring></argsstring>
+        <name>ptf_day</name>
+        <qualifiedname>CPortfolioBuilder::ptf_day</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="201" column="30" bodyfile="modules/portfolio.h" bodystart="201" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1accd5e59f79a633b54c5b8a0289203d65" prot="private" static="no" mutable="no">
+        <type>string</type>
+        <definition>string CPortfolioBuilder::product</definition>
+        <argsstring></argsstring>
+        <name>product</name>
+        <qualifiedname>CPortfolioBuilder::product</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="204" column="12" bodyfile="modules/portfolio.h" bodystart="204" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1a0d8192a81a6288e8a82f816ad9a6f99c" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool CPortfolioBuilder::has_cession_ids</definition>
+        <argsstring></argsstring>
+        <name>has_cession_ids</name>
+        <qualifiedname>CPortfolioBuilder::has_cession_ids</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="206" column="10" bodyfile="modules/portfolio.h" bodystart="206" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1a0be4be7b07b385727ee5f13569197266" prot="private" static="no" mutable="no">
+        <type>int64_t *</type>
+        <definition>int64_t* CPortfolioBuilder::ptr_cession_id</definition>
+        <argsstring></argsstring>
+        <name>ptr_cession_id</name>
+        <qualifiedname>CPortfolioBuilder::ptr_cession_id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="207" column="13" bodyfile="modules/portfolio.h" bodystart="207" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1a45a7ecf9cae177bc9c86f0d804d31076" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool CPortfolioBuilder::has_dob</definition>
+        <argsstring></argsstring>
+        <name>has_dob</name>
+        <qualifiedname>CPortfolioBuilder::has_dob</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="209" column="10" bodyfile="modules/portfolio.h" bodystart="209" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1a4348ded2041621d090e6ee00d0ebf9c2" prot="private" static="no" mutable="no">
+        <type>int64_t *</type>
+        <definition>int64_t* CPortfolioBuilder::ptr_dob</definition>
+        <argsstring></argsstring>
+        <name>ptr_dob</name>
+        <qualifiedname>CPortfolioBuilder::ptr_dob</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="210" column="13" bodyfile="modules/portfolio.h" bodystart="210" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1ade1f55d85a95e2ab0cf6aea8b27b9636" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool CPortfolioBuilder::has_issue_dates</definition>
+        <argsstring></argsstring>
+        <name>has_issue_dates</name>
+        <qualifiedname>CPortfolioBuilder::has_issue_dates</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="212" column="10" bodyfile="modules/portfolio.h" bodystart="212" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1aedf6a20325e95bbafb215b240481db14" prot="private" static="no" mutable="no">
+        <type>int64_t *</type>
+        <definition>int64_t* CPortfolioBuilder::ptr_issue_date</definition>
+        <argsstring></argsstring>
+        <name>ptr_issue_date</name>
+        <qualifiedname>CPortfolioBuilder::ptr_issue_date</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="213" column="13" bodyfile="modules/portfolio.h" bodystart="213" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1addcedce2f48e67a16b7b5e2d17326323" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool CPortfolioBuilder::has_dis_dates</definition>
+        <argsstring></argsstring>
+        <name>has_dis_dates</name>
+        <qualifiedname>CPortfolioBuilder::has_dis_dates</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="215" column="10" bodyfile="modules/portfolio.h" bodystart="215" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1adc4682b8551bd6927cadd7088b107023" prot="private" static="no" mutable="no">
+        <type>int64_t *</type>
+        <definition>int64_t* CPortfolioBuilder::ptr_disablement_date</definition>
+        <argsstring></argsstring>
+        <name>ptr_disablement_date</name>
+        <qualifiedname>CPortfolioBuilder::ptr_disablement_date</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="216" column="13" bodyfile="modules/portfolio.h" bodystart="216" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1a365aad190ee0fd8d3d0b777bdc018c5a" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool CPortfolioBuilder::has_gender</definition>
+        <argsstring></argsstring>
+        <name>has_gender</name>
+        <qualifiedname>CPortfolioBuilder::has_gender</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="218" column="10" bodyfile="modules/portfolio.h" bodystart="218" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1a7d7446ec4b2f988aba4fed148e09448d" prot="private" static="no" mutable="no">
+        <type>int32_t *</type>
+        <definition>int32_t* CPortfolioBuilder::ptr_gender</definition>
+        <argsstring></argsstring>
+        <name>ptr_gender</name>
+        <qualifiedname>CPortfolioBuilder::ptr_gender</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="219" column="13" bodyfile="modules/portfolio.h" bodystart="219" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1a4913893c505dd8219293a9c8ab9e1305" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool CPortfolioBuilder::has_smoker_status</definition>
+        <argsstring></argsstring>
+        <name>has_smoker_status</name>
+        <qualifiedname>CPortfolioBuilder::has_smoker_status</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="221" column="10" bodyfile="modules/portfolio.h" bodystart="221" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1a2ed55907e7db52fa2d62b212d6fccb9b" prot="private" static="no" mutable="no">
+        <type>int32_t *</type>
+        <definition>int32_t* CPortfolioBuilder::ptr_smoker_status</definition>
+        <argsstring></argsstring>
+        <name>ptr_smoker_status</name>
+        <qualifiedname>CPortfolioBuilder::ptr_smoker_status</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="222" column="13" bodyfile="modules/portfolio.h" bodystart="222" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1a38fb0fb69f3a35e575b4917f5cb2b9da" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool CPortfolioBuilder::has_sum_insured</definition>
+        <argsstring></argsstring>
+        <name>has_sum_insured</name>
+        <qualifiedname>CPortfolioBuilder::has_sum_insured</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="224" column="10" bodyfile="modules/portfolio.h" bodystart="224" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1abb3610d793a9bc8402d22279625e3783" prot="private" static="no" mutable="no">
+        <type>double *</type>
+        <definition>double* CPortfolioBuilder::ptr_sum_insured</definition>
+        <argsstring></argsstring>
+        <name>ptr_sum_insured</name>
+        <qualifiedname>CPortfolioBuilder::ptr_sum_insured</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="225" column="12" bodyfile="modules/portfolio.h" bodystart="225" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1aef487a248a05778369ec678c1c9d55c4" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool CPortfolioBuilder::has_reserving_rate</definition>
+        <argsstring></argsstring>
+        <name>has_reserving_rate</name>
+        <qualifiedname>CPortfolioBuilder::has_reserving_rate</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="227" column="10" bodyfile="modules/portfolio.h" bodystart="227" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="da/d69/class_c_portfolio_builder_1a72017fef2da023381456766057656164" prot="private" static="no" mutable="no">
+        <type>double *</type>
+        <definition>double* CPortfolioBuilder::ptr_reserving_rate</definition>
+        <argsstring></argsstring>
+        <name>ptr_reserving_rate</name>
+        <qualifiedname>CPortfolioBuilder::ptr_reserving_rate</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="228" column="12" bodyfile="modules/portfolio.h" bodystart="228" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="da/d69/class_c_portfolio_builder_1ad61d666ceb5c3a8f155eae7511fe1da3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CPortfolioBuilder::CPortfolioBuilder</definition>
+        <argsstring>(size_t s, string _product)</argsstring>
+        <name>CPortfolioBuilder</name>
+        <qualifiedname>CPortfolioBuilder::CPortfolioBuilder</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>_product</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="232" column="5" bodyfile="modules/portfolio.h" bodystart="232" bodyend="232"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d69/class_c_portfolio_builder_1ac15e1bb228261a532c4cbd47661e3311" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="da/d69/class_c_portfolio_builder" kindref="compound">CPortfolioBuilder</ref> &amp;</type>
+        <definition>CPortfolioBuilder &amp; CPortfolioBuilder::set_portfolio_date</definition>
+        <argsstring>(short ptf_year, short ptf_month, short ptf_day)</argsstring>
+        <name>set_portfolio_date</name>
+        <qualifiedname>CPortfolioBuilder::set_portfolio_date</qualifiedname>
+        <param>
+          <type>short</type>
+          <declname>ptf_year</declname>
+        </param>
+        <param>
+          <type>short</type>
+          <declname>ptf_month</declname>
+        </param>
+        <param>
+          <type>short</type>
+          <declname>ptf_day</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="234" column="23" bodyfile="modules/portfolio.h" bodystart="234" bodyend="241"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d69/class_c_portfolio_builder_1abd008e2707c29d195bb63491d95a0682" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="da/d69/class_c_portfolio_builder" kindref="compound">CPortfolioBuilder</ref> &amp;</type>
+        <definition>CPortfolioBuilder &amp; CPortfolioBuilder::set_cession_id</definition>
+        <argsstring>(int64_t *ptr_cession_id)</argsstring>
+        <name>set_cession_id</name>
+        <qualifiedname>CPortfolioBuilder::set_cession_id</qualifiedname>
+        <param>
+          <type>int64_t *</type>
+          <declname>ptr_cession_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="243" column="23" bodyfile="modules/portfolio.h" bodystart="243" bodyend="248"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d69/class_c_portfolio_builder_1a1cf75de394a7dc45ec17d17125c0008c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="da/d69/class_c_portfolio_builder" kindref="compound">CPortfolioBuilder</ref> &amp;</type>
+        <definition>CPortfolioBuilder &amp; CPortfolioBuilder::set_date_of_birth</definition>
+        <argsstring>(int64_t *ptr_dob)</argsstring>
+        <name>set_date_of_birth</name>
+        <qualifiedname>CPortfolioBuilder::set_date_of_birth</qualifiedname>
+        <param>
+          <type>int64_t *</type>
+          <declname>ptr_dob</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="250" column="23" bodyfile="modules/portfolio.h" bodystart="250" bodyend="255"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d69/class_c_portfolio_builder_1a956b148c85d36942c443177c44018169" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="da/d69/class_c_portfolio_builder" kindref="compound">CPortfolioBuilder</ref> &amp;</type>
+        <definition>CPortfolioBuilder &amp; CPortfolioBuilder::set_issue_date</definition>
+        <argsstring>(int64_t *ptr_issue_date)</argsstring>
+        <name>set_issue_date</name>
+        <qualifiedname>CPortfolioBuilder::set_issue_date</qualifiedname>
+        <param>
+          <type>int64_t *</type>
+          <declname>ptr_issue_date</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="257" column="23" bodyfile="modules/portfolio.h" bodystart="257" bodyend="262"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d69/class_c_portfolio_builder_1a0555a2af85bfa331a02ca22fc33dd9e9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="da/d69/class_c_portfolio_builder" kindref="compound">CPortfolioBuilder</ref> &amp;</type>
+        <definition>CPortfolioBuilder &amp; CPortfolioBuilder::set_date_disablement</definition>
+        <argsstring>(int64_t *ptr_disablement_date)</argsstring>
+        <name>set_date_disablement</name>
+        <qualifiedname>CPortfolioBuilder::set_date_disablement</qualifiedname>
+        <param>
+          <type>int64_t *</type>
+          <declname>ptr_disablement_date</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="264" column="23" bodyfile="modules/portfolio.h" bodystart="264" bodyend="269"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d69/class_c_portfolio_builder_1a84f6fbb376dc612c30c7c96410d9be48" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="da/d69/class_c_portfolio_builder" kindref="compound">CPortfolioBuilder</ref> &amp;</type>
+        <definition>CPortfolioBuilder &amp; CPortfolioBuilder::set_gender</definition>
+        <argsstring>(int32_t *ptr_gender)</argsstring>
+        <name>set_gender</name>
+        <qualifiedname>CPortfolioBuilder::set_gender</qualifiedname>
+        <param>
+          <type>int32_t *</type>
+          <declname>ptr_gender</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="271" column="23" bodyfile="modules/portfolio.h" bodystart="271" bodyend="276"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d69/class_c_portfolio_builder_1a53606241bb256ea47dd675a0cc39e5e2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="da/d69/class_c_portfolio_builder" kindref="compound">CPortfolioBuilder</ref> &amp;</type>
+        <definition>CPortfolioBuilder &amp; CPortfolioBuilder::set_smoker_status</definition>
+        <argsstring>(int32_t *ptr_smoker_status)</argsstring>
+        <name>set_smoker_status</name>
+        <qualifiedname>CPortfolioBuilder::set_smoker_status</qualifiedname>
+        <param>
+          <type>int32_t *</type>
+          <declname>ptr_smoker_status</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="278" column="23" bodyfile="modules/portfolio.h" bodystart="278" bodyend="283"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d69/class_c_portfolio_builder_1acf0caa028f0a9c7e2063d48472d691fe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="da/d69/class_c_portfolio_builder" kindref="compound">CPortfolioBuilder</ref> &amp;</type>
+        <definition>CPortfolioBuilder &amp; CPortfolioBuilder::set_sum_insured</definition>
+        <argsstring>(double *ptr_sum_insured)</argsstring>
+        <name>set_sum_insured</name>
+        <qualifiedname>CPortfolioBuilder::set_sum_insured</qualifiedname>
+        <param>
+          <type>double *</type>
+          <declname>ptr_sum_insured</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="285" column="23" bodyfile="modules/portfolio.h" bodystart="285" bodyend="290"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d69/class_c_portfolio_builder_1a96021d838d14ba8288716a1599863aa1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="da/d69/class_c_portfolio_builder" kindref="compound">CPortfolioBuilder</ref> &amp;</type>
+        <definition>CPortfolioBuilder &amp; CPortfolioBuilder::set_reserving_rate</definition>
+        <argsstring>(double *ptr_reserving_rate)</argsstring>
+        <name>set_reserving_rate</name>
+        <qualifiedname>CPortfolioBuilder::set_reserving_rate</qualifiedname>
+        <param>
+          <type>double *</type>
+          <declname>ptr_reserving_rate</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="292" column="23" bodyfile="modules/portfolio.h" bodystart="292" bodyend="297"/>
+      </memberdef>
+      <memberdef kind="function" id="da/d69/class_c_portfolio_builder_1a99d693406d518c9f3be9769ae26d2d92" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>shared_ptr&lt; <ref refid="d5/dfd/class_c_policy_portfolio" kindref="compound">CPolicyPortfolio</ref> &gt;</type>
+        <definition>shared_ptr&lt; CPolicyPortfolio &gt; CPortfolioBuilder::build</definition>
+        <argsstring>()</argsstring>
+        <name>build</name>
+        <qualifiedname>CPortfolioBuilder::build</qualifiedname>
+        <briefdescription>
+<para>function that creates a <ref refid="d5/dfd/class_c_policy_portfolio" kindref="compound">CPolicyPortfolio</ref> </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/portfolio.h" line="302" column="16" bodyfile="modules/portfolio.h" bodystart="302" bodyend="368"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="modules/portfolio.h" line="194" column="1" bodyfile="modules/portfolio.h" bodystart="195" bodyend="369"/>
+    <listofallmembers>
+      <member refid="da/d69/class_c_portfolio_builder_1a99d693406d518c9f3be9769ae26d2d92" prot="public" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>build</name></member>
+      <member refid="da/d69/class_c_portfolio_builder_1ad61d666ceb5c3a8f155eae7511fe1da3" prot="public" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>CPortfolioBuilder</name></member>
+      <member refid="da/d69/class_c_portfolio_builder_1a0d8192a81a6288e8a82f816ad9a6f99c" prot="private" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>has_cession_ids</name></member>
+      <member refid="da/d69/class_c_portfolio_builder_1addcedce2f48e67a16b7b5e2d17326323" prot="private" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>has_dis_dates</name></member>
+      <member refid="da/d69/class_c_portfolio_builder_1a45a7ecf9cae177bc9c86f0d804d31076" prot="private" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>has_dob</name></member>
+      <member refid="da/d69/class_c_portfolio_builder_1a365aad190ee0fd8d3d0b777bdc018c5a" prot="private" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>has_gender</name></member>
+      <member refid="da/d69/class_c_portfolio_builder_1ade1f55d85a95e2ab0cf6aea8b27b9636" prot="private" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>has_issue_dates</name></member>
+      <member refid="da/d69/class_c_portfolio_builder_1a8a949bb75c3b960562d7f5ea6941981b" prot="private" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>has_portfolio_date</name></member>
+      <member refid="da/d69/class_c_portfolio_builder_1aef487a248a05778369ec678c1c9d55c4" prot="private" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>has_reserving_rate</name></member>
+      <member refid="da/d69/class_c_portfolio_builder_1a4913893c505dd8219293a9c8ab9e1305" prot="private" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>has_smoker_status</name></member>
+      <member refid="da/d69/class_c_portfolio_builder_1a38fb0fb69f3a35e575b4917f5cb2b9da" prot="private" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>has_sum_insured</name></member>
+      <member refid="da/d69/class_c_portfolio_builder_1af684f26e6c34557d8762e9ba34f0050f" prot="private" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>num_policies</name></member>
+      <member refid="da/d69/class_c_portfolio_builder_1accd5e59f79a633b54c5b8a0289203d65" prot="private" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>product</name></member>
+      <member refid="da/d69/class_c_portfolio_builder_1a241289882257c82f7110ec64a3664b4c" prot="private" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>ptf_day</name></member>
+      <member refid="da/d69/class_c_portfolio_builder_1a19425c19c40ca7b7a1afaebffdd3fa56" prot="private" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>ptf_month</name></member>
+      <member refid="da/d69/class_c_portfolio_builder_1abcfeb25839855eb19238540b2bc68405" prot="private" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>ptf_year</name></member>
+      <member refid="da/d69/class_c_portfolio_builder_1a0be4be7b07b385727ee5f13569197266" prot="private" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>ptr_cession_id</name></member>
+      <member refid="da/d69/class_c_portfolio_builder_1adc4682b8551bd6927cadd7088b107023" prot="private" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>ptr_disablement_date</name></member>
+      <member refid="da/d69/class_c_portfolio_builder_1a4348ded2041621d090e6ee00d0ebf9c2" prot="private" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>ptr_dob</name></member>
+      <member refid="da/d69/class_c_portfolio_builder_1a7d7446ec4b2f988aba4fed148e09448d" prot="private" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>ptr_gender</name></member>
+      <member refid="da/d69/class_c_portfolio_builder_1aedf6a20325e95bbafb215b240481db14" prot="private" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>ptr_issue_date</name></member>
+      <member refid="da/d69/class_c_portfolio_builder_1a72017fef2da023381456766057656164" prot="private" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>ptr_reserving_rate</name></member>
+      <member refid="da/d69/class_c_portfolio_builder_1a2ed55907e7db52fa2d62b212d6fccb9b" prot="private" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>ptr_smoker_status</name></member>
+      <member refid="da/d69/class_c_portfolio_builder_1abb3610d793a9bc8402d22279625e3783" prot="private" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>ptr_sum_insured</name></member>
+      <member refid="da/d69/class_c_portfolio_builder_1abd008e2707c29d195bb63491d95a0682" prot="public" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>set_cession_id</name></member>
+      <member refid="da/d69/class_c_portfolio_builder_1a0555a2af85bfa331a02ca22fc33dd9e9" prot="public" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>set_date_disablement</name></member>
+      <member refid="da/d69/class_c_portfolio_builder_1a1cf75de394a7dc45ec17d17125c0008c" prot="public" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>set_date_of_birth</name></member>
+      <member refid="da/d69/class_c_portfolio_builder_1a84f6fbb376dc612c30c7c96410d9be48" prot="public" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>set_gender</name></member>
+      <member refid="da/d69/class_c_portfolio_builder_1a956b148c85d36942c443177c44018169" prot="public" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>set_issue_date</name></member>
+      <member refid="da/d69/class_c_portfolio_builder_1ac15e1bb228261a532c4cbd47661e3311" prot="public" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>set_portfolio_date</name></member>
+      <member refid="da/d69/class_c_portfolio_builder_1a96021d838d14ba8288716a1599863aa1" prot="public" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>set_reserving_rate</name></member>
+      <member refid="da/d69/class_c_portfolio_builder_1a53606241bb256ea47dd675a0cc39e5e2" prot="public" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>set_smoker_status</name></member>
+      <member refid="da/d69/class_c_portfolio_builder_1acf0caa028f0a9c7e2063d48472d691fe" prot="public" virt="non-virtual"><scope>CPortfolioBuilder</scope><name>set_sum_insured</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

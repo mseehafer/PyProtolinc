@@ -1,0 +1,334 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
+  <compounddef id="de/d63/class_time_axis" kind="class" language="C++" prot="public">
+    <compoundname>TimeAxis</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="de/d63/class_time_axis_1aa6ae401b295563265c1346f104522945" prot="private" static="no" mutable="no">
+        <type>TimeStep</type>
+        <definition>TimeStep TimeAxis::_time_step</definition>
+        <argsstring></argsstring>
+        <name>_time_step</name>
+        <qualifiedname>TimeAxis::_time_step</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/time_axis.h" line="297" column="14" bodyfile="modules/time_axis.h" bodystart="297" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/d63/class_time_axis_1a20fdf190e01acd14b87038b3d9fd91d4" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int TimeAxis::_years_to_simulate</definition>
+        <argsstring></argsstring>
+        <name>_years_to_simulate</name>
+        <qualifiedname>TimeAxis::_years_to_simulate</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/time_axis.h" line="298" column="9" bodyfile="modules/time_axis.h" bodystart="298" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/d63/class_time_axis_1a17a2541e2ec5dbb163ef1dd6ceb17a0b" prot="private" static="no" mutable="no">
+        <type>short</type>
+        <definition>short TimeAxis::_ptf_year</definition>
+        <argsstring></argsstring>
+        <name>_ptf_year</name>
+        <qualifiedname>TimeAxis::_ptf_year</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/time_axis.h" line="301" column="11" bodyfile="modules/time_axis.h" bodystart="301" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/d63/class_time_axis_1a6a4b7950364bbc82edbbc249e7db0bdd" prot="private" static="no" mutable="no">
+        <type>short</type>
+        <definition>short TimeAxis::_ptf_month</definition>
+        <argsstring></argsstring>
+        <name>_ptf_month</name>
+        <qualifiedname>TimeAxis::_ptf_month</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/time_axis.h" line="301" column="21" bodyfile="modules/time_axis.h" bodystart="301" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/d63/class_time_axis_1adf324c0900c4949b4a7c1145c5528a53" prot="private" static="no" mutable="no">
+        <type>short</type>
+        <definition>short TimeAxis::_ptf_day</definition>
+        <argsstring></argsstring>
+        <name>_ptf_day</name>
+        <qualifiedname>TimeAxis::_ptf_day</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/time_axis.h" line="301" column="32" bodyfile="modules/time_axis.h" bodystart="301" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/d63/class_time_axis_1aa0ca4c0d60a1c5b26a25603a7fa3c003" prot="private" static="no" mutable="no">
+        <type>vector&lt; <ref refid="d5/d2d/struct_period_date" kindref="compound">PeriodDate</ref> &gt;</type>
+        <definition>vector&lt;PeriodDate&gt; TimeAxis::the_start_dates</definition>
+        <argsstring></argsstring>
+        <name>the_start_dates</name>
+        <qualifiedname>TimeAxis::the_start_dates</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/time_axis.h" line="304" column="12" bodyfile="modules/time_axis.h" bodystart="304" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/d63/class_time_axis_1a6a6700bbee51faf47639c89e3b59ee18" prot="private" static="no" mutable="no">
+        <type>vector&lt; <ref refid="d5/d2d/struct_period_date" kindref="compound">PeriodDate</ref> &gt;</type>
+        <definition>vector&lt;PeriodDate&gt; TimeAxis::the_end_dates</definition>
+        <argsstring></argsstring>
+        <name>the_end_dates</name>
+        <qualifiedname>TimeAxis::the_end_dates</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/time_axis.h" line="305" column="12" bodyfile="modules/time_axis.h" bodystart="305" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/d63/class_time_axis_1a4c93e81700c5468132d7f694554f5cd0" prot="private" static="no" mutable="no">
+        <type>vector&lt; int &gt;</type>
+        <definition>vector&lt;int&gt; TimeAxis::period_length_in_days</definition>
+        <argsstring></argsstring>
+        <name>period_length_in_days</name>
+        <qualifiedname>TimeAxis::period_length_in_days</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/time_axis.h" line="306" column="12" bodyfile="modules/time_axis.h" bodystart="306" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="de/d63/class_time_axis_1afc53f28e37c62fc824298506f41875f0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>TimeAxis::TimeAxis</definition>
+        <argsstring>(TimeStep time_step, int years_to_simulate, short ptf_year, short ptf_month, short ptf_day)</argsstring>
+        <name>TimeAxis</name>
+        <qualifiedname>TimeAxis::TimeAxis</qualifiedname>
+        <param>
+          <type>TimeStep</type>
+          <declname>time_step</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>years_to_simulate</declname>
+        </param>
+        <param>
+          <type>short</type>
+          <declname>ptf_year</declname>
+        </param>
+        <param>
+          <type>short</type>
+          <declname>ptf_month</declname>
+        </param>
+        <param>
+          <type>short</type>
+          <declname>ptf_day</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/time_axis.h" line="309" column="5" bodyfile="modules/time_axis.h" bodystart="309" bodyend="364"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d63/class_time_axis_1ad7ec56e17847e0565cf946bedcf78c7a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int TimeAxis::get_portfolio_year</definition>
+        <argsstring>() const</argsstring>
+        <name>get_portfolio_year</name>
+        <qualifiedname>TimeAxis::get_portfolio_year</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/time_axis.h" line="366" column="9" bodyfile="modules/time_axis.h" bodystart="366" bodyend="366"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d63/class_time_axis_1ab034b275a71b097796d6dd85aa735322" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int TimeAxis::get_portfolio_month</definition>
+        <argsstring>() const</argsstring>
+        <name>get_portfolio_month</name>
+        <qualifiedname>TimeAxis::get_portfolio_month</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/time_axis.h" line="367" column="9" bodyfile="modules/time_axis.h" bodystart="367" bodyend="367"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d63/class_time_axis_1ad9938c2a1548f803149667804a760117" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int TimeAxis::get_portfolio_day</definition>
+        <argsstring>() const</argsstring>
+        <name>get_portfolio_day</name>
+        <qualifiedname>TimeAxis::get_portfolio_day</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/time_axis.h" line="368" column="9" bodyfile="modules/time_axis.h" bodystart="368" bodyend="368"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d63/class_time_axis_1aa139a0e759758fbf21ac752df89e684e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="d5/d2d/struct_period_date" kindref="compound">PeriodDate</ref> &amp;</type>
+        <definition>const PeriodDate &amp; TimeAxis::end_at</definition>
+        <argsstring>(int k) const</argsstring>
+        <name>end_at</name>
+        <qualifiedname>TimeAxis::end_at</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>k</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/time_axis.h" line="370" column="22" bodyfile="modules/time_axis.h" bodystart="370" bodyend="373"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d63/class_time_axis_1aba76779a4d5352b7bbdee1c7244459aa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="d5/d2d/struct_period_date" kindref="compound">PeriodDate</ref> &amp;</type>
+        <definition>const PeriodDate &amp; TimeAxis::start_at</definition>
+        <argsstring>(int k) const</argsstring>
+        <name>start_at</name>
+        <qualifiedname>TimeAxis::start_at</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>k</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/time_axis.h" line="375" column="22" bodyfile="modules/time_axis.h" bodystart="375" bodyend="378"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d63/class_time_axis_1a4383e12a9d0a8cdeeda591cdcfbbc7db" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int TimeAxis::duration_at</definition>
+        <argsstring>(int k) const</argsstring>
+        <name>duration_at</name>
+        <qualifiedname>TimeAxis::duration_at</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>k</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/time_axis.h" line="380" column="9" bodyfile="modules/time_axis.h" bodystart="380" bodyend="382"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d63/class_time_axis_1ad98231d0c07e412ed23d3d258060a898" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t TimeAxis::get_length</definition>
+        <argsstring>() const</argsstring>
+        <name>get_length</name>
+        <qualifiedname>TimeAxis::get_length</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/time_axis.h" line="384" column="12" bodyfile="modules/time_axis.h" bodystart="384" bodyend="387"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d63/class_time_axis_1aca50583c6434b96628b6e2bf7abeaf12" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const vector&lt; <ref refid="d5/d2d/struct_period_date" kindref="compound">PeriodDate</ref> &gt; &amp;</type>
+        <definition>const vector&lt; PeriodDate &gt; &amp; TimeAxis::get_start_dates</definition>
+        <argsstring>() const</argsstring>
+        <name>get_start_dates</name>
+        <qualifiedname>TimeAxis::get_start_dates</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/time_axis.h" line="389" column="18" bodyfile="modules/time_axis.h" bodystart="389" bodyend="389"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d63/class_time_axis_1aa022204fbc9fbe51a4687ebfe0c1ca85" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const vector&lt; <ref refid="d5/d2d/struct_period_date" kindref="compound">PeriodDate</ref> &gt; &amp;</type>
+        <definition>const vector&lt; PeriodDate &gt; &amp; TimeAxis::get_end_dates</definition>
+        <argsstring>() const</argsstring>
+        <name>get_end_dates</name>
+        <qualifiedname>TimeAxis::get_end_dates</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/time_axis.h" line="390" column="18" bodyfile="modules/time_axis.h" bodystart="390" bodyend="390"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d63/class_time_axis_1a8fcd2e3bd4e03bf2c0b8d0696f0ba6c4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const vector&lt; int &gt; &amp;</type>
+        <definition>const vector&lt; int &gt; &amp; TimeAxis::get_period_length_in_days</definition>
+        <argsstring>() const</argsstring>
+        <name>get_period_length_in_days</name>
+        <qualifiedname>TimeAxis::get_period_length_in_days</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/time_axis.h" line="391" column="18" bodyfile="modules/time_axis.h" bodystart="391" bodyend="391"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="modules/time_axis.h" line="294" column="1" bodyfile="modules/time_axis.h" bodystart="295" bodyend="392"/>
+    <listofallmembers>
+      <member refid="de/d63/class_time_axis_1adf324c0900c4949b4a7c1145c5528a53" prot="private" virt="non-virtual"><scope>TimeAxis</scope><name>_ptf_day</name></member>
+      <member refid="de/d63/class_time_axis_1a6a4b7950364bbc82edbbc249e7db0bdd" prot="private" virt="non-virtual"><scope>TimeAxis</scope><name>_ptf_month</name></member>
+      <member refid="de/d63/class_time_axis_1a17a2541e2ec5dbb163ef1dd6ceb17a0b" prot="private" virt="non-virtual"><scope>TimeAxis</scope><name>_ptf_year</name></member>
+      <member refid="de/d63/class_time_axis_1aa6ae401b295563265c1346f104522945" prot="private" virt="non-virtual"><scope>TimeAxis</scope><name>_time_step</name></member>
+      <member refid="de/d63/class_time_axis_1a20fdf190e01acd14b87038b3d9fd91d4" prot="private" virt="non-virtual"><scope>TimeAxis</scope><name>_years_to_simulate</name></member>
+      <member refid="de/d63/class_time_axis_1a4383e12a9d0a8cdeeda591cdcfbbc7db" prot="public" virt="non-virtual"><scope>TimeAxis</scope><name>duration_at</name></member>
+      <member refid="de/d63/class_time_axis_1aa139a0e759758fbf21ac752df89e684e" prot="public" virt="non-virtual"><scope>TimeAxis</scope><name>end_at</name></member>
+      <member refid="de/d63/class_time_axis_1aa022204fbc9fbe51a4687ebfe0c1ca85" prot="public" virt="non-virtual"><scope>TimeAxis</scope><name>get_end_dates</name></member>
+      <member refid="de/d63/class_time_axis_1ad98231d0c07e412ed23d3d258060a898" prot="public" virt="non-virtual"><scope>TimeAxis</scope><name>get_length</name></member>
+      <member refid="de/d63/class_time_axis_1a8fcd2e3bd4e03bf2c0b8d0696f0ba6c4" prot="public" virt="non-virtual"><scope>TimeAxis</scope><name>get_period_length_in_days</name></member>
+      <member refid="de/d63/class_time_axis_1ad9938c2a1548f803149667804a760117" prot="public" virt="non-virtual"><scope>TimeAxis</scope><name>get_portfolio_day</name></member>
+      <member refid="de/d63/class_time_axis_1ab034b275a71b097796d6dd85aa735322" prot="public" virt="non-virtual"><scope>TimeAxis</scope><name>get_portfolio_month</name></member>
+      <member refid="de/d63/class_time_axis_1ad7ec56e17847e0565cf946bedcf78c7a" prot="public" virt="non-virtual"><scope>TimeAxis</scope><name>get_portfolio_year</name></member>
+      <member refid="de/d63/class_time_axis_1aca50583c6434b96628b6e2bf7abeaf12" prot="public" virt="non-virtual"><scope>TimeAxis</scope><name>get_start_dates</name></member>
+      <member refid="de/d63/class_time_axis_1a4c93e81700c5468132d7f694554f5cd0" prot="private" virt="non-virtual"><scope>TimeAxis</scope><name>period_length_in_days</name></member>
+      <member refid="de/d63/class_time_axis_1aba76779a4d5352b7bbdee1c7244459aa" prot="public" virt="non-virtual"><scope>TimeAxis</scope><name>start_at</name></member>
+      <member refid="de/d63/class_time_axis_1a6a6700bbee51faf47639c89e3b59ee18" prot="private" virt="non-virtual"><scope>TimeAxis</scope><name>the_end_dates</name></member>
+      <member refid="de/d63/class_time_axis_1aa0ca4c0d60a1c5b26a25603a7fa3c003" prot="private" virt="non-virtual"><scope>TimeAxis</scope><name>the_start_dates</name></member>
+      <member refid="de/d63/class_time_axis_1afc53f28e37c62fc824298506f41875f0" prot="public" virt="non-virtual"><scope>TimeAxis</scope><name>TimeAxis</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,686 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
+  <compounddef id="db/d73/c__valuation_8cpp" kind="file" language="C++">
+    <compoundname>c_valuation.cpp</compoundname>
+    <includes refid="d7/d34/c__valuation_8h" local="yes">c_valuation.h</includes>
+    <includes refid="d0/d18/products_8h" local="yes">products.h</includes>
+    <includes local="no">string</includes>
+    <includes local="no">unordered_map</includes>
+    <includes local="no">cmath</includes>
+    <incdepgraph>
+      <node id="1">
+        <label>modules/c_valuation.cpp</label>
+        <link refid="db/d73/c__valuation_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>c_valuation.h</label>
+        <link refid="d7/d34/c__valuation_8h_source"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>products.h</label>
+        <link refid="d0/d18/products_8h_source"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>algorithm</label>
+      </node>
+      <node id="4">
+        <label>cctype</label>
+      </node>
+      <node id="10">
+        <label>cmath</label>
+      </node>
+      <node id="7">
+        <label>memory</label>
+      </node>
+      <node id="3">
+        <label>string</label>
+      </node>
+      <node id="8">
+        <label>unordered_map</label>
+      </node>
+      <node id="6">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="db/d73/c__valuation_8cpp_1afc864aa4665c35552c5b9d6facf7bb9e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void get_simulation_duration</definition>
+        <argsstring>(CSeriatimRecord &amp;rec, int(&amp;simul_duration)[2])</argsstring>
+        <name>get_simulation_duration</name>
+        <param>
+          <type><ref refid="d6/d4e/class_c_seriatim_record" kindref="compound">CSeriatimRecord</ref> &amp;</type>
+          <declname>rec</declname>
+        </param>
+        <param>
+          <type>int(&amp;)</type>
+          <declname>simul_duration</declname>
+          <array>[2]</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/c_valuation.cpp" line="17" column="6" bodyfile="modules/c_valuation.cpp" bodystart="17" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d73/c__valuation_8cpp_1abc703b0740db45ab62972c6d2cdecbfe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int project_record</definition>
+        <argsstring>(CSeriatimRecord &amp;rec, double *proj_premiums, double *proj_claims, double *reserve_lg_boy, double *sum_insured_boy, std::shared_ptr&lt; std::vector&lt; double &gt; &gt; p_mort_assump_be, std::shared_ptr&lt; std::vector&lt; double &gt; &gt; p_mort_assump_locgaap, std::shared_ptr&lt; std::vector&lt; double &gt; &gt; p_lapse_assump_be, std::shared_ptr&lt; std::vector&lt; double &gt; &gt; p_lapse_assump_locgaap, std::shared_ptr&lt; std::vector&lt; double &gt; &gt; p_prem_assump_be, std::shared_ptr&lt; std::vector&lt; double &gt; &gt; p_prem_assump_locgaap)</argsstring>
+        <name>project_record</name>
+        <param>
+          <type><ref refid="d6/d4e/class_c_seriatim_record" kindref="compound">CSeriatimRecord</ref> &amp;</type>
+          <declname>rec</declname>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>proj_premiums</declname>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>proj_claims</declname>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>reserve_lg_boy</declname>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>sum_insured_boy</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; std::vector&lt; double &gt; &gt;</type>
+          <declname>p_mort_assump_be</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; std::vector&lt; double &gt; &gt;</type>
+          <declname>p_mort_assump_locgaap</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; std::vector&lt; double &gt; &gt;</type>
+          <declname>p_lapse_assump_be</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; std::vector&lt; double &gt; &gt;</type>
+          <declname>p_lapse_assump_locgaap</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; std::vector&lt; double &gt; &gt;</type>
+          <declname>p_prem_assump_be</declname>
+        </param>
+        <param>
+          <type>std::shared_ptr&lt; std::vector&lt; double &gt; &gt;</type>
+          <declname>p_prem_assump_locgaap</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/c_valuation.cpp" line="54" column="5" bodyfile="modules/c_valuation.cpp" bodystart="54" bodyend="203"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d73/c__valuation_8cpp_1a892e2946052502cf0c073ca4598fa589" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void _valuation</definition>
+        <argsstring>(shared_ptr&lt; double &gt; output_in, int no_cols, vector&lt; shared_ptr&lt; CSeriatimRecord &gt; &gt; &amp;pf, CBaseAssumptions *be_ass, CBaseAssumptions *locgaap_ass)</argsstring>
+        <name>_valuation</name>
+        <param>
+          <type>shared_ptr&lt; double &gt;</type>
+          <declname>output_in</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>no_cols</declname>
+        </param>
+        <param>
+          <type>vector&lt; shared_ptr&lt; <ref refid="d6/d4e/class_c_seriatim_record" kindref="compound">CSeriatimRecord</ref> &gt; &gt; &amp;</type>
+          <declname>pf</declname>
+        </param>
+        <param>
+          <type><ref refid="db/db0/class_c_base_assumptions" kindref="compound">CBaseAssumptions</ref> *</type>
+          <declname>be_ass</declname>
+        </param>
+        <param>
+          <type><ref refid="db/db0/class_c_base_assumptions" kindref="compound">CBaseAssumptions</ref> *</type>
+          <declname>locgaap_ass</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/c_valuation.cpp" line="206" column="6" bodyfile="modules/c_valuation.cpp" bodystart="206" bodyend="319"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d73/c__valuation_8cpp_1a5948dae04d5560c22c594a502efa511c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void valuation</definition>
+        <argsstring>(double *output, const int no_cols, CPortfolio *pf, CBaseAssumptions *be_ass, CBaseAssumptions *locgaap_ass)</argsstring>
+        <name>valuation</name>
+        <param>
+          <type>double *</type>
+          <declname>output</declname>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>no_cols</declname>
+        </param>
+        <param>
+          <type><ref refid="d5/d9c/class_c_portfolio" kindref="compound">CPortfolio</ref> *</type>
+          <declname>pf</declname>
+        </param>
+        <param>
+          <type><ref refid="db/db0/class_c_base_assumptions" kindref="compound">CBaseAssumptions</ref> *</type>
+          <declname>be_ass</declname>
+        </param>
+        <param>
+          <type><ref refid="db/db0/class_c_base_assumptions" kindref="compound">CBaseAssumptions</ref> *</type>
+          <declname>locgaap_ass</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/c_valuation.cpp" line="322" column="6" bodyfile="modules/c_valuation.cpp" bodystart="322" bodyend="397"/>
+      </memberdef>
+      <memberdef kind="function" id="db/d73/c__valuation_8cpp_1ada3d08b9fb193aaf4dc6ad4bbaa1601d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int get_age_at_date</definition>
+        <argsstring>(int dob_year, int dob_month, int dob_day, int dt_year, int dt_month, int dt_day)</argsstring>
+        <name>get_age_at_date</name>
+        <param>
+          <type>int</type>
+          <declname>dob_year</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>dob_month</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>dob_day</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>dt_year</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>dt_month</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>dt_day</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/c_valuation.cpp" line="403" column="5" bodyfile="modules/c_valuation.cpp" bodystart="403" bodyend="425"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">c_valuation.cpp</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"></highlight></codeline>
+<codeline lineno="4"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;c_valuation.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;products.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unordered_map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cmath&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal">std;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>get_simulation_duration(<ref refid="d6/d4e/class_c_seriatim_record" kindref="compound">CSeriatimRecord</ref><sp/>&amp;rec,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>(&amp;simul_duration)[2])<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>assert<sp/>issue_date<sp/>&lt;=<sp/>portfolio-date</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>assert<sp/>issue_date<sp/>+<sp/>coverage_years<sp/>&gt;<sp/>portfolio-date</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>assert<sp/>portfolio_date<sp/>is<sp/>end-of-month<sp/>or<sp/>first<sp/>of<sp/>month<sp/>-&gt;<sp/>will<sp/>be<sp/>treated</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>as<sp/>end<sp/>of<sp/>that<sp/>month</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>simulation<sp/>will<sp/>always<sp/>start<sp/>on<sp/>the<sp/>first<sp/>of<sp/>that<sp/>month<sp/>(respectively<sp/>the<sp/>month<sp/>after)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>policy<sp/>start<sp/>date<sp/>is<sp/>always<sp/>moved<sp/>to<sp/>the<sp/>nearst<sp/>first<sp/>of<sp/>the<sp/>month<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>issue_year<sp/>=<sp/>rec.get_issue_year();<sp/></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>issue_month<sp/>=<sp/>(rec.get_issue_day()<sp/>&gt;=<sp/>15<sp/>?<sp/>1<sp/>:<sp/>0)<sp/>+<sp/>rec.get_issue_month();</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(issue_month<sp/>==<sp/>13)<sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>issue_month<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>issue_year++;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>simulation_end_date<sp/>-<sp/>last<sp/>month<sp/>to<sp/>be<sp/>included<sp/>in<sp/>the<sp/>simulation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>end<sp/>date<sp/>is<sp/>the<sp/>issue<sp/>date<sp/>shifted<sp/>by<sp/>coverage-years<sp/>into<sp/>the<sp/>future</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>end_year<sp/>=<sp/>rec.get_issue_year()<sp/>+<sp/>rec.get_coverage_years();</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>end_month<sp/>=<sp/>issue_month<sp/>-<sp/>1;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(end_month<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>end_year--;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>end_month<sp/>=<sp/>12;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>remaining<sp/>duration<sp/>is<sp/>now<sp/>from<sp/>portfolio<sp/>date<sp/>until<sp/>end-date,<sp/>both<sp/>the<sp/>dates<sp/>are<sp/>end<sp/>of<sp/>month</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>total_month_remaining<sp/>=<sp/>end_month<sp/>-<sp/>rec.get_portfolio_month()<sp/>+<sp/>12*(end_year<sp/>-rec.get_portfolio_year());</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>simul_duration[0]<sp/>=<sp/>total_month_remaining<sp/>/<sp/>12;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>simul_duration[1]<sp/>=<sp/>total_month_remaining<sp/>%<sp/>12;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Calculate<sp/>projection<sp/>for<sp/>one<sp/>record</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">//<sp/>return<sp/>the<sp/>number<sp/>of<sp/>rows<sp/>filled</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>project_record(<ref refid="d6/d4e/class_c_seriatim_record" kindref="compound">CSeriatimRecord</ref><sp/>&amp;rec,</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/>proj_premiums,</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/>proj_claims,</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/>reserve_lg_boy,</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/>sum_insured_boy,</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::shared_ptr&lt;std::vector&lt;double&gt;&gt;<sp/>p_mort_assump_be,</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::shared_ptr&lt;std::vector&lt;double&gt;&gt;<sp/>p_mort_assump_locgaap,</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::shared_ptr&lt;std::vector&lt;double&gt;&gt;<sp/>p_lapse_assump_be,</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::shared_ptr&lt;std::vector&lt;double&gt;&gt;<sp/>p_lapse_assump_locgaap,</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::shared_ptr&lt;std::vector&lt;double&gt;&gt;<sp/>p_prem_assump_be,</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::shared_ptr&lt;std::vector&lt;double&gt;&gt;<sp/>p_prem_assump_locgaap</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)<sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>survival_prob_be<sp/>=<sp/>1.0;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>survival_prob_lg<sp/>=<sp/>1.0;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>age_in_months<sp/>=<sp/>rec.get_age_projection_start();</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>age_in_years_pr_start<sp/>=<sp/>age_in_months<sp/>/<sp/>12;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>std::shared_ptr&lt;GenericMortalityProduct&gt;<sp/>prod<sp/>=<sp/>std::make_shared&lt;SimpleTermProduct&gt;(rec);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>simulation<sp/>duration<sp/>in<sp/>years<sp/>and<sp/>months</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>simul_duration[2]<sp/>=<sp/>{0,0};</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>get_simulation_duration(rec,<sp/>simul_duration);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sim_years<sp/>=<sp/>simul_duration[0];</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sim_months<sp/>=<sp/>min(12*VECTOR_LENGTH_YEARS,<sp/>max(0,<sp/>12*sim_years<sp/>+<sp/>simul_duration[1]));</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>set<sp/>year<sp/>and<sp/>month,<sp/>at<sp/>this<sp/>point<sp/>this<sp/>should<sp/>be<sp/>the<sp/>month</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>before<sp/>the<sp/>calculation<sp/>starts</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>_year<sp/>=<sp/>rec.get_portfolio_year();</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>_month<sp/>=<sp/>rec.get_portfolio_month();</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>assumption<sp/>selection,<sp/>value<sp/>&quot;-1&quot;<sp/>ensure<sp/>they<sp/>will<sp/>be<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>updated<sp/>when<sp/>going<sp/>the<sp/>first<sp/>time<sp/>through<sp/>the<sp/>loop</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index_for_assumptions<sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>q_be,<sp/>q_lg,<sp/>q_pr_lg,<sp/>q_pr_be,<sp/>l1;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>q_be_yrly,<sp/>q_lg_yrly,<sp/>q_pr_be_yrly,<sp/>q_pr_lg_yrly,<sp/>l1_yrly;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>cash<sp/>flows<sp/>conditioned<sp/>on<sp/>survival</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>this<sp/>should<sp/>generate<sp/>&quot;0&quot;-initialized<sp/>arrays<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>cf.https://stackoverflow.com/questions/5591492/array-initialization-with-0-0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>cond_claims_lg[12*VECTOR_LENGTH_YEARS]<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>not<sp/>used:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>cond_premium_lg[12*VECTOR_LENGTH_YEARS]<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>cond_res_lg[12*VECTOR_LENGTH_YEARS]<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>acc_survival_prob_be[12*VECTOR_LENGTH_YEARS]<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>period_survival_prob_lg[12*VECTOR_LENGTH_YEARS]<sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>sim_months;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_month++;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(_month<sp/>==<sp/>13)<sp/>{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_month<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_year++;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>not<sp/>used<sp/>so<sp/>far:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>double<sp/>benefit_if_survived<sp/>=<sp/>prod-&gt;get_benefit_if_survived(_year,<sp/>_month);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>benefit_if_lapsed<sp/>=<sp/>prod-&gt;get_benefit_if_lapsed(_year,<sp/>_month);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>benefit_if_died<sp/>=<sp/>prod-&gt;get_benefit_if_died(_year,<sp/>_month);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>premium_is_due<sp/>=<sp/>prod-&gt;is_premium_due(_year,<sp/>_month);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sum_insured_boy[i]<sp/>=<sp/>survival_prob_be<sp/>*<sp/>benefit_if_died;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>extract<sp/>first<sp/>and<sp/>second<sp/>order<sp/>mortality<sp/>assumptions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>mortality<sp/>rates<sp/>are<sp/>taken<sp/>starting<sp/>from<sp/>the<sp/>age<sp/>at</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>projection<sp/>start</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>double<sp/>q_be<sp/>=<sp/>(is_final_year<sp/>?<sp/>last_sim_year_frac<sp/>:<sp/>1.0)<sp/>*<sp/>(*p_mort_assump_be)[i]<sp/>/<sp/>1000.0;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>double<sp/>q_pr<sp/>=<sp/>(is_final_year<sp/>?<sp/>last_sim_year_frac<sp/>:<sp/>1.0)<sp/>*<sp/>(*p_mort_assump_locgaap)[i]<sp/>/<sp/>1000.0;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>assumption<sp/>selection<sp/>-<sp/>depends<sp/>on<sp/>age<sp/>for<sp/>mortality</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>depends<sp/>on<sp/>time<sp/>since<sp/>issue<sp/>age<sp/>for<sp/>lapse</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(index_for_assumptions<sp/><sp/>!=<sp/>age_in_months<sp/>/<sp/>12<sp/>-<sp/>age_in_years_pr_start)<sp/>{</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>index_for_assumptions<sp/>=<sp/>age_in_months<sp/>/<sp/>12<sp/>-<sp/>age_in_years_pr_start;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_be_yrly<sp/>=<sp/><sp/>(*p_mort_assump_be)[index_for_assumptions]<sp/>/<sp/>1000.0;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_lg_yrly<sp/>=<sp/><sp/>(*p_mort_assump_locgaap)[index_for_assumptions]<sp/>/<sp/>1000.0;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_pr_be_yrly<sp/>=<sp/><sp/>(*p_prem_assump_be)[index_for_assumptions]<sp/>/<sp/>1000.0;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_pr_lg_yrly<sp/>=<sp/><sp/>(*p_prem_assump_locgaap)[index_for_assumptions]<sp/>/<sp/>1000.0;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>extract<sp/>lapse<sp/>assumptions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>l1_yrly<sp/>=<sp/>(*p_lapse_assump_be)[index_for_assumptions]<sp/>/<sp/>1000.0;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>convert<sp/>to<sp/>monthly<sp/>rates</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>here<sp/>one<sp/>method<sp/>to<sp/>convert<sp/>the<sp/>rates<sp/>to<sp/>monthly</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>q_be<sp/>/=<sp/>12.0;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>q_pr<sp/>/=<sp/>12.0;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>l1<sp/>/=<sp/>12.0;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>q_pr_be<sp/>/=<sp/>12.0;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>q_pr_lg<sp/>/=<sp/>12.0;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>here<sp/>another<sp/>one<sp/>(which<sp/>is<sp/>relatively<sp/>really<sp/>expensive<sp/>in<sp/>run<sp/>time)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_be<sp/>=<sp/>min(1.0,<sp/>1.0<sp/>-<sp/>pow(max(0.0,<sp/>1.0<sp/>-<sp/>q_be_yrly),<sp/>1.0/12.0));</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_lg<sp/>=<sp/>min(1.0,<sp/>1.0<sp/>-<sp/>pow(max(0.0,<sp/>1.0<sp/>-<sp/>q_lg_yrly),<sp/>1.0/12.0));</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_pr_be<sp/>=<sp/>min(1.0,<sp/>1.0<sp/>-<sp/>pow(max(0.0,<sp/>1.0<sp/>-<sp/>q_pr_be_yrly),<sp/>1.0/12.0));</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>q_pr_lg<sp/>=<sp/>min(1.0,<sp/>1.0<sp/>-<sp/>pow(max(0.0,<sp/>1.0<sp/>-<sp/>q_pr_lg_yrly),<sp/>1.0/12.0));</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>l1<sp/>=<sp/>min(1.0,<sp/>1.0<sp/>-<sp/>pow(max(0.0,<sp/>1.0<sp/>-<sp/>l1_yrly),<sp/>1.0/12.0));</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>premiums<sp/>will<sp/>be<sp/>collected<sp/>at<sp/>the<sp/>beginning<sp/>of<sp/>the<sp/>month,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>i.e.<sp/>before<sp/>the<sp/>survival<sp/>probabilities<sp/>are<sp/>updated</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>yearly<sp/>premium<sp/>paying<sp/>mode:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>proj_premiums[i]<sp/>=<sp/>premium_is_due<sp/>?<sp/>benefit_if_died<sp/>*<sp/>survival_prob_be<sp/>*<sp/>q_pr_be_yrly<sp/>:<sp/>0.0;<sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>add<sp/>component<sp/>for<sp/>lapse<sp/>and<sp/>survival</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>monthly<sp/>premium<sp/>paying<sp/>mode:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//proj_premiums[i]<sp/>=<sp/><sp/>benefit_if_died<sp/>*<sp/>survival_prob_be<sp/>*<sp/>q_pr_be;<sp/>//<sp/>TODO:<sp/>add<sp/>component<sp/>for<sp/>lapse<sp/>and<sp/>survival</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>proj_claims[i]<sp/>=<sp/>-benefit_if_died<sp/>*<sp/>survival_prob_be<sp/>*<sp/>q_be;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cond_claims_lg[i]<sp/>=<sp/>-benefit_if_died<sp/>*<sp/>q_lg;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cond_premium_lg[i]<sp/>=<sp/>benefit_if_died<sp/>*<sp/>q_pr_lg;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>period_survival_prob_lg[i]<sp/>=<sp/>(1<sp/>-<sp/>q_lg)<sp/>*<sp/>(1<sp/>-<sp/>l1);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>survival_prob_lg<sp/>*=<sp/>period_survival_prob_lg[i];</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>survival_prob_be<sp/>*=<sp/>(1<sp/>-<sp/>q_be)<sp/>*<sp/>(1<sp/>-<sp/>l1);</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>acc_survival_prob_be[i]<sp/>=<sp/>survival_prob_be;</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>age_in_months++;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="comment">//<sp/>end<sp/>projection<sp/>loop</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>calculation<sp/>of<sp/>local<sp/>gaap<sp/>reserves</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sim_months<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>reserving_interest<sp/>=<sp/>pow(1<sp/>+<sp/>0.05,<sp/>1.0/12.0);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>reserve_discount<sp/>=<sp/>1.0<sp/>/<sp/>reserving_interest;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>we<sp/>first<sp/>calculate<sp/>the<sp/>reserve<sp/>vector<sp/>conditionally<sp/>on<sp/>survival</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>J=sim_months-1;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>premium<sp/>is<sp/>beg.of<sp/>month<sp/>and<sp/>needs<sp/>no<sp/>discounting</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reserve_lg_boy[J]<sp/>=<sp/>-(reserve_discount<sp/>*<sp/><sp/>cond_claims_lg[J]<sp/><sp/>+<sp/>cond_premium_lg[J]);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>J--;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(;<sp/>J&gt;=0;<sp/>J--)<sp/>{</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reserve_lg_boy[J]<sp/>=<sp/>reserve_discount<sp/>*<sp/>(reserve_lg_boy[J+1]*period_survival_prob_lg[J]<sp/></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>cond_claims_lg[J])</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>cond_premium_lg[J];</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>now<sp/>combine<sp/>the<sp/>value<sp/>from<sp/>the<sp/>next<sp/>year</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>with<sp/>the<sp/>survival<sp/>probability<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reserve_lg_boy[J+1]<sp/>*=<sp/>acc_survival_prob_be[J];</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>note:<sp/>value<sp/>for<sp/>J=0<sp/>does<sp/>not<sp/>need<sp/>the<sp/>survival<sp/>probability<sp/>as<sp/>it<sp/>is<sp/>one<sp/>anyway</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>calculation<sp/>of<sp/>expenses</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sim_months;</highlight></codeline>
+<codeline lineno="203"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>_valuation(shared_ptr&lt;double&gt;<sp/>output_in,</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>no_cols,</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vector&lt;shared_ptr&lt;CSeriatimRecord&gt;&gt;<sp/>&amp;pf,</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/db0/class_c_base_assumptions" kindref="compound">CBaseAssumptions</ref><sp/>*be_ass,</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/db0/class_c_base_assumptions" kindref="compound">CBaseAssumptions</ref><sp/>*locgaap_ass</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)<sp/>{</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>*output<sp/>=<sp/>output_in.get();</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>caches</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>mortality_map_be<sp/>=<sp/>AssumptionMap();</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>mortality_map_locgaap<sp/>=<sp/>AssumptionMap();</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>lapse_map_be<sp/>=<sp/>AssumptionMap();</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>lapse_map_locgaap<sp/>=<sp/>AssumptionMap();</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>prem_map_be<sp/>=<sp/>AssumptionMap();</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>prem_map_locgaap<sp/>=<sp/>AssumptionMap();</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>look<sp/>up<sp/>assumptions<sp/>or<sp/>calculate<sp/>new</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/>shared_ptr&lt;vector&lt;double&gt;&gt;<sp/>ma_be<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/>shared_ptr&lt;vector&lt;double&gt;&gt;<sp/>pa_be<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/>shared_ptr&lt;vector&lt;double&gt;&gt;<sp/>la_be<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/>shared_ptr&lt;vector&lt;double&gt;&gt;<sp/>ma_locgaap<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/>shared_ptr&lt;vector&lt;double&gt;&gt;<sp/>pa_locgaap<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>shared_ptr&lt;vector&lt;double&gt;&gt;<sp/>la_locgaap<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>containers<sp/>for<sp/>the<sp/>results</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>projected_premiums[VECTOR_LENGTH_YEARS*12];</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>projected_claims[VECTOR_LENGTH_YEARS*12];</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>reserve_lg_boy[VECTOR_LENGTH_YEARS*12];</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>sum_insured_boy[VECTOR_LENGTH_YEARS*12];</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>records<sp/>the<sp/>number<sp/>of<sp/>rows<sp/>actually<sp/>needed<sp/>in<sp/>the<sp/>last<sp/>run</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>and<sp/>thereby<sp/>allows<sp/>some<sp/>optimization</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rows_filled_in_run<sp/>=<sp/>VECTOR_LENGTH_YEARS*12;</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>iterate<sp/>over<sp/>records</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/>pf.begin();<sp/>it<sp/>!=<sp/>pf.end();<sp/>++it)<sp/>{</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>shared_ptr&lt;CSeriatimRecord&gt;<sp/>rec<sp/>=<sp/>*it;</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>(is_first)<sp/>{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>portfolio_month<sp/>=<sp/>rec<sp/>-&gt;<sp/>get_portfolio_month();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>portfolio_year<sp/>=<sp/>rec<sp/>-&gt;<sp/>get_portfolio_year();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>clear<sp/>output<sp/>containers<sp/>for<sp/>the<sp/>next<sp/>iteration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>keep<sp/>a<sp/>variable<sp/>which<sp/>is<sp/>passed<sp/>down<sp/>and<sp/>which<sp/>knows</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>how<sp/>many<sp/>values<sp/>need<sp/>to<sp/>be<sp/>overwritten</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j=0;<sp/>j&lt;rows_filled_in_run;<sp/>j++)<sp/>{</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>projected_premiums[j]<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>projected_claims[j]<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reserve_lg_boy[j]<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sum_insured_boy[j]<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>look-up<sp/>assumptions<sp/>to<sp/>the<sp/>current<sp/>record</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO:<sp/>incorporate<sp/>the<sp/>monthly<sp/>logic</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>age_proj_start<sp/>=<sp/>(*rec).get_age_projection_start()<sp/>/<sp/>12;</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>issue_age<sp/>=<sp/>(*rec).get_issue_age()<sp/>/<sp/>12;</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ma_iter<sp/>=<sp/>mortality_map_be.find(age_proj_start);</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ma_iter<sp/>!=<sp/>mortality_map_be.end())<sp/>{</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ma_be<sp/>=<sp/>(*ma_iter).second;</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ma_locgaap<sp/>=<sp/>mortality_map_locgaap[age_proj_start];</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pa_be<sp/>=<sp/>prem_map_be[age_proj_start];</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pa_locgaap<sp/>=<sp/>prem_map_locgaap[age_proj_start];</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>recalculate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ma_be<sp/>=<sp/>be_ass-&gt;get_mortality_rates(age_proj_start,<sp/>1.0,<sp/>0);</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pa_be<sp/>=<sp/>be_ass-&gt;get_premium_rates(age_proj_start,<sp/>1.0,<sp/>0);</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ma_locgaap<sp/>=<sp/>locgaap_ass-&gt;get_mortality_rates(age_proj_start,<sp/>1.0,<sp/>0);</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pa_locgaap<sp/>=<sp/>locgaap_ass-&gt;get_premium_rates(age_proj_start,<sp/>1.0,<sp/>0);</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>add<sp/>to<sp/>maps</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mortality_map_be[age_proj_start]<sp/>=<sp/>ma_be;</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mortality_map_locgaap[age_proj_start]<sp/>=<sp/>ma_locgaap;</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>prem_map_be[age_proj_start]<sp/>=<sp/>pa_be;</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>prem_map_locgaap[age_proj_start]<sp/>=<sp/>pa_locgaap;</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"></highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>lapse_iter<sp/>=<sp/>lapse_map_be.find(age_proj_start<sp/>-<sp/>issue_age);</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(lapse_iter<sp/>!=<sp/>lapse_map_be.end())<sp/>{</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>la_be<sp/>=<sp/>(*lapse_iter).second;</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>la_locgaap<sp/>=<sp/>lapse_map_locgaap[age_proj_start<sp/>-<sp/>issue_age];</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>calc<sp/>policy<sp/>age<sp/>by<sp/>some<sp/>method</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>la_be<sp/>=<sp/>be_ass-&gt;get_lapse_rates(age_proj_start<sp/>-<sp/>issue_age,<sp/>1.0);</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>la_locgaap<sp/>=<sp/>locgaap_ass-&gt;get_lapse_rates(age_proj_start<sp/>-<sp/>issue_age,<sp/>1.0);</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"></highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>add<sp/>to<sp/>map</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lapse_map_be[age_proj_start<sp/>-<sp/>issue_age]<sp/>=<sp/>la_be;</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lapse_map_locgaap[age_proj_start<sp/>-<sp/>issue_age]<sp/>=<sp/>la_locgaap;</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"></highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>generate<sp/>results<sp/>for<sp/>the<sp/>current<sp/>record</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rows_filled_in_run<sp/>=<sp/>project_record(*rec,</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>projected_premiums,<sp/>projected_claims,<sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>the<sp/>output</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reserve_lg_boy,<sp/>sum_insured_boy,</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ma_be,<sp/>ma_locgaap,<sp/>la_be,<sp/>la_locgaap,<sp/>pa_be,<sp/>pa_locgaap);</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"></highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>calculate<sp/>BEL<sp/>etc.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>add<sp/>current<sp/>results<sp/>to<sp/>aggregated<sp/>output</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j=0;<sp/>j&lt;rows_filled_in_run;<sp/>j++)<sp/>{</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>output[no_cols*j+2]<sp/>+=<sp/>isnan(projected_premiums[j])<sp/>?<sp/>0.0<sp/>:<sp/>projected_premiums[j];</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>output[no_cols*j+3]<sp/>+=<sp/>isnan(projected_claims[j])<sp/>?<sp/>0.0<sp/>:<sp/>projected_claims[j];</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>output[no_cols*j+2]<sp/>+=<sp/>projected_premiums[j];</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>output[no_cols*j+3]<sp/>+=<sp/>projected_claims[j];</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>output[no_cols*j+4]<sp/>+=<sp/>reserve_lg_boy[j];</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>output[no_cols*j+5]<sp/>+=<sp/>sum_insured_boy[j];</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"></highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="319"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"></highlight></codeline>
+<codeline lineno="321"><highlight class="normal"></highlight></codeline>
+<codeline lineno="322"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>valuation(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">*<sp/>output,</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>no_cols,</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="d5/d9c/class_c_portfolio" kindref="compound">CPortfolio</ref>*<sp/>pf,</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/db0/class_c_base_assumptions" kindref="compound">CBaseAssumptions</ref><sp/>*be_ass,</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db/db0/class_c_base_assumptions" kindref="compound">CBaseAssumptions</ref><sp/>*locgaap_ass</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)<sp/>{</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"></highlight></codeline>
+<codeline lineno="329"><highlight class="normal"></highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>split<sp/>portfolio<sp/>in<sp/>N<sp/>groups</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>NUM_GROUPS<sp/>=<sp/>8;</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/>vector&lt;shared_ptr&lt;CSeriatimRecord&gt;&gt;<sp/>vecs[NUM_GROUPS];</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;shared_ptr&lt;CSeriatimRecord&gt;&gt;&amp;<sp/>records<sp/>=<sp/>pf<sp/>-&gt;<sp/>get_records();</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"></highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(records.size()<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"></highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>portfolio_year<sp/>=<sp/>records[0]<sp/>-&gt;<sp/>get_portfolio_year();</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>portfolio_month<sp/>=<sp/>records[0]<sp/>-&gt;<sp/>get_portfolio_month();</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>round<sp/>robin<sp/>distribution<sp/>of<sp/>the<sp/>records<sp/>into<sp/>the<sp/>groups</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>it<sp/>=<sp/>records.begin();<sp/>it<sp/>!=<sp/>records.end();<sp/>++it)<sp/>{</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vecs[j++].push_back(*it);</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(j<sp/>&gt;=<sp/>NUM_GROUPS){</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>j=0;</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"></highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>container<sp/>for<sp/>the<sp/>result<sp/>is<sp/>a<sp/>vector<sp/>with<sp/>entries</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>for<sp/>each<sp/>local<sp/>group.<sp/>Each<sp/>entry<sp/>is<sp/>an<sp/>array</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>with<sp/>length<sp/>120*12*no_cols</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>which<sp/>is<sp/>initialized<sp/>with<sp/>zero</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/>vector&lt;shared_ptr&lt;double&gt;&gt;<sp/>output_loc;</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j=0;j&lt;NUM_GROUPS;j++)<sp/>{</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::shared_ptr&lt;double&gt;<sp/>sp(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal">[VECTOR_LENGTH_YEARS*12*no_cols],<sp/>std::default_delete&lt;</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">[]&gt;());</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>k=0;<sp/>k<sp/>&lt;<sp/>VECTOR_LENGTH_YEARS<sp/>*<sp/>12<sp/>*<sp/>no_cols;<sp/>k++)<sp/>{</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sp.get()[k]<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//(*sp)[k]<sp/>=<sp/>0;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>output_loc.push_back(sp);</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="365"><highlight class="normal"></highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>value<sp/>subportfolios</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="367"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#pragma<sp/>omp<sp/>parallel<sp/>for</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(j=0;<sp/>j<sp/>&lt;<sp/>NUM_GROUPS;<sp/>j++)<sp/>{</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>container<sp/>for<sp/>the<sp/>local<sp/>result</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//_valuation(output_loc[j],<sp/>vecs[j],<sp/>be_ass,<sp/>locgaap_ass);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_valuation(output_loc[j],<sp/>no_cols,<sp/>vecs[j],<sp/>be_ass,<sp/>locgaap_ass);</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"></highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>sum<sp/>up<sp/>the<sp/>results<sp/>just<sp/>calculated</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>k=0;<sp/>k&lt;NUM_GROUPS;k++)<sp/>{</highlight></codeline>
+<codeline lineno="376"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j=0;<sp/>j&lt;VECTOR_LENGTH_YEARS*12;<sp/>j++)<sp/>{</highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>skip<sp/>columns<sp/>for<sp/>year<sp/>and<sp/>month</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=2;<sp/>i<sp/>&lt;<sp/>no_cols;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="379"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>output[no_cols*j+i]<sp/>+=<sp/>(output_loc[k]).get()[no_cols*j+i];<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="380"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="382"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="383"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="384"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>set<sp/>year<sp/>and<sp/>month</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="385"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>pf_year<sp/>=<sp/>portfolio_year;</highlight></codeline>
+<codeline lineno="386"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>pf_month<sp/>=<sp/>portfolio_month;</highlight></codeline>
+<codeline lineno="387"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j=0;<sp/>j&lt;VECTOR_LENGTH_YEARS*12;<sp/>j++)<sp/>{</highlight></codeline>
+<codeline lineno="388"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pf_month++;</highlight></codeline>
+<codeline lineno="389"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pf_month<sp/>==<sp/>13)<sp/>{</highlight></codeline>
+<codeline lineno="390"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pf_month<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="391"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pf_year++;</highlight></codeline>
+<codeline lineno="392"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="393"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>output[no_cols*j+0]<sp/>=<sp/>pf_year;</highlight></codeline>
+<codeline lineno="394"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>output[no_cols*j+1]<sp/>=<sp/>pf_month;</highlight></codeline>
+<codeline lineno="395"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="396"><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline lineno="397"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="398"><highlight class="normal"></highlight></codeline>
+<codeline lineno="399"><highlight class="normal"></highlight></codeline>
+<codeline lineno="400"><highlight class="normal"></highlight><highlight class="comment">//<sp/>calculate<sp/>the<sp/>age<sp/>in<sp/>(completed)<sp/>months</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="401"><highlight class="normal"></highlight><highlight class="comment">//<sp/>given<sp/>the<sp/>birthday<sp/>and<sp/>the<sp/>date<sp/>of<sp/>interest;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="402"><highlight class="normal"></highlight><highlight class="comment">//<sp/>returns<sp/>-1<sp/>if<sp/>not<sp/>born<sp/>yet<sp/>at<sp/>the<sp/>given<sp/>date</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="403"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>get_age_at_date(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dob_year,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dob_month,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dob_day,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dt_year,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dt_month,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>dt_day)<sp/>{</highlight></codeline>
+<codeline lineno="404"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>check<sp/>that<sp/>person<sp/>is<sp/>born<sp/>at<sp/>dt<sp/>already</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="405"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dt_year<sp/>&lt;<sp/>dob_year<sp/>||<sp/>(dt_year<sp/>==<sp/>dob_year<sp/>&amp;&amp;<sp/>dt_month<sp/>&lt;<sp/>dob_month)<sp/>||</highlight></codeline>
+<codeline lineno="406"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(dt_year<sp/>==<sp/>dob_year<sp/>&amp;&amp;<sp/>dt_month<sp/>==<sp/>dob_month<sp/>&amp;&amp;<sp/>dt_day<sp/>&lt;<sp/>dob_day))<sp/>{</highlight></codeline>
+<codeline lineno="407"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;<sp/></highlight><highlight class="comment">//<sp/>use<sp/>as<sp/>a<sp/>error<sp/>signal</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="408"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="409"><highlight class="normal"></highlight></codeline>
+<codeline lineno="410"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>special<sp/>case<sp/>equality<sp/>of<sp/>dates</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="411"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dt_year<sp/>==<sp/>dob_year<sp/>&amp;&amp;<sp/>dt_month<sp/>==<sp/>dob_month<sp/>&amp;&amp;<sp/>dt_day<sp/>==<sp/>dob_day)<sp/>{</highlight></codeline>
+<codeline lineno="412"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="413"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="414"><highlight class="normal"></highlight></codeline>
+<codeline lineno="415"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>full_years<sp/>=<sp/>(dt_month<sp/>&gt;<sp/>dob_month<sp/>||<sp/>dob_month<sp/>==<sp/>dt_month<sp/>&amp;&amp;<sp/>dob_day<sp/>&lt;=<sp/>dt_day)<sp/>?<sp/></highlight></codeline>
+<codeline lineno="416"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dt_year<sp/>-<sp/>dob_year<sp/>:<sp/>dt_year<sp/>-<sp/>dob_year<sp/>-<sp/>1;</highlight></codeline>
+<codeline lineno="417"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="418"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>so<sp/>the<sp/>last<sp/>birthday<sp/>before<sp/>dt<sp/>was<sp/>at<sp/>dob_year<sp/>+<sp/>full_years/dob_month/dob_day</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="419"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>full_months<sp/>=<sp/>(dt_month<sp/>&lt;<sp/>dob_month<sp/>||<sp/>(dt_month<sp/>==<sp/>dob_month<sp/>&amp;&amp;<sp/>dt_day<sp/>&lt;<sp/>dob_day))<sp/>?</highlight></codeline>
+<codeline lineno="420"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>12<sp/>+<sp/>dt_month<sp/>-<sp/>dob_month<sp/>-<sp/>(dt_day<sp/>&lt;<sp/>dob_day<sp/>?<sp/>1<sp/>:0)</highlight></codeline>
+<codeline lineno="421"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>dt_month<sp/>-<sp/>dob_month<sp/>-<sp/>(dt_day<sp/>&lt;<sp/>dob_day<sp/>?<sp/>1<sp/>:0);</highlight></codeline>
+<codeline lineno="422"><highlight class="normal"></highlight></codeline>
+<codeline lineno="423"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>12<sp/>*<sp/>full_years<sp/>+<sp/>full_months;</highlight></codeline>
+<codeline lineno="424"><highlight class="normal"></highlight></codeline>
+<codeline lineno="425"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="modules/c_valuation.cpp"/>
+  </compounddef>
+</doxygen>

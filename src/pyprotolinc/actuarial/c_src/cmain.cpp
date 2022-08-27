@@ -1,4 +1,15 @@
-
+/**
+ * @file cmain.cpp
+ * @author M. Seehafer
+ * @brief 
+ * @version 0.2.0
+ * @date 2022-08-27
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ * File is used during development to value a single policy.
+ * 
+ */
 
 #include <iostream>
 #include "modules/time_axis.h"
@@ -13,6 +24,11 @@
 using namespace std;
 
 
+/**
+ * @brief Adds a number of (hard-coded)policies to the portfolio
+ * 
+ * @param portfolio 
+ */
 void add_policies(CPolicyPortfolio &portfolio) {
    // create a policy and add to the portfolio
     shared_ptr<CPolicy> policy = make_shared<CPolicy>(
@@ -30,6 +46,8 @@ void add_policies(CPolicyPortfolio &portfolio) {
 }
 
 
+/// Encapsulate the a calculation run. Creates test data and passes them to the runner for processing.
+///
 void run_calculation(void) {
 
     cout << "PyProtolincCore -- testrun" << endl;

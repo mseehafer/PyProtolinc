@@ -9,9 +9,7 @@ MAX_AGE = 119
 class RunConfig:
     """ The RunConfig object.
 
-    Attributes
-    ----------
-    model_name : str
+    :param str model_name: 
         Name of the model to be used in the run.
     years_to_simulate : int
         Max. simulation period in years.

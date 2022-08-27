@@ -1,0 +1,217 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
+  <compounddef id="de/d6a/class_c_assumption_set" kind="class" language="C++" prot="public">
+    <compoundname>CAssumptionSet</compoundname>
+    <includes refid="db/d86/assumption__sets_8h" local="no">assumption_sets.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="de/d6a/class_c_assumption_set_1ae3f4726797b942bb8046e09a6687317e" prot="protected" static="no" mutable="no">
+        <type>unsigned</type>
+        <definition>unsigned CAssumptionSet::n</definition>
+        <argsstring></argsstring>
+        <name>n</name>
+        <qualifiedname>CAssumptionSet::n</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/assumption_sets.h" line="37" column="14" bodyfile="modules/assumption_sets.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="de/d6a/class_c_assumption_set_1a810cc741691a633414b8a2f90a05e605" prot="protected" static="no" mutable="no">
+        <type>MatPtrCBaseRateProvider</type>
+        <definition>MatPtrCBaseRateProvider CAssumptionSet::providers</definition>
+        <argsstring></argsstring>
+        <name>providers</name>
+        <qualifiedname>CAssumptionSet::providers</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/assumption_sets.h" line="38" column="29" bodyfile="modules/assumption_sets.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="de/d6a/class_c_assumption_set_1a751207f82ccb76b6c2ac0a13f26e4968" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CAssumptionSet::CAssumptionSet</definition>
+        <argsstring>(unsigned dim)</argsstring>
+        <name>CAssumptionSet</name>
+        <qualifiedname>CAssumptionSet::CAssumptionSet</qualifiedname>
+        <param>
+          <type>unsigned</type>
+          <declname>dim</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/assumption_sets.h" line="41" column="5" bodyfile="modules/assumption_sets.h" bodystart="41" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d6a/class_c_assumption_set_1acc967cb7cc20319a31d32e151b82d518" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CAssumptionSet::clone_into</definition>
+        <argsstring>(CAssumptionSet &amp;other) const</argsstring>
+        <name>clone_into</name>
+        <qualifiedname>CAssumptionSet::clone_into</qualifiedname>
+        <param>
+          <type><ref refid="de/d6a/class_c_assumption_set" kindref="compound">CAssumptionSet</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/assumption_sets.h" line="52" column="10" bodyfile="modules/assumption_sets.h" bodystart="52" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d6a/class_c_assumption_set_1acb4dad53748df9e6a98acd1b08cd8f63" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CAssumptionSet::slice_into</definition>
+        <argsstring>(const vector&lt; int &gt; &amp;indices, CAssumptionSet &amp;other) const</argsstring>
+        <name>slice_into</name>
+        <qualifiedname>CAssumptionSet::slice_into</qualifiedname>
+        <param>
+          <type>const vector&lt; int &gt; &amp;</type>
+          <declname>indices</declname>
+        </param>
+        <param>
+          <type><ref refid="de/d6a/class_c_assumption_set" kindref="compound">CAssumptionSet</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/assumption_sets.h" line="69" column="10" bodyfile="modules/assumption_sets.h" bodystart="69" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d6a/class_c_assumption_set_1af377af1fc9aaaa952779e944a0feb636" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned</type>
+        <definition>unsigned CAssumptionSet::get_dimension</definition>
+        <argsstring>() const</argsstring>
+        <name>get_dimension</name>
+        <qualifiedname>CAssumptionSet::get_dimension</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/assumption_sets.h" line="94" column="14" bodyfile="modules/assumption_sets.h" bodystart="94" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d6a/class_c_assumption_set_1ad40d00fa9478933a3fed85969e377e66" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>string CAssumptionSet::get_provider_info</definition>
+        <argsstring>(int r, int c) const</argsstring>
+        <name>get_provider_info</name>
+        <qualifiedname>CAssumptionSet::get_provider_info</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/assumption_sets.h" line="98" column="12" bodyfile="modules/assumption_sets.h" bodystart="98" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d6a/class_c_assumption_set_1a73bb7fd52d0421b07f66fd05623e8a2b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CAssumptionSet::set_provider</definition>
+        <argsstring>(int row, int col, PtrCBaseRateProvider prvdr)</argsstring>
+        <name>set_provider</name>
+        <qualifiedname>CAssumptionSet::set_provider</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>row</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>col</declname>
+        </param>
+        <param>
+          <type>PtrCBaseRateProvider</type>
+          <declname>prvdr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/assumption_sets.h" line="106" column="10" bodyfile="modules/assumption_sets.h" bodystart="106" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d6a/class_c_assumption_set_1a51cc3f9ac50ace8dc64a6f64668e2ab3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CAssumptionSet::get_relevant_risk_factor_indexes</definition>
+        <argsstring>(vector&lt; bool &gt; &amp;relevant_risk_factors)</argsstring>
+        <name>get_relevant_risk_factor_indexes</name>
+        <qualifiedname>CAssumptionSet::get_relevant_risk_factor_indexes</qualifiedname>
+        <param>
+          <type>vector&lt; bool &gt; &amp;</type>
+          <declname>relevant_risk_factors</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/assumption_sets.h" line="113" column="10" bodyfile="modules/assumption_sets.h" bodystart="113" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="function" id="de/d6a/class_c_assumption_set_1a26bfa03d609219ea90e734784cdee736" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CAssumptionSet::get_single_rateset</definition>
+        <argsstring>(const vector&lt; int &gt; &amp;rf_indexes, double *rates_ext) const</argsstring>
+        <name>get_single_rateset</name>
+        <qualifiedname>CAssumptionSet::get_single_rateset</qualifiedname>
+        <param>
+          <type>const vector&lt; int &gt; &amp;</type>
+          <declname>rf_indexes</declname>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>rates_ext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/assumption_sets.h" line="131" column="10" bodyfile="modules/assumption_sets.h" bodystart="131" bodyend="178"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Container to hold the providers required for a run or a policy </para>
+    </detaileddescription>
+    <location file="modules/assumption_sets.h" line="33" column="1" bodyfile="modules/assumption_sets.h" bodystart="34" bodyend="179"/>
+    <listofallmembers>
+      <member refid="de/d6a/class_c_assumption_set_1a751207f82ccb76b6c2ac0a13f26e4968" prot="public" virt="non-virtual"><scope>CAssumptionSet</scope><name>CAssumptionSet</name></member>
+      <member refid="de/d6a/class_c_assumption_set_1acc967cb7cc20319a31d32e151b82d518" prot="public" virt="non-virtual"><scope>CAssumptionSet</scope><name>clone_into</name></member>
+      <member refid="de/d6a/class_c_assumption_set_1af377af1fc9aaaa952779e944a0feb636" prot="public" virt="non-virtual"><scope>CAssumptionSet</scope><name>get_dimension</name></member>
+      <member refid="de/d6a/class_c_assumption_set_1ad40d00fa9478933a3fed85969e377e66" prot="public" virt="non-virtual"><scope>CAssumptionSet</scope><name>get_provider_info</name></member>
+      <member refid="de/d6a/class_c_assumption_set_1a51cc3f9ac50ace8dc64a6f64668e2ab3" prot="public" virt="non-virtual"><scope>CAssumptionSet</scope><name>get_relevant_risk_factor_indexes</name></member>
+      <member refid="de/d6a/class_c_assumption_set_1a26bfa03d609219ea90e734784cdee736" prot="public" virt="non-virtual"><scope>CAssumptionSet</scope><name>get_single_rateset</name></member>
+      <member refid="de/d6a/class_c_assumption_set_1ae3f4726797b942bb8046e09a6687317e" prot="protected" virt="non-virtual"><scope>CAssumptionSet</scope><name>n</name></member>
+      <member refid="de/d6a/class_c_assumption_set_1a810cc741691a633414b8a2f90a05e605" prot="protected" virt="non-virtual"><scope>CAssumptionSet</scope><name>providers</name></member>
+      <member refid="de/d6a/class_c_assumption_set_1a73bb7fd52d0421b07f66fd05623e8a2b" prot="public" virt="non-virtual"><scope>CAssumptionSet</scope><name>set_provider</name></member>
+      <member refid="de/d6a/class_c_assumption_set_1acb4dad53748df9e6a98acd1b08cd8f63" prot="public" virt="non-virtual"><scope>CAssumptionSet</scope><name>slice_into</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

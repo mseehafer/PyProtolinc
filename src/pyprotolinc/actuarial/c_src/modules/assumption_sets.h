@@ -1,4 +1,13 @@
-/* CPP implementation of the assumption providers. */
+/**
+ * @file assumption_sets.h
+ * @author M. Seehafer
+ * @brief Implementation of the assumption providers.
+ * @version 0.1
+ * @date 2022-08-27
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 
 #ifndef C_ASSUMPTIONSETS_H
 #define C_ASSUMPTIONSETS_H

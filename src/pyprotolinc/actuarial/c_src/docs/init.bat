@@ -1,0 +1,1 @@
+SET PATH=%PATH%;D:\Tools\doxygen

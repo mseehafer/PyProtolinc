@@ -12,5 +12,8 @@ This section provides information about the API of ``PyProtolinc``.
    pyprotolinc_module
    main_module
    utils_module
+   core_module
+
+   
 
 

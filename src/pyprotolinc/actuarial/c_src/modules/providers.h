@@ -1,4 +1,15 @@
-/* CPP implementation of the assumption providers. */
+/**
+ * @file providers.h
+ * @author M. Seehafer
+ * @brief CPP implementation of the assumption providers.
+ * @version 0.1
+ * @date 2022-08-27
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
+
 
 #ifndef C_VALUATION_PROVIDERS_H
 #define C_VALUATION_PROVIDERS_H
@@ -12,7 +23,7 @@
 
 using namespace std;
 
-// fwd. declaration - function for convenient test outputs
+/// Convenience function that prints a vector to the console
 template <typename T>
 void print_vec(vector<T> v, string name)
 {
@@ -24,7 +35,10 @@ void print_vec(vector<T> v, string name)
     cout << "\n";
 }
 
-// Abstract base class for `rates providers`.
+/**
+ * @brief Abstract base class for the assumptions providers.
+ * 
+ */
 class CBaseRateProvider
 {
 protected:

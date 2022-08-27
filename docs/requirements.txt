@@ -13,6 +13,7 @@ pandas
 pyyaml
 fire
 requests
+breathe==4.34.0
 # comment some out which i believe are not required for creating the docs
 # openpyxl
 # xlrd

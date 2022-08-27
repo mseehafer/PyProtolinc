@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
+  <compounddef id="d3/dd8/struct_run_parameters_term" kind="struct" language="C++" prot="public">
+    <compoundname>RunParametersTerm</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d3/dd8/struct_run_parameters_term_1a2a79e34ded1755eb4fce8149b47e566a" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int RunParametersTerm::steps_per_year</definition>
+        <argsstring></argsstring>
+        <name>steps_per_year</name>
+        <qualifiedname>RunParametersTerm::steps_per_year</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/c_valuation.h" line="16" column="7" bodyfile="modules/c_valuation.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d3/dd8/struct_run_parameters_term_1a2e2e8c5dbb84d4d5548136910d7a6b95" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int RunParametersTerm::shifted_age</definition>
+        <argsstring></argsstring>
+        <name>shifted_age</name>
+        <qualifiedname>RunParametersTerm::shifted_age</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/c_valuation.h" line="17" column="7" bodyfile="modules/c_valuation.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="modules/c_valuation.h" line="15" column="1" bodyfile="modules/c_valuation.h" bodystart="15" bodyend="18"/>
+    <listofallmembers>
+      <member refid="d3/dd8/struct_run_parameters_term_1a2e2e8c5dbb84d4d5548136910d7a6b95" prot="public" virt="non-virtual"><scope>RunParametersTerm</scope><name>shifted_age</name></member>
+      <member refid="d3/dd8/struct_run_parameters_term_1a2a79e34ded1755eb4fce8149b47e566a" prot="public" virt="non-virtual"><scope>RunParametersTerm</scope><name>steps_per_year</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

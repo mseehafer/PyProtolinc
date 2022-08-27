@@ -1,0 +1,213 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
+  <compounddef id="d1/d72/class_c_base_rate_provider" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>CBaseRateProvider</compoundname>
+    <derivedcompoundref refid="d0/dfc/class_c_constant_rate_provider" prot="public" virt="non-virtual">CConstantRateProvider</derivedcompoundref>
+    <derivedcompoundref refid="d8/d3f/class_c_standard_rate_provider" prot="public" virt="non-virtual">CStandardRateProvider</derivedcompoundref>
+    <includes refid="d6/dd6/providers_8h" local="no">providers.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="d1/d72/class_c_base_rate_provider_1a0f28a513e31b1d6e12077a15830d6be8" prot="protected" static="no" mutable="no">
+        <type>vector&lt; CRiskFactors &gt;</type>
+        <definition>vector&lt;CRiskFactors&gt; CBaseRateProvider::risk_factors</definition>
+        <argsstring></argsstring>
+        <name>risk_factors</name>
+        <qualifiedname>CBaseRateProvider::risk_factors</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/providers.h" line="45" column="12" bodyfile="modules/providers.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d1/d72/class_c_base_rate_provider_1a13043f980594af17065853df0edba6a1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual CBaseRateProvider::~CBaseRateProvider</definition>
+        <argsstring>()</argsstring>
+        <name>~CBaseRateProvider</name>
+        <qualifiedname>CBaseRateProvider::~CBaseRateProvider</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/providers.h" line="48" column="13" bodyfile="modules/providers.h" bodystart="48" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d72/class_c_base_rate_provider_1a2640fc18faa82cba089cf6dda1c8cf9a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void CBaseRateProvider::add_risk_factor</definition>
+        <argsstring>(CRiskFactors rf)</argsstring>
+        <name>add_risk_factor</name>
+        <qualifiedname>CBaseRateProvider::add_risk_factor</qualifiedname>
+        <reimplementedby refid="d8/d3f/class_c_standard_rate_provider_1ac3708f1798d789854bd78715bdab38e6">add_risk_factor</reimplementedby>
+        <param>
+          <type>CRiskFactors</type>
+          <declname>rf</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/providers.h" line="50" column="18" bodyfile="modules/providers.h" bodystart="50" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d72/class_c_base_rate_provider_1afd46d3bd7df8875a49a84075a7e5008b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>double</type>
+        <definition>virtual double CBaseRateProvider::get_rate</definition>
+        <argsstring>(const vector&lt; int &gt; &amp;indices) const</argsstring>
+        <name>get_rate</name>
+        <qualifiedname>CBaseRateProvider::get_rate</qualifiedname>
+        <reimplementedby refid="d0/dfc/class_c_constant_rate_provider_1aadb2facf713091f863cd9fc990bb8ea9">get_rate</reimplementedby>
+        <reimplementedby refid="d8/d3f/class_c_standard_rate_provider_1afbddaa32d2166978b8896151258501f2">get_rate</reimplementedby>
+        <param>
+          <type>const vector&lt; int &gt; &amp;</type>
+          <declname>indices</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/providers.h" line="52" column="20" bodyfile="modules/providers.h" bodystart="52" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d72/class_c_base_rate_provider_1ac3a28af16eb16c22535621e1e06f7595" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void CBaseRateProvider::get_rates</definition>
+        <argsstring>(double *out_array, size_t length, const vector&lt; int * &gt; &amp;indices) const</argsstring>
+        <name>get_rates</name>
+        <qualifiedname>CBaseRateProvider::get_rates</qualifiedname>
+        <reimplementedby refid="d0/dfc/class_c_constant_rate_provider_1a45d64417a6e005b311af9b036f736f92">get_rates</reimplementedby>
+        <reimplementedby refid="d8/d3f/class_c_standard_rate_provider_1a01db7e61c7b97ca905b9b861cdf96c05">get_rates</reimplementedby>
+        <param>
+          <type>double *</type>
+          <declname>out_array</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type>const vector&lt; int * &gt; &amp;</type>
+          <declname>indices</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/providers.h" line="57" column="18" bodyfile="modules/providers.h" bodystart="57" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d72/class_c_base_rate_provider_1ad03cbad78c88038d6645405a054ac2bf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const vector&lt; CRiskFactors &gt; &amp;</type>
+        <definition>const vector&lt; CRiskFactors &gt; &amp; CBaseRateProvider::get_risk_factors</definition>
+        <argsstring>() const</argsstring>
+        <name>get_risk_factors</name>
+        <qualifiedname>CBaseRateProvider::get_risk_factors</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/providers.h" line="62" column="18" bodyfile="modules/providers.h" bodystart="62" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d72/class_c_base_rate_provider_1a493254710446e340043750c39952d0eb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>string</type>
+        <definition>virtual string CBaseRateProvider::to_string</definition>
+        <argsstring>() const</argsstring>
+        <name>to_string</name>
+        <qualifiedname>CBaseRateProvider::to_string</qualifiedname>
+        <reimplementedby refid="d8/d3f/class_c_standard_rate_provider_1ab12a199bd63c8659f7f8747ff29cb17e">to_string</reimplementedby>
+        <reimplementedby refid="d0/dfc/class_c_constant_rate_provider_1ad60530a109967264a6e55ee5870a8f5e">to_string</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/providers.h" line="67" column="20" bodyfile="modules/providers.h" bodystart="67" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d72/class_c_base_rate_provider_1aeda1720df79d3712be9961f16b9f205f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>shared_ptr&lt; <ref refid="d1/d72/class_c_base_rate_provider" kindref="compound">CBaseRateProvider</ref> &gt;</type>
+        <definition>virtual shared_ptr&lt; CBaseRateProvider &gt; CBaseRateProvider::clone</definition>
+        <argsstring>() const =0</argsstring>
+        <name>clone</name>
+        <qualifiedname>CBaseRateProvider::clone</qualifiedname>
+        <reimplementedby refid="d0/dfc/class_c_constant_rate_provider_1af773f550cc46a4b6ced6fe0fa4d94f69">clone</reimplementedby>
+        <reimplementedby refid="d8/d3f/class_c_standard_rate_provider_1aa10fb6a2a0b0494d5a2cbd7296a39fe5">clone</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/providers.h" line="72" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="d1/d72/class_c_base_rate_provider_1ad48a6abf6d03441beedf641b839fa0bc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void CBaseRateProvider::slice_into</definition>
+        <argsstring>(const vector&lt; int &gt; &amp;indices, CBaseRateProvider *other) const =0</argsstring>
+        <name>slice_into</name>
+        <qualifiedname>CBaseRateProvider::slice_into</qualifiedname>
+        <reimplementedby refid="d8/d3f/class_c_standard_rate_provider_1aff99ff2193473d10464e73b0354c876e">slice_into</reimplementedby>
+        <reimplementedby refid="d0/dfc/class_c_constant_rate_provider_1ab73ff4c094a40bfbf3d504b36dedc1c8">slice_into</reimplementedby>
+        <param>
+          <type>const vector&lt; int &gt; &amp;</type>
+          <declname>indices</declname>
+        </param>
+        <param>
+          <type><ref refid="d1/d72/class_c_base_rate_provider" kindref="compound">CBaseRateProvider</ref> *</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/providers.h" line="74" column="18"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Abstract base class for the assumptions providers. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>CBaseRateProvider</label>
+        <link refid="d1/d72/class_c_base_rate_provider"/>
+      </node>
+      <node id="2">
+        <label>CConstantRateProvider</label>
+        <link refid="d0/dfc/class_c_constant_rate_provider"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>CStandardRateProvider</label>
+        <link refid="d8/d3f/class_c_standard_rate_provider"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="modules/providers.h" line="42" column="1" bodyfile="modules/providers.h" bodystart="43" bodyend="79"/>
+    <listofallmembers>
+      <member refid="d1/d72/class_c_base_rate_provider_1a2640fc18faa82cba089cf6dda1c8cf9a" prot="public" virt="virtual"><scope>CBaseRateProvider</scope><name>add_risk_factor</name></member>
+      <member refid="d1/d72/class_c_base_rate_provider_1aeda1720df79d3712be9961f16b9f205f" prot="public" virt="pure-virtual"><scope>CBaseRateProvider</scope><name>clone</name></member>
+      <member refid="d1/d72/class_c_base_rate_provider_1afd46d3bd7df8875a49a84075a7e5008b" prot="public" virt="virtual"><scope>CBaseRateProvider</scope><name>get_rate</name></member>
+      <member refid="d1/d72/class_c_base_rate_provider_1ac3a28af16eb16c22535621e1e06f7595" prot="public" virt="virtual"><scope>CBaseRateProvider</scope><name>get_rates</name></member>
+      <member refid="d1/d72/class_c_base_rate_provider_1ad03cbad78c88038d6645405a054ac2bf" prot="public" virt="non-virtual"><scope>CBaseRateProvider</scope><name>get_risk_factors</name></member>
+      <member refid="d1/d72/class_c_base_rate_provider_1a0f28a513e31b1d6e12077a15830d6be8" prot="protected" virt="non-virtual"><scope>CBaseRateProvider</scope><name>risk_factors</name></member>
+      <member refid="d1/d72/class_c_base_rate_provider_1ad48a6abf6d03441beedf641b839fa0bc" prot="public" virt="pure-virtual"><scope>CBaseRateProvider</scope><name>slice_into</name></member>
+      <member refid="d1/d72/class_c_base_rate_provider_1a493254710446e340043750c39952d0eb" prot="public" virt="virtual"><scope>CBaseRateProvider</scope><name>to_string</name></member>
+      <member refid="d1/d72/class_c_base_rate_provider_1a13043f980594af17065853df0edba6a1" prot="public" virt="virtual"><scope>CBaseRateProvider</scope><name>~CBaseRateProvider</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

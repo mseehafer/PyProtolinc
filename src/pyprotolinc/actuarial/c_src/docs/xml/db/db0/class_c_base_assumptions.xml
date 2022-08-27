@@ -1,0 +1,211 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
+  <compounddef id="db/db0/class_c_base_assumptions" kind="class" language="C++" prot="public">
+    <compoundname>CBaseAssumptions</compoundname>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="db/db0/class_c_base_assumptions_1af07e9bf2264809a61847de5473771c9f" prot="protected" static="no" mutable="no">
+        <type>std::vector&lt; double &gt;</type>
+        <definition>std::vector&lt;double&gt; CBaseAssumptions::mortality_rates</definition>
+        <argsstring></argsstring>
+        <name>mortality_rates</name>
+        <qualifiedname>CBaseAssumptions::mortality_rates</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/c_valuation.h" line="182" column="17" bodyfile="modules/c_valuation.h" bodystart="182" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="db/db0/class_c_base_assumptions_1a7135798a6f94520e81bdb5411baca9d9" prot="protected" static="no" mutable="no">
+        <type>std::vector&lt; double &gt;</type>
+        <definition>std::vector&lt;double&gt; CBaseAssumptions::premium_rates</definition>
+        <argsstring></argsstring>
+        <name>premium_rates</name>
+        <qualifiedname>CBaseAssumptions::premium_rates</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/c_valuation.h" line="183" column="17" bodyfile="modules/c_valuation.h" bodystart="183" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="db/db0/class_c_base_assumptions_1ab8f50ad566573ad1aa50d2d076c7c756" prot="protected" static="no" mutable="no">
+        <type>std::vector&lt; double &gt;</type>
+        <definition>std::vector&lt;double&gt; CBaseAssumptions::lapse_rates</definition>
+        <argsstring></argsstring>
+        <name>lapse_rates</name>
+        <qualifiedname>CBaseAssumptions::lapse_rates</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/c_valuation.h" line="184" column="17" bodyfile="modules/c_valuation.h" bodystart="184" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="db/db0/class_c_base_assumptions_1ad8edfc855ac9f9db361784d9221b21e9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CBaseAssumptions::CBaseAssumptions</definition>
+        <argsstring>()</argsstring>
+        <name>CBaseAssumptions</name>
+        <qualifiedname>CBaseAssumptions::CBaseAssumptions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/c_valuation.h" line="188" column="5" bodyfile="modules/c_valuation.h" bodystart="188" bodyend="194"/>
+      </memberdef>
+      <memberdef kind="function" id="db/db0/class_c_base_assumptions_1a4bec6d767488e143cd93227a708addaa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="db/db0/class_c_base_assumptions" kindref="compound">CBaseAssumptions</ref> &amp;</type>
+        <definition>CBaseAssumptions &amp; CBaseAssumptions::set_mortality</definition>
+        <argsstring>(double *vec)</argsstring>
+        <name>set_mortality</name>
+        <qualifiedname>CBaseAssumptions::set_mortality</qualifiedname>
+        <param>
+          <type>double *</type>
+          <declname>vec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/c_valuation.h" line="196" column="22" bodyfile="modules/c_valuation.h" bodystart="196" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="db/db0/class_c_base_assumptions_1acbad104800d422ee7c943465ddba744a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="db/db0/class_c_base_assumptions" kindref="compound">CBaseAssumptions</ref> &amp;</type>
+        <definition>CBaseAssumptions &amp; CBaseAssumptions::set_lapse</definition>
+        <argsstring>(double *vec)</argsstring>
+        <name>set_lapse</name>
+        <qualifiedname>CBaseAssumptions::set_lapse</qualifiedname>
+        <param>
+          <type>double *</type>
+          <declname>vec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/c_valuation.h" line="203" column="22" bodyfile="modules/c_valuation.h" bodystart="203" bodyend="208"/>
+      </memberdef>
+      <memberdef kind="function" id="db/db0/class_c_base_assumptions_1a7a3315c5cbf9a87c94824ae976f01a7c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="db/db0/class_c_base_assumptions" kindref="compound">CBaseAssumptions</ref> &amp;</type>
+        <definition>CBaseAssumptions &amp; CBaseAssumptions::set_premium_rates</definition>
+        <argsstring>(double *vec)</argsstring>
+        <name>set_premium_rates</name>
+        <qualifiedname>CBaseAssumptions::set_premium_rates</qualifiedname>
+        <param>
+          <type>double *</type>
+          <declname>vec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/c_valuation.h" line="210" column="22" bodyfile="modules/c_valuation.h" bodystart="210" bodyend="215"/>
+      </memberdef>
+      <memberdef kind="function" id="db/db0/class_c_base_assumptions_1a98779cd4b95f0eca21addd6fc541d193" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::shared_ptr&lt; std::vector&lt; double &gt; &gt;</type>
+        <definition>std::shared_ptr&lt; std::vector&lt; double &gt; &gt; CBaseAssumptions::get_mortality_rates</definition>
+        <argsstring>(int age, double multiplier, int select_years) const</argsstring>
+        <name>get_mortality_rates</name>
+        <qualifiedname>CBaseAssumptions::get_mortality_rates</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>age</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>multiplier</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>select_years</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/c_valuation.h" line="217" column="21" bodyfile="modules/c_valuation.h" bodystart="217" bodyend="225"/>
+      </memberdef>
+      <memberdef kind="function" id="db/db0/class_c_base_assumptions_1a6cb9ee6b1870c68f6c0f0a9d5c45c6d9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::shared_ptr&lt; std::vector&lt; double &gt; &gt;</type>
+        <definition>std::shared_ptr&lt; std::vector&lt; double &gt; &gt; CBaseAssumptions::get_premium_rates</definition>
+        <argsstring>(int age, double multiplier, int select_years) const</argsstring>
+        <name>get_premium_rates</name>
+        <qualifiedname>CBaseAssumptions::get_premium_rates</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>age</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>multiplier</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>select_years</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/c_valuation.h" line="227" column="21" bodyfile="modules/c_valuation.h" bodystart="227" bodyend="235"/>
+      </memberdef>
+      <memberdef kind="function" id="db/db0/class_c_base_assumptions_1ae149c5908915a30a2b95a6b0524af0bc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::shared_ptr&lt; std::vector&lt; double &gt; &gt;</type>
+        <definition>std::shared_ptr&lt; std::vector&lt; double &gt; &gt; CBaseAssumptions::get_lapse_rates</definition>
+        <argsstring>(int active_years, double multiplier) const</argsstring>
+        <name>get_lapse_rates</name>
+        <qualifiedname>CBaseAssumptions::get_lapse_rates</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>active_years</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>multiplier</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/c_valuation.h" line="237" column="21" bodyfile="modules/c_valuation.h" bodystart="237" bodyend="245"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="modules/c_valuation.h" line="180" column="1" bodyfile="modules/c_valuation.h" bodystart="180" bodyend="247"/>
+    <listofallmembers>
+      <member refid="db/db0/class_c_base_assumptions_1ad8edfc855ac9f9db361784d9221b21e9" prot="public" virt="non-virtual"><scope>CBaseAssumptions</scope><name>CBaseAssumptions</name></member>
+      <member refid="db/db0/class_c_base_assumptions_1ae149c5908915a30a2b95a6b0524af0bc" prot="public" virt="non-virtual"><scope>CBaseAssumptions</scope><name>get_lapse_rates</name></member>
+      <member refid="db/db0/class_c_base_assumptions_1a98779cd4b95f0eca21addd6fc541d193" prot="public" virt="non-virtual"><scope>CBaseAssumptions</scope><name>get_mortality_rates</name></member>
+      <member refid="db/db0/class_c_base_assumptions_1a6cb9ee6b1870c68f6c0f0a9d5c45c6d9" prot="public" virt="non-virtual"><scope>CBaseAssumptions</scope><name>get_premium_rates</name></member>
+      <member refid="db/db0/class_c_base_assumptions_1ab8f50ad566573ad1aa50d2d076c7c756" prot="protected" virt="non-virtual"><scope>CBaseAssumptions</scope><name>lapse_rates</name></member>
+      <member refid="db/db0/class_c_base_assumptions_1af07e9bf2264809a61847de5473771c9f" prot="protected" virt="non-virtual"><scope>CBaseAssumptions</scope><name>mortality_rates</name></member>
+      <member refid="db/db0/class_c_base_assumptions_1a7135798a6f94520e81bdb5411baca9d9" prot="protected" virt="non-virtual"><scope>CBaseAssumptions</scope><name>premium_rates</name></member>
+      <member refid="db/db0/class_c_base_assumptions_1acbad104800d422ee7c943465ddba744a" prot="public" virt="non-virtual"><scope>CBaseAssumptions</scope><name>set_lapse</name></member>
+      <member refid="db/db0/class_c_base_assumptions_1a4bec6d767488e143cd93227a708addaa" prot="public" virt="non-virtual"><scope>CBaseAssumptions</scope><name>set_mortality</name></member>
+      <member refid="db/db0/class_c_base_assumptions_1a7a3315c5cbf9a87c94824ae976f01a7c" prot="public" virt="non-virtual"><scope>CBaseAssumptions</scope><name>set_premium_rates</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

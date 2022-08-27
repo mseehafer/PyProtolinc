@@ -1,0 +1,286 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
+  <compounddef id="d7/d5e/class_c_run_config" kind="class" language="C++" prot="public">
+    <compoundname>CRunConfig</compoundname>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="d7/d5e/class_c_run_config_1ab889588c78c87529348ce6226c54e8a0" prot="protected" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int CRunConfig::dimension</definition>
+        <argsstring></argsstring>
+        <name>dimension</name>
+        <qualifiedname>CRunConfig::dimension</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/run_config.h" line="22" column="18" bodyfile="modules/run_config.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d7/d5e/class_c_run_config_1a867bb78e1ea16fdb7e01d1313ee32b9e" prot="protected" static="no" mutable="no">
+        <type>TimeStep</type>
+        <definition>TimeStep CRunConfig::_time_step</definition>
+        <argsstring></argsstring>
+        <name>_time_step</name>
+        <qualifiedname>CRunConfig::_time_step</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/run_config.h" line="24" column="14" bodyfile="modules/run_config.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d7/d5e/class_c_run_config_1ad2b6cea3767c8d9142df4a787f2229b1" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int CRunConfig::_years_to_simulate</definition>
+        <argsstring></argsstring>
+        <name>_years_to_simulate</name>
+        <qualifiedname>CRunConfig::_years_to_simulate</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/run_config.h" line="25" column="9" bodyfile="modules/run_config.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d7/d5e/class_c_run_config_1a72116627dfcf7f0444376ba119eb98d1" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int CRunConfig::_num_cpus</definition>
+        <argsstring></argsstring>
+        <name>_num_cpus</name>
+        <qualifiedname>CRunConfig::_num_cpus</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/run_config.h" line="27" column="9" bodyfile="modules/run_config.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d7/d5e/class_c_run_config_1af9d38b6c170bd99440bb1360fa3c58bd" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool CRunConfig::_use_multicore</definition>
+        <argsstring></argsstring>
+        <name>_use_multicore</name>
+        <qualifiedname>CRunConfig::_use_multicore</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/run_config.h" line="28" column="10" bodyfile="modules/run_config.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d7/d5e/class_c_run_config_1af250935eb4e5e17358731b11b406d153" prot="protected" static="no" mutable="no">
+        <type>shared_ptr&lt; <ref refid="de/d6a/class_c_assumption_set" kindref="compound">CAssumptionSet</ref> &gt;</type>
+        <definition>shared_ptr&lt;CAssumptionSet&gt; CRunConfig::be_assumptions</definition>
+        <argsstring></argsstring>
+        <name>be_assumptions</name>
+        <qualifiedname>CRunConfig::be_assumptions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/run_config.h" line="31" column="16" bodyfile="modules/run_config.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d7/d5e/class_c_run_config_1a16ecdddebe0f4df61b2aed1adf3efeed" prot="protected" static="no" mutable="no">
+        <type>shared_ptr&lt; vector&lt; shared_ptr&lt; <ref refid="de/d6a/class_c_assumption_set" kindref="compound">CAssumptionSet</ref> &gt; &gt; &gt;</type>
+        <definition>shared_ptr&lt;vector&lt;shared_ptr&lt;CAssumptionSet&gt; &gt; &gt; CRunConfig::other_assumptions</definition>
+        <argsstring></argsstring>
+        <name>other_assumptions</name>
+        <qualifiedname>CRunConfig::other_assumptions</qualifiedname>
+        <initializer>= make_shared&lt;vector&lt;shared_ptr&lt;<ref refid="de/d6a/class_c_assumption_set" kindref="compound">CAssumptionSet</ref>&gt;&gt;&gt;()</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/run_config.h" line="32" column="16" bodyfile="modules/run_config.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d7/d5e/class_c_run_config_1ae85777eaae2941c144151813e21785d3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CRunConfig::CRunConfig</definition>
+        <argsstring>(unsigned _dim, TimeStep time_step, int years_to_simulate, int num_cpus, bool use_multicore, shared_ptr&lt; CAssumptionSet &gt; _be_assumptions)</argsstring>
+        <name>CRunConfig</name>
+        <qualifiedname>CRunConfig::CRunConfig</qualifiedname>
+        <param>
+          <type>unsigned</type>
+          <declname>_dim</declname>
+        </param>
+        <param>
+          <type>TimeStep</type>
+          <declname>time_step</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>years_to_simulate</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>num_cpus</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>use_multicore</declname>
+        </param>
+        <param>
+          <type>shared_ptr&lt; <ref refid="de/d6a/class_c_assumption_set" kindref="compound">CAssumptionSet</ref> &gt;</type>
+          <declname>_be_assumptions</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/run_config.h" line="36" column="5" bodyfile="modules/run_config.h" bodystart="36" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d5e/class_c_run_config_1ad4f1e3d841f51e1be732613da6b03805" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int CRunConfig::get_cpu_count</definition>
+        <argsstring>() const</argsstring>
+        <name>get_cpu_count</name>
+        <qualifiedname>CRunConfig::get_cpu_count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/run_config.h" line="55" column="9" bodyfile="modules/run_config.h" bodystart="55" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d5e/class_c_run_config_1a4ccb593be2772b615b0174c8b9152fd1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CRunConfig::get_use_multicore</definition>
+        <argsstring>() const</argsstring>
+        <name>get_use_multicore</name>
+        <qualifiedname>CRunConfig::get_use_multicore</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/run_config.h" line="56" column="10" bodyfile="modules/run_config.h" bodystart="56" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d5e/class_c_run_config_1a8b72e0d630d405343191558671c267eb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>TimeStep</type>
+        <definition>TimeStep CRunConfig::get_time_step</definition>
+        <argsstring>() const</argsstring>
+        <name>get_time_step</name>
+        <qualifiedname>CRunConfig::get_time_step</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/run_config.h" line="57" column="14" bodyfile="modules/run_config.h" bodystart="57" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d5e/class_c_run_config_1a23afbd5db5740f39b573b599bf7136cf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int CRunConfig::get_years_to_simulate</definition>
+        <argsstring>() const</argsstring>
+        <name>get_years_to_simulate</name>
+        <qualifiedname>CRunConfig::get_years_to_simulate</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/run_config.h" line="58" column="9" bodyfile="modules/run_config.h" bodystart="58" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d5e/class_c_run_config_1aa0cd7f805bc475cfff78734abfb195ec" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int CRunConfig::get_dimension</definition>
+        <argsstring>() const</argsstring>
+        <name>get_dimension</name>
+        <qualifiedname>CRunConfig::get_dimension</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/run_config.h" line="59" column="18" bodyfile="modules/run_config.h" bodystart="59" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d5e/class_c_run_config_1aa46c8ed16ae4b837f9406ec28d5f0ba3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CRunConfig::add_assumption_set</definition>
+        <argsstring>(shared_ptr&lt; CAssumptionSet &gt; as)</argsstring>
+        <name>add_assumption_set</name>
+        <qualifiedname>CRunConfig::add_assumption_set</qualifiedname>
+        <param>
+          <type>shared_ptr&lt; <ref refid="de/d6a/class_c_assumption_set" kindref="compound">CAssumptionSet</ref> &gt;</type>
+          <declname>as</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/run_config.h" line="61" column="10" bodyfile="modules/run_config.h" bodystart="61" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d5e/class_c_run_config_1ade91ef2293cf3c4f1049eb002cadbf45" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="de/d6a/class_c_assumption_set" kindref="compound">CAssumptionSet</ref> &amp;</type>
+        <definition>const CAssumptionSet &amp; CRunConfig::get_be_assumptions</definition>
+        <argsstring>() const</argsstring>
+        <name>get_be_assumptions</name>
+        <qualifiedname>CRunConfig::get_be_assumptions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/run_config.h" line="70" column="26" bodyfile="modules/run_config.h" bodystart="70" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="d7/d5e/class_c_run_config_1a455c5c665cd51bec115f2bc0f2901ddb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const vector&lt; shared_ptr&lt; <ref refid="de/d6a/class_c_assumption_set" kindref="compound">CAssumptionSet</ref> &gt; &gt; &amp;</type>
+        <definition>const vector&lt; shared_ptr&lt; CAssumptionSet &gt; &gt; &amp; CRunConfig::get_other_assumptions</definition>
+        <argsstring>() const</argsstring>
+        <name>get_other_assumptions</name>
+        <qualifiedname>CRunConfig::get_other_assumptions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/run_config.h" line="75" column="18" bodyfile="modules/run_config.h" bodystart="75" bodyend="78"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="modules/run_config.h" line="17" column="1" bodyfile="modules/run_config.h" bodystart="18" bodyend="83"/>
+    <listofallmembers>
+      <member refid="d7/d5e/class_c_run_config_1a72116627dfcf7f0444376ba119eb98d1" prot="protected" virt="non-virtual"><scope>CRunConfig</scope><name>_num_cpus</name></member>
+      <member refid="d7/d5e/class_c_run_config_1a867bb78e1ea16fdb7e01d1313ee32b9e" prot="protected" virt="non-virtual"><scope>CRunConfig</scope><name>_time_step</name></member>
+      <member refid="d7/d5e/class_c_run_config_1af9d38b6c170bd99440bb1360fa3c58bd" prot="protected" virt="non-virtual"><scope>CRunConfig</scope><name>_use_multicore</name></member>
+      <member refid="d7/d5e/class_c_run_config_1ad2b6cea3767c8d9142df4a787f2229b1" prot="protected" virt="non-virtual"><scope>CRunConfig</scope><name>_years_to_simulate</name></member>
+      <member refid="d7/d5e/class_c_run_config_1aa46c8ed16ae4b837f9406ec28d5f0ba3" prot="public" virt="non-virtual"><scope>CRunConfig</scope><name>add_assumption_set</name></member>
+      <member refid="d7/d5e/class_c_run_config_1af250935eb4e5e17358731b11b406d153" prot="protected" virt="non-virtual"><scope>CRunConfig</scope><name>be_assumptions</name></member>
+      <member refid="d7/d5e/class_c_run_config_1ae85777eaae2941c144151813e21785d3" prot="public" virt="non-virtual"><scope>CRunConfig</scope><name>CRunConfig</name></member>
+      <member refid="d7/d5e/class_c_run_config_1ab889588c78c87529348ce6226c54e8a0" prot="protected" virt="non-virtual"><scope>CRunConfig</scope><name>dimension</name></member>
+      <member refid="d7/d5e/class_c_run_config_1ade91ef2293cf3c4f1049eb002cadbf45" prot="public" virt="non-virtual"><scope>CRunConfig</scope><name>get_be_assumptions</name></member>
+      <member refid="d7/d5e/class_c_run_config_1ad4f1e3d841f51e1be732613da6b03805" prot="public" virt="non-virtual"><scope>CRunConfig</scope><name>get_cpu_count</name></member>
+      <member refid="d7/d5e/class_c_run_config_1aa0cd7f805bc475cfff78734abfb195ec" prot="public" virt="non-virtual"><scope>CRunConfig</scope><name>get_dimension</name></member>
+      <member refid="d7/d5e/class_c_run_config_1a455c5c665cd51bec115f2bc0f2901ddb" prot="public" virt="non-virtual"><scope>CRunConfig</scope><name>get_other_assumptions</name></member>
+      <member refid="d7/d5e/class_c_run_config_1a8b72e0d630d405343191558671c267eb" prot="public" virt="non-virtual"><scope>CRunConfig</scope><name>get_time_step</name></member>
+      <member refid="d7/d5e/class_c_run_config_1a4ccb593be2772b615b0174c8b9152fd1" prot="public" virt="non-virtual"><scope>CRunConfig</scope><name>get_use_multicore</name></member>
+      <member refid="d7/d5e/class_c_run_config_1a23afbd5db5740f39b573b599bf7136cf" prot="public" virt="non-virtual"><scope>CRunConfig</scope><name>get_years_to_simulate</name></member>
+      <member refid="d7/d5e/class_c_run_config_1a16ecdddebe0f4df61b2aed1adf3efeed" prot="protected" virt="non-virtual"><scope>CRunConfig</scope><name>other_assumptions</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

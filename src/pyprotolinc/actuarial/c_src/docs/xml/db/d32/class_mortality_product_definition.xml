@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
+  <compounddef id="db/d32/class_mortality_product_definition" kind="class" language="C++" prot="public">
+    <compoundname>MortalityProductDefinition</compoundname>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="db/d32/class_mortality_product_definition_1a2caf98ce82648099d0cebf43cb6ae33e" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int MortalityProductDefinition::premium_payment_mode</definition>
+        <argsstring></argsstring>
+        <name>premium_payment_mode</name>
+        <qualifiedname>MortalityProductDefinition::premium_payment_mode</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/products.h" line="10" column="9" bodyfile="modules/products.h" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="db/d32/class_mortality_product_definition_1a392c2d15a1b414a353a22aa7478e7b30" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int MortalityProductDefinition::lapse_possibilites</definition>
+        <argsstring></argsstring>
+        <name>lapse_possibilites</name>
+        <qualifiedname>MortalityProductDefinition::lapse_possibilites</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/products.h" line="13" column="9" bodyfile="modules/products.h" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="db/d32/class_mortality_product_definition_1a2263f287e640e108e01b766e1cd23009" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int MortalityProductDefinition::lapse_benefit_type</definition>
+        <argsstring></argsstring>
+        <name>lapse_benefit_type</name>
+        <qualifiedname>MortalityProductDefinition::lapse_benefit_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/products.h" line="16" column="9" bodyfile="modules/products.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="db/d32/class_mortality_product_definition_1af6ec373eabd43ce9bdcbccf29f900458" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int MortalityProductDefinition::death_benefit_type</definition>
+        <argsstring></argsstring>
+        <name>death_benefit_type</name>
+        <qualifiedname>MortalityProductDefinition::death_benefit_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/products.h" line="19" column="9" bodyfile="modules/products.h" bodystart="19" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="db/d32/class_mortality_product_definition_1a5411fd56a79f97f7f6dd7792b148e8fe" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int MortalityProductDefinition::maturity_benefit_type</definition>
+        <argsstring></argsstring>
+        <name>maturity_benefit_type</name>
+        <qualifiedname>MortalityProductDefinition::maturity_benefit_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/products.h" line="22" column="9" bodyfile="modules/products.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="db/d32/class_mortality_product_definition_1aba00ec50fd5b8ead12a3af3f9b8052fa" prot="protected" static="no" mutable="no">
+        <type>int</type>
+        <definition>int MortalityProductDefinition::escalation_type</definition>
+        <argsstring></argsstring>
+        <name>escalation_type</name>
+        <qualifiedname>MortalityProductDefinition::escalation_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/products.h" line="25" column="9" bodyfile="modules/products.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="db/d32/class_mortality_product_definition_1af83e10e9aef642e62f78256313d9697b" prot="protected" static="no" mutable="no">
+        <type>double</type>
+        <definition>double MortalityProductDefinition::fixed_escalation_perc</definition>
+        <argsstring></argsstring>
+        <name>fixed_escalation_perc</name>
+        <qualifiedname>MortalityProductDefinition::fixed_escalation_perc</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/products.h" line="27" column="12" bodyfile="modules/products.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="modules/products.h" line="8" column="1" bodyfile="modules/products.h" bodystart="8" bodyend="28"/>
+    <listofallmembers>
+      <member refid="db/d32/class_mortality_product_definition_1af6ec373eabd43ce9bdcbccf29f900458" prot="protected" virt="non-virtual"><scope>MortalityProductDefinition</scope><name>death_benefit_type</name></member>
+      <member refid="db/d32/class_mortality_product_definition_1aba00ec50fd5b8ead12a3af3f9b8052fa" prot="protected" virt="non-virtual"><scope>MortalityProductDefinition</scope><name>escalation_type</name></member>
+      <member refid="db/d32/class_mortality_product_definition_1af83e10e9aef642e62f78256313d9697b" prot="protected" virt="non-virtual"><scope>MortalityProductDefinition</scope><name>fixed_escalation_perc</name></member>
+      <member refid="db/d32/class_mortality_product_definition_1a2263f287e640e108e01b766e1cd23009" prot="protected" virt="non-virtual"><scope>MortalityProductDefinition</scope><name>lapse_benefit_type</name></member>
+      <member refid="db/d32/class_mortality_product_definition_1a392c2d15a1b414a353a22aa7478e7b30" prot="protected" virt="non-virtual"><scope>MortalityProductDefinition</scope><name>lapse_possibilites</name></member>
+      <member refid="db/d32/class_mortality_product_definition_1a5411fd56a79f97f7f6dd7792b148e8fe" prot="protected" virt="non-virtual"><scope>MortalityProductDefinition</scope><name>maturity_benefit_type</name></member>
+      <member refid="db/d32/class_mortality_product_definition_1a2caf98ce82648099d0cebf43cb6ae33e" prot="protected" virt="non-virtual"><scope>MortalityProductDefinition</scope><name>premium_payment_mode</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

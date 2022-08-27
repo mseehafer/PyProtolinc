@@ -1,0 +1,373 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.5" xml:lang="en-US">
+  <compounddef id="d5/d2d/struct_period_date" kind="struct" language="C++" prot="public">
+    <compoundname>PeriodDate</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="d5/d2d/struct_period_date_1a42dc1a181f54ada4291307ace3417e41" prot="public" static="no" mutable="no">
+        <type>short</type>
+        <definition>short PeriodDate::year</definition>
+        <argsstring></argsstring>
+        <name>year</name>
+        <qualifiedname>PeriodDate::year</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/time_axis.h" line="27" column="11" bodyfile="modules/time_axis.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d5/d2d/struct_period_date_1aa4290daba26d1a9eb14d798ceaa7c88a" prot="public" static="no" mutable="no">
+        <type>short</type>
+        <definition>short PeriodDate::month</definition>
+        <argsstring></argsstring>
+        <name>month</name>
+        <qualifiedname>PeriodDate::month</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/time_axis.h" line="28" column="11" bodyfile="modules/time_axis.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="d5/d2d/struct_period_date_1ad6920165cad4008b0d88519eedf40867" prot="public" static="no" mutable="no">
+        <type>short</type>
+        <definition>short PeriodDate::day</definition>
+        <argsstring></argsstring>
+        <name>day</name>
+        <qualifiedname>PeriodDate::day</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/time_axis.h" line="29" column="11" bodyfile="modules/time_axis.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="d5/d2d/struct_period_date_1a986259fa6343184eb7a32628aaedb5d9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>PeriodDate::PeriodDate</definition>
+        <argsstring>(short y, short m, short d)</argsstring>
+        <name>PeriodDate</name>
+        <qualifiedname>PeriodDate::PeriodDate</qualifiedname>
+        <param>
+          <type>short</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>short</type>
+          <declname>m</declname>
+        </param>
+        <param>
+          <type>short</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/time_axis.h" line="31" column="5" bodyfile="modules/time_axis.h" bodystart="31" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d2d/struct_period_date_1ae3895a06fcaaf037f6bf68effd47972d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>PeriodDate::PeriodDate</definition>
+        <argsstring>(const PeriodDate &amp;o)</argsstring>
+        <name>PeriodDate</name>
+        <qualifiedname>PeriodDate::PeriodDate</qualifiedname>
+        <param>
+          <type>const <ref refid="d5/d2d/struct_period_date" kindref="compound">PeriodDate</ref> &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/time_axis.h" line="32" column="5" bodyfile="modules/time_axis.h" bodystart="32" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d2d/struct_period_date_1a129b82307cc132df7f2f9a396b77c36e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>short</type>
+        <definition>short PeriodDate::get_year</definition>
+        <argsstring>() const</argsstring>
+        <name>get_year</name>
+        <qualifiedname>PeriodDate::get_year</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/time_axis.h" line="34" column="11" bodyfile="modules/time_axis.h" bodystart="34" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d2d/struct_period_date_1a609549dab593e5eb1a3fee35006b449f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>short</type>
+        <definition>short PeriodDate::get_month</definition>
+        <argsstring>() const</argsstring>
+        <name>get_month</name>
+        <qualifiedname>PeriodDate::get_month</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/time_axis.h" line="35" column="11" bodyfile="modules/time_axis.h" bodystart="35" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d2d/struct_period_date_1a4c7c0f410606c2326ea907bb4e3180f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>short</type>
+        <definition>short PeriodDate::get_day</definition>
+        <argsstring>() const</argsstring>
+        <name>get_day</name>
+        <qualifiedname>PeriodDate::get_day</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/time_axis.h" line="36" column="11" bodyfile="modules/time_axis.h" bodystart="36" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d2d/struct_period_date_1a0613753f1f38f44ddaad173eed1fe0d4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>string</type>
+        <definition>string PeriodDate::to_string</definition>
+        <argsstring>() const</argsstring>
+        <name>to_string</name>
+        <qualifiedname>PeriodDate::to_string</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/time_axis.h" line="38" column="12" bodyfile="modules/time_axis.h" bodystart="38" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d2d/struct_period_date_1a8f3517365f6e72954c6015a05b52d033" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void PeriodDate::set</definition>
+        <argsstring>(short y, short m, short d)</argsstring>
+        <name>set</name>
+        <qualifiedname>PeriodDate::set</qualifiedname>
+        <param>
+          <type>short</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>short</type>
+          <declname>m</declname>
+        </param>
+        <param>
+          <type>short</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/time_axis.h" line="45" column="10" bodyfile="modules/time_axis.h" bodystart="45" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d2d/struct_period_date_1a30239eeefb7664bbef9cd0b36262e387" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="d5/d2d/struct_period_date" kindref="compound">PeriodDate</ref> &amp;</type>
+        <definition>PeriodDate &amp; PeriodDate::operator=</definition>
+        <argsstring>(const PeriodDate &amp;o)</argsstring>
+        <name>operator=</name>
+        <qualifiedname>PeriodDate::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="d5/d2d/struct_period_date" kindref="compound">PeriodDate</ref> &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/time_axis.h" line="52" column="16" bodyfile="modules/time_axis.h" bodystart="52" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d2d/struct_period_date_1a3291a22220bb3674aeb86b8a3d35da7a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PeriodDate::is_leap_year</definition>
+        <argsstring>() const</argsstring>
+        <name>is_leap_year</name>
+        <qualifiedname>PeriodDate::is_leap_year</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/time_axis.h" line="58" column="10" bodyfile="modules/time_axis.h" bodystart="58" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d2d/struct_period_date_1ad64661b43331dc6ad1bfaf468be79740" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PeriodDate::_before</definition>
+        <argsstring>(short y, short m, short d) const</argsstring>
+        <name>_before</name>
+        <qualifiedname>PeriodDate::_before</qualifiedname>
+        <param>
+          <type>short</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>short</type>
+          <declname>m</declname>
+        </param>
+        <param>
+          <type>short</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/time_axis.h" line="70" column="10" bodyfile="modules/time_axis.h" bodystart="70" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d2d/struct_period_date_1a64ea004f4a3565d3b2470302c73ad9a5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PeriodDate::operator&lt;</definition>
+        <argsstring>(const PeriodDate &amp;o) const</argsstring>
+        <name>operator&lt;</name>
+        <qualifiedname>PeriodDate::operator&lt;</qualifiedname>
+        <param>
+          <type>const <ref refid="d5/d2d/struct_period_date" kindref="compound">PeriodDate</ref> &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/time_axis.h" line="78" column="5" bodyfile="modules/time_axis.h" bodystart="78" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d2d/struct_period_date_1abfb9cd98a2657509632b7f8ad4e54e4e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PeriodDate::operator==</definition>
+        <argsstring>(const PeriodDate &amp;o) const</argsstring>
+        <name>operator==</name>
+        <qualifiedname>PeriodDate::operator==</qualifiedname>
+        <param>
+          <type>const <ref refid="d5/d2d/struct_period_date" kindref="compound">PeriodDate</ref> &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/time_axis.h" line="83" column="10" bodyfile="modules/time_axis.h" bodystart="83" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d2d/struct_period_date_1a718b72c9c3222237b1ca7546baa9fc98" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PeriodDate::operator&lt;=</definition>
+        <argsstring>(const PeriodDate &amp;o) const</argsstring>
+        <name>operator&lt;=</name>
+        <qualifiedname>PeriodDate::operator&lt;=</qualifiedname>
+        <param>
+          <type>const <ref refid="d5/d2d/struct_period_date" kindref="compound">PeriodDate</ref> &amp;</type>
+          <declname>o</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/time_axis.h" line="88" column="5" bodyfile="modules/time_axis.h" bodystart="88" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d2d/struct_period_date_1a0ef71c4882e91122091215f1ef55ba31" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int PeriodDate::set_next_day</definition>
+        <argsstring>()</argsstring>
+        <name>set_next_day</name>
+        <qualifiedname>PeriodDate::set_next_day</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/time_axis.h" line="93" column="9" bodyfile="modules/time_axis.h" bodystart="93" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d2d/struct_period_date_1aef6c0144ff5a942edcff6eeae89f7024" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int PeriodDate::set_next_end_of_month</definition>
+        <argsstring>()</argsstring>
+        <name>set_next_end_of_month</name>
+        <qualifiedname>PeriodDate::set_next_end_of_month</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/time_axis.h" line="117" column="9" bodyfile="modules/time_axis.h" bodystart="117" bodyend="165"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d2d/struct_period_date_1afd08b8a51039ccc0c9175ed066a33f9f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int PeriodDate::set_next_end_of_quarter</definition>
+        <argsstring>()</argsstring>
+        <name>set_next_end_of_quarter</name>
+        <qualifiedname>PeriodDate::set_next_end_of_quarter</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/time_axis.h" line="167" column="9" bodyfile="modules/time_axis.h" bodystart="167" bodyend="202"/>
+      </memberdef>
+      <memberdef kind="function" id="d5/d2d/struct_period_date_1a98a8b3e7e5e2b7271631ffe5f3b0bd75" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int PeriodDate::set_next_end_of_year</definition>
+        <argsstring>()</argsstring>
+        <name>set_next_end_of_year</name>
+        <qualifiedname>PeriodDate::set_next_end_of_year</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="modules/time_axis.h" line="204" column="9" bodyfile="modules/time_axis.h" bodystart="204" bodyend="222"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="modules/time_axis.h" line="25" column="1" bodyfile="modules/time_axis.h" bodystart="26" bodyend="223"/>
+    <listofallmembers>
+      <member refid="d5/d2d/struct_period_date_1ad64661b43331dc6ad1bfaf468be79740" prot="public" virt="non-virtual"><scope>PeriodDate</scope><name>_before</name></member>
+      <member refid="d5/d2d/struct_period_date_1ad6920165cad4008b0d88519eedf40867" prot="public" virt="non-virtual"><scope>PeriodDate</scope><name>day</name></member>
+      <member refid="d5/d2d/struct_period_date_1a4c7c0f410606c2326ea907bb4e3180f5" prot="public" virt="non-virtual"><scope>PeriodDate</scope><name>get_day</name></member>
+      <member refid="d5/d2d/struct_period_date_1a609549dab593e5eb1a3fee35006b449f" prot="public" virt="non-virtual"><scope>PeriodDate</scope><name>get_month</name></member>
+      <member refid="d5/d2d/struct_period_date_1a129b82307cc132df7f2f9a396b77c36e" prot="public" virt="non-virtual"><scope>PeriodDate</scope><name>get_year</name></member>
+      <member refid="d5/d2d/struct_period_date_1a3291a22220bb3674aeb86b8a3d35da7a" prot="public" virt="non-virtual"><scope>PeriodDate</scope><name>is_leap_year</name></member>
+      <member refid="d5/d2d/struct_period_date_1aa4290daba26d1a9eb14d798ceaa7c88a" prot="public" virt="non-virtual"><scope>PeriodDate</scope><name>month</name></member>
+      <member refid="d5/d2d/struct_period_date_1a64ea004f4a3565d3b2470302c73ad9a5" prot="public" virt="non-virtual"><scope>PeriodDate</scope><name>operator&lt;</name></member>
+      <member refid="d5/d2d/struct_period_date_1a718b72c9c3222237b1ca7546baa9fc98" prot="public" virt="non-virtual"><scope>PeriodDate</scope><name>operator&lt;=</name></member>
+      <member refid="d5/d2d/struct_period_date_1a30239eeefb7664bbef9cd0b36262e387" prot="public" virt="non-virtual"><scope>PeriodDate</scope><name>operator=</name></member>
+      <member refid="d5/d2d/struct_period_date_1abfb9cd98a2657509632b7f8ad4e54e4e" prot="public" virt="non-virtual"><scope>PeriodDate</scope><name>operator==</name></member>
+      <member refid="d5/d2d/struct_period_date_1a986259fa6343184eb7a32628aaedb5d9" prot="public" virt="non-virtual"><scope>PeriodDate</scope><name>PeriodDate</name></member>
+      <member refid="d5/d2d/struct_period_date_1ae3895a06fcaaf037f6bf68effd47972d" prot="public" virt="non-virtual"><scope>PeriodDate</scope><name>PeriodDate</name></member>
+      <member refid="d5/d2d/struct_period_date_1a8f3517365f6e72954c6015a05b52d033" prot="public" virt="non-virtual"><scope>PeriodDate</scope><name>set</name></member>
+      <member refid="d5/d2d/struct_period_date_1a0ef71c4882e91122091215f1ef55ba31" prot="public" virt="non-virtual"><scope>PeriodDate</scope><name>set_next_day</name></member>
+      <member refid="d5/d2d/struct_period_date_1aef6c0144ff5a942edcff6eeae89f7024" prot="public" virt="non-virtual"><scope>PeriodDate</scope><name>set_next_end_of_month</name></member>
+      <member refid="d5/d2d/struct_period_date_1afd08b8a51039ccc0c9175ed066a33f9f" prot="public" virt="non-virtual"><scope>PeriodDate</scope><name>set_next_end_of_quarter</name></member>
+      <member refid="d5/d2d/struct_period_date_1a98a8b3e7e5e2b7271631ffe5f3b0bd75" prot="public" virt="non-virtual"><scope>PeriodDate</scope><name>set_next_end_of_year</name></member>
+      <member refid="d5/d2d/struct_period_date_1a0613753f1f38f44ddaad173eed1fe0d4" prot="public" virt="non-virtual"><scope>PeriodDate</scope><name>to_string</name></member>
+      <member refid="d5/d2d/struct_period_date_1a42dc1a181f54ada4291307ace3417e41" prot="public" virt="non-virtual"><scope>PeriodDate</scope><name>year</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
