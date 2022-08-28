@@ -1,1 +1,1 @@
-SET PATH=%PATH%;D:\Tools\doxygen
+SET PATH=%PATH%;D:\Tools\doxygen;D:\Software\doxygen

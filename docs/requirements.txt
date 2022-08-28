@@ -15,7 +15,7 @@ fire
 requests
 breathe==4.34.0
 # comment some out which i believe are not required for creating the docs
-# openpyxl
-# xlrd
-# cython==3.0.0a11
-# pytest
+openpyxl
+xlrd
+cython==3.0.0a11
+pytest
