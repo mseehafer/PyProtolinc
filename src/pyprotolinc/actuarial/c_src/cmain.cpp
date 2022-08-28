@@ -77,10 +77,10 @@ void run_calculation(void) {
 
     // create results set
     //shared_ptr<TimeAxis> ta = make_time_axis(run_config, ptf_year, ptf_month, ptf_day);
-    auto run_results = RunResult();
+    //auto run_results = RunResult();
 
     // calculation
-    run_c_valuation(run_config, portfolio, run_results);
+    auto run_result = run_c_valuation(run_config, portfolio);
 
     // inspect the result
 

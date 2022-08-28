@@ -55,7 +55,7 @@ public:
      * 
      * @param _dim Dimension of the state model
      * @param time_step Time scale on which to calculate
-     * @param years_to_simulate Time scale on which to calculate
+     * @param years_to_simulate Number of years to project into the future
      * @param num_cpus Number of cpus to use if `use_multicore=true`
      * @param use_multicore Use multicore flag
      * @param _be_assumptions Best estimate assumptions
@@ -78,23 +78,25 @@ public:
         }
     }
 
-    int get_cpu_count() const { return _num_cpus; }
-    bool get_use_multicore() const { return _use_multicore; }
-    TimeStep get_time_step() const { return _time_step; }
-    int get_years_to_simulate() const { return _years_to_simulate;}
-    unsigned int get_dimension() const { return dimension; }
+    int get_cpu_count() const { return _num_cpus; }                     ///< Returns the number of cpus to use if `use_multicore=true`
+    bool get_use_multicore() const { return _use_multicore; }           ///< Returns if multiple core should be used
+    TimeStep get_time_step() const { return _time_step; }               ///< Returns the time scale on which to calculate
+    int get_years_to_simulate() const { return _years_to_simulate;}     ///< Returns the umber of years to project into the future
+    unsigned int get_dimension() const { return dimension; }            ///< Returns the dimension of the state model
 
-    ///< Add an auxiliary assumption set.
+    /// Add an auxiliary assumption set.
     void add_assumption_set(shared_ptr<CAssumptionSet> as)
     {
         other_assumptions->push_back(as);
     }
 
+    /// Get the main assumption set
     const CAssumptionSet &get_be_assumptions() const
     {
         return *be_assumptions;
     }
 
+    /// Get the other auxilary assumption sets
     const vector<shared_ptr<CAssumptionSet>> &get_other_assumptions() const
     {
         return *other_assumptions;

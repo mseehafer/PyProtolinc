@@ -85,7 +85,7 @@ public:
         for(unsigned r = 0; r < n; r++) {
             for (unsigned c = 0; c < n; c++) {
 
-                cout << "CAssumptionSet::slice_into() r=" << r << ", c=" << c << endl;
+                // cout << "CAssumptionSet::slice_into() r=" << r << ", c=" << c << endl;
                 shared_ptr<CBaseRateProvider> this_rc_comp = providers[r][c];
                 shared_ptr<CBaseRateProvider> other_rc_comp = other.providers[r][c];
 

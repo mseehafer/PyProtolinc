@@ -67,7 +67,7 @@ public:
                                                                           _run_config(run_config),
                                                                           _ta(ta),
                                                                           _record_projector(RecordProjector(run_config, *_ta)),
-                                                                          _record_result(_ta)
+                                                                          _record_result(run_config.get_dimension(), _ta)
     {
     }
 
@@ -77,8 +77,8 @@ public:
 
 void Runner::run(RunResult &run_result)
 {
-    cout << "Runner::run(): RUNNER " << _runner_no << " run() - "
-         << "Portfolio size is " << _ptr_portfolio->size() << ". " << endl;
+    // cout << "Runner::run(): RUNNER " << _runner_no << " run() - "
+    //      << "Portfolio size is " << _ptr_portfolio->size() << ". " << endl;
 
     PeriodDate portfolio_date(_ptr_portfolio->get_portfolio_date());
 
@@ -159,13 +159,13 @@ void MetaRunner::run(RunResult &run_result)
     cout << "MetaRunner::run(): dimension=" << be_ass.get_dimension() << endl;
     cout << "MetaRunner::run(): portfolio.size()=" << _ptr_portfolio->size() << endl;
 
-    for (unsigned r = 0; r < dimension; r++)
-    {
-        for (unsigned c = 0; c < dimension; c++)
-        {
-            cout << "MetaRunner::run(): (" << r << ", " << c << "): " << be_ass.get_provider_info(r, c) << endl;
-        }
-    }
+    // for (unsigned r = 0; r < dimension; r++)
+    // {
+    //     for (unsigned c = 0; c < dimension; c++)
+    //     {
+    //         cout << "MetaRunner::run(): (" << r << ", " << c << "): " << be_ass.get_provider_info(r, c) << endl;
+    //     }
+    // }
 
     // create N runners, run_results and sub-portfolios
     const int NUM_GROUPS = get_num_groups();
@@ -178,7 +178,7 @@ void MetaRunner::run(RunResult &run_result)
         //subportfolios[j] = make_shared<CPolicyPortfolio>(_ptr_portfolio->_ptf_year, _ptr_portfolio->_ptf_month, _ptr_portfolio->_ptf_day);
         subportfolios[j] = make_shared<CPolicyPortfolio>(_ptr_portfolio->get_portfolio_date());
         runners.emplace_back(Runner(j + 1, subportfolios[j], _run_config, _ta));
-        results.emplace_back(RunResult(_ta));
+        results.emplace_back(RunResult(_run_config.get_dimension(), _ta));
     }
 
     // split portfolio into N groups
@@ -217,7 +217,7 @@ void MetaRunner::run(RunResult &run_result)
  * @param ptr_portfolio Pointer to a portfolio object.
  * @param run_result Container to store the results in.
  */
-void run_c_valuation(const CRunConfig &run_config, shared_ptr<CPolicyPortfolio> ptr_portfolio, RunResult &run_result)
+unique_ptr<RunResult> run_c_valuation(const CRunConfig &run_config, shared_ptr<CPolicyPortfolio> ptr_portfolio) //, RunResult &run_result)
 {
     cout << "run_c_valuation()" << endl;
 
@@ -227,10 +227,14 @@ void run_c_valuation(const CRunConfig &run_config, shared_ptr<CPolicyPortfolio> 
                                                              ptr_portfolio->get_portfolio_date().get_month(),
                                                              ptr_portfolio->get_portfolio_date().get_day());
     
-    run_result.set_time_axis(p_time_axis);
+    //run_result.set_time_axis(p_time_axis);
+
+    unique_ptr<RunResult> run_res_ptr = unique_ptr<RunResult>(new RunResult(run_config.get_dimension(), p_time_axis));
 
     MetaRunner runner(run_config, ptr_portfolio, p_time_axis);
-    runner.run(run_result);
+    runner.run(*run_res_ptr);
+
+    return run_res_ptr;
 };
 
 #endif

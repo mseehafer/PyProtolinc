@@ -166,3 +166,5 @@ cython_debug/
 profile*.xlsx
 ncf_out*.csv
 **/results_viewer_generic.xlsx
+
+out.xlsx

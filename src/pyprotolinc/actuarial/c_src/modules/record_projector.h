@@ -30,13 +30,13 @@ using namespace std;
 
 
 /**
- * @brief Container to store the state of the policy at different times
+ * @brief Methods to calculate the policy state probabilities, data storage is managed externally.
  * 
  */
 class ProjectionStateMatrix
 {
 private:
-    unique_ptr<double[]> _state_probs;
+    double *_state_probs = nullptr;
     int _num_timesteps;
     int _num_states;
     int _size;
@@ -50,9 +50,6 @@ public:
      * @param num_states Number of possible states
      */
     ProjectionStateMatrix(int num_timesteps, int num_states): _num_timesteps(num_timesteps), _num_states(num_states), _size(num_timesteps*num_states) {
-        _state_probs = unique_ptr<double[]>(new double[_num_timesteps * _num_states], std::default_delete<double[]>());
-        cout << "Setting up state matrix with dimensions " << _num_timesteps << " x " << _num_states << endl;
-
     }
 
     // no copying intended
@@ -60,15 +57,22 @@ public:
     ProjectionStateMatrix(const ProjectionStateMatrix &) = delete;
     ProjectionStateMatrix(ProjectionStateMatrix &&) = delete;
 
+    
+    /**
+     * @brief Set the data pointer in that method and reset the state matrix (fill with zero) and set the initial state in the first row
+     * 
+     * @param state_probs Pointer to the data array
+     * @param start_state Initial state the record is in
+     */
+    void initialize_states(double *state_probs, int start_state) {
+        _state_probs = state_probs;
 
-    /// Reset the state matrix (fill with zero) and set the initial state in the first row
-    void initialize_states(int start_state) {
         if (start_state < 0 || start_state >= _num_states) {
             throw domain_error("Invalid state index: " + start_state);
         }
-        for(int j = 0; j<_size; j++) {
-            _state_probs[j] = 0;
-        }
+        // for(int j = 0; j<_size; j++) {
+        //     _state_probs[j] = 0;
+        // }
         
         _state_probs[0 * _num_states +  start_state] = 1;
     }
@@ -84,8 +88,8 @@ public:
         // SHOULD IT BE AS SIMPLE AS THAT?
         
         // use some pointer arithmetics
-        double *current_states = _state_probs.get() + index_last * _num_states;
-        double *updated_states = _state_probs.get() + (1 + index_last) * _num_states;
+        double *current_states = _state_probs + index_last * _num_states;
+        double *updated_states = _state_probs + (1 + index_last) * _num_states;
 
         for (int r = 0; r < _num_states; r++)
         {
@@ -99,7 +103,7 @@ public:
 
     void print_state_probs(int time_index)
     {
-        double *states = _state_probs.get() + time_index * _num_states;
+        double *states = _state_probs + time_index * _num_states;
 
         cout << "STATES (t=" << time_index << ") = [";
         for (int i = 0; i < _num_states; i++)
@@ -161,6 +165,7 @@ private:
 
     void adjust_assumptions_simple(int days);
 
+    /// Mark the relevant risk factors as true
     void set_relevant_risk_factors(vector<bool> &relevant_risk_factors)
     {
         relevant_risk_factors.assign(NUMBER_OF_RISK_FACTORS, false);
@@ -172,7 +177,7 @@ private:
         }
     }
 
-    ///< Check if a risk factor relevant for the projection was updated
+    /// Check if a risk factor relevant for the projection was updated
     bool relevant_factor_changed(const vector<bool> &relevant_risk_factors)
     {
         for (size_t s = 0; s < NUMBER_OF_RISK_FACTORS; s++)
@@ -188,13 +193,13 @@ private:
     ///< Clear temporary values stored in the projector object.
     void clear()
     {
-        cout << "RecordProjector::clear()" << endl;
+//        cout << "RecordProjector::clear()" << endl;
     }
 
 
     void slice_assumptions(const CPolicy &policy)
     {
-        cout << "RecordProjector::slice_assumptions()" << endl;
+//        cout << "RecordProjector::slice_assumptions()" << endl;
         vector<int> slice_indexes(NUMBER_OF_RISK_FACTORS, -1);
 
         // specialize for Gender and SmokerStatus
@@ -249,15 +254,22 @@ public:
 void RecordProjector::run(int runner_no, int record_count, const CPolicy &policy, RunResult &result, const PeriodDate &portfolio_date)
 {
 
-    cout << "RecordProjector::run() - with " << policy.to_string() << endl;
+//    cout << "RecordProjector::run() - with " << policy.to_string() << endl;
 
-    if (record_count % 1000 == 0)
-    {
-        cout << "Projector for runner #" << runner_no << ", record_count=" << record_count << ", ID=" << policy.get_cession_id() << endl;
-    }
+    // if (record_count % 1000 == 0)
+    // {
+    //     cout << "Projector for runner #" << runner_no << ", record_count=" << record_count << ", ID=" << policy.get_cession_id() << endl;
+    // }
 
     // clean up before
     this->clear();
+
+    /////////////////////////////////
+    // set relevant storage pointers
+    ////////////////////////////////
+    
+    // in this case also: initialize the state matrix
+    _be_states->initialize_states(result.get_be_state_probs_ptr(), policy.get_initial_state());    
 
     // specialize the assumption providers for the current record
     this->slice_assumptions(policy);
@@ -266,7 +278,7 @@ void RecordProjector::run(int runner_no, int record_count, const CPolicy &policy
     vector<bool> relevant_risk_factors(NUMBER_OF_RISK_FACTORS, false);
     set_relevant_risk_factors(relevant_risk_factors);
     // control output
-    print_vec<bool>(relevant_risk_factors, "relevant_risk_factors");
+//    print_vec<bool>(relevant_risk_factors, "relevant_risk_factors");
 
     // initialize the risk factors - could have taken the start date from the time axis instead
 
@@ -288,12 +300,11 @@ void RecordProjector::run(int runner_no, int record_count, const CPolicy &policy
 
     // special treatment of first time step as needed
     // assert portfolio_date == _end_dates[0] = _start_dates[0]
-    cout << "Projection start at " << _end_dates[0] <<endl;
+//    cout << "Projection start at " << _end_dates[0] <<endl;
     int age_month_completed = get_age_at_date(policy.get_dob(), portfolio_date);
-    cout << "Age of policyholder: " << age_month_completed << "  (" << age_month_completed / 12.0 << ")" << endl;
+//    cout << "Age of policyholder: " << age_month_completed << "  (" << age_month_completed / 12.0 << ")" << endl;
 
-    // initialize the state matrix
-    _be_states->initialize_states(policy.get_initial_state());
+
 
 
     // main loop over time
@@ -305,7 +316,7 @@ void RecordProjector::run(int runner_no, int record_count, const CPolicy &policy
         int days_previous_step = _period_lengths[time_index - 1];
         int days_current_step = _period_lengths[time_index];
 
-        cout << "Simulation step until " << _end_dates[time_index] << ", duration_prev=" << days_previous_step << ", duration_curr=" << days_current_step << endl;
+//        cout << "Simulation step until " << _end_dates[time_index] << ", duration_prev=" << days_previous_step << ", duration_curr=" << days_current_step << endl;
 
         ///////////////////////////////////////////////////////////////////////////////////////
         // Step 1: identify the assumptions to be used for this step
@@ -322,21 +333,21 @@ void RecordProjector::run(int runner_no, int record_count, const CPolicy &policy
         yearly_assumptions_updated = false;
         if (relevant_factor_changed(relevant_risk_factors) || first_iteration)
         {
-            cout << "updating yearly assumptions" << endl;
+//            cout << "updating yearly assumptions" << endl;
             _record_be_assumptions.get_single_rateset(risk_factors_current, be_a_yearly.get());
             yearly_assumptions_updated = true;
 
-            // print out the yearly assumptions
-            cout << "  unscaled" << endl;
-            for (unsigned r = 0; r < _dimension; r++)
-            {
-                cout << "    ";
-                for (unsigned c = 0; c < _dimension; c++)
-                {
-                    cout << be_a_yearly.get()[r * _dimension + c] << ", ";
-                }
-                cout << endl;
-            }
+            // // print out the yearly assumptions
+            // cout << "  unscaled" << endl;
+            // for (unsigned r = 0; r < _dimension; r++)
+            // {
+            //     cout << "    ";
+            //     for (unsigned c = 0; c < _dimension; c++)
+            //     {
+            //         cout << be_a_yearly.get()[r * _dimension + c] << ", ";
+            //     }
+            //     cout << endl;
+            // }
 
             // copy new relevant risk factors to last used
             risk_factors_last_used.assign(risk_factors_current.begin(), risk_factors_current.end());
@@ -345,21 +356,21 @@ void RecordProjector::run(int runner_no, int record_count, const CPolicy &policy
         // convert the assumptions to the length of the timestep and make them dependent
         if (yearly_assumptions_updated || (days_current_step != days_previous_step))
         {
-            cout << "updating period assumptions" << endl;
+//            cout << "updating period assumptions" << endl;
             adjust_assumptions_simple(days_current_step);
         }
 
-        // print out the adjusted assumptions
-        cout << "  scaled" << endl;
-        for (unsigned r = 0; r < _dimension; r++)
-        {
-            cout << "    ";
-            for (unsigned c = 0; c < _dimension; c++)
-            {
-                cout << be_a_time_step_dependent.get()[r * _dimension + c] << ", ";
-            }
-            cout << endl;
-        }
+        // // print out the adjusted assumptions
+        // cout << "  scaled" << endl;
+        // for (unsigned r = 0; r < _dimension; r++)
+        // {
+        //     cout << "    ";
+        //     for (unsigned c = 0; c < _dimension; c++)
+        //     {
+        //         cout << be_a_time_step_dependent.get()[r * _dimension + c] << ", ";
+        //     }
+        //     cout << endl;
+        // }
 
 
         ///////////////////////////////////////////////////////////////////////////////////////
@@ -371,9 +382,9 @@ void RecordProjector::run(int runner_no, int record_count, const CPolicy &policy
         // Step 3: Update the state
         ///////////////////////////////////////////////////////////////////////////////////////
 
-        _be_states->print_state_probs(time_index - 1);
+//        _be_states->print_state_probs(time_index - 1);
         _be_states->update_state(time_index - 1, be_a_time_step_dependent.get());
-        _be_states->print_state_probs(time_index);
+//        _be_states->print_state_probs(time_index);
 
 
         ///////////////////////////////////////////////////////////////////////////////////////

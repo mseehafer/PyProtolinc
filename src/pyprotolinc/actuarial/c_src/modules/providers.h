@@ -72,10 +72,6 @@ public:
     virtual shared_ptr<CBaseRateProvider> clone() const = 0;
 
     virtual void slice_into(const vector<int> &indices, CBaseRateProvider *other) const = 0;
-    // {
-    //     cout << "CBaseRateProvider::slice_into()" << endl;
-    //     throw domain_error("Method not implemented in abstract class.");
-    // }
 };
 
 class CConstantRateProvider : public CBaseRateProvider
@@ -112,7 +108,7 @@ public:
 
     void slice_into(const vector<int> &indices, CBaseRateProvider *other) const override
     {
-        cout << "CConstantRateProvider::slice_into()" << endl;
+        //cout << "CConstantRateProvider::slice_into()" << endl;
         // do nothing
     }    
 
