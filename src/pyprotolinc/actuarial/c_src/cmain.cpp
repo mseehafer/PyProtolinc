@@ -142,7 +142,7 @@ void run_calculation(void) {
 
     // create a config object
     TimeStep time_step = TimeStep::MONTHLY;
-    int years_to_simulate = 2;
+    int years_to_simulate = 120;
     int num_cpus = 1;
     bool use_multicore = false;
     auto run_config = CRunConfig(state_dimension, time_step, years_to_simulate, num_cpus, use_multicore, assumption_set);

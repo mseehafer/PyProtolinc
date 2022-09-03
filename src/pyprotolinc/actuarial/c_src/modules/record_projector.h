@@ -130,6 +130,36 @@ public:
         }        
     }
 
+    /**
+     * @brief Trivial completion of the projection without further movements
+     * 
+     * @param time_index 
+     */
+    void trivial_runoff(int time_index)
+    {
+       // use some pointer arithmetics
+        double * current_states = _state_probs + (time_index - 1) * _num_states;
+        double * const current_vols = _state_vols + (time_index - 1) * _num_states;
+        
+        double *updated_states = current_states + _num_states;
+        double *updated_vols = current_vols + _num_states;
+
+        while (time_index++ < _num_timesteps) {
+
+            //cout << "TimeIndex=" << time_index;
+            for (int s= 0; s < _num_states; s++) {
+                updated_states[s] = current_states[s];
+                updated_vols[s] = current_vols[s];
+
+                //cout << ", current_states[" << s << "]=" << current_states[s];
+                //cout << ", updated_states[" << s << "]=" << updated_states[s];
+            }
+            updated_states += _num_states;
+            updated_vols += _num_states;
+            //cout << endl;
+        }
+    }
+
 
     void print_state_probs(int time_index)
     {
@@ -338,7 +368,7 @@ void RecordProjector::run(int runner_no, int record_count, const CPolicy &policy
     int time_index = 0;
 
     // special treatment of first time step as needed
-    // assert portfolio_date == _end_dates[0] = _start_dates[0]
+    // assert portfolio_date == _end_dates[0] == _start_dates[0]
 //    cout << "Projection start at " << _end_dates[0] <<endl;
     int age_month_completed = get_age_at_date(policy.get_dob(), portfolio_date);
 //    cout << "Age of policyholder: " << age_month_completed << "  (" << age_month_completed / 12.0 << ")" << endl;
@@ -351,7 +381,6 @@ void RecordProjector::run(int runner_no, int record_count, const CPolicy &policy
     bool yearly_assumptions_updated = false;    
     while (++time_index <= max_time_step_index)
     {
-
         int days_previous_step = _period_lengths[time_index - 1];
         int days_current_step = _period_lengths[time_index];
 
@@ -362,6 +391,15 @@ void RecordProjector::run(int runner_no, int record_count, const CPolicy &policy
         ///////////////////////////////////////////////////////////////////////////////////////
 
         // update the risk factors
+        if (!first_iteration && days_previous_step % 30 == 0)
+        {
+            age_month_completed += days_previous_step / 30;
+        }
+        else
+        {
+            age_month_completed = get_age_at_date(policy.get_dob(), _start_dates[time_index]);
+        } 
+
         risk_factors_current[0] = age_month_completed / 12;            // 0 Age
         risk_factors_current[1] = policy.get_gender();                 // 1 Gender
         risk_factors_current[2] = _start_dates[time_index].get_year(); // 2 CalendarYear
@@ -423,7 +461,7 @@ void RecordProjector::run(int runner_no, int record_count, const CPolicy &policy
 
 //        _be_states->print_state_probs(time_index - 1);
         _be_states->update_state(time_index - 1, be_a_time_step_dependent.get(), current_vol);
-        _be_states->print_state_probs(time_index);
+//        _be_states->print_state_probs(time_index);
 
 
         ///////////////////////////////////////////////////////////////////////////////////////
@@ -434,9 +472,10 @@ void RecordProjector::run(int runner_no, int record_count, const CPolicy &policy
 
         first_iteration = false;
 
-        if (early_stop)
+        if (age_month_completed >= 120 * 12)
         {
-            cout << "Early stop detected." << endl;
+            early_stop = true;
+            // cout << "Early stop detected at " << _end_dates[time_index] << endl;
             break;
         }
     }
@@ -444,6 +483,7 @@ void RecordProjector::run(int runner_no, int record_count, const CPolicy &policy
     // clean-up after early stop as necessary
     if (early_stop)
     {
+        _be_states->trivial_runoff(time_index);
     }
 }
 

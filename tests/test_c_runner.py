@@ -30,12 +30,10 @@ def test_c_run():
     output_columns, result = actuarial.py_run_c_valuation(acs, c_portfolio, time_step)
     # do stuff
     elapsed = time.time() - t
-    print("Done, time leapse=", elapsed)
+    print("Done, time elapsed=", elapsed)
 
     print(output_columns)
-    # print(result[:15, :].astype(int))
-    print(result[:15, :])
-    # print(result[:15,:])
+    # print(result[:15, :])
     # print("ok")
 
     df = pd.DataFrame(data=result, columns=output_columns)
