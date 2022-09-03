@@ -12,6 +12,10 @@
  */
 
 #include <iostream>
+#include <fstream>
+
+#include "modules/log.h"
+
 #include "modules/time_axis.h"
 #include "modules/providers.h"
 #include "modules/assumption_sets.h"
@@ -47,6 +51,72 @@ void add_policies(CPolicyPortfolio &portfolio) {
 }
 
 
+/// Write the result matrix to a CSV file
+void output_results(RunResult &run_result, string outfile_name="cresults.csv", bool output_to_console = false) {
+    
+    // get result dimension and headers
+    auto rows = run_result.size();
+    auto headers = run_result.get_result_header_names();
+    auto cols = headers.size();
+
+    // copy result into array
+    auto res_array_ptr = std::unique_ptr<double[]>(new double[rows*cols], std::default_delete<double[]>());
+    for(int i=0; i<rows*cols;i++) {
+        res_array_ptr.get()[i] = 0;
+    }
+    run_result.copy_results(res_array_ptr.get(), (int) rows, (int) cols);
+
+    std::ofstream result_file;
+    result_file.open(outfile_name);
+
+    // write the headers
+    bool is_first = true;
+    for(auto c: headers) {
+        if (!is_first) {
+            result_file << ",";
+            if (output_to_console) {
+                cout << ",";    
+            }
+        } else {
+            is_first = false;
+        }
+        result_file << c;
+        if (output_to_console) {
+            cout << c;
+        }
+    }
+    result_file << "\n";
+    if (output_to_console) {
+        cout << "\n";
+    }
+
+    // write data rows
+    for(auto r=0; r < rows; r++) {
+        is_first = true;
+        for(auto c=0; c < cols; c++) {
+            if (!is_first) {
+                result_file << ",";
+                if (output_to_console) {
+                    cout << ",";
+                }
+            } else {
+                is_first = false;
+            }
+            result_file << res_array_ptr.get()[cols*r + c];
+            if (output_to_console) {
+                cout << res_array_ptr.get()[cols*r + c];
+            }
+        }
+        result_file << "\n";
+        if (output_to_console) {
+            cout << "\n";
+        }
+    }
+
+   result_file.close();
+
+}
+
 /// Encapsulate the a calculation run. Creates test data and passes them to the runner for processing.
 ///
 void run_calculation(void) {
@@ -66,7 +136,9 @@ void run_calculation(void) {
     // create assumptions set
     auto assumption_set = make_shared<CAssumptionSet>(state_dimension);
     auto rp = make_shared<CConstantRateProvider>(0.1);
+    auto rp2 = make_shared<CConstantRateProvider>(0.01);
     assumption_set->set_provider(0, 1, rp);
+    assumption_set->set_provider(1, 0, rp2);
 
     // create a config object
     TimeStep time_step = TimeStep::MONTHLY;
@@ -82,8 +154,7 @@ void run_calculation(void) {
     // calculation
     auto run_result = run_c_valuation(run_config, portfolio);
 
-    // inspect the result
-
+    output_results(*run_result);
 
     cout << "DONE" << endl;
 
@@ -92,8 +163,17 @@ void run_calculation(void) {
 
 
 int main(void) {
-
+    initLogger( "clogfile.log", ldebug);
+    
+    L_(linfo) << "info";
+    
+    //L_(lwarning) << "Ops, variable x should be " << expectedX << "; is " << realX;
+    
     run_calculation();
+
+    endLogger();    
+
+    
 
     return 0;
 }

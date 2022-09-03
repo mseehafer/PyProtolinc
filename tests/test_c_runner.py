@@ -42,4 +42,4 @@ def test_c_run():
     df.to_excel("out.xlsx")
 
 
-# test_c_run()
+test_c_run()

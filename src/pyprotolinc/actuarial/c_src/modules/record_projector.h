@@ -37,10 +37,13 @@ class ProjectionStateMatrix
 {
 private:
     double *_state_probs = nullptr;
+    double *_state_vols = nullptr;
+    double *_probs_mvms = nullptr;
+    double *_vol_mvms = nullptr;
+
     int _num_timesteps;
     int _num_states;
     int _size;
-
 
 public:
     /**
@@ -64,17 +67,22 @@ public:
      * @param state_probs Pointer to the data array
      * @param start_state Initial state the record is in
      */
-    void initialize_states(double *state_probs, int start_state) {
+    void initialize_states(double *state_probs, double *state_vols, double *probs_mvms, double *vol_mvms, int start_state, double vol)
+    {
         _state_probs = state_probs;
+        _state_vols = state_vols;
+        _probs_mvms = probs_mvms;
+        _vol_mvms = vol_mvms;
 
         if (start_state < 0 || start_state >= _num_states) {
-            throw domain_error("Invalid state index: " + start_state);
+            throw domain_error("Invalid state index: " + std::to_string(start_state));
         }
         // for(int j = 0; j<_size; j++) {
         //     _state_probs[j] = 0;
         // }
         
         _state_probs[0 * _num_states +  start_state] = 1;
+        _state_vols[0 * _num_states +  start_state] = vol;
     }
 
     /**
@@ -83,19 +91,41 @@ public:
      * @param index_last Index (row) of the last valid assumption set
      * @param be_a_ts (Dependent) assumptions to be applied for the current timestep
      */
-    void update_state(int index_last, double* be_a_ts)
+    void update_state(int index_last, double* be_a_ts, double vol)
     {
         // SHOULD IT BE AS SIMPLE AS THAT?
         
         // use some pointer arithmetics
         double *current_states = _state_probs + index_last * _num_states;
         double *updated_states = _state_probs + (1 + index_last) * _num_states;
+        double *updated_vols = _state_vols + (1 + index_last) * _num_states;
+        
+        double *these_prob_movements = _probs_mvms + (1 + index_last) * _num_states * _num_states;
+        double *these_vol_movements = _vol_mvms + (1 + index_last) * _num_states * _num_states;
+
 
         for (int r = 0; r < _num_states; r++)
         {
             for (int  c = 0; c < _num_states; c++)
             {
-                updated_states[c] += be_a_ts[r * _num_states + c] * current_states[r];
+                //cout << "update movements: index_last=" << index_last << ", from=" << r << ", to=" << c << ", A=" << be_a_ts[r * _num_states + c];
+                
+                double mvm = be_a_ts[r * _num_states + c] * current_states[r];
+                
+                if (r != c) {
+                    these_prob_movements[r * _num_states + c] = mvm;
+                    these_prob_movements[r * _num_states + r] -=mvm;
+
+                    these_vol_movements[r * _num_states + c] = mvm * vol;
+                    these_vol_movements[r * _num_states + r] -=mvm * vol;
+                } 
+                
+                // cout << ", prob(r)=" << current_states[r];
+                // cout << ", movemnt=" << these_movements[r * _num_states + c];
+                // cout << endl;
+
+                updated_states[c] += mvm;
+                updated_vols[c] += mvm * vol;
             }
         }        
     }
@@ -265,12 +295,20 @@ void RecordProjector::run(int runner_no, int record_count, const CPolicy &policy
     // clean up before
     this->clear();
 
+    // the current volume of this policy
+    double current_vol = policy.get_sum_insured();
+
     /////////////////////////////////
     // set relevant storage pointers
     ////////////////////////////////
     
     // in this case also: initialize the state matrix
-    _be_states->initialize_states(result.get_be_state_probs_ptr(), policy.get_initial_state());    
+    _be_states->initialize_states(result.get_be_state_probs_ptr(),
+                                  result.get_be_state_vols_ptr(),
+                                  result.get_be_prob_mvms_ptr(),
+                                  result.get_be_vol_mvms_ptr(),
+                                  policy.get_initial_state(),
+                                  current_vol);    
 
     // specialize the assumption providers for the current record
     this->slice_assumptions(policy);
@@ -384,8 +422,8 @@ void RecordProjector::run(int runner_no, int record_count, const CPolicy &policy
         ///////////////////////////////////////////////////////////////////////////////////////
 
 //        _be_states->print_state_probs(time_index - 1);
-        _be_states->update_state(time_index - 1, be_a_time_step_dependent.get());
-//        _be_states->print_state_probs(time_index);
+        _be_states->update_state(time_index - 1, be_a_time_step_dependent.get(), current_vol);
+        _be_states->print_state_probs(time_index);
 
 
         ///////////////////////////////////////////////////////////////////////////////////////

@@ -88,12 +88,12 @@ public:
 
     virtual ~CConstantRateProvider() {}
 
-    double get_rate(const vector<int> &indices) const
+    double get_rate(const vector<int> &indices) const override
     {
         return val;
     }
 
-    void get_rates(double *out_array, size_t length, const vector<int *> &indices) const
+    void get_rates(double *out_array, size_t length, const vector<int *> &indices) const override
     {
         for (size_t j = 0; j < length; j++)
         {
@@ -155,7 +155,7 @@ public:
 
     void set_values(vector<int> &shape_vec_in, vector<int> &offsets_in, double *ext_vals);
 
-    void add_risk_factor(CRiskFactors rf)
+    void add_risk_factor(CRiskFactors rf) override
     {
         // check if rf is already in the list and throw an exception in this case
         for (auto i_rf : risk_factors)
@@ -169,9 +169,9 @@ public:
         risk_factors.push_back(rf);
     }
 
-    string to_string() const;
+    string to_string() const override;
 
-    double get_rate(const vector<int> &indices) const
+    double get_rate(const vector<int> &indices) const override
     {
         if (!has_values)
         {
@@ -234,7 +234,7 @@ public:
 
     // perform a slicing operation into another provider object, if possible
     // using the already allocated memory of the other provider
-    void slice_into(const vector<int> &indices, CBaseRateProvider *other) const;
+    void slice_into(const vector<int> &indices, CBaseRateProvider *other) const override;
 };
 
 shared_ptr<CBaseRateProvider> CStandardRateProvider::clone() const
