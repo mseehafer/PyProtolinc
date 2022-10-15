@@ -476,7 +476,7 @@ void RecordProjector::run(int runner_no, int record_count, const CPolicy &policy
 
         first_iteration = false;
 
-        if (age_month_completed >= 120 * 12)
+        if (age_month_completed >= _run_config.get_max_age() * 12)
         {
             early_stop = true;
             // cout << "Early stop detected at " << _end_dates[time_index] << endl;

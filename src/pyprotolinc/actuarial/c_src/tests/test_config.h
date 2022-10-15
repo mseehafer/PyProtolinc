@@ -23,10 +23,11 @@ TEST(test_config, create)
     int years_to_simulate = 10;
     int num_cpus = 1;
     bool use_multicore = false;
+    int max_age = 120;
 
     // test that assumptions set must not be null
     shared_ptr<CAssumptionSet> _be_assumptions = nullptr;
-    ASSERT_ANY_THROW(CRunConfig(state_dimension, time_step, years_to_simulate, num_cpus, use_multicore, _be_assumptions));
+    ASSERT_ANY_THROW(CRunConfig(state_dimension, time_step, years_to_simulate, num_cpus, use_multicore, _be_assumptions, max_age));
 
     // create assumptions sets
     _be_assumptions = make_shared<CAssumptionSet>(state_dimension);
@@ -34,7 +35,7 @@ TEST(test_config, create)
     _be_assumptions->set_provider(0, 1, rp);
 
     // create config
-    auto run_config = CRunConfig(state_dimension, time_step, years_to_simulate, num_cpus, use_multicore, _be_assumptions);
+    auto run_config = CRunConfig(state_dimension, time_step, years_to_simulate, num_cpus, use_multicore, _be_assumptions, max_age);
     EXPECT_EQ(run_config.get_time_step(), time_step);
 }
 

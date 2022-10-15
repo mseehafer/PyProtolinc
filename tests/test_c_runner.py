@@ -27,7 +27,7 @@ def test_c_run():
     # not really a test but at least a check if it fails
     print("Start calc...")
     t = time.time()
-    output_columns, result = actuarial.py_run_c_valuation(acs, c_portfolio, time_step)
+    output_columns, result = actuarial.py_run_c_valuation(acs, c_portfolio, time_step, 120)
     # do stuff
     elapsed = time.time() - t
     print("Done, time elapsed=", elapsed)
@@ -90,7 +90,7 @@ def test_c_run_with_config():
     # not really a test but at least a check if it fails
     print("Start calc...")
     t = time.time()
-    output_columns, result = actuarial.py_run_c_valuation(acs, c_portfolio, time_step)
+    output_columns, result = actuarial.py_run_c_valuation(acs, c_portfolio, time_step, 120)
     # do stuff
     elapsed = time.time() - t
     print("Done, time elapsed=", elapsed)

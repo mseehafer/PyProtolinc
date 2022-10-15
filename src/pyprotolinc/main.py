@@ -111,7 +111,6 @@ def project_cashflows(run_config, df_portfolio_overwrite=None, export_to_file=Tr
         logger.info("Executions in single process for %s units", len(subportfolios))
         for sp_ind, sub_ptf in enumerate(subportfolios):
 
-            logger.info("Projecting subportfolio {} / {}".format(1 + sp_ind, len(subportfolios)))
             projector_results = _project_subportfolio(run_config, model, num_timesteps, sub_ptf, rows_for_state_recorder, sp_ind + 1, len(subportfolios))
             results_arrays.append(projector_results)
 
@@ -139,19 +138,18 @@ def project_cashflows(run_config, df_portfolio_overwrite=None, export_to_file=Tr
 def _project_subportfolio(run_config, model, num_timesteps, portfolio, rows_for_state_recorder,
                           chunk_index, num_chunks):
 
-    kernel = "PY"  # "C" or "PY"
-
-    assert portfolio.homogenous_wrt_product, "Subportfolio should have identical portfolios in all rows"
+    assert portfolio.homogenous_wrt_product, "Subportfolio should have identical product in all rows"
     product_name = portfolio.products.iloc[0]
     product_class = product_class_lookup(product_name)
     assert model.states_model == product_class.STATES_MODEL, "State-Models must be consistent for the product and the run"
-    product = product_class(portfolio)    
+    product = product_class(portfolio)
 
-    if kernel == "C":
+    if run_config.kernel_engine in ["C", "CPP", "C++"]:
 
         # not needed for the C++ call
         proj_state = None
 
+        logger.info("Projecting subportfolio {} / {} with C++ engine".format(chunk_index, num_chunks))
         projector = CProjector(run_config,
                                portfolio,
                                model,
@@ -159,11 +157,13 @@ def _project_subportfolio(run_config, model, num_timesteps, portfolio, rows_for_
                                product,
                                rows_for_state_recorder=rows_for_state_recorder,
                                chunk_index=chunk_index,
-                               num_chunks=num_chunks)
+                               num_chunks=num_chunks
+                               )
 
-    elif kernel == "PY":
+    elif run_config.kernel_engine in ["P", "PY", "PYTHON"]:
 
         proj_state = model.new_state_instance(num_timesteps, portfolio, rows_for_state_recorder=rows_for_state_recorder)
+        logger.info("Projecting subportfolio {} / {} with Python engine".format(chunk_index, num_chunks))
         projector = Projector(run_config,
                               portfolio,
                               model,
@@ -174,7 +174,7 @@ def _project_subportfolio(run_config, model, num_timesteps, portfolio, rows_for_
                               num_chunks=num_chunks)
 
     else:
-        raise Exception("Unknown kernel type: {}".format(kernel))
+        raise Exception("Unknown kernel type: {}".format(run_config.kernel_engine))
 
     projector.run()
     return projector.get_results_dict()

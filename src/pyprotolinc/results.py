@@ -47,25 +47,5 @@ class ProbabilityVolumeResults(IntEnum):
 def export_results(result_data, outfile):
 
     logger.info("Exporting NCF to %s", outfile)
-
-    # time_axis = projector.time_axis
-
-    # data = {
-    #     "YEAR": time_axis.years,
-    #     "QUARTER": time_axis.quarters,
-    #     "MONTH": time_axis.months,
-    #     "PREMIUM": projector.ncf_portfolio[:, 0],
-    #     "DI_ONG_CLAIMS1": projector.ncf_portfolio[:, 1],
-    #     "DI_ONG_CLAIMS2": projector.ncf_portfolio[:, 2]
-    # }
-
-    # # add the reserves
-    # for st in projector.model.states_model:
-    #     data["RESERVE_BOM({})".format(st.name)] = projector.reserves_bom[:, st]
-
-    # # add the probabilirty movements
-    # for vol_prob_res in ProbabilityVolumeResults:
-    #     data[vol_prob_res.name] = projector.probability_movements[:, vol_prob_res]
-
     df_ncf = pd.DataFrame(result_data)
     df_ncf.to_csv(outfile)

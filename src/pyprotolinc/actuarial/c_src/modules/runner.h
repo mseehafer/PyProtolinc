@@ -227,8 +227,6 @@ unique_ptr<RunResult> run_c_valuation(const CRunConfig &run_config, shared_ptr<C
                                                              ptr_portfolio->get_portfolio_date().get_month(),
                                                              ptr_portfolio->get_portfolio_date().get_day());
     
-    //run_result.set_time_axis(p_time_axis);
-
     unique_ptr<RunResult> run_res_ptr = unique_ptr<RunResult>(new RunResult(run_config.get_dimension(), p_time_axis));
 
     MetaRunner runner(run_config, ptr_portfolio, p_time_axis);

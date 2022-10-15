@@ -20,6 +20,8 @@ class RunConfig:
     :param str profile_out_dir: Path where to store profiling output.
     :param int portfolio_chunk_size: Size of the chunks the portfolio is broken into.
     :param bool use_multicore: Flag to indicate if multiprocessing shall be used.
+    :param str kernel_engine: Use 'PY' or 'C' to select the Python or C++ engine
+    :param int max_age: Max. age that is used when projecting (only C++)
     """
     def __init__(self,
                  model_name: str,
@@ -32,7 +34,9 @@ class RunConfig:
                  portfolio_cache: str,
                  profile_out_dir: str,
                  portfolio_chunk_size: int,
-                 use_multicore: bool
+                 use_multicore: bool,
+                 kernel_engine: str,
+                 max_age: int
                  ):
         self.model_name = model_name
         self.years_to_simulate = years_to_simulate
@@ -46,6 +50,8 @@ class RunConfig:
         self.profile_out_dir = profile_out_dir
         self.portfolio_chunk_size = portfolio_chunk_size
         self.use_multicore = use_multicore
+        self.kernel_engine = kernel_engine.upper()
+        self.max_age = max_age
 
     def __repr__(self):
         return str(self.__dict__)
@@ -78,5 +84,7 @@ def get_config_from_file(config_file: str):
         config_raw["io"]["portfolio_cache"],
         config_raw["io"]["profile_out_dir"],
         run_type_spec["portfolio_chunk_size"],
-        config_raw["model"]["use_multicore"]
+        config_raw["model"]["use_multicore"],
+        config_raw["kernel"]["engine"],
+        config_raw["kernel"]["max_age"],
     )

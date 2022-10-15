@@ -145,7 +145,8 @@ void run_calculation(void) {
     int years_to_simulate = 120;
     int num_cpus = 1;
     bool use_multicore = false;
-    auto run_config = CRunConfig(state_dimension, time_step, years_to_simulate, num_cpus, use_multicore, assumption_set);
+    int max_age = 120;
+    auto run_config = CRunConfig(state_dimension, time_step, years_to_simulate, num_cpus, use_multicore, assumption_set, max_age);
 
     // create results set
     //shared_ptr<TimeAxis> ta = make_time_axis(run_config, ptf_year, ptf_month, ptf_day);

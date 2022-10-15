@@ -45,6 +45,9 @@ private:
     ///< Use multicore flag
     bool _use_multicore;
 
+    ///< maximum age in projection in years
+    int _max_age;
+
     // valuation assumptions
     shared_ptr<CAssumptionSet> be_assumptions;
     shared_ptr<vector<shared_ptr<CAssumptionSet>>> other_assumptions = make_shared<vector<shared_ptr<CAssumptionSet>>>();
@@ -60,13 +63,14 @@ public:
      * @param use_multicore Use multicore flag
      * @param _be_assumptions Best estimate assumptions
      */
-    CRunConfig(unsigned _dim, TimeStep time_step, int years_to_simulate, int num_cpus, bool use_multicore, shared_ptr<CAssumptionSet> _be_assumptions):
+    CRunConfig(unsigned _dim, TimeStep time_step, int years_to_simulate, int num_cpus, bool use_multicore, shared_ptr<CAssumptionSet> _be_assumptions, int max_age):
         dimension(_dim),
         _time_step(time_step),
         _years_to_simulate(years_to_simulate),
         _num_cpus(num_cpus),
         _use_multicore(use_multicore),
-        be_assumptions(_be_assumptions)
+        be_assumptions(_be_assumptions),
+        _max_age(max_age)
     {
         if (!_be_assumptions)
         {
@@ -83,6 +87,7 @@ public:
     TimeStep get_time_step() const { return _time_step; }               ///< Returns the time scale on which to calculate
     int get_years_to_simulate() const { return _years_to_simulate;}     ///< Returns the umber of years to project into the future
     unsigned int get_dimension() const { return dimension; }            ///< Returns the dimension of the state model
+    int get_max_age() const { return _max_age; }                        ///< Returns the maximum in years until the projection should be extended
 
     /// Add an auxiliary assumption set.
     void add_assumption_set(shared_ptr<CAssumptionSet> as)
