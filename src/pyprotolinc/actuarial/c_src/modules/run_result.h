@@ -25,30 +25,50 @@ const vector<string> time_axis_names = {
     "PERIOD_DAYS"};
 
 
-/// Insert a submatrix into the result matrix
-void copy_state_probs(double *ext_result, double *res_cmp, int _num_states, int row_num, int col_num, int start_col)
+/**
+ * @brief Copy the results from one 2D array (internal) to another 2D (external) array. Both must have the same number of rows but the target matrix may have more columns.
+ * 
+ * @param target_array Pointer to target 2D memory block (where to copy to).
+ * @param source_array Pointer to source 2D memory block (where to copy from).
+ * @param source_col_num Number of states, this is the number of columns in the source data.
+ * @param row_num Number of rows to be copied. Should conincide with the row-dimensions of source and target
+ * @param target_col_num Number of columns **of the target Matrix**.
+ * @param target_start_col Column index in the target where to start inserting from
+ */
+void insert_2dmatrix_as_submatrix(double *target_array, double *source_array, int source_col_num, int row_num, int target_col_num, int target_start_col)
 {
     for (int t = 0; t < row_num; t++)
     {
-        for (int state_index = 0; state_index < _num_states; state_index++)
+        for (int state_index = 0; state_index < source_col_num; state_index++)
         {
-            ext_result[t * col_num + start_col + state_index] = res_cmp[t * _num_states + state_index];
+            target_array[t * target_col_num + target_start_col + state_index] = source_array[t * source_col_num + state_index];
         }
     }
 }
 
-void copy_state_probs_mvms(double *ext_result, double *res_cmp, int _num_states, int row_num, int col_num, int start_col)
-{
-    for (int t = 0; t < row_num; t++)
-    {
-        for (int from_state_index = 0; from_state_index < _num_states; from_state_index++) {
-            for (int to_state_index = 0; to_state_index < _num_states; to_state_index++)
-            {
-                ext_result[t * col_num + start_col + from_state_index * _num_states + to_state_index] = res_cmp[t * _num_states * _num_states + from_state_index * _num_states + to_state_index];
-            }
-        }
-    }
-}
+// void copy_state_probs(double *ext_result, double *res_cmp, int _num_states, int row_num, int col_num, int start_col)
+// {
+//     for (int t = 0; t < row_num; t++)
+//     {
+//         for (int state_index = 0; state_index < _num_states; state_index++)
+//         {
+//             ext_result[t * col_num + start_col + state_index] = res_cmp[t * _num_states + state_index];
+//         }
+//     }
+// }
+
+// void copy_state_probs_mvms(double *ext_result, double *res_cmp, int _num_states, int row_num, int col_num, int start_col)
+// {
+//     for (int t = 0; t < row_num; t++)
+//     {
+//         for (int from_state_index = 0; from_state_index < _num_states; from_state_index++) {
+//             for (int to_state_index = 0; to_state_index < _num_states; to_state_index++)
+//             {
+//                 ext_result[t * col_num + start_col + from_state_index * _num_states + to_state_index] = res_cmp[t * _num_states * _num_states + from_state_index * _num_states + to_state_index];
+//             }
+//         }
+//     }
+// }
 
 
 
@@ -77,9 +97,8 @@ private:
     unique_ptr<double[]> _be_vol_movements = nullptr;
 
 
-
     // private methods
-    void copy_time_axis(double *ext_result, int rows_num, int col_num, int start_col);
+    void copy_time_axis(double *ext_result, int rows_num, int col_num, int start_col) const;
     //void copy_state_probs(double *ext_result, double *res_cmp, int rows_num, int col_num, int start_col);
 
 
@@ -157,7 +176,22 @@ public:
 
 
     /// Reset the result, zeroises the allocated arrays
-    void reset() {
+    void reset();
+
+    /// Add another result to this one
+    void add_result(const RunResult &other_res);
+
+    /// Copy results to an external array
+    void RunResult::copy_results(double *ext_result, int row_num, int col_num) const;
+
+    /// Return the number of rows in the result set
+    int size() const {
+        return (int) _ta->get_length();
+    }
+};
+
+
+    void RunResult::reset() {
         // resetting _be_state_probs
         for (auto i = 0; i <  _num_states * _num_timesteps; i++) {
             _be_state_probs[i] = 0;
@@ -169,9 +203,7 @@ public:
             _be_vol_movements[i] = 0;
         }
     }
-
-    /// Add another result to this one
-    void add_result(const RunResult &other_res) {
+    void RunResult::add_result(const RunResult &other_res) {
 
         // add state probabilities and volumes
         for (auto i = 0; i <  _num_states * _num_timesteps; i++) {
@@ -184,38 +216,33 @@ public:
             _be_prob_movements[i] += other_res._be_prob_movements[i];
             _be_vol_movements[i] += other_res._be_vol_movements[i];
         }        
-
-
     }
 
-    /// Copy results to an external array
-    void copy_results(double *ext_result, int row_num, int col_num)
+    void RunResult::copy_results(double *ext_result, int row_num, int col_num) const
     {
         int next_col = 0;
         
         copy_time_axis(ext_result, row_num, col_num, next_col );
         next_col += 7;
         
-        copy_state_probs(ext_result, _be_state_probs.get(), _num_states, row_num, col_num, next_col );
+        insert_2dmatrix_as_submatrix(ext_result, _be_state_probs.get(), _num_states, row_num, col_num, next_col );
+        //copy_state_probs(ext_result, _be_state_probs.get(), _num_states, row_num, col_num, next_col );
         next_col += _num_states;
 
-        copy_state_probs_mvms(ext_result, _be_prob_movements.get(), _num_states, row_num, col_num, next_col );
+        insert_2dmatrix_as_submatrix(ext_result, _be_prob_movements.get(), _num_states * _num_states, row_num, col_num, next_col );
+        // copy_state_probs_mvms(ext_result, _be_prob_movements.get(), _num_states, row_num, col_num, next_col );
         next_col += _num_states * _num_states;
 
-        copy_state_probs(ext_result, _be_state_vols.get(), _num_states, row_num, col_num, next_col );
+        insert_2dmatrix_as_submatrix(ext_result, _be_state_vols.get(), _num_states, row_num, col_num, next_col );
+        // copy_state_probs(ext_result, _be_state_vols.get(), _num_states, row_num, col_num, next_col );
         next_col += _num_states;
 
-        copy_state_probs_mvms(ext_result, _be_vol_movements.get(), _num_states, row_num, col_num, next_col );
+        insert_2dmatrix_as_submatrix(ext_result, _be_vol_movements.get(), _num_states * _num_states, row_num, col_num, next_col );
+        // copy_state_probs_mvms(ext_result, _be_vol_movements.get(), _num_states, row_num, col_num, next_col );
         next_col += _num_states * _num_states;
     }
 
-    /// Return the number of rows in the result set
-    int size() {
-        return (int) _ta->get_length();
-    }
-};
-
-void RunResult::copy_time_axis(double *ext_result, int row_num, int col_num, int start_col)
+void RunResult::copy_time_axis(double *ext_result, int row_num, int col_num, int start_col) const
 {
 
     if (row_num != _ta->get_length()) {

@@ -4,6 +4,7 @@ from pyprotolinc.assumptions.providers import AssumptionTimestepAdjustment
 from pyprotolinc import MAX_AGE
 from pyprotolinc.results import ProbabilityVolumeResults, CfNames
 from pyprotolinc.assumptions.providers import AssumptionType
+import pyprotolinc._actuarial as actuarial
 
 logger = logging.getLogger(__name__)
 
@@ -23,6 +24,46 @@ class TimeAxis:
         return len(self.months)
 
 
+class CProjector:
+    """ Encapsulate the C-kernel calls. """
+
+    def __init__(self, run_config, portfolio, model, proj_state, product,
+                 rows_for_state_recorder=None, chunk_index=1, num_chunks=1):
+
+        self.c_portfolio = actuarial.build_c_portfolio(portfolio)
+        self.time_step = actuarial.TimeStep.MONTHLY  # actuarial.TimeStep.MONTHLY  # QUARTERLY   # TODO: test if we get back a result set with this timestep
+
+        self._output_columns = None
+        self._result = None
+
+    def run(self):
+        # construct assumption set
+        # provider05 = actuarial.ConstantRateProvider(0.5)
+        provider02 = actuarial.ConstantRateProvider(0.0015)
+        acs = actuarial.AssumptionSet(2)
+        acs.add_provider_const(0, 1, provider02)
+        # acs.add_provider_const(1, 0, provider05)
+
+        self._output_columns, self._result = actuarial.py_run_c_valuation(acs, self.c_portfolio, self.time_step)
+
+    def get_results_dict(self):
+
+        output_map = {col_name: index for index, col_name in enumerate(self._output_columns)}
+
+        data = {
+            "YEAR": self._result[:, output_map["PERIOD_END_Y"]],
+            "QUARTER": (self._result[:, output_map["PERIOD_END_M"]] - 1) // 3 + 1 ,
+            "MONTH": self._result[:, output_map["PERIOD_END_M"]]
+        }
+
+        for cfn in self._output_columns:
+            if not cfn.startswith("PERIOD"):
+                data[cfn] = self._result[:, output_map[cfn]]
+
+        return data
+
+
+# TODO: rename internal methods tp start with "_"
 class Projector:
     """ The projection engine. """
 

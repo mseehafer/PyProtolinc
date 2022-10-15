@@ -294,7 +294,7 @@ def py_run_c_valuation(AssumptionSet be_ass, CPortfolioWrapper cportfolio_wapper
 
     cdef unsigned dim = be_ass.dim
     cdef int num_cpus = cpu_count()
-    cdef bool use_multicore = True
+    cdef bool use_multicore = False
     cdef shared_ptr[CAssumptionSet] c_assumption_set = be_ass.c_assumption_set
     cdef int years_to_simulate = 120
     cdef shared_ptr[CRunConfig] crun_config = make_shared[CRunConfig](dim, time_step, years_to_simulate, num_cpus, use_multicore, c_assumption_set)

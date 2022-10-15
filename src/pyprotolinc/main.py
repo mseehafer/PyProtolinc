@@ -18,7 +18,7 @@ import fire
 from pyprotolinc import get_config_from_file
 from pyprotolinc.portfolio import PortfolioLoader, Portfolio
 from pyprotolinc.results import export_results
-from pyprotolinc.runner import Projector
+from pyprotolinc.runner import Projector, CProjector
 from pyprotolinc.models import ModelBuilder, _STATE_MODELS
 from pyprotolinc.models.model_config import get_model_by_name
 from pyprotolinc.assumptions.iohelpers import AssumptionsLoaderFromConfig
@@ -117,7 +117,7 @@ def project_cashflows(run_config, df_portfolio_overwrite=None, export_to_file=Tr
 
             gc.collect()
 
-    # here we would need to combine the results again
+    # combine the results from the subportfolios
     logger.debug("Combining results from subportfolios")
     res_combined = dict(results_arrays[0])
     for res_ind in range(1, len(results_arrays)):
@@ -138,32 +138,53 @@ def project_cashflows(run_config, df_portfolio_overwrite=None, export_to_file=Tr
 
 def _project_subportfolio(run_config, model, num_timesteps, portfolio, rows_for_state_recorder,
                           chunk_index, num_chunks):
-    proj_state = model.new_state_instance(num_timesteps, portfolio, rows_for_state_recorder=rows_for_state_recorder)
+
+    kernel = "PY"  # "C" or "PY"
 
     assert portfolio.homogenous_wrt_product, "Subportfolio should have identical portfolios in all rows"
     product_name = portfolio.products.iloc[0]
     product_class = product_class_lookup(product_name)
     assert model.states_model == product_class.STATES_MODEL, "State-Models must be consistent for the product and the run"
-    product = product_class(portfolio)
+    product = product_class(portfolio)    
 
-    projector = Projector(run_config,
-                          portfolio,
-                          model,
-                          proj_state,
-                          product,
-                          rows_for_state_recorder=rows_for_state_recorder,
-                          chunk_index=chunk_index,
-                          num_chunks=num_chunks)
+    if kernel == "C":
+
+        # not needed for the C++ call
+        proj_state = None
+
+        projector = CProjector(run_config,
+                               portfolio,
+                               model,
+                               proj_state,
+                               product,
+                               rows_for_state_recorder=rows_for_state_recorder,
+                               chunk_index=chunk_index,
+                               num_chunks=num_chunks)
+
+    elif kernel == "PY":
+
+        proj_state = model.new_state_instance(num_timesteps, portfolio, rows_for_state_recorder=rows_for_state_recorder)
+        projector = Projector(run_config,
+                              portfolio,
+                              model,
+                              proj_state,
+                              product,
+                              rows_for_state_recorder=rows_for_state_recorder,
+                              chunk_index=chunk_index,
+                              num_chunks=num_chunks)
+
+    else:
+        raise Exception("Unknown kernel type: {}".format(kernel))
 
     projector.run()
     return projector.get_results_dict()
 
 
 def project_cashflows_cli(config_file='config.yml', multi_processing_overwrite=None):
-    """ Perform a projection run, entry point for `run` taks in the CLI client.
+    """ Start a projection run.
 
         :param str config_file: Path ot the config file
-        :param multi_processing_overwrite: Optional boolen parameters that allows overwriting the multiprocessing setting in the config file.
+        :param multi_processing_overwrite: Optional boolen parameter that allows overwriting the multiprocessing setting in the config file.
 
         :return: None
     """

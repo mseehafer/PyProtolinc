@@ -117,7 +117,7 @@ void output_results(RunResult &run_result, string outfile_name="cresults.csv", b
 
 }
 
-/// Encapsulate the a calculation run. Creates test data and passes them to the runner for processing.
+/// Encapsulate the calculation run. Creates test data, passes them to the runner for processing and outputs the results.
 ///
 void run_calculation(void) {
 

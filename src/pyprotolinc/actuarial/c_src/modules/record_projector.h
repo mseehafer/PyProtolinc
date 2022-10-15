@@ -114,10 +114,10 @@ public:
                 
                 if (r != c) {
                     these_prob_movements[r * _num_states + c] = mvm;
-                    these_prob_movements[r * _num_states + r] -=mvm;
+                    //these_prob_movements[r * _num_states + r] -=mvm;
 
                     these_vol_movements[r * _num_states + c] = mvm * vol;
-                    these_vol_movements[r * _num_states + r] -=mvm * vol;
+                    // these_vol_movements[r * _num_states + r] -=mvm * vol;
                 } 
                 
                 // cout << ", prob(r)=" << current_states[r];
@@ -133,9 +133,16 @@ public:
     /**
      * @brief Trivial completion of the projection without further movements
      * 
-     * @param time_index 
+     * @param time_index First time index which is copied from the the one preceding it.
      */
-    void trivial_runoff(int time_index)
+    void trivial_runoff(int time_index);
+
+
+    void print_state_probs(int time_index) const;
+    
+};
+
+ void ProjectionStateMatrix::trivial_runoff(int time_index)
     {
        // use some pointer arithmetics
         double * current_states = _state_probs + (time_index - 1) * _num_states;
@@ -160,8 +167,7 @@ public:
         }
     }
 
-
-    void print_state_probs(int time_index)
+ void ProjectionStateMatrix::print_state_probs(int time_index) const
     {
         double *states = _state_probs + time_index * _num_states;
 
@@ -176,8 +182,6 @@ public:
 
         cout << "]" << endl;
     }
-    
-};
 
 
 /**
