@@ -113,7 +113,7 @@ class CProjector:
         return data
 
 
-# TODO: rename internal methods tp start with "_"
+# TODO: rename internal methods so that they start with "_"
 class Projector:
     """ The projection engine. """
 
