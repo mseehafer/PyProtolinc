@@ -12,7 +12,7 @@ model:
   type: "GenericMultiState"
   years_to_simulate: 119
   steps_per_month: 1
-  use_multicore: false
+  use_multicore: true
 
 run_type_specs:
 
@@ -20,5 +20,5 @@ run_type_specs:
     state_model: "AnnuityRunoffStates"
     assumptions_spec: "longevity_assumptions_simple.yml"
     outfile: "results/ncf_out_generic.csv"
-    portfolio_path: "portfolio/portfolio_annuity_small.xlsx"
-    portfolio_chunk_size: 1024
+    portfolio_path: "portfolio/portfolio_annuity_big.xlsx"
+    portfolio_chunk_size: 500000

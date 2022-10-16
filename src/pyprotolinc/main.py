@@ -95,7 +95,7 @@ def project_cashflows(run_config, df_portfolio_overwrite=None, export_to_file=Tr
     results_arrays = []
 
     # projections
-    if run_config.use_multicore and len(subportfolios) > 1:
+    if run_config.use_multicore and len(subportfolios) > 1 and run_config.kernel_engine in ["P", "PY", "PYTHON"]:
 
         num_processes = min(cpu_count(), len(subportfolios))
 

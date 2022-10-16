@@ -24,6 +24,7 @@
 #include "record_projector.h"
 #include "time_axis.h"
 #include "run_result.h"
+#include "payments.h"
 
 using namespace std;
 
@@ -128,14 +129,14 @@ public:
 
     ///> Calculates into how many sub-portfolios the portfolio will be split into
     ///> depending on the cpu_count/use_multicore settings in the config and the portfolio size.
-    int get_num_groups();
+    int get_num_groups() const;
 
     ///> Calculate the result and store it in the reference passed in.
     ///>
-    void run(RunResult &run_result);
+    void run(RunResult &run_result) const;  // check if const?
 };
 
-int MetaRunner::get_num_groups()
+int MetaRunner::get_num_groups() const
 {
     if (!_run_config.get_use_multicore())
     {
@@ -150,7 +151,7 @@ int MetaRunner::get_num_groups()
 }
 
 
-void MetaRunner::run(RunResult &run_result)
+void MetaRunner::run(RunResult &run_result) const
 {
     cout << "MetaRunner::run(): STARTING RUN" << endl;
     const CAssumptionSet &be_ass = _run_config.get_be_assumptions();
@@ -218,8 +219,10 @@ class RunnerInterface
 {
 private:
     const CRunConfig &_run_config;
-    shared_ptr<CPolicyPortfolio> _ptr_portfolio;
-    shared_ptr<TimeAxis> _p_time_axis;
+    const shared_ptr<CPolicyPortfolio> _ptr_portfolio;
+    const shared_ptr<TimeAxis> _p_time_axis;
+    MetaRunner _runner;
+    AggregatePayments agg_payments;
 
 public:
     RunnerInterface(const CRunConfig &run_config, shared_ptr<CPolicyPortfolio> ptr_portfolio):
@@ -229,21 +232,24 @@ public:
                                             run_config.get_years_to_simulate(),
                                             ptr_portfolio->get_portfolio_date().get_year(),
                                             ptr_portfolio->get_portfolio_date().get_month(),
-                                            ptr_portfolio->get_portfolio_date().get_day()))
-                  
+                                            ptr_portfolio->get_portfolio_date().get_day())),
+         _runner(_run_config, _ptr_portfolio, _p_time_axis),
+         agg_payments(ptr_portfolio->size())         
          {}
             
     shared_ptr<TimeAxis> get_time_axis() const { return _p_time_axis;}
 
+    void add_cond_state_payment(int state_index, int payment_type_index, double *payment_matrix)
+    {
+        agg_payments.add_cond_state_payment(state_index, payment_type_index, payment_matrix, _ptr_portfolio->size(), _p_time_axis->get_length());
+    }
+
     /// @brief Start the calculation run
     /// @return Pointer to result
-    unique_ptr<RunResult> run()
+    unique_ptr<RunResult> run() const
     {
         unique_ptr<RunResult> run_res_ptr = unique_ptr<RunResult>(new RunResult(_run_config.get_dimension(), _p_time_axis));
-
-        MetaRunner runner(_run_config, _ptr_portfolio, _p_time_axis);
-        runner.run(*run_res_ptr);
-
+        _runner.run(*run_res_ptr);
         return run_res_ptr;        
     }
 };
@@ -257,26 +263,10 @@ public:
  * @param ptr_portfolio Pointer to a portfolio object.
  * @param run_result Container to store the results in.
  */
-unique_ptr<RunResult> run_c_valuation(const CRunConfig &run_config, shared_ptr<CPolicyPortfolio> ptr_portfolio) //, RunResult &run_result)
+unique_ptr<RunResult> run_c_valuation(const CRunConfig &run_config, shared_ptr<CPolicyPortfolio> ptr_portfolio)
 {
-    // cout << "run_c_valuation()" << endl;
-
-    // shared_ptr<TimeAxis> p_time_axis = make_shared<TimeAxis>(run_config.get_time_step(),
-    //                                                          run_config.get_years_to_simulate(),
-    //                                                          ptr_portfolio->get_portfolio_date().get_year(),
-    //                                                          ptr_portfolio->get_portfolio_date().get_month(),
-    //                                                          ptr_portfolio->get_portfolio_date().get_day());
-    
-    // unique_ptr<RunResult> run_res_ptr = unique_ptr<RunResult>(new RunResult(run_config.get_dimension(), p_time_axis));
-
-    // MetaRunner runner(run_config, ptr_portfolio, p_time_axis);
-    // runner.run(*run_res_ptr);
-
-    // return run_res_ptr;
-
     RunnerInterface ri(run_config, ptr_portfolio);
     return ri.run();
-    
 };
 
 

@@ -20,7 +20,7 @@
 
 using namespace std;
 
-/// Flag to signal what timestep to use in the calculation
+/// Flag to signal which timestep to use in the calculation
 enum class TimeStep : int
 {
     MONTHLY,   // 0  

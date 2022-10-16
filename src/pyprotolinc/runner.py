@@ -49,6 +49,7 @@ class CProjector:
         self.max_age = run_config.max_age
 
         self.model = model
+        self.product = product
 
         # placeholder for the results
         self._output_columns = None
@@ -59,6 +60,7 @@ class CProjector:
         self.num_chunks = num_chunks
 
         # construct assumption set
+        # TODO: do that from model parameter
         # provider05 = actuarial.ConstantRateProvider(0.5)
         provider02 = actuarial.ConstantRateProvider(0.0015)
         acs = actuarial.AssumptionSet(2)
@@ -66,10 +68,24 @@ class CProjector:
         # acs.add_provider_const(1, 0, provider05)
 
         self.runner = actuarial.RunnerInterfaceWrapper(acs, self.c_portfolio, self.time_step, self.max_age, run_config.use_multicore, run_config.years_to_simulate)
-
         self.time_axis = TimeAxis2(*self.runner.get_time_axis())
-        # self.c_time_axis.setup()
-        print("Length time_axis", len(self.time_axis), self.time_axis.years, self.time_axis.days)
+
+        # product information, here we obtain the whole conditional payment stream upfront
+        self.cond_bom_payment_dict = self.product.get_bom_payments(self.time_axis)
+        self.cond_eom_payment_dict = self.product.get_state_transition_payments(self.time_axis)
+
+        # contractual state transitions originating from the product and the insured state
+        # rather than actuarial assumptions
+        self.contractual_state_transitions = self.product.contractual_state_transitions(self.time_axis)
+
+        # pass BOP information to C++
+        for state, payment_list in self.cond_bom_payment_dict.items():
+            for payment_type_index, payment_matrix in payment_list:
+                pass
+                # self.runner.add_cond_state_payment(state, payment_type_index, payment_matrix)
+
+        # print("EOM-payment", self.cond_eom_payment_dict)
+        # print("BOM-payment", self.cond_bom_payment_dict)
 
     def run(self):
 
@@ -105,7 +121,7 @@ class CProjector:
             if mapped_col_no is None:
                 data[output_col_name] = np.zeros(num_rows)
             else:
-                data[output_col_name] = self._result[:, mapped_col_no]            
+                data[output_col_name] = self._result[:, mapped_col_no]
 
         # add the probability movements
         for vol_prob_res in ProbabilityVolumeResults:
@@ -253,8 +269,8 @@ class Projector:
               * 'to' state
         """
 
-        #print("ages, genders, calendaryear, smokerstatus, yearsdisabledifdisabledatstart")
-        #print(ages.dtype, genders.dtype, calendaryear.dtype, smokerstatus.dtype, yearsdisabledifdisabledatstart.dtype)
+        # print("ages, genders, calendaryear, smokerstatus, yearsdisabledifdisabledatstart")
+        # print(ages.dtype, genders.dtype, calendaryear.dtype, smokerstatus.dtype, yearsdisabledifdisabledatstart.dtype)
 
         # get BE assumptions
         for (from_state, to_state) in self.non_trivial_state_transitions_be:

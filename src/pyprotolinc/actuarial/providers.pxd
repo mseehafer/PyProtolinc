@@ -296,6 +296,7 @@ cdef extern from "runner.h":
     cdef cppclass RunnerInterface:
         RunnerInterface(const CRunConfig &run_config, shared_ptr[CPolicyPortfolio] ptr_portfolio)
         shared_ptr[TimeAxis] get_time_axis() const
+        void add_cond_state_payment(int state_index, int payment_type_index, double *payment_matrix) except +
         unique_ptr[RunResult] run() nogil except +
 
 
@@ -337,9 +338,7 @@ cdef class RunnerInterfaceWrapper:
     def __cinit__(self, AssumptionSet be_ass, CPortfolioWrapper cportfolio_wapper, TimeStep time_step, int max_age, bool use_multicore, int years_to_simulate):
         cdef unsigned dim = be_ass.dim
         cdef int num_cpus = cpu_count()
-        # cdef bool use_multicore = False
         cdef shared_ptr[CAssumptionSet] c_assumption_set = be_ass.c_assumption_set
-        # cdef int years_to_simulate = 120
         
         self.crun_config = make_shared[CRunConfig](dim, time_step, years_to_simulate, num_cpus, use_multicore, c_assumption_set, max_age)
         
@@ -349,6 +348,12 @@ cdef class RunnerInterfaceWrapper:
         ctaw = CTimeAxisWrapper()
         years, months, days, quarters = ctaw._set_time_axis(dereference(self.pri).get_time_axis())
         return ctaw, years, months, days, quarters
+    
+    def add_cond_state_payment(self, int state_index, int payment_type_index, np.ndarray[double, ndim=2, mode="c"] payment_matrix):
+
+        # cdef np.ndarray[double, ndim=2, mode="c"] payment_matrix_c = payment_matrix
+        cdef double[:, ::1] payment_mat_view = payment_matrix
+        dereference(self.pri).add_cond_state_payment(state_index, payment_type_index, &payment_mat_view[0, 0])
     
     def run(self):
         # run cpp code

@@ -63,7 +63,7 @@ def calc_term_start_indicator(time_axis, inception_yr, inception_month):
         at which the policy ist still in-force. """
     ta_abs = time_axis.years * 12 + time_axis.months - 1
     ta_abs = ta_abs.reshape((ta_abs.shape[0], 1))
-    
+
     start_month_abs = (inception_yr * 12 + inception_month - 1).reshape((1, len(inception_yr)))
     return (ta_abs >= start_month_abs).astype(np.int16).transpose()
 
@@ -106,7 +106,7 @@ class Product_AnnuityInPayment:
     def get_state_transition_payments(self, time_axis):
         # no lump sum payments in this product
         return dict()
-    
+
     def contractual_state_transitions(self, time_axis):
         return ()
 
@@ -143,10 +143,9 @@ class Product_AnnuityInPaymentYearlyAtBirthMonth:
     def get_state_transition_payments(self, time_axis):
         # no lump sum payments in this product
         return dict()
-    
+
     def contractual_state_transitions(self, time_axis):
         return ()
-
 
 
 class Product_TwoStateDisability:
@@ -255,7 +254,7 @@ class Product_MortalityTerm:
               - first member = from-state
               - sencond member = to-state
               - third member is a binary matrix of the structure "insured x time"
-                where a "1" represents a contractual move.    
+                where a "1" represents a contractual move.
         """
         # for the mortality term product there is only the transition
         # ACTIVE -> MATURED
