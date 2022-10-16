@@ -256,6 +256,11 @@ cdef extern from "time_axis.h":
     cdef cppclass TimeAxis:
         int get_length() const
 
+        void get_years(int16_t *arr) const 
+        void get_months(int16_t *arr) const 
+        void get_days(int16_t *arr) const 
+        void get_quarters(int16_t *arr) const 
+
 
 
 cdef extern from "run_config.h":
@@ -288,50 +293,92 @@ cdef extern from "runner.h":
     #void run_c_valuation(const CRunConfig &run_config, shared_ptr[CPolicyPortfolio] ptr_portfolio, RunResult& run_result) nogil except +
     unique_ptr[RunResult] run_c_valuation(const CRunConfig &run_config, shared_ptr[CPolicyPortfolio] ptr_portfolio) nogil except +
 
+    cdef cppclass RunnerInterface:
+        RunnerInterface(const CRunConfig &run_config, shared_ptr[CPolicyPortfolio] ptr_portfolio)
+        shared_ptr[TimeAxis] get_time_axis() const
+        unique_ptr[RunResult] run() nogil except +
+
+
+cdef class CTimeAxisWrapper:
+
+    cdef shared_ptr[TimeAxis] _p_time_axis
+
+    cdef _set_time_axis(self, shared_ptr[TimeAxis] p_time_axis):
+        self._p_time_axis = p_time_axis
+
+        cdef int l = dereference(self._p_time_axis).get_length()
+
+        cdef np.ndarray[int16_t, ndim=1, mode="c"] years = np.zeros(l, dtype=np.int16)
+        cdef np.ndarray[int16_t, ndim=1, mode="c"] months = np.zeros(l, dtype=np.int16)
+        cdef np.ndarray[int16_t, ndim=1, mode="c"] days = np.zeros(l, dtype=np.int16)
+        cdef np.ndarray[int16_t, ndim=1, mode="c"] quarters = np.zeros(l, dtype=np.int16)
+
+        cdef int16_t[::1] years_view = years
+        cdef int16_t[::1] months_view = months
+        cdef int16_t[::1] days_view = days
+        cdef int16_t[::1] quarters_view = quarters
+
+        dereference(self._p_time_axis).get_years(&years_view[0])
+        dereference(self._p_time_axis).get_months(&months_view[0])
+        dereference(self._p_time_axis).get_days(&days_view[0])
+        dereference(self._p_time_axis).get_quarters(&quarters_view[0])
+
+        return years, months, days, quarters
+   
+    def __len__(self):
+        return dereference(self._p_time_axis).get_length()
+
+
+cdef class RunnerInterfaceWrapper:
+
+    cdef unique_ptr[RunnerInterface] pri
+    cdef shared_ptr[CRunConfig] crun_config
+
+    def __cinit__(self, AssumptionSet be_ass, CPortfolioWrapper cportfolio_wapper, TimeStep time_step, int max_age, bool use_multicore, int years_to_simulate):
+        cdef unsigned dim = be_ass.dim
+        cdef int num_cpus = cpu_count()
+        # cdef bool use_multicore = False
+        cdef shared_ptr[CAssumptionSet] c_assumption_set = be_ass.c_assumption_set
+        # cdef int years_to_simulate = 120
+        
+        self.crun_config = make_shared[CRunConfig](dim, time_step, years_to_simulate, num_cpus, use_multicore, c_assumption_set, max_age)
+        
+        self.pri = unique_ptr[RunnerInterface](new RunnerInterface(self.crun_config.get()[0], cportfolio_wapper.ptf))
+    
+    def get_time_axis(self):
+        ctaw = CTimeAxisWrapper()
+        years, months, days, quarters = ctaw._set_time_axis(dereference(self.pri).get_time_axis())
+        return ctaw, years, months, days, quarters
+    
+    def run(self):
+        # run cpp code
+        cdef unique_ptr[RunResult] run_result = dereference(self.pri).run()
+
+        # copy the result over to numpy array
+        cdef vector[string] column_names = dereference(run_result).get_result_header_names()
+        cdef int no_cols = column_names.size()
+        cdef int total_timesteps = dereference(run_result).size() # dereference(ta_ptr).get_length()
+
+        cdef np.ndarray[double, ndim=2, mode="c"] output = np.zeros((total_timesteps, no_cols))
+        cdef double[:, ::1] ext_res_view = output
+        
+        dereference(run_result).copy_results(&ext_res_view[0, 0], total_timesteps, no_cols)
+
+        # python container for the result names
+        output_columns = []
+        # cdef string cn
+        for i in range(column_names.size()):
+            # cn = result_names[i]  # copy to get rid of the const modifier which is not easy to use in cython for iteration
+            output_columns.append(column_names[i].decode())    
+        
+        return output_columns, output
+
 
 
 def py_run_c_valuation(AssumptionSet be_ass, CPortfolioWrapper cportfolio_wapper, TimeStep time_step, int max_age):
 
-    cdef unsigned dim = be_ass.dim
-    cdef int num_cpus = cpu_count()
     cdef bool use_multicore = False
-    cdef shared_ptr[CAssumptionSet] c_assumption_set = be_ass.c_assumption_set
     cdef int years_to_simulate = 120
-    cdef shared_ptr[CRunConfig] crun_config = make_shared[CRunConfig](dim, time_step, years_to_simulate, num_cpus, use_multicore, c_assumption_set, max_age)
 
-
-    
-    #cdef short _ptf_year = dereference(cportfolio_wapper.ptf)._ptf_year
-    #cdef short _ptf_month = dereference(cportfolio_wapper.ptf)._ptf_month
-    #cdef short _ptf_day = dereference(cportfolio_wapper.ptf)._ptf_day
-    # cdef shared_ptr[TimeAxis] ta_ptr = make_time_axis(dereference(crun_config), _ptf_year, _ptf_month, _ptf_day)
-    # cdef unique_ptr[RunResult] ptr_run_result = unique_ptr[RunResult](new RunResult(dereference(ta_ptr)))  # make_unique[RunResult](ta)
-    #cdef RunResult run_result = RunResult()
-
-    
-    #run_c_valuation(crun_config.get()[0], cportfolio_wapper.ptf, run_result)
-
-    # run cpp code
-    cdef unique_ptr[RunResult] run_result = run_c_valuation(crun_config.get()[0], cportfolio_wapper.ptf)
-    
-    # copy the result over to numpy array
-    cdef vector[string] column_names = dereference(run_result).get_result_header_names()
-    cdef int no_cols = column_names.size()
-    cdef int total_timesteps = dereference(run_result).size() # dereference(ta_ptr).get_length()
-
-
-    cdef np.ndarray[double, ndim=2, mode="c"] output = np.zeros((total_timesteps, no_cols))
-    cdef double[:, ::1] ext_res_view = output
-    
-    dereference(run_result).copy_results(&ext_res_view[0, 0], total_timesteps, no_cols)
-
-    # python container for the result names
-    output_columns = []
-    # cdef string cn
-    for i in range(column_names.size()):
-        # cn = result_names[i]  # copy to get rid of the const modifier which is not easy to use in cython for iteration
-        output_columns.append(column_names[i].decode())    
-    
-    return output_columns, output
-
-
+    ri = RunnerInterfaceWrapper(be_ass, cportfolio_wapper, time_step, max_age, use_multicore, years_to_simulate)
+    return ri.run()

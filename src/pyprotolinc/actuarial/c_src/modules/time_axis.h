@@ -376,6 +376,36 @@ public:
     const vector<PeriodDate> &get_start_dates() const { return the_start_dates; }
     const vector<PeriodDate> &get_end_dates() const { return the_end_dates; }
     const vector<int> &get_period_length_in_days() const { return period_length_in_days; }
+
+    void get_years(int16_t *arr) const {
+        int j = 0;
+        for(const PeriodDate &pd: the_end_dates) {
+            arr[j++] = pd.get_year();
+        }
+    }
+
+    void get_months(int16_t *arr) const {
+        int j = 0;
+        for(const PeriodDate &pd: the_end_dates) {
+            arr[j++] = pd.get_month();
+        }
+    }
+
+    void get_days(int16_t *arr) const {
+        int j = 0;
+        for(const PeriodDate &pd: the_end_dates) {
+            arr[j++] = pd.get_day();
+        }
+    }
+
+    void get_quarters(int16_t *arr) const {
+        int j = 0;
+        for(const PeriodDate &pd: the_end_dates) {
+            arr[j++] = (pd.get_month() - 1) / 3 + 1;
+        }
+    }
+
+
 };
 
 TimeAxis::TimeAxis(TimeStep time_step, int years_to_simulate,

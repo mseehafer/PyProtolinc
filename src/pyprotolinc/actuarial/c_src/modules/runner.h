@@ -211,6 +211,46 @@ void MetaRunner::run(RunResult &run_result)
 
 
 /**
+ * @brief RunnerInterface is the external run interface
+ * 
+ */
+class RunnerInterface
+{
+private:
+    const CRunConfig &_run_config;
+    shared_ptr<CPolicyPortfolio> _ptr_portfolio;
+    shared_ptr<TimeAxis> _p_time_axis;
+
+public:
+    RunnerInterface(const CRunConfig &run_config, shared_ptr<CPolicyPortfolio> ptr_portfolio):
+         _run_config(run_config),
+         _ptr_portfolio(ptr_portfolio),
+         _p_time_axis(make_shared<TimeAxis>(run_config.get_time_step(),
+                                            run_config.get_years_to_simulate(),
+                                            ptr_portfolio->get_portfolio_date().get_year(),
+                                            ptr_portfolio->get_portfolio_date().get_month(),
+                                            ptr_portfolio->get_portfolio_date().get_day()))
+                  
+         {}
+            
+    shared_ptr<TimeAxis> get_time_axis() const { return _p_time_axis;}
+
+    /// @brief Start the calculation run
+    /// @return Pointer to result
+    unique_ptr<RunResult> run()
+    {
+        unique_ptr<RunResult> run_res_ptr = unique_ptr<RunResult>(new RunResult(_run_config.get_dimension(), _p_time_axis));
+
+        MetaRunner runner(_run_config, _ptr_portfolio, _p_time_axis);
+        runner.run(*run_res_ptr);
+
+        return run_res_ptr;        
+    }
+};
+
+
+
+/**
  * @brief External interface function to the calculation engine
  * 
  * @param run_config Config object used for the run.
@@ -219,20 +259,26 @@ void MetaRunner::run(RunResult &run_result)
  */
 unique_ptr<RunResult> run_c_valuation(const CRunConfig &run_config, shared_ptr<CPolicyPortfolio> ptr_portfolio) //, RunResult &run_result)
 {
-    cout << "run_c_valuation()" << endl;
+    // cout << "run_c_valuation()" << endl;
 
-    shared_ptr<TimeAxis> p_time_axis = make_shared<TimeAxis>(run_config.get_time_step(),
-                                                             run_config.get_years_to_simulate(),
-                                                             ptr_portfolio->get_portfolio_date().get_year(),
-                                                             ptr_portfolio->get_portfolio_date().get_month(),
-                                                             ptr_portfolio->get_portfolio_date().get_day());
+    // shared_ptr<TimeAxis> p_time_axis = make_shared<TimeAxis>(run_config.get_time_step(),
+    //                                                          run_config.get_years_to_simulate(),
+    //                                                          ptr_portfolio->get_portfolio_date().get_year(),
+    //                                                          ptr_portfolio->get_portfolio_date().get_month(),
+    //                                                          ptr_portfolio->get_portfolio_date().get_day());
     
-    unique_ptr<RunResult> run_res_ptr = unique_ptr<RunResult>(new RunResult(run_config.get_dimension(), p_time_axis));
+    // unique_ptr<RunResult> run_res_ptr = unique_ptr<RunResult>(new RunResult(run_config.get_dimension(), p_time_axis));
 
-    MetaRunner runner(run_config, ptr_portfolio, p_time_axis);
-    runner.run(*run_res_ptr);
+    // MetaRunner runner(run_config, ptr_portfolio, p_time_axis);
+    // runner.run(*run_res_ptr);
 
-    return run_res_ptr;
+    // return run_res_ptr;
+
+    RunnerInterface ri(run_config, ptr_portfolio);
+    return ri.run();
+    
 };
+
+
 
 #endif

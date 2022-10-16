@@ -1,7 +1,7 @@
 import logging
 import numpy as np
 from pyprotolinc.assumptions.providers import AssumptionTimestepAdjustment
-from pyprotolinc import MAX_AGE
+from pyprotolinc import MAX_AGE, RunConfig
 from pyprotolinc.results import ProbabilityVolumeResults, CfNames
 from pyprotolinc.assumptions.providers import AssumptionType
 import pyprotolinc._actuarial as actuarial
@@ -24,10 +24,24 @@ class TimeAxis:
         return len(self.months)
 
 
+class TimeAxis2:
+    """ Wrapper object for the CTimeAxis that is compatible with the Python-TimeAxis"""
+
+    def __init__(self, c_time_axis_wrapper, years, months, days, quarters):
+        self.c_time_axis_wrapper = c_time_axis_wrapper
+        self.years = years
+        self.months = months
+        self.days = days
+        self.quarters = quarters
+
+    def __len__(self):
+        return len(self.c_time_axis_wrapper)
+
+
 class CProjector:
     """ Encapsulate the C-kernel calls. """
 
-    def __init__(self, run_config, portfolio, model, proj_state, product,
+    def __init__(self, run_config: RunConfig, portfolio, model, proj_state, product,
                  rows_for_state_recorder=None, chunk_index=1, num_chunks=1):
 
         self.c_portfolio = actuarial.build_c_portfolio(portfolio)
@@ -44,7 +58,6 @@ class CProjector:
         self.chunk_index = chunk_index
         self.num_chunks = num_chunks
 
-    def run(self):
         # construct assumption set
         # provider05 = actuarial.ConstantRateProvider(0.5)
         provider02 = actuarial.ConstantRateProvider(0.0015)
@@ -52,7 +65,16 @@ class CProjector:
         acs.add_provider_const(0, 1, provider02)
         # acs.add_provider_const(1, 0, provider05)
 
-        self._output_columns, self._result = actuarial.py_run_c_valuation(acs, self.c_portfolio, self.time_step, self.max_age)
+        self.runner = actuarial.RunnerInterfaceWrapper(acs, self.c_portfolio, self.time_step, self.max_age, run_config.use_multicore, run_config.years_to_simulate)
+
+        self.time_axis = TimeAxis2(*self.runner.get_time_axis())
+        # self.c_time_axis.setup()
+        print("Length time_axis", len(self.time_axis), self.time_axis.years, self.time_axis.days)
+
+    def run(self):
+
+        # self._output_columns, self._result = actuarial.py_run_c_valuation(acs, self.c_portfolio, self.time_step, self.max_age)
+        self._output_columns, self._result = self.runner.run()
 
     def get_results_dict(self):
 
