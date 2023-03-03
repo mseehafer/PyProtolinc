@@ -239,6 +239,15 @@ def profile(config_file='config.yml', multi_processing_overwrite=None):
     logger.info("Statistics written to %s", output_file)
 
 
+def show_docs_in_browser():
+    """ Show the *readthedocs* help pages in the system browser
+        :return: None
+    """
+    import webbrowser
+    url = "https://pyprotolinc.readthedocs.io/en/latest/index.html"
+    webbrowser.open(url)
+
+
 def main():
     """ Entry point of the CLI client. Declares the following subtasks:
 
@@ -249,7 +258,8 @@ def main():
     fire.Fire({
         "run": project_cashflows_cli,
         "profile": profile,
-        "download_dav_tables": download_dav_tables
+        "download_dav_tables": download_dav_tables,
+        "docs": show_docs_in_browser,
     })
 
 
