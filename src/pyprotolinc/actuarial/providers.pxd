@@ -1,4 +1,5 @@
 
+from copy import deepcopy
 from multiprocessing import cpu_count
 from libcpp.memory cimport shared_ptr, unique_ptr, make_shared, static_pointer_cast
 
@@ -54,7 +55,11 @@ cdef class ConstantRateProvider:
 
     def __cinit__(self, double val=0):
         self.c_provider = make_shared[CConstantRateProvider](val)
-    
+
+    # def __init__(self, double val=0):
+    #     self.c_provider = make_shared[CConstantRateProvider](val)
+
+
     def __repr__(self):
         return self.c_provider.get()[0].to_string().decode()
 
@@ -77,21 +82,41 @@ cdef class ConstantRateProvider:
     
     def initialize(self, **kwargs):
         pass
+    
+    def __reduce__(self):
+        """ Reduce method to make this object pickalable, cf. https://stackoverflow.com/questions/12646436/pickle-cython-class"""
+        return (rebuild_ConstantRateProvider, (self.get_rate(), ))
+
+
+# standalone rebuild function
+def rebuild_ConstantRateProvider(rate):
+    return ConstantRateProvider(rate)
 
 
 cdef class StandardRateProvider:
 
     cdef shared_ptr[CStandardRateProvider] c_provider
     cdef unsigned int dim
+    cdef vector[int] shapevec
+    cdef vector[int] rfs
+    cdef vector[int] offsets
 
     # try declaring a C level method
     cdef shared_ptr[CStandardRateProvider] get_provider(self):
         return self.c_provider
 
-    def __cinit__(self, rfs, values, np.ndarray[int, ndim=1, mode="c"] offsets):
-        cdef vector[int] shapevec
+    # def __cinit__(self, rfs, values, np.ndarray[int, ndim=1, mode="c"] offsets):
+    def __init__(self, rfs, values, np.ndarray[int, ndim=1, mode="c"] offsets):
+        # cdef vector[int] shapevec
         cdef int k
         cdef int d
+
+        # keep the input data so that we can restore this object by pickling
+        for k in offsets:
+            self.offsets.push_back(k)
+        # self.offsets = np.copy(offsets)
+        # self.shape = deepcopy(values.shape)
+        # self.rfs = deepcopy(rfs)
 
         # assert `values` is np.ndarray of type double
 
@@ -105,15 +130,40 @@ cdef class StandardRateProvider:
         self.c_provider = make_shared[CStandardRateProvider]()
 
         for rf in rfs:
+            self.rfs.push_back(rf)
             self.c_provider.get()[0].add_risk_factor(CRiskFactors(rf))
 
         # construct the shape vec
         for k in range(values.ndim):
             d = values.shape[k]
-            shapevec.push_back(d)        
+            self.shapevec.push_back(d)        
 
         cdef double[::1] values_memview = values.flatten()
-        self.c_provider.get()[0].set_values(shapevec, offsets, &values_memview[0])
+        self.c_provider.get()[0].set_values(self.shapevec, offsets, &values_memview[0])
+
+    def get_offsets(self):
+        offsets = np.zeros(self.dim, dtype=np.int32)
+        for k in range(self.offsets.size()):
+            offsets[k] = self.offsets[k]
+        return offsets
+    
+    def get_shape(self):
+        cdef int k
+        return tuple([k for k in self.shapevec])
+    
+    def __reduce__(self):
+        """ Reduce method to make this object pickalable, cf. https://stackoverflow.com/questions/12646436/pickle-cython-class"""
+        cdef int k
+
+        # rebuild Python representation of the internal data
+        values = self.get_values().reshape(self.get_shape())
+        #values = self.get_values().reshape(tuple(shape_list))
+        # rfs = []
+        # for k in self.rfs:
+        #     rfs.append(CRiskFactors(k))
+        
+
+        return (rebuild_StandardRateProvider, (self.get_risk_factors(), values, self.get_offsets()))
 
     def get_risk_factors(self):
         cdef vector[CRiskFactors] rfs = self.c_provider.get()[0].get_risk_factors()
@@ -186,13 +236,18 @@ cdef class StandardRateProvider:
         return sliced_srp
     
     def get_values(self):
-        print(self.c_provider.get()[0].size())
+        # print(self.c_provider.get()[0].size())
         cdef np.ndarray[double, ndim=1, mode="c"] values_placeholder = np.zeros(self.c_provider.get()[0].size())
-        print(values_placeholder)
+        # print(values_placeholder)
         cdef double[::1] values_memview = values_placeholder
         self.c_provider.get()[0].get_values(&values_memview[0])
         return values_placeholder
-        
+
+
+# standalone rebuild function
+def rebuild_StandardRateProvider(rfs, values, offsets):
+    return StandardRateProvider(rfs, values, offsets)
+
 
 
 cdef extern from "assumption_sets.h":
