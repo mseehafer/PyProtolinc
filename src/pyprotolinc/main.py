@@ -13,7 +13,7 @@ import gc
 
 import numpy as np
 import pandas as pd
-import fire
+import fire  # type: ignore
 
 from pyprotolinc import get_config_from_file
 from pyprotolinc.portfolio import PortfolioLoader, Portfolio
@@ -95,7 +95,7 @@ def project_cashflows(run_config, df_portfolio_overwrite=None, export_to_file=Tr
     results_arrays = []
 
     # projections
-    if run_config.use_multicore and len(subportfolios) > 1 and run_config.kernel_engine in ["P", "PY", "PYTHON"]:
+    if run_config.use_multicore and len(subportfolios) > 1:  # and run_config.kernel_engine in ["P", "PY", "PYTHON"]:
 
         num_processes = min(cpu_count(), len(subportfolios))
 
@@ -180,7 +180,7 @@ def _project_subportfolio(run_config, model, num_timesteps, portfolio, rows_for_
     return projector.get_results_dict()
 
 
-def project_cashflows_cli(config_file='config.yml', multi_processing_overwrite=None):
+def project_cashflows_cli(config_file='config.yml', multi_processing_overwrite=None) -> None:
     """ Start a projection run.
 
         :param str config_file: Path ot the config file

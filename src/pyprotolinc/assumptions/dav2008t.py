@@ -5,7 +5,7 @@ import pandas as pd
 
 import pyprotolinc
 from pyprotolinc.assumptions.providers import StandardRateProvider
-from pyprotolinc.models.risk_factors import Gender, SmokerStatus, Age
+from pyprotolinc.riskfactors.risk_factors import Gender, SmokerStatus, Age
 from pyprotolinc.assumptions.providers import AssumptionType
 
 

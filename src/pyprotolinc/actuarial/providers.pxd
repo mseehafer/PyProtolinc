@@ -153,17 +153,8 @@ cdef class StandardRateProvider:
     
     def __reduce__(self):
         """ Reduce method to make this object pickalable, cf. https://stackoverflow.com/questions/12646436/pickle-cython-class"""
-        cdef int k
-
-        # rebuild Python representation of the internal data
-        values = self.get_values().reshape(self.get_shape())
-        #values = self.get_values().reshape(tuple(shape_list))
-        # rfs = []
-        # for k in self.rfs:
-        #     rfs.append(CRiskFactors(k))
-        
-
-        return (rebuild_StandardRateProvider, (self.get_risk_factors(), values, self.get_offsets()))
+        return (rebuild_StandardRateProvider, (self.get_risk_factors(),
+                self.get_values().reshape(self.get_shape()), self.get_offsets()))
 
     def get_risk_factors(self):
         cdef vector[CRiskFactors] rfs = self.c_provider.get()[0].get_risk_factors()
@@ -247,7 +238,6 @@ cdef class StandardRateProvider:
 # standalone rebuild function
 def rebuild_StandardRateProvider(rfs, values, offsets):
     return StandardRateProvider(rfs, values, offsets)
-
 
 
 cdef extern from "assumption_sets.h":

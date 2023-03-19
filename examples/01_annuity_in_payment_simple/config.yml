@@ -5,7 +5,7 @@ io:
 
 # kernel engine is "C" or "PY"
 kernel:
-  engine: "PY"   # "C"
+  engine: "C"  # "PY"   # "C"
   max_age: 120
 
 model:
@@ -21,4 +21,4 @@ run_type_specs:
     assumptions_spec: "longevity_assumptions_simple.yml"
     outfile: "results/ncf_out_generic.csv"
     portfolio_path: "portfolio/portfolio_annuity_med.xlsx"
-    portfolio_chunk_size: 10000
+    portfolio_chunk_size: 60000

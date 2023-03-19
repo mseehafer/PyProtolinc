@@ -3,6 +3,11 @@ io:
   portfolio_cache: "portfolio/portfolio_cache"
   profile_out_dir: "."
 
+# kernel engine is "C" or "PY"
+kernel:
+  engine: "C"  # "PY"   # "C"
+  max_age: 120
+
 
 model:
   # Type of Model to be run, supported types are "MultiStateDisability", "AnnuityRunoff" and "GenericMultiState"

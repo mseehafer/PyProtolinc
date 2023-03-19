@@ -5,10 +5,11 @@ import yaml
 import numpy as np
 import pandas as pd
 
-from pyprotolinc.models.risk_factors import get_risk_factor_by_name
+from pyprotolinc.riskfactors.risk_factors import get_risk_factor_by_name
 from pyprotolinc.assumptions.tables import ScalarAssumptionsTable, AssumptionsTable1D, AssumptionsTable2D
 from pyprotolinc.assumptions.dav2004r import DAV2004R, DAV2004R_B20
 from pyprotolinc.assumptions.dav2008t import DAV2008T
+from pyprotolinc.models import ModelBuilder
 
 
 logger = logging.getLogger(__name__)
@@ -18,12 +19,12 @@ class WorkbookTableReader:
     """ Context Manager class to read assumption tables from
         an Excel file. """
 
-    def __init__(self, filename):
+    def __init__(self, filename: str) -> None:
         self.filename = filename
         self._excel_file = None
         self.sheet_names = None
 
-    def read_sheet(self, sheet_name):
+    def read_sheet(self, sheet_name: str):
         """ Create a Table object from the data in the sheet."""
 
         assert self._excel_file is not None, "Use read_sheet in with clause!"
@@ -125,20 +126,19 @@ def _sort_index(mapped_indexes):
 class AssumptionsLoaderFromConfig:
     """ Process the assumptions config files and the load the rates. """
 
-    def __init__(self, ass_config_file_path):
+    def __init__(self, ass_config_file_path) -> None:
         self.assumptions_spec = []
         with open(ass_config_file_path, 'r') as ass_config_file:
             ass_config = yaml.safe_load(ass_config_file)
             self.assumptions_spec = ass_config["assumptions_spec"]
-
         # print(self.assumptions_spec)
 
-    def load(self, model_builder):
+    def load(self, model_builder: ModelBuilder) -> None:
 
         self._process_be_or_res(self.assumptions_spec["be"], "be", model_builder)
         self._process_be_or_res(self.assumptions_spec["res"], "res", model_builder)
 
-    def _process_be_or_res(self, assumptions_spec, be_or_res, model_builder):
+    def _process_be_or_res(self, assumptions_spec, be_or_res, model_builder: ModelBuilder) -> None:
 
         # collect all assumptions of type "FileTable" and
         # group them by the file name
@@ -163,12 +163,11 @@ class AssumptionsLoaderFromConfig:
 
                 if "base_directory" not in kwargs:
                     raise Exception("DAV2004R requires a `base_directory` in the assumptions configuration")
-                
+
                 dav2004R = DAV2004R(kwargs["base_directory"])
                 del kwargs["base_directory"]
 
                 model_builder.add_transition(be_or_res, spec[0], spec[1], dav2004R.rates_provider(**kwargs))
-
 
             elif spec[2][0] == "DAV2004R_B20":
 
@@ -180,13 +179,11 @@ class AssumptionsLoaderFromConfig:
 
                 if "base_directory" not in kwargs:
                     raise Exception("DAV2004R requires a `base_directory` in the assumptions configuration")
-                
+
                 b20 = DAV2004R_B20(kwargs["base_directory"])
                 del kwargs["base_directory"]
 
                 model_builder.add_transition(be_or_res, spec[0], spec[1], b20.rates_provider(**kwargs))
-
-
 
             elif spec[2][0] == "DAV2008T":
 
@@ -198,12 +195,11 @@ class AssumptionsLoaderFromConfig:
 
                 if "base_directory" not in kwargs:
                     raise Exception("DAV2004R requires a `base_directory` in the assumptions configuration")
-                
+
                 dav2008t = DAV2008T(kwargs["base_directory"])
                 del kwargs["base_directory"]
 
                 model_builder.add_transition(be_or_res, spec[0], spec[1], dav2008t.rates_provider(**kwargs))
-
 
             elif spec[2][0] == "ScalarAssumptionsTable" or spec[2][0].upper() == "FLAT" or spec[2][0].upper() == "SCALAR":
                 # assume that the next parameter is a float

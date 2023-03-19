@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 
 import pyprotolinc
-import pyprotolinc.models.risk_factors as risk_factors
+import pyprotolinc.riskfactors.risk_factors as risk_factors
 from pyprotolinc.assumptions.providers import StandardRateProvider
 
 # module level logger

@@ -8,7 +8,7 @@ import numpy as np
 import pandas as pd
 
 # from pyprotolinc.models.model_disability_multistate import MultiStateDisabilityStates
-from pyprotolinc.models.risk_factors import Gender, SmokerStatus
+from pyprotolinc.riskfactors.risk_factors import Gender, SmokerStatus
 
 
 logger = logging.getLogger(__name__)
@@ -124,7 +124,7 @@ class Portfolio:
         return [Portfolio(None, states_model=self.states_model, df_portfolio=df_sb_ptf) for df_sb_ptf in subportfolios_ages_maximized]
 
 
-def split_to_size(df_portfolio, max_size):
+def split_to_size(df_portfolio: pd.DataFrame, max_size: int) -> list[pd.DataFrame]:
     """ Split a dataframe into subsets with a maximum size. """
 
     splits = []
@@ -170,7 +170,7 @@ def completed_months_to_date(date_col, the_date):
 
 class PortfolioLoader:
 
-    def __init__(self, run_config):
+    def __init__(self, run_config) -> None:
         self.run_config = run_config
         self.portfolio = None
         # self.raw_transition_assumptions = None

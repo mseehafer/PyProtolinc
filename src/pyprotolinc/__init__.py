@@ -37,7 +37,7 @@ class RunConfig:
                  use_multicore: bool,
                  kernel_engine: str,
                  max_age: int
-                 ):
+                 ) -> None:
         self.model_name = model_name
         self.years_to_simulate = years_to_simulate
         self.portfolio_path = portfolio_path
@@ -53,11 +53,11 @@ class RunConfig:
         self.kernel_engine = kernel_engine.upper()
         self.max_age = max_age
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return str(self.__dict__)
 
 
-def get_config_from_file(config_file: str):
+def get_config_from_file(config_file: str) -> RunConfig:
     """ Returns a ``RunConfig`` object from the file.
 
         :param str config_file: Path to the config file to be loaded.

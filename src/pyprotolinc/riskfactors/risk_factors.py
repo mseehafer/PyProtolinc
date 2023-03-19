@@ -1,5 +1,5 @@
 from enum import IntEnum, unique
-from pyprotolinc.models import check_states
+# from pyprotolinc.models import check_states
 from pyprotolinc import MAX_AGE
 
 from pyprotolinc._actuarial import CRiskFactors
@@ -34,7 +34,7 @@ class RiskFactor(IntEnum):
     def index_mapper(cls):
         # return identity by default
         return lambda x: x
-    
+
     @classmethod
     def get_CRiskFactor(cls):
         return _C_RISK_FACTORS[cls.__name__]
@@ -140,7 +140,7 @@ class SmokerStatus(IntEnum):
 
 @unique
 class YearsDisabledIfDisabledAtStart(IntEnum):
-    """ For certain select assumptions the time since the disablement date plays a role. 
+    """ For certain select assumptions the time since the disablement date plays a role.
         To apply this to an active needs more tracking than we can currently provide
         but for those being disabled since the start of the projection
         this can work. """
@@ -164,9 +164,8 @@ class YearsDisabledIfDisabledAtStart(IntEnum):
         return map_dict
 
 
-
 # validate the content of this module
-check_states(Gender)
+# check_states(Gender)
 
 # a list of all risk factors;
 # must be maintained manually for now

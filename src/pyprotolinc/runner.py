@@ -81,6 +81,7 @@ class CProjector:
         # pass BOP information to C++
         for state, payment_list in self.cond_bom_payment_dict.items():
             for payment_type_index, payment_matrix in payment_list:
+                self.runner.add_cond_state_payment(state, payment_type_index, payment_matrix)
                 pass
                 # self.runner.add_cond_state_payment(state, payment_type_index, payment_matrix)
 

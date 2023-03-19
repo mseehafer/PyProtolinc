@@ -7,10 +7,10 @@ import tempfile
 import requests
 
 
-def download_dav_tables(target_dir="."):
+def download_dav_tables(target_dir: str = ".") -> None:
     """ Download DAV2004R and DAV2008T from R. Kainhofer's R-Package MortalityTables and store them
         locally in the subfolder *tables* of `target_dir`.
-    
+
         :param str target_dir:  The directory where to store the downloaded datafiles.
     """
 
@@ -50,4 +50,3 @@ def download_dav_tables(target_dir="."):
         # copy the files
         for f in dav_2008t_files:
             shutil.copy(os.path.join(tables_dir, f), os.path.join(dav_2008t_dir, f))
-
