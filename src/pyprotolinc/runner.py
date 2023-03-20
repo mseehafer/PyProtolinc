@@ -94,7 +94,9 @@ class CProjector:
 
     def get_results_dict(self):
 
-        c_output_map = {col_name: index for index, col_name in enumerate(self._output_columns)}
+        # non-cash flows
+        c_output_map = {col_name: index for index, col_name in enumerate(self._output_columns) if not col_name.startswith("STATE_PAYMENT_TYPE_")}
+        
         num_rows = self._result.shape[0]
 
         data = {
@@ -103,11 +105,15 @@ class CProjector:
             "MONTH": self._result[:, c_output_map["PERIOD_END_M"]]
         }
 
+        cf_map = {CfNames(int(col_name[19:])): index 
+                  for index, col_name in enumerate(self._output_columns) 
+                  if col_name.startswith("STATE_PAYMENT_TYPE_")}
+
         output_model_map = self.model.states_model.to_std_outputs()
 
         # cashflows
         for cfn in CfNames:
-            mapped_col_no = c_output_map.get(cfn.name)
+            mapped_col_no = cf_map.get(cfn)  # c_output_map.get(cfn.name)
             if mapped_col_no is None:
                 data[cfn.name] = np.zeros(num_rows)
             else:

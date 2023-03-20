@@ -186,6 +186,19 @@ public:
         return _be_vol_movements.get();
     }
 
+    /// Return a pointer to the space where to store the cash flows
+    double *get_state_cond_payments_ptr() {
+        return _state_cond_payments.get();
+    }
+
+    /// @brief Set the value for the state conditional payment
+    /// @param time_index 
+    /// @param cf_type_index 
+    /// @param val 
+    void set_state_cond_payments(size_t time_index, size_t cf_type_index, double val) {
+        _state_cond_payments[_num_timesteps * cf_type_index + time_index] = val;
+
+    }
 
     /// Reset the result, zeroises the allocated arrays
     void reset();
@@ -233,7 +246,11 @@ public:
             _be_vol_movements[i] += other_res._be_vol_movements[i];
         }
 
-        for (auto i = 0; i <  _num_state_payment_cols * _num_timesteps; i++) {
+        cout << "adding! " << other_res._state_cond_payments[0] << ", "
+                           << other_res._state_cond_payments[1] << ", "
+                           << other_res._state_cond_payments[_num_timesteps] << ", "
+                           << other_res._state_cond_payments[_num_timesteps + 1] << ", ";
+        for (auto i = 0; i < _num_state_payment_cols * _num_timesteps; i++) {
             _state_cond_payments[i] += other_res._state_cond_payments[i];
         }    
 
@@ -262,8 +279,9 @@ public:
         // copy_state_probs_mvms(ext_result, _be_vol_movements.get(), _num_states, row_num, col_num, next_col );
         next_col += _num_states * _num_states;
 
-        cout << "before copy: _num_state_payment_cols=" << _num_state_payment_cols;
+        cout << "before copy: _num_state_payment_cols=" << _num_state_payment_cols << endl;
         if (_num_state_payment_cols > 0) {
+            cout << _state_cond_payments[0] << ", " << _state_cond_payments[1] << endl;
             insert_2dmatrix_as_submatrix(ext_result, _state_cond_payments.get(), _num_state_payment_cols, row_num, col_num, next_col );
             next_col += _num_state_payment_cols;
         }

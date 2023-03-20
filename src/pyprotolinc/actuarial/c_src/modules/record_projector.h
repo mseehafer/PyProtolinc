@@ -328,7 +328,7 @@ void RecordProjector::run(int runner_no,
                           )
 {
 
-     cout << "RecordProjector::run() - with " << policy.to_string() << endl;
+    // cout << "RecordProjector::run() - with " << policy.to_string() << endl;
 
     // if (record_count % 1000 == 0)
     // {
@@ -475,15 +475,18 @@ void RecordProjector::run(int runner_no,
             int state = state_payments.first;
             StateConditionalRecordPayout &paym_state = state_payments.second;
 
-            cout << "before payments, time_index=" << time_index << ", state=" << state << std::endl;
+            // cout << "before payments, time_index=" << time_index << ", state=" << state << std::endl;
 
             // loop over the payments
             for (ConditionalPayout &payout: paym_state.payments) {
                 int payment_index = payout.payment_index;
                 double this_payment = payout.cond_payments[time_index - 1];
                 cout << "time_index=" << time_index << ", payment_index= " << payment_index << ", amount=" << this_payment << std::endl;
+                result.set_state_cond_payments(time_index, payment_index, this_payment);
+                //result.get_state_cond_payments_ptr()
             }
         }
+        //result.set_state_cond_payments(size_t time_index, size_t cf_type_index, double val) {
 
 
         ///////////////////////////////////////////////////////////////////////////////////////
