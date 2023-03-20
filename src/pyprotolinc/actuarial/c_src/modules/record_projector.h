@@ -25,6 +25,7 @@
 #include "time_axis.h"
 #include "run_result.h"
 #include "risk_factors.h"
+#include "payments.h"
 
 using namespace std;
 
@@ -312,14 +313,22 @@ public:
      * @param policy The record to project
      * @param result Container for the result
      * @param portfolio_date portfolio date
+     * @param record_payments the state conditional payments
      */
-    void run(int runner_no, int record_count, const CPolicy &policy, RunResult &result, const PeriodDate &portfolio_date);
+    void run(int runner_no, int record_count, const CPolicy &policy, RunResult &result, const PeriodDate &portfolio_date,
+             const shared_ptr<unordered_map<int, StateConditionalRecordPayout>> &record_payments);
 };
 
-void RecordProjector::run(int runner_no, int record_count, const CPolicy &policy, RunResult &result, const PeriodDate &portfolio_date)
+void RecordProjector::run(int runner_no,
+                          int record_count,
+                          const CPolicy &policy,
+                          RunResult &result,
+                          const PeriodDate &portfolio_date,
+                          const shared_ptr<unordered_map<int, StateConditionalRecordPayout>> &payments
+                          )
 {
 
-//    cout << "RecordProjector::run() - with " << policy.to_string() << endl;
+     cout << "RecordProjector::run() - with " << policy.to_string() << endl;
 
     // if (record_count % 1000 == 0)
     // {
@@ -385,6 +394,8 @@ void RecordProjector::run(int runner_no, int record_count, const CPolicy &policy
     bool yearly_assumptions_updated = false;    
     while (++time_index <= max_time_step_index)
     {
+
+        
         int days_previous_step = _period_lengths[time_index - 1];
         int days_current_step = _period_lengths[time_index];
 
@@ -453,10 +464,26 @@ void RecordProjector::run(int runner_no, int record_count, const CPolicy &policy
         //     cout << endl;
         // }
 
-
+        
         ///////////////////////////////////////////////////////////////////////////////////////
         // Step 2: Payments at begin of period
         ///////////////////////////////////////////////////////////////////////////////////////
+        // cout << "before payments, time_index=" << time_index << std::endl;
+        // cout << payments->size() << std::endl;
+
+        for (auto &state_payments : *payments) {
+            int state = state_payments.first;
+            StateConditionalRecordPayout &paym_state = state_payments.second;
+
+            cout << "before payments, time_index=" << time_index << ", state=" << state << std::endl;
+
+            // loop over the payments
+            for (ConditionalPayout &payout: paym_state.payments) {
+                int payment_index = payout.payment_index;
+                double this_payment = payout.cond_payments[time_index - 1];
+                cout << "time_index=" << time_index << ", payment_index= " << payment_index << ", amount=" << this_payment << std::endl;
+            }
+        }
 
 
         ///////////////////////////////////////////////////////////////////////////////////////
@@ -473,9 +500,8 @@ void RecordProjector::run(int runner_no, int record_count, const CPolicy &policy
         ///////////////////////////////////////////////////////////////////////////////////////
 
 
-
+        // closing the loop
         first_iteration = false;
-
         if (age_month_completed >= _run_config.get_max_age() * 12)
         {
             early_stop = true;

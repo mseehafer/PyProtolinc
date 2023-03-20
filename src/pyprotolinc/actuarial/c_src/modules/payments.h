@@ -16,6 +16,7 @@
 #include <memory>
 #include <iostream>
 #include <chrono>
+#include <set>
 
 using namespace std;
 
@@ -30,6 +31,13 @@ struct ConditionalPayout
     // ConditionalPayout(ConditionalPayout &&o): payment_index(o.payment_index), cond_payments(std::move(o.cond_payments)) {}
 
     // ConditionalPayout() {}
+    string to_string() {
+        return "<ConditionalPayout(payment_index=" + std::to_string(payment_index) 
+        + ", cond_payments=[" + std::to_string(cond_payments[0]) + ", " + std::to_string(cond_payments[0]) + "...]"
+        + ">";
+        
+    }
+
 };
 
 struct StateConditionalRecordPayout
@@ -40,6 +48,11 @@ struct StateConditionalRecordPayout
     StateConditionalRecordPayout(int si): state_index(si) {}
 
     StateConditionalRecordPayout(StateConditionalRecordPayout &&o): state_index(o.state_index), payments(std::move(o.payments)) {}
+
+    string to_string() {
+         return "<StateConditionalRecordPayout(state_index=" + std::to_string(state_index);
+
+    }
 };
 
 // struct TransitionConditionalRecordPayout
@@ -61,32 +74,83 @@ private:
     // a StateConditionalRecordPayout structure
     vector<shared_ptr<unordered_map<int, StateConditionalRecordPayout>>> state_payouts;
 
+    // unique_ptr<double[]> payments_test;
+    int max_payment_type_index_used = -1;
+    std::set<int> payment_types_used;
+    size_t _size;
 
 public:
-    AggregatePayments(size_t reserve_size) {
-        state_payouts.reserve(reserve_size);
+    AggregatePayments(size_t size): _size(size) {
+        state_payouts.reserve(size);
+
+        // initialize
+        for(int j = 0; j < size; j++) {
+            state_payouts.push_back(make_shared<unordered_map<int, StateConditionalRecordPayout>>());
+        }
     }
 
+    AggregatePayments(size_t size, const std::set<int> &_payment_types_used): _size(size),
+                                                                              payment_types_used(_payment_types_used) {
+        state_payouts.reserve(size);
+
+        auto iter =  _payment_types_used.begin();
+        while (iter !=  _payment_types_used.end()) {
+            if(*iter > max_payment_type_index_used) {
+                max_payment_type_index_used = *iter;
+            }
+            ++iter;
+        }
+
+        // initialize
+        for(int j = 0; j < size; j++) {
+            state_payouts.push_back(make_shared<unordered_map<int, StateConditionalRecordPayout>>());
+        }
+    }
+
+    const std::set<int> &get_payment_types_used() const {
+        return payment_types_used;
+    }
+
+    int get_max_payment_index_used() const {
+        return max_payment_type_index_used;
+    }
+
+    /// @brief  Inject a payment matrix from python
+    /// @param state_index 
+    /// @param payment_type_index 
+    /// @param payment_matrix 
+    /// @param num_policies 
+    /// @param num_timesteps 
     void add_cond_state_payment(int state_index, int payment_type_index, double *payment_matrix, const int num_policies, const int num_timesteps)
     {
 
-        // check if this is the first payment added
-        if (state_payouts.size() == 0)
-        {
-
-            // initialize
-            for(int j = 0; j < num_policies; j++) {
-                state_payouts.push_back(make_shared<unordered_map<int, StateConditionalRecordPayout>>());
-            }
-
-        } else if (state_payouts.size() != num_policies) 
-        {
+         cout << "Adding payment with payment_index=" << payment_type_index << std::endl;
+         if (state_payouts.size() != num_policies) 
+         {
             throw domain_error("Incompatible Payout sizes.");
-    
+         }
+
+        // check if payment type is already used
+        if (payment_types_used.count(payment_type_index) > 0) {
+            throw domain_error("Payment type index used multiple times.");
+        } else {
+            payment_types_used.insert(payment_type_index);
+            if (max_payment_type_index_used < payment_type_index) {
+                max_payment_type_index_used = payment_type_index;
+            }
         }
 
-        std::chrono::duration<double> duration_payment_copy;
 
+        // // do a single copy operation
+        // std::chrono::duration<double> duration_payment_copy_at_once;
+        // const auto time_before_copy_at_once = std::chrono::system_clock::now();
+        // payments_test = unique_ptr<double[]>(new double[num_policies * num_timesteps], std::default_delete<double[]>());
+        // memcpy(payments_test.get(), &payment_matrix[0], num_policies * num_timesteps * sizeof(double));
+        // duration_payment_copy_at_once += std::chrono::system_clock::now() - time_before_copy_at_once;
+        // std::cout << "Copy payments at once took " << duration_payment_copy_at_once.count()<< "s" << std::endl;
+
+
+        std::chrono::duration<double> duration_payment_copy;
         // iterate over the policies
         int row_count = 0;
         for (auto p_map: state_payouts) {
@@ -117,10 +181,28 @@ public:
 
             row_count++;
         }
-
         
         std::cout << "Copy payments in loop took " << duration_payment_copy.count() << "s" << std::endl;
+        
+    }
 
+    /// use internally in C++ when splitting the payments into groups (for the parallelization)
+    void add_single_record_payments(shared_ptr<unordered_map<int, StateConditionalRecordPayout>> single_record_payments, size_t ind) {
+
+        // auto iter = single_record_payments -> begin();
+        // while (iter != single_record_payments -> end()) {
+        //     StateConditionalRecordPayout & scp = (*iter).second;
+        //     for (auto p: scp.payments) {
+        //         max_payment_type_index_used = max_payment_type_index_used >= p.payment_index ? max_payment_type_index_used : p.payment_index;
+        //         payment_types_used.insert(p.payment_index);
+        //     }
+        //     ++iter;
+        // }
+        state_payouts[ind] = single_record_payments;
+    }
+
+    shared_ptr<unordered_map<int, StateConditionalRecordPayout>> get_single_record_payments(size_t index) const {
+        return state_payouts[index];
     }
 
 };

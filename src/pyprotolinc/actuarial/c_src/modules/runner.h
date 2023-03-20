@@ -53,6 +53,8 @@ private:
     ///< the result of the single record
     RunResult _record_result;
 
+    const int _num_state_payment_cols;
+
 public:
     /**
      * @brief Construct a new Runner object
@@ -63,20 +65,21 @@ public:
      * @param ta Time axis to be used for the simulation.
      */
     Runner(int runner_no, const shared_ptr<CPolicyPortfolio> ptr_portfolio,
-           const CRunConfig &run_config, const shared_ptr<TimeAxis> ta) : _runner_no(runner_no),
+           const CRunConfig &run_config, const shared_ptr<TimeAxis> ta, int num_state_payment_cols) : _runner_no(runner_no),
                                                                           _ptr_portfolio(ptr_portfolio),
                                                                           _run_config(run_config),
                                                                           _ta(ta),
                                                                           _record_projector(RecordProjector(run_config, *_ta)),
-                                                                          _record_result(run_config.get_dimension(), _ta)
+                                                                          _record_result(run_config.get_dimension(), _ta, num_state_payment_cols),
+                                                                          _num_state_payment_cols(num_state_payment_cols)
     {
     }
 
     /// Starts the main loop over the policies in the portfolio and combines the results.
-    void run(RunResult &run_result);
+    void run(RunResult &run_result, const AggregatePayments &payments);
 };
 
-void Runner::run(RunResult &run_result)
+void Runner::run(RunResult &run_result, const AggregatePayments &payments)
 {
     // cout << "Runner::run(): RUNNER " << _runner_no << " run() - "
     //      << "Portfolio size is " << _ptr_portfolio->size() << ". " << endl;
@@ -86,9 +89,11 @@ void Runner::run(RunResult &run_result)
     int record_count = 0;
     for (auto record_ptr : _ptr_portfolio->get_policies())
     {
+        shared_ptr<unordered_map<int, StateConditionalRecordPayout>> &record_payments = payments.get_single_record_payments(record_count);
+
         record_count++;
         _record_result.reset();
-        _record_projector.run(_runner_no, record_count, *record_ptr, _record_result, portfolio_date);
+        _record_projector.run(_runner_no, record_count, *record_ptr, _record_result, portfolio_date, record_payments);
         run_result.add_result(_record_result);
     }
 }
@@ -107,6 +112,8 @@ protected:
 
     const shared_ptr<TimeAxis> _ta;
 
+    const int _num_state_payment_cols;
+
 public:
     /**
      * @brief Construct a new Meta Runner object
@@ -117,9 +124,11 @@ public:
      */
     MetaRunner(const CRunConfig &run_config,
                const shared_ptr<CPolicyPortfolio> ptr_portfolio,
-               const shared_ptr<TimeAxis> ta) : _run_config(run_config),
-                                                _ptr_portfolio(ptr_portfolio),
-                                                _ta(ta)
+               const shared_ptr<TimeAxis> ta,
+               const int num_state_payment_cols) : _run_config(run_config),
+                                                   _ptr_portfolio(ptr_portfolio),
+                                                   _ta(ta),
+                                                   _num_state_payment_cols(num_state_payment_cols)
     {
         if (!_ptr_portfolio)
         {
@@ -133,7 +142,7 @@ public:
 
     ///> Calculate the result and store it in the reference passed in.
     ///>
-    void run(RunResult &run_result) const;  // check if const?
+    void run(RunResult &run_result, const AggregatePayments &agg_payments) const;  // check if const?
 };
 
 int MetaRunner::get_num_groups() const
@@ -151,7 +160,7 @@ int MetaRunner::get_num_groups() const
 }
 
 
-void MetaRunner::run(RunResult &run_result) const
+void MetaRunner::run(RunResult &run_result, const AggregatePayments &agg_payments) const
 {
     cout << "MetaRunner::run(): STARTING RUN" << endl;
     const CAssumptionSet &be_ass = _run_config.get_be_assumptions();
@@ -174,31 +183,45 @@ void MetaRunner::run(RunResult &run_result) const
     vector<shared_ptr<CPolicyPortfolio>> subportfolios(NUM_GROUPS);
     vector<Runner> runners = vector<Runner>();
     vector<RunResult> results = vector<RunResult>();
+    vector<AggregatePayments> sub_ptf_payments = vector<AggregatePayments>();
+
+    // when splitting the portfolios the size may vary by one depedning on the size and
+    // the number of groups
+    int base_size = _ptr_portfolio->size() / NUM_GROUPS;
+    int num_of_groups_with_one_record_more = _ptr_portfolio->size() - NUM_GROUPS * base_size;
     for (int j = 0; j < NUM_GROUPS; j++)
     {
         //subportfolios[j] = make_shared<CPolicyPortfolio>(_ptr_portfolio->_ptf_year, _ptr_portfolio->_ptf_month, _ptr_portfolio->_ptf_day);
         subportfolios[j] = make_shared<CPolicyPortfolio>(_ptr_portfolio->get_portfolio_date());
-        runners.emplace_back(Runner(j + 1, subportfolios[j], _run_config, _ta));
-        results.emplace_back(RunResult(_run_config.get_dimension(), _ta));
+        runners.emplace_back(Runner(j + 1, subportfolios[j], _run_config, _ta, _num_state_payment_cols));
+        results.emplace_back(RunResult(_run_config.get_dimension(), _ta, _num_state_payment_cols));
+        
+        sub_ptf_payments.emplace_back(AggregatePayments(base_size +  (j < num_of_groups_with_one_record_more ? 1 : 0), agg_payments.get_payment_types_used()));
     }
 
     // split portfolio into N groups
     int subportfolio_index = 0;
+    size_t overall_index = 0;
     const vector<shared_ptr<CPolicy>> &policies = _ptr_portfolio->get_policies();
+    size_t index_in_group = 0;
     for (shared_ptr<CPolicy> record : policies)
     {
         subportfolios[subportfolio_index]->add(record);
+        AggregatePayments &this_sub_ptf_payments = sub_ptf_payments[subportfolio_index];
+        this_sub_ptf_payments.add_single_record_payments(agg_payments.get_single_record_payments(overall_index), index_in_group);
         if (++subportfolio_index >= NUM_GROUPS)
         {
             subportfolio_index = 0;
+            index_in_group++;
         }
+        overall_index++;
     }
 
     // value subportfolios
 #pragma omp parallel for
     for (int j = 0; j < NUM_GROUPS; j++)
     {
-        runners[j].run(results[j]);
+        runners[j].run(results[j], sub_ptf_payments[j]);
     }
 
     // combine the results of the subportfolios to combined result
@@ -221,7 +244,7 @@ private:
     const CRunConfig &_run_config;
     const shared_ptr<CPolicyPortfolio> _ptr_portfolio;
     const shared_ptr<TimeAxis> _p_time_axis;
-    MetaRunner _runner;
+    // MetaRunner _runner;
     AggregatePayments agg_payments;
 
 public:
@@ -233,9 +256,9 @@ public:
                                             ptr_portfolio->get_portfolio_date().get_year(),
                                             ptr_portfolio->get_portfolio_date().get_month(),
                                             ptr_portfolio->get_portfolio_date().get_day())),
-         _runner(_run_config, _ptr_portfolio, _p_time_axis),
-         agg_payments(ptr_portfolio->size())         
-         {}
+        //_runner(_run_config, _ptr_portfolio, _p_time_axis),
+        agg_payments(ptr_portfolio->size())         
+        {}
             
     shared_ptr<TimeAxis> get_time_axis() const { return _p_time_axis;}
 
@@ -248,8 +271,12 @@ public:
     /// @return Pointer to result
     unique_ptr<RunResult> run() const
     {
-        unique_ptr<RunResult> run_res_ptr = unique_ptr<RunResult>(new RunResult(_run_config.get_dimension(), _p_time_axis));
-        _runner.run(*run_res_ptr);
+        int num_state_payment_cols = 1 + agg_payments.get_max_payment_index_used();
+        cout << "num_state_payment_cols=" << num_state_payment_cols << std::endl;
+
+        MetaRunner _runner(_run_config, _ptr_portfolio, _p_time_axis, num_state_payment_cols);
+        unique_ptr<RunResult> run_res_ptr = unique_ptr<RunResult>(new RunResult(_run_config.get_dimension(), _p_time_axis, num_state_payment_cols));
+        _runner.run(*run_res_ptr, agg_payments);
         return run_res_ptr;        
     }
 };

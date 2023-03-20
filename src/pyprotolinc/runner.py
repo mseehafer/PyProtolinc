@@ -82,8 +82,6 @@ class CProjector:
         for state, payment_list in self.cond_bom_payment_dict.items():
             for payment_type_index, payment_matrix in payment_list:
                 self.runner.add_cond_state_payment(state, payment_type_index, payment_matrix)
-                pass
-                # self.runner.add_cond_state_payment(state, payment_type_index, payment_matrix)
 
         # print("EOM-payment", self.cond_eom_payment_dict)
         # print("BOM-payment", self.cond_bom_payment_dict)
@@ -92,6 +90,7 @@ class CProjector:
 
         # self._output_columns, self._result = actuarial.py_run_c_valuation(acs, self.c_portfolio, self.time_step, self.max_age)
         self._output_columns, self._result = self.runner.run()
+        pass
 
     def get_results_dict(self):
 

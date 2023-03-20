@@ -96,11 +96,14 @@ private:
     unique_ptr<double[]> _be_state_vols = nullptr;
     unique_ptr<double[]> _be_vol_movements = nullptr;
 
+    /// state conditional payments
+    unique_ptr<double[]> _state_cond_payments = nullptr;
 
     // private methods
     void copy_time_axis(double *ext_result, int rows_num, int col_num, int start_col) const;
     //void copy_state_probs(double *ext_result, double *res_cmp, int rows_num, int col_num, int start_col);
 
+    int _num_state_payment_cols;
 
 public:
     /**
@@ -109,7 +112,8 @@ public:
      * @param num_states Number of states in states model
      * @param p_time_axis Pointer to the time axis object
      */
-    RunResult(int num_states, shared_ptr<TimeAxis> p_time_axis) : _num_states(num_states), _num_timesteps(p_time_axis->get_length()), _ta(p_time_axis) {
+    RunResult(int num_states, shared_ptr<TimeAxis> p_time_axis, int num_state_payment_cols) : _num_states(num_states), _num_timesteps(p_time_axis->get_length()), _ta(p_time_axis),
+                                                                                              _num_state_payment_cols(num_state_payment_cols) {
 
        // allocate memory for the be probability states
        _be_state_probs = unique_ptr<double[]>(new double[_num_timesteps * _num_states], std::default_delete<double[]>());
@@ -117,6 +121,10 @@ public:
        
        _be_state_vols = unique_ptr<double[]>(new double[_num_timesteps * _num_states], std::default_delete<double[]>());
        _be_vol_movements = unique_ptr<double[]>(new double[_num_timesteps * _num_states * _num_states], std::default_delete<double[]>());
+
+       if (_num_state_payment_cols > 0) {
+        _state_cond_payments = unique_ptr<double[]>(new double[_num_timesteps * _num_state_payment_cols], std::default_delete<double[]>());
+       }
        
        // initialize with zeros
        this->reset();
@@ -149,6 +157,10 @@ public:
             for(int to=0; to < _num_states; to++) {
                 hdrs.push_back("VOL_MVM_" + std::to_string(from) + "_" + std::to_string(to));
             }
+        }
+
+        for(int from=0; from < _num_state_payment_cols; from++) {
+            hdrs.push_back("STATE_PAYMENT_TYPE_" + std::to_string(from));
         }
 
         return hdrs;
@@ -202,6 +214,10 @@ public:
             _be_prob_movements[i] = 0;
             _be_vol_movements[i] = 0;
         }
+
+        for (auto i = 0; i <  _num_state_payment_cols * _num_timesteps; i++) {
+            _state_cond_payments[i] = 0.0;
+        }        
     }
     void RunResult::add_result(const RunResult &other_res) {
 
@@ -215,7 +231,12 @@ public:
         for (auto i = 0; i <  _num_states * _num_states * _num_timesteps; i++) {
             _be_prob_movements[i] += other_res._be_prob_movements[i];
             _be_vol_movements[i] += other_res._be_vol_movements[i];
-        }        
+        }
+
+        for (auto i = 0; i <  _num_state_payment_cols * _num_timesteps; i++) {
+            _state_cond_payments[i] += other_res._state_cond_payments[i];
+        }    
+
     }
 
     void RunResult::copy_results(double *ext_result, int row_num, int col_num) const
@@ -240,6 +261,15 @@ public:
         insert_2dmatrix_as_submatrix(ext_result, _be_vol_movements.get(), _num_states * _num_states, row_num, col_num, next_col );
         // copy_state_probs_mvms(ext_result, _be_vol_movements.get(), _num_states, row_num, col_num, next_col );
         next_col += _num_states * _num_states;
+
+        cout << "before copy: _num_state_payment_cols=" << _num_state_payment_cols;
+        if (_num_state_payment_cols > 0) {
+            insert_2dmatrix_as_submatrix(ext_result, _state_cond_payments.get(), _num_state_payment_cols, row_num, col_num, next_col );
+            next_col += _num_state_payment_cols;
+        }
+
+
+
     }
 
 void RunResult::copy_time_axis(double *ext_result, int row_num, int col_num, int start_col) const
@@ -255,7 +285,7 @@ void RunResult::copy_time_axis(double *ext_result, int row_num, int col_num, int
         const PeriodDate &p_end = _ta->end_at(t);
         const PeriodDate &p_start = _ta->start_at(t);
 
-        // perdiod start
+        // period start
         ext_result[t * col_num + start_col + 0] = p_start.get_year();
         ext_result[t * col_num + start_col + 1] = p_start.get_month();
         ext_result[t * col_num + start_col + 2] = p_start.get_day();
