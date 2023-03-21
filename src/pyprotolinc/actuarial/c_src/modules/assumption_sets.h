@@ -80,17 +80,26 @@ public:
     // and store the results in the provider passed in.
     void slice_into(const vector<int> &indices, CAssumptionSet &other) const {
         if (other.n != this->n) {
+            cout << "CAssumptionSet::slice_into() dimension error" << endl;
             throw domain_error("Cloning asssumption set requires same dimensions");
         }
         for(unsigned r = 0; r < n; r++) {
             for (unsigned c = 0; c < n; c++) {
 
-                // cout << "CAssumptionSet::slice_into() r=" << r << ", c=" << c << endl;
+                //cout << "CAssumptionSet::slice_into() r=" << r << ", c=" << c << ", n=" << this->n << endl;
                 shared_ptr<CBaseRateProvider> this_rc_comp = providers[r][c];
                 shared_ptr<CBaseRateProvider> other_rc_comp = other.providers[r][c];
 
                 if (this_rc_comp) {
-                    this_rc_comp->slice_into(indices, other_rc_comp.get());
+
+                    // need to reduce the indices to the risk drivers used?
+                    const vector<CRiskFactors> &rf_vec = this_rc_comp -> get_risk_factors();
+                    vector<int> indices_for_provider;
+                    for (CRiskFactors rf: rf_vec) {
+                        indices_for_provider.push_back(indices[(int)rf]);
+                    }
+                    //this_rc_comp->slice_into(indices, other_rc_comp.get());
+                    this_rc_comp->slice_into(indices_for_provider, other_rc_comp.get());
                 } else {
                     other.providers[r][c] = nullptr;
                 }

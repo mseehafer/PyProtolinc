@@ -6,7 +6,7 @@ io:
 # kernel engine is "C" or "PY"
 kernel:
   engine: "PY"  # "PY"   # "C"
-  max_age: 120
+  max_age: 119
 
 model:
   # Type of Model to be run, supported types are "MultiStateDisability", "AnnuityRunoff" and "GenericMultiState"
@@ -16,7 +16,7 @@ model:
   # generic settings
   years_to_simulate: 119
   steps_per_month: 1
-  use_multicore: true    # false
+  use_multicore: false  # true    # false
 
 
 run_type_specs:
@@ -26,9 +26,9 @@ run_type_specs:
     state_model: "MultiStateDisabilityStates"
     assumptions_spec:  "di_assumptions.yml"
     outfile: "results/ncf_out_generic.csv"
-    # portfolio_path: "portfolio/portfolio_small.xlsx"
-    # portfolio_path: "portfolio/portfolio_med.xlsx"
-    portfolio_path: "portfolio/portfolio_big.xlsx"
+    portfolio_path: "portfolio/portfolio_small.xlsx"
+    portfolio_path: "portfolio/portfolio_med.xlsx"
+    # portfolio_path: "portfolio/portfolio_big.xlsx"
     portfolio_chunk_size: 2048  # 16384  # 2048  # 16384  # 2048  # 1024
 
   # MultiStateDisability:

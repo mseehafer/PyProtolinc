@@ -86,6 +86,10 @@ public:
         _state_vols[0 * _num_states +  start_state] = vol;
     }
 
+    double *get_state_probs(int time_index) {
+        return _state_probs + time_index * _num_states;
+    }
+
     /**
      * @brief Calculate the probabilities of the next state.
      * 
@@ -172,16 +176,16 @@ public:
     {
         double *states = _state_probs + time_index * _num_states;
 
-        cout << "STATES (t=" << time_index << ") = [";
-        for (int i = 0; i < _num_states; i++)
-        {
-            if (i > 0) {
-                cout << ", ";
-            }
-            cout << states[i];
-        }
+        // cout << "STATES (t=" << time_index << ") = [";
+        // for (int i = 0; i < _num_states; i++)
+        // {
+        //     if (i > 0) {
+        //         cout << ", ";
+        //     }
+        //     cout << states[i];
+        // }
 
-        cout << "]" << endl;
+        // cout << "]" << endl;
     }
 
 
@@ -264,13 +268,14 @@ private:
 
     void slice_assumptions(const CPolicy &policy)
     {
-//        cout << "RecordProjector::slice_assumptions()" << endl;
+        // cout << "RecordProjector::slice_assumptions(), gender=" << policy.get_gender() << ", smoker_status=" << policy.get_smoker_status() << endl;
         vector<int> slice_indexes(NUMBER_OF_RISK_FACTORS, -1);
 
         // specialize for Gender and SmokerStatus
         slice_indexes[(int)CRiskFactors::Gender] = policy.get_gender();
         slice_indexes[(int)CRiskFactors::SmokerStatus] = policy.get_smoker_status();
 
+        // cout << "RecordProjector::slice_assumptions(), directly before call to assumption_set.slice_into()" << endl;
         _run_config.get_be_assumptions().slice_into(slice_indexes, _record_be_assumptions);
         for(int n=0; n < _run_config.get_other_assumptions().size(); n++) {
              _run_config.get_other_assumptions()[n]->slice_into(slice_indexes, *_record_other_assumptions[n]);
@@ -319,6 +324,7 @@ public:
              const shared_ptr<unordered_map<int, StateConditionalRecordPayout>> &record_payments);
 };
 
+
 void RecordProjector::run(int runner_no,
                           int record_count,
                           const CPolicy &policy,
@@ -327,8 +333,9 @@ void RecordProjector::run(int runner_no,
                           const shared_ptr<unordered_map<int, StateConditionalRecordPayout>> &payments
                           )
 {
-
-    // cout << "RecordProjector::run() - with " << policy.to_string() << endl;
+    double debug_on = false;  // false;  // true
+    
+    if (debug_on) cout << "RecordProjector::run() - with " << policy.to_string() << endl;
 
     // if (record_count % 1000 == 0)
     // {
@@ -337,6 +344,7 @@ void RecordProjector::run(int runner_no,
 
     // clean up before
     this->clear();
+    if (debug_on) cout << "RecordProjector::run() - after clear" << endl;
 
     // the current volume of this policy
     double current_vol = policy.get_sum_insured();
@@ -352,13 +360,19 @@ void RecordProjector::run(int runner_no,
                                   result.get_be_vol_mvms_ptr(),
                                   policy.get_initial_state(),
                                   current_vol);    
+    if (debug_on) cout << "RecordProjector::run() - after init state matrix." << endl;
+
 
     // specialize the assumption providers for the current record
     this->slice_assumptions(policy);
+    if (debug_on) cout << "RecordProjector::run() - after slice assumptions!" << endl;
+
 
     // determine which risk factors are relevant
     vector<bool> relevant_risk_factors(NUMBER_OF_RISK_FACTORS, false);
     set_relevant_risk_factors(relevant_risk_factors);
+
+    if (debug_on) cout << "RecordProjector::run() - after setting relevant risk factors!" << endl;
     // control output
 //    print_vec<bool>(relevant_risk_factors, "relevant_risk_factors");
 
@@ -384,7 +398,7 @@ void RecordProjector::run(int runner_no,
     // assert portfolio_date == _end_dates[0] == _start_dates[0]
 //    cout << "Projection start at " << _end_dates[0] <<endl;
     int age_month_completed = get_age_at_date(policy.get_dob(), portfolio_date);
-//    cout << "Age of policyholder: " << age_month_completed << "  (" << age_month_completed / 12.0 << ")" << endl;
+    if (debug_on) cout << "Age of policyholder: " << age_month_completed << "  (" << age_month_completed / 12.0 << ")" << endl;
 
 
 
@@ -395,11 +409,10 @@ void RecordProjector::run(int runner_no,
     while (++time_index <= max_time_step_index)
     {
 
-        
         int days_previous_step = _period_lengths[time_index - 1];
         int days_current_step = _period_lengths[time_index];
 
-//        cout << "Simulation step until " << _end_dates[time_index] << ", duration_prev=" << days_previous_step << ", duration_curr=" << days_current_step << endl;
+        if (debug_on) cout << "RecordProjector::run() - main loop, Simulation step until " << _end_dates[time_index] << ", duration_prev=" << days_previous_step << ", duration_curr=" << days_current_step << endl;
 
         ///////////////////////////////////////////////////////////////////////////////////////
         // Step 1: identify the assumptions to be used for this step
@@ -471,8 +484,9 @@ void RecordProjector::run(int runner_no,
         // cout << "before payments, time_index=" << time_index << std::endl;
         // cout << payments->size() << std::endl;
 
+        double *current_states_probs = _be_states -> get_state_probs(time_index - 1);
         for (auto &state_payments : *payments) {
-            int state = state_payments.first;
+            int state_ind = state_payments.first;
             StateConditionalRecordPayout &paym_state = state_payments.second;
 
             // cout << "before payments, time_index=" << time_index << ", state=" << state << std::endl;
@@ -480,8 +494,8 @@ void RecordProjector::run(int runner_no,
             // loop over the payments
             for (ConditionalPayout &payout: paym_state.payments) {
                 int payment_index = payout.payment_index;
-                double this_payment = payout.cond_payments[time_index - 1];
-                cout << "time_index=" << time_index << ", payment_index= " << payment_index << ", amount=" << this_payment << std::endl;
+                double this_payment = payout.cond_payments[time_index - 1] * current_states_probs[state_ind];
+                //cout << "time_index=" << time_index << ", payment_index= " << payment_index << ", amount=" << this_payment << std::endl;
                 result.set_state_cond_payments(time_index, payment_index, this_payment);
                 //result.get_state_cond_payments_ptr()
             }

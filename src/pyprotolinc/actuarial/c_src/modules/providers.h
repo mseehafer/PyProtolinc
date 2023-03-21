@@ -189,7 +189,8 @@ public:
             int ind_temp = indices[k] - offsets[k];
             if (ind_temp < 0 || ind_temp >= shape_vec[k])
             {
-                throw out_of_range("Indices out of Range for dimension #" + std::to_string(k) + ", max index allowed is " + std::to_string(shape_vec[k] - 1) + ".");
+                throw out_of_range("Indices out of Range for dimension #" + std::to_string(k) + ", max index allowed is "
+                                   + std::to_string(shape_vec[k] - 1) + ", tried with " +  std::to_string(ind_temp) + ".");
             }
             index += strides[k] * ind_temp;
         }
@@ -504,19 +505,27 @@ shared_ptr<CStandardRateProvider> CStandardRateProvider::slice(const vector<int>
 void CStandardRateProvider::slice_into(const vector<int> &indices, CBaseRateProvider *other_in) const
 {
 
+    //cout << "CStandardRateProvider::slice_into (1)" << endl;    
+    
     // CStandardRateProvider &other = *dynamic_pointer_cast<CStandardRateProvider>(other_in);
 
     CStandardRateProvider *other = dynamic_cast<CStandardRateProvider *>(other_in);
 
+    //cout << "CStandardRateProvider::slice_into (2)" << endl;    
+
     if (indices.size() != dimensions)
     {
+        cout << "Dimension of indices does not match those of the data: " <<  "indices.size()=" << indices.size() << ", dimensions=" << dimensions << endl;
         throw domain_error("Dimension of indices does not match those of the data"); // TODO: testcase
     }
 
     if (!other->has_values)
     {
+        cout << "Memory needs to be allocated when slicing into" << endl;
         throw domain_error("Memory needs to be allocated when slicing into");
     }
+
+    // cout << "CStandardRateProvider::slice_into (3)" << endl;    
 
     other->risk_factors.resize(0);
     other->shape_vec.resize(0);

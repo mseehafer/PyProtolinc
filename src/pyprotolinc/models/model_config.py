@@ -7,7 +7,6 @@ from pyprotolinc.models import register_state_model
 from pyprotolinc.models.model_annuity_runoff import AnnuityRunoffModel
 from pyprotolinc.models.model_annuity_runoff import AnnuityRunoffStates
 from pyprotolinc.models.model_mortality import MortalityStates
-
 from pyprotolinc.models.model_multistate_generic import GenericMultiStateModel
 
 
@@ -34,5 +33,4 @@ register_state_model(AnnuityRunoffStates)
 register_model(AnnuityRunoffModel)
 
 register_state_model(MortalityStates)
-
 register_model(GenericMultiStateModel)

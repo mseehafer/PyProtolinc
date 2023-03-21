@@ -49,6 +49,7 @@ class CProjector:
         self.max_age = run_config.max_age
 
         self.model = model
+        self.state_dimension: int = len(self.model.known_states)
         self.product = product
 
         # placeholder for the results
@@ -60,12 +61,7 @@ class CProjector:
         self.num_chunks = num_chunks
 
         # construct assumption set
-        # TODO: do that from model parameter
-        # provider05 = actuarial.ConstantRateProvider(0.5)
-        provider02 = actuarial.ConstantRateProvider(0.0015)
-        acs = actuarial.AssumptionSet(2)
-        acs.add_provider_const(0, 1, provider02)
-        # acs.add_provider_const(1, 0, provider05)
+        acs: actuarial.AssumptionSet = self.build_assumption_set()
 
         self.runner = actuarial.RunnerInterfaceWrapper(acs, self.c_portfolio, self.time_step, self.max_age, run_config.use_multicore, run_config.years_to_simulate)
         self.time_axis = TimeAxis2(*self.runner.get_time_axis())
@@ -86,6 +82,31 @@ class CProjector:
         # print("EOM-payment", self.cond_eom_payment_dict)
         # print("BOM-payment", self.cond_bom_payment_dict)
 
+    def build_assumption_set(self):
+        """ Construct the actuarial assumption set for the C-Kernel. """
+
+        non_trivial_state_transitions_be = self.model.get_non_trivial_state_transitions(AssumptionType.BE)
+
+        acs = actuarial.AssumptionSet(self.state_dimension)
+
+        # get BE assumptions
+        for (from_state, to_state) in non_trivial_state_transitions_be:
+            provider = self.model.rates_provider_matrix_be[from_state][to_state]
+
+            if isinstance(provider, actuarial.ConstantRateProvider):
+                acs.add_provider_const(from_state, to_state, provider)
+            elif isinstance(provider, actuarial.StandardRateProvider):
+                acs.add_provider_std(from_state, to_state, provider)
+
+        # # DUMMYS:
+        # # provider05 = actuarial.ConstantRateProvider(0.5)
+        # provider02 = actuarial.ConstantRateProvider(0.0015)
+        # acs = actuarial.AssumptionSet(2)
+        # acs.add_provider_const(0, 1, provider02)
+        # # acs.add_provider_const(1, 0, provider05)
+
+        return acs
+
     def run(self):
 
         # self._output_columns, self._result = actuarial.py_run_c_valuation(acs, self.c_portfolio, self.time_step, self.max_age)
@@ -96,7 +117,7 @@ class CProjector:
 
         # non-cash flows
         c_output_map = {col_name: index for index, col_name in enumerate(self._output_columns) if not col_name.startswith("STATE_PAYMENT_TYPE_")}
-        
+
         num_rows = self._result.shape[0]
 
         data = {
@@ -105,8 +126,8 @@ class CProjector:
             "MONTH": self._result[:, c_output_map["PERIOD_END_M"]]
         }
 
-        cf_map = {CfNames(int(col_name[19:])): index 
-                  for index, col_name in enumerate(self._output_columns) 
+        cf_map = {CfNames(int(col_name[19:])): index
+                  for index, col_name in enumerate(self._output_columns)
                   if col_name.startswith("STATE_PAYMENT_TYPE_")}
 
         output_model_map = self.model.states_model.to_std_outputs()

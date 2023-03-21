@@ -13,7 +13,6 @@ model:
   years_to_simulate: 119
   steps_per_month: 1
   use_multicore: true
-
 run_type_specs:
 
   GenericMultiState:

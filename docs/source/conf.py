@@ -54,7 +54,7 @@ shutil.copytree(os.path.join(project_root, "examples"),
 # -- Project information -----------------------------------------------------
 
 project = 'PyProtolinc'
-copyright = '2022, Martin Seehafer'
+copyright = '2022-2023, Martin Seehafer'
 author = 'Martin Seehafer'
 
 # The full version, including alpha/beta/rc tags

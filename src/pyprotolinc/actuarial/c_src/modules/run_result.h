@@ -196,8 +196,7 @@ public:
     /// @param cf_type_index 
     /// @param val 
     void set_state_cond_payments(size_t time_index, size_t cf_type_index, double val) {
-        _state_cond_payments[_num_timesteps * cf_type_index + time_index] = val;
-
+        _state_cond_payments[time_index * _num_state_payment_cols + cf_type_index] = val;
     }
 
     /// Reset the result, zeroises the allocated arrays
@@ -246,10 +245,10 @@ public:
             _be_vol_movements[i] += other_res._be_vol_movements[i];
         }
 
-        cout << "adding! " << other_res._state_cond_payments[0] << ", "
-                           << other_res._state_cond_payments[1] << ", "
-                           << other_res._state_cond_payments[_num_timesteps] << ", "
-                           << other_res._state_cond_payments[_num_timesteps + 1] << ", ";
+        // cout << "adding! " << other_res._state_cond_payments[0] << ", "
+        //                    << other_res._state_cond_payments[1] << ", "
+        //                    << other_res._state_cond_payments[_num_timesteps] << ", "
+        //                    << other_res._state_cond_payments[_num_timesteps + 1] << ", ";
         for (auto i = 0; i < _num_state_payment_cols * _num_timesteps; i++) {
             _state_cond_payments[i] += other_res._state_cond_payments[i];
         }    
