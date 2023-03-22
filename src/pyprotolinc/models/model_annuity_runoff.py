@@ -4,10 +4,11 @@ import numpy as np
 
 from pyprotolinc.models import Model, ModelState
 from pyprotolinc.results import ProbabilityVolumeResults
+from pyprotolinc.models.state_models import AbstractStateModel
 
 
 @unique
-class AnnuityRunoffStates(IntEnum):
+class AnnuityRunoffStates(AbstractStateModel):
     """ A state model consisting of two states:
         - DIS1 (=0) representing the annuity phase
         - DEATH (=1)
@@ -16,7 +17,7 @@ class AnnuityRunoffStates(IntEnum):
     DEATH = 1   # the death state
 
     @classmethod
-    def to_std_outputs(cls):
+    def to_std_outputs(cls) -> dict[ProbabilityVolumeResults, "AnnuityRunoffStates"]:
         return {
             # ProbabilityVolumeResults.VOL_ACTIVE: None,
             ProbabilityVolumeResults.VOL_DIS1: cls.DIS1,

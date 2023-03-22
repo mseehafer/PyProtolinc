@@ -162,12 +162,12 @@ int MetaRunner::get_num_groups() const
 
 void MetaRunner::run(RunResult &run_result, const AggregatePayments &agg_payments) const
 {
-    cout << "MetaRunner::run(): STARTING RUN" << endl;
+    cout << "MetaRunner::run(): STARTING RUN, portfolio.size()=" << _ptr_portfolio->size() << endl;
     const CAssumptionSet &be_ass = _run_config.get_be_assumptions();
     unsigned dimension = be_ass.get_dimension();
 
-    cout << "MetaRunner::run(): dimension=" << be_ass.get_dimension() << endl;
-    cout << "MetaRunner::run(): portfolio.size()=" << _ptr_portfolio->size() << endl;
+    //cout << "MetaRunner::run(): dimension=" << be_ass.get_dimension() << endl;
+    //cout << "MetaRunner::run(): portfolio.size()=" << _ptr_portfolio->size() << endl;
 
     // for (unsigned r = 0; r < dimension; r++)
     // {
@@ -179,7 +179,7 @@ void MetaRunner::run(RunResult &run_result, const AggregatePayments &agg_payment
 
     // create N runners, run_results and sub-portfolios
     const int NUM_GROUPS = get_num_groups();
-    cout << "MetaRunner::run(): NUM_GROUPS=" << NUM_GROUPS << endl;
+    // cout << "MetaRunner::run(): NUM_GROUPS=" << NUM_GROUPS << endl;
     vector<shared_ptr<CPolicyPortfolio>> subportfolios(NUM_GROUPS);
     vector<Runner> runners = vector<Runner>();
     vector<RunResult> results = vector<RunResult>();
@@ -272,7 +272,7 @@ public:
     unique_ptr<RunResult> run() const
     {
         int num_state_payment_cols = 1 + agg_payments.get_max_payment_index_used();
-        cout << "num_state_payment_cols=" << num_state_payment_cols << std::endl;
+        // cout << "num_state_payment_cols=" << num_state_payment_cols << std::endl;
 
         MetaRunner _runner(_run_config, _ptr_portfolio, _p_time_axis, num_state_payment_cols);
         unique_ptr<RunResult> run_res_ptr = unique_ptr<RunResult>(new RunResult(_run_config.get_dimension(), _p_time_axis, num_state_payment_cols));

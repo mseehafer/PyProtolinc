@@ -1,12 +1,20 @@
 
-from enum import IntEnum, unique
+from enum import unique
 import numpy as np
 from pyprotolinc.models import Model, ModelState
 from pyprotolinc.results import ProbabilityVolumeResults
+from pyprotolinc.models.state_models import AbstractStateModel
 
 
 @unique
-class MultiStateDisabilityStates(IntEnum):
+class MultiStateDisabilityStates(AbstractStateModel):
+    """ A state model for a disabiility product with two disabled states. 
+        - ACTIVE = 0
+        - DIS1 = 1
+        - DIS2 = 2
+        - DEATH = 3
+        - LAPSED = 4
+    """
     ACTIVE = 0
     DIS1 = 1
     DIS2 = 2
@@ -14,7 +22,7 @@ class MultiStateDisabilityStates(IntEnum):
     LAPSED = 4
 
     @classmethod
-    def to_std_outputs(cls):
+    def to_std_outputs(cls) -> dict[ProbabilityVolumeResults, "MultiStateDisabilityStates"]:
         return {
             ProbabilityVolumeResults.VOL_ACTIVE: cls.ACTIVE,
             ProbabilityVolumeResults.VOL_DIS1: cls.DIS1,

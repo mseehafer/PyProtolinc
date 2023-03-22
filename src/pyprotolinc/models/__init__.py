@@ -19,6 +19,11 @@ def register_state_model(cls):
         logger.debug("Registered state model %s", cls.__name__)
 
 
+def list_state_models() -> list[type]:
+    """ Returns a list of the currently known state models. """
+    return dict(_STATE_MODELS)
+
+
 class Model:
     """ The model class describes the static parts of a model. """
 

@@ -278,9 +278,9 @@ public:
         // copy_state_probs_mvms(ext_result, _be_vol_movements.get(), _num_states, row_num, col_num, next_col );
         next_col += _num_states * _num_states;
 
-        cout << "before copy: _num_state_payment_cols=" << _num_state_payment_cols << endl;
+        // cout << "before copy: _num_state_payment_cols=" << _num_state_payment_cols << endl;
         if (_num_state_payment_cols > 0) {
-            cout << _state_cond_payments[0] << ", " << _state_cond_payments[1] << endl;
+            // cout << _state_cond_payments[0] << ", " << _state_cond_payments[1] << endl;
             insert_2dmatrix_as_submatrix(ext_result, _state_cond_payments.get(), _num_state_payment_cols, row_num, col_num, next_col );
             next_col += _num_state_payment_cols;
         }

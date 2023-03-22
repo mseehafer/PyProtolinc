@@ -124,7 +124,7 @@ public:
     void add_cond_state_payment(int state_index, int payment_type_index, double *payment_matrix, const int num_policies, const int num_timesteps)
     {
 
-         cout << "Adding payment with payment_index=" << payment_type_index << std::endl;
+         // cout << "Adding payment with payment_index=" << payment_type_index << std::endl;
          if (state_payouts.size() != num_policies) 
          {
             throw domain_error("Incompatible Payout sizes.");
@@ -182,7 +182,7 @@ public:
             row_count++;
         }
         
-        std::cout << "Copy payments in loop took " << duration_payment_copy.count() << "s" << std::endl;
+        // std::cout << "Copy payments in loop took " << duration_payment_copy.count() << "s" << std::endl;
         
     }
 
