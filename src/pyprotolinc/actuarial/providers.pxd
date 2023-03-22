@@ -184,6 +184,15 @@ cdef class StandardRateProvider:
             assert len(an_index_vector) == _len, "Lookup indices for {} has unexpected length!".format(pyrf.name)
             indices.push_back(&an_index_vector[0])
 
+        # # print out the indices passed in
+        # indeces_as_list = []
+        # for rf_indices in indices:
+        #     new_list = []
+        #     for j in range(_len):
+        #         new_list.append(rf_indices[j])
+        #     indeces_as_list.append(new_list)
+        # print("indices", indeces_as_list)
+
         self.c_provider.get()[0].get_rates(&output_memview[0], _len, indices)
         return output
 

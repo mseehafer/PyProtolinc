@@ -302,6 +302,7 @@ class Projector:
         # get BE assumptions
         for (from_state, to_state) in self.non_trivial_state_transitions_be:
             provider = self.model.rates_provider_matrix_be[from_state][to_state]
+            # print(from_state, to_state, provider.get_offsets())
             sel_ass = provider.get_rates(len(ages),
                                          age=ages,
                                          gender=genders,

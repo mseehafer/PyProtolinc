@@ -5,7 +5,7 @@ io:
 
 # kernel engine is "C" or "PY"
 kernel:
-  engine: "PY"  # "PY"   # "C"
+  engine: "C"  # "PY"   # "C"
   max_age: 119
 
 model:
@@ -16,7 +16,7 @@ model:
   # generic settings
   years_to_simulate: 119
   steps_per_month: 1
-  use_multicore: false  # true    # false
+  use_multicore: true  # true    # false
 
 
 run_type_specs:
@@ -26,10 +26,11 @@ run_type_specs:
     state_model: "MultiStateDisabilityStates"
     assumptions_spec:  "di_assumptions.yml"
     outfile: "results/ncf_out_generic.csv"
-    portfolio_path: "portfolio/portfolio_small.xlsx"
-    portfolio_path: "portfolio/portfolio_med.xlsx"
+    #portfolio_path: "portfolio/portfolio_small.xlsx"
+    portfolio_path: "portfolio/portfolio_small3.xlsx"
+    # portfolio_path: "portfolio/portfolio_med.xlsx"
     # portfolio_path: "portfolio/portfolio_big.xlsx"
-    portfolio_chunk_size: 2048  # 16384  # 2048  # 16384  # 2048  # 1024
+    portfolio_chunk_size: 60000  # 2048  # 16384  # 2048  # 16384  # 2048  # 1024
 
   # MultiStateDisability:
   #   assumptions_spec: "run/di_assumptions.yaml"
