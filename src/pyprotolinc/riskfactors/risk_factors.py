@@ -173,6 +173,11 @@ RISK_FACTORS = [Gender, Age, CalendarYear, SmokerStatus, YearsDisabledIfDisabled
 _rf_names = [cls.__name__.upper() for cls in RISK_FACTORS]
 
 
+def get_risk_factor_names() -> list[str]:
+    """ Returns a list of the built-in risk factors"""
+    return list(_rf_names)
+
+
 def get_risk_factor_by_name(rf_name):
     if rf_name is None:
         return None
