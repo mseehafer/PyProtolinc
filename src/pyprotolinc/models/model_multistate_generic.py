@@ -5,7 +5,8 @@ from pyprotolinc.models import Model, ModelState
 from pyprotolinc.results import ProbabilityVolumeResults
 
 # from pyprotolinc.models.model_disability_multistate import MultiStateDisabilityStates
-from pyprotolinc.models import _STATE_MODELS
+# from pyprotolinc.models import _STATE_MODELS
+from pyprotolinc.models.state_models import show_state_models
 
 
 class GenericMultiStateModel(Model):
@@ -23,7 +24,7 @@ class GenericMultiStateModel(Model):
 def adjust_state_for_generic_model(model, state_model_name):
     """ For the Generic model the StateModel must be injected. """
     if isinstance(model, GenericMultiStateModel):
-        for stateclass_name, state_class in _STATE_MODELS.items():
+        for stateclass_name, state_class in show_state_models().items():
             if stateclass_name.upper() == state_model_name.upper():
                 model.states_model = state_class
                 model.known_states = {int(k) for k in model.states_model}

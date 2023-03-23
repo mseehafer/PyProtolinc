@@ -1,43 +1,9 @@
 
-from enum import IntEnum, unique
 import numpy as np
 
 from pyprotolinc.models import Model, ModelState
 from pyprotolinc.results import ProbabilityVolumeResults
-from pyprotolinc.models.state_models import AbstractStateModel
-
-
-@unique
-class AnnuityRunoffStates(AbstractStateModel):
-    """ A state model consisting of two states:
-        - DIS1 (=0) representing the annuity phase
-        - DEATH (=1)
-    """
-    DIS1 = 0    # the "annuitant state"
-    DEATH = 1   # the death state
-
-    @classmethod
-    def to_std_outputs(cls) -> dict[ProbabilityVolumeResults, "AnnuityRunoffStates"]:
-        return {
-            # ProbabilityVolumeResults.VOL_ACTIVE: None,
-            ProbabilityVolumeResults.VOL_DIS1: cls.DIS1,
-            # ProbabilityVolumeResults.VOL_DIS2: None,
-            ProbabilityVolumeResults.VOL_DEATH: cls.DEATH,
-            # ProbabilityVolumeResults.VOL_LAPSED: None,
-
-            # ProbabilityVolumeResults.MV_ACTIVE_DEATH: (None, None),
-            # ProbabilityVolumeResults.MV_ACTIVE_DIS1: (None, None),
-            # ProbabilityVolumeResults.MV_ACT_DIS2: (None, None),
-            # ProbabilityVolumeResults.MV_ACT_LAPSED: (None, None),
-
-            ProbabilityVolumeResults.MV_DIS1_DEATH: (cls.DIS1, cls.DEATH),
-            # ProbabilityVolumeResults.MV_DIS1_DIS2: (None, None),
-            # ProbabilityVolumeResults.MV_DIS1_ACT: (None, None),
-
-            # ProbabilityVolumeResults.MV_DIS2_DEATH: (None, None),
-            # ProbabilityVolumeResults.MV_DIS2_DIS1: (None, None),
-            # ProbabilityVolumeResults.MV_DIS2_ACT: (None, None),
-        }
+from pyprotolinc.models.state_models import AnnuityRunoffStates
 
 
 class AnnuityRunoffModel(Model):

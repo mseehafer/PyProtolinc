@@ -7,21 +7,21 @@ from pyprotolinc.assumptions.providers import AssumptionType
 logger = logging.getLogger(__name__)
 
 
-_STATE_MODELS = {}
+# _STATE_MODELS = {}
 
 
-def register_state_model(cls):
+# def register_state_model(cls):
 
-    check_states(cls)
+#     check_states(cls)
 
-    if _STATE_MODELS.get(cls.__name__) is None:
-        _STATE_MODELS[cls.__name__] = cls
-        logger.debug("Registered state model %s", cls.__name__)
+#     if _STATE_MODELS.get(cls.__name__) is None:
+#         _STATE_MODELS[cls.__name__] = cls
+#         logger.debug("Registered state model %s", cls.__name__)
 
 
-def list_state_models() -> list[type]:
-    """ Returns a list of the currently known state models. """
-    return dict(_STATE_MODELS)
+# def list_state_models() -> list[type]:
+#     """ Returns a list of the currently known state models. """
+#     return dict(_STATE_MODELS)
 
 
 class Model:
@@ -69,7 +69,7 @@ class ModelBuilder:
         else:
             state_model_class = model_class.STATES_MODEL
 
-        check_states(state_model_class)
+        # check_states(state_model_class)
         self.model_class = model_class
 
         self.states_model = state_model_class
@@ -125,22 +125,3 @@ class ModelBuilder:
         rates_provider_matrix_res = self._build_matrix(self.res_transitions)
 
         return self.model_class(rates_provider_matrix_be, rates_provider_matrix_res)
-
-
-def check_states(EnumToCheck):
-    """ Make sure that the MultiStateDisabilityStates defined above are consecutively numbered starting from zero.
-        This will be needed. """
-    # find min/max and check everything in between is filled
-    max_val = -1
-    min_val = 999999
-    state_vals = set()
-    for st in EnumToCheck:
-        max_val = max(int(st), max_val)
-        min_val = min(int(st), min_val)
-        state_vals.add(int(st))
-
-    assert len(EnumToCheck) > 0
-    assert min_val == 0
-    assert max_val == len(EnumToCheck) - 1
-    assert len(state_vals) == len(EnumToCheck)
-    return min_val, max_val

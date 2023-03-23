@@ -49,9 +49,9 @@ def test_assumption_set_std():
     rates = acs.get_single_rateset([1, 0, 0, 0, 0])
     # print(rates)
 
-    assert np.array_equal(rates, np.array([0, 0.2, 2, 4]))   # 0.2 from constant
-                                                             # third position: age=1, gender=0 imply first row, second col (->2)
-                                                             # furth position: age=1, gender=0 imply second row=1, first col (-> 4)
+    assert np.array_equal(rates, np.array([0, 0.2, 2, 4]))  # 0.2 from constant
+                                                            # third position: age=1, gender=0 imply first row, second col (->2)
+                                                            # fourth position: age=1, gender=0 imply second row=1, first col (-> 4)
 
 
 def test_assumption_set_from_file():

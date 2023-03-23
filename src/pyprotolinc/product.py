@@ -2,9 +2,10 @@
 import logging
 import numpy as np
 
-from pyprotolinc.models.model_annuity_runoff import AnnuityRunoffStates
-from pyprotolinc.models.model_disability_multistate import MultiStateDisabilityStates
-from pyprotolinc.models.model_mortality import MortalityStates
+# from pyprotolinc.models.model_annuity_runoff import AnnuityRunoffStates
+# from pyprotolinc.models.model_disability_multistate import MultiStateDisabilityStates
+# from pyprotolinc.models.model_mortality import MortalityStates
+from pyprotolinc.models.state_models import MortalityStates, AnnuityRunoffStates, MultiStateDisabilityStates
 from pyprotolinc.results import CfNames
 
 

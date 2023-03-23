@@ -5,7 +5,7 @@ io:
 
 # kernel engine is "C" or "PY"
 kernel:
-  engine: "C"  # "PY"   # "C"
+  engine: "PY"  # "PY"   # "C"
   max_age: 119
 
 model:

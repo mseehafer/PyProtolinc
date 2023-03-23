@@ -19,7 +19,8 @@ from pyprotolinc import get_config_from_file
 from pyprotolinc.portfolio import PortfolioLoader, Portfolio
 from pyprotolinc.results import export_results
 from pyprotolinc.runner import Projector, CProjector
-from pyprotolinc.models import ModelBuilder, _STATE_MODELS
+from pyprotolinc.models import ModelBuilder  # , _STATE_MODELS
+from pyprotolinc.models.state_models import state_model_by_name
 from pyprotolinc.models.model_config import get_model_by_name
 from pyprotolinc.assumptions.iohelpers import AssumptionsLoaderFromConfig
 from pyprotolinc.models.model_multistate_generic import adjust_state_for_generic_model
@@ -49,7 +50,8 @@ def create_model(model_class, state_model_name, assumptions_file):
 
     state_model_class = None
     if model_class.STATES_MODEL is None:
-        state_model_class = _STATE_MODELS[state_model_name]
+        # state_model_class = _STATE_MODELS[state_model_name]
+        state_model_class = state_model_by_name(state_model_name)
 
     model_builder = ModelBuilder(model_class, state_model_class)
 
@@ -95,7 +97,7 @@ def project_cashflows(run_config, df_portfolio_overwrite=None, export_to_file=Tr
     results_arrays = []
 
     # projections
-    if run_config.use_multicore and len(subportfolios) > 1 and run_config.kernel_engine in ["P", "PY", "PYTHON"]:
+    if run_config.use_multicore and len(subportfolios) > 1:  # and run_config.kernel_engine in ["P", "PY", "PYTHON"]:
 
         num_processes = min(cpu_count(), len(subportfolios))
 

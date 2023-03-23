@@ -1,52 +1,11 @@
 
-from enum import unique
 import numpy as np
 from pyprotolinc.models import Model, ModelState
 from pyprotolinc.results import ProbabilityVolumeResults
-from pyprotolinc.models.state_models import AbstractStateModel
-
-
-@unique
-class MultiStateDisabilityStates(AbstractStateModel):
-    """ A state model for a disabiility product with two disabled states. 
-        - ACTIVE = 0
-        - DIS1 = 1
-        - DIS2 = 2
-        - DEATH = 3
-        - LAPSED = 4
-    """
-    ACTIVE = 0
-    DIS1 = 1
-    DIS2 = 2
-    DEATH = 3
-    LAPSED = 4
-
-    @classmethod
-    def to_std_outputs(cls) -> dict[ProbabilityVolumeResults, "MultiStateDisabilityStates"]:
-        return {
-            ProbabilityVolumeResults.VOL_ACTIVE: cls.ACTIVE,
-            ProbabilityVolumeResults.VOL_DIS1: cls.DIS1,
-            ProbabilityVolumeResults.VOL_DIS2: cls.DIS2,
-            ProbabilityVolumeResults.VOL_DEATH: cls.DEATH,
-            ProbabilityVolumeResults.VOL_LAPSED: cls.LAPSED,
-
-            ProbabilityVolumeResults.MV_ACTIVE_DEATH: (cls.ACTIVE, cls.DEATH),
-            ProbabilityVolumeResults.MV_ACTIVE_DIS1: (cls.ACTIVE, cls.DIS1),
-            ProbabilityVolumeResults.MV_ACT_DIS2: (cls.ACTIVE, cls.DIS2),
-            ProbabilityVolumeResults.MV_ACT_LAPSED: (cls.ACTIVE, cls.LAPSED),
-
-            ProbabilityVolumeResults.MV_DIS1_DEATH: (cls.DIS1, cls.DEATH),
-            ProbabilityVolumeResults.MV_DIS1_DIS2: (cls.DIS1, cls.DIS2),
-            ProbabilityVolumeResults.MV_DIS1_ACT: (cls.DIS1, cls.ACTIVE),
-
-            ProbabilityVolumeResults.MV_DIS2_DEATH: (cls.DIS2, cls.DEATH),
-            ProbabilityVolumeResults.MV_DIS2_DIS1: (cls.DIS2, cls.DIS1),
-            ProbabilityVolumeResults.MV_DIS2_ACT: (cls.DIS2, cls.ACTIVE)
-        }
+from pyprotolinc.models.state_models import MultiStateDisabilityStates
 
 
 # TODO: split death into DEATH_ACTIVE and DEATH_DISABLED
-
 
 class MultiStateDisabilityModel(Model):
 
