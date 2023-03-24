@@ -5,6 +5,7 @@ from pyprotolinc import MAX_AGE, RunConfig
 from pyprotolinc.results import ProbabilityVolumeResults, CfNames
 from pyprotolinc.assumptions.providers import AssumptionType
 import pyprotolinc._actuarial as actuarial
+from pyprotolinc.models import Model
 
 logger = logging.getLogger(__name__)
 
@@ -41,7 +42,7 @@ class TimeAxis2:
 class CProjector:
     """ Encapsulate the C-kernel calls. """
 
-    def __init__(self, run_config: RunConfig, portfolio, model, proj_state, product,
+    def __init__(self, run_config: RunConfig, portfolio, model: Model, proj_state, product,
                  rows_for_state_recorder=None, chunk_index=1, num_chunks=1):
 
         self.c_portfolio = actuarial.build_c_portfolio(portfolio)
@@ -61,9 +62,9 @@ class CProjector:
         self.num_chunks = num_chunks
 
         # construct assumption set
-        acs: actuarial.AssumptionSet = self.build_assumption_set()
+        acs_be: actuarial.AssumptionSet = model.assumption_set_be  # self.build_assumption_set()
 
-        self.runner = actuarial.RunnerInterfaceWrapper(acs, self.c_portfolio, self.time_step, self.max_age, run_config.use_multicore, run_config.years_to_simulate)
+        self.runner = actuarial.RunnerInterfaceWrapper(acs_be, self.c_portfolio, self.time_step, self.max_age, run_config.use_multicore, run_config.years_to_simulate)
         self.time_axis = TimeAxis2(*self.runner.get_time_axis())
 
         # product information, here we obtain the whole conditional payment stream upfront
@@ -82,30 +83,30 @@ class CProjector:
         # print("EOM-payment", self.cond_eom_payment_dict)
         # print("BOM-payment", self.cond_bom_payment_dict)
 
-    def build_assumption_set(self):
-        """ Construct the actuarial assumption set for the C-Kernel. """
+    # def build_assumption_set(self):
+    #     """ Construct the actuarial assumption set for the C-Kernel. """
 
-        non_trivial_state_transitions_be = self.model.get_non_trivial_state_transitions(AssumptionType.BE)
+    #     non_trivial_state_transitions_be = self.model.get_non_trivial_state_transitions(AssumptionType.BE)
 
-        acs = actuarial.AssumptionSet(self.state_dimension)
+    #     acs = actuarial.AssumptionSet(self.state_dimension)
 
-        # get BE assumptions
-        for (from_state, to_state) in non_trivial_state_transitions_be:
-            provider = self.model.rates_provider_matrix_be[from_state][to_state]
+    #     # get BE assumptions
+    #     for (from_state, to_state) in non_trivial_state_transitions_be:
+    #         provider = self.model.rates_provider_matrix_be[from_state][to_state]
 
-            if isinstance(provider, actuarial.ConstantRateProvider):
-                acs.add_provider_const(from_state, to_state, provider)
-            elif isinstance(provider, actuarial.StandardRateProvider):
-                acs.add_provider_std(from_state, to_state, provider)
+    #         if isinstance(provider, actuarial.ConstantRateProvider):
+    #             acs.add_provider_const(from_state, to_state, provider)
+    #         elif isinstance(provider, actuarial.StandardRateProvider):
+    #             acs.add_provider_std(from_state, to_state, provider)
 
-        # # DUMMYS:
-        # # provider05 = actuarial.ConstantRateProvider(0.5)
-        # provider02 = actuarial.ConstantRateProvider(0.0015)
-        # acs = actuarial.AssumptionSet(2)
-        # acs.add_provider_const(0, 1, provider02)
-        # # acs.add_provider_const(1, 0, provider05)
+    #     # # DUMMYS:
+    #     # # provider05 = actuarial.ConstantRateProvider(0.5)
+    #     # provider02 = actuarial.ConstantRateProvider(0.0015)
+    #     # acs = actuarial.AssumptionSet(2)
+    #     # acs.add_provider_const(0, 1, provider02)
+    #     # # acs.add_provider_const(1, 0, provider05)
 
-        return acs
+    #     return acs
 
     def run(self):
 

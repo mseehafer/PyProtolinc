@@ -7,6 +7,7 @@ from pyprotolinc.results import ProbabilityVolumeResults
 # from pyprotolinc.models.model_disability_multistate import MultiStateDisabilityStates
 # from pyprotolinc.models import _STATE_MODELS
 from pyprotolinc.models.state_models import show_state_models
+from pyprotolinc.assumptions.providers import AssumptionSetWrapper
 
 
 class GenericMultiStateModel(Model):
@@ -14,8 +15,8 @@ class GenericMultiStateModel(Model):
     MODEL_NAME = "GenericMultiState"
     STATES_MODEL = None
 
-    def __init__(self, rates_provider_matrix_be, rates_provider_matrix_res):
-        super().__init__(self.STATES_MODEL, rates_provider_matrix_be, rates_provider_matrix_res)
+    def __init__(self, assumptions_wrapper: AssumptionSetWrapper) -> None:  # rates_provider_matrix_be, rates_provider_matrix_res):
+        super().__init__(self.STATES_MODEL, assumptions_wrapper)
 
     def new_state_instance(self, num_timesteps, portfolio, rows_for_state_recorder=None):
         return ProjectionState(self, num_timesteps, portfolio, rows_for_state_recorder)

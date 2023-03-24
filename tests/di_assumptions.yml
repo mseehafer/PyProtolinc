@@ -1,69 +1,27 @@
-# for the di model
+# for the deferred annuity model
 assumptions_spec:
 
   # best estimates
   be:
 
-    # active death
-    - [0, 3, ["FileTable", "tests/base_assumption.xlsx", 'MORTALITY (0->3)']]
+    # active -> dead
+    - [0, 3, ["FileTable", "../base_assumptions_annuity.xlsx", 'MORTALITY (0->3)']]
 
-    # active lapse
-    - [0, 4, ["FileTable", "tests/base_assumption.xlsx", 'LAPSE (0->4)']]
+    # active -> lapse
+    - [0, 2, ["FileTable", "../base_assumptions_annuity.xlsx", 'LAPSE (0->2)']]
 
-    # active dis1
-    - [0, 1, ["FileTable", "tests/base_assumption.xlsx", 'DIS1 (0->1)']]
+    # annuitant -> dead
+    - [1, 3, ["FileTable", "../base_assumptions_annuity.xlsx", 'DIS_DEATH (1->3)']]
     
-    # dis1 dis2
-    - [1, 2, ["FileTable", "tests/base_assumption.xlsx", 'DIS_WORSEN (1->2)']]
-    
-    # dis1 death
-    - [1, 3, ["FileTable", "tests/base_assumption.xlsx", 'DIS_DEATH1 (1->3)']]
-    
-    # dis1 active
-    - [1, 0, ["FileTable", "tests/base_assumption.xlsx", 'REC1(1->0)']]
-    
-    # active dis2
-    - [0, 2, ["FileTable", "tests/base_assumption.xlsx", 'DIS2(0->2)']]
-    
-    # dis2 dis1
-    - [2, 1, ["FileTable", "tests/base_assumption.xlsx", 'DIS_IMPR (2->1)']]
-    
-    # dis2 death
-    - [2, 3, ["FileTable", "tests/base_assumption.xlsx", 'DIS_DEATH2 (2->3)']]
-    
-    # dis2 active
-    - [2, 0, ["FileTable", "tests/base_assumption.xlsx", 'REC2(2->0)']]
 
-  
   # tables for reserving, at the moment identical
   res:
 
-    # active death
-    - [0, 3, ["FileTable", "tests/base_assumption.xlsx", 'MORTALITY (0->3)']]
+    # active -> dead
+    - [0, 3, ["FileTable", "../base_assumptions_annuity.xlsx", 'MORTALITY (0->3)']]
 
-    # active lapse
-    - [0, 4, ["FileTable", "tests/base_assumption.xlsx", 'LAPSE (0->4)']]
+    # active -> lapse
+    - [0, 2, ["FileTable", "../base_assumptions_annuity.xlsx", 'LAPSE (0->2)']]
 
-    # active dis1
-    - [0, 1, ["FileTable", "tests/base_assumption.xlsx", 'DIS1 (0->1)']]
-    
-    # dis1 dis2
-    - [1, 2, ["FileTable", "tests/base_assumption.xlsx", 'DIS_WORSEN (1->2)']]
-    
-    # dis1 death
-    - [1, 3, ["FileTable", "tests/base_assumption.xlsx", 'DIS_DEATH1 (1->3)']]
-    
-    # dis1 active
-    - [1, 0, ["FileTable", "tests/base_assumption.xlsx", 'REC1(1->0)']]
-    
-    # active dis2
-    - [0, 2, ["FileTable", "tests/base_assumption.xlsx", 'DIS2(0->2)']]
-    
-    # dis2 dis1
-    - [2, 1, ["FileTable", "tests/base_assumption.xlsx", 'DIS_IMPR (2->1)']]
-    
-    # dis2 death
-    - [2, 3, ["FileTable", "tests/base_assumption.xlsx", 'DIS_DEATH2 (2->3)']]
-    
-    # dis2 active
-    - [2, 0, ["FileTable", "tests/base_assumption.xlsx", 'REC2(2->0)']]
+    # annuitant -> dead
+    - [1, 3, ["FileTable", "../base_assumptions_annuity.xlsx", 'DIS_DEATH (1->3)']]

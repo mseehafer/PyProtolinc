@@ -10,6 +10,8 @@ import numpy as np
 import numpy.typing as npt
 
 from pyprotolinc.riskfactors.risk_factors import RiskFactor
+import pyprotolinc._actuarial as actuarial
+
 
 # module level logger
 logger = logging.getLogger(__name__)
@@ -182,3 +184,82 @@ class AssumptionTimestepAdjustment:
         row_sums = A_per_step.sum(axis=2)
         A_per_step[self.first_ind, self.other_ind, self.other_ind] = 1 - row_sums.reshape(self.num_MultiStateDisabilityStates * self.num_insureds)
         return A_per_step
+
+
+class AssumptionSetWrapper:
+    """ Wraps an assumption set for both the C and the PY engines."""
+
+    def __init__(self, dim: int) -> None:
+        self._dim = dim
+
+        self.be_transitions = {}
+        self.res_transitions = {}
+
+    def add_transition(self, be_or_res: str, from_state: int, to_state: int, rates_provider: BaseRatesProvider) -> "AssumptionSetWrapper":
+        """ Add a new transition provider. """
+
+        assert int(from_state) >= 0 and int(from_state) < self._dim, "Unknown state: {}".format(from_state)
+        assert int(to_state) >= 0 and int(to_state) < self._dim, "Unknown state: {}".format(to_state)
+
+        if be_or_res.upper() == "BE":
+            transitions = self.be_transitions
+        elif be_or_res.upper() == "RES":
+            transitions = self.res_transitions
+        else:
+            raise Exception("Argument `be_or_res` must have value `BE` or `RES`, not {}".format(be_or_res.upper()))
+
+        this_trans = transitions.get(from_state)
+        if this_trans is None:
+            this_trans = {}
+            transitions[from_state] = this_trans
+
+        prov_old = this_trans.get(to_state)
+        if prov_old is not None:
+            logger.warn("Overwriting previously set transitions {}->{}".format(from_state, to_state))
+        this_trans[to_state] = rates_provider
+        return self
+
+    def _build_matrix(self, transitions) -> list[list[BaseRatesProvider]]:
+        # generate a matrix of state transition rates providers
+        transition_provider_matrix = []
+        for i in range(self._dim):
+            new_row = []
+            transition_provider_matrix.append(new_row)
+            from_dict = transitions.get(i)
+            for j in range(self._dim):
+                if from_dict is None:
+                    new_row.append(None)
+                else:
+                    new_row.append(from_dict.get(j))
+
+        return transition_provider_matrix
+        # return Model(self.states_model, transition_provider_matrix)
+
+    def build_rates_provides_matrix(self, at: AssumptionType) -> list[list[Optional[BaseRatesProvider]]]:
+
+        if at == AssumptionType.BE:
+            return self._build_matrix(self.be_transitions)
+        elif at == AssumptionType.RES:
+            return self._build_matrix(self.res_transitions)
+        else:
+            raise Exception(f"Unknown assumption type: {at}")
+
+    def build_assumption_set(self, at: AssumptionType) -> actuarial.AssumptionSet:
+
+        if at == AssumptionType.BE:
+            transitions = self.be_transitions
+        elif at == AssumptionType.RES:
+            transitions = self.res_transitions
+        else:
+            raise Exception(f"Unknown assumption type: {at}")
+
+        acs = actuarial.AssumptionSet(self._dim)
+
+        for from_state, prvdrs_dict in transitions.items():
+            if prvdrs_dict is not None:
+                for to_state, provider in prvdrs_dict.items():
+                    if isinstance(provider, actuarial.ConstantRateProvider):
+                        acs.add_provider_const(from_state, to_state, provider)
+                    elif isinstance(provider, actuarial.StandardRateProvider):
+                        acs.add_provider_std(from_state, to_state, provider)
+        return acs

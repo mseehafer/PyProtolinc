@@ -9,7 +9,8 @@ from pyprotolinc.riskfactors.risk_factors import get_risk_factor_by_name
 from pyprotolinc.assumptions.tables import ScalarAssumptionsTable, AssumptionsTable1D, AssumptionsTable2D
 from pyprotolinc.assumptions.dav2004r import DAV2004R, DAV2004R_B20
 from pyprotolinc.assumptions.dav2008t import DAV2008T
-from pyprotolinc.models import ModelBuilder
+from pyprotolinc.assumptions.providers import AssumptionSetWrapper
+# from pyprotolinc.models import ModelBuilder
 
 
 logger = logging.getLogger(__name__)
@@ -126,19 +127,24 @@ def _sort_index(mapped_indexes):
 class AssumptionsLoaderFromConfig:
     """ Process the assumptions config files and the load the rates. """
 
-    def __init__(self, ass_config_file_path) -> None:
+    def __init__(self, ass_config_file_path: str, states_dimension: int) -> None:
+        self._states_dimension = states_dimension
         self.assumptions_spec = []
         with open(ass_config_file_path, 'r') as ass_config_file:
             ass_config = yaml.safe_load(ass_config_file)
             self.assumptions_spec = ass_config["assumptions_spec"]
         # print(self.assumptions_spec)
 
-    def load(self, model_builder: ModelBuilder) -> None:
+    def load(self, model_builder: AssumptionSetWrapper = None) -> None:
+
+        if model_builder is None:
+            model_builder = AssumptionSetWrapper(self._states_dimension)
 
         self._process_be_or_res(self.assumptions_spec["be"], "be", model_builder)
         self._process_be_or_res(self.assumptions_spec["res"], "res", model_builder)
+        return model_builder
 
-    def _process_be_or_res(self, assumptions_spec, be_or_res, model_builder: ModelBuilder) -> None:
+    def _process_be_or_res(self, assumptions_spec, be_or_res, model_builder: AssumptionSetWrapper) -> None:
 
         # collect all assumptions of type "FileTable" and
         # group them by the file name

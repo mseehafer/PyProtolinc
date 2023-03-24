@@ -1,8 +1,11 @@
 
 import logging
+from typing import Optional
 
-from pyprotolinc.assumptions.providers import AssumptionType
-
+from pyprotolinc.assumptions.providers import AssumptionType, BaseRatesProvider
+from pyprotolinc.assumptions.providers import AssumptionSetWrapper
+from pyprotolinc.models.state_models import AbstractStateModel
+import pyprotolinc._actuarial as actuarial
 
 logger = logging.getLogger(__name__)
 
@@ -29,17 +32,35 @@ class Model:
 
     MODEL_NAME = "META"
 
-    def __init__(self, states_model, rates_provider_matrix_be, rates_provider_matrix_res):
+    def __init__(self, states_model: type[AbstractStateModel], assumptions_wrapper: AssumptionSetWrapper) -> None:  # states_model, rates_provider_matrix_be, rates_provider_matrix_res):
         self.states_model = states_model
-        # self.states_dim = len(states_model)
-        self.rates_provider_matrix_be = rates_provider_matrix_be
-        self.rates_provider_matrix_res = rates_provider_matrix_res
+        self._assumptions_wrapper = assumptions_wrapper
+
+        # # self.states_dim = len(states_model)
+        # self.rates_provider_matrix_be = rates_provider_matrix_be
+        # self.rates_provider_matrix_res = rates_provider_matrix_res
+
+    @property
+    def rates_provider_matrix_be(self) -> list[list[Optional[BaseRatesProvider]]]:
+        return self._assumptions_wrapper.build_rates_provides_matrix(AssumptionType.BE)
+
+    @property
+    def rates_provider_matrix_res(self) -> list[list[Optional[BaseRatesProvider]]]:
+        return self._assumptions_wrapper.build_rates_provides_matrix(AssumptionType.RES)
+
+    @property
+    def assumption_set_be(self) -> actuarial.AssumptionSet:
+        return self._assumptions_wrapper.build_assumption_set(AssumptionType.BE)
+
+    @property
+    def assumption_set_res(self) -> actuarial.AssumptionSet:
+        return self._assumptions_wrapper.build_assumption_set(AssumptionType.RES)
 
     def new_state_instance(self, num_timesteps, portfolio, args, **kwargs):
         raise Exception("Method must be implemented in subclass")
 
+    # is this still needed?
     def get_non_trivial_state_transitions(self, be_or_res: AssumptionType):
-
         if be_or_res == AssumptionType.BE:
             return self._get_nontrivial_transitions(self.rates_provider_matrix_be)
         elif be_or_res == AssumptionType.RES:
@@ -60,68 +81,68 @@ class ModelState:
     pass
 
 
-class ModelBuilder:
+# class ModelBuilder:
 
-    def __init__(self, model_class, state_model_class):
+#     def __init__(self, model_class, state_model_class):
 
-        if model_class.STATES_MODEL is None:
-            assert state_model_class is not None
-        else:
-            state_model_class = model_class.STATES_MODEL
+#         if model_class.STATES_MODEL is None:
+#             assert state_model_class is not None
+#         else:
+#             state_model_class = model_class.STATES_MODEL
 
-        # check_states(state_model_class)
-        self.model_class = model_class
+#         # check_states(state_model_class)
+#         self.model_class = model_class
 
-        self.states_model = state_model_class
+#         self.states_model = state_model_class
 
-        self.known_states = {int(k) for k in self.states_model}
+#         self.known_states = {int(k) for k in self.states_model}
 
-        self.be_transitions = {}
-        self.res_transitions = {}
+#         self.be_transitions = {}
+#         self.res_transitions = {}
 
-    def add_transition(self, be_or_res, from_state, to_state, rates_provider):
+#     def add_transition(self, be_or_res, from_state, to_state, rates_provider):
 
-        assert int(from_state) in self.known_states, "Unknown state: {}".format(from_state)
-        assert int(to_state) in self.known_states, "Unknown state: {}".format(to_state)
+#         assert int(from_state) in self.known_states, "Unknown state: {}".format(from_state)
+#         assert int(to_state) in self.known_states, "Unknown state: {}".format(to_state)
 
-        if be_or_res.upper() == "BE":
-            transitions = self.be_transitions
-        elif be_or_res.upper() == "RES":
-            transitions = self.res_transitions
-        else:
-            raise Exception("Argument `be_or_res` must have value `BE` or `RES`, not {}".format(be_or_res.upper()))
+#         if be_or_res.upper() == "BE":
+#             transitions = self.be_transitions
+#         elif be_or_res.upper() == "RES":
+#             transitions = self.res_transitions
+#         else:
+#             raise Exception("Argument `be_or_res` must have value `BE` or `RES`, not {}".format(be_or_res.upper()))
 
-        this_trans = transitions.get(from_state)
-        if this_trans is None:
-            this_trans = {}
-            transitions[from_state] = this_trans
+#         this_trans = transitions.get(from_state)
+#         if this_trans is None:
+#             this_trans = {}
+#             transitions[from_state] = this_trans
 
-        prov_old = this_trans.get(to_state)
-        if prov_old is not None:
-            logger.warn("Overwriting previously set transitions {}->{}".format(from_state, to_state))
-        this_trans[to_state] = rates_provider
-        return self
+#         prov_old = this_trans.get(to_state)
+#         if prov_old is not None:
+#             logger.warn("Overwriting previously set transitions {}->{}".format(from_state, to_state))
+#         this_trans[to_state] = rates_provider
+#         return self
 
-    def _build_matrix(self, transitions):
-        # generate a matrix of state transition rates providers
-        dim = len(self.states_model)
-        transition_provider_matrix = []
-        for i in range(dim):
-            new_row = []
-            transition_provider_matrix.append(new_row)
-            from_dict = transitions.get(i)
-            for j in range(dim):
-                if from_dict is None:
-                    new_row.append(None)
-                else:
-                    new_row.append(from_dict.get(j))
+#     def _build_matrix(self, transitions):
+#         # generate a matrix of state transition rates providers
+#         dim = len(self.states_model)
+#         transition_provider_matrix = []
+#         for i in range(dim):
+#             new_row = []
+#             transition_provider_matrix.append(new_row)
+#             from_dict = transitions.get(i)
+#             for j in range(dim):
+#                 if from_dict is None:
+#                     new_row.append(None)
+#                 else:
+#                     new_row.append(from_dict.get(j))
 
-        return transition_provider_matrix
-        # return Model(self.states_model, transition_provider_matrix)
+#         return transition_provider_matrix
+#         # return Model(self.states_model, transition_provider_matrix)
 
-    def build(self):
+#     def build(self):
 
-        rates_provider_matrix_be = self._build_matrix(self.be_transitions)
-        rates_provider_matrix_res = self._build_matrix(self.res_transitions)
+#         rates_provider_matrix_be = self._build_matrix(self.be_transitions)
+#         rates_provider_matrix_res = self._build_matrix(self.res_transitions)
 
-        return self.model_class(rates_provider_matrix_be, rates_provider_matrix_res)
+#         return self.model_class(rates_provider_matrix_be, rates_provider_matrix_res)
