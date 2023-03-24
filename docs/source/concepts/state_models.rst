@@ -70,12 +70,15 @@ These additional states would then be complemented by a number of additional tra
 Implementation
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-In ``PyProtolinc`` the states in a states model are essentially represented by a Python ``IntEnum``.
-As an example recall the first example above and then let's have a look at the following class from the module ``pyprotolinc.models.model_annuity_runoff`` 
+In ``PyProtolinc`` the states in a states model are essentially represented by a Python ``IntEnum`` which is implictly
+inherited through the abstract base class ``AbstractStateModel``.
+As an example recall the first example above and then let's have a look at the following class from the module ``pyprotolinc.models.state_models`` 
 which looks as follows::
     
+    from pyprotolinc.models.state_models import AbstractStateModel
+    
     @unique
-    class AnnuityRunoffStates(IntEnum):
+    class AnnuityRunoffStates(AbstractStateModel):
         """ A state model consisting of two states:
             - DIS1 (=0) representing the annuity phase
             - DEATH (=1)

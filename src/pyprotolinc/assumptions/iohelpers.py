@@ -1,5 +1,7 @@
 """ Functionality to read in the assumptions tables from files. """
 
+from pathlib import Path
+import os.path
 import logging
 import yaml
 import numpy as np
@@ -128,6 +130,9 @@ class AssumptionsLoaderFromConfig:
     """ Process the assumptions config files and the load the rates. """
 
     def __init__(self, ass_config_file_path: str, states_dimension: int) -> None:
+
+        self._working_dir = Path(ass_config_file_path).parent.absolute()
+
         self._states_dimension = states_dimension
         self.assumptions_spec = []
         with open(ass_config_file_path, 'r') as ass_config_file:
@@ -135,10 +140,9 @@ class AssumptionsLoaderFromConfig:
             self.assumptions_spec = ass_config["assumptions_spec"]
         # print(self.assumptions_spec)
 
-    def load(self, model_builder: AssumptionSetWrapper = None) -> None:
+    def load(self) -> AssumptionSetWrapper:
 
-        if model_builder is None:
-            model_builder = AssumptionSetWrapper(self._states_dimension)
+        model_builder = AssumptionSetWrapper(self._states_dimension)
 
         self._process_be_or_res(self.assumptions_spec["be"], "be", model_builder)
         self._process_be_or_res(self.assumptions_spec["res"], "res", model_builder)
@@ -214,6 +218,9 @@ class AssumptionsLoaderFromConfig:
                 model_builder.add_transition(be_or_res, spec[0], spec[1], scalar_table.rates_provider())
 
         for assumptions_file, sheet_info in file_table_assumptions.items():
+            # if not an absolute path already join with the path of the config file
+            if not os.path.isabs(assumptions_file):
+                assumptions_file = os.path.join(self._working_dir, assumptions_file)
             with WorkbookTableReader(assumptions_file) as file:
 
                 for assspec in sheet_info:

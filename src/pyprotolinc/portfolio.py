@@ -3,12 +3,14 @@ import datetime
 import logging
 import hashlib
 import pickle
+from typing import Optional
 
 import numpy as np
 import pandas as pd
 
 # from pyprotolinc.models.model_disability_multistate import MultiStateDisabilityStates
 from pyprotolinc.riskfactors.risk_factors import Gender, SmokerStatus
+from pyprotolinc.models.state_models import AbstractStateModel
 
 
 logger = logging.getLogger(__name__)
@@ -16,10 +18,13 @@ logger = logging.getLogger(__name__)
 
 class Portfolio:
 
-    def __len__(self):
+    def __len__(self) -> int:
         return self.num_of_records
 
-    def __init__(self, portfolio_path, states_model, df_portfolio=None):
+    def __repr__(self) -> str:
+        return f"<Portfolio with {self.num_of_records} records and state model {self.states_model}"
+
+    def __init__(self, portfolio_path: str, states_model: AbstractStateModel, df_portfolio: Optional[pd.DataFrame] = None) -> None:
 
         if df_portfolio is None:
             logger.info("Reading portfolio data from file {}.".format(portfolio_path))
@@ -30,7 +35,7 @@ class Portfolio:
 
         self._init_from_dataframe(df_portfolio, states_model)
 
-    def _init_from_dataframe(self, df_portfolio, states_model):
+    def _init_from_dataframe(self, df_portfolio: pd.DataFrame, states_model: AbstractStateModel) -> None:
         # store a copy of the dataframe
         self.df_portfolio = df_portfolio.copy()
         self.states_model = states_model
@@ -84,15 +89,17 @@ class Portfolio:
         self.smokerstatus = self.smokerstatus.map(SmokerStatus.index_mapper()).values.astype(np.int32)
 
         # the number of month since the disablement date, is NaN if no disablement date is given
-        self.disablement_year = df_portfolio["DATE_OF_DISABLEMENT"].dt.year.values.astype(np.int16)
-        self.disablement_month = df_portfolio["DATE_OF_DISABLEMENT"].dt.month.values.astype(np.int16)
-        self.disablement_day = df_portfolio["DATE_OF_DISABLEMENT"].dt.day.values.astype(np.int16)
+        dates_disablement = pd.to_datetime(df_portfolio["DATE_OF_DISABLEMENT"])  # enforce datetime even if NaN everywhere
+        # dates_disablement = df_portfolio["DATE_OF_DISABLEMENT"].fillna(pd.to_datetime('1/1/1900'))
+        self.disablement_year = dates_disablement.dt.year.values.astype(np.int16)
+        self.disablement_month = dates_disablement.dt.month.values.astype(np.int16)
+        self.disablement_day = dates_disablement.dt.day.values.astype(np.int16)
 
-        self.months_disabled_at_start = completed_months_to_date(df_portfolio["DATE_OF_DISABLEMENT"], self.portfolio_date).astype(np.int)
+        self.months_disabled_at_start = completed_months_to_date(dates_disablement, self.portfolio_date).astype(np.int)
 
         # check that when in disabled state at start then the disablement date must be at or before the portfolio_date
         disabled_according_to_date = df_portfolio.CURRENT_STATUS.str[:3] == "DIS"
-        sel1 = df_portfolio.DATE_OF_DISABLEMENT[disabled_according_to_date] > df_portfolio["DATE_PORTFOLIO"][disabled_according_to_date]
+        sel1 = dates_disablement[disabled_according_to_date] > df_portfolio["DATE_PORTFOLIO"][disabled_according_to_date]
         assert len(df_portfolio[disabled_according_to_date][sel1]) == 0,\
             "WHEN in state DISABLED the DATE_OF_DISABLEMENT must be less or equal to the DATE_PORTFOLIO"
 
@@ -100,7 +107,7 @@ class Portfolio:
         month_groups = np.unique(self.initial_ages % 12)
         self.common_month = month_groups[0] if len(month_groups) == 1 else None
 
-    def split_by_product_and_month_in_year(self, chunk_size):
+    def split_by_product_and_month_in_year(self, chunk_size: int, split_mont_in_year: bool = True) -> list["Portfolio"]:
         """ Return a list of sub-portfolios which are homgeneous w.r.t.
             to the ages in months modulo 12. """
 
@@ -112,14 +119,17 @@ class Portfolio:
 
             logger.debug("Splitting portfolio for product %s.", str(prod).upper())
 
-            # split further into groups homogenous w.r.t. the "birth month"
-            ages_groups = completed_months_to_date(df_prod_split["DATE_OF_BIRTH"], self.portfolio_date) % 12
-            month_groups = np.unique(ages_groups)
+            if split_mont_in_year:
+                # split further into groups homogenous w.r.t. the "birth month"
+                ages_groups = completed_months_to_date(df_prod_split["DATE_OF_BIRTH"], self.portfolio_date) % 12
+                month_groups = np.unique(ages_groups)
 
-            # generate the age group splits and split them to max size
-            subframes_ages = [df_prod_split[ages_groups == k] for k in month_groups]
-            for df_subportfolio in subframes_ages:
-                subportfolios_ages_maximized.extend(split_to_size(df_subportfolio, chunk_size))
+                # generate the age group splits and split them to max size
+                subframes_ages = [df_prod_split[ages_groups == k] for k in month_groups]
+                for df_subportfolio in subframes_ages:
+                    subportfolios_ages_maximized.extend(split_to_size(df_subportfolio, chunk_size))
+            else:
+                subportfolios_ages_maximized.extend(split_to_size(df_prod_split, chunk_size))
 
         return [Portfolio(None, states_model=self.states_model, df_portfolio=df_sb_ptf) for df_sb_ptf in subportfolios_ages_maximized]
 
@@ -170,14 +180,13 @@ def completed_months_to_date(date_col, the_date):
 
 class PortfolioLoader:
 
-    def __init__(self, run_config) -> None:
-        self.run_config = run_config
-        self.portfolio = None
-        # self.raw_transition_assumptions = None
+    def __init__(self, portfolio_path: str, portfolio_cache: Optional[str] = None) -> None:
+        self.portfolio_path = os.path.abspath(portfolio_path)
+        self.portfolio_cache = portfolio_cache
+        self.portfolio: Optional[Portfolio] = None
 
-    def load(self, states_model):
-
-        portfolio_abs_path = os.path.abspath(self.run_config.portfolio_path)
+    def load(self, states_model) -> Portfolio:
+        portfolio_abs_path = os.path.abspath(self.portfolio_path)
         if not os.path.exists(portfolio_abs_path):
             raise Exception("No such file: {}".format(portfolio_abs_path))
         file_cand = self._get_portfolio_hash(portfolio_abs_path, states_model)
@@ -190,11 +199,9 @@ class PortfolioLoader:
             self._save_in_cache(file_cand, self.portfolio)
 
         logger.info("Portolio rows: {}".format(len(self.portfolio)))
-        # # read the raw assumptions
-        # self.raw_transition_assumptions = read_assumptions(self.run_config.assumptions_path)
         return self.portfolio
 
-    def _get_portfolio_hash(self, portfolio_abs_path, states_model):
+    def _get_portfolio_hash(self, portfolio_abs_path: str, states_model: AbstractStateModel) -> str:
         """ Build a hash from the file name, the modification time and the states_model
             it was used with. """
         md5 = hashlib.md5()
@@ -204,8 +211,12 @@ class PortfolioLoader:
         md5.update(pickle.dumps(states_model))
         return "portfolio_dump_{}".format(md5.hexdigest())
 
-    def _load_from_cache(self, file_cand):
-        file_cand_path = os.path.abspath(os.path.join(self.run_config.portfolio_cache, file_cand))
+    def _load_from_cache(self, file_cand: str) -> Optional[Portfolio]:
+        """ Load a portfolio from the portfolio cache. """
+        if self.portfolio_cache is None:
+            return None
+
+        file_cand_path = os.path.abspath(os.path.join(self.portfolio_cache, file_cand))
 
         portfolio = None
         try:
@@ -216,10 +227,14 @@ class PortfolioLoader:
             logger.debug("Porfolio file not found in cache.")
         return portfolio
 
-    def _save_in_cache(self, file_cand, portolio_obj):
-        file_cand_path = os.path.abspath(os.path.join(self.run_config.portfolio_cache, file_cand))
+    def _save_in_cache(self, file_cand, portolio_obj) -> bool:
+        """ Save a portfolio object under the cache directory,
+            return True if successful. """
+        if self.portfolio_cache is None:
+            return False
+        file_cand_path = os.path.abspath(os.path.join(self.portfolio_cache, file_cand))
         # create the directory if it does not yet exist
-        portfolio_cache_path = os.path.abspath(self.run_config.portfolio_cache)
+        portfolio_cache_path = os.path.abspath(self.portfolio_cache)
         if not os.path.exists(portfolio_cache_path):
             logger.info("Created directory for portfolio cache %s", portfolio_cache_path)
             os.makedirs(portfolio_cache_path)
@@ -227,5 +242,6 @@ class PortfolioLoader:
             with open(file_cand_path, 'wb') as dump_file:
                 pickle.dump(portolio_obj, dump_file)
                 logger.info("Porfolio saved in cache")
+                return True
         except FileNotFoundError:
             logger.warn("Caching the portfolio failed.")

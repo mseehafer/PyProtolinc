@@ -1,4 +1,7 @@
 
+from typing import Optional
+import os.path
+from pathlib import Path
 import yaml
 
 
@@ -24,20 +27,22 @@ class RunConfig:
     :param int max_age: Max. age that is used when projecting (only C++)
     """
     def __init__(self,
-                 model_name: str,
-                 years_to_simulate: int,
-                 steps_per_month: int,
                  state_model_name: str,
-                 portfolio_path: str,
-                 assumptions_path: str,
-                 outfile: str,
-                 portfolio_cache: str,
-                 profile_out_dir: str,
-                 portfolio_chunk_size: int,
-                 use_multicore: bool,
-                 kernel_engine: str,
-                 max_age: int
+                 working_directory: Path = ".",
+                 model_name: str = "GenericMultiState",
+                 years_to_simulate: int = 119,
+                 steps_per_month: int = 1,
+                 portfolio_path: Optional[str] = None,
+                 assumptions_path: Optional[str] = None,
+                 outfile: str = "ncf_out_generic.csv",
+                 portfolio_cache: Optional[str] = None,
+                 profile_out_dir: Optional[str] = None,
+                 portfolio_chunk_size: int = 20000,
+                 use_multicore: bool = False,
+                 kernel_engine: str = "PY",
+                 max_age: int = 119
                  ) -> None:
+        self.working_directory = working_directory
         self.model_name = model_name
         self.years_to_simulate = years_to_simulate
         self.portfolio_path = portfolio_path
@@ -52,6 +57,16 @@ class RunConfig:
         self.use_multicore = use_multicore
         self.kernel_engine = kernel_engine.upper()
         self.max_age = max_age
+
+        # make sure that relative paths are interpreted relative to the working directory
+        if portfolio_cache and not os.path.isabs(portfolio_cache):
+            self.portfolio_cache = os.path.join(self.working_directory, portfolio_cache)
+
+        if portfolio_path and not os.path.isabs(portfolio_path):
+            self.portfolio_path = os.path.join(self.working_directory, portfolio_path)
+
+        if profile_out_dir and not os.path.isabs(profile_out_dir):
+            self.profile_out_dir = os.path.join(self.working_directory, profile_out_dir)
 
     def __repr__(self) -> str:
         return str(self.__dict__)
@@ -73,11 +88,14 @@ def get_config_from_file(config_file: str) -> RunConfig:
         chosen_type = config_raw["model"]["type"]
         run_type_spec = config_raw["run_type_specs"][chosen_type]
 
+    working_dir = Path(config_file).parent.absolute()
+
     return RunConfig(
+        run_type_spec.get("state_model"),
+        working_dir,
         config_raw["model"]["type"],
         config_raw["model"]["years_to_simulate"],
         config_raw["model"]["steps_per_month"],
-        run_type_spec.get("state_model"),
         run_type_spec["portfolio_path"],
         run_type_spec["assumptions_spec"],
         run_type_spec["outfile"],

@@ -1,0 +1,28 @@
+
+io:
+  portfolio_cache: "portfolio/portfolio_cache"
+  profile_out_dir: "."
+
+# kernel engine is "C" or "PY"
+kernel:
+  engine: "C"  # "PY" / "C"
+  max_age: 119
+
+model:
+  # Type of Model to be run, supported types are "MultiStateDisability", "AnnuityRunoff" and "GenericMultiState"
+  type: "GenericMultiState"
+  
+  # generic settings
+  years_to_simulate: 119
+  steps_per_month: 1
+  use_multicore: true  # true / false
+
+run_type_specs:
+
+  GenericMultiState:
+
+    state_model: "DeferredAnnuityStates"
+    assumptions_spec:  "di_assumptions.yml"
+    outfile: "results/ncf_out_generic.csv"
+    portfolio_path: "portfolio_small3.xlsx"
+    portfolio_chunk_size: 40000  # 8192  # 2048  # 16384  # 2048  # 16384  # 2048  # 1024

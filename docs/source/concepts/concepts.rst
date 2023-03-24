@@ -19,3 +19,5 @@ Model runs can be specified in code or using *yaml* configuration files.
 .. include:: assumptions.rst
 
 .. include:: products.rst
+
+.. include:: config_and_run.rst

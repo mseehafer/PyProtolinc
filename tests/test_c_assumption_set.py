@@ -3,7 +3,7 @@ import numpy as np
 import pyprotolinc._actuarial as actuarial
 from pyprotolinc.assumptions.iohelpers import AssumptionsLoaderFromConfig
 
-from pyprotolinc.models import ModelBuilder
+# from pyprotolinc.models import ModelBuilder
 from pyprotolinc.models.model_multistate_generic import GenericMultiStateModel, adjust_state_for_generic_model
 from pyprotolinc.models.model_disability_multistate import MultiStateDisabilityStates
 from pyprotolinc.assumptions.providers import AssumptionType
@@ -55,38 +55,15 @@ def test_assumption_set_std():
 
 
 def test_assumption_set_from_file():
-    # build the model as in example 4
-    mb = ModelBuilder(GenericMultiStateModel, MultiStateDisabilityStates)
-    ass_config_loader = AssumptionsLoaderFromConfig(r"tests\di_assumptions.yml")
-    ass_config_loader.load(mb)
-
-    import pyprotolinc.models.model_config   # needed for the code that is run on importing
-    model: GenericMultiStateModel = mb.build()
-    adjust_state_for_generic_model(model, 'MultiStateDisabilityStates')
-
-    print(model.MODEL_NAME)
-    print(model.states_model)
-    print(model.known_states)
-
-    # build the assumption set for the BE
-    states_dim = len(model.known_states)
-    acs = actuarial.AssumptionSet(states_dim)
-    non_trivial_state_transitions_be = model.get_non_trivial_state_transitions(AssumptionType.BE)
-    for (from_state, to_state) in non_trivial_state_transitions_be:
-        provider = model.rates_provider_matrix_be[from_state][to_state]
-
-        print(from_state, to_state, provider.get_risk_factors())
-
-        if isinstance(provider, actuarial.ConstantRateProvider):
-            acs.add_provider_const(from_state, to_state, provider)
-        elif isinstance(provider, actuarial.StandardRateProvider):
-            acs.add_provider_std(from_state, to_state, provider)
+    states_dimension = 4
+    assumption_config_loader = AssumptionsLoaderFromConfig(r"tests\di_assumptions.yml", states_dimension)
+    acs: actuarial.AssumptionSet = assumption_config_loader.load().build_assumption_set(AssumptionType.BE)
 
     # define the risk factors
     # Age, Gender, CalendarYear, SmokerStatus, YearsDisabledIfDisabledAtStart
-    risk_factor_values = (31, 1, 2022, 3, 0)
-    rates = acs.get_single_rateset(risk_factor_values).reshape((states_dim, states_dim))
-    print(rates)
+    risk_factor_values = (32, 1, 2023, 1, -1)
+    rates = acs.get_single_rateset(risk_factor_values).reshape((states_dimension, states_dimension))
+    # print(rates)
 
     # order of the states :
     # ACTIVE = 0
@@ -95,11 +72,10 @@ def test_assumption_set_from_file():
     # DEATH = 3
     # LAPSED = 4
 
-    target = np.array([[0.,      0.03,    0.03,    0.000674, 0.05],
-                       [0.2,     0.,      0.2,     0.06,     0.],
-                       [0.01,    0.1,     0.,      0.2,      0.],
-                       [0.,      0.,      0.,      0.,       0.],
-                       [0.,      0.,      0.,      0.,       0.]])
+    target = np.array([[0.0, 0.0, 0.049, 0.000725],
+                       [0.0, 0.0, 0.0,   0.06],
+                       [0.0, 0.0, 0.0,   0.0],
+                       [0.0, 0.0, 0.0,   0.0]])
 
     assert np.array_equal(rates, target)
 

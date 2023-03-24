@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
 
 @unique
 class AssumptionType(IntEnum):
-    """ We distinguish between best estimate (BE) and reserving assumptions (RES). """
+    """ Distinguish between best estimate (BE) and reserving assumptions (RES). """
     BE = 0
     RES = 1
 

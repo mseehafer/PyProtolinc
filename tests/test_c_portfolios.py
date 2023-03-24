@@ -1,7 +1,5 @@
 
-from pyprotolinc.models.model_mortality import MortalityStates
-from pyprotolinc.models.model_annuity_runoff import AnnuityRunoffStates
-from pyprotolinc.models.model_disability_multistate import MultiStateDisabilityStates
+from pyprotolinc.models.state_models import MortalityStates, MultiStateDisabilityStates  # , AnnuityRunoffStates
 from pyprotolinc.portfolio import Portfolio
 
 from pyprotolinc._actuarial import build_c_portfolio

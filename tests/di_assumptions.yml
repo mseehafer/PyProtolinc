@@ -5,23 +5,23 @@ assumptions_spec:
   be:
 
     # active -> dead
-    - [0, 3, ["FileTable", "../base_assumptions_annuity.xlsx", 'MORTALITY (0->3)']]
+    - [0, 3, ["FileTable", "base_assumptions_annuity.xlsx", 'MORTALITY (0->3)']]
 
     # active -> lapse
-    - [0, 2, ["FileTable", "../base_assumptions_annuity.xlsx", 'LAPSE (0->2)']]
+    - [0, 2, ["FileTable", "base_assumptions_annuity.xlsx", 'LAPSE (0->2)']]
 
     # annuitant -> dead
-    - [1, 3, ["FileTable", "../base_assumptions_annuity.xlsx", 'DIS_DEATH (1->3)']]
+    - [1, 3, ["FileTable", "base_assumptions_annuity.xlsx", 'DIS_DEATH (1->3)']]
     
 
   # tables for reserving, at the moment identical
   res:
 
     # active -> dead
-    - [0, 3, ["FileTable", "../base_assumptions_annuity.xlsx", 'MORTALITY (0->3)']]
+    - [0, 3, ["FileTable", "base_assumptions_annuity.xlsx", 'MORTALITY (0->3)']]
 
     # active -> lapse
-    - [0, 2, ["FileTable", "../base_assumptions_annuity.xlsx", 'LAPSE (0->2)']]
+    - [0, 2, ["FileTable", "base_assumptions_annuity.xlsx", 'LAPSE (0->2)']]
 
     # annuitant -> dead
-    - [1, 3, ["FileTable", "../base_assumptions_annuity.xlsx", 'DIS_DEATH (1->3)']]
+    - [1, 3, ["FileTable", "base_assumptions_annuity.xlsx", 'DIS_DEATH (1->3)']]
