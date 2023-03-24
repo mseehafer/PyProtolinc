@@ -13,6 +13,7 @@ from typing import Optional, Union
 import gc
 
 import numpy as np
+import numpy.typing as npt
 import pandas as pd
 import fire  # type: ignore
 
@@ -41,7 +42,7 @@ logger = logging.getLogger(__name__)
 def create_model(model_class: type[Model],
                  state_model_name: str,
                  assumptions_file: Optional[str],
-                 assumption_wrapper: Optional[AssumptionSetWrapper]) -> Model:
+                 assumption_wrapper_opt: Optional[AssumptionSetWrapper]) -> Model:
     """ Create a valuation model.
 
         :param model_class: The class of the model.
@@ -59,11 +60,16 @@ def create_model(model_class: type[Model],
     else:
         state_model_class = model_class.STATES_MODEL
 
-    if assumptions_file is None and assumption_wrapper is None:
+    assumption_wrapper: AssumptionSetWrapper
+    if assumptions_file is None and assumption_wrapper_opt is None:
         raise Exception("Creating a model requires either a valid assumption spec or and AssumptionSet")
-    elif assumption_wrapper is None:
+    elif assumption_wrapper_opt is None and assumptions_file is not None:
         loader = AssumptionsLoaderFromConfig(assumptions_file, len(state_model_class))
-        assumption_wrapper: AssumptionSetWrapper = loader.load()
+        assumption_wrapper = loader.load()
+    elif assumption_wrapper_opt is not None:
+        assumption_wrapper = assumption_wrapper_opt
+    else:
+        raise Exception("Unreachable exception to silence mypy")
 
     model = model_class(assumption_wrapper)
     adjust_state_for_generic_model(model, state_model_name)
@@ -74,18 +80,18 @@ def create_model(model_class: type[Model],
 def project_cashflows(run_config: RunConfig,
                       df_portfolio_overwrite: Optional[pd.DataFrame] = None,
                       assumption_wrapper: Optional[AssumptionSetWrapper] = None,
-                      export_to_file: bool = True):
+                      export_to_file: bool = True) -> dict[str, npt.NDArray[np.float64]]:
     """ The main calculation rountine, can also be called as library function. If
         a dataframe is passed it will be used to build the portfolio object,
         otherwise the portfolio will be obtained from th run-config.
 
-        :param run_conig: The run configuration object.
+        :param run_config: The run configuration object.
         :param df_portfolio_overwrite: An optional dataframe that will be used instead of the configured portfolio if provided
         :param assumption_wrapper: Optionally an assumption set can be injected here directly instead of getting it via the configured paths
         :param export_to_file: Boolean flag to indicate if the results should be written to a file (as specified in the config object)
 
         :return: Dictionary containing the result vectors.
-        :rtype: dict
+        :rtype: dict[str, npt.NDArray[np.float64]]
     """
     t = time.time()
 
@@ -97,8 +103,11 @@ def project_cashflows(run_config: RunConfig,
     model = create_model(get_model_by_name(run_config.model_name), run_config.state_model_name, run_config.assumptions_path, assumption_wrapper)
 
     if df_portfolio_overwrite is None:
-        portfolio_loader = PortfolioLoader(run_config.portfolio_path, run_config.portfolio_cache)
-        portfolio = portfolio_loader.load(model.states_model)
+        if run_config.portfolio_path is None:
+            raise Exception("Config parameters portfolio_path must not be None if no overwrite portfolio is provided!")
+        else:
+            portfolio_loader = PortfolioLoader(run_config.portfolio_path, run_config.portfolio_cache)
+            portfolio = portfolio_loader.load(model.states_model)
     else:
         portfolio = Portfolio(None, model.states_model, df_portfolio_overwrite)
 
@@ -155,8 +164,13 @@ def project_cashflows(run_config: RunConfig,
     return res_combined
 
 
-def _project_subportfolio(run_config, model, num_timesteps, portfolio, rows_for_state_recorder,
-                          chunk_index, num_chunks):
+def _project_subportfolio(run_config: RunConfig,
+                          model: Model,
+                          num_timesteps: int,
+                          portfolio: Portfolio,
+                          rows_for_state_recorder: tuple[int],
+                          chunk_index: int,
+                          num_chunks: int) -> dict[str, npt.NDArray[np.float64]]:
 
     assert portfolio.homogenous_wrt_product, "Subportfolio should have identical product in all rows"
     product_name = portfolio.products.iloc[0]
@@ -164,6 +178,7 @@ def _project_subportfolio(run_config, model, num_timesteps, portfolio, rows_for_
     assert model.states_model == product_class.STATES_MODEL, "State-Models must be consistent for the product and the run"
     product = product_class(portfolio)
 
+    projector: Union[CProjector, Projector]
     if run_config.kernel_engine in ["C", "CPP", "C++"]:
 
         # not needed for the C++ call
@@ -200,7 +215,8 @@ def _project_subportfolio(run_config, model, num_timesteps, portfolio, rows_for_
     return projector.get_results_dict()
 
 
-def project_cashflows_cli(config_file_or_object: Union[str, RunConfig] = 'config.yml', multi_processing_overwrite=None) -> None:
+def project_cashflows_cli(config_file_or_object: Union[str, RunConfig] = 'config.yml',
+                          multi_processing_overwrite: Optional[bool] = None) -> None:
     """ Start a projection run.
 
         :param str config_file_or_object: Path to the config file or a RunConfig
@@ -209,17 +225,19 @@ def project_cashflows_cli(config_file_or_object: Union[str, RunConfig] = 'config
         :return: None
     """
 
+    run_config: RunConfig
     if isinstance(config_file_or_object, str):
-        run_config: RunConfig = get_config_from_file(config_file_or_object)
+        run_config = get_config_from_file(config_file_or_object)
     elif isinstance(config_file_or_object, RunConfig):
-        run_config: RunConfig = config_file_or_object
+        run_config = config_file_or_object
 
     if multi_processing_overwrite is not None:
         run_config.use_multicore = multi_processing_overwrite
     project_cashflows(run_config)
 
 
-def profile(config_file='config.yml', multi_processing_overwrite=None) -> None:
+def profile(config_file: str = 'config.yml',
+            multi_processing_overwrite: Optional[bool] = None) -> None:
     """ Run and and export a CSV file with runtime statistics.
 
         :param str config_file: Path ot the config file
@@ -229,6 +247,9 @@ def profile(config_file='config.yml', multi_processing_overwrite=None) -> None:
     """
 
     run_config = get_config_from_file(config_file)
+
+    if run_config.profile_out_dir is None:
+        raise Exception("Config parameteter `profile_out_dir` must be provided for profile run!")
 
     if multi_processing_overwrite is not None:
         run_config.use_multicore = multi_processing_overwrite
@@ -240,9 +261,9 @@ def profile(config_file='config.yml', multi_processing_overwrite=None) -> None:
     project_cashflows(run_config)
     pr.disable()
 
-    result = io.StringIO()
-    pstats.Stats(pr, stream=result).print_stats()
-    result = result.getvalue()
+    result_io = io.StringIO()
+    pstats.Stats(pr, stream=result_io).print_stats()
+    result = result_io.getvalue()
     # chop the string into a csv-like buffer
     result = 'ncalls' + result.split('ncalls')[-1]
     result = '\n'.join([','.join(line.rstrip().split(None, 5)) for line in result.split('\n')])
@@ -259,7 +280,7 @@ def profile(config_file='config.yml', multi_processing_overwrite=None) -> None:
     ct = datetime.now().strftime('%d-%m-%Y_%H_%M_%S')
     output_file = os.path.join(run_config.profile_out_dir, "profile_{}.xlsx".format(ct))
 
-    df_filtered.index = np.arange(1, 1 + len(df_filtered))
+    df_filtered.index = pd.Index(np.arange(1, 1 + len(df_filtered)))
     df_filtered.to_excel(output_file)
     logger.info("Statistics written to %s", output_file)
 

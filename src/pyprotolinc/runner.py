@@ -1,11 +1,17 @@
 import logging
+from typing import Any, Optional
+
+
 import numpy as np
+import numpy.typing as npt
+
 from pyprotolinc.assumptions.providers import AssumptionTimestepAdjustment
 from pyprotolinc import MAX_AGE, RunConfig
 from pyprotolinc.results import ProbabilityVolumeResults, CfNames
 from pyprotolinc.assumptions.providers import AssumptionType
 import pyprotolinc._actuarial as actuarial
 from pyprotolinc.models import Model
+from pyprotolinc.portfolio import Portfolio
 
 logger = logging.getLogger(__name__)
 
@@ -42,8 +48,14 @@ class TimeAxis2:
 class CProjector:
     """ Encapsulate the C-kernel calls. """
 
-    def __init__(self, run_config: RunConfig, portfolio, model: Model, proj_state, product,
-                 rows_for_state_recorder=None, chunk_index=1, num_chunks=1):
+    def __init__(self, run_config: RunConfig,
+                 portfolio: Portfolio,
+                 model: Model,
+                 proj_state: Any,
+                 product,
+                 rows_for_state_recorder: Optional[tuple[int]] = None,
+                 chunk_index=1,
+                 num_chunks=1) -> None:
 
         self.c_portfolio = actuarial.build_c_portfolio(portfolio)
         self.time_step = actuarial.TimeStep.MONTHLY  # actuarial.TimeStep.MONTHLY  # QUARTERLY   # TODO: test if we get back a result set with this timestep
@@ -114,7 +126,7 @@ class CProjector:
         self._output_columns, self._result = self.runner.run()
         pass
 
-    def get_results_dict(self):
+    def get_results_dict(self) -> dict[str, npt.NDArray[np.float64]]:
 
         # non-cash flows
         c_output_map = {col_name: index for index, col_name in enumerate(self._output_columns) if not col_name.startswith("STATE_PAYMENT_TYPE_")}
@@ -181,10 +193,17 @@ class CProjector:
 
 # TODO: rename internal methods so that they start with "_"
 class Projector:
-    """ The projection engine. """
+    """ The PYTHON projection engine. """
 
-    def __init__(self, run_config, portfolio, model, proj_state, product,
-                 rows_for_state_recorder=None, chunk_index=1, num_chunks=1):
+    def __init__(self,
+                 run_config: RunConfig,
+                 portfolio: Portfolio,
+                 model: Model,
+                 proj_state,
+                 product,
+                 rows_for_state_recorder=None,
+                 chunk_index: int = 1,
+                 num_chunks: int = 1) -> None:
 
         self.run_config = run_config
 
@@ -427,7 +446,7 @@ class Projector:
 
         return reserves_bom_by_insured
 
-    def get_results_dict(self):
+    def get_results_dict(self) -> dict[str, npt.NDArray[np.float64]]:
         data = {
             "YEAR": self.time_axis.years,
             "QUARTER": self.time_axis.quarters,
@@ -486,7 +505,7 @@ class Projector:
             provider = self.model.rates_provider_matrix_res[from_state][to_state]
             provider.initialize(years_of_birth=self.years_of_birth, gender=self.gender)
 
-    def run(self):
+    def run(self) -> None:
         # projection loop over time
         _terminate = False
         _ages_last_month = -np.ones(self.proj_state.num_records)  # iniate with negative values

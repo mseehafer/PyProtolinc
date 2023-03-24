@@ -1,10 +1,10 @@
 
 import logging
-import numpy as np
 
-# from pyprotolinc.models.model_annuity_runoff import AnnuityRunoffStates
-# from pyprotolinc.models.model_disability_multistate import MultiStateDisabilityStates
-# from pyprotolinc.models.model_mortality import MortalityStates
+import numpy as np
+import numpy.typing as npt
+import pandas as pd
+
 from pyprotolinc.models.state_models import MortalityStates, AnnuityRunoffStates, MultiStateDisabilityStates
 from pyprotolinc.results import CfNames
 
@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 ###################################################
 
 
-def calc_terminal_months(df_portfolio):
+def calc_terminal_months(df_portfolio: pd.DataFrame) -> tuple[npt.NDArray[np.int32], npt.NDArray[np.int32]]:
     """ Calculate the final month of the policy given a term in years as input.
         The method shortens policy durations when they started not on the
         first of a month. """
@@ -40,7 +40,9 @@ def calc_terminal_months(df_portfolio):
     return year_last_month, last_month
 
 
-def calc_term_end_indicator(time_axis, year_last_month, last_month):
+def calc_term_end_indicator(time_axis,
+                            year_last_month: npt.NDArray[np.int32],
+                            last_month: npt.NDArray[np.int32]) -> npt.NDArray[np.int16]:
     """ Calculate a binary matrix with
         - rows corresponing to insureds
         - columns corresponding to time
@@ -54,7 +56,9 @@ def calc_term_end_indicator(time_axis, year_last_month, last_month):
     return (ta_abs <= end_mont_abs).astype(np.int16).transpose()
 
 
-def calc_term_start_indicator(time_axis, inception_yr, inception_month):
+def calc_term_start_indicator(time_axis,
+                              inception_yr: npt.NDArray[np.int32],
+                              inception_month: npt.NDArray[np.int32]) -> npt.NDArray[np.int16]:
     """ Calculate a binary matrix with
         - rows corresponing to insureds
         - columns corresponding to time
@@ -69,7 +73,9 @@ def calc_term_start_indicator(time_axis, inception_yr, inception_month):
     return (ta_abs >= start_month_abs).astype(np.int16).transpose()
 
 
-def calc_maturity_transition_indicator(time_axis, year_last_month, last_month):
+def calc_maturity_transition_indicator(time_axis,
+                                       year_last_month: npt.NDArray[np.int32],
+                                       last_month: npt.NDArray[np.int32]) -> npt.NDArray[np.int32]:
     """ Calculate a binary matrix with
         - rows corresponing to insureds
         - columns corresponding to time

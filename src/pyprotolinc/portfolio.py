@@ -17,6 +17,7 @@ logger = logging.getLogger(__name__)
 
 
 class Portfolio:
+    """ Representation of a seriatim portfolio. """
 
     def __len__(self) -> int:
         return self.num_of_records
@@ -24,10 +25,15 @@ class Portfolio:
     def __repr__(self) -> str:
         return f"<Portfolio with {self.num_of_records} records and state model {self.states_model}"
 
-    def __init__(self, portfolio_path: str, states_model: AbstractStateModel, df_portfolio: Optional[pd.DataFrame] = None) -> None:
+    def __init__(self,
+                 portfolio_path: Optional[str],
+                 states_model: type[AbstractStateModel],
+                 df_portfolio: Optional[pd.DataFrame] = None) -> None:
 
         if df_portfolio is None:
             logger.info("Reading portfolio data from file {}.".format(portfolio_path))
+            if portfolio_path is None:
+                raise Exception("Neither a portfolio nor a portfolio path provided!")
             df_portfolio = pd.read_excel(portfolio_path)
             df_portfolio.columns = [c.upper() for c in df_portfolio.columns]
         else:
@@ -35,7 +41,7 @@ class Portfolio:
 
         self._init_from_dataframe(df_portfolio, states_model)
 
-    def _init_from_dataframe(self, df_portfolio: pd.DataFrame, states_model: AbstractStateModel) -> None:
+    def _init_from_dataframe(self, df_portfolio: pd.DataFrame, states_model: type[AbstractStateModel]) -> None:
         # store a copy of the dataframe
         self.df_portfolio = df_portfolio.copy()
         self.states_model = states_model

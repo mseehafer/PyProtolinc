@@ -1,0 +1,65 @@
+\hypertarget{cmain_8cpp}{}\doxysection{cmain.\+cpp File Reference}
+\label{cmain_8cpp}\index{cmain.cpp@{cmain.cpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include \char`\"{}modules/log.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}modules/time\+\_\+axis.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}modules/providers.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}modules/assumption\+\_\+sets.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}modules/portfolio.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}modules/run\+\_\+config.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}modules/run\+\_\+result.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}modules/runner.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{cmain_8cpp_a565ed52ee30d9f1fe647880ef2d70a76}{add\+\_\+policies}} (CPolicy\+Portfolio \&portfolio)
+\begin{DoxyCompactList}\small\item\em Adds a number of (hard-\/coded)policies to the portfolio. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{cmain_8cpp_a3b270a0b99e939e80bb0405bda808e1b}\label{cmain_8cpp_a3b270a0b99e939e80bb0405bda808e1b}} 
+void {\bfseries output\+\_\+results} (Run\+Result \&run\+\_\+result, string outfile\+\_\+name=\char`\"{}cresults.\+csv\char`\"{}, bool output\+\_\+to\+\_\+console=false)
+\begin{DoxyCompactList}\small\item\em Write the result matrix to a CSV file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{cmain_8cpp_a09548ebbdf29bbe35e412de2b1011635}{run\+\_\+calculation}} (void)
+\item 
+\mbox{\Hypertarget{cmain_8cpp_a840291bc02cba5474a4cb46a9b9566fe}\label{cmain_8cpp_a840291bc02cba5474a4cb46a9b9566fe}} 
+int {\bfseries main} (void)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+M. Seehafer 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+2.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2022-\/08-\/27
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2022
+\end{DoxyCopyright}
+File is used during development to value a single policy. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{cmain_8cpp_a565ed52ee30d9f1fe647880ef2d70a76}\label{cmain_8cpp_a565ed52ee30d9f1fe647880ef2d70a76}} 
+\index{cmain.cpp@{cmain.cpp}!add\_policies@{add\_policies}}
+\index{add\_policies@{add\_policies}!cmain.cpp@{cmain.cpp}}
+\doxysubsubsection{\texorpdfstring{add\_policies()}{add\_policies()}}
+{\footnotesize\ttfamily void add\+\_\+policies (\begin{DoxyParamCaption}\item[{CPolicy\+Portfolio \&}]{portfolio }\end{DoxyParamCaption})}
+
+
+
+Adds a number of (hard-\/coded)policies to the portfolio. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em portfolio} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{cmain_8cpp_a09548ebbdf29bbe35e412de2b1011635}\label{cmain_8cpp_a09548ebbdf29bbe35e412de2b1011635}} 
+\index{cmain.cpp@{cmain.cpp}!run\_calculation@{run\_calculation}}
+\index{run\_calculation@{run\_calculation}!cmain.cpp@{cmain.cpp}}
+\doxysubsubsection{\texorpdfstring{run\_calculation()}{run\_calculation()}}
+{\footnotesize\ttfamily void run\+\_\+calculation (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Encapsulate the calculation run. Creates test data, passes them to the runner for processing and outputs the results. 

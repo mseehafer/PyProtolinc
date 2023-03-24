@@ -3,6 +3,8 @@
 import logging
 from enum import IntEnum, unique
 
+import numpy as np
+import numpy.typing as npt
 import pandas as pd
 
 
@@ -44,7 +46,8 @@ class ProbabilityVolumeResults(IntEnum):
     MV_DIS2_ACT = 16
 
 
-def export_results(result_data, outfile):
+def export_results(result_data: dict[str, npt.NDArray[np.float64]], outfile: str) -> None:
+    """ Write the results dict :result_data to the output file :param: """
 
     logger.info("Exporting NCF to %s", outfile)
     df_ncf = pd.DataFrame(result_data)

@@ -11,7 +11,10 @@ This section provides information about the API of ``PyProtolinc``.
 
    pyprotolinc_module
    main_module
-   utils_module
+   assumptions_module
+   models_module
+   portfolio_module
+   product_module
    core_module
 
    

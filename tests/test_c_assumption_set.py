@@ -4,8 +4,8 @@ import pyprotolinc._actuarial as actuarial
 from pyprotolinc.assumptions.iohelpers import AssumptionsLoaderFromConfig
 
 # from pyprotolinc.models import ModelBuilder
-from pyprotolinc.models.model_multistate_generic import GenericMultiStateModel, adjust_state_for_generic_model
-from pyprotolinc.models.model_disability_multistate import MultiStateDisabilityStates
+# from pyprotolinc.models.model_multistate_generic import GenericMultiStateModel, adjust_state_for_generic_model
+# from pyprotolinc.models.model_disability_multistate import MultiStateDisabilityStates
 from pyprotolinc.assumptions.providers import AssumptionType
 
 

@@ -22,7 +22,7 @@ class GenericMultiStateModel(Model):
         return ProjectionState(self, num_timesteps, portfolio, rows_for_state_recorder)
 
 
-def adjust_state_for_generic_model(model, state_model_name):
+def adjust_state_for_generic_model(model: Model, state_model_name: str) -> None:
     """ For the Generic model the StateModel must be injected. """
     if isinstance(model, GenericMultiStateModel):
         for stateclass_name, state_class in show_state_models().items():

@@ -30,7 +30,8 @@ logger = logging.getLogger(__name__)
 class Model:
     """ The model class describes the static parts of a model. """
 
-    MODEL_NAME = "META"
+    MODEL_NAME: str = "META"
+    STATES_MODEL: Optional[type[AbstractStateModel]] = None
 
     def __init__(self, states_model: type[AbstractStateModel], assumptions_wrapper: AssumptionSetWrapper) -> None:  # states_model, rates_provider_matrix_be, rates_provider_matrix_res):
         self.states_model = states_model
@@ -56,7 +57,7 @@ class Model:
     def assumption_set_res(self) -> actuarial.AssumptionSet:
         return self._assumptions_wrapper.build_assumption_set(AssumptionType.RES)
 
-    def new_state_instance(self, num_timesteps, portfolio, args, **kwargs):
+    def new_state_instance(self, num_timesteps: int, portfolio, *args, **kwargs):
         raise Exception("Method must be implemented in subclass")
 
     # is this still needed?
