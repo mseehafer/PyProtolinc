@@ -1,6 +1,6 @@
 
 
-Module `pyprotlinc.product` 
+Module `pyprotolinc.product` 
 --------------------------------
 
 

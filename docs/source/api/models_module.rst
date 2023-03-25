@@ -1,7 +1,7 @@
 
 
 
-Module `pyprotlinc.models` 
+Module `pyprotolinc.models` 
 --------------------------------
 
 

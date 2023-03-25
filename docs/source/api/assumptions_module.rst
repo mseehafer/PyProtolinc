@@ -1,6 +1,6 @@
 
 
-Module `pyprotlinc.assumptions` 
+Module `pyprotolinc.assumptions` 
 --------------------------------
 
 

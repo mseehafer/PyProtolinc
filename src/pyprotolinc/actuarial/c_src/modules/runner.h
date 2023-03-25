@@ -89,7 +89,8 @@ void Runner::run(RunResult &run_result, const AggregatePayments &payments)
     int record_count = 0;
     for (auto record_ptr : _ptr_portfolio->get_policies())
     {
-        shared_ptr<unordered_map<int, StateConditionalRecordPayout>> &record_payments = payments.get_single_record_payments(record_count);
+        shared_ptr<unordered_map<int, StateConditionalRecordPayout>> record_payments = payments.get_single_record_payments(record_count);
+        // shared_ptr<unordered_map<int, StateConditionalRecordPayout>> &record_payments = payments.get_single_record_payments(record_count);
 
         record_count++;
         _record_result.reset();
