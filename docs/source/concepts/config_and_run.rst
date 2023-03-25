@@ -64,7 +64,7 @@ The structure of the yaml file closely mimics the structur of the object with so
 
     run_type_specs:
 
-    GenericMultiState:
+      GenericMultiState:
 
         state_model: "DeferredAnnuityStates"
         assumptions_spec:  "di_assumptions.yml"

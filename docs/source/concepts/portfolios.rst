@@ -6,7 +6,7 @@ Portfolios
 --------------
 
 
-The key input need to run ``pyprotolinc`` is the portfolio data, i.e. a table containing seriatim record information.
+The key input needed to run ``pyprotolinc`` is the portfolio data, i.e. a table containing seriatim record information.
 The most convenient way is to import a portfolio from an Excel file using a ``pyprotolinc.portfolio.PortfolioLoader`` object::
 
     import pyprotolinc.portfolio as ptf
@@ -44,4 +44,4 @@ Moreover, to save some time a cacheing of the portfolios is implemented when ins
  
     ptf.PortfolioLoader(portfolio_path, cache_path)
 
-In this case pickled versions of the portfolios read will be stored under the path and laoding portfolios will be attempted under this path first.
+In this case pickled versions of the portfolios read will be stored under the path and loading portfolios will be attempted under this path first.
