@@ -1,35 +1,13 @@
 
 from enum import IntEnum
 import numpy as np
+from typing import Optional, Iterable
 from pyprotolinc.models import Model, ModelState
 from pyprotolinc.results import ProbabilityVolumeResults
+from pyprotolinc.portfolio import Portfolio
 
-# from pyprotolinc.models.model_disability_multistate import MultiStateDisabilityStates
-# from pyprotolinc.models import _STATE_MODELS
-from pyprotolinc.models.state_models import show_state_models
+from pyprotolinc.models.state_models import AbstractStateModel
 from pyprotolinc.assumptions.providers import AssumptionSetWrapper
-
-
-class GenericMultiStateModel(Model):
-
-    MODEL_NAME = "GenericMultiState"
-    STATES_MODEL = None
-
-    def __init__(self, assumptions_wrapper: AssumptionSetWrapper) -> None:  # rates_provider_matrix_be, rates_provider_matrix_res):
-        super().__init__(self.STATES_MODEL, assumptions_wrapper)
-
-    def new_state_instance(self, num_timesteps, portfolio, rows_for_state_recorder=None):
-        return ProjectionState(self, num_timesteps, portfolio, rows_for_state_recorder)
-
-
-def adjust_state_for_generic_model(model: Model, state_model_name: str) -> None:
-    """ For the Generic model the StateModel must be injected. """
-    if isinstance(model, GenericMultiStateModel):
-        for stateclass_name, state_class in show_state_models().items():
-            if stateclass_name.upper() == state_model_name.upper():
-                model.states_model = state_class
-                model.known_states = {int(k) for k in model.states_model}
-                break
 
 
 class ProjectionState(ModelState):
@@ -148,3 +126,15 @@ class ProjectionState(ModelState):
 
         self.current_ages += 1
         self.months_disabled_current_if_at_start += 1
+
+
+class GenericMultiStateModel(Model):
+    """ Generic Model that encapsulates the state model and the assumptions."""
+
+    MODEL_NAME = "GenericMultiState"
+
+    def __init__(self, states_model: type[AbstractStateModel], assumptions_wrapper: AssumptionSetWrapper) -> None:
+        super().__init__(states_model, assumptions_wrapper)
+
+    def new_state_instance(self, num_timesteps: int, portfolio: Portfolio, rows_for_state_recorder: Optional[Iterable] = None, *args, **kwargs) -> ProjectionState:
+        return ProjectionState(self, num_timesteps, portfolio, rows_for_state_recorder)

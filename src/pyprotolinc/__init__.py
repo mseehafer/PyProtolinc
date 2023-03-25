@@ -28,7 +28,7 @@ class RunConfig:
     """
     def __init__(self,
                  state_model_name: str,
-                 working_directory: Path = ".",
+                 working_directory: Path = Path("."),
                  model_name: str = "GenericMultiState",
                  years_to_simulate: int = 119,
                  steps_per_month: int = 1,

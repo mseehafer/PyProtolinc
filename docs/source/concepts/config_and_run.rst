@@ -45,17 +45,17 @@ A convenient way to create an ``RunConfig`` object is by reading it from a yaml 
 The structure of the yaml file closely mimics the structur of the object with some additional grouping. This is a valid example::
 
     io:
-    portfolio_cache: "portfolio/portfolio_cache"
-    profile_out_dir: "."
+        portfolio_cache: "portfolio/portfolio_cache"
+        profile_out_dir: "."
 
     # kernel engine is "C" or "PY"
     kernel:
-    engine: "C"  # "PY" / "C"
-    max_age: 119
+        engine: "C"  # "PY" / "C"
+        max_age: 119
 
     model:
-    # Type of Model to be run, currently only "GenericMultiState" is supported
-    type: "GenericMultiState"
+        # Type of Model to be run, currently only "GenericMultiState" is supported
+        type: "GenericMultiState"
     
     # generic settings
     years_to_simulate: 119
@@ -64,13 +64,13 @@ The structure of the yaml file closely mimics the structur of the object with so
 
     run_type_specs:
 
-      GenericMultiState:
+        GenericMultiState:
 
-        state_model: "DeferredAnnuityStates"
-        assumptions_spec:  "di_assumptions.yml"
-        outfile: "results/ncf_out_generic.csv"
-        portfolio_path: "portfolio_small3.xlsx"
-        portfolio_chunk_size: 8192
+            state_model: "DeferredAnnuityStates"
+            assumptions_spec:  "di_assumptions.yml"
+            outfile: "results/ncf_out_generic.csv"
+            portfolio_path: "portfolio_small3.xlsx"
+            portfolio_chunk_size: 8192
 
 
 In this case the configuration object can be created as follows::

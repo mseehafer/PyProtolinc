@@ -10,7 +10,7 @@ import numpy as np
 import numpy.typing as npt
 
 from pyprotolinc.riskfactors.risk_factors import RiskFactor
-import pyprotolinc._actuarial as actuarial
+import pyprotolinc._actuarial as actuarial  # type: ignore
 
 
 # module level logger
@@ -192,8 +192,8 @@ class AssumptionSetWrapper:
     def __init__(self, dim: int) -> None:
         self._dim = dim
 
-        self.be_transitions = {}
-        self.res_transitions = {}
+        self.be_transitions: dict[int, dict[int, BaseRatesProvider]] = {}
+        self.res_transitions: dict[int, dict[int, BaseRatesProvider]] = {}
 
     def add_transition(self, be_or_res: str, from_state: int, to_state: int, rates_provider: BaseRatesProvider) -> "AssumptionSetWrapper":
         """ Add a new transition provider. """
@@ -219,11 +219,11 @@ class AssumptionSetWrapper:
         this_trans[to_state] = rates_provider
         return self
 
-    def _build_matrix(self, transitions) -> list[list[BaseRatesProvider]]:
+    def _build_matrix(self, transitions) -> list[list[Optional[BaseRatesProvider]]]:
         # generate a matrix of state transition rates providers
         transition_provider_matrix = []
         for i in range(self._dim):
-            new_row = []
+            new_row: list[Optional[BaseRatesProvider]] = []
             transition_provider_matrix.append(new_row)
             from_dict = transitions.get(i)
             for j in range(self._dim):

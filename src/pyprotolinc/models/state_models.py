@@ -1,6 +1,13 @@
+
 """ Abstract declaration of state models. """
 from enum import IntEnum, unique
 from abc import abstractclassmethod, ABCMeta
+from typing import Union, Any, TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from _typeshed import Self
+else:
+    Self = Any
 
 from pyprotolinc.results import ProbabilityVolumeResults
 
@@ -9,7 +16,7 @@ from pyprotolinc.results import ProbabilityVolumeResults
 _state_model_registry: dict[str, type] = {}
 
 
-def check_state_model(EnumToCheck):
+def check_state_model(EnumToCheck) -> tuple[int, int]:
     """ Make sure that a state model uses consecutively numbered starting from zero.  """
 
     assert issubclass(EnumToCheck, IntEnum), "State Model must inherit from IntEnum"
@@ -56,13 +63,15 @@ class AbstractStateModelMeta(ABCMeta, type(IntEnum)):
 class AbstractStateModel(IntEnum, metaclass=AbstractStateModelMeta):
     """ The base class for state models. """
 
+    @classmethod
     @abstractclassmethod
-    def describe(cls) -> str:
-        return cls.__name__ + ": " + cls.__doc__
+    def describe(cls: type[Self]) -> str:
+        return cls.__name__ + ": " + str(cls.__doc__)
 
+    @classmethod
     @abstractclassmethod
-    def to_std_outputs(cls) -> dict[ProbabilityVolumeResults, "AbstractStateModel"]:
-        pass
+    def to_std_outputs(cls: type["AbstractStateModel"]) -> dict[ProbabilityVolumeResults, Union[type["AbstractStateModel"], tuple[type["AbstractStateModel"], type["AbstractStateModel"]]]]:
+        return {}
 
 
 def state_model_by_name(name: str) -> type[AbstractStateModel]:
@@ -84,7 +93,7 @@ class AnnuityRunoffStates(AbstractStateModel):
     DEATH = 1   # the death state
 
     @classmethod
-    def to_std_outputs(cls) -> dict[ProbabilityVolumeResults, "AnnuityRunoffStates"]:
+    def to_std_outputs(cls: type["AnnuityRunoffStates"]) -> dict[ProbabilityVolumeResults, Union[type["AnnuityRunoffStates"], tuple[type["AnnuityRunoffStates"], type["AnnuityRunoffStates"]]]]:
         return {
             # ProbabilityVolumeResults.VOL_ACTIVE: None,
             ProbabilityVolumeResults.VOL_DIS1: cls.DIS1,
@@ -121,7 +130,7 @@ class MortalityStates(AbstractStateModel):
     MATURED = 3
 
     @classmethod
-    def to_std_outputs(cls) -> dict[ProbabilityVolumeResults, AbstractStateModel]:
+    def to_std_outputs(cls: type["MortalityStates"]) -> dict[ProbabilityVolumeResults, Union[type["MortalityStates"], tuple[type["MortalityStates"], type["MortalityStates"]]]]:
         return {
             ProbabilityVolumeResults.VOL_ACTIVE: cls.ACTIVE,
             ProbabilityVolumeResults.VOL_DEATH: cls.DEATH,
@@ -150,7 +159,9 @@ class MultiStateDisabilityStates(AbstractStateModel):
     LAPSED = 4
 
     @classmethod
-    def to_std_outputs(cls) -> dict[ProbabilityVolumeResults, "MultiStateDisabilityStates"]:
+    def to_std_outputs(cls: type["MultiStateDisabilityStates"]) -> dict[ProbabilityVolumeResults, 
+                                                                        Union[type["MultiStateDisabilityStates"],
+                                                                              tuple[type["MultiStateDisabilityStates"], type["MultiStateDisabilityStates"]]]]:
         return {
             ProbabilityVolumeResults.VOL_ACTIVE: cls.ACTIVE,
             ProbabilityVolumeResults.VOL_DIS1: cls.DIS1,

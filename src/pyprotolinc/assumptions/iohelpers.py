@@ -6,6 +6,7 @@ import logging
 import yaml
 import numpy as np
 import pandas as pd
+from typing import Any
 
 from pyprotolinc.riskfactors.risk_factors import get_risk_factor_by_name
 from pyprotolinc.assumptions.tables import ScalarAssumptionsTable, AssumptionsTable1D, AssumptionsTable2D
@@ -134,10 +135,10 @@ class AssumptionsLoaderFromConfig:
         self._working_dir = Path(ass_config_file_path).parent.absolute()
 
         self._states_dimension = states_dimension
-        self.assumptions_spec = []
+        self.assumptions_spec: dict[str, Any] = {}
         with open(ass_config_file_path, 'r') as ass_config_file:
             ass_config = yaml.safe_load(ass_config_file)
-            self.assumptions_spec = ass_config["assumptions_spec"]
+            self.assumptions_spec = dict(ass_config["assumptions_spec"])
         # print(self.assumptions_spec)
 
     def load(self) -> AssumptionSetWrapper:
@@ -151,8 +152,9 @@ class AssumptionsLoaderFromConfig:
     def _process_be_or_res(self, assumptions_spec, be_or_res, model_builder: AssumptionSetWrapper) -> None:
 
         # collect all assumptions of type "FileTable" and
-        # group them by the file name
-        file_table_assumptions = {}
+        # group them by the file name:
+        # under the file name  a list of tuples specifying (from_state, to_state, sheetname) is saved
+        file_table_assumptions: dict[str, list[tuple[int, int, str]]] = {}
         for spec in assumptions_spec:
 
             if spec[2][0] == "FileTable":

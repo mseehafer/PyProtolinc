@@ -35,7 +35,7 @@ class Portfolio:
             if portfolio_path is None:
                 raise Exception("Neither a portfolio nor a portfolio path provided!")
             df_portfolio = pd.read_excel(portfolio_path)
-            df_portfolio.columns = [c.upper() for c in df_portfolio.columns]
+            df_portfolio.columns = pd.Index([c.upper() for c in df_portfolio.columns])
         else:
             logger.debug("Initializing portfolio from dataframe")
 
@@ -62,9 +62,9 @@ class Portfolio:
         self.portfolio_date = pd.Timestamp(_portfolio_date_array[0]).to_pydatetime()
 
         # extract and validate the sex, map to enum coding
-        self.gender = df_portfolio["SEX"].str.upper()
-        assert set(self.gender.unique()).issubset({g.name for g in Gender})
-        self.gender = self.gender.map({g.name: int(g) for g in Gender}).values.astype(np.int32)
+        gender_str = df_portfolio["SEX"].str.upper()
+        assert set(gender_str.unique()).issubset({g.name for g in Gender})
+        self.gender = gender_str.map({g.name: int(g) for g in Gender}).values.astype(np.int32)
 
         # extract age vector at the portfolio date
         self.initial_ages = completed_months_to_date(df_portfolio["DATE_OF_BIRTH"], self.portfolio_date).astype(np.int32)
@@ -88,11 +88,11 @@ class Portfolio:
         self.reserving_rate = df_portfolio["RESERVING_RATE"].values.astype(np.float64)
 
         # extract the smoker status
-        self.smokerstatus = df_portfolio["SMOKERSTATUS"].str.upper()
-        _unknown_smoker_status = set(self.smokerstatus) - {s.name for s in SmokerStatus}
+        smokerstatus_str = df_portfolio["SMOKERSTATUS"].str.upper()
+        _unknown_smoker_status = set(smokerstatus_str) - {s.name for s in SmokerStatus}
         assert len(_unknown_smoker_status) == 0,\
             "Unknow smoker status: " + str(_unknown_smoker_status) + ", use one of " + str({s.name for s in SmokerStatus})
-        self.smokerstatus = self.smokerstatus.map(SmokerStatus.index_mapper()).values.astype(np.int32)
+        self.smokerstatus = smokerstatus_str.map(SmokerStatus.index_mapper()).values.astype(np.int32)
 
         # the number of month since the disablement date, is NaN if no disablement date is given
         dates_disablement = pd.to_datetime(df_portfolio["DATE_OF_DISABLEMENT"])  # enforce datetime even if NaN everywhere
@@ -101,7 +101,7 @@ class Portfolio:
         self.disablement_month = dates_disablement.dt.month.values.astype(np.int16)
         self.disablement_day = dates_disablement.dt.day.values.astype(np.int16)
 
-        self.months_disabled_at_start = completed_months_to_date(dates_disablement, self.portfolio_date).astype(np.int)
+        self.months_disabled_at_start = completed_months_to_date(dates_disablement, self.portfolio_date).astype(np.int32)
 
         # check that when in disabled state at start then the disablement date must be at or before the portfolio_date
         disabled_according_to_date = df_portfolio.CURRENT_STATUS.str[:3] == "DIS"
@@ -185,13 +185,23 @@ def completed_months_to_date(date_col, the_date):
 
 
 class PortfolioLoader:
+    """ Loader object for portfolio from Excel file that implements a cache. """
 
     def __init__(self, portfolio_path: str, portfolio_cache: Optional[str] = None) -> None:
+        """ Create a loader object.
+
+            :param portfolio_path   Path to Excel file to load.
+            :param portfolio_cache  Folder where the cached versions of the portfolios will be stored and retrieved from
+        """
         self.portfolio_path = os.path.abspath(portfolio_path)
         self.portfolio_cache = portfolio_cache
         self.portfolio: Optional[Portfolio] = None
 
-    def load(self, states_model) -> Portfolio:
+    def load(self, states_model: type[AbstractStateModel]) -> Portfolio:
+        """ Load the portfolio from cache or file. this will include data validations.
+
+            :param states_model  The State model class against which the status are validated.
+        """
         portfolio_abs_path = os.path.abspath(self.portfolio_path)
         if not os.path.exists(portfolio_abs_path):
             raise Exception("No such file: {}".format(portfolio_abs_path))
@@ -207,7 +217,7 @@ class PortfolioLoader:
         logger.info("Portolio rows: {}".format(len(self.portfolio)))
         return self.portfolio
 
-    def _get_portfolio_hash(self, portfolio_abs_path: str, states_model: AbstractStateModel) -> str:
+    def _get_portfolio_hash(self, portfolio_abs_path: str, states_model: type[AbstractStateModel]) -> str:
         """ Build a hash from the file name, the modification time and the states_model
             it was used with. """
         md5 = hashlib.md5()
@@ -251,3 +261,4 @@ class PortfolioLoader:
                 return True
         except FileNotFoundError:
             logger.warn("Caching the portfolio failed.")
+            return False

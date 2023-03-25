@@ -2,7 +2,7 @@ from enum import IntEnum, unique
 # from pyprotolinc.models import check_states
 from pyprotolinc import MAX_AGE
 
-from pyprotolinc._actuarial import CRiskFactors
+from pyprotolinc._actuarial import CRiskFactors  # type: ignore
 
 
 _C_RISK_FACTORS = {rf.name: rf for rf in CRiskFactors}

@@ -24,8 +24,8 @@ def calc_terminal_months(df_portfolio: pd.DataFrame) -> tuple[npt.NDArray[np.int
 
     # cast to int in next statement to force an error if that fails
     duration_in_months = np.array(df_portfolio.PRODUCT_PARAMETERS, dtype=np.int32) * 12
-    start_years = df_portfolio.DATE_START_OF_COVER.dt.year.values
-    start_months = df_portfolio.DATE_START_OF_COVER.dt.month.values
+    start_years: npt.NDArray[np.int32] = np.array(df_portfolio.DATE_START_OF_COVER.dt.year.values, dtype=np.int32)
+    start_months: npt.NDArray[np.int32] = np.array(df_portfolio.DATE_START_OF_COVER.dt.month.values, dtype=np.int32)
 
     # "absolute number of completed months" at start of policy is start_years * 12 + (start_months - 1)
     end_abs = start_years * 12 + (start_months - 1)

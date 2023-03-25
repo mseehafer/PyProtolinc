@@ -9,9 +9,10 @@ from pyprotolinc.assumptions.providers import AssumptionTimestepAdjustment
 from pyprotolinc import MAX_AGE, RunConfig
 from pyprotolinc.results import ProbabilityVolumeResults, CfNames
 from pyprotolinc.assumptions.providers import AssumptionType
-import pyprotolinc._actuarial as actuarial
+import pyprotolinc._actuarial as actuarial  # type: ignore
 from pyprotolinc.models import Model
 from pyprotolinc.portfolio import Portfolio
+from pyprotolinc.models.state_models import AbstractStateModel
 
 logger = logging.getLogger(__name__)
 
@@ -66,8 +67,8 @@ class CProjector:
         self.product = product
 
         # placeholder for the results
-        self._output_columns = None
-        self._result = None
+        self._output_columns: list[str] = []
+        self._result: Optional[npt.NDArray[np.float64]] = None
 
         # for logging
         self.chunk_index = chunk_index
@@ -121,12 +122,11 @@ class CProjector:
     #     return acs
 
     def run(self):
-
-        # self._output_columns, self._result = actuarial.py_run_c_valuation(acs, self.c_portfolio, self.time_step, self.max_age)
         self._output_columns, self._result = self.runner.run()
-        pass
 
     def get_results_dict(self) -> dict[str, npt.NDArray[np.float64]]:
+        if self._result is None:
+            raise Exception("Logic Error: results must be calculated before getting them.")
 
         # non-cash flows
         c_output_map = {col_name: index for index, col_name in enumerate(self._output_columns) if not col_name.startswith("STATE_PAYMENT_TYPE_")}
@@ -174,19 +174,27 @@ class CProjector:
                 data[vol_prob_res.name] = np.zeros(num_rows)
             else:
                 if vol_prob_res.name.startswith("VOL_"):
-                    state_no = mapped.value
 
-                    # TODO: decide if VOL output should be PROB_STATE or VOL_STATE
-                    c_state_name = "PROB_STATE_{}".format(state_no)
-                    data[vol_prob_res.name] = self._result[:, c_output_map[c_state_name]]
+                    if isinstance(mapped, AbstractStateModel):
+                        state_no = mapped.value
+
+                        # TODO: decide if VOL output should be PROB_STATE or VOL_STATE
+                        c_state_name = "PROB_STATE_{}".format(state_no)
+                        data[vol_prob_res.name] = self._result[:, c_output_map[c_state_name]]
+                    else:
+                        raise Exception("VOL columns are not state transitions!")
+
                 elif vol_prob_res.name.startswith("MV_"):
 
-                    from_state_no = mapped[0].value
-                    to_state_no = mapped[1].value
+                    if isinstance(mapped, tuple):
+                        from_state_no = mapped[0].value
+                        to_state_no = mapped[1].value
 
-                    # TODO: decide if VOL output should be PROB_STATE or VOL_STATE
-                    c_state_name = "PROB_MVM_{}_{}".format(from_state_no, to_state_no)
-                    data[vol_prob_res.name] = self._result[:, c_output_map[c_state_name]]
+                        # TODO: decide if VOL output should be PROB_STATE or VOL_STATE
+                        c_state_name = "PROB_MVM_{}_{}".format(from_state_no, to_state_no)
+                        data[vol_prob_res.name] = self._result[:, c_output_map[c_state_name]]
+                    else:
+                        raise Exception("MVM output must be a tuple!")
 
         return data
 

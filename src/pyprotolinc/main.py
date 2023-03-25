@@ -27,7 +27,7 @@ from pyprotolinc.models.state_models import state_model_by_name
 from pyprotolinc.models.model_config import get_model_by_name
 from pyprotolinc.assumptions.iohelpers import AssumptionsLoaderFromConfig
 from pyprotolinc.assumptions.providers import AssumptionSetWrapper
-from pyprotolinc.models.model_multistate_generic import adjust_state_for_generic_model
+# from pyprotolinc.models.model_multistate_generic import adjust_state_for_generic_model
 from pyprotolinc.product import product_class_lookup
 from pyprotolinc.utils import download_dav_tables
 
@@ -54,12 +54,10 @@ def create_model(model_class: type[Model],
         :rtype: Instance of `model_class`
     """
 
-    state_model_class = None
-    if model_class.STATES_MODEL is None:
-        state_model_class = state_model_by_name(state_model_name)
-    else:
-        state_model_class = model_class.STATES_MODEL
+    # try determining the state model
+    state_model_class = state_model_by_name(state_model_name)
 
+    # load the assumptions
     assumption_wrapper: AssumptionSetWrapper
     if assumptions_file is None and assumption_wrapper_opt is None:
         raise Exception("Creating a model requires either a valid assumption spec or and AssumptionSet")
@@ -71,8 +69,9 @@ def create_model(model_class: type[Model],
     else:
         raise Exception("Unreachable exception to silence mypy")
 
-    model = model_class(assumption_wrapper)
-    adjust_state_for_generic_model(model, state_model_name)
+    # instantiate the model
+    model = model_class(state_model_class, assumption_wrapper)
+    # adjust_state_for_generic_model(model, state_model_name)
 
     return model
 

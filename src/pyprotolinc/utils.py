@@ -24,8 +24,8 @@ def download_dav_tables(target_dir: str = ".") -> None:
         # download and save .zip to tmp dir
         r = requests.get(link_address)
         zip_file = os.path.join(tmp_dir, file_name)
-        with open(zip_file, 'wb') as f:
-            f.write(r.content)
+        with open(zip_file, 'wb') as zf:
+            zf.write(r.content)
 
         # extract zip
         with zipfile.ZipFile(zip_file, 'r') as zip_ref:
