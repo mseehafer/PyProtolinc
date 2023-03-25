@@ -1,6 +1,8 @@
-import logging
-from typing import Any, Optional
+""" Contains the Projector objects which encapsulate the main calculations (in case of Python)
+or delegate to the C++ engine. """
 
+import logging
+from typing import Any, Optional, Union
 
 import numpy as np
 import numpy.typing as npt
@@ -19,7 +21,7 @@ logger = logging.getLogger(__name__)
 
 class TimeAxis:
 
-    def __init__(self, portfolio_date, total_num_months):
+    def __init__(self, portfolio_date, total_num_months: int) -> None:
         portfolio_year, portfolio_month = portfolio_date.year, portfolio_date.month
 
         # generate a time axis starting at the beginning of the month of the portfolio date
@@ -93,38 +95,12 @@ class CProjector:
             for payment_type_index, payment_matrix in payment_list:
                 self.runner.add_cond_state_payment(state, payment_type_index, payment_matrix)
 
-        # print("EOM-payment", self.cond_eom_payment_dict)
-        # print("BOM-payment", self.cond_bom_payment_dict)
-
-    # def build_assumption_set(self):
-    #     """ Construct the actuarial assumption set for the C-Kernel. """
-
-    #     non_trivial_state_transitions_be = self.model.get_non_trivial_state_transitions(AssumptionType.BE)
-
-    #     acs = actuarial.AssumptionSet(self.state_dimension)
-
-    #     # get BE assumptions
-    #     for (from_state, to_state) in non_trivial_state_transitions_be:
-    #         provider = self.model.rates_provider_matrix_be[from_state][to_state]
-
-    #         if isinstance(provider, actuarial.ConstantRateProvider):
-    #             acs.add_provider_const(from_state, to_state, provider)
-    #         elif isinstance(provider, actuarial.StandardRateProvider):
-    #             acs.add_provider_std(from_state, to_state, provider)
-
-    #     # # DUMMYS:
-    #     # # provider05 = actuarial.ConstantRateProvider(0.5)
-    #     # provider02 = actuarial.ConstantRateProvider(0.0015)
-    #     # acs = actuarial.AssumptionSet(2)
-    #     # acs.add_provider_const(0, 1, provider02)
-    #     # # acs.add_provider_const(1, 0, provider05)
-
-    #     return acs
-
     def run(self):
+        """ Starts the calculation run and store the results internally. """
         self._output_columns, self._result = self.runner.run()
 
     def get_results_dict(self) -> dict[str, npt.NDArray[np.float64]]:
+        """ Converts the internally stored results into a dictionary and returns it. """
         if self._result is None:
             raise Exception("Logic Error: results must be calculated before getting them.")
 
@@ -645,7 +621,7 @@ class Projector:
                     self.probability_movements[:, vol_prob_res] = fill_with_last_nonzero_value(self.probability_movements[:, vol_prob_res])
 
 
-def fill_with_last_nonzero_value(x: np.ndarray):
+def fill_with_last_nonzero_value(x: npt.NDArray[Union[np.float64, np.int32]]):
     """ Return a vector which consists of a copy of x but with all trailing zeros
         overwritten by with the last non-zero element in the vector."""
     y = x.copy()

@@ -1,3 +1,7 @@
+""" This module provides classes and method that allow to read in seriatim records from Excel files 
+ and perform initial transformations and validations on them.
+"""
+
 import os
 import datetime
 import logging
@@ -8,7 +12,6 @@ from typing import Optional
 import numpy as np
 import pandas as pd
 
-# from pyprotolinc.models.model_disability_multistate import MultiStateDisabilityStates
 from pyprotolinc.riskfactors.risk_factors import Gender, SmokerStatus
 from pyprotolinc.models.state_models import AbstractStateModel
 
@@ -162,14 +165,14 @@ def completed_months_to_date(date_col, the_date):
         The latter one can be a np.datetime series or a datetime.datetime. """
     class _dt:
         """ Helper class. """
-        def __init__(self, year, month, day):
+        def __init__(self, year: int, month: int, day: int) -> None:
             self.year = year
             self.month = month
             self.day = day
 
     class _date_emul:
         """ Helper class. """
-        def __init__(self, the_date):
+        def __init__(self, the_date: datetime.datetime) -> None:
             self.dt = _dt(the_date.year, the_date.month, the_date.day)
 
     if isinstance(the_date, datetime.datetime):
