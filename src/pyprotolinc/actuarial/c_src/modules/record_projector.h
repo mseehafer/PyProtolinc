@@ -401,8 +401,6 @@ void RecordProjector::run(int runner_no,
     if (debug_on) cout << "Age of policyholder: " << age_month_completed << "  (" << age_month_completed / 12.0 << ")" << endl;
 
 
-
-
     // main loop over time
     bool first_iteration = true;
     bool yearly_assumptions_updated = false;    
@@ -515,6 +513,12 @@ void RecordProjector::run(int runner_no,
         ///////////////////////////////////////////////////////////////////////////////////////
         // Step 4: Payments at end of period
         ///////////////////////////////////////////////////////////////////////////////////////
+        // TODO
+
+        ///////////////////////////////////////////////////////////////////////////////////////
+        // Step 5: Contractual State Transitions
+        ///////////////////////////////////////////////////////////////////////////////////////
+        // TODO
 
 
         // closing the loop
