@@ -78,6 +78,8 @@ class Model(ABC):
             return self._get_nontrivial_transitions(self.rates_provider_matrix_be)
         elif be_or_res == AssumptionType.RES:
             return self._get_nontrivial_transitions(self.rates_provider_matrix_res)
+        else:
+            raise Exception(f"Unknown Assumption type: {be_or_res}!")
 
     def _get_nontrivial_transitions(self, rates_provider_matrix) -> list[tuple[int, int]]:
         # an optimization: we determine which state transitions are non-trivial
@@ -85,7 +87,7 @@ class Model(ABC):
         for from_state in self.states_model:
             for to_state in self.states_model:
                 if rates_provider_matrix[from_state][to_state] is not None:
-                    non_trivial_state_transitions.append((from_state, to_state))
+                    non_trivial_state_transitions.append((int(from_state), int(to_state)))
         return non_trivial_state_transitions
 
 

@@ -96,7 +96,7 @@ def project_cashflows(run_config: RunConfig,
 
     logger.info("Multistate run with config: %s", str(run_config))
 
-    rows_for_state_recorder = ()  # (0, 1, 2)
+    rows_for_state_recorder: Optional[tuple[int]] = None  # (0, 1, 2)
     num_timesteps = run_config.years_to_simulate * 12 * run_config.steps_per_month
 
     model = create_model(get_model_by_name(run_config.model_name), run_config.state_model_name, run_config.assumptions_path, assumption_wrapper)
@@ -167,7 +167,7 @@ def _project_subportfolio(run_config: RunConfig,
                           model: Model,
                           num_timesteps: int,
                           portfolio: Portfolio,
-                          rows_for_state_recorder: tuple[int],
+                          rows_for_state_recorder: Optional[tuple[int]],
                           chunk_index: int,
                           num_chunks: int) -> dict[str, npt.NDArray[np.float64]]:
 

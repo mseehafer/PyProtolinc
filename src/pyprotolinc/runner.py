@@ -209,7 +209,7 @@ class Projector:
                  model: Model,
                  proj_state,
                  product,
-                 rows_for_state_recorder=None,
+                 rows_for_state_recorder: Optional[tuple[int]] = None,
                  chunk_index: int = 1,
                  num_chunks: int = 1) -> None:
 
@@ -284,7 +284,7 @@ class Projector:
                                                       self.proj_state.num_records))
 
         # store ncf-results for selected policies
-        self.rows_for_payments_recorder = list(rows_for_state_recorder)
+        self.rows_for_payments_recorder: list[int] = list() if rows_for_state_recorder is None else list(rows_for_state_recorder)
         if self.rows_for_payments_recorder:
             self.payments_recorder_indexes = np.array(self.rows_for_payments_recorder, dtype=np.int32)
             self.payments_recorder = np.zeros((1 + self.total_num_months, len(self.payments_recorder_indexes), self.proj_state.num_states))
