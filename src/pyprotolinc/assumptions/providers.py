@@ -219,7 +219,8 @@ class AssumptionSetWrapper:
         this_trans[to_state] = rates_provider
         return self
 
-    def _build_matrix(self, transitions) -> list[list[Optional[BaseRatesProvider]]]:
+    def _build_matrix(self,
+                      transitions: dict[int, dict[int, BaseRatesProvider]]) -> list[list[Optional[BaseRatesProvider]]]:
         # generate a matrix of state transition rates providers
         transition_provider_matrix = []
         for i in range(self._dim):

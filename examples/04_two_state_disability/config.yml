@@ -28,8 +28,8 @@ run_type_specs:
     outfile: "results/ncf_out_generic.csv"
     #portfolio_path: "portfolio/portfolio_small.xlsx"
     # portfolio_path: "portfolio/portfolio_small3.xlsx"
-    # portfolio_path: "portfolio/portfolio_med.xlsx"
-    portfolio_path: "portfolio/portfolio_big.xlsx"
+    portfolio_path: "portfolio/portfolio_med.xlsx"
+    # portfolio_path: "portfolio/portfolio_big.xlsx"
     portfolio_chunk_size: 40000  # 8192  # 2048  # 16384  # 2048  # 16384  # 2048  # 1024
 
   # MultiStateDisability:

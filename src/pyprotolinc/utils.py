@@ -3,8 +3,47 @@ import zipfile
 import os
 import shutil
 import tempfile
+from datetime import datetime
 
+import numpy as np
+import numpy.typing as npt
 import requests
+
+import pyprotolinc._actuarial as actuarial  # type: ignore
+
+
+class TimeAxis:
+    """ TimeAxis provides vectors of the years/months/quarters to be used in the projection. """
+
+    def __init__(self, portfolio_date: datetime, total_num_months: int) -> None:
+        portfolio_year, portfolio_month = portfolio_date.year, portfolio_date.month
+
+        # generate a time axis starting at the beginning of the month of the portfolio date
+        _zero_based_months_tmp = (portfolio_month - 1) + np.arange(total_num_months + 1)
+        self.months = _zero_based_months_tmp % 12 + 1
+        self.years = portfolio_year + _zero_based_months_tmp // 12
+        self.quarters = (self.months - 1) // 3 + 1
+
+    def __len__(self) -> int:
+        return len(self.months)
+
+
+class TimeAxis2(TimeAxis):
+    """ Wrapper object for the CTimeAxis that is compatible with the Python-TimeAxis"""
+
+    def __init__(self, c_time_axis_wrapper: actuarial.CTimeAxisWrapper,
+                 years: npt.NDArray[np.int16],
+                 months: npt.NDArray[np.int16],
+                 days: npt.NDArray[np.int16],
+                 quarters: npt.NDArray[np.int16]) -> None:
+        self.c_time_axis_wrapper = c_time_axis_wrapper
+        self.years = years
+        self.months = months
+        self._days = days
+        self.quarters = quarters
+
+    def __len__(self) -> int:
+        return len(self.c_time_axis_wrapper)
 
 
 def download_dav_tables(target_dir: str = ".") -> None:

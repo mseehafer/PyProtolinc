@@ -15,37 +15,9 @@ import pyprotolinc._actuarial as actuarial  # type: ignore
 from pyprotolinc.models import Model
 from pyprotolinc.portfolio import Portfolio
 from pyprotolinc.models.state_models import AbstractStateModel
+from pyprotolinc.utils import TimeAxis, TimeAxis2
 
 logger = logging.getLogger(__name__)
-
-
-class TimeAxis:
-
-    def __init__(self, portfolio_date, total_num_months: int) -> None:
-        portfolio_year, portfolio_month = portfolio_date.year, portfolio_date.month
-
-        # generate a time axis starting at the beginning of the month of the portfolio date
-        _zero_based_months_tmp = (portfolio_month - 1) + np.arange(total_num_months + 1)
-        self.months = _zero_based_months_tmp % 12 + 1
-        self.years = portfolio_year + _zero_based_months_tmp // 12
-        self.quarters = (self.months - 1) // 3 + 1
-
-    def __len__(self):
-        return len(self.months)
-
-
-class TimeAxis2:
-    """ Wrapper object for the CTimeAxis that is compatible with the Python-TimeAxis"""
-
-    def __init__(self, c_time_axis_wrapper, years, months, days, quarters):
-        self.c_time_axis_wrapper = c_time_axis_wrapper
-        self.years = years
-        self.months = months
-        self.days = days
-        self.quarters = quarters
-
-    def __len__(self):
-        return len(self.c_time_axis_wrapper)
 
 
 class CProjector:
@@ -95,7 +67,7 @@ class CProjector:
             for payment_type_index, payment_matrix in payment_list:
                 self.runner.add_cond_state_payment(state, payment_type_index, payment_matrix)
 
-    def run(self):
+    def run(self) -> None:
         """ Starts the calculation run and store the results internally. """
         self._output_columns, self._result = self.runner.run()
 
@@ -326,7 +298,7 @@ class Projector:
                                          yearsdisabledifdisabledatstart=yearsdisabledifdisabledatstart)
             self.applicable_yearly_assumptions_res[:, from_state, to_state] = sel_ass
 
-    def calc_payments_bom(self):
+    def calc_payments_bom(self) -> None:
         """ Calculate the payments based on the state information which should be
             as at the begin of the month. """
 
@@ -341,7 +313,7 @@ class Projector:
         if self.rows_for_payments_recorder:
             self.payments_recorder[self.month_count, :, :] = self.monthly_payment_matrix[self.payments_recorder_indexes, :]
 
-    def calc_payments_eom(self):
+    def calc_payments_eom(self) -> None:
         """ Calculate the payments based on the state information which should be
             as at the end of the month (LS claims, potentially end of period reserves). """
 
@@ -477,7 +449,7 @@ class Projector:
             for st in range(num_states):
                 self.contractual_transition_ts_period[insured_selector, from_state, st] = st == to_state
 
-    def initialize_assumption_providers(self):
+    def initialize_assumption_providers(self) -> None:
         """ Call into the init hook of the assumption providers. """
         # get BE assumptions
         for (from_state, to_state) in self.non_trivial_state_transitions_be:
