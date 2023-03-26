@@ -1,7 +1,7 @@
 
 import logging
 from abc import ABC, abstractmethod
-from typing import Optional, Iterable
+from typing import Optional, Iterable, Any
 
 from pyprotolinc.assumptions.providers import AssumptionType, BaseRatesProvider
 from pyprotolinc.assumptions.providers import AssumptionSetWrapper
@@ -66,7 +66,12 @@ class Model(ABC):
         return self._assumptions_wrapper.build_assumption_set(AssumptionType.RES)
 
     @abstractmethod
-    def new_state_instance(self, num_timesteps: int, portfolio: Portfolio, rows_for_state_recorder: Optional[Iterable] = None, *args, **kwargs) -> ModelState:
+    def new_state_instance(self,
+                           num_timesteps: int,
+                           portfolio: Portfolio,
+                           rows_for_state_recorder: Optional[Iterable[int]] = None,
+                           *args: Any,
+                           **kwargs: Any) -> ModelState:
         # def new_state_instance(self, num_timesteps: int, portfolio, *args, **kwargs) -> ModelState:
         """ Return a new instance of the run-state."""
         raise Exception("Method must be implemented in subclass")
@@ -81,7 +86,8 @@ class Model(ABC):
         else:
             raise Exception(f"Unknown Assumption type: {be_or_res}!")
 
-    def _get_nontrivial_transitions(self, rates_provider_matrix) -> list[tuple[int, int]]:
+    def _get_nontrivial_transitions(self,
+                                    rates_provider_matrix: list[list[Optional[BaseRatesProvider]]]) -> list[tuple[int, int]]:
         # an optimization: we determine which state transitions are non-trivial
         non_trivial_state_transitions = []
         for from_state in self.states_model:

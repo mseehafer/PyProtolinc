@@ -1,6 +1,6 @@
 
 import logging
-from abc import ABC, abstractmethod
+from abc import ABC
 from typing import Iterable, Optional
 
 import numpy as np
@@ -167,8 +167,12 @@ def register(cls: type[AbstractProduct]) -> type[AbstractProduct]:
     classname = cls.__name__
     if cls.__name__ != "AbstractProduct":
         if cls.PRODUCT_NAMES:
-            for prod_name in cls.PRODUCT_NAMES:
-                _register_product(prod_name, cls)
+            # allow that the PRODUCT_NAMES field is a string or an iterable
+            if isinstance(cls.PRODUCT_NAMES, str):
+                _register_product(cls.PRODUCT_NAMES, cls)
+            else:
+                for prod_name in cls.PRODUCT_NAMES:
+                    _register_product(prod_name, cls)
         else:
             _register_product(classname, cls)
     return cls
@@ -214,7 +218,8 @@ class Product_AnnuityInPayment(AbstractProduct):
 
 @register
 class Product_AnnuityInPaymentYearlyAtBirthMonth(AbstractProduct):
-    """ Simple product that pays out the sum_insured / 12 each month. """
+    """ Simple product that pays out the sum_insured each year at the
+        month of birth. """
 
     STATES_MODEL = AnnuityRunoffStates
     PRODUCT_NAMES = ("AnnuityInPaymentYearlyAtBirthMonth", )

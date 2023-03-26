@@ -28,7 +28,7 @@ class BaseRatesProvider(metaclass=ABCMeta):
     """ Base class for `rates providers`."""
 
     @abstractmethod
-    def get_rates(self, length: int) -> npt.NDArray[np.float64]:
+    def get_rates(self, length: int, **kwargs: Any) -> npt.NDArray[np.float64]:
         raise Exception("Method <get_rate> must be overwritten in subclass")
 
     @abstractmethod
@@ -158,7 +158,7 @@ class StandardRateProvider(BaseRatesProvider):
 
     def __repr__(self) -> str:
         return "<StandardRateProvider with factors ({})>".format(str(self.risk_factor_names))
-    
+
     def initialize(self, **kwargs: Any) -> None:
         """ The initialize hook: nothing needed for this class. """
         pass

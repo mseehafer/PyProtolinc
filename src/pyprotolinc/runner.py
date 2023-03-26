@@ -16,6 +16,9 @@ from pyprotolinc.models import Model
 from pyprotolinc.portfolio import Portfolio
 from pyprotolinc.models.state_models import AbstractStateModel
 from pyprotolinc.utils import TimeAxis, TimeAxis2
+from pyprotolinc.product import AbstractProduct
+from pyprotolinc.models.model_multistate_generic import ProjectionState
+
 
 logger = logging.getLogger(__name__)
 
@@ -26,11 +29,11 @@ class CProjector:
     def __init__(self, run_config: RunConfig,
                  portfolio: Portfolio,
                  model: Model,
-                 proj_state: Any,
-                 product,
-                 rows_for_state_recorder: Optional[tuple[int]] = None,
-                 chunk_index=1,
-                 num_chunks=1) -> None:
+                 # proj_state: Any,
+                 product: AbstractProduct,
+                 # rows_for_state_recorder: Optional[tuple[int]] = None,
+                 chunk_index: int = 1,
+                 num_chunks: int = 1) -> None:
 
         self.c_portfolio = actuarial.build_c_portfolio(portfolio)
         self.time_step = actuarial.TimeStep.MONTHLY  # actuarial.TimeStep.MONTHLY  # QUARTERLY   # TODO: test if we get back a result set with this timestep
@@ -71,7 +74,7 @@ class CProjector:
         """ Starts the calculation run and store the results internally. """
         self._output_columns, self._result = self.runner.run()
 
-    def get_results_dict(self) -> dict[str, npt.NDArray[np.float64]]:
+    def get_results_dict(self) -> dict[str, Union[npt.NDArray[np.float64], npt.NDArray[np.int16]]]:
         """ Converts the internally stored results into a dictionary and returns it. """
         if self._result is None:
             raise Exception("Logic Error: results must be calculated before getting them.")
@@ -155,8 +158,8 @@ class Projector:
                  run_config: RunConfig,
                  portfolio: Portfolio,
                  model: Model,
-                 proj_state,
-                 product,
+                 proj_state: ProjectionState,
+                 product: AbstractProduct,
                  rows_for_state_recorder: Optional[tuple[int]] = None,
                  chunk_index: int = 1,
                  num_chunks: int = 1) -> None:
@@ -259,12 +262,17 @@ class Projector:
 
         # this container of structure (time x state x insured) will hold reserves
         # as at the begin of period
-        self.reserves_bom = None
+        self.reserves_bom: Optional[npt.NDArray[np.float64]] = None
 
-    def update_state(self, transition_ass_timestep):
+    def update_state(self, transition_ass_timestep: npt.NDArray[np.float64]) -> None:
         self.proj_state.update_state_matrix(transition_ass_timestep)
 
-    def select_applicable_base_assumptions(self, ages, genders, calendaryear, smokerstatus, yearsdisabledifdisabledatstart):
+    def select_applicable_base_assumptions(self,
+                                           ages: npt.NDArray[np.int32],
+                                           genders: npt.NDArray[np.int32],
+                                           calendaryear: npt.NDArray[np.int32],
+                                           smokerstatus: npt.NDArray[np.int32],
+                                           yearsdisabledifdisabledatstart: npt.NDArray[np.int32]) -> None:
         """ Construct a three dimensional tensor that contains the base assumptions.
             Indexes:
               * row in the portfolio
@@ -279,24 +287,26 @@ class Projector:
         for (from_state, to_state) in self.non_trivial_state_transitions_be:
             provider = self.model.rates_provider_matrix_be[from_state][to_state]
             # print(from_state, to_state, provider.get_offsets())
-            sel_ass = provider.get_rates(len(ages),
-                                         age=ages,
-                                         gender=genders,
-                                         calendaryear=calendaryear,
-                                         smokerstatus=smokerstatus,
-                                         yearsdisabledifdisabledatstart=yearsdisabledifdisabledatstart)
-            self.applicable_yearly_assumptions_be[:, from_state, to_state] = sel_ass
+            if provider:
+                sel_ass = provider.get_rates(len(ages),
+                                             age=ages,
+                                             gender=genders,
+                                             calendaryear=calendaryear,
+                                             smokerstatus=smokerstatus,
+                                             yearsdisabledifdisabledatstart=yearsdisabledifdisabledatstart)
+                self.applicable_yearly_assumptions_be[:, from_state, to_state] = sel_ass
 
         # get RES assumptions
         for (from_state, to_state) in self.non_trivial_state_transitions_res:
             provider = self.model.rates_provider_matrix_res[from_state][to_state]
-            sel_ass = provider.get_rates(len(ages),
-                                         age=ages,
-                                         gender=genders,
-                                         calendaryear=calendaryear,
-                                         smokerstatus=smokerstatus,
-                                         yearsdisabledifdisabledatstart=yearsdisabledifdisabledatstart)
-            self.applicable_yearly_assumptions_res[:, from_state, to_state] = sel_ass
+            if provider:
+                sel_ass = provider.get_rates(len(ages),
+                                             age=ages,
+                                             gender=genders,
+                                             calendaryear=calendaryear,
+                                             smokerstatus=smokerstatus,
+                                             yearsdisabledifdisabledatstart=yearsdisabledifdisabledatstart)
+                self.applicable_yearly_assumptions_res[:, from_state, to_state] = sel_ass
 
     def calc_payments_bom(self) -> None:
         """ Calculate the payments based on the state information which should be
@@ -339,7 +349,7 @@ class Projector:
         else:
             self.number_all_zero_results = 0
 
-    def calculate_reserves(self):
+    def calculate_reserves(self) -> npt.NDArray[np.float64]:
         """ Reserve loop: Calculated the reserves using reserving assumptions weighted by BE assumptions. """
 
         # obtain the discount factor and force into column shape
@@ -402,7 +412,8 @@ class Projector:
 
         return reserves_bom_by_insured
 
-    def get_results_dict(self) -> dict[str, npt.NDArray[np.float64]]:
+    def get_results_dict(self) -> dict[str, Union[npt.NDArray[np.float64], npt.NDArray[np.int16]]]:
+        data: dict[str, Union[npt.NDArray[np.float64], npt.NDArray[np.int16]]]
         data = {
             "YEAR": self.time_axis.years,
             "QUARTER": self.time_axis.quarters,
@@ -413,8 +424,9 @@ class Projector:
             data[cfn.name] = self.ncf_portfolio[:, cfn]
 
         # add the reserves
-        for st in self.model.states_model:
-            data["RESERVE_BOM({})".format(st.name)] = self.reserves_bom[:, st]
+        if self.reserves_bom is not None:
+            for st in self.model.states_model:
+                data["RESERVE_BOM({})".format(st.name)] = self.reserves_bom[:, st]
 
         # add the probability movements
         for vol_prob_res in ProbabilityVolumeResults:
@@ -428,7 +440,10 @@ class Projector:
 
         return data
 
-    def calculate_contractual_transition_tensor(self, state_transitions_current_month):
+    def calculate_contractual_transition_tensor(self,
+                                                state_transitions_current_month: list[tuple[AbstractStateModel,
+                                                                                            AbstractStateModel,
+                                                                                            npt.NDArray[np.int32]]]) -> None:
         """ Expand the contractual transition data structure into a full transition tensor.
         """
 
@@ -454,12 +469,14 @@ class Projector:
         # get BE assumptions
         for (from_state, to_state) in self.non_trivial_state_transitions_be:
             provider = self.model.rates_provider_matrix_be[from_state][to_state]
-            provider.initialize(years_of_birth=self.years_of_birth, gender=self.gender)
+            if provider is not None:
+                provider.initialize(years_of_birth=self.years_of_birth, gender=self.gender)
 
         # get RES assumptions
         for (from_state, to_state) in self.non_trivial_state_transitions_res:
             provider = self.model.rates_provider_matrix_res[from_state][to_state]
-            provider.initialize(years_of_birth=self.years_of_birth, gender=self.gender)
+            if provider is not None:
+                provider.initialize(years_of_birth=self.years_of_birth, gender=self.gender)
 
     def run(self) -> None:
         # projection loop over time
@@ -593,7 +610,7 @@ class Projector:
                     self.probability_movements[:, vol_prob_res] = fill_with_last_nonzero_value(self.probability_movements[:, vol_prob_res])
 
 
-def fill_with_last_nonzero_value(x: npt.NDArray[Union[np.float64, np.int32]]):
+def fill_with_last_nonzero_value(x: npt.NDArray[Union[np.float64, np.int32]]) -> npt.NDArray[Union[np.float64, np.int32]]:
     """ Return a vector which consists of a copy of x but with all trailing zeros
         overwritten by with the last non-zero element in the vector."""
     y = x.copy()

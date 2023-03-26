@@ -169,7 +169,7 @@ def _project_subportfolio(run_config: RunConfig,
                           portfolio: Portfolio,
                           rows_for_state_recorder: Optional[tuple[int]],
                           chunk_index: int,
-                          num_chunks: int) -> dict[str, npt.NDArray[np.float64]]:
+                          num_chunks: int) -> dict[str, Union[npt.NDArray[np.float64], npt.NDArray[np.int16]]]:
 
     assert portfolio.homogenous_wrt_product, "Subportfolio should have identical product in all rows"
     product_name = portfolio.products.iloc[0]
@@ -187,9 +187,8 @@ def _project_subportfolio(run_config: RunConfig,
         projector = CProjector(run_config,
                                portfolio,
                                model,
-                               proj_state,
                                product,
-                               rows_for_state_recorder=rows_for_state_recorder,
+                               # rows_for_state_recorder=rows_for_state_recorder,
                                chunk_index=chunk_index,
                                num_chunks=num_chunks
                                )
@@ -211,7 +210,8 @@ def _project_subportfolio(run_config: RunConfig,
         raise Exception("Unknown kernel type: {}".format(run_config.kernel_engine))
 
     projector.run()
-    return projector.get_results_dict()
+    result: dict[str, Union[npt.NDArray[np.float64], npt.NDArray[np.int16]]] = projector.get_results_dict()
+    return result
 
 
 def project_cashflows_cli(config_file_or_object: Union[str, RunConfig] = 'config.yml',

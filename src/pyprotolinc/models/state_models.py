@@ -2,7 +2,7 @@
 """ Abstract declaration of state models. """
 from enum import IntEnum, unique
 from abc import abstractmethod
-from typing import Union, Any
+from typing import Union
 from pyprotolinc.results import ProbabilityVolumeResults
 
 
@@ -10,7 +10,7 @@ from pyprotolinc.results import ProbabilityVolumeResults
 _state_model_registry: dict[str, type] = {}
 
 
-def check_state_model(EnumToCheck) -> tuple[int, int]:
+def check_state_model(EnumToCheck: type[IntEnum]) -> tuple[int, int]:
     """ Make sure that a state model uses consecutively numbered starting from zero.  """
 
     assert issubclass(EnumToCheck, IntEnum), "State Model must inherit from IntEnum"
@@ -32,9 +32,9 @@ def check_state_model(EnumToCheck) -> tuple[int, int]:
     return min_val, max_val
 
 
-def _register_state_model(cls: type) -> None:
+def _register_state_model(cls: type["AbstractStateModel"]) -> None:
     """ Register a new statemodel- """
-    if cls in _state_model_registry:
+    if cls.__name__ in _state_model_registry:
         raise Exception(f"StateModel {cls.__name__} already defined.")
     if cls.__name__ != "AbstractStateModel":    # note the hardcoded name, keep in sync with class name below
         check_state_model(cls)
@@ -46,31 +46,10 @@ def show_state_models() -> dict[str, type]:
     return dict(_state_model_registry)
 
 
-def states_model(cls: type):
+def states_model(cls: type["AbstractStateModel"]) -> type["AbstractStateModel"]:
     """ To be used as a decorator on StateModel that will registers those. """
     _register_state_model(cls)
     return cls
-
-
-# class AbstractStateModelMeta(ABCMeta, type(IntEnum)):
-#     """ Meta class that combines ABC and the IntEnum."""
-#     def __new__(meta, name, bases, class_dict):
-#         cls = super().__new__(meta, name, bases, class_dict)
-#         _register_state_model(cls)
-#         return cls
-#
-# class AbstractStateModel(IntEnum, metaclass=AbstractStateModelMeta):
-#     """ The base class for state models. """
-
-#     @classmethod
-#     @abstractclassmethod
-#     def describe(cls: type["AbstractStateModel"]) -> str:
-#         return cls.__name__ + ": " + str(cls.__doc__)
-
-#     @classmethod
-#     @abstractclassmethod
-#     def to_std_outputs(cls: type["AbstractStateModel"]) -> dict[ProbabilityVolumeResults, Union[type["AbstractStateModel"], tuple[type["AbstractStateModel"], type["AbstractStateModel"]]]]:
-#         return {}
 
 
 @states_model

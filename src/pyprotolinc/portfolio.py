@@ -1,4 +1,4 @@
-""" This module provides classes and method that allow to read in seriatim records from Excel files 
+""" This module provides classes and method that allow to read in seriatim records from Excel files
  and perform initial transformations and validations on them.
 """
 
@@ -7,9 +7,10 @@ import datetime
 import logging
 import hashlib
 import pickle
-from typing import Optional
+from typing import Optional, Union
 
 import numpy as np
+import numpy.typing as npt
 import pandas as pd
 
 from pyprotolinc.riskfactors.risk_factors import Gender, SmokerStatus
@@ -70,7 +71,8 @@ class Portfolio:
         self.gender = gender_str.map({g.name: int(g) for g in Gender}).values.astype(np.int32)
 
         # extract age vector at the portfolio date
-        self.initial_ages = completed_months_to_date(df_portfolio["DATE_OF_BIRTH"], self.portfolio_date).astype(np.int32)
+        dob: npt.NDArray[np.datetime64] = df_portfolio["DATE_OF_BIRTH"].astype("datetime64[ns]").values  # type: ignore
+        self.initial_ages = completed_months_to_date(dob, self.portfolio_date).astype(np.int32)
         self.years_of_birth = self.df_portfolio["DATE_OF_BIRTH"].dt.year.values.astype(np.int16)
         self.months_of_birth = self.df_portfolio["DATE_OF_BIRTH"].dt.month.values.astype(np.int16)
         self.days_of_birth = self.df_portfolio["DATE_OF_BIRTH"].dt.day.values.astype(np.int16)
@@ -104,7 +106,9 @@ class Portfolio:
         self.disablement_month = dates_disablement.dt.month.values.astype(np.int16)
         self.disablement_day = dates_disablement.dt.day.values.astype(np.int16)
 
-        self.months_disabled_at_start = completed_months_to_date(dates_disablement, self.portfolio_date).astype(np.int32)
+        self.months_disabled_at_start = completed_months_to_date(dates_disablement.values, self.portfolio_date)  # type: ignore
+        self.months_till_disablement = completed_months_to_date(pd.to_datetime(df_portfolio["DATE_PORTFOLIO"]).values,
+                                                                dates_disablement.values)  # type: ignore
 
         # check that when in disabled state at start then the disablement date must be at or before the portfolio_date
         disabled_according_to_date = df_portfolio.CURRENT_STATUS.str[:3] == "DIS"
@@ -130,7 +134,7 @@ class Portfolio:
 
             if split_mont_in_year:
                 # split further into groups homogenous w.r.t. the "birth month"
-                ages_groups = completed_months_to_date(df_prod_split["DATE_OF_BIRTH"], self.portfolio_date) % 12
+                ages_groups = completed_months_to_date(df_prod_split["DATE_OF_BIRTH"].values, self.portfolio_date) % 12
                 month_groups = np.unique(ages_groups)
 
                 # generate the age group splits and split them to max size
@@ -160,31 +164,46 @@ def split_to_size(df_portfolio: pd.DataFrame, max_size: int) -> list[pd.DataFram
     return splits
 
 
-def completed_months_to_date(date_col, the_date):
-    """ Calculate completed months between the date col and `the_date`.
-        The latter one can be a np.datetime series or a datetime.datetime. """
-    class _dt:
-        """ Helper class. """
-        def __init__(self, year: int, month: int, day: int) -> None:
-            self.year = year
-            self.month = month
-            self.day = day
+def completed_months_to_date(date_col_in: npt.NDArray[np.datetime64],
+                             the_date_in: Union[datetime.datetime,
+                                                npt.NDArray[np.datetime64]]) -> npt.NDArray[np.int32]:
+    """ Calculate completed months between the date_col and (the later) `the_date`.
+        The latter one can be a np.datetime series or a datetime.datetime.
+
+        Returns -1 where date_col_in is NA """
+    # class _dt:
+    #     """ Helper class. """
+    #     def __init__(self, year: int, month: int, day: int) -> None:
+    #         self.year = year
+    #         self.month = month
+    #         self.day = day
+    #
+    # class _date_emul:
+    #     """ Helper class. """
+    #     def __init__(self, the_date: datetime.datetime) -> None:
+    #         self.dt = _dt(the_date.year, the_date.month, the_date.day)
 
     class _date_emul:
         """ Helper class. """
         def __init__(self, the_date: datetime.datetime) -> None:
-            self.dt = _dt(the_date.year, the_date.month, the_date.day)
+            self.year = the_date.year
+            self.month = the_date.month
+            self.day = the_date.day
 
-    if isinstance(the_date, datetime.datetime):
-        the_date = _date_emul(the_date)
+    the_date: Union[_date_emul, pd.DatetimeIndex]
+    if isinstance(the_date_in, datetime.datetime):
+        the_date = _date_emul(the_date_in)
+    else:
+        the_date = pd.DatetimeIndex(the_date_in)
 
     # calculate the age in months at the portfolio_date
+    date_col = pd.DatetimeIndex(date_col_in)
     age_in_months0 = \
-        the_date.dt.year * 12 + the_date.dt.month \
-        - date_col.dt.year * 12 - date_col.dt.month \
+        the_date.year * 12 + the_date.month \
+        - date_col.year * 12 - date_col.month \
         - 1 \
-        + (the_date.dt.day >= date_col.dt.day).astype(int)
-    return age_in_months0.values
+        + (the_date.day >= date_col.day).astype(int)
+    return age_in_months0.fillna(-1).astype(np.int32).values
 
 
 class PortfolioLoader:
@@ -246,7 +265,7 @@ class PortfolioLoader:
             logger.debug("Porfolio file not found in cache.")
         return portfolio
 
-    def _save_in_cache(self, file_cand, portolio_obj) -> bool:
+    def _save_in_cache(self, file_cand: str, portolio_obj: Portfolio) -> bool:
         """ Save a portfolio object under the cache directory,
             return True if successful. """
         if self.portfolio_cache is None:

@@ -1,4 +1,6 @@
+from typing import Union
 from abc import ABC, abstractmethod
+
 
 import numpy as np
 import numpy.typing as npt
@@ -15,7 +17,7 @@ class AbstrAssumptionsTable(ABC):
     """ Abstract base class for the assumption table classes. """
 
     @abstractmethod
-    def rates_provider(self) -> BaseRatesProvider:
+    def rates_provider(self) -> Union[act.StandardRateProvider, BaseRatesProvider]:
         pass
 
 
@@ -56,7 +58,7 @@ class AssumptionsTable1D(AbstrAssumptionsTable):
         self.values = values.astype(np.float64)
         self.risk_factor_class = risk_factor_class
 
-    def rates_provider(self) -> BaseRatesProvider:
+    def rates_provider(self) -> act.StandardRateProvider:  # BaseRatesProvider:
         # return StandardRateProvider(self.values, (self.risk_factor_class,), offsets=(self.offset,))
         return act.StandardRateProvider(rfs=[self.risk_factor_class.get_CRiskFactor()],
                                         values=self.values,
@@ -95,7 +97,7 @@ class AssumptionsTable2D(AbstrAssumptionsTable):
         self.risk_factor_class_v = risk_factor_class_v
         self.risk_factor_class_h = risk_factor_class_h
 
-    def rates_provider(self) -> BaseRatesProvider:
+    def rates_provider(self) -> act.StandardRateProvider:  # -> BaseRatesProvider:
         # return StandardRateProvider(self.values, (self.risk_factor_class_v, self.risk_factor_class_h),
         #                            offsets=(self.v_offset, self.h_offset))
 
