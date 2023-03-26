@@ -1,12 +1,15 @@
 import os
 import logging
+from pathlib import Path
 
 import numpy as np
 import pandas as pd
+from typing import Optional, Union
 
 import pyprotolinc
 import pyprotolinc.riskfactors.risk_factors as risk_factors
 from pyprotolinc.assumptions.providers import StandardRateProvider
+import pyprotolinc._actuarial as act  # type: ignore
 
 # module level logger
 logger = logging.getLogger(__name__)
@@ -22,7 +25,10 @@ class DAV2004R:
           - with safety loadings ("LOADED", "1. Ordnung")
 
     """
-    def __init__(self, base_directory=None, trend_t1=10, trend_t2=25):
+    def __init__(self,
+                 base_directory: Optional[Union[str, Path]] = None,
+                 trend_t1=10,
+                 trend_t2=25) -> None:
 
         if base_directory is None:
             base_directory = os.path.join(pyprotolinc._DEFAULT_TABLES_PATH, "Germany_Annuities_DAV2004R")
@@ -77,7 +83,7 @@ class DAV2004R:
         })
         self.df_trend_rates = df_tmp   # .copy()
 
-    def rates_provider(self, table_type='AGGREGATE', estimate_type="BE", t_begin=1999, t_end=2150):
+    def rates_provider(self, table_type: str = 'AGGREGATE', estimate_type: str = "BE", t_begin: int = 1999, t_end: int = 2150) -> Union[StandardRateProvider, act.StandardRateProvider]:
         """ A rate provider object is returned.
 
         Arguments:
@@ -112,9 +118,16 @@ class DAV2004R:
 
         if table_type == 'AGGREGATE':
             # base rates and trend for 'AGGREGATE'
-            provider = StandardRateProvider(table,
-                                            (risk_factors.CalendarYear, risk_factors.Gender, risk_factors.Age),
-                                            offsets=(t_begin, 0, 0))
+            # provider = StandardRateProvider(table,
+            #                                 (risk_factors.CalendarYear, risk_factors.Gender, risk_factors.Age),
+            #                                 offsets=(t_begin, 0, 0))
+            provider = act.StandardRateProvider(rfs=[risk_factors.CalendarYear.get_CRiskFactor(),
+                                                     risk_factors.Gender.get_CRiskFactor(),
+                                                     risk_factors.Age.get_CRiskFactor()
+                                                     ],
+                                                values=table,
+                                                offsets=np.array([t_begin, 0, 0], dtype=np.int32))
+
         elif table_type == 'SELECT':
             raise Exception("Not yet implemented.")
 

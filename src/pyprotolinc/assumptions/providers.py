@@ -50,6 +50,14 @@ class ZeroRateProvider(BaseRatesProvider):
     def __repr__(self) -> str:
         return "<ZeroRateProvider>"
 
+    def initialize(self, **kwargs: Any) -> None:
+        """ The initialize hook: nothing needed for this class. """
+        pass
+
+    # def get_risk_factors(self) -> list[type[RiskFactor]]:
+    #     """ This method returns an iterable of the relevant risk factors. """
+    #     return list()
+
 
 class ConstantRateProvider(BaseRatesProvider):
 
@@ -62,6 +70,10 @@ class ConstantRateProvider(BaseRatesProvider):
     def __repr__(self) -> str:
         return "<ConstantRateProvider with constant {}>".format(self.const_rate)
 
+    def initialize(self, **kwargs: Any) -> None:
+        """ The initialize hook: nothing needed for this class. """
+        pass
+
 
 class StandardRateProvider(BaseRatesProvider):
     """ Rates provider class is used to return the rates
@@ -70,16 +82,16 @@ class StandardRateProvider(BaseRatesProvider):
     def __init__(self,
                  values: npt.NDArray[np.float64],
                  risk_factors: list[type[RiskFactor]],
-                 offsets_in: Optional[Union[npt.NDArray[np.int32], tuple[int]]] = None) -> None:
+                 offsets: Optional[Union[npt.NDArray[np.int32], tuple[int]]] = None) -> None:
         """ Data to be provided is an n-dimensional numpy array and an iterable of RiskFactors."""
         self.num_dimensions = len(values.shape)
 
         # copy offsets into numpy array
         self.offsets: npt.NDArray[np.int32] = np.zeros(self.num_dimensions, dtype=np.int32)
-        if offsets_in is not None:
-            assert len(offsets_in) == self.num_dimensions
+        if offsets is not None:
+            assert len(offsets) == self.num_dimensions
             for k in range(self.num_dimensions):
-                self.offsets[k] = offsets_in[k]
+                self.offsets[k] = offsets[k]
 
         assert self.num_dimensions == len(risk_factors), "Number of risk factors and dimension of values must agree!"
         assert self.num_dimensions >= 0 and self.num_dimensions < 4, "Number of dimensions must be between 0 and 3"
@@ -146,6 +158,10 @@ class StandardRateProvider(BaseRatesProvider):
 
     def __repr__(self) -> str:
         return "<StandardRateProvider with factors ({})>".format(str(self.risk_factor_names))
+    
+    def initialize(self, **kwargs: Any) -> None:
+        """ The initialize hook: nothing needed for this class. """
+        pass
 
 
 class AssumptionTimestepAdjustment:
@@ -195,18 +211,18 @@ class AssumptionSetWrapper:
         self.be_transitions: dict[int, dict[int, BaseRatesProvider]] = {}
         self.res_transitions: dict[int, dict[int, BaseRatesProvider]] = {}
 
-    def add_transition(self, be_or_res: str, from_state: int, to_state: int, rates_provider: BaseRatesProvider) -> "AssumptionSetWrapper":
+    def add_transition(self, be_or_res: AssumptionType, from_state: int, to_state: int, rates_provider: BaseRatesProvider) -> "AssumptionSetWrapper":
         """ Add a new transition provider. """
 
         assert int(from_state) >= 0 and int(from_state) < self._dim, "Unknown state: {}".format(from_state)
         assert int(to_state) >= 0 and int(to_state) < self._dim, "Unknown state: {}".format(to_state)
 
-        if be_or_res.upper() == "BE":
+        if be_or_res == AssumptionType.BE:
             transitions = self.be_transitions
-        elif be_or_res.upper() == "RES":
+        elif be_or_res == AssumptionType.RES:
             transitions = self.res_transitions
         else:
-            raise Exception("Argument `be_or_res` must have value `BE` or `RES`, not {}".format(be_or_res.upper()))
+            raise Exception("Argument `be_or_res` must have value `BE` or `RES`, not {}".format(be_or_res))
 
         this_trans = transitions.get(from_state)
         if this_trans is None:

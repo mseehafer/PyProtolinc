@@ -21,4 +21,5 @@ run_type_specs:
     assumptions_spec: "longevity_assumptions_simple.yml"
     outfile: "results/ncf_out_generic.csv"
     portfolio_path: "portfolio/portfolio_annuity_small.xlsx"
-    portfolio_chunk_size: 60000
+    # sportfolio_path: "portfolio/portfolio_annuity_med.xlsx"
+    portfolio_chunk_size: 400000

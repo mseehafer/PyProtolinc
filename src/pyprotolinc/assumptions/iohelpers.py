@@ -5,14 +5,15 @@ import os.path
 import logging
 import yaml
 import numpy as np
+import numpy.typing as npt
 import pandas as pd
-from typing import Any
+from typing import Any, Optional, Union, Callable
 
 from pyprotolinc.riskfactors.risk_factors import get_risk_factor_by_name
-from pyprotolinc.assumptions.tables import ScalarAssumptionsTable, AssumptionsTable1D, AssumptionsTable2D
+from pyprotolinc.assumptions.tables import ScalarAssumptionsTable, AssumptionsTable1D, AssumptionsTable2D, AbstrAssumptionsTable
 from pyprotolinc.assumptions.dav2004r import DAV2004R, DAV2004R_B20
 from pyprotolinc.assumptions.dav2008t import DAV2008T
-from pyprotolinc.assumptions.providers import AssumptionSetWrapper
+from pyprotolinc.assumptions.providers import AssumptionSetWrapper, AssumptionType
 # from pyprotolinc.models import ModelBuilder
 
 
@@ -25,10 +26,10 @@ class WorkbookTableReader:
 
     def __init__(self, filename: str) -> None:
         self.filename = filename
-        self._excel_file = None
-        self.sheet_names = None
+        self._excel_file: Optional[pd.ExcelFile] = None
+        self.sheet_names: Optional[list[Union[int, str]]] = None
 
-    def read_sheet(self, sheet_name: str):
+    def read_sheet(self, sheet_name: str) -> AbstrAssumptionsTable:
         """ Create a Table object from the data in the sheet."""
 
         assert self._excel_file is not None, "Use read_sheet in with clause!"
@@ -50,8 +51,14 @@ class WorkbookTableReader:
             horz_attr_values = ["DUMMY"]
 
         # treat the 1D/2D case
-        if horz_rf is None:
+        vert_index_mapper: Callable[[Any], int]
+        vert_attr_values_mapped: npt.NDArray[np.int32]
 
+        if vert_rf is None:
+            # will not be the case
+            raise Exception("Unreachbale, to silence mypy")
+
+        if horz_rf is None:
             # 1D
             # validate
             vert_rf.validate_axis(vert_attr_values)
@@ -72,9 +79,9 @@ class WorkbookTableReader:
 
             # ensure the sorting
             vert_index_mapper = vert_rf.index_mapper()
-            vert_attr_values_mapped = np.array([vert_index_mapper(v) for v in vert_attr_values])
-            horz_index_mapper = horz_rf.index_mapper()
-            horz_attr_values_mapped = np.array([horz_index_mapper(v) for v in horz_attr_values])
+            vert_attr_values_mapped = np.array([vert_index_mapper(v) for v in vert_attr_values], dtype=np.int32)
+            horz_index_mapper: Callable[[Any], int] = horz_rf.index_mapper()
+            horz_attr_values_mapped: npt.NDArray[np.int32] = np.array([horz_index_mapper(v) for v in horz_attr_values], dtype=np.int32)
 
             # calculate the offsets
             v_offset = vert_attr_values_mapped.min()
@@ -84,32 +91,42 @@ class WorkbookTableReader:
             v2 = v1[:, _sort_index(horz_attr_values_mapped)]
             return AssumptionsTable2D(v2, vert_rf, horz_rf, v_offset=v_offset, h_offset=h_offset)
 
-    def __enter__(self):
+    def __enter__(self) -> "WorkbookTableReader":
         self._excel_file = pd.ExcelFile(self.filename)
         self.sheet_names = self._excel_file.sheet_names
         return self
 
-    def __exit__(self, exc_type, exc_value, exc_tb):
+    def __exit__(self, exc_type: Any, exc_value: Any, exc_tb: Any) -> None:
         if self._excel_file is not None:
             self._excel_file.close()
 
 
-def _read_table_from_sheet(excel_file, sheet_name):
-    """ Extract data from the specified worksheet."""
+def _read_table_from_sheet(excel_file: pd.ExcelFile, sheet_name: str) -> tuple[npt.NDArray[np.float64],
+                                                                               Optional[str],
+                                                                               list[Union[str, int]],
+                                                                               Optional[str],
+                                                                               list[Union[str, int]]]:
+    """ Extract data from the specified worksheet in the Excel file.
 
-    # logger.debug("Processing sheet {}".format(sheet_name))
+        :param excel_file Object of type pd.ExcelFile to read from
+        :param sheet_name Name of the worksheet to read from
+
+        The function returns a value array as well as the vertical risk factor name (as capitalized string) and the values of this
+        risk factor and - similarly - the horizontal risk factor name and its values.
+    """
+
     df = pd.read_excel(excel_file, sheet_name=sheet_name, header=None)
     # some format checks
-    if df.loc[3, 0].upper() != "TABLE":
+    if str(df.loc[3, 0]).upper() != "TABLE":
         raise Exception("Invalid format")
-    if df.loc[0, 0].upper() != 'VERTICAL_RISK_FACTOR':
+    if str(df.loc[0, 0]).upper() != 'VERTICAL_RISK_FACTOR':
         raise Exception("Invalid format")
-    if df.loc[1, 0].upper() != 'HORIZ_RISK_FACTOR':
+    if str(df.loc[1, 0]).upper() != 'HORIZ_RISK_FACTOR':
         raise Exception("Invalid format")
 
     # read risk factor names
-    vert_rf = df.loc[0, 1].upper()
-    horz_rf = df.loc[1, 1].upper()
+    vert_rf: Optional[str] = str(df.loc[0, 1]).upper()
+    horz_rf: Optional[str] = str(df.loc[1, 1]).upper()
     vert_rf = None if vert_rf == 'NONE' else vert_rf
     horz_rf = None if horz_rf == 'NONE' else horz_rf
 
@@ -121,7 +138,7 @@ def _read_table_from_sheet(excel_file, sheet_name):
     return (values, vert_rf, vert_attr_values, horz_rf, horz_attr_values)
 
 
-def _sort_index(mapped_indexes):
+def _sort_index(mapped_indexes: npt.NDArray[np.int32]) -> npt.NDArray[np.int32]:
     """ Return the indexes of the sorted values. """
     """ Return the indexes of the argument when sorted. """
     return np.argsort(mapped_indexes)
@@ -142,14 +159,15 @@ class AssumptionsLoaderFromConfig:
         # print(self.assumptions_spec)
 
     def load(self) -> AssumptionSetWrapper:
+        """ Read the file and convert into an AssumptionSetWrapper. """
 
         model_builder = AssumptionSetWrapper(self._states_dimension)
 
-        self._process_be_or_res(self.assumptions_spec["be"], "be", model_builder)
-        self._process_be_or_res(self.assumptions_spec["res"], "res", model_builder)
+        self._process_be_or_res(self.assumptions_spec["be"], AssumptionType.BE, model_builder)
+        self._process_be_or_res(self.assumptions_spec["res"], AssumptionType.RES, model_builder)
         return model_builder
 
-    def _process_be_or_res(self, assumptions_spec, be_or_res, model_builder: AssumptionSetWrapper) -> None:
+    def _process_be_or_res(self, assumptions_spec: dict[Any, Any], be_or_res: AssumptionType, model_builder: AssumptionSetWrapper) -> None:
 
         # collect all assumptions of type "FileTable" and
         # group them by the file name:

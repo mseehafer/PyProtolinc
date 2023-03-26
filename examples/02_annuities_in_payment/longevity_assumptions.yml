@@ -2,14 +2,16 @@
 assumptions_spec:
 
   be:
-    # annuitant's deaths
-    - [0, 1, ["DAV2004R_B20", "estimate_type:B20", "base_directory:tables/Germany_Annuities_DAV2004R"]]
-    #- [0, 1, ["DAV2004R", "table_type:AGGREGATE", "estimate_type:BE",
-    #          "base_directory:tables/Germany_Annuities_DAV2004R"]]              
+    # annuitant's deaths: 
+    # Note: DAV2004R_B20 not yet working with the C-Kernel
+    # - [0, 1, ["DAV2004R_B20", "estimate_type:B20", "base_directory:tables/Germany_Annuities_DAV2004R"]]
+    - [0, 1, ["DAV2004R", "table_type:AGGREGATE", "estimate_type:BE",
+              "base_directory:tables/Germany_Annuities_DAV2004R"]]              
 
   res:
     # annuitant's deaths
-    - [0, 1, ["DAV2004R_B20", "estimate_type:B20", "base_directory:tables/Germany_Annuities_DAV2004R"]]
-    # - [0, 1, ["DAV2004R", "table_type:AGGREGATE", "estimate_type:LOADED",
-    #          "base_directory:tables/Germany_Annuities_DAV2004R"]]
+    # Note: DAV2004R_B20 not yet working with the C-Kernel
+    # - [0, 1, ["DAV2004R_B20", "estimate_type:B20", "base_directory:tables/Germany_Annuities_DAV2004R"]]
+    - [0, 1, ["DAV2004R", "table_type:AGGREGATE", "estimate_type:LOADED",
+              "base_directory:tables/Germany_Annuities_DAV2004R"]]
 
