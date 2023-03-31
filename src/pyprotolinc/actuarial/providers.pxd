@@ -389,7 +389,13 @@ cdef class RunnerInterfaceWrapper:
     cdef unique_ptr[RunnerInterface] pri
     cdef shared_ptr[CRunConfig] crun_config
 
-    def __cinit__(self, AssumptionSet be_ass, CPortfolioWrapper cportfolio_wapper, TimeStep time_step, int max_age, bool use_multicore, int years_to_simulate):
+    def __cinit__(self,
+                  AssumptionSet be_ass,
+                  CPortfolioWrapper cportfolio_wapper,
+                  TimeStep time_step,
+                  int max_age,
+                  bool use_multicore,
+                  int years_to_simulate):
         cdef unsigned dim = be_ass.dim
         cdef int num_cpus = cpu_count()
         cdef shared_ptr[CAssumptionSet] c_assumption_set = be_ass.c_assumption_set

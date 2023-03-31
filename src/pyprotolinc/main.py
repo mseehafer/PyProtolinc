@@ -9,7 +9,7 @@ import os
 from datetime import datetime
 from multiprocessing import Pool, cpu_count
 from typing import Optional, Union
-
+import importlib.metadata
 import gc
 
 import numpy as np
@@ -22,12 +22,10 @@ from pyprotolinc import get_config_from_file, RunConfig
 from pyprotolinc.portfolio import PortfolioLoader, Portfolio
 from pyprotolinc.results import export_results
 from pyprotolinc.runner import Projector, CProjector
-# from pyprotolinc.models import ModelBuilder  # , _STATE_MODELS
 from pyprotolinc.models.state_models import state_model_by_name
 from pyprotolinc.models.model_config import get_model_by_name
 from pyprotolinc.assumptions.iohelpers import AssumptionsLoaderFromConfig
 from pyprotolinc.assumptions.providers import AssumptionSetWrapper
-# from pyprotolinc.models.model_multistate_generic import adjust_state_for_generic_model
 from pyprotolinc.product import product_class_lookup
 from pyprotolinc.utils import download_dav_tables
 
@@ -37,6 +35,7 @@ logging.basicConfig(format='%(levelname)s - %(asctime)s - %(name)s - %(message)s
 
 # module level logger
 logger = logging.getLogger(__name__)
+__version__ = importlib.metadata.version("pyprotolinc")
 
 
 def create_model(model_class: type[Model],
@@ -293,6 +292,10 @@ def show_docs_in_browser() -> None:
     webbrowser.open(url)
 
 
+def print_version():
+    print(__version__)
+
+
 def main() -> None:
     """ Entry point of the CLI client. Declares the following subtasks:
 
@@ -305,6 +308,7 @@ def main() -> None:
         "profile": profile,
         "download_dav_tables": download_dav_tables,
         "docs": show_docs_in_browser,
+        "version": print_version,
     })
 
 

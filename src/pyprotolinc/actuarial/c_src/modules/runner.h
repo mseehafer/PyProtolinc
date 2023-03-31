@@ -245,7 +245,6 @@ private:
     const CRunConfig &_run_config;
     const shared_ptr<CPolicyPortfolio> _ptr_portfolio;
     const shared_ptr<TimeAxis> _p_time_axis;
-    // MetaRunner _runner;
     AggregatePayments agg_payments;
 
 public:
@@ -257,7 +256,6 @@ public:
                                             ptr_portfolio->get_portfolio_date().get_year(),
                                             ptr_portfolio->get_portfolio_date().get_month(),
                                             ptr_portfolio->get_portfolio_date().get_day())),
-        //_runner(_run_config, _ptr_portfolio, _p_time_axis),
         agg_payments(ptr_portfolio->size())         
         {}
             
