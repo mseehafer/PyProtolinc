@@ -49,10 +49,14 @@ def calc_term_end_indicator(time_axis: TimeAxis,
         policy matures. The input is given by a time-axis object and two numpy arrays
         which are indexed by insured and together represent the last month/year
         at which the policy ist still in-force. """
+    # ta_abs = time_axis.years * 12 + time_axis.months - 1
+    # ta_abs = ta_abs.reshape((ta_abs.shape[0], 1))
+    # end_mont_abs = (year_last_month * 12 + last_month - 1).reshape((1, len(year_last_month)))
+    # return (ta_abs <= end_mont_abs).astype(np.int16).transpose()
     ta_abs = time_axis.years * 12 + time_axis.months - 1
-    ta_abs = ta_abs.reshape((ta_abs.shape[0], 1))
-    end_mont_abs = (year_last_month * 12 + last_month - 1).reshape((1, len(year_last_month)))
-    return (ta_abs <= end_mont_abs).astype(np.int16).transpose()
+    ta_abs = ta_abs.reshape((1, ta_abs.shape[0]))
+    end_mont_abs = (year_last_month * 12 + last_month - 1).reshape((len(year_last_month), 1))
+    return (ta_abs <= end_mont_abs).astype(np.int16)
 
 
 def calc_term_start_indicator(time_axis: TimeAxis,
@@ -65,11 +69,14 @@ def calc_term_start_indicator(time_axis: TimeAxis,
         The input is given by a time-axis object and two numpy arrays
         which are indexed by insured and together represent the last month/year
         at which the policy ist still in-force. """
+    # ta_abs = time_axis.years * 12 + time_axis.months - 1
+    # ta_abs = ta_abs.reshape((ta_abs.shape[0], 1))
+    # start_month_abs = (inception_yr * 12 + inception_month - 1).reshape((1, len(inception_yr)))
+    # return (ta_abs >= start_month_abs).astype(np.int16).transpose()
     ta_abs = time_axis.years * 12 + time_axis.months - 1
-    ta_abs = ta_abs.reshape((ta_abs.shape[0], 1))
-
-    start_month_abs = (inception_yr * 12 + inception_month - 1).reshape((1, len(inception_yr)))
-    return (ta_abs >= start_month_abs).astype(np.int16).transpose()
+    ta_abs = ta_abs.reshape((1, ta_abs.shape[0]))
+    start_month_abs = (inception_yr * 12 + inception_month - 1).reshape((len(inception_yr), 1))
+    return (ta_abs >= start_month_abs).astype(np.int16)
 
 
 def calc_maturity_transition_indicator(time_axis: TimeAxis,
@@ -337,6 +344,11 @@ class Product_MortalityTerm(AbstractProduct):
                                                           self.portfolio.policy_inception_yr,
                                                           self.portfolio.policy_inception_month)
         multiplier_term = multiplier_term_end * multiplier_term_start
+
+        # print(multiplier_term_end.flags['C_CONTIGUOUS'],
+        #       multiplier_term_start.flags['C_CONTIGUOUS'],
+        #       multiplier_term.flags['C_CONTIGUOUS'])
+
         return {
             self.STATES_MODEL.ACTIVE: [
                 (CfNames.PREMIUM,

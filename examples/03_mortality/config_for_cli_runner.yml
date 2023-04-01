@@ -4,7 +4,7 @@ io:
   profile_out_dir: "."
 
 kernel:
-  engine: "PY"  # "PY" or "C"
+  engine: "C"  # "PY" or "C"
   max_age: 120
 
 model:
