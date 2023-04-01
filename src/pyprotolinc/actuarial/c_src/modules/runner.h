@@ -90,11 +90,12 @@ void Runner::run(RunResult &run_result, const AggregatePayments &payments)
     for (auto record_ptr : _ptr_portfolio->get_policies())
     {
         shared_ptr<unordered_map<int, StateConditionalRecordPayout>> record_payments = payments.get_single_record_payments(record_count);
+        shared_ptr<unordered_map<pair<int, int>,  TransitionConditionalRecordPayout>> record_transiton_payments = payments.get_single_record_transition_payments(record_count);
         // shared_ptr<unordered_map<int, StateConditionalRecordPayout>> &record_payments = payments.get_single_record_payments(record_count);
 
         record_count++;
         _record_result.reset();
-        _record_projector.run(_runner_no, record_count, *record_ptr, _record_result, portfolio_date, record_payments);
+        _record_projector.run(_runner_no, record_count, *record_ptr, _record_result, portfolio_date, record_payments, record_transiton_payments);
         run_result.add_result(_record_result);
     }
 }
@@ -163,7 +164,7 @@ int MetaRunner::get_num_groups() const
 
 void MetaRunner::run(RunResult &run_result, const AggregatePayments &agg_payments) const
 {
-    cout << "MetaRunner::run(): STARTING RUN, portfolio.size()=" << _ptr_portfolio->size() << endl;
+    cout << "C++: STARTING RUN, portfolio.size()=" << _ptr_portfolio->size() << endl;
     const CAssumptionSet &be_ass = _run_config.get_be_assumptions();
     unsigned dimension = be_ass.get_dimension();
 
@@ -210,6 +211,7 @@ void MetaRunner::run(RunResult &run_result, const AggregatePayments &agg_payment
         subportfolios[subportfolio_index]->add(record);
         AggregatePayments &this_sub_ptf_payments = sub_ptf_payments[subportfolio_index];
         this_sub_ptf_payments.add_single_record_payments(agg_payments.get_single_record_payments(overall_index), index_in_group);
+        this_sub_ptf_payments.add_single_record_transition_payments(agg_payments.get_single_record_transition_payments(overall_index), index_in_group);
         if (++subportfolio_index >= NUM_GROUPS)
         {
             subportfolio_index = 0;
@@ -231,7 +233,7 @@ void MetaRunner::run(RunResult &run_result, const AggregatePayments &agg_payment
         run_result.add_result(results[j]);
     }
 
-    cout << "MetaRunner::run(): DONE" << endl;
+    //cout << "MetaRunner::run(): DONE" << endl;
 }
 
 
@@ -265,6 +267,12 @@ public:
     {
         agg_payments.add_cond_state_payment(state_index, payment_type_index, payment_matrix, _ptr_portfolio->size(), _p_time_axis->get_length());
     }
+
+    void add_transition_payment(int state_index_from, int state_index_to, int payment_type_index, double *payment_matrix)
+    {
+        agg_payments.add_transition_payment(state_index_from, state_index_to, payment_type_index, payment_matrix, _ptr_portfolio->size(), _p_time_axis->get_length());
+    }
+
 
     /// @brief Start the calculation run
     /// @return Pointer to result

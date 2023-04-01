@@ -351,6 +351,7 @@ cdef extern from "runner.h":
         RunnerInterface(const CRunConfig &run_config, shared_ptr[CPolicyPortfolio] ptr_portfolio)
         shared_ptr[TimeAxis] get_time_axis() const
         void add_cond_state_payment(int state_index, int payment_type_index, double *payment_matrix) except +
+        void add_transition_payment(int state_index_from, int state_index_to, int payment_type_index, double *payment_matrix) except +
         unique_ptr[RunResult] run() nogil except +
 
 
@@ -414,7 +415,12 @@ cdef class RunnerInterfaceWrapper:
         # cdef np.ndarray[double, ndim=2, mode="c"] payment_matrix_c = payment_matrix
         cdef double[:, ::1] payment_mat_view = payment_matrix
         dereference(self.pri).add_cond_state_payment(state_index, payment_type_index, &payment_mat_view[0, 0])
-    
+
+    def add_transition_payment(self, int state_index_from, int state_index_to, int payment_type_index, np.ndarray[double, ndim=2, mode="c"] payment_matrix):
+        # cdef np.ndarray[double, ndim=2, mode="c"] payment_matrix_c = payment_matrix
+        cdef double[:, ::1] payment_mat_view = payment_matrix
+        dereference(self.pri).add_transition_payment(state_index_from, state_index_to, payment_type_index, &payment_mat_view[0, 0])
+
     def run(self):
         # run cpp code
         cdef unique_ptr[RunResult] run_result = dereference(self.pri).run()

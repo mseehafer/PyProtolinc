@@ -68,7 +68,12 @@ class CProjector:
         # pass BOP information to C++
         for state, payment_list in self.cond_bom_payment_dict.items():
             for payment_type_index, payment_matrix in payment_list:
-                self.runner.add_cond_state_payment(state, payment_type_index, payment_matrix)
+                self.runner.add_cond_state_payment(state, payment_type_index, np.ascontiguousarray(payment_matrix))
+
+        # pass transition payments to C++
+        for (state_from, state_to), payment_list in self.cond_eom_payment_dict.items():
+            for payment_type_index, payment_matrix in payment_list:
+                self.runner.add_transition_payment(state_from, state_to, payment_type_index, np.ascontiguousarray(payment_matrix))
 
     def run(self) -> None:
         """ Starts the calculation run and store the results internally. """

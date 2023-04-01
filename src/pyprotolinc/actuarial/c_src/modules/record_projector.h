@@ -18,6 +18,8 @@
 #include <iostream>
 #include <memory>
 #include <algorithm>
+
+#include "utils.h"
 #include "assumption_sets.h"
 #include "providers.h"
 #include "portfolio.h"
@@ -88,6 +90,10 @@ public:
 
     double *get_state_probs(int time_index) {
         return _state_probs + time_index * _num_states;
+    }
+
+    double *get_probs_mvms(int time_index) {
+        return _probs_mvms + time_index * _num_states * _num_states;
     }
 
     /**
@@ -321,7 +327,8 @@ public:
      * @param record_payments the state conditional payments
      */
     void run(int runner_no, int record_count, const CPolicy &policy, RunResult &result, const PeriodDate &portfolio_date,
-             const shared_ptr<unordered_map<int, StateConditionalRecordPayout>> &record_payments);
+             const shared_ptr<unordered_map<int, StateConditionalRecordPayout>> &record_payments,
+             const shared_ptr<unordered_map<pair<int, int>,  TransitionConditionalRecordPayout>> &transition_payments);
 };
 
 
@@ -330,7 +337,8 @@ void RecordProjector::run(int runner_no,
                           const CPolicy &policy,
                           RunResult &result,
                           const PeriodDate &portfolio_date,
-                          const shared_ptr<unordered_map<int, StateConditionalRecordPayout>> &payments
+                          const shared_ptr<unordered_map<int, StateConditionalRecordPayout>> &payments,
+                          const shared_ptr<unordered_map<pair<int, int>,  TransitionConditionalRecordPayout>> &transition_payments
                           )
 {
     double debug_on = false;  // false;  // true
@@ -348,6 +356,7 @@ void RecordProjector::run(int runner_no,
 
     // the current volume of this policy
     double current_vol = policy.get_sum_insured();
+    int _num_states =  _run_config.get_be_assumptions().get_dimension();
 
     /////////////////////////////////
     // set relevant storage pointers
@@ -481,18 +490,16 @@ void RecordProjector::run(int runner_no,
         ///////////////////////////////////////////////////////////////////////////////////////
         // cout << "before payments, time_index=" << time_index << std::endl;
         // cout << payments->size() << std::endl;
-
         double *current_states_probs = _be_states -> get_state_probs(time_index - 1);
         for (auto &state_payments : *payments) {
             int state_ind = state_payments.first;
             StateConditionalRecordPayout &paym_state = state_payments.second;
 
-            // cout << "before payments, time_index=" << time_index << ", state=" << state << std::endl;
-
             // loop over the payments
             for (ConditionalPayout &payout: paym_state.payments) {
                 int payment_index = payout.payment_index;
-                double this_payment = payout.cond_payments[time_index - 1] * current_states_probs[state_ind];
+                //double this_payment = payout.cond_payments[time_index - 1] * current_states_probs[state_ind];
+                double this_payment = payout.cond_payments[time_index] * current_states_probs[state_ind];
                 //cout << "time_index=" << time_index << ", payment_index= " << payment_index << ", amount=" << this_payment << std::endl;
                 result.set_state_cond_payments(time_index, payment_index, this_payment);
                 //result.get_state_cond_payments_ptr()
@@ -505,15 +512,33 @@ void RecordProjector::run(int runner_no,
         // Step 3: Update the state
         ///////////////////////////////////////////////////////////////////////////////////////
 
-//        _be_states->print_state_probs(time_index - 1);
+        
+        //_be_states->print_state_probs(time_index - 1);
         _be_states->update_state(time_index - 1, be_a_time_step_dependent.get(), current_vol);
-//        _be_states->print_state_probs(time_index);
+        // _be_states->print_state_probs(time_index);
 
 
         ///////////////////////////////////////////////////////////////////////////////////////
         // Step 4: Payments at end of period
         ///////////////////////////////////////////////////////////////////////////////////////
-        // TODO
+        double *period_prob_movements = _be_states->get_probs_mvms(time_index);
+        for (auto &trans_payments : *transition_payments) {
+            pair<int, int> state_pair = trans_payments.first;
+            int state_from = state_pair.first;
+            int state_to = state_pair.second;
+            TransitionConditionalRecordPayout &payms_cond_transition = trans_payments.second;
+
+            for (ConditionalPayout &payout: payms_cond_transition.payments) {
+                int payment_index = payout.payment_index;
+                
+                double this_payment = payout.cond_payments[time_index] * period_prob_movements[state_from * _num_states + state_to];
+
+                // TODO: here it should be considered of a different result container should be used for transitional payments
+                // if not then rename
+                result.set_state_cond_payments(time_index, payment_index, this_payment);
+            }
+
+        }
 
         ///////////////////////////////////////////////////////////////////////////////////////
         // Step 5: Contractual State Transitions

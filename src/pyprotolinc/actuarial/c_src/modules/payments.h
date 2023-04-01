@@ -19,33 +19,10 @@
 #include <chrono>
 #include <set>
 
+// include to allow unordered_dicts with pairs as key
+#include "utils.h"
+
 using namespace std;
-
-/////////////////////////////////////////////////////////////////////////////////////////////
-// hashing of pairs, copied from
-// https://stackoverflow.com/questions/7222143/unordered-map-hash-function-c
-
-template <class T>
-inline void hash_combine(std::size_t & seed, const T & v)
-{
-  std::hash<T> hasher;
-  seed ^= hasher(v) + 0x9e3779b9 + (seed << 6) + (seed >> 2);
-}
-
-namespace std
-{
-  template<typename S, typename T> struct hash<pair<S, T>>
-  {
-    inline size_t operator()(const pair<S, T> & v) const
-    {
-      size_t seed = 0;
-      ::hash_combine(seed, v.first);
-      ::hash_combine(seed, v.second);
-      return seed;
-    }
-  };
-}
-//////////////////////////////////////////////////////////////
 
 
 struct ConditionalPayout
@@ -63,11 +40,10 @@ struct ConditionalPayout
         return "<ConditionalPayout(payment_index=" + std::to_string(payment_index) 
         + ", cond_payments=[" + std::to_string(cond_payments[0]) + ", " + std::to_string(cond_payments[0]) + "...]"
         + ">";
-        
     }
-
 };
 
+/// @brief Payments that are due when in a given state
 struct StateConditionalRecordPayout
 {
     int state_index;
@@ -79,16 +55,22 @@ struct StateConditionalRecordPayout
 
     string to_string() {
          return "<StateConditionalRecordPayout(state_index=" + std::to_string(state_index);
-
     }
 };
 
-// struct TransitionConditionalRecordPayout
-// {
-//     int state_index_from;
-//     int state_index_to;
-//     vector<ConditionalPayout> payments;
-// }
+/// @brief Payments that are due when a state transition occurs
+struct TransitionConditionalRecordPayout
+{
+    int _state_index_from;
+    int _state_index_to;
+    vector<ConditionalPayout> payments;
+
+    TransitionConditionalRecordPayout(int state_index_from, int state_index_to): _state_index_from(state_index_from), _state_index_to(state_index_to) {}
+    
+    TransitionConditionalRecordPayout(TransitionConditionalRecordPayout &&o): _state_index_from(o._state_index_from), 
+                                                                              _state_index_to(o._state_index_to),
+                                                                              payments(std::move(o.payments)) {}
+};
 
 
 /**
@@ -104,8 +86,8 @@ private:
 
     // for each record maintain a pointer to a map. The map associates the 
     // pair (from_state_index, to_state_index) with
-    // a StateConditionalRecordPayout structure
-    vector<shared_ptr<unordered_map<pair<int, int>, StateConditionalRecordPayout>>> state_change_payouts;
+    // a TransitionConditionalRecordPayout structure
+    vector<shared_ptr<unordered_map<pair<int, int>,  TransitionConditionalRecordPayout>>> transition_payouts;
 
     // unique_ptr<double[]> payments_test;
     int max_payment_type_index_used = -1;
@@ -115,12 +97,12 @@ private:
 public:
     AggregatePayments(size_t size): _size(size) {
         state_payouts.reserve(size);
-        state_change_payouts.reserve(size);
+        transition_payouts.reserve(size);
 
         // initialize
         for(int j = 0; j < size; j++) {
             state_payouts.push_back(make_shared<unordered_map<int, StateConditionalRecordPayout>>());
-            state_change_payouts.push_back(make_shared<unordered_map<pair<int, int>, StateConditionalRecordPayout>>());
+            transition_payouts.push_back(make_shared<unordered_map<pair<int, int>, TransitionConditionalRecordPayout>>());
         }
     }
 
@@ -128,7 +110,7 @@ public:
     AggregatePayments(size_t size, const std::set<int> &_payment_types_used): _size(size),
                                                                               payment_types_used(_payment_types_used) {
         state_payouts.reserve(size);
-        state_change_payouts.reserve(size);
+        transition_payouts.reserve(size);
 
         auto iter =  _payment_types_used.begin();
         while (iter !=  _payment_types_used.end()) {
@@ -141,6 +123,7 @@ public:
         // initialize
         for(int j = 0; j < size; j++) {
             state_payouts.push_back(make_shared<unordered_map<int, StateConditionalRecordPayout>>());
+            transition_payouts.push_back(make_shared<unordered_map<pair<int, int>, TransitionConditionalRecordPayout>>());
         }
     }
 
@@ -219,84 +202,76 @@ public:
     }
 
 
-    // /// @brief  Inject a payment matrix from python
-    // /// @param state_index 
-    // /// @param payment_type_index 
-    // /// @param payment_matrix 
-    // /// @param num_policies 
-    // /// @param num_timesteps 
-    // void add_state_change_payment(int state_index_from,
-    //                               int state_index_to,
-    //                               int payment_type_index,
-    //                               double *payment_matrix,
-    //                               const int num_policies,
-    //                               const int num_timesteps)
-    // {
-    //      // cout << "Adding payment with payment_index=" << payment_type_index << std::endl;
-    //      if (state_payouts.size() != num_policies) 
-    //      {
-    //         throw domain_error("Incompatible Payout sizes.");
-    //      }
+    /// @brief  Inject a payment matrix from python
+    /// @param state_index_from  State before the transition
+    /// @param state_index_to  State after the transition
+    /// @param payment_type_index 
+    /// @param payment_matrix 
+    /// @param num_policies 
+    /// @param num_timesteps 
+    void add_transition_payment(int state_index_from,
+                                int state_index_to,
+                                int payment_type_index,
+                                double *payment_matrix,
+                                const int num_policies,
+                                const int num_timesteps)
+    {
+         if (transition_payouts.size() != num_policies) 
+         {
+            throw domain_error("Incompatible Payout sizes.");
+         }
 
-    //     // check if payment type is already used
-    //     if (payment_types_used.count(payment_type_index) > 0) {
-    //         throw domain_error("Payment type index used multiple times.");
-    //     } else {
-    //         payment_types_used.insert(payment_type_index);
-    //         if (max_payment_type_index_used < payment_type_index) {
-    //             max_payment_type_index_used = payment_type_index;
-    //         }
-    //     }
+        // check if payment type is already used
+        if (payment_types_used.count(payment_type_index) > 0) {
+            throw domain_error("Payment type index used multiple times.");
+        } else {
+            payment_types_used.insert(payment_type_index);
+            if (max_payment_type_index_used < payment_type_index) {
+                max_payment_type_index_used = payment_type_index;
+            }
+        }
 
-    //     std::chrono::duration<double> duration_payment_copy;
-    //     // iterate over the policies
-    //     int row_count = 0;
-    //     for (auto p_map: state_payouts) {
+        // iterate over the policies
+        int row_count = 0;
+        for (auto p_map: transition_payouts) {
+            pair<int, int> pair_index = pair<int, int>(state_index_from, state_index_to);
 
-    //         auto state_cond_payout = p_map->find(state_index);
-    //         if (state_cond_payout == p_map->end()) {
-    //             // state does not yet exist
-    //             p_map -> insert(pair<int, StateConditionalRecordPayout>(state_index, StateConditionalRecordPayout(state_index)));
-    //             state_cond_payout = p_map->find(state_index); // do I need to search again?
-    //         }
+            auto transition_payout_it = p_map->find(pair_index);
+            if (transition_payout_it == p_map->end()) {
+                // state does not yet exist
+                p_map -> insert(pair<pair<int, int>, TransitionConditionalRecordPayout>(pair_index, TransitionConditionalRecordPayout(state_index_from, state_index_to)));
+                transition_payout_it = p_map->find(pair_index);
+            }
 
-    //         StateConditionalRecordPayout &payout = (*state_cond_payout).second;
-    //         ConditionalPayout cp;
-    //         cp.payment_index = payment_type_index;
-    //         cp.cond_payments.reserve(num_timesteps);
+            TransitionConditionalRecordPayout &payout = (*transition_payout_it).second;
+            ConditionalPayout cp;
+            cp.payment_index = payment_type_index;
+            cp.cond_payments.reserve(num_timesteps);
 
-    //         // copy data over into vector
-    //         const auto time_before_copy = std::chrono::system_clock::now();
-    //         cp.cond_payments.insert(cp.cond_payments.begin(), &payment_matrix[row_count * num_timesteps], &payment_matrix[(row_count + 1)* num_timesteps]);
-    //         duration_payment_copy += std::chrono::system_clock::now() - time_before_copy;
-    //         // cp.cond_payments.resize(num_timesteps);
-    //         // memcpy(&cp.cond_payments[0], &payment_matrix[row_count * num_timesteps], num_timesteps * sizeof(double));
-    //         payout.payments.push_back(std::move(cp));
-    //         row_count++;
-    //     }
-    //     // std::cout << "Copy payments in loop took " << duration_payment_copy.count() << "s" << std::endl;        
-    // }
-
-
+            // copy data over into vector
+            cp.cond_payments.insert(cp.cond_payments.begin(), &payment_matrix[row_count * num_timesteps], &payment_matrix[(row_count + 1)* num_timesteps]);
+            payout.payments.push_back(std::move(cp));
+            row_count++;
+        }
+    }
 
 
     /// use internally in C++ when splitting the payments into groups (for the parallelization)
     void add_single_record_payments(shared_ptr<unordered_map<int, StateConditionalRecordPayout>> single_record_payments, size_t ind) {
-
-        // auto iter = single_record_payments -> begin();
-        // while (iter != single_record_payments -> end()) {
-        //     StateConditionalRecordPayout & scp = (*iter).second;
-        //     for (auto p: scp.payments) {
-        //         max_payment_type_index_used = max_payment_type_index_used >= p.payment_index ? max_payment_type_index_used : p.payment_index;
-        //         payment_types_used.insert(p.payment_index);
-        //     }
-        //     ++iter;
-        // }
         state_payouts[ind] = single_record_payments;
+    }
+
+    /// use internally in C++ when splitting the payments into groups (for the parallelization)
+    void add_single_record_transition_payments(shared_ptr<unordered_map<pair<int, int>, TransitionConditionalRecordPayout>> single_record_payments, size_t ind) {
+        transition_payouts[ind] = single_record_payments;
     }
 
     shared_ptr<unordered_map<int, StateConditionalRecordPayout>> get_single_record_payments(size_t index) const {
         return state_payouts[index];
+    }
+
+    shared_ptr<unordered_map<pair<int, int>, TransitionConditionalRecordPayout>> get_single_record_transition_payments(size_t index) const {
+        return transition_payouts[index];
     }
 
 };
