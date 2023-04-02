@@ -406,7 +406,9 @@ class Projector:
 
             # the transition amounts are multiplied with the transition probabilities
             # the probabilities with time fixed have the strcuture(insured(r), from_state(f), to_state(t))
-            cond_res_eom = np.einsum('rft,ftr->fr', self.transition_ass_monthly_res_with_time[self.month_count, :], transition_amounts)
+            cond_res_eom = np.einsum('rft,ftr->fr',
+                                     self.transition_ass_monthly_res_with_time[self.month_count, :],
+                                     transition_amounts)
 
             reserves_last_month_conditional[:] = cfs_bom_per_state + monthly_discount_factor * cond_res_eom
 

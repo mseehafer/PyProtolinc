@@ -7,6 +7,12 @@ from Cython.Build import cythonize
 import numpy
 
 
+# read the contents of your README file
+from pathlib import Path
+this_directory = Path(__file__).parent
+long_description = (this_directory / "README.rst").read_text()
+
+
 IS_WINDOWS = platform.system() == "Windows"
 
 if IS_WINDOWS:
@@ -30,8 +36,10 @@ extensions = [
 
 setup(
     name='PyProtolinc',
-    version='0.1.6',
+    version='0.1.7',
     description='Projection Tool for Life Insurance Cash Flows',
+    long_description=long_description,
+    long_description_content_type='text/x-rst',
     author='Martin Seehafer',
     keywords='actuarial, projection, cash flows, life, insurance',
     license='MIT',
@@ -46,7 +54,7 @@ setup(
         },
     packages=find_packages(where='src'),
     package_dir={'': 'src'},
-    python_requires=">=3.6",
+    python_requires=">=3.9",
     ext_modules=cythonize(extensions, language_level=3),
     install_requires=[
         'numpy==1.23.1',

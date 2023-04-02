@@ -1,3 +1,4 @@
 include src/pyprotolinc/actuarial/valuation.pyx
 include src/pyprotolinc/actuarial/c_src/*
+include src/pyprotolinc/actuarial/c_src/modules/*
 include src/pyprotolinc/actuarial/*.pxd

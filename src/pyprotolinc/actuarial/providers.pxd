@@ -345,14 +345,14 @@ cdef extern from "runner.h":
 
     # void run_c_valuation(const CRunConfig& run_config, shared_ptr[CPolicyPortfolio] ptr_portfolio, double*) nogil except +
     #void run_c_valuation(const CRunConfig &run_config, shared_ptr[CPolicyPortfolio] ptr_portfolio, RunResult& run_result) nogil except +
-    unique_ptr[RunResult] run_c_valuation(const CRunConfig &run_config, shared_ptr[CPolicyPortfolio] ptr_portfolio) nogil except +
+    unique_ptr[RunResult] run_c_valuation(const CRunConfig &run_config, shared_ptr[CPolicyPortfolio] ptr_portfolio)  except + nogil
 
     cdef cppclass RunnerInterface:
         RunnerInterface(const CRunConfig &run_config, shared_ptr[CPolicyPortfolio] ptr_portfolio)
         shared_ptr[TimeAxis] get_time_axis() const
         void add_cond_state_payment(int state_index, int payment_type_index, double *payment_matrix) except +
         void add_transition_payment(int state_index_from, int state_index_to, int payment_type_index, double *payment_matrix) except +
-        unique_ptr[RunResult] run() nogil except +
+        unique_ptr[RunResult] run()  except + nogil
 
 
 cdef class CTimeAxisWrapper:

@@ -17,6 +17,7 @@
 #include <string>
 #include <iostream>
 #include <memory>
+#include <cmath>
 #include <algorithm>
 
 #include "utils.h"
@@ -234,6 +235,15 @@ private:
     /// the best estimate states
     unique_ptr<ProjectionStateMatrix> _be_states;
 
+    // reserves
+    unique_ptr<double[]> reserves_bom;
+
+    // the vector of reserves conditional on being in the respective state
+    //unique_ptr<double[]> reserves_last_month_conditional;
+
+    unique_ptr<double[]> cfs_bom_per_state_for_res;
+    unique_ptr<double[]> cf_eom_per_state_change_for_res;
+
     ///////////////////////////////////////
     // private metods
     ///////////////////////////////////////
@@ -268,7 +278,18 @@ private:
     ///< Clear temporary values stored in the projector object.
     void clear()
     {
-//        cout << "RecordProjector::clear()" << endl;
+        // zeroise reserves
+        int len = _end_dates.size() * _dimension;
+        for(int j=0; j < len; j++) {
+            reserves_bom[j] = 0.0;
+            //reserves_last_month_conditional[j] = 0.0;
+            cfs_bom_per_state_for_res[j] = 0.0;
+        }
+        
+        int len2 = _end_dates.size() * _dimension * _dimension;
+        for(int j=0; j < len; j++) {
+            cf_eom_per_state_change_for_res[j] = 0.0;
+        }
     }
 
 
@@ -286,7 +307,55 @@ private:
         for(int n=0; n < _run_config.get_other_assumptions().size(); n++) {
              _run_config.get_other_assumptions()[n]->slice_into(slice_indexes, *_record_other_assumptions[n]);
         }
-    }    
+    }
+
+    /// @brief Calculation of the reserves
+    /// @param reserving_interest 
+    /// @param time_index Is the latest time index that is needed to calculate the reserves
+    void calculate_reserves(double reserving_interest, int time_index) {
+        double monthly_discount_factor = pow(1.0 + reserving_interest, -1.0 / 12.0);
+
+        // store the "reserving amount" conditional on a state transition, the allocation below should initialize to zero
+        unique_ptr<double[]> cond_res_eom(new double[_dimension], std::default_delete<double[]>());
+
+        // the vector of reserves conditional on being in the respective state
+        unique_ptr<double[]> reserves_last_month_conditional(new double[_dimension], std::default_delete<double[]>());
+        for (int r=0; r<_dimension;r++) {
+            reserves_last_month_conditional[r] = 0.0;
+            cond_res_eom[r] = 0.0;
+        }
+        
+        while (time_index >= 0) {
+
+            // Explanation of IDEA first: recursive calculation equation along the line of
+            // reserves_bom[self.month_count, :] = CF@BOM|state=j + D * ( \sum_{states k}) p^{res, insured=i}_{j->k} (CF@EOM|state=j) + Res_bom(t+1)|state=k)
+
+            // calculate the conditional reserving amount needed conditional on a state transition
+            for(int from_state=0; from_state < _dimension; from_state++) {
+                for(int to_state=0; to_state < _dimension; to_state++) {
+                    //  first we determine the amounts needed based on the transitions which is the
+                    // (conditional) target state reserve + the (conditional) payment for the state transt
+                    int ind_for_eom_cf = time_index * (_dimension * _dimension) + from_state * _dimension + to_state;
+                    double transition_amount = cf_eom_per_state_change_for_res[ind_for_eom_cf] + reserves_last_month_conditional[to_state];
+
+                    // the transition amounts are multiplied with the transition probabilities
+                    // the probabilities with time fixed have the strcuture(insured(r), from_state(f), to_state(t))
+                    
+                    // TODO!!!: cond_res_eom[from_state] += transition_amount * ("reserving transition probability from->to");
+                }
+                reserves_last_month_conditional[from_state] = cfs_bom_per_state_for_res[time_index * _dimension + from_state] +
+                                                              monthly_discount_factor * cond_res_eom[from_state];
+            }
+
+            // store the "probability weighted" reserve
+            // TODO:    reserves_bom_by_insured[self.month_count, :] = reserves_last_month_conditional[:] * self.probability_states_with_time[self.month_count, :]
+
+            // end of loop decrement
+            time_index--;
+        }
+
+        // TODO: comment where the result is now
+    }   
 
 public:
     RecordProjector(const CRunConfig &run_config, const TimeAxis &ta) : _run_config(run_config),
@@ -299,9 +368,17 @@ public:
                                                                         
     {
         _be_states = unique_ptr<ProjectionStateMatrix>(new ProjectionStateMatrix((int)_ta.get_length(), (int)_run_config.get_dimension()));
+        
         // array containers for the current assumptions
         be_a_yearly = unique_ptr<double[]>(new double[_dimension * _dimension], std::default_delete<double[]>());
         be_a_time_step_dependent = unique_ptr<double[]>(new double[_dimension * _dimension], std::default_delete<double[]>());
+
+        // array containers for the reserve calculations
+        reserves_bom = unique_ptr<double[]>(new double[(int)_ta.get_length() * _dimension], std::default_delete<double[]>());
+        //reserves_last_month_conditional = unique_ptr<double[]>(new double[(int)_ta.get_length() * _dimension], std::default_delete<double[]>());
+
+        cfs_bom_per_state_for_res = unique_ptr<double[]>(new double[(int)_ta.get_length() * _dimension], std::default_delete<double[]>());
+        cf_eom_per_state_change_for_res = unique_ptr<double[]>(new double[(int)_ta.get_length() *_dimension * _dimension], std::default_delete<double[]>());
 
         // deep copy of the portfolio assumption set into the record assumption set
         // which is later on sliced as needed
@@ -499,6 +576,10 @@ void RecordProjector::run(int runner_no,
             for (ConditionalPayout &payout: paym_state.payments) {
                 int payment_index = payout.payment_index;
                 //double this_payment = payout.cond_payments[time_index - 1] * current_states_probs[state_ind];
+
+                // store (aggregated) conditional amounts per state for reserve calc with inverted sign
+                cfs_bom_per_state_for_res[time_index * _dimension + state_ind] -= payout.cond_payments[time_index];
+
                 double this_payment = payout.cond_payments[time_index] * current_states_probs[state_ind];
                 //cout << "time_index=" << time_index << ", payment_index= " << payment_index << ", amount=" << this_payment << std::endl;
                 result.set_state_cond_payments(time_index, payment_index, this_payment);
@@ -530,6 +611,10 @@ void RecordProjector::run(int runner_no,
 
             for (ConditionalPayout &payout: payms_cond_transition.payments) {
                 int payment_index = payout.payment_index;
+
+                // store (aggregated) conditional amounts per state for reserve calc with inverted sign
+                int ind_for_save = time_index * (_dimension * _dimension) + state_from * _dimension + state_to;
+                cf_eom_per_state_change_for_res[ind_for_save] -= payout.cond_payments[time_index];
                 
                 double this_payment = payout.cond_payments[time_index] * period_prob_movements[state_from * _num_states + state_to];
 
@@ -555,6 +640,10 @@ void RecordProjector::run(int runner_no,
             break;
         }
     }
+
+    //////////////////////////////////////////////////
+    // calculate reserves
+    calculate_reserves(policy.get_reserving_rate(), time_index);
 
     // clean-up after early stop as necessary
     if (early_stop)
