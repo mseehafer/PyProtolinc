@@ -19,6 +19,7 @@
 #include <memory>
 #include <cmath>
 #include <algorithm>
+#include <iomanip>
 
 #include "utils.h"
 #include "assumption_sets.h"
@@ -226,6 +227,7 @@ private:
     // TODO: something similar for other assumptions needed
 
     unique_ptr<double[]> be_a_time_step_dependent; // current dependent assumptions on the time-step-grid
+    unique_ptr<double[]> be_a_time_step_dependent_collect; // all assumptions for all timesteps
     // TODO: something similar for other assumptions needed
 
     // the risk factors
@@ -289,6 +291,7 @@ private:
         int len2 = _end_dates.size() * _dimension * _dimension;
         for(int j=0; j < len; j++) {
             cf_eom_per_state_change_for_res[j] = 0.0;
+            be_a_time_step_dependent_collect[j] = 0.0;
         }
     }
 
@@ -315,46 +318,68 @@ private:
     void calculate_reserves(double reserving_interest, int time_index) {
         double monthly_discount_factor = pow(1.0 + reserving_interest, -1.0 / 12.0);
 
-        // store the "reserving amount" conditional on a state transition, the allocation below should initialize to zero
-        unique_ptr<double[]> cond_res_eom(new double[_dimension], std::default_delete<double[]>());
+        //cout << "Reserving factor: " << monthly_discount_factor << endl; 
 
         // the vector of reserves conditional on being in the respective state
         unique_ptr<double[]> reserves_last_month_conditional(new double[_dimension], std::default_delete<double[]>());
+        unique_ptr<double[]> reserves_last_month_conditional_save(new double[_dimension], std::default_delete<double[]>());
         for (int r=0; r<_dimension;r++) {
             reserves_last_month_conditional[r] = 0.0;
-            cond_res_eom[r] = 0.0;
+            reserves_last_month_conditional_save[r] = 0.0;
         }
         
-        while (time_index >= 0) {
+        while (time_index > 0) {
 
+            // cout << "time_index = " << time_index;
             // Explanation of IDEA first: recursive calculation equation along the line of
             // reserves_bom[self.month_count, :] = CF@BOM|state=j + D * ( \sum_{states k}) p^{res, insured=i}_{j->k} (CF@EOM|state=j) + Res_bom(t+1)|state=k)
 
+            // copy the reserves from last month
+            for (int r=0; r<_dimension;r++) {
+                reserves_last_month_conditional_save[r] = reserves_last_month_conditional[r];
+            }
+
             // calculate the conditional reserving amount needed conditional on a state transition
             for(int from_state=0; from_state < _dimension; from_state++) {
+
+                double cond_res_eom_from_state = 0.0;
                 for(int to_state=0; to_state < _dimension; to_state++) {
                     //  first we determine the amounts needed based on the transitions which is the
-                    // (conditional) target state reserve + the (conditional) payment for the state transt
+                    // (conditional) target state reserve + the (conditional) payment for the state transition
                     int ind_for_eom_cf = time_index * (_dimension * _dimension) + from_state * _dimension + to_state;
-                    double transition_amount = cf_eom_per_state_change_for_res[ind_for_eom_cf] + reserves_last_month_conditional[to_state];
+                    double transition_amount = cf_eom_per_state_change_for_res[ind_for_eom_cf] + reserves_last_month_conditional_save[to_state];
 
                     // the transition amounts are multiplied with the transition probabilities
                     // the probabilities with time fixed have the strcuture(insured(r), from_state(f), to_state(t))
                     
-                    // TODO!!!: cond_res_eom[from_state] += transition_amount * ("reserving transition probability from->to");
+                    cond_res_eom_from_state += transition_amount * be_a_time_step_dependent_collect[ind_for_eom_cf];
                 }
+                //cout << ", conditional bom payment added=" << cfs_bom_per_state_for_res[time_index * _dimension + from_state];
                 reserves_last_month_conditional[from_state] = cfs_bom_per_state_for_res[time_index * _dimension + from_state] +
-                                                              monthly_discount_factor * cond_res_eom[from_state];
+                                                              monthly_discount_factor * cond_res_eom_from_state;
             }
 
             // store the "probability weighted" reserve
-            // TODO:    reserves_bom_by_insured[self.month_count, :] = reserves_last_month_conditional[:] * self.probability_states_with_time[self.month_count, :]
+            double *state_probs = _be_states -> get_state_probs(time_index - 1); // check! the state probs are EOP
+            for (int from_state=0; from_state < _dimension; from_state++) {
+
+                //cout << ", state_prob=" << state_probs[from_state];
+                reserves_bom[time_index * _dimension + from_state] = reserves_last_month_conditional[from_state] 
+                                                                    * state_probs[from_state];
+            }
+
+            //cout << endl;
 
             // end of loop decrement
             time_index--;
         }
 
-        // TODO: comment where the result is now
+        // Reserves are no in the reserves_bom field
+        // cout << "Reserves: [";
+        // for(int t=0; t < 10; t++) {
+        //     cout << ", " << std::setprecision(8) <<reserves_bom[t * _dimension + 0];
+        // }
+        // cout << endl;
     }   
 
 public:
@@ -372,6 +397,7 @@ public:
         // array containers for the current assumptions
         be_a_yearly = unique_ptr<double[]>(new double[_dimension * _dimension], std::default_delete<double[]>());
         be_a_time_step_dependent = unique_ptr<double[]>(new double[_dimension * _dimension], std::default_delete<double[]>());
+        be_a_time_step_dependent_collect = unique_ptr<double[]>(new double[(int)_ta.get_length() * _dimension * _dimension], std::default_delete<double[]>());
 
         // array containers for the reserve calculations
         reserves_bom = unique_ptr<double[]>(new double[(int)_ta.get_length() * _dimension], std::default_delete<double[]>());
@@ -547,6 +573,11 @@ void RecordProjector::run(int runner_no,
         {
 //            cout << "updating period assumptions" << endl;
             adjust_assumptions_simple(days_current_step);
+        }
+
+        // save assumptions for this timestep
+        for (int j=0; j < _dimension * _dimension; j++) {
+            be_a_time_step_dependent_collect[time_index * _dimension * _dimension + j] = be_a_time_step_dependent[j];
         }
 
         // // print out the adjusted assumptions
