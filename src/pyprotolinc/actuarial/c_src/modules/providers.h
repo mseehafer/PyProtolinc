@@ -151,6 +151,7 @@ public:
     void get_values(double *ext_vals) const
     {
         std::copy(values.get(), values.get() + number_values, ext_vals);
+        //std::copy_n(values.get(), number_values, ext_vals);
     }
 
     void set_values(vector<int> &shape_vec_in, vector<int> &offsets_in, double *ext_vals);
