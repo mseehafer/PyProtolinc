@@ -6,3 +6,8 @@ build-backend = "setuptools.build_meta"
 mypy_path = "$MYPY_CONFIG_FILE_DIR/src"
 strict = true
 packages = "pyprotolinc"
+
+
+[tool.pylint.main]
+# Maximum number of characters on a single line.
+max-line-length = 119

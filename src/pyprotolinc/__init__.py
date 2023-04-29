@@ -46,11 +46,9 @@ class RunConfig:
         self.model_name = model_name
         self.years_to_simulate = years_to_simulate
         self.portfolio_path = portfolio_path
-        self.assumptions_path = assumptions_path
         self.steps_per_month = steps_per_month
         self.state_model_name = state_model_name
         self.timestep_duration = 1.0 / (12.0 * steps_per_month)
-        self.outfile = outfile
         self.portfolio_cache = portfolio_cache
         self.profile_out_dir = profile_out_dir
         self.portfolio_chunk_size = portfolio_chunk_size
@@ -68,6 +66,14 @@ class RunConfig:
         if profile_out_dir and not os.path.isabs(profile_out_dir):
             self.profile_out_dir = os.path.join(self.working_directory, profile_out_dir)
 
+        if assumptions_path and not os.path.isabs(assumptions_path):
+            self.assumptions_path = os.path.join(self.working_directory, assumptions_path)
+
+        if os.path.isabs(outfile):
+            self.outfile = outfile
+        else:
+            self.outfile = os.path.join(self.working_directory, outfile)
+
     def __repr__(self) -> str:
         return str(self.__dict__)
 
@@ -82,13 +88,14 @@ def get_config_from_file(config_file: str) -> RunConfig:
     """
 
     # load config file data
-    with open(config_file, 'r') as conf_file:
+    with open(config_file, 'r', encoding="utf8") as conf_file:
         config_raw = yaml.safe_load(conf_file)
 
         chosen_type = config_raw["model"]["type"]
         run_type_spec = config_raw["run_type_specs"][chosen_type]
 
     working_dir = Path(config_file).parent.absolute()
+    print(working_dir)
 
     return RunConfig(
         run_type_spec.get("state_model"),

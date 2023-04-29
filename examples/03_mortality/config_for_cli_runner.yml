@@ -23,4 +23,4 @@ run_type_specs:
     # portfolio_path: "portfolio/portfolio_small_cli.xlsx"
     portfolio_path: "portfolio/portfolio_med_cli.xlsx"
     # portfolio_path: "portfolio/portfolio_big_cli.xlsx"
-    portfolio_chunk_size: 10000
+    portfolio_chunk_size: 30000

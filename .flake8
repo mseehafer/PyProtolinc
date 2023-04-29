@@ -2,4 +2,4 @@
 extend-ignore =
     E501,
     W505
-max-line-length = 99
+max-line-length = 119

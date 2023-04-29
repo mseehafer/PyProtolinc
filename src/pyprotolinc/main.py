@@ -11,6 +11,7 @@ from multiprocessing import Pool, cpu_count
 from typing import Optional, Union
 import importlib.metadata
 import gc
+import webbrowser
 
 import numpy as np
 import numpy.typing as npt
@@ -30,8 +31,8 @@ from pyprotolinc.product import product_class_lookup
 from pyprotolinc.utils import download_dav_tables
 
 
-# logging.basicConfig(filename='runlog.txt', format='%(levelname)s - %(asctime)s - %(name)s - %(message)s', level=logging.DEBUG)
-logging.basicConfig(format='%(levelname)s - %(asctime)s - %(name)s - %(message)s', level=logging.DEBUG)
+logging.basicConfig(format='%(levelname)s - %(asctime)s - %(name)s - %(message)s',
+                    level=logging.DEBUG)
 
 # module level logger
 logger = logging.getLogger(__name__)
@@ -214,7 +215,7 @@ def _project_subportfolio(run_config: RunConfig,
 
 
 def project_cashflows_cli(config_file_or_object: Union[str, RunConfig] = 'config.yml',
-                          multi_processing_overwrite: Optional[bool] = None) -> None:
+                          multi_processing_overwrite: Optional[bool] = None) -> dict[str, npt.NDArray[np.float64]]:
     """ Start a projection run.
 
         :param str config_file_or_object: Path to the config file or a RunConfig
@@ -231,7 +232,8 @@ def project_cashflows_cli(config_file_or_object: Union[str, RunConfig] = 'config
 
     if multi_processing_overwrite is not None:
         run_config.use_multicore = multi_processing_overwrite
-    project_cashflows(run_config)
+    res = project_cashflows(run_config)
+    return res
 
 
 def profile(config_file: str = 'config.yml',
@@ -287,12 +289,12 @@ def show_docs_in_browser() -> None:
     """ Show the *readthedocs* help pages in the system browser
         :return: None
     """
-    import webbrowser
     url = "https://pyprotolinc.readthedocs.io/en/latest/index.html"
     webbrowser.open(url)
 
 
-def print_version():
+def print_version() -> None:
+    """ Print the version of the program. """
     print(__version__)
 
 
