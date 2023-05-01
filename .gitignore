@@ -168,3 +168,4 @@ ncf_out*.csv
 **/results_viewer_generic.xlsx
 
 out.xlsx
+**/pyprotolinc_results_result*.*

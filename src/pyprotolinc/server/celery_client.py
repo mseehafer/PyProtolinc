@@ -1,5 +1,5 @@
 """ Trigger a remote task:
-    
+
     python src/pyprotolinc/server/celery_client.py
 
 """
@@ -7,11 +7,11 @@
 from typing import Optional
 
 import pandas as pd
+
 from pyprotolinc.server.tasks import valuation_run
 
 
-
-def run_distributed_job(config_file: Optional[str]=None) -> str:
+def run_distributed_job(config_file: Optional[str] = None) -> str:
     if config_file is None:
         # /home/martin/git/PyProtolinc/examples/03_mortality/config_for_cli_runner.yml
         config_file = "./examples/03_mortality/config_for_cli_runner.yml"
