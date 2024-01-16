@@ -60,7 +60,7 @@ setup(
         'numpy==1.23.1',
         'pandas',
         'xlrd',
-        'cython==3.0.0a11',
+        'cython>=3.0.5',
         'pyyaml',
         'fire',
         'requests',
