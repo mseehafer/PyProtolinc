@@ -3,6 +3,7 @@ import zipfile
 import os
 import shutil
 import tempfile
+import re
 from datetime import datetime
 
 import numpy as np
@@ -57,12 +58,18 @@ def download_dav_tables(target_dir: str = ".") -> None:
     with tempfile.TemporaryDirectory() as tmp_dir:
 
         # download location of R-package
-        file_name = "MortalityTables_2.0.3.zip"
-        link_address = "https://cran.r-project.org/bin/windows/contrib/4.3/" + file_name
+        # file_name = "MortalityTables_2.0.3.zip"
+        link_folder = "https://cran.r-project.org/bin/windows/contrib/4.3/"
 
         # download and save .zip to tmp dir
-        r = requests.get(link_address)
+        # first get correct version from html package page
+        html_folder_cntnt = requests.get(link_folder, timeout=100).content.decode("UTF-8")
+        file_name = re.search("MortalityTables_\\d\\.\\d\\.\\d\\.zip", html_folder_cntnt)\
+                      .group()
+        link_address = link_folder + file_name
+        r = requests.get(link_address, timeout=100)
         zip_file = os.path.join(tmp_dir, file_name)
+
         with open(zip_file, 'wb') as zf:
             zf.write(r.content)
 
